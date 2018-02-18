@@ -17,3 +17,7 @@ Specifically, the ODRL CG will:
 ## Useful links
 * [ODRL Community Group Home page](https://www.w3.org/community/odrl/)
 * [Public group email archive](https://lists.w3.org/Archives/Public/public-odrl/)
+
+---
+
+This repository is administered by [Renato Iannella](mailto:renato.iannella@monegraph.com) and [Ivan Herman](mailto:ivan@w3.org)
