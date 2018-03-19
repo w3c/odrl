@@ -1,5 +1,5 @@
 var respecConfig = {
-    specStatus: "ED",
+    specStatus: "CG-DRAFT",
     shortName: "odrl-bp",
     // publishDate:          "2016-10-18",
     edDraftURI: "https://w3c.github.io/poe/bp/",
@@ -12,23 +12,23 @@ var respecConfig = {
                     mailto:     "vrodriguez@fi.upm.es"
            }
     ],
-    wg: "Permissions &amp; Obligations Expression Working Group",
-    wgURI: "https://www.w3.org/2016/poe/",
-    edDraftURI:   "https://w3c.github.io/poe/bp/",
-    wgPublicList: "public-poe-comments",
-    wgPatentURI: "http://www.w3.org/2004/01/pp-impl/87755/status",
+    wg: "ODRL Community Group",
+    wgURI: "https://www.w3.org/community/odrl/",
+    edDraftURI:   "https://w3c.github.io/odrl/bp/",
+    wgPublicList: "https://lists.w3.org/Archives/Public/public-odrl/",
+    //wgPatentURI: "http://www.w3.org/2004/01/pp-impl/87755/status",
     inlineCSS: true,
     noIDLIn: true,
     noLegacyStyle: false,
     noRecTrack: true,
     lint: true,
-    issueBase: "https://www.w3.org/2016/poe/track/issues/",
+    issueBase: "https://github.com/w3c/odrl/issues",
     otherLinks: [
         {
             key: "Issue list",
             data: [ {
                 value: "Github Repository",
-                href: "https://github.com/w3c/poe/issues?q=is%3Aopen+is%3Aissue+label%3A%22Best+Practices%22"
+                href: "https://github.com/w3c/odrl/issues"
             }
             ]
         }
