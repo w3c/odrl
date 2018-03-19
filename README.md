@@ -12,7 +12,7 @@ Specifically, the ODRL CG will:
 * Support development of ODRL Profiles (and host for smaller communities)
 * Register ODRL Profiles
 * Collaborate with W3C on ODRL errata maintenance
-* Plan for future major enhancements to ODRL (V3.0)
+* Plan for future major enhancements to ODRL (V3.0) 
 
 ## Useful links
 * [ODRL Community Group Home page](https://www.w3.org/community/odrl/)
