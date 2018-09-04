@@ -1,0 +1,111 @@
+@base <http://www.w3.org/ns/odrl/2/core> .
+@prefix : <http://www.w3.org/ns/odrl/2/core> .
+@prefix odrl-core-profile: <http://www.w3.org/ns/odrl/2/core> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+
+odrl-core-profile:
+	a owl:Ontology ;
+	rdfs:label "ODRL Core Profile Ontology Version 2.2"@en ;
+	owl:versionInfo "2.2" ;
+	dct:creator "Renato Iannella", "Michael Steidl", "Stuart Myles", "Víctor Rodríguez-Doncel" ;
+	dct:contributor "W3C Permissions & Obligations Expression Working Group" ;
+    dct:contributor "W3C ODRL Community Group" ;
+	dct:description "The ODRL Core Profile. Community Profiles can use this Core profile to extend and add new concepts."@en ;
+	rdfs:comment "This is the RDF ontology for ODRL Core Version 2.2."@en ;
+	dct:license <https://www.w3.org/Consortium/Legal/2002/ipr-notice-20021231#Copyright/> .
+
+## SKOS Collections for Core ODRL Vocabulary.
+
+<http://www.w3.org/ns/odrl/2/core>
+    a skos:Collection ;
+    skos:prefLabel "ODRL Core Profile V2.2"@en ;
+    skos:scopeNote "All the terms of ODRL Core Profile"@en ;
+    skos:member odrl:Policy ;
+    skos:member :uid ;
+    skos:member :profile ;
+    skos:member :inheritFrom ;
+    skos:member :Agreement ;
+    skos:member :Offer ;
+    skos:member :Set ;
+    skos:member :Rule ;
+    skos:member :relation ;
+    skos:member :function ;
+    skos:member :failure ;
+    skos:member :Asset ;
+    skos:member :AssetCollection ;
+    skos:member :target ;
+    skos:member :hasPolicy ;
+    skos:member :Party ;
+    skos:member :PartyCollection ;
+    skos:member :assignee ;
+    skos:member :assigner ;
+    skos:member :assigneeOf ;
+    skos:member :assignerOf ;
+    skos:member :partOf ;
+    skos:member :source ;
+    skos:member :Permission ;
+    skos:member :permission ;
+    skos:member :Prohibition ;
+    skos:member :prohibition ;
+    skos:member :Action ;
+    skos:member :action ;
+    skos:member :includedIn ;
+    skos:member :implies ;
+    skos:member :use ;
+    skos:member :transfer ;
+    skos:member :Duty ;
+    skos:member :obligation ;
+    skos:member :duty ;
+    skos:member :consequence ;
+    skos:member :remedy ;
+    skos:member :Constraint ;
+    skos:member :constraint ;
+    skos:member :refinement ;
+    skos:member :Operator ;
+    skos:member :operator ;
+    skos:member :RightOperand ;
+    skos:member :rightOperand ;
+    skos:member :rightOperandReference ;
+    skos:member :LeftOperand ;
+    skos:member :leftOperand ;
+    skos:member :unit ;
+    skos:member :dataType ;
+    skos:member :status ;
+    skos:member :LogicalConstraint ;
+    skos:member :operand ;
+    skos:member :eq ;
+    skos:member :gt ;
+    skos:member :gteq ;
+    skos:member :lt ;
+    skos:member :lteq ;
+    skos:member :neq ;
+    skos:member :isA ;
+    skos:member :hasPart ;
+    skos:member :isPartOf ;
+    skos:member :isAllOf ;
+    skos:member :isAnyOf ;
+    skos:member :isNoneOf ;
+    skos:member :or ;
+    skos:member :xone ;
+    skos:member :and ;
+    skos:member :andSequence ;
+    skos:member :ConflictTerm ;
+    skos:member :conflict ;
+    skos:member :perm ;
+    skos:member :prohibit ;
+    skos:member :invalid .
+
+
+
+## Declaration of annotation properties to keep the ontology within OWL DL
+
+	skos:member rdf:type owl:AnnotationProperty .
+	dct:license rdf:type owl:AnnotationProperty .
+	skos:Collection a owl:Class .
+
