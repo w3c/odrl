@@ -11,7 +11,7 @@
 
 <http://www.w3.org/ns/odrl/2/core>
     a dct:Standard ;
-    dct:title "The ODRL Core Profile" ;
+    dct:title "The ODRL Core Profile Version 2.2" ;
     profile:hasResource _:1 _:2 .
    
 _:1  # The normative W3C ODRL Information Model
@@ -31,11 +31,11 @@ _:2  # The ODRL Core Profile vocabulary terms
 # Add your ODRL Profile here
 
 <insert-your-profile-URI-here>
-    a proile:Profile ;
+    a profile:Profile ;
     dct:title "Acme ODRL Profile" ;
     dct:description "Describe it" ;
-    prof:isProfileOf <http://www.w3.org/ns/odrl/2/core> ;
-    prof:hasResource
+    profile:isProfileOf <http://www.w3.org/ns/odrl/2/core> ;
+    profile:hasResource
         ex:myProfile-html ,
         ex:myProfile-ttl ;
     # Add other dct: terms here...
@@ -46,17 +46,17 @@ _:2  # The ODRL Core Profile vocabulary terms
 .
 
 ex:myProfile-html
-    a prof:ResourceDescriptor ;
-    prof:hasRole role:specification ;
-    prof:hasArtifact <url-here> ;
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:specification ;
+    profile:hasArtifact <url-here> ;
     dct:format <https://www.iana.org/assignments/media-types/text/html> ;
     dct:conformsTo <https://www.w3.org/TR/html/> ;
 .
 
 ex:myProfile-ttl
-    a prof:ResourceDescriptor ;
-    prof:hasRole role:vocabulary ;
-    prof:hasArtifact <url-here> ;
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:vocabulary ;
+    profile:hasArtifact <url-here> ;
     dct:format <https://www.iana.org/assignments/media-types/text/turtle> ;
     dct:conformsTo <https://www.w3.org/TR/turtle/> ;
 .
