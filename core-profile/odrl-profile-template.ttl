@@ -1,0 +1,62 @@
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix profile: <http://www.w3.org/ns/dx/prof/> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
+@prefix ex:   <http://example.org/example-profile/> .
+
+# Declare the ODRL Core Profile artifacts
+
+<http://www.w3.org/ns/odrl/2/core>
+    a dct:Standard ;
+    dct:title "The ODRL Core Profile" ;
+    profile:hasResource _:1 _:2 .
+   
+_:1  # The normative W3C ODRL Information Model
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:specification ;
+    profile:hasArtifact <https://www.w3.org/TR/odrl-model/> ;
+    dct:format <https://www.iana.org/assignments/media-types/text/html> ;
+    dct:conformsTo <https://www.w3.org/TR/html/> .
+
+_:2  # The ODRL Core Profile vocabulary terms
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:vocabulary ;
+    profile:hasArtifact <tbd> ;
+    dct:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    dct:conformsTo <https://www.w3.org/TR/turtle/> .
+
+# Add your ODRL Profile here
+
+<insert-your-profile-URI-here>
+    a proile:Profile ;
+    dct:title "Acme ODRL Profile" ;
+    dct:description "Describe it" ;
+    prof:isProfileOf <http://www.w3.org/ns/odrl/2/core> ;
+    prof:hasResource
+        ex:myProfile-html ,
+        ex:myProfile-ttl ;
+    # Add other dct: terms here...
+    dc:creator "" ;
+    dc:contributor "" ;
+    owl:versionInfo "x.x"^^xsd:string ;    
+    dct:issued "date"^^xsd:date ;
+.
+
+ex:myProfile-html
+    a prof:ResourceDescriptor ;
+    prof:hasRole role:specification ;
+    prof:hasArtifact <url-here> ;
+    dct:format <https://www.iana.org/assignments/media-types/text/html> ;
+    dct:conformsTo <https://www.w3.org/TR/html/> ;
+.
+
+ex:myProfile-ttl
+    a prof:ResourceDescriptor ;
+    prof:hasRole role:vocabulary ;
+    prof:hasArtifact <url-here> ;
+    dct:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    dct:conformsTo <https://www.w3.org/TR/turtle/> ;
+.
