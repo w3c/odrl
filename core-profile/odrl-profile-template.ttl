@@ -18,6 +18,9 @@ _:1  # The normative W3C ODRL Information Model
     a profile:ResourceDescriptor ;
     profile:hasRole role:specification ;
     profile:hasArtifact <https://www.w3.org/TR/odrl-model/> ;
+    dct:title "ODRL Information Model 2.2" ;
+    dct:issued "2018-02-15"^^xsd:date ;
+    dct:publisher "W3C" ;
     dct:format <https://www.iana.org/assignments/media-types/text/html> ;
     dct:conformsTo <https://www.w3.org/TR/html/> .
 
@@ -25,6 +28,9 @@ _:2  # The ODRL Core Profile vocabulary terms
     a profile:ResourceDescriptor ;
     profile:hasRole role:vocabulary ;
     profile:hasArtifact <tbd> ;
+    dct:title "ODRL Core Profile Version 2.2" ;
+    dct:issued "tbd"^^xsd:date ;
+    dct:publisher "W3C" ;
     dct:format <https://www.iana.org/assignments/media-types/text/turtle> ;
     dct:conformsTo <https://www.w3.org/TR/turtle/> .
 
@@ -49,6 +55,7 @@ ex:myProfile-html
     a profile:ResourceDescriptor ;
     profile:hasRole role:specification ;
     profile:hasArtifact <url-here> ;
+    dct:title "Add title" ;
     dct:format <https://www.iana.org/assignments/media-types/text/html> ;
     dct:conformsTo <https://www.w3.org/TR/html/> ;
 .
@@ -57,6 +64,7 @@ ex:myProfile-ttl
     a profile:ResourceDescriptor ;
     profile:hasRole role:vocabulary ;
     profile:hasArtifact <url-here> ;
+    dct:title "Add title" ;
     dct:format <https://www.iana.org/assignments/media-types/text/turtle> ;
     dct:conformsTo <https://www.w3.org/TR/turtle/> ;
 .
