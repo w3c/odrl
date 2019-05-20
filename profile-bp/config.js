@@ -7,7 +7,7 @@ var respecConfig = {
          	 {  name:       "Michael Steidl,",
                     url:        "https://uk.linkedin.com/in/michaelwsteidl",
                     company:    "NewsIT",
-                   companyURL: "http://newsit.biz",
+                   companyURL: "https://newsit.biz",
                     mailto:     "mwsteidl@newsit.biz"
            }
     ],
