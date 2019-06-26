@@ -40,10 +40,139 @@ class="remove"></script>
       <h2>What an ODRL Profile can define</h2>
       <p>This sections walks through the <a href="https://www.w3.org/TR/odrl-model/#profile-mechanism">ODRL
           Profile Mechanism</a> of the ODRL Data Model.</p>
+      <div class="note">
+        <div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div>
+        <div class="">Examples reference these namespaces:
+          <table class="">
+            <tbody>
+              <tr>
+                <th>Prefix</th>
+                <th>Namespace</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>exp1</td>
+                <td>https://example.com/odrlprofileXY1</td>
+                <td>Example Profile 1</td>
+              </tr>
+              <tr>
+                <td>exp2</td>
+                <td>https://example.com/odrlprofileXY2</td>
+                <td>Example Profile 2</td>
+              </tr>
+              <tr>
+                <td>odrl</td>
+                <td>http://www.w3.org/ns/odrl/2/</td>
+                <td>ODRL Vocabulary</td>
+              </tr>
+              <tr>
+                <td>rdf</td>
+                <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                <td>Resource Description Framework (RDF) </td>
+              </tr>
+              <tr>
+                <td>rdfs</td>
+                <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                <td>RDF Schema</td>
+              </tr>
+              <tr>
+                <td>owl</td>
+                <td>http://www.w3.org/2002/07/owl#</td>
+                <td>OWL</td>
+              </tr>
+              <tr>
+                <td>skos</td>
+                <td>http://www.w3.org/2004/02/skos/core#</td>
+                <td>SKOS</td>
+              </tr>
+              <tr>
+                <td>dcterms</td>
+                <td>http://purl.org/dc/terms/</td>
+                <td>Dublin Core Terms</td>
+              </tr>
+            </tbody>
+          </table>
+          <p> These terms are used for the format of an example:<br />
+            TTL = Turtle</p>
+        </div>
+      </div>
       <h3>Additional Policy Subclasses</h3>
       <p>The ODRL Data Model recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#policy">Policy
           Class</a> and three subclasses of it: the Set Class, the Offer Class
-        and the Agreement Class.</p>
+        and the Agreement Class. The ODRL Profile Mechanism permits to create
+        additional subclasses; this action must follow the design of the generic
+        Policy Class:</p>
+      <ul>
+        <li>A Policy <em class="rfc2119" title="MUST">MUST</em> have one <code>uid</code>
+          property value (of type IRI [<cite><a class="bibref" href="https://www.w3.org/TR/odrl-model/#bib-rfc3987">rfc3987</a></cite>])
+          to identify the Policy. <br />
+          A subclass must adopt this rule.</li>
+        <li>A Policy <em class="rfc2119" title="MUST">MUST</em> have at least
+          one <code>permission</code>, <code>prohibition</code>, or <code>obligation</code>
+          property values of type Rule.<br />
+          A subclass can combine any set of one <code>permission</code>, <code>prohibition</code>,
+          or <code>obligation</code> property values as long as this basic rule
+          is satisfied.<br />
+          Examples:</li>
+        <ul>
+          <li>Only <code>permission </code>property values</li>
+          <li>Only <code>permission </code>property values, five as maximum</li>
+          <li>Only <code>permission </code>or <code>prohibition </code>property
+            values</li>
+          <li>Only at least 1 <code>permission </code>and at least 1  <code>prohibition
+              </code>property value</li>
+        </ul>
+        <li>A Policy <em class="rfc2119" title="MAY">MAY</em> have none, one,
+          or many <code>profile</code> property values.<br />
+          This is an implicitly met requirement: if a Profile is defined it must
+          be expressed by a <code>profile </code>property values to become
+          effective.</li>
+      </ul>
+      <p>The new Policy subclass must be defined as disjoint with all other
+        Policy subclasses, except the Set subclass</p>
+      <p>The example shows the definition of a subclass SpecialOffer1 of Example
+        Profile 1</p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 1 (TTL)</span></div>
+        <pre id="expolsubcl1" class="hljs" aria-busy="false" aria-live="polite">
+  :SpecialOffer1
+	  a rdfs:Class , owl:Class, skos:Concept ;
+	  rdfs:isDefinedBy exp1:
+	  rdfs:subClassOf :Policy ;
+	  owl:disjointWith :Agreement, :Privacy, :Request, :Ticket, :Assertion, :Offer ;
+	  rdfs:label "Special Offer 1"@en ;
+	  skos:definition "A Policy offering a permission of using an asset"@en ;
+	  skos:note "A Special Offer 1 Policy MUST contain at least one Permission and a Party with Assigner function (in the same Permission or Prohibition). The Offer Policy MAY contain either a specific Party or a Collection of Parties with Assignee function."@en .
+
+		</pre>
+      </div>
+      <ul>
+      </ul>
+      <h3>Additional Asset Relationships</h3>
+      <p>An ODRL Asset Relationship is a relationship between a subclass of a
+        Rule (Permission, Prohibition, Duty) and an Asset, the Recommendation <a
+          href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only
+        target and output as relationships. </p>
+      <p>The example shows how to define the asset relationship input for the
+        Example Profile 1, an asset required as input for the action of a Rule.</p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 2 (TTL)</span></div>
+        <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">
+exp1:input rdfs:subpropertyOf odrl:relation
+</pre> </div>
+      <h3>Additional Party Functional roles</h3>
+      <p>An ODRL Party Functional role is the property function of the Rule
+        class, the Recommendation defines 14. Function sets the relationship
+        between a subclass of a Rule (Permission, Prohibition, Duty) and a Party
+        or a PartyCollection.</p>
+      <p>The example shows how to define the Party Functional role
+        toBeNotifiedParty for the Example Profile 1, a party which must be
+        notified in the context of executing the action of a Rule. </p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 3 (TTL)</span></div>
+        <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">
+exp1:toBeNotifiedParty rdfs:subpropertyOf odrl:function
+</pre> </div>
       <p>(More will follow.) </p>
     </section>
     <section id="prerequ">
