@@ -130,12 +130,11 @@ class="remove"></script>
       </ul>
       <p>The new Policy subclass must be defined as disjoint with all other
         Policy subclasses, except the Set subclass</p>
-      <p>The example shows the definition of a subclass SpecialOffer1 of Example
-        Profile 1</p>
+      <p>The example shows the definition of a subclass <code>SpecialOffer1 </code>of
+        Example Profile 1</p>
       <div class="example">
         <div class="example-title marker"><span>Example 1 (TTL)</span></div>
-        <pre id="expolsubcl1" class="hljs" aria-busy="false" aria-live="polite">
-  :SpecialOffer1
+        <pre id="expolsubcl1" class="hljs" aria-busy="false" aria-live="polite">  :SpecialOffer1
 	  a rdfs:Class , owl:Class, skos:Concept ;
 	  rdfs:isDefinedBy exp1:
 	  rdfs:subClassOf :Policy ;
@@ -152,27 +151,38 @@ class="remove"></script>
       <p>An ODRL Asset Relationship is a relationship between a subclass of a
         Rule (Permission, Prohibition, Duty) and an Asset, the Recommendation <a
           href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only
-        target and output as relationships. </p>
-      <p>The example shows how to define the asset relationship input for the
-        Example Profile 1, an asset required as input for the action of a Rule.</p>
+        <code> target </code>and <code>output </code>as relationships. </p>
+      <p>The example shows how to define the asset relationship <code>input </code>for
+        the Example Profile 1, an asset required as input for the action of a
+        Rule.</p>
       <div class="example">
         <div class="example-title marker"><span>Example 2 (TTL)</span></div>
-        <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">
-exp1:input rdfs:subpropertyOf odrl:relation
+        <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">exp1:input rdfs:subpropertyOf odrl:relation
 </pre> </div>
       <h3>Additional Party Functional roles</h3>
-      <p>An ODRL Party Functional role is the property function of the Rule
-        class, the Recommendation defines 14. Function sets the relationship
-        between a subclass of a Rule (Permission, Prohibition, Duty) and a Party
-        or a PartyCollection.</p>
-      <p>The example shows how to define the Party Functional role
-        toBeNotifiedParty for the Example Profile 1, a party which must be
-        notified in the context of executing the action of a Rule. </p>
+      <p>An ODRL Party Functional role is used by the property <code>function </code>of
+        the Rule class, the Recommendation defines 14. Function sets the
+        relationship between a subclass of a Rule (Permission, Prohibition,
+        Duty) and a Party or a PartyCollection.</p>
+      <p>The example shows how to define the Party Functional role <code>
+          toBeNotifiedParty </code>for the Example Profile 1, a party which
+        must be notified in the context of executing the action of a Rule. </p>
       <div class="example">
         <div class="example-title marker"><span>Example 3 (TTL)</span></div>
-        <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">
-exp1:toBeNotifiedParty rdfs:subpropertyOf odrl:function
+        <pre id="expartyfunctrole1" class="hljs" aria-busy="false" aria-live="polite">exp1:toBeNotifiedParty rdfs:subpropertyOf odrl:function
 </pre> </div>
+      <h3>Additional Actions for Rules</h3>
+      <p>An ODRL Action is used by the mandatory property <code>action </code>of
+        the Rule class, and all its subclasses Permission, Prohibition and
+        Duty.The Recommendation defines only two Actions: <code>use</code>,
+        covering any use of an asset while the ownership of the asset does not
+        change, and <code>transfer</code>, covering the transfer of the
+        ownership of an asset in perpetuity.</p>
+      <p>If these two core Actions are sufficient a Profile does not need to add
+        more. But in most cases additional Actions are required and the example
+        shows how to add more.</p>
+      <p><br />
+      </p>
       <p>(More will follow.) </p>
     </section>
     <section id="prerequ">
