@@ -17,14 +17,9 @@ defer="defer"></script>
 <section id="sotd"> </section>
 <section id="intro">
   <h2>Introduction</h2>
-  <p>The Open Digital Rights Language (ODRL) 2.2 defines a <a href="https://www.w3.org/TR/odrl-model">data
-    model</a> for expressing policies which requires classes and concepts
-    for its assertions. A basic set is defined by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-core">ODRL
-    Core Vocabulary</a> and the data model permits users of ODRL to define
-    their own sub-classes and concepts for a specific use.</p>
-  <p>Specific sets of classes and concepts are named as ODRL Profile and a <a
-
-          href="https://www.w3.org/TR/odrl-model/#profile">full chapter</a> of
+  <p>The Open Digital Rights Language (ODRL) 2.2 defines a <a href="https://www.w3.org/TR/odrl-model">data model</a> for expressing policies which requires classes and concepts
+    for its assertions. A basic set of classes and concepts is defined by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-core">ODRL Core Vocabulary</a> and the data model permits users of ODRL to define their own subclasses and concepts for a specific use.</p>
+  <p>Specific sets of classes and concepts are named as ODRL Profile and a <a href="https://www.w3.org/TR/odrl-model/#profile">full chapter</a> of
     the data model recommendation covers its purpose, required conformance
     and a mechanism for creating new ones.</p>
   <p>This document walks users through the ODRL Profile chapter, explains
@@ -38,7 +33,7 @@ defer="defer"></script>
   <p>This sections walks through the <a href="https://www.w3.org/TR/odrl-model/#profile-mechanism">ODRL
     Profile Mechanism</a> of the ODRL Data Model.</p>
   <div class="note">
-    <div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div>
+    <div role="heading" class="note-title marker" id="h-note" aria-level="4"></div>
     <div class="">Examples reference these namespaces:
       <table class="">
         <tbody>
@@ -48,19 +43,24 @@ defer="defer"></script>
             <th>Description</th>
           </tr>
           <tr>
-            <td>exp1</td>
-            <td>https://example.com/odrlprofileXY1</td>
-            <td>Example Profile 1</td>
-          </tr>
-          <tr>
-            <td>exp2</td>
-            <td>https://example.com/odrlprofileXY2</td>
-            <td>Example Profile 2</td>
+            <td>:</td>
+            <td>http://www.w3.org/ns/odrl/2/</td>
+            <td>ODRL Vocabulary (default namespace)</td>
           </tr>
           <tr>
             <td>odrl</td>
             <td>http://www.w3.org/ns/odrl/2/</td>
             <td>ODRL Vocabulary</td>
+          </tr>
+          <tr>
+            <td>exns1</td>
+            <td>https://example.com/ns/éx1</td>
+            <td>Used by Example Profile 1</td>
+          </tr>
+          <tr>
+            <td>exns2</td>
+            <td>https://example.com/ns/ex2</td>
+            <td>Used by Example Profile 2</td>
           </tr>
           <tr>
             <td>rdf</td>
@@ -94,11 +94,11 @@ defer="defer"></script>
     </div>
   </div>
   <h3>Additional Policy Subclasses</h3>
-  <p>The ODRL Data Model recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#policy">Policy
+  <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#policy">Policy
     Class</a> and three subclasses of it: the Set Class, the Offer Class
     and the Agreement Class. The ODRL Profile Mechanism permits to create
-    additional subclasses; their definitions must follow the design of the
-    generic Policy Class:</p>
+    additional subclasses; their definitions must comply with the design of the
+    basic Policy Class:</p>
   <ul>
     <li>A Policy <em class="rfc2119" title="MUST">MUST</em> have one <code>uid</code> property value (of type IRI [<cite><a class="bibref" href="https://www.w3.org/TR/odrl-model/#bib-rfc3987">rfc3987</a></cite>])
       to identify the Policy. <br />
@@ -123,14 +123,22 @@ defer="defer"></script>
       effective.</li>
   </ul>
   <p>A new Policy subclass must be defined as disjoint with all other Policy
-    subclasses, except the Set subclass</p>
-  <p>The example shows the definition of a subclass <code>SpecialOffer1 </code>of
+    subclasses, except the Set subclass.</p>
+  <p>Defining a subclass of Policy allows:</p>
+  <ul>
+    <li>If the cardinality of a property is defined by the Policy class as &quot;MAY have none or one&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; can be defined.</li>
+    <li>If the cardinality of a property is defined by the Policy class as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
+    <li>If the Policy class defines &quot;<em class="rfc2119" title="MUST">MUST</em> have at least
+    one&quot; with a list of properties to select from a restricted set of properties and/or a specific combination of properties can be defined. (See the examples for <code>permission</code>, <code>prohibition</code>, or <code>obligation</code> property values above.)</li>
+    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
+  </ul>
+  <p>The example shows a basic definition of a subclass <code>SpecialOffer1 </code>for the 
     Example Profile 1</p>
   <div class="example">
     <div class="example-title marker"><span>Example 1 (TTL)</span></div>
-    <pre id="expolsubcl1" class="hljs" aria-busy="false" aria-live="polite">:SpecialOffer1
+    <pre id="expolsubcl1" class="hljs" aria-busy="false" aria-live="polite">exns1:SpecialOffer1
   a rdfs:Class , owl:Class, skos:Concept ;
-  rdfs:isDefinedBy exp1:
+  rdfs:isDefinedBy exns1:
   rdfs:subClassOf :Policy ;
   owl:disjointWith :Agreement, :Privacy, :Request, :Ticket, :Assertion, :Offer ;
   rdfs:label "Special Offer 1"@en ;
@@ -140,11 +148,11 @@ defer="defer"></script>
   <ul>
   </ul>
   <h3>Additional Rule Subclasses</h3>
-  <p>The ODRL Data Model recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule
+  <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule
     Class</a> and three subclasses of it: the Permission Class, the
     Prohibition Class and the Duty Class. The ODRL Profile Mechanism permits
-    to create additional subclasses; their definitions must follow the
-    design of the generic Rule Class:</p>
+    to create additional subclasses; their definitions must comply with the
+    design of the basic Rule Class:</p>
   <ul>
     <li>A Rule <em class="rfc2119" title="MUST">MUST</em> have one <code>action</code> property value of type Action.</li>
     <li>A Rule <em class="rfc2119" title="MAY">MAY</em> have none or one <code><em>relation</em></code> sub-property values of type Asset.</li>
@@ -161,63 +169,79 @@ defer="defer"></script>
   </ul>
   <p>A new Rule subclass must be defined as disjoint with all other Rule
     subclasses.</p>
-  <p>The example shows the definition of a subclass <code>StraightPermission1 </code>of Example Profile 1</p>
+  <p>Defining a subclass of Rule allows:</p>
+  <ul>
+    <li>If the cardinality of a property is defined by the Rule class as &quot;MAY have none or one&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; can be defined.</li>
+    <li>If the cardinality of a property is defined by the Rule class as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
+    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
+  </ul>
+  <p>The example shows how to define of a subclass <code>StraightPermission1 </code>for the  Example Profile 1</p>
   <div class="example">
     <div class="example-title marker"><span>Example 2 (TTL)</span></div>
-    <pre id="exrulesubcl1" class="hljs" aria-busy="false" aria-live="polite">:StraightPermission1
+    <pre id="exrulesubcl1" class="hljs" aria-busy="false" aria-live="polite">exns1:StraightPermission1
   a rdfs:Class , owl:Class, skos:Concept ;
-  rdfs:isDefinedBy exp1:
+  rdfs:isDefinedBy exns1:
   rdfs:subClassOf :Rule ;
   owl:disjointWith :Permission, :Prohibition, :Duty ;
   rdfs:label "Straight Permission 1"@en ;
-  skos:definition "A Rule permitting the use of an Asset without any duty"@en ;
-  skos:note "A Straight Permission 1 Rule MUST NOT contain any property for expressing a duty."@en .</pre>
+  skos:definition "A Rule permitting the use of an Asset"@en ;
+  skos:note "A Straight Permission 1 Rule does not contain any property for expressing a duty."@en .</pre>
   </div>
   <h3>Additional Asset Relationships</h3>
   <p>An ODRL Asset Relationship is a relationship between a subclass of a
-    Rule (Permission, Prohibition, Duty) and an Asset, the Recommendation <a
+    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a
 
-          href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code>and <code>output </code>as relationships. </p>
+          href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code>and <code>output </code>as sub-properties of <code>relation</code>.</p>
   <p>The example shows how to define the asset relationship <code>input </code>for
     the Example Profile 1, an asset required as input for the action of a
     Rule.</p>
   <div class="example">
     <div class="example-title marker"><span>Example 3 (TTL)</span></div>
-    <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">exp1:input rdfs:subpropertyOf odrl:relation
-</pre>
+    <pre id="exrelsubpro1" class="hljs" aria-busy="false" aria-live="polite">exns1:input
+  a rdf:Property , owl:ObjectProperty, skos:Concept ;
+  rdfs:isDefinedBy exns1: ;
+  rdfs:subPropertyOf :relation ;
+  rdfs:label "Input"@en ;
+  skos:definition "The input property specifies the Asset which is used as input of the Action."@en ;
+  rdfs:domain :Rule ;
+  rdfs:range :Asset.</pre>
   </div>
   <h3>Additional Party Functions</h3>
-  <p>An ODRL <a href="https://www.w3.org/TR/odrl-vocab/#partyRoles">Party
-    Function</a> is used by the property <code>function </code>of the
-    Rule class, the Recommendation defines 14. Function sets the
+  <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#partyRoles">Party
+    Function</a> is used as value of the property <code>function </code>of the
+    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, the Recommendation defines 14 instances. <code>function</code> sets the
     relationship between a subclass of a Rule (Permission, Prohibition,
-    Duty) and a Party or a PartyCollection.</p>
+    Duty, ...) and a Party or a PartyCollection.</p>
   <p>The example shows how to define the Party Function <code> toBeNotifiedParty </code>for the Example Profile 1, a party which
     must be notified in the context of executing the action of a Rule. </p>
   <div class="example">
     <div class="example-title marker"><span>Example 4 (TTL)</span></div>
-    <pre id="expartyfunctrole1" class="hljs" aria-busy="false" aria-live="polite">exp1:toBeNotifiedParty rdfs:subpropertyOf odrl:function
-</pre>
+    <pre id="expartyfunctrole1" class="hljs" aria-busy="false" aria-live="polite">exns1:toBeNotifiedParty
+  a rdf:Property , owl:ObjectProperty, skos:Concept ;
+  rdfs:isDefinedBy exns1: ;
+  rdfs:subPropertyOf :function ;
+  rdfs:label "To Be Notified Party"@en ;
+  skos:definition "The Party which must be notified."@en;
+  skos:note "May be specified as part an action requiring the notification of a Party."@en .</pre>
   </div>
   <h3>Additional Actions for Rules</h3>
-  <p>An ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used by the mandatory property <code>action </code>of the Rule
-    class, and all its subclasses Permission, Prohibition and Duty.The
-    Recommendation defines only two Actions: <code>use</code>, covering any
+  <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used as value of the mandatory property <code>action </code>of the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, and all its subclasses Permission, Prohibition and Duty (and ones defined by a Profile).The
+    Recommendation defines only two instances of Action: <code>use</code>, covering any
     use of an asset while the ownership of the asset does not change, and <code>transfer</code>,
     covering the transfer of the ownership of an asset in perpetuity.</p>
   <p>If these two core Actions are sufficient a Profile does not need to add
-    more. But in most cases additional Actions are required and the example
-    shows how to add two:</p>
+    more. But in most cases additional Action instances are required and the example
+    shows how to add two to the Example Profile 1:</p>
   <ul>
     <li><code>digitize </code>is an Action already <a href="https://www.w3.org/TR/odrl-vocab/#term-digitize">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
       part of the ODRL Recommendation, therefore Actions defined by it must
-      be adopted by a Profile. </li>
+      be adopted by the Example Profile 1. </li>
     <li><code>changecolours </code>is an Action defined for and by this
       Example Profile 1</li>
   </ul>
   <div class="example">
     <div class="example-title marker"><span>Example 5 (TTL)</span></div>
-    <pre id="exaction1" class="hljs" aria-busy="false" aria-live="polite">:digitize
+    <pre id="exaction1" class="hljs" aria-busy="false" aria-live="polite">odrl:digitize
   a :Action, skos:Concept ;
   rdfs:isDefinedBy odrl: ;
   rdfs:label "Digitize"@en ;
@@ -225,9 +249,9 @@ defer="defer"></script>
   skos:definition "To produce a digital copy of (or otherwise digitize) the Asset from its analogue form."@en ;
   skos:scopeNote "Non-Normative"@en .
 
-:changecolours
+exns1:changecolours
   a :Action, skos:Concept ;
-  rdfs:isDefinedBy exp1: ;
+  rdfs:isDefinedBy exns1: ;
   rdfs:label "Change Colours"@en ;
   :includedIn odrl:use ;
   skos:definition "For using a graphics asset its colours are changed."@en ;
@@ -235,21 +259,21 @@ defer="defer"></script>
   </div>
   <h3>Additional Constraint Left Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
-    mandatory properties is <code>leftOperand</code> and <a href="https://www.w3.org/TR/odrl-vocab/#term-LeftOperand">Left
-    Operands</a> are used for it, the Recommendation does not define any.</p>
+    mandatory properties is <code>leftOperand</code> and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-LeftOperand">Left
+    Operand</a> are used as values of this property, the Recommendation does not define any instances.</p>
   <p>If any Constraint will be used for a Policy using a specific Profile at
     least one Left Operand must be defined for the mandatory leftOperand
-    property. The example shows how to define two:</p>
+    property. The example shows how to define two for the Example Profile 1:</p>
   <ul>
     <li><code>elapsedTime </code>is a LeftOperand already <a href="https://www.w3.org/TR/odrl-vocab/#term-elapsedTime">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
       part of the ODRL Recommendation, therefore LeftOperands defined by it
-      must be adopted by a Profile.</li>
+      must be adopted by the Example Profile 1</li>
     <li><code>aggregatedTime </code>is a LeftOperand defined by the Example
       Profile 1</li>
   </ul>
   <div class="example">
     <div class="example-title marker"><span>Example 6 (TTL)</span></div>
-    <pre id="exleftop1" class="hljs" aria-busy="false" aria-live="polite">:elapsedTime
+    <pre id="exleftop1" class="hljs" aria-busy="false" aria-live="polite">odrl:elapsedTime
   a :LeftOperand, owl:NamedIndividual, skos:Concept ;
   rdfs:isDefinedBy odrl: ;
   rdfs:label "Elapsed Time"@en ;
@@ -257,9 +281,9 @@ defer="defer"></script>
   skos:note "Only the eq, lt, lteq operators SHOULD be used. See also Metered Time. Example: <code>elpasedTime eq P60M</code> indicates a total elapsed time of 60 Minutes." ;
   skos:scopeNote "Non-Normative"@en .
 
-:aggregatedTime
+exns1:aggregatedTime
   a :LeftOperand, owl:NamedIndividual, skos:Concept ;
-  rdfs:isDefinedBy exp1: ;
+  rdfs:isDefinedBy exns1: ;
   rdfs:label "Aggregated Time"@en ;
   skos:definition "A aggregation of elapsed time periods which may be used for exercising of the action of the Rule. Right operand value MUST be an xsd:duration as defined by [[xmlschema11-2]]."@en ;
   skos:note "Only the eq, lt, lteq operators SHOULD be used. See also Metered Time. Example: <code>aggregatedTime eq P800M</code> indicates aggregated elapsed time of 800 Minutes." ;
@@ -268,18 +292,18 @@ defer="defer"></script>
   <h3>Additional Constraint Right Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>rightOperand</code> (or its alternative <code>rightOperandReference</code>)
-    and <a href="https://www.w3.org/TR/odrl-vocab/#term-RightOperand">RightOperands </a>are used for it, the Recommendation does not define any. </p>
+    and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-RightOperand">RightOperand </a>are used as value of this property, the Recommendation does not define any. </p>
   <p>If any Constraint will be used for a Policy using a specific Profile it
     may be required to define one or more RightsOperands. The example shows
-    how to define one:</p>
+    how to define one for the Example Profile 1:</p>
   <ul>
     <li><code>policyUsage </code>is a RightOperand already <a href="%C2%B4https://www.w3.org/TR/odrl-vocab/#term-policyUsage">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
       part of the ODRL Recommendation, therefore RightOperands defined by it
-      must be adopted by a Profile.</li>
+      must be adopted by the Example Profile 1.</li>
   </ul>
   <div class="example">
     <div class="example-title marker"><span>Example 7 (TTL)</span></div>
-    <pre id="exrightop1" class="hljs" aria-busy="false" aria-live="polite">:policyUsage
+    <pre id="exrightop1" class="hljs" aria-busy="false" aria-live="polite">odrl:policyUsage
   a :RightOperand, owl:NamedIndividual, skos:Concept ;
   rdfs:isDefinedBy odrl: ;
   rdfs:label "Policy Rule Usage"@en ;
@@ -293,14 +317,14 @@ defer="defer"></script>
     its properties must be a sub-property of the <a href="https://www.w3.org/TR/odrl-vocab/#term-operand">operand
     property</a>, the Recommendation <a href="https://www.w3.org/TR/odrl-vocab/#constraintLogicalOperands">defines
     four</a> of them: or, xone, and, andSequence.</p>
-  <p>For a Logical Constraint with another operand sub-property an new one
+  <p>For a Logical Constraint with another operand sub-property a new one
     must be defined by a specific Profile. The example shows how to define
     one for the Example Profile 1:</p>
   <div class="example">
     <div class="example-title marker"><span>Example 8 (TTL)</span></div>
-    <pre id="exlogconstrop1" class="hljs" aria-busy="false" aria-live="polite">:xtwo
+    <pre id="exlogconstrop1" class="hljs" aria-busy="false" aria-live="polite">exns1:xtwo
   a rdf:Property , owl:ObjectProperty, skos:Concept ;
-  rdfs:isDefinedBy exp1: ;
+  rdfs:isDefinedBy exns1: ;
   rdfs:subPropertyOf :operand ;
   skos:definition "The relation is satisfied when only two, and not less or more, of the Constaints is satisfied"@en ;
   rdfs:label "Exactly Two"@en ;
@@ -308,20 +332,33 @@ defer="defer"></script>
 </pre>
   </div>
   <h3>Additional Policy Conflict Strategy Preferences</h3>
-  <p>An ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-ConflictTerm">Conflict
-    Strategy Preference</a> is used by the property <code>conflict </code>of
-    the Policy class, the Recommendation defines three of them: perm,
+  <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-ConflictTerm">Conflict
+    Strategy Preference</a> is used as value of the property <code>conflict </code>of
+    the Policy class, the Recommendation defines three instances: perm,
     prohibit and invalid.  </p>
   <p>The example shows how to define the Conflict Strategy Preference <code>ignore </code>for the Example Profile 1 (may not be of real help ...). </p>
   <div class="example">
     <div class="example-title marker"><span>Example 9 (TTL)</span></div>
-    <pre id="exconflstragpref1" class="hljs">:ignore
+    <pre id="exconflstragpref1" class="hljs">exns1:ignore
   a :ConflictTerm, owl:NamedIndividual, skos:Concept;
-  rdfs:isDefinedBy exp1: ;
+  rdfs:isDefinedBy exns1: ;
   rdfs:label "Ignore Conflicts"@en ;
   skos:definition "Ignore conflicts."@en ;
   skos:note "Used to determine policy conflict outcomes."@en .</pre>
   </div>
+    <h3>How to use multiple Profiles in a single Policy</h3>
+    <p>The <a href="https://www.w3.org/TR/odrl-model/#policy">Policy</a> class defines for the <code>profile</code> property that none, one or many profile identifiers can be applied. This raises the question: what should be considered if more than one Profile is applied to an instance of a Policy:</p>
+    <ul>
+      <li>First it should be considered that applying only one profile identifier to the <code>profile</code> property means that two profiles are in use: the default <a href="https://www.w3.org/TR/odrl-model/#profile-core">ODRL Core Profile</a> and this other profile.</li>
+      <li>Subclasses, sub-properties or instances of a class included into a Profile are defined in either a specific namespace  or in the ODRL namespace if this thing is defined already by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a>.</li>
+      <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g. Example Profil 1 can also be adopted for another Profile, e.g. Example Profile 2. (Note: be aware that the identifier of a Profile and the identifer of a namespace used by it does not have to the same.)</li>
+      <li>If a subclasses, sub-properties or instances of a class is defined in a namespace with an identifier different from the identifier of the Profile this thing can be used by multiple Profiles (with identifiers different from the namespace) but they MUST be defined by each Profile in exactly the same way. E.g. a Rule subclass exns1:StraightPermission defined by Example Profile 1 as not having any property expressing a Duty must not have in a definition of Example Profile 2 a property expressing a Duty.<br>
+        Note: for this purpose this Best Practices document uses the term &quot;adopt&quot; for including the definition of a thing which may be included by other Profiles. In particular this term was used for things defined by the ODRL Common Vocabulary is a use of things defined by it by other Profiles has to be expected.
+      </li>
+      <li>For using a thing defined by Example Profile 1 by a Policy using Example Profile 2 it is not strictly required to adopt this thing of Example Profile 1 for Example Profile 2, formally it is sufficient to apply the identifiers for Example Profile 2 and of Example Profile 1 to the <code>profile</code> property of the Policy.</li>
+      <li>If multiple identifiers of Profiles are applied to the <code>profile</code> property of the Policy all the things defined by all of them are valid for this Policy. If only subsets of the things defined by multiple Profiles should be applied to a Policy a new Profile should be created adopting only the things of this subset.</li>
+      <li>If Party A defines a Profile with things defined by (and in a namespace of) Party B the adoption must comply with the copyright of these things.</li>
+    </ul>
 </section>
 <section id="prerequ">
   <h2>Prerequisites for defining an ODRL Profile</h2>
