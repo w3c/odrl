@@ -93,6 +93,7 @@ defer="defer"></script>
         TTL = Turtle</p>
     </div>
   </div>
+  <section id="policy">
   <h3>Additional Policy Subclasses</h3>
   <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#policy">Policy
     Class</a> and three subclasses of it: the Set Class, the Offer Class
@@ -147,6 +148,8 @@ defer="defer"></script>
   </div>
   <ul>
   </ul>
+</section>
+  <section id="rule">
   <h3>Additional Rule Subclasses</h3>
   <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule
     Class</a> and three subclasses of it: the Permission Class, the
@@ -187,6 +190,9 @@ defer="defer"></script>
   skos:definition "A Rule permitting the use of an Asset"@en ;
   skos:note "A Straight Permission 1 Rule does not contain any property for expressing a duty."@en .</pre>
   </div>
+</section>
+
+<section id="asset">
   <h3>Additional Asset Relationships</h3>
   <p>An ODRL Asset Relationship is a relationship between a subclass of a
     <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a
@@ -206,6 +212,9 @@ defer="defer"></script>
   rdfs:domain :Rule ;
   rdfs:range :Asset.</pre>
   </div>
+</section>
+
+<section id="party">
   <h3>Additional Party Functions</h3>
   <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#partyRoles">Party
     Function</a> is used as value of the property <code>function </code>of the
@@ -224,6 +233,9 @@ defer="defer"></script>
   skos:definition "The Party which must be notified."@en;
   skos:note "May be specified as part an action requiring the notification of a Party."@en .</pre>
   </div>
+</section>
+
+<section id="action">
   <h3>Additional Actions for Rules</h3>
   <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used as value of the mandatory property <code>action </code>of the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, and all its subclasses Permission, Prohibition and Duty (and ones defined by a Profile).The
     Recommendation defines only two instances of Action: <code>use</code>, covering any
@@ -257,6 +269,9 @@ exns1:changecolours
   skos:definition "For using a graphics asset its colours are changed."@en ;
   skos:scopeNote "Non-Normative"@en .</pre>
   </div>
+</section>
+
+<section id="leftoperand">
   <h3>Additional Constraint Left Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>leftOperand</code> and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-LeftOperand">Left
@@ -289,6 +304,9 @@ exns1:aggregatedTime
   skos:note "Only the eq, lt, lteq operators SHOULD be used. See also Metered Time. Example: <code>aggregatedTime eq P800M</code> indicates aggregated elapsed time of 800 Minutes." ;
   skos:scopeNote "Non-Normative"@en .</pre>
   </div>
+</section>
+
+<section id="rightoperand">
   <h3>Additional Constraint Right Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>rightOperand</code> (or its alternative <code>rightOperandReference</code>)
@@ -311,6 +329,9 @@ exns1:aggregatedTime
   skos:note "This can be used to express constraints with a LeftOperand relative to the time the rule is exercised. Operators indicate before (lt, lteq), during (eq) or after (gt, gteq) the usage of the rule. Example: <code>event lt policyUsage</code> expresses that the identified event must have happened before the action of the rule is exercised."@en ;
   skos:scopeNote "Non-Normative"@en .</pre>
   </div>
+</section>
+
+<section id="logicalconstraint">
   <h3>Additional Logical Constraints operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-logical">Logical
     Constraint</a> is a class for applying a constraint to a Rule. One of
@@ -331,6 +352,9 @@ exns1:aggregatedTime
   skos:note "This property MUST only be used for Logical Constraints."@en .
 </pre>
   </div>
+</section>
+
+<section id="policyconflict">
   <h3>Additional Policy Conflict Strategy Preferences</h3>
   <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-ConflictTerm">Conflict
     Strategy Preference</a> is used as value of the property <code>conflict </code>of
@@ -346,6 +370,9 @@ exns1:aggregatedTime
   skos:definition "Ignore conflicts."@en ;
   skos:note "Used to determine policy conflict outcomes."@en .</pre>
   </div>
+</section>
+
+<section id="multipleprofile">
     <h3>How to use multiple Profiles in a single Policy</h3>
     <p>The <a href="https://www.w3.org/TR/odrl-model/#policy">Policy</a> class defines for the <code>profile</code> property that none, one or many profile identifiers can be applied. This raises the question: what should be considered if more than one Profile is applied to an instance of a Policy:</p>
     <ul>
@@ -360,6 +387,8 @@ exns1:aggregatedTime
       <li>If Party A defines a Profile with things defined by (and in a namespace of) Party B the adoption must comply with the copyright of these things.</li>
     </ul>
 </section>
+</section>
+
 <section id="prerequ">
   <h2>Prerequisites for defining an ODRL Profile</h2>
   <p> (More will follow.) </p>
