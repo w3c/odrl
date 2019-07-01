@@ -28,7 +28,7 @@ defer="defer"></script>
     the <a href="https://www.w3.org/TR/odrl-model/#profile-motivation">purpose
     of an ODRL Profile</a>.</p>
 </section>
-<section id="usedns">
+<section id="usedids">
     <h2>Identifiers and Annotations used in Examples</h2>
     <p>This section lists namespaces, other identifiers and  annotations used in examples of the following chapters.</p>
     <h4>Namespaces:</h4>
@@ -122,6 +122,7 @@ defer="defer"></script>
   <p>This sections walks through the <a href="https://www.w3.org/TR/odrl-model/#profile-mechanism">ODRL
     Profile Mechanism</a> of the ODRL Data Model. All items below, except the last one, are about adding an ODRL-related specification. Such a specification does not become part of the ODRL 2.2 Recommendation but an ODRL Processor processing ODRL Policies with a specific Profile must be able to understand this Profile's specification.</p>
   <p>The seqence of additional specifications follows priorities of use expected by the ODRL Community Group.</p>
+  <section id="action">    
   <h3>Additional Actions for Rules</h3>
   <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used as value of the mandatory property <code>action </code>of the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, and all its subclasses Permission, Prohibition and Duty (and ones defined by a Profile).The
     Recommendation defines only two instances of Action: <code>use</code>, covering any
@@ -156,6 +157,8 @@ exns1:changecolours
   :includedIn odrl:use ;
   skos:definition "For using a graphics asset its colours are changed."@en .</pre>
   </div> 
+  </section>
+  <section id="leftoperand">            
   <h3>Additional Constraint Left Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>leftOperand</code> and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-LeftOperand">Left
@@ -189,6 +192,8 @@ exns1:aggregatedTime
   skos:definition "A aggregation of elapsed time periods which may be used for exercising of the action of the Rule. Right operand value MUST be an xsd:duration as defined by [[xmlschema11-2]]."@en ;
   skos:note "Only the eq, lt, lteq operators SHOULD be used. See also Metered Time. Example: <code>aggregatedTime eq P800M</code> indicates aggregated elapsed time of 800 Minutes." .</pre>
   </div>
+  </section>
+  <section id="operator">      
   <h3>Additional Constraint Operators</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
   mandatory properties is <code>operator</code> and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-Operator">Operator</a> are used as values of this property, the Recommendation <a href="https://www.w3.org/TR/odrl-vocab/#constraintRelationalOperators">defines</a> 12 instances.</p>
@@ -219,12 +224,11 @@ exns1:aggregatedTime
   skos:definition "The Party which must be notified."@en;
   skos:note "May be specified as part an action requiring the notification of a Party."@en .</pre>
   </div>
-    
+  </section>
+  <section id="assetrel">          
   <h3>Additional Asset Relationships</h3>
   <p>An ODRL Asset Relationship is a relationship between a subclass of a
-    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a
-
-          href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code>and <code>output </code>as sub-properties of <code>relation</code>.</p>
+    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code>and <code>output </code>as sub-properties of <code>relation</code>.</p>
   <p>The example shows how to define the asset relationship <code>input </code>for
     the Example Profile 1, an asset required as input for the action of a
     Rule.</p>
@@ -239,6 +243,8 @@ exns1:aggregatedTime
   rdfs:domain :Rule ;
   rdfs:range :Asset.</pre>
   </div>
+  </section>
+  <section id="rightoperand">      
   <h3>Additional Constraint Right Operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>rightOperand</code> (or its alternative <code>rightOperandReference</code>)
@@ -263,6 +269,8 @@ exns1:aggregatedTime
   skos:note "This can be used to express constraints with a LeftOperand relative to the time the rule is exercised. Operators indicate before (lt, lteq), during (eq) or after (gt, gteq) the usage of the rule. Example: 'event lt policyUsage' expresses that the identified event must have happened before the action of the rule is exercised."@en ;
   skos:scopeNote "Non-Normative"@en .</pre>
   </div>
+  </section>
+  <section id="logicalconstraintoperands">      
   <h3>Additional Logical Constraints operands</h3>
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-logical">Logical
     Constraint</a> is a class for applying a constraint to a Rule. One of
@@ -283,6 +291,8 @@ exns1:aggregatedTime
   skos:note "This property MUST only be used for Logical Constraints."@en .
 </pre>
   </div>
+  </section>
+  <section id="conflictstrategy">      
   <h3>Additional Policy Conflict Strategy Preferences</h3>
   <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-ConflictTerm">Conflict
     Strategy Preference</a> is used as value of the property <code>conflict </code>of
@@ -298,6 +308,8 @@ exns1:aggregatedTime
   skos:definition "Ignore conflicts."@en ;
   skos:note "Used to determine policy conflict outcomes."@en .</pre>
   </div>
+  </section>
+  <section id="rule">      
   <h3>Additional Rule Subclasses</h3>
   <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule
     Class</a> and three subclasses of it: the Permission Class, the
@@ -338,6 +350,8 @@ exns1:aggregatedTime
   skos:definition "A Rule permitting the use of an Asset"@en ;
   skos:note "A Straight Permission 1 Rule must not contain any property for expressing a duty."@en .</pre>
   </div>
+  </section>
+  <section id="policy">      
   <h3>Additional Policy Subclasses</h3>
   <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#policy">Policy
     Class</a> and three subclasses of it: the Set Class, the Offer Class
@@ -390,6 +404,8 @@ exns1:aggregatedTime
   skos:definition "A Policy offering a permission of using an asset"@en ;
   skos:note "A Special Offer 1 Policy MUST contain at least one Permission and a Party with Assigner function (in the same Permission or Prohibition). The Offer Policy MAY contain either a specific Party or a Collection of Parties with Assignee function."@en .</pre>
   </div>
+  </section>
+  <section id="multihowto">      
 
     <h3>How to use multiple Profiles in a single Policy</h3>
     <p>The <a href="https://www.w3.org/TR/odrl-model/#policy">Policy</a> class defines for the <code>profile</code> property that none, one or many profile identifiers can be applied. This raises the question: what should be considered if more than one Profile is applied to an instance of a Policy:</p>
@@ -404,29 +420,44 @@ exns1:aggregatedTime
       <li>If multiple identifiers of Profiles are applied to the <code>profile</code> property of the Policy all the things defined by all of them are valid for this Policy. If only subsets of the things defined by multiple Profiles should be applied to a Policy a new Profile should be created adopting only the things of this subset.</li>
       <li>If Party A defines a Profile with things defined by (and in a namespace of) Party B the adoption must comply with the copyright of these things.</li>
     </ul>
+  </section>
 </section>
 <section id="prerequ">
   <h2>Prerequisites for defining an ODRL Profile</h2>
+  <section id="guid">      
   <h3>A globally uniqe identifier of the Profile</h3>
   <p>(More will follow.) </p>
+  </section>
+  <section id="uri">      
   <h3>A URI for the Profile as a stable web resource</h3>
   <p>(More will follow.) </p>
+  </section>
+  <section id="addlspecs">      
   <h3>Generating the additional specifications of this Profile</h3>
   <p>(More will follow.) </p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
+    </section>
 </section>
 <section id="profdef">
   <h2>Resources defining an ODRL Profile</h2>
+  <section id="humanreadable">      
   <h3>Human readable specification</h3>
   <p>(More will follow.) </p>
+  </section>
+  <section id="owlontology">      
   <h3>OWL Ontology</h3>
   <p>(More will follow.) </p>
+  </section>
+  <section id="profilevocab">      
   <h3>W3C Profile Vocab </h3>
   <p>(More will follow.) </p>
+  </section>
+  <section id="jsonld">      
   <h3>JSON-LD context document </h3>
   <p>(More will follow.) </p>
   <p></p>
+    </section>
 </section>
 <section id="pubavail">
   <h2>Making an ODRL Profile publicly available</h2>
