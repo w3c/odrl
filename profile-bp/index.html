@@ -412,7 +412,7 @@ exns1:aggregatedTime
     <h3>How to use multiple Profiles in a single Policy</h3>
     <p>The <a href="https://www.w3.org/TR/odrl-model/#policy">Policy</a> class defines for the <code>profile</code> property that none, one or many profile identifiers can be applied. This raises the question: what should be considered if more than one Profile is applied to an instance of a Policy:</p>
     <ul>
-      <li>First it should be considered that applying only one profile identifier to the <code>profile</code> property means that two profiles are in use: the default <a href="https://www.w3.org/TR/odrl-model/#profile-core">ODRL Core Profile</a> and this other profile.</li>
+      <li>First it should be considered that applying only one profile identifier to the <code>profile</code> property means that two profiles are in use: the default <a href="https://www.w3.org/TR/odrl-model/#profile-core">ODRL Core Profile</a> and this explicitly defined profile.</li>
       <li>Subclasses, sub-properties or instances of a class included into a Profile are defined in either a specific namespace  or in the ODRL namespace if this thing is defined already by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a>.</li>
       <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g. Example Profil 1 can also be adopted for another Profile, e.g. Example Profile 2. (Note: be aware that the identifier of a Profile and the identifer of a namespace used by it does not have to the same.)</li>
       <li>If a subclasses, sub-properties or instances of a class is defined in a namespace with an identifier different from the identifier of the Profile this thing can be used by multiple Profiles (with identifiers different from the namespace) but they MUST be defined by each Profile in exactly the same way. E.g. a Rule subclass exns1:StraightPermission defined by Example Profile 1 as not having any property expressing a Duty must not have in a definition of Example Profile 2 a property expressing a Duty.<br>
@@ -428,18 +428,38 @@ exns1:aggregatedTime
   <h2>Prerequisites for defining an ODRL Profile</h2>
   <section id="guid">      
   <h3>A globally uniqe identifier of the Profile</h3>
-  <p>(More will follow.) </p>
+  <p>Each Profile must have a globally unique identifer. 
+    Such an identifier 
+  must be of type IRI [<a href="#bib-rfc3987">rfc3987</a>] which is in short a URI [<a href="#bib-rfc3986">rfc3986</a>] with an extended, internationalized character set.</p>
+  <p>Be aware that this Profile identifier should not be used for other purposes like the identifer of a namespace of concepts defined by the Profile as it would be hard to impossible to distingish if a profile or a namespace is identified when using this identifier.  </p>
   </section>
-  <section id="uri">      
-  <h3>A URI for the Profile as a stable web resource</h3>
-  <p>(More will follow.) </p>
+  <section id="webresource">
+    <h3>The Profile as a stable web resource</h3>
+  <p>If a Profile should be used publicly its definition and optional usage guidelines should be publicly accessible web resources. Consider defining the unique identifier of the Profile as URL of a web location presenting information about the Profile.</p>
   </section>
   <section id="addlspecs">      
-  <h3>Generating the additional specifications of this Profile</h3>
-  <p>(More will follow.) </p>
+  <h3>Generating additional specifications of this Profile</h3>
+  <p>This section covers the procedure of generating specifications in addition to the ODRL Core Profile, details of documents resultsing from this procedure are covered in   <a href="#profdef">section 5</a> below.</p>
+  <p>A  Profile should be defined by semantic web means using a SKOS Collection [<a href="#bib-skos">skos</a>] and making all concepts set by this Profile a member of this Collection. Use the IRI of the Profile as identifier of this Collection.</p>
+  <p><a href="#scope">Section 3</a> explains what an ODRL Profile can define in addition to the Core Profile. Walking through this section should result in an output specifying the Profile:</p>
+  <ul>
+    <li>If a concept from the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a> is adopted it should not be specified by this Profile but it must be made a member of the Profile's Collection.</li>
+    <li>If an existing concept conforming to ODRL 2.2 specifications from a source different from this Profile is adopted: check first if a specification of this concept is publicly accessible. If this is the case this concept should be adopted by adding it as member to the Profile's Collection. If this is not the case it has to be specified like a new concept defined by this Profile.</li>
+    <li>If a new concept is created for this Profile it must be specified by the documents of this Profile and made a member of the Profile's Collection.</li>
+    <li>If a concept is adopted or created as ODRL Action it should be made a member of a SKOS Collection of all Actions defined by this Profile. </li>
+    <li>If a concept is adopted or created as ODRL Constraint Left Operand it should be made a member of a SKOS Collection of all Constraint Left Operands  defined by this Profile. </li>
+    <li>If a concept is adopted or created as ODRL Constraint Operator it should be made a member of a SKOS Collection of all Constraint Operators defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Party Function it should be made a member of a SKOS Collection of all Party Functions defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Asset Relationship it should be made a member of a SKOS Collection of all Asset Relationships defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Constraint Right Operand it should be made a member of a SKOS Collection of all Constraint Right Operands defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Logical Constraint it should be made a member of a SKOS Collection of all Logical Constraints defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Policy Conflict Strategy Preference it should be made a member of a SKOS Collection of all Policy Conflict Strategy Preferences defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Rule subclass it should be made a member of a SKOS Collection of all Rule subclasses defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Policy subclass it should be made a member of a SKOS Collection of all Policy subclasses defined by this Profile.</li>
+    </ul>
+  <p>Finally: create a W3C Profile Vocabulary [<a href="#bib-dxprof">dx-prof</a>] document. This document sets the normative part of the ODRL Profile - the ODRL 2.2 Information Model and the ODRL 2.2 Core Profile - and lists all documents used for defining this Profile.  </p>
   <p>&nbsp;</p>
-  <p>&nbsp;</p>
-    </section>
+  </section>
 </section>
 <section id="profdef">
   <h2>Resources defining an ODRL Profile</h2>
@@ -465,5 +485,21 @@ exns1:aggregatedTime
   <h2>Making an ODRL Profile publicly available</h2>
   <p> (More will follow.) </p>
 </section>
+<section id="inforeferences">
+  <h2>Informative references</h2>
+  <dl class="bibliography">
+      <dt id="bib-dxprof">[skos]</dt>
+      <dd><a href="https://www.w3.org/TR/dx-prof/"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. R. Atkinson, N.J. Car. W3C, April 2019, W3C Working Draft. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
+      <dt id="bib-rfc3986">[rfc3986]</dt>
+      <dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifiers (URI): Generic Syntax</cite></a>. T. Berners-Lee, R. Fielding, L. Masinter, IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a>
+      </dd>
+      <dt id="bib-rfc3987">[rfc3987]</dt>
+      <dd><a href="https://tools.ietf.org/html/rfc3987"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. Duerst; M. Suignard. IETF. January 2005. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3987">https://tools.ietf.org/html/rfc3987</a>
+      </dd>
+      <dt id="bib-skos">[skos]</dt>
+      <dd><a href="https://www.w3.org/TR/skos-reference/"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. A. Miles, S. Bechofer, W3C. August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a>
+      </dd>
+  </dl>
+</section>    
 </body>
 </html>
