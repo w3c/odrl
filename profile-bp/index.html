@@ -431,20 +431,20 @@ exns1:aggregatedTime
   <p>Each Profile must have a globally unique identifer. 
     Such an identifier 
   must be of type IRI [<a href="#bib-rfc3987">rfc3987</a>] which is in short a URI [<a href="#bib-rfc3986">rfc3986</a>] with an extended, internationalized character set.</p>
-  <p>Be aware that this Profile identifier should not be used for other purposes like the identifer of a namespace of concepts defined by the Profile as it would be hard to impossible to distingish if a profile or a namespace is identified when using this identifier.  </p>
+  <p>Be aware that this Profile identifier should not be used for other purposes like the identifer of a namespace of concepts defined by the Profile as it would be hard to distingish if a profile or a namespace is identified when using this identifier.  </p>
   </section>
   <section id="webresource">
     <h3>The Profile as a stable web resource</h3>
-  <p>If a Profile should be used publicly its definition and optional usage guidelines should be publicly accessible web resources. Consider defining the unique identifier of the Profile as URL of a web location presenting information about the Profile.</p>
+  <p>If a Profile should be used publicly its definition and optional usage guidelines should be publicly accessible web resources. Consider defining the unique identifier of the Profile as URL of a web resource providing information about the Profile.</p>
   </section>
   <section id="addlspecs">      
   <h3>Generating additional specifications of this Profile</h3>
-  <p>This section covers the procedure of generating specifications in addition to the ODRL Core Profile, details of documents resultsing from this procedure are covered in   <a href="#profdef">section 5</a> below.</p>
-  <p>A  Profile should be defined by semantic web means using a SKOS Collection [<a href="#bib-skos">skos</a>] and making all concepts set by this Profile a member of this Collection. Use the IRI of the Profile as identifier of this Collection.</p>
-  <p><a href="#scope">Section 3</a> explains what an ODRL Profile can define in addition to the Core Profile. Walking through this section should result in an output specifying the Profile:</p>
+  <p>This section covers the procedure of generating specifications in addition to the ODRL Core Profile, details of documents resulting from this procedure are covered in   <a href="#profdef">section 5</a>, and <a href="#pubavail">section 6</a> covers how to make them publicly available.</p>
+  <p>A  Profile should should have a semantic technology specification using a SKOS Collection [<a href="#bib-skos">skos</a>] and making all concepts adopted or created by this Profile a member of this Collection. Use the IRI of the Profile as identifier of this Collection.</p>
+  <p><a href="#scope">Section 3</a> explains what a new ODRL Profile can define in addition to the Core Profile. Walking through this section should result in this output:</p>
   <ul>
     <li>If a concept from the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a> is adopted it should not be specified by this Profile but it must be made a member of the Profile's Collection.</li>
-    <li>If an existing concept conforming to ODRL 2.2 specifications from a source different from this Profile is adopted: check first if a specification of this concept is publicly accessible. If this is the case this concept should be adopted by adding it as member to the Profile's Collection. If this is not the case it has to be specified like a new concept defined by this Profile.</li>
+    <li>If an existing concept conforming to ODRL 2.2 specifications from a source different from this Profile is adopted: check first if a specification of this concept is publicly accessible. If this is the case this concept should be adopted by adding it as member to the Profile's Collection. If this is not the case it has to be specified like a new concept defined by this Profile, see next item.</li>
     <li>If a new concept is created for this Profile it must be specified by the documents of this Profile and made a member of the Profile's Collection.</li>
     <li>If a concept is adopted or created as ODRL Action it should be made a member of a SKOS Collection of all Actions defined by this Profile. </li>
     <li>If a concept is adopted or created as ODRL Constraint Left Operand it should be made a member of a SKOS Collection of all Constraint Left Operands  defined by this Profile. </li>
@@ -465,21 +465,275 @@ exns1:aggregatedTime
   <h2>Resources defining an ODRL Profile</h2>
   <section id="humanreadable">      
   <h3>Human readable specification</h3>
-  <p>(More will follow.) </p>
+  <p>Humans taking a decision on using a specific ODRL Profile or not like to read a human readable document about it.</p>
+  <p>It should include:</p>
+  <ul>
+    <li>The name and the globally unique identifier of the Profile</li>
+    <li>The party creating and maintaining the Profile</li>
+    <li>The latest version of the Profile and its date of release</li>
+    <li>The purpose(s) of the Profile</li>
+    <li>A list of all member concepts of the Profile ...</li>
+    <li>... and a human readable specification of at least all new concepts defined by the Profile ...</li>
+    <li>... if for adopted concepts of other sources a reasonable human readable specification is available their documentation can be referenced. Else a specification created by the owner of this Profile may be created for this document.</li>
+    <li>For each concept of this Profile its type as listed in <a href="#scope">section 3</a> should be indicated.</li>
+    <li>For any type of concept as listed in <a href="#scope">section 3</a> a list of its additional concept defined by this Profile may be included.</li>
+    <li>A list of all used identifiers of namespaces, other ODRL Profiles, vocabularies of ODRL concept and other relevant resources.</li>
+    <li>A list of all standards used by this Profile.</li>
+    <li>This document may show or refer to examples of ODRL Policies using this Profile, they are liked by many users.</li>
+  </ul>
   </section>
   <section id="owlontology">      
   <h3>OWL Ontology</h3>
-  <p>(More will follow.) </p>
+  <p>An OWL [<a href="#bib-owl">owl</a>] Ontology should define all concepts defined by a Profile, each one's properties and relationships. Different formats can be applied, these are the most widely used: RDF Turtle, RDF/XML, RDF N-Triples, JSON-LD.<br>
+    This ontology should include:</p>
+  <ul>
+    <li>A definition of all used prefixes, if the used syntax supports or requires that.</li>
+    <li>A definition of the ontology as a whole. As identifier of the ontology the identifier of the Profile must be used.</li>
+    <li>A SKOS [<a href="#bib-skos">skos</a>] Collection of all concepts defined by this Profile, either a concept specified by this ontology or a concept defined by another source.</li>
+    <li>A SKOS Collection for each type of additional concepts (see <a href="#scope">section 3</a>) if at least one concept is defined for it.</li>
+    <li>A declaration of all used annotation properties to keep this ontology within OWL DL.</li>
+    </ul>
+  <p>See below an example ontology of the (virtual) ODRL <em>Profile Example Profile 1</em>.<br>
+    It adopts a small set of concepts defined by the ODRL Common Vocabulary and a single concepts on its own.
+  </p>
+  <div class="example">
+    <div class="example-title marker"><span>OWL Ontology Example 1 (TTL)</span></div>
+    <pre id="exowlonto1" class="hljs" aria-busy="false" aria-live="polite">## Definition of used or common namespaces
+@base &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix : &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix odrl: &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix cc: &lt;http://creativecommons.org/ns#&gt; .
+@prefix exns1: &lt;https://example.com/ns/ex1/&gt; .
+@prefix exprof1: &lt;https://example.com/odrlprofile/exprof1/&gt; .
+
+## Definition of the Profile as OWL Ontology
+exprof1:
+    a owl:Ontology ;
+    rdfs:label "Example Profile 1"@en ;
+    rdfs:label "Beispiel Profil 1"@de ;
+    owl:versionInfo "0.1" ;
+    dct:creator "Joe Doe, Jane Miller";
+    dct:contributor "The Global ODRL Profile Working Group - GOPWG" ;
+    dct:description "The Example Profile 1 Vocabulary defines a set of concepts required by the Any-Industry."@en ;
+    rdfs:comment "This is the RDF ontology for Example Profile 1 as of 2019-08-22"@en ;
+    dct:license &lt;http://creativecommons.org/licenses/by/4.0/&gt; .
+
+
+## SKOS Collection of all concepts defined by this Profile
+&lt;https://example.com/odrlprofile/exprof1/&gt;
+    a skos:Collection ;
+    skos:prefLabel "Example Profile 1 Vocabulary"@en ;
+    skos:scopeNote "All terms of the GOPWG Example Profile 1"@en ;
+ ## all members below are from the ODRL Common Vocabulary, a specification exists
+    skos:member :archive ;
+    skos:member :compensate ;
+    skos:member :display ;
+    skos:member :grantUse ;
+    skos:member :count ;
+    skos:member :dateTime ;
+    skos:member :compensatedParty ;
+    skos:member :compensatingParty ;
+    skos:member :output ;
+## the member below is a concept created for this Profile
+##   it needs to be specified in this ontology
+    skos:member exns1:compensationValue .
+
+
+## SKOS Collection of all Action concepts defined by this Profile
+&lt;https://example.com/odrlprofile/exprof1/#actions&gt;
+    a skos:Collection ;
+    skos:prefLabel "Actions for Rules"@en ;
+    skos:scopeNote "Example Profile 1 Terms"@en ;
+    skos:member :archive ;
+    skos:member :compensate ;
+    skos:member :display ;
+    skos:member :grantUse .
+
+## SKOS Collection of all Left Operand concepts defined by this Profile
+&lt;https://example.com/odrlprofile/exprof1/#constraintLeftOperand&gt;
+    a skos:Collection ;
+    skos:prefLabel "Constraint Left Operands"@en ;
+    skos:scopeNote "Example Profile 1 Vocabulary Terms"@en ;
+    skos:member :count ;
+    skos:member :dateTime ;
+	skos:member exns1:compensationValue .
+
+## SKOS Collection of all Party Function concepts defined by this Profile
+&lt;https://example.com/odrlprofile/exprof1/#partyFunctions&gt;
+    a skos:Collection ;
+    skos:prefLabel "Party Functions"@en ;
+    skos:scopeNote "Example Profile 1 Vocabulary Terms"@en ;
+    skos:member :compensatedParty ;
+    skos:member :compensatingParty .
+
+## SKOS Collection of all Asset Relation concepts defined by this Profile
+&lt;https://example.com/odrlprofile/exprof1/#assetRelations&gt;
+    a skos:Collection ;
+    skos:prefLabel "Asset Relations"@en ;
+    skos:scopeNote "Example Profile 1 Common Vocabulary Terms"@en ;
+    skos:member :output .
+
+## Concept(s) specified by this Profile. 
+
+exns1:compensationValue
+	a :LeftOperand, owl:NamedIndividual, skos:Concept ;
+	rdfs:isDefinedBy exprof1: ;
+	rdfs:label "Compensation Value"@en ;
+	skos:definition "The value of a compensation expressed as a monetary amount. Right operand value MUST be an xsd:decimal. "@en ;
+	skos:note "May be used for other compensations than payments, e.g. barter agreements."@en ;
+  skos:scopeNote "Non-Normative"@en .
+
+
+
+## Declaration of annotation properties to keep this ontology within OWL DL
+	skos:member rdf:type owl:AnnotationProperty .
+	skos:note rdf:type owl:AnnotationProperty .
+	skos:scopeNote rdf:type owl:AnnotationProperty .
+	skos:prefLabel rdf:type owl:AnnotationProperty .
+	skos:definition rdf:type owl:AnnotationProperty .
+	dct:contributor rdf:type owl:AnnotationProperty .
+	dct:license rdf:type owl:AnnotationProperty .
+	dct:issued rdf:type owl:AnnotationProperty .
+	dct:subject rdf:type owl:AnnotationProperty .
+	dct:creator rdf:type owl:AnnotationProperty .
+	dct:description rdf:type owl:AnnotationProperty .
+	dct:isVersionOf rdf:type owl:AnnotationProperty .
+	dct:format rdf:type owl:AnnotationProperty .
+	skos:Collection a owl:Class .
+	skos:Concept a owl:Class .
+	skos:ConceptScheme a owl:Class .</pre>
+</div>
   </section>
   <section id="profilevocab">      
-  <h3>W3C Profile Vocab </h3>
-  <p>(More will follow.) </p>
+  <h3>W3C Profile Vocabulary</h3>
+  <p>A W3C Profile Vocabulary [<a href="#bib-dxprof">dx-prof</a>] asserts all resources - named as artifacts - which are relevant for a Profile:</p>
+  <ul>
+    <li>The base of any ODRL Policy, the W3C ODRL 2.2 Recommendation and its resources:
+      <ul>
+        <li>the specification (HTML) document</li>
+        <li>the Core Profile</li>
+        </ul>
+    </li>
+    <li>The Profile and its resources:
+      <ul>
+        <li>the specification (HTML) document </li>
+        <li>the OWL ontology</li>
+        </ul>
+    </li>
+    </ul>
+  <p>This provides a quick overview like the example below for the (virtual) ODRL <em>Profile Example Profile 1</em>.</p>
+  <div class="example">
+    <div class="example-title marker"><span>Profile Vocabulary Example 1 (TTL)</span></div>
+    <pre id="exprofvocab1" class="hljs" aria-busy="false" aria-live="polite">## Definition of used or common namespaces
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix dc:   &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix odrl: &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix profile: &lt;http://www.w3.org/ns/dx/prof/&gt; .
+@prefix role: &lt;http://www.w3.org/ns/dx/prof/role/&gt; .
+@prefix exprof1: &lt;https://example.com/odrlprofile/exprof1/&gt; .
+
+# Declare the ODRL Core Profile artifacts
+
+&lt;http://www.w3.org/ns/odrl/2/core&gt;
+    a dct:Standard ;
+    dct:title "The ODRL Core Profile Version 2.2" ;
+    profile:hasResource _:1 _:2 .
+   
+_:1  # The normative W3C ODRL Information Model
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:specification ;
+    profile:hasArtifact &lt;https://www.w3.org/TR/odrl-model/&gt; ;
+    dct:title "ODRL Information Model 2.2" ;
+    dct:issued "2018-02-15"^^xsd:date ;
+    dct:publisher "W3C" ;
+    dct:format &lt;https://www.iana.org/assignments/media-types/text/html&gt; ;
+    dct:conformsTo &lt;https://www.w3.org/TR/html/&gt; .
+
+_:2  # The ODRL Core Profile vocabulary terms
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:vocabulary ;
+    profile:hasArtifact &lt;tbd&gt; ;
+    dct:title "ODRL Core Profile Version 2.2" ;
+    dct:issued "tbd"^^xsd:date ;
+    dct:publisher "W3C" ;
+    dct:format &lt;https://www.iana.org/assignments/media-types/text/turtle&gt; ;
+    dct:conformsTo &lt;https://www.w3.org/TR/turtle/&gt; .
+
+## Declare the artifacts of the Example Profile 1
+
+&lt;exprof1: &lt;https://example.com/odrlprofile/exprof1/&gt;
+    a profile:Profile ;
+    dct:title "Example Profile 1 - ODRL Profile" ;
+    dct:description "An ODRL Profile focusing on rights and licensing requirements from the Any-Industry" ;
+    profile:isProfileOf &lt;http://www.w3.org/ns/odrl/2/core&gt; ;
+    profile:hasResource
+        exprof1:ProfileSpec-html ,
+        exprof1:ProfileVocabulary-ttl ;
+    dct:publisher "Global ODRL Profile Working Group - GOPWG" ;
+    dc:creator "Global ODRL Profile Working Group - GOPWG" ;
+    owl:versionInfo "0.1"^^xsd:string ;    
+    dct:issued "2019-08-23"^^xsd:date ;
+.
+
+exprof1:ProfileSpec-html # The Example Profile 1 specification HTML document
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:specification ;
+    profile:hasArtifact &lt;https://example.com/odrlprofile/exprof1/ExaProf1_0.1.html&gt; ;
+    dct:title "Example Profile 1 version 0.1" ;
+    owl:versionInfo "0.1.1"^^xsd:string ;    
+    dct:issued "2019-08-22"^^xsd:date ;
+    dct:format &lt;https://www.iana.org/assignments/media-types/text/html&gt; ;
+    dct:conformsTo &lt;https://www.w3.org/TR/html/&gt; ;
+.
+
+exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms using RDF Turtle syntax
+    a profile:ResourceDescriptor ;
+    profile:hasRole role:vocabulary ;
+    profile:hasArtifact &lt;https://example.com/odrlprofile/exprof1/ExaProf1_0.1-ontology.ttl&gt; ;
+    dct:title "Example Profile 1 version 0.1" ;
+    owl:versionInfo "0.1.0"^^xsd:string ;    
+    dct:issued "2019-08-22"^^xsd:date ;
+    dct:publisher "Global ODRL Profile Working Group - GOPWG" ;
+    dct:format &lt;https://www.iana.org/assignments/media-types/text/turtle&gt; ;
+    dct:conformsTo &lt;https://www.w3.org/TR/turtle/&gt;;
+.</pre>
+</div>
   </section>
   <section id="jsonld">      
   <h3>JSON-LD context document </h3>
-  <p>(More will follow.) </p>
-  <p></p>
-    </section>
+  <p>Whether the OWL Ontology of a Profile uses JSON-LD [<a href="#bib-jsonld">JSON-LD</a>] as format or if an ODRL Policy is expressed as JSON-LD the uses of a JSON-LD Context is highly recommended. It is used for mapping short-term aliases of concept identifiers to the original identifier.</p>
+  <p>The Example below covers the concepts of the (virtual) ODRL <em>Profile Example Profile 1</em>.</p>
+  <div class="example">
+    <div class="example-title marker"><span>JSON-LD Context Example 1 (JSON)</span></div>
+    <pre id="exjsonldctx1" class="hljs" aria-busy="false" aria-live="polite">{
+ "@context": {
+    "exns1":                 "https://example.com/ns/ex1/",
+    "compensationValue":     "exns1:compensationValue",
+
+    "odrl":                  "http://www.w3.org/ns/odrl/2/",
+    "archive":               "odrl:archive",
+    "attribute":             "odrl:attribute",
+    "compensate":            "odrl:compensate",
+    "display":               "odrl:display",
+    "grantUse":              "odrl:grantUse",
+    "count":                 "odrl:count",
+    "dateTime":              "odrl:dateTime",
+    "compensatedParty":     {"@type": "@id", "@id": "odrl:compensatedParty"},
+    "compensatingParty":    {"@type": "@id", "@id": "odrl:compensatingParty"},
+    "output":               {"@type": "@id", "@id": "odrl:output"}
+    }
+}</pre>
+    </div>
+  </section>
 </section>
 <section id="pubavail">
   <h2>Making an ODRL Profile publicly available</h2>
@@ -488,8 +742,13 @@ exns1:aggregatedTime
 <section id="inforeferences">
   <h2>Informative references</h2>
   <dl class="bibliography">
-      <dt id="bib-dxprof">[skos]</dt>
-      <dd><a href="https://www.w3.org/TR/dx-prof/"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. R. Atkinson, N.J. Car. W3C, April 2019, W3C Working Draft. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
+      <dt id="bib-dxprof">[dx-prof]</dt>
+    <dd><a href="https://www.w3.org/TR/dx-prof/"><cite>The Profiles Vocabulary</cite></a>. R. Atkinson, N.J. Car. W3C, April 2019, W3C Working Draft. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a></dd>
+      <dt id="bib-jsonld">[json-ld]</dt>
+      <dd><a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. M. Sporny, G. Kellogg, M. Lanthaler, W3C, January 2014, W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a></dd>
+      <dt id="bib-owl">[owl]</dt>
+      <dd><a href="https://www.w3.org/TR/owl-overview/"><cite>OWL 2 Web Ontology Language
+Document Overview (Second Edition)</cite></a>. W3C OWL Working Group, W3C, December 2012, W3C Working Draft. URL: <a href="https://www.w3.org/TR/owl-overview/">https://www.w3.org/TR/owl-overview/</a></dd>
       <dt id="bib-rfc3986">[rfc3986]</dt>
       <dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifiers (URI): Generic Syntax</cite></a>. T. Berners-Lee, R. Fielding, L. Masinter, IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a>
       </dd>
