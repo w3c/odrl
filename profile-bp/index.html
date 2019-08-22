@@ -454,8 +454,8 @@ exns1:aggregatedTime
     <li>If a concept is adopted or created as ODRL Constraint Right Operand it should be made a member of a SKOS Collection of all Constraint Right Operands defined by this Profile.</li>
     <li>If a concept is adopted or created as ODRL Logical Constraint it should be made a member of a SKOS Collection of all Logical Constraints defined by this Profile.</li>
     <li>If a concept is adopted or created as ODRL Policy Conflict Strategy Preference it should be made a member of a SKOS Collection of all Policy Conflict Strategy Preferences defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Rule subclass it should be made a member of a SKOS Collection of all Rule subclasses defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Policy subclass it should be made a member of a SKOS Collection of all Policy subclasses defined by this Profile.</li>
+    <li>If a subclass is adopted or created as ODRL Rule subclass it should be made a member of a SKOS Collection of all Rule subclasses defined by this Profile.</li>
+    <li>If a subclass is adopted or created as ODRL Policy subclass it should be made a member of a SKOS Collection of all Policy subclasses defined by this Profile.</li>
     </ul>
   <p>Finally: create a W3C Profile Vocabulary [<a href="#bib-dxprof">dx-prof</a>] document. This document sets the normative part of the ODRL Profile - the ODRL 2.2 Information Model and the ODRL 2.2 Core Profile - and lists all documents used for defining this Profile.  </p>
   <p>&nbsp;</p>
@@ -475,8 +475,8 @@ exns1:aggregatedTime
     <li>A list of all member concepts of the Profile ...</li>
     <li>... and a human readable specification of at least all new concepts defined by the Profile ...</li>
     <li>... if for adopted concepts of other sources a reasonable human readable specification is available their documentation can be referenced. Else a specification created by the owner of this Profile may be created for this document.</li>
-    <li>For each concept of this Profile its type as listed in <a href="#scope">section 3</a> should be indicated.</li>
-    <li>For any type of concept as listed in <a href="#scope">section 3</a> a list of its additional concept defined by this Profile may be included.</li>
+    <li>For each concept or subclass of this Profile its type as listed in <a href="#scope">section 3</a> should be indicated.</li>
+    <li>For any type of concept or subclass as listed in <a href="#scope">section 3</a> a list of its additional concepts or subclasses defined by this Profile may be included.</li>
     <li>A list of all used identifiers of namespaces, other ODRL Profiles, vocabularies of ODRL concept and other relevant resources.</li>
     <li>A list of all standards used by this Profile.</li>
     <li>This document may show or refer to examples of ODRL Policies using this Profile, they are liked by many users.</li>
@@ -490,11 +490,11 @@ exns1:aggregatedTime
     <li>A definition of all used prefixes, if the used syntax supports or requires that.</li>
     <li>A definition of the ontology as a whole. As identifier of the ontology the identifier of the Profile must be used.</li>
     <li>A SKOS [<a href="#bib-skos">skos</a>] Collection of all concepts defined by this Profile, either a concept specified by this ontology or a concept defined by another source.</li>
-    <li>A SKOS Collection for each type of additional concepts (see <a href="#scope">section 3</a>) if at least one concept is defined for it.</li>
+    <li>A SKOS Collection for each type of additional concepts or subclasses (see <a href="#scope">section 3</a>) if at least one concept is defined for it.</li>
     <li>A declaration of all used annotation properties to keep this ontology within OWL DL.</li>
     </ul>
   <p>See below an example ontology of the (virtual) ODRL <em>Profile Example Profile 1</em>.<br>
-    It adopts a small set of concepts defined by the ODRL Common Vocabulary and a single concepts on its own.
+    It adopts a small set of concepts defined by the ODRL Common Vocabulary and specifies a single concepts on its own.
   </p>
   <div class="example">
     <div class="example-title marker"><span>OWL Ontology Example 1 (TTL)</span></div>
@@ -737,7 +737,15 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
 </section>
 <section id="pubavail">
   <h2>Making an ODRL Profile publicly available</h2>
-  <p> (More will follow.) </p>
+  <p> If an ODRL Profile should be used by a public audience it is highly recommended to make its spefications publicly accessible:</p>
+  <ul>
+    <li>A human readable specification as HTML web document</li>
+    <li>An OWL Ontology as resource using a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
+    <li>A resource using the W3C Profile Vocabulary  in a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
+    <li>If the JSON-LD form should be supported for ODRL Policies a JSON-LD Context resource.</li>
+  </ul>
+  <p>All these resourced can be made accessible by different URLs.</p>
+  <p>An alternative option is based on http request-based content negotiation, this feature must be supported by the web server delivering the documents. In this case a generic URL is defined for the human readable HTML document and the OWL Ontology in Semantic Web formats. Depending of the IANA Media Type expressed by the accept-header of the http(s) request the corresponding resource is delivered by the http(s) response.</p>
 </section>
 <section id="inforeferences">
   <h2>Informative references</h2>
