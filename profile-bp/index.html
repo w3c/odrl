@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <title>ODRL Profile Best Practices</title>
 <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"
-
 defer="defer"></script> 
 <script class="remove" src="config.js"></script>
 <link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/2016/base.css" />
@@ -713,7 +712,7 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
   <p>Whether the OWL Ontology of a Profile uses JSON-LD [<a href="#bib-jsonld">JSON-LD</a>] as format or if an ODRL Policy is expressed as JSON-LD the uses of a JSON-LD Context is highly recommended. It is used for mapping short-term aliases of concept identifiers to the original identifier.</p>
   <p>The Example below covers the concepts of the (virtual) ODRL <em>Profile Example Profile 1</em>.</p>
   <div class="example">
-    <div class="example-title marker"><span>JSON-LD Context Example 1 (JSON)</span></div>
+    <div class="example-title marker"><span>JSON-LD Context Example 1 (JSON-LD)</span></div>
     <pre id="exjsonldctx1" class="hljs" aria-busy="false" aria-live="polite">{
  "@context": {
     "exns1":                 "https://example.com/ns/ex1/",
@@ -744,10 +743,26 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
     <li>A resource using the W3C Profile Vocabulary  in a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
     <li>If the JSON-LD form should be supported for ODRL Policies a JSON-LD Context resource.</li>
   </ul>
-  <p>All these resourced can be made accessible by different URLs.</p>
+  <p>All these resourced can be made accessible by URLs.</p>
   <p>An alternative option is based on http request-based content negotiation, this feature must be supported by the web server delivering the documents. In this case a generic URL is defined for the human readable HTML document and the OWL Ontology in Semantic Web formats. Depending of the IANA Media Type expressed by the accept-header of the http(s) request the corresponding resource is delivered by the http(s) response.</p>
   <p>The URL(s) used for such resources should be persistent over time. The publisher of a Profile should consider whether to reflect the version of the Profile in the URL or to use version-agnostic URLs.</p>
 </section>
+<section id="regodrlcg">
+  <h2>Registering a profile with the ODRL Community Group</h2>
+  <p>The <a href="https://www.w3.org/community/odrl/">ODRL Community Group</a> provides a list of registered ODRL 2.2 Profiles at <a href="https://www.w3.org/community/odrl/profile/">https://www.w3.org/community/odrl/profile/</a></p>
+  <p>Contact this group by email <a href="mailto:public-odrl@w3.org">public-odrl@w3.org</a> and provide these details of the profile:</p>
+  <ul>
+    <li>Business name of the profile</li>
+    <li>Name and web URL of the party having created and planning to maintain the profile</li>
+    <li>Identifier of the profile</li>
+    <li>URL of the human readable specification document</li>
+    <li>URL of the OWL Ontology and the name of the used format (e.g. RDF/Turtle, RDF/XML, JSON-LD)</li>
+    <li>Optional: URL of the JSON-LD context resource</li>
+    <li>Optional: URL of the W3C Profile Vocabulary resource</li>
+  </ul>
+  <p>&nbsp;</p>
+</section>
+
 <section id="inforeferences">
   <h2>Informative references</h2>
   <dl class="bibliography">
