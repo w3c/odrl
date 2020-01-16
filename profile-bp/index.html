@@ -229,7 +229,7 @@ exns1:aggregatedTime
   <section id="assetrel">          
   <h3>Additional Asset Relationships</h3>
   <p>An ODRL Asset Relationship is a relationship between a subclass of a
-    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code>and <code>output </code>as sub-properties of <code>relation</code>.</p>
+    <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> (Permission, Prohibition, Duty, ...) and an Asset, the Recommendation <a href="https://www.w3.org/TR/odrl-vocab/#term-relation">defines </a>only <code> target </code> as sub-property of <code>relation</code>.</p>
   <p>The example shows how to define the asset relationship <code>input </code>for
     the Example Profile 1, an asset required as input for the action of a
     Rule.</p>
@@ -423,8 +423,33 @@ exns1:aggregatedTime
     </ul>
   </section>
 </section>
+
+<section id="outofscope">
+  <h2>What the Core Profile does not define</h2>
+  <p>The <a href="https://www.w3.org/TR/odrl-model/#profile-motivation">ODRL Profile Purpose</a> section of the ODRL Information Model defines the roles of profiles: </p>
+  <ul>
+    <li>The ODRL Core Profile defines a vocabulary of all the terms defined by the ODRL Information Model 2.2. Recommendation</li>
+    <li>All other profiles defined by the rules of an <a href="https://www.w3.org/TR/odrl-model/#profile">ODRL Profile</a> must be considered as a definition of additional terms</li>
+  </ul>
+
+    <p>But it is not mandatory to use all terms of the ODRL Core Profile and of a referenced additional  profile in an ODRL Policy instance.
+    <br>Based on this basic rule a profile may suggest not to use a term defined by the ODRL Core Profile, e.g. a specific subclass of Policy or Rule, a specific instance of Action, a specific Logical Constraint Operand ... and others, as long as the <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> does not define its use as mandatory, as a MUST. (Check the terms defined by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-core">ODRL Core Vocabulary</a>.) But a profile must not declare an ODRL Core Profile term as prohibited!
+    </p>
+  <section id="oos1">    
+  <h3>What may be ignored, and what not</h3>
+  <p>The <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> claims the use of properties of a class as a MUST (= as mandatory) or that an ODRL Validator MUST support the use of specific sub-properties of a defined property. A validator supporting the ODRL Core Profile and a specific additional profile MUST NOT ignore mandatory ODRL Core requirements but in reverse it may ignore optional ODRL Core requirements.</p>
+  <ul>
+    <li>Regarding Policy: a subclass of Policy must be used, but it is not mandatory to use a subclass defined by the ODRL Core Profile if a related profile defines one. Therefore the subclasses of Policy defined by the ODRL Core Profile may be ignored if the related profile defines a subclass of Policy.</li>
+    <li>Regarding the Rule(s) of a Policy: ODRL Community note - this is an open issue, see <a href="https://github.com/w3c/odrl/issues/9">ODRL Issue #9</a>.</li>
+    <li>Regarding Action: the ODRL Core Profile defines only <a href="https://www.w3.org/TR/odrl-vocab/#actions">two instances of Action</a>: use and transfer. A profile may ignore them as using them and their narrower terms is not defined as mandatory by the Rule Class or the Action Class.</li>
+    <li>Regarding Party Functions: The Rule Class defines the use of sub-properties of <code>function</code> as optional, it may be ignored. But if a sub-property of the <a href="https://www.w3.org/TR/odrl-model/#function">function property</a> is used, the two terms defined by the ODRL Core Profile, <code>assigner</code> and <code>assignee</code>, must not be ignored.</li>
+    <li>Regarding Asset Relationship: The Rule Class defines the use of sub-properties of <code>relation</code> as optional, it may be ignored. But if a sub-property of the <a href="https://www.w3.org/TR/odrl-model/#relation">relation property</a> is used the single term defined by the ODRL Core Profile, <code>target</code>, must not be ignored.</li>
+  </ul>
+  </section>
+</section>
+
 <section id="prerequ">
-  <h2>Prerequisites for defining an ODRL Profile</h2>
+  <h2>Prerequisites for defining a ODRL Profile</h2>
   <section id="guid">      
   <h3>A globally uniqe identifier of the Profile</h3>
   <p>Each Profile must have a globally unique identifer. 
