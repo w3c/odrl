@@ -393,6 +393,9 @@ exns1:aggregatedTime
     one&quot; with a list of properties to select from a restricted set of properties and/or a specific combination of properties can be defined. (See the examples for <code>permission</code>, <code>prohibition</code>, or <code>obligation</code> property values above.)</li>
     <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
   </ul>
+  <div class="note">
+    Subclasses of Rule defined by a Profile must be bound to a new subclass of Policy by defining new properties, each of this these properties must have as defined type one or more of the new Rule subclasses. (It is higly recommended to define a new Rule subclass as type of one property and not more.)
+  </div>
   <p>The example shows a basic definition of a subclass <code>SpecialOffer1 </code>for the 
     Example Profile 1</p>
   <div class="example">
