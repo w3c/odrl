@@ -340,6 +340,14 @@ exns1:aggregatedTime
     <li>If the cardinality of a property is defined by the Rule class as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
     <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
   </ul>
+  <div class="note">
+    <p>A new Rule subclass defined by a Profile can be used in a Policy only this way:</p>
+    <ul>
+      <li>A new subclass of Rule must be defined by the Profile</li>
+      <li>A new subclass of Policy must be defined by the Profile ...</li>
+      <li>... this new Policy subclass must include a new property, this property should have as type the new Rule subclass of this Profile</li>
+    </ul>
+  </div>
   <p>The example shows how to define of a subclass <code>StraightPermission1 </code>for the  Example Profile 1</p>
   <div class="example">
     <div class="example-title marker"><span>Example 9 (TTL)</span></div>
