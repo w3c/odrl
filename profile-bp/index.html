@@ -341,19 +341,29 @@ exns1:aggregatedTime
     <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
   </ul>
   <div class="note">
-    <p><strong>ALTERNATIVE TEXT no change applied to ODRL data model or vocabulary:</strong> <br>A new Rule subclass defined by a Profile can be used in a Policy this way only:</p>
+    <p><strong>How To Define a Subclass of the Rule Class</strong> </p> 
+    <p><strong>Option 1:</strong> As a direct subclass of the Permission class or the Prohibition class or the Duty class. It can be used in a Policy this way:</p>
+    <ul>
+      <li>A new subclass of Permission is defined by the Profile ...</li>
+      <li>... this new subclass can be used with the permission property of the Policy class as defined by the ODRL Recommendation</li>
+      <li>AND/OR: A new subclass of Prohibition is defined by the Profile ...</li>
+      <li>... this new subclass can be used with the prohibition property of the Policy class as defined by the ODRL Recommendation</li>
+      <li>AND/OR: A new subclass of Duty is defined by the Profile ...</li>
+      <li>... this new subclass can be used with the obligation property of the Policy class as defined by the ODRL Recommendation</li>
+      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled.</li>
+    </ul>
+    <p><strong>Option 2:</strong> As direct subclass of the Rule class. It can be used in a Policy this way only:</p>
     <ul>
       <li>A new subclass of Rule must be defined by the Profile</li>
       <li>A new subclass of Policy must be defined by the Profile ...</li>
-      <li>... this new Policy subclass must include a new property, this property should have as type the new Rule subclass of this Profile</li>
+      <li>... this new Policy subclass must include a new property, this property has as type this new Rule subclass</li>
     </ul>
-    <p><strong>ALTERNATIVE TEXT constraint of types on permission, prohibition and obligation is lifted in ODRL vocabulary:</strong> <br>A new Rule subclass defined by a Profile can be used in a Policy this way:</p>
+    <p>Use cases covered by subclasses defined by a Profile:</p>
     <ul>
-      <li>A new subclass of Rule must be defined by the Profile</li>
-      <li>A new subclass of Policy must be defined by the Profile, ...</li>
-      <li>Option 1: ... it defines the new Rule subclass as additional type of one the existing Policy properties permission, prohibition or obligation.</li>
-      <li>Option 2: ... it includes a new property, this property has as type the new Rule subclass of this Profile</li>
+      <li>a) A policy uses the Policy class of the ODRL Recommendation, the property permission uses the Permission class or a subclass of it as defined by the Profile, the property prohibition uses the Prohibition class or a subclass of it as defined by the Profile, the property obligation uses the Duty class or a subclass of it as defined by the Profile.</li>
+      <li>b) A new subclass of Rule is defined and a corresponding property of a new subclass of Policy is defined for it, both is defined by the Profile. Be aware: The use of this new subclass of Policy requires to use at least one of the properties permission, prohibiton or obligation.</li>
     </ul>
+    <p><strong>Design Consideration</strong><br>Please check if a rule required by the to be covered use case can be expressed - in this sequence: <br>1) by the Permission, the Probition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) by subclass of the Permission or Prohibition or Duty class, as defined by the Profile (the new subclass(es) must be defined by the Profile)<br>3) by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case (the new subclass(es) of Rule and the new subclass of Policy must be defined by the Profile)</p>
   </div>
   <p>The example shows how to define of a subclass <code>StraightPermission1 </code>for the  Example Profile 1</p>
   <div class="example">
