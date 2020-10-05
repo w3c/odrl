@@ -315,9 +315,8 @@ exns1:aggregatedTime
   <h3>Additional Rule Subclasses</h3>
   <p>The ODRL Data Model Recommendation defines the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule
     Class</a> and three subclasses of it: the Permission Class, the
-    Prohibition Class and the Duty Class. The ODRL Profile Mechanism permits
-    to create additional subclasses; their definitions must comply with the
-    design of the basic Rule Class:</p>
+edite    Prohibition Class and the Duty Class. The ODRL Profile Mechanism permits to create additional subclassesof the Rule Class or of one of these defined subclasses; their definitions must comply with the
+    design of the basic Rule Class. </p>
   <ul>
     <li>A Rule <em class="rfc2119" title="MUST">MUST</em> have one <code>action</code> property value of type Action.</li>
     <li>A Rule <em class="rfc2119" title="MAY">MAY</em> have none or one <code><em>relation</em></code> sub-property values of type Asset.</li>
@@ -332,38 +331,67 @@ exns1:aggregatedTime
     <li>A Rule <em class="rfc2119" title="MAY">MAY</em> have none or one <code>uid</code> property values (of type IRI [<cite><a class="bibref" href="https://www.w3.org/TR/odrl-model/#bib-rfc3987">rfc3987</a></cite>])
       to identify the Rule so it <em class="rfc2119" title="MAY">MAY</em> be referenced by other Rules.</li>
   </ul>
-  <p>A new Rule subclass must be defined as disjoint with all other Rule
-    subclasses.</p>
-  <p>Defining a subclass of Rule allows:</p>
+  <p>Defining a subclass of Rule or of Permission or of Prohibition or of Duty allows:</p>
   <ul>
-    <li>If the cardinality of a property is defined by the Rule class as &quot;MAY have none or one&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; can be defined.</li>
-    <li>If the cardinality of a property is defined by the Rule class as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
+    <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none or one&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; can be defined.</li>
+    <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
     <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
   </ul>
   <div class="note">
-    <p><strong>How To Define a Subclass of the Rule Class</strong> </p> 
-    <p><strong>Option 1:</strong> As a direct subclass of the Permission class or the Prohibition class or the Duty class. It can be used in a Policy this way:</p>
+    <p><strong>Design Strategy</strong></p>
+    <p>The ODRL Community Group highly recommends for Profiles to stick to the basic design of Rule subclasses as defined by the ODRL Informaton Model: the Rule subclasses Permission, Prohibition and Duty cover the key use cases of an ODRL policy and therefore an ODRL Profile should either adopt any of these three classes as they are or define subclasses of the Permission Class, or the Prohibition Class or the Duty Class. Defining a subclass of Rule should be avoided as this my infringe the data model of ODRL. </p>
+    <p><strong>Design Consideration</strong><br>Please check if a rule required by the use case covered by the Profile can be expressed - in this sequence: <br>1) By the Permission, the Probition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) By a new subclass of the Permission or Prohibition or Duty class (the new subclass(es) must be defined by the Profile)<br>3) As a last resort: by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case. (The new subclass(es) of Rule and a new subclass of Policy with a property for each new Rule subclass must be defined by the Profile.)</p>  
+    <p><strong>How To Define a Subclass of the Permission Class</strong></p>
     <ul>
       <li>A new subclass of Permission is defined by the Profile ...</li>
       <li>... this new subclass can be used with the permission property of the Policy class as defined by the ODRL Recommendation</li>
-      <li>AND/OR: A new subclass of Prohibition is defined by the Profile ...</li>
+      <li>The generic rules of the Rule class for the use of properties are refined by specific rules of the Permission Class:
+        <ul>
+          <li>A Permission <em class="rfc2119" title="MUST">MUST</em> have one <code>target</code> property value of type Asset. (Other <code><i>relation</i></code> sub-properties <em class="rfc2119" title="MAY">MAY</em> be used.)</li>
+          <li>A Permission <em class="rfc2119" title="MAY">MAY</em> have none or one <code>assigner</code> and/or <code>assignee</code> property values (of type Party) for functional roles. (Other <code><i>function</i></code> sub-properties  <em class="rfc2119" title="MAY">MAY</em> be used.)</li>
+          <li>A Permission <em class="rfc2119" title="MAY">MAY</em> have none, one, or more <code>duty</code> property values of type Duty.</li>
+      </ul>
+      </li>
+      <li>The ODRL Profile Mechanism requires to define this new (sub-)class as disjoint with the Prohibition and Duty class</li>
+      <li>Example definition:
+        <pre>ex:myPermission rdfs:subClassOf odrl:Permission ;
+owl:disjointWith odrl:Prohibition, odrl:Duty .</pre></li>
+      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
+    </ul>
+    <p><strong>How To Define a Subclass of the Prohibition Class</strong> </p>
+    <ul>
+      <li>A new subclass of Prohibition is defined by the Profile ...</li>
       <li>... this new subclass can be used with the prohibition property of the Policy class as defined by the ODRL Recommendation</li>
-      <li>AND/OR: A new subclass of Duty is defined by the Profile ...</li>
+      <li>The generic rules of the Rule class for the use of properties are refined by specific rules of the Prohibition Class:
+        <ul>
+          <li>A Prohibition <em class="rfc2119" title="MUST">MUST</em> have one <code>target</code> property value of type Asset. (Other <code><i>relation</i></code> sub-properties <em class="rfc2119" title="MAY">MAY</em> be used.)</li>
+           <li>A Prohibition <em class="rfc2119" title="MAY">MAY</em> have none or one <code>assigner</code> and/or <code>assignee</code> property values (of type Party) for functional roles. (Other <code><i>function</i></code> sub-properties <em class="rfc2119" title="MAY">MAY</em> be used.)</li>	
+           <li>A Prohibition <em class="rfc2119" title="MAY">MAY</em> have none, one, or more <code>remedy</code> property values of type Duty.</li>
+       </ul>
+      </li>
+      <li>The ODRL Profile Mechanism requires to define this new (sub-)class as disjoint with the Permission and Duty class</li>
+      <li>Example definition:
+        <pre>ex:myProhibition rdfs:subClassOf odrl:Prohibition ;
+owl:disjointWith odrl:Permission, odrl:Duty .</pre></li>
+      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
+    </ul>
+    <p><strong>How To Define a Subclass of the Duty Class</strong> </p>
+    <ul>
+      <li>A new subclass of Duty is defined by the Profile ...</li>
       <li>... this new subclass can be used with the obligation property of the Policy class as defined by the ODRL Recommendation</li>
-      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled.</li>
+      <li>The generic rules of the Rule class for the use of properties are refined by specific rules of the Duty Class:
+        <ul>
+          <li>A Duty <em class="rfc2119" title="MAY">MAY</em> have none or one <code>target</code> property values (of type Asset)  to indicate the Asset that is the primary subject to which the Duty directly applies. (Other <code><i>relation</i></code> sub-properties  <em class="rfc2119" title="MAY">MAY</em> be used.)</li>
+         <li>A Duty <em class="rfc2119" title="MAY">MAY</em> have none or one <code>assigner</code> and/or <code>assignee</code> property values (of type Party) for functional roles. (Other <code><i>function</i></code> sub-properties <em class="rfc2119" title="MAY">MAY</em> be used.)</li> 
+         <li>A Duty <em class="rfc2119" title="MAY">MAY</em> have none, one or many <code>consequence</code> property values of type Duty only when the Duty is referenced by a Rule with the duty or obligation properties.</li>
+      </ul>
+      </li>
+      <li>The ODRL Profile Mechanism requires to define this new (sub-)class as disjoint with the Permission and Duty class</li>
+      <li>Example definition:
+        <pre>ex:myDuty rdfs:subClassOf odrl:Duty ;
+owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
+      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
     </ul>
-    <p><strong>Option 2:</strong> As direct subclass of the Rule class. It can be used in a Policy this way only:</p>
-    <ul>
-      <li>A new subclass of Rule must be defined by the Profile</li>
-      <li>A new subclass of Policy must be defined by the Profile ...</li>
-      <li>... this new Policy subclass must include a new property, this property has as type this new Rule subclass</li>
-    </ul>
-    <p>Use cases covered by subclasses defined by a Profile:</p>
-    <ul>
-      <li>a) A policy uses the Policy class of the ODRL Recommendation, the property permission uses the Permission class or a subclass of it as defined by the Profile, the property prohibition uses the Prohibition class or a subclass of it as defined by the Profile, the property obligation uses the Duty class or a subclass of it as defined by the Profile.</li>
-      <li>b) A new subclass of Rule is defined and a corresponding property of a new subclass of Policy is defined for it, both is defined by the Profile. Be aware: The use of this new subclass of Policy requires to use at least one of the properties permission, prohibiton or obligation.</li>
-    </ul>
-    <p><strong>Design Consideration</strong><br>Please check if a rule required by the to be covered use case can be expressed - in this sequence: <br>1) by the Permission, the Probition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) by subclass of the Permission or Prohibition or Duty class, as defined by the Profile (the new subclass(es) must be defined by the Profile)<br>3) by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case (the new subclass(es) of Rule and the new subclass of Policy must be defined by the Profile)</p>
   </div>
   <p>The example shows how to define of a subclass <code>StraightPermission1 </code>for the  Example Profile 1</p>
   <div class="example">
@@ -371,8 +399,8 @@ exns1:aggregatedTime
     <pre id="exrulesubcl1" class="hljs" aria-busy="false" aria-live="polite">exns1:StraightPermission1
   a rdfs:Class , owl:Class, skos:Concept ;
   rdfs:isDefinedBy expf1:
-  rdfs:subClassOf :Rule ;
-  owl:disjointWith :Permission, :Prohibition, :Duty ;
+  rdfs:subClassOf :Permission ;
+  owl:disjointWith :Prohibition, :Duty ;
   rdfs:label "Straight Permission 1"@en ;
   skos:definition "A Rule permitting the use of an Asset"@en ;
   skos:note "A Straight Permission 1 Rule must not contain any property for expressing a duty."@en .</pre>
@@ -468,8 +496,8 @@ exns1:aggregatedTime
   <h3>What may be ignored, and what not</h3>
   <p>The <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> claims the use of properties of a class as a MUST (= as mandatory) or that an ODRL Validator MUST support the use of specific sub-properties of a defined property. A validator supporting the ODRL Core Profile and a specific additional profile MUST NOT ignore mandatory ODRL Core requirements but in reverse it may ignore optional ODRL Core requirements.</p>
   <ul>
-    <li>Regarding Policy: a subclass of Policy must be used, but it is not mandatory to use a subclass defined by the ODRL Core Profile if a related profile defines one. Therefore the subclasses of Policy defined by the ODRL Core Profile may be ignored if the related profile defines a subclass of Policy.</li>
-    <li>Regarding the Rule(s) of a Policy: <br><strong>ALTERNATIVE TEXT no change applied to ODRL data model or vocabulary:</strong> <br> A Policy must use at least one of the properties permission, prohibition or obligation with a corresponding subclass of Rule - Permission Class, Prohibition Class, Duty Class - as type, this cannot be omitted. In addition the Profile may define a new subclass of Rule and a new property for a Policy subclass defined by it with this new Rule subclass as type. <br><del><strong>ALTERNATIVE TEXT constraint of types on permission, prohibition and obligation is lifted in ODRL vocabulary:</strong> <br>Regarding the Rule(s) of a Policy: A Policy must use at least one of the properties permission, prohibition or obligation with a subclass of Rule as type. In addition to the already defined types - Permission Class is type of permission, Prohibition Class is type of prohibition, Duty Class is type of obligation - a Profile may define a new subclass of Rule and define it as type of one of these properties. Beyond that the Profile may define a new subclass of Rule and a new property for a Policy subclass defined by it with this new Rule subclass as type.</del></li>
+    <li>Regarding Policy: a subclass of Policy must be used, but it is not mandatory to use a subclass defined by the ODRL Core Profile if a related profile defines one. Therefore the subclasses of Policy defined by the ODRL Core Profile may be ignored if the related profile defines a new subclass of Policy.</li>
+    <li>Regarding the Rule(s) of a Policy: <br>A Policy must use at least one of the properties permission, prohibition or obligation with a corresponding subclass of Rule - Permission Class, or a subclass of it; Prohibition Class, or a subclass of it; Duty Class or a subclass of it - as type, this cannot be omitted.</li>
     <li>Regarding Action: the ODRL Core Profile defines only <a href="https://www.w3.org/TR/odrl-vocab/#actions">two instances of Action</a>: use and transfer. A profile may ignore them as using them and their narrower terms is not defined as mandatory by the Rule Class or the Action Class.</li>
     <li>Regarding Party Functions: The Rule Class defines the use of sub-properties of <code>function</code> as optional, it may be ignored. But if a sub-property of the <a href="https://www.w3.org/TR/odrl-model/#function">function property</a> is used, the two terms defined by the ODRL Core Profile, <code>assigner</code> and <code>assignee</code>, must not be ignored.</li>
     <li>Regarding Asset Relationship: The Rule Class defines the use of sub-properties of <code>relation</code> as optional, it may be ignored. But if a sub-property of the <a href="https://www.w3.org/TR/odrl-model/#relation">relation property</a> is used the single term defined by the ODRL Core Profile, <code>target</code>, must not be ignored.</li>
