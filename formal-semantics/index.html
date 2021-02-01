@@ -37,10 +37,23 @@
 		<ul>
 			<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if the behaviour of its employee 
 				is compliant with the policies attached to the digital assets used inside the company.</li>
--	                <li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture the prohibition to sell it and 
+                        <li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture the prohibition to sell it and 
 			I would like to automatically monitor if the actions performed on that picture are compliant with such a prohibition.</li>
 		</ul>
-	
+	        Simulation may be used by consumers for a what-if analysis and test if the performance of an action on a digital asset will I violate one of its policies.<br>
+			
+                In order to automatically provide monitoring or simulation services on a set of policies we need to be able to formally specify their meaning, i.e. the course 
+		of actions that will bring to their violation or fulfilment. The meaning of having an ORDL permission, prohibition or obligation is currently specified only 
+		in natural language. For example, this is the ODRL specification of <a href="https://www.w3.org/TR/odrl-model/#prohibition">prohibition</a>: 
+		''A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.''.<br>
+		
+		If we want to be able to automatically monitor or simulate the fulfilment or violation of a set of ODRL policies we need:
+		<ol>
+			<li> A machine-readable representation of the actions performed (for monitoring) or planned (for simulation) by a set of agents;</li>
+			<li> A mechanism for automatically computing the activation of policies (i.e. checking if their constraints are satisfied);</li>
+			<li> A mechanism for automatically checking if a given action (realized on a given asset by a certain agent) is regulated by a set of active policies;</li>
+			<li> A mechanism for automatically computing if the active policies that regulate such an action are fulfilled or violated by its performance.</li>
+		</ol>
 			
 		</section>
 
