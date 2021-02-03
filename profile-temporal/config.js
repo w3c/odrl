@@ -20,5 +20,5 @@ var respecConfig = {
     noLegacyStyle: false,
     noRecTrack: true,
     lint: true,
-    github: { repoUrl: "https://github.com/w3c/odrl/", branch: "master"}
+    github: { repoURL: "https://github.com/w3c/odrl/", branch: "master"}
 };
