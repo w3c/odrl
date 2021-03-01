@@ -40,88 +40,167 @@
 			<p>The introduction of a temporal object to act as a container for the various versions of a relevant entity (like a Permission) allows us to satisfy these use cases while maintaining a stable identifier for these entities across time.</p>
 		
 		<section id="conventions">
-				<h2>Document Conventions</h2>
-					<p>
-					</p>
-    <table class="def">
-        <tbody>
-          <tr>
-            <th>Prefix</th>
-            <th>Namespace</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td>odrl</td>
-            <td>http://www.w3.org/ns/odrl/2/</td>
-            <td>[[odrl-vocab]] [[odrl-model]]</td>
-          </tr>
-          <tr>
-            <td>rdf</td>
-            <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-            <td>[[rdf11-concepts]]</td>
-          </tr>
-          <tr>
-            <td>rdfs</td>
-            <td>http://www.w3.org/2000/01/rdf-schema#</td>
-            <td>[[rdf-schema]]</td>
-          </tr>
-             <tr>
-            <td>owl</td>
-            <td>http://www.w3.org/2002/07/owl#</td>
-            <td>[[owl2-overview]]</td>
-          </tr>
-        <tr>
-            <td>xsd</td>
-            <td>http://www.w3.org/2001/XMLSchema#</td>
-            <td>[[xmlschema11-2]]</td>
-          </tr>
-              <tr>
-            <td>skos</td>
-            <td>http://www.w3.org/2004/02/skos/core#</td>
-            <td>[[skos-reference]]</td>
-          </tr>
-          <tr>
-            <td>dcterms</td>
-            <td>http://purl.org/dc/terms/</td>
-            <td>[[dcterms]]</td>
-          </tr>
-            <tr>
-            <td>vcard</td>
-            <td>http://www.w3.org/2006/vcard/ns#</td>
-            <td>[[vcard-rdf]]</td>
-          </tr>
-          <tr>
-            <td>foaf</td>
-            <td>http://xmlns.com/foaf/0.1/</td>
-            <td>[[foaf]]</td>
-          </tr>
-         
-          <tr>
-            <td>schema</td>
-            <td>http://schema.org/</td>
-            <td><a href="http://schema.org/">schema.org</a></td>
-          </tr>
-			
-			 <tr>
-            <td>cc</td>
-            <td>https://creativecommons.org/ns#</td>
-            <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
-          </tr>
-    
-			 <tr>
-            <td>ex</td>
-            <td>http://example.com/ns#</td>
-            <td></td>
-          </tr>
-         
-        </tbody>
-      </table>
+		    <h2>Document Conventions</h2>
+	            <p></p>
+		    <table class="def">
+			<tbody>
+			  <tr>
+			    <th>Prefix</th>
+			    <th>Namespace</th>
+			    <th>Description</th>
+			  </tr>
+			  <tr>
+			    <td>odrl</td>
+			    <td>http://www.w3.org/ns/odrl/2/</td>
+			    <td>[[odrl-vocab]] [[odrl-model]]</td>
+			  </tr>
+			  <tr>
+			    <td>rdf</td>
+			    <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+			    <td>[[rdf11-concepts]]</td>
+			  </tr>
+			  <tr>
+			    <td>rdfs</td>
+			    <td>http://www.w3.org/2000/01/rdf-schema#</td>
+			    <td>[[rdf-schema]]</td>
+			  </tr>
+			     <tr>
+			    <td>owl</td>
+			    <td>http://www.w3.org/2002/07/owl#</td>
+			    <td>[[owl2-overview]]</td>
+			  </tr>
+			<tr>
+			    <td>xsd</td>
+			    <td>http://www.w3.org/2001/XMLSchema#</td>
+			    <td>[[xmlschema11-2]]</td>
+			  </tr>
+			      <tr>
+			    <td>skos</td>
+			    <td>http://www.w3.org/2004/02/skos/core#</td>
+			    <td>[[skos-reference]]</td>
+			  </tr>
+			  <tr>
+			    <td>dcterms</td>
+			    <td>http://purl.org/dc/terms/</td>
+			    <td>[[dcterms]]</td>
+			  </tr>
+			    <tr>
+			    <td>vcard</td>
+			    <td>http://www.w3.org/2006/vcard/ns#</td>
+			    <td>[[vcard-rdf]]</td>
+			  </tr>
+			  <tr>
+			    <td>foaf</td>
+			    <td>http://xmlns.com/foaf/0.1/</td>
+			    <td>[[foaf]]</td>
+			  </tr>
 
-    </section>   				
+			  <tr>
+			    <td>schema</td>
+			    <td>http://schema.org/</td>
+			    <td><a href="http://schema.org/">schema.org</a></td>
+			  </tr>
+
+					 <tr>
+			    <td>cc</td>
+			    <td>https://creativecommons.org/ns#</td>
+			    <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
+			  </tr>
+
+					 <tr>
+			    <td>ex</td>
+			    <td>http://example.com/ns#</td>
+			    <td></td>
+			  </tr>
+
+			</tbody>
+		      </table>
+
+		    </section>   				
 		</section>
-
-		<section id="examples">
-		<h2>Introduction</h2> 	
+		<section id='TemporalObjects'>
+		    <h2>Temporal Objects</h2>
+		    <p>
+			Temporal objects exist in time descibing versions of themselves as they change.
+		    </p>
+		    <section data-dfn-for="TemporalRule">
+			<h2><dfn>Temporal Rule</dfn></h2>
+			<table class="def propdef">
+			    <tbody>
+				<tr>
+				    <th>Definition:</th><td>An abstract concept that represents the common characteristics of Temporal Permissions, Temporal Prohibitions, and Temporal Duties.</td>
+				</tr><tr>
+				    <th>Label:</th><td>Temporal Rule</td>
+				</tr><tr>
+				    <th>Identifier:</th><td><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalRule</a></td>
+				</tr>
+			    </tbody>
+			</table>
+		    </section>
+		    <section>
+			    <section data-dfn-for="TemporalPermission">
+				<h2><dfn>Temporal Permission</dfn></h2>
+				<table class="def propdef">
+				    <tbody>
+					<tr>
+					    <th>Definition:</th><td>An enduring container for the various iterations of a Permission through time.</td>
+					</tr><tr>
+					    <th>Label:</th><td>Temporal Permission</td>
+					</tr><tr>
+					    <th>Identifier:</th><td><a href="<a href="http://www.example.com/TemporalPermission"><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalPermission</a><</a></td>
+					</tr><tr>
+					    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalRule</a><</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </section>
+			    <section data-dfn-for="TemporalProhibition">
+				<h2><dfn>Temporal Permission</dfn></h2>
+				<table class="def propdef">
+				    <tbody>
+					<tr>
+					    <th>Definition:</th><td>An enduring container for the various iterations of a Prohibition through time.</td>
+					</tr><tr>
+					    <th>Label:</th><td>Temporal Prohibition</td>
+					</tr><tr>
+					    <th>Identifier:</th><td><a href="<a href="http://www.example.com/TemporalProhibition"><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalProhibition</a><</a></td>
+					</tr><tr>
+					    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalRule</a><</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </section>
+			    <section data-dfn-for="TemporalDuty">
+				<h2><dfn>Temporal Duty</dfn></h2>
+				<table class="def propdef">
+				    <tbody>
+					<tr>
+					    <th>Definition:</th><td>An enduring container for the various iterations of a Duty through time.</td>
+					</tr><tr>
+					    <th>Label:</th><td>Temporal Duty</td>
+					</tr><tr>
+					    <th>Identifier:</th><td><a href="<a href="http://www.example.com/TemporalDuty"><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalDuty</a><</a></td>
+					</tr><tr>
+					    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalRule</a><</td>
+					</tr>
+				    </tbody>
+				</table>
+			    </section>
+			</section>
+		    <section data-dfn-for="TemporalAsset">
+			<h2><dfn>Temporal Asset</dfn></h2>
+			<table class="def propdef">
+			    <tbody>
+				<tr>
+				    <th>Definition:</th><td>A <a href="https://www.w3.org/TR/odrl-vocab/#term-Party">Party</a> that is neither a <a>Non-Professional Party</a> nor an <a>Educational Party</a>.</td>
+				</tr><tr>
+				    <th>Label:</th><td>Temporal Asset</td>
+				</tr>><tr>
+					<th>Identifier:</th><td><a href="<a href="http://www.example.com/TemporalAsset"><a href="http://www.example.com/TemporalRule">http://www.example.com/TemporalAsset</a><</a></td>
+				    </tr>
+			    </tbody>
+			</table>
+		    </section>
 		</section>
 
 
