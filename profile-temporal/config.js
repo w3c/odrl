@@ -1,17 +1,11 @@
 var respecConfig = {
     specStatus: "CG-DRAFT",
     shortName: "profile-temporal",
-    editors: [	{   name:       "Name",
+    editors: [	{   name:       "Ben Whittam Smith",
                      url:        "linkedIn URL",
-                     company:    "Org",
+                     company:    "Deontic Data",
                      companyURL: "Org URL",
-                      mailto:     "person email"},
-         	 {  name:       "Name",
-                    url:        "linkedIn URL",
-                    company:    "Org",
-                   companyURL: "Org URL",
-                    mailto:     "person email"
-           }
+                      mailto:     "person email"}
     ],
     group: "odrl",
     wgPublicList: "public-odrl",
