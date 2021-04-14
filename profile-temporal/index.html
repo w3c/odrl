@@ -118,22 +118,38 @@
 
 		    </section>   				
 		</section>
-		<section id='TemporalObject'>
-		    <h2>Temporal Object</h2>
+		<section id='TemporalObjects'>
+		    <h2>Temporal Objects</h2>
 		    <p>
 			Temporal objects exist in time descibing versions of themselves as they change. We're interested in tracking Policies, Rules, and Assets.
 		    </p>
+			<section data-dfn-for="TemporalObject">
+				<h2><dfn>Temporal Object</dfn></h2>
+				<table class="def propdef">
+					<tbody>
+					<tr>
+						<th>Definition:</th><td>Something that exists in time and is versioned over time as it changes.</td>
+					</tr><tr>
+						<th>Label:</th><td>Temporal Object</td>
+					</tr><tr>
+						<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalObject">http://www.w3.org/ns/odrl/2/temporal/TemporalObject</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
 		    <section data-dfn-for="TemporalPolicy">
 			<h2><dfn>Temporal Policy</dfn></h2>
 			<table class="def propdef">
 			    <tbody>
-				<tr>
-				    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a> through time.</td>
-				</tr><tr>
-				    <th>Label:</th><td>Temporal Policy</td>
-				</tr><tr>
-					<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
-				    </tr>
+					<tr>
+						<th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a> through time.</td>
+					</tr><tr>
+						<th>Label:</th><td>Temporal Policy</td>
+					</tr><tr>
+						<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+					</tr><tr>
+						<th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Object</a></td>
+					</tr>
 			    </tbody>
 			</table>
 			<section data-dfn-for="TemporalAgreement">
@@ -147,7 +163,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement">http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -163,7 +179,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalOffer">http://www.w3.org/ns/odrl/2/temporal/TemporalOffer</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicyr">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -179,7 +195,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalSet">http://www.w3.org/ns/odrl/2/temporal/TemporalSet</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy"http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -209,7 +225,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPermission">http://www.w3.org/ns/odrl/2/temporal/TemporalPermission</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalRule">http://www.w3.org/ns/odrl/2/temporal/TemporalRule</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -225,7 +241,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition">http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalRule">http://www.w3.org/ns/odrl/2/temporal/TemporalRule</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -241,7 +257,7 @@
 						</tr><tr>
 						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalDuty">http://www.w3.org/ns/odrl/2/temporal/TemporalDuty</a></td>
 						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalRule"http://www.w3.org/ns/odrl/2/temporal/TemporalRule</a></td>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
 						</tr>
 					    </tbody>
 					</table>
@@ -251,13 +267,15 @@
 				<h2><dfn>Temporal Asset</dfn></h2>
 				<table class="def propdef">
 				    <tbody>
-					<tr>
-					    <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a> through time.</td>
-					</tr><tr>
-					    <th>Label:</th><td>Temporal Asset</td>
-					</tr><tr>
-						<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAsset">http://www.w3.org/ns/odrl/2/temporal/TemporalAsset</a></td>
-					    </tr>
+						<tr>
+							<th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a> through time.</td>
+						</tr><tr>
+							<th>Label:</th><td>Temporal Asset</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAsset">http://www.w3.org/ns/odrl/2/temporal/TemporalAsset</a></td>
+						</tr>tr>
+							<th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Object</a></td>
+						</tr>
 				    </tbody>
 				</table>
 		    </section>
@@ -346,7 +364,7 @@
 				</table>
 			</section>
 			<section data-dfn-for="temporalProhibition">
-				<h2><dfn>effective date</dfn></h2>
+				<h2><dfn>has temporal prohibition</dfn></h2>
 				<table class="def propdef">
 					<tbody>
 						<tr>
