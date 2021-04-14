@@ -289,8 +289,8 @@
 		<section id='PropertiesOfPoliciesRulesAssets'>
 		    <h2>Properties Of Policies, Rules, and Assets</h2>
 		    <p>
-			A Temporal Objects use the version property to track its iterations through time.
-		    </p>
+				...
+			</p>
 		    <section data-dfn-for="EffectiveDate">
 				<h2><dfn>effective date</dfn></h2>
 				<table class="def propdef">
@@ -305,6 +305,78 @@
 							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Rule">Rule</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a></td>
 						</tr><tr>
 							<th>Range:</th><td><a href="https://www.w3.org/TR/owl-time/#time:ProperInterval">Proper Interval</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section data-dfn-for="temporalPermissin">
+				<h2><dfn>has temporal permission</dfn></h2>
+				<table class="def propdef">
+					<tbody>
+						<tr>
+							<th>Definition:</th><td>Links a Policy to a <a>Temporal Permission</a></td>
+						</tr><tr>
+							<th>Label:</th><td>has temporal permission</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/temporalPermission">http://www.w3.org/ns/odrl/2/temporal/temporalPermission</a></td>
+						</tr><tr>
+							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a></td>
+						</tr><tr>
+							<th>Range:</th><td><a>Temporal Permission</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section data-dfn-for="temporalDuty">
+				<h2><dfn>has temporal duty</dfn></h2>
+				<table class="def propdef">
+					<tbody>
+						<tr>
+							<th>Definition:</th><td>Links a Policy or Rule to a <a>Temporal Duty</a>.</td>
+						</tr><tr>
+							<th>Label:</th><td>has temporal duty</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/temporalDuty">http://www.w3.org/ns/odrl/2/temporal/temporalDuty</a></td>
+						</tr><tr>
+							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Rule">Rule</a></td>
+						</tr><tr>
+							<th>Range:</th><td><a>Temporal Duty</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section data-dfn-for="temporalProhibition">
+				<h2><dfn>effective date</dfn></h2>
+				<table class="def propdef">
+					<tbody>
+						<tr>
+							<th>Definition:</th><td>Links a Policy or Rule to a <a>Temporal Prohibition</a>.</td>
+						</tr><tr>
+							<th>Label:</th><td>has temporal prohibition</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/temporalProhibition">http://www.w3.org/ns/odrl/2/temporal/temporalProhibition</a></td>
+						</tr><tr>
+							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Rule">Rule</a></td>
+						</tr><tr>
+							<th>Range:</th><td><a>Temporal Duty</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section data-dfn-for="temporalTarget">
+				<h2><dfn>has temporal target</dfn></h2>
+				<table class="def propdef">
+					<tbody>
+						<tr>
+							<th>Definition:</th><td>Links a Rule to a <a>Temporal Asset</a>.</td>
+						</tr><tr>
+							<th>Label:</th><td>has temporal target</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/temporalTarget">http://www.w3.org/ns/odrl/2/temporal/temporalTarget</a></td>
+						</tr><tr>
+							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Rule">Rule</a></td>
+						</tr><tr>
+							<th>Range:</th><td><a>Temporal Asset</a></td>
 						</tr>
 					</tbody>
 				</table>
