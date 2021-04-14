@@ -14,5 +14,5 @@ var respecConfig = {
     noLegacyStyle: false,
     noRecTrack: true,
     lint: true,
-    github: { repoURL: "https://w3c.github.io/odrl/profile-temporal/", branch: "master"}
+    github: { repoURL: "https://w3c.github.io/odrl/", branch: "master"}
 };
