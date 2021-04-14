@@ -124,7 +124,7 @@
 			Temporal objects exist in time descibing versions of themselves as they change. We're interested in tracking Policies, Rules, and Assets.
 		    </p>
 		    <section data-dfn-for="TemporalPolicy">
-			<h2><dfn>Temporal Asset</dfn></h2>
+			<h2><dfn>Temporal Policy</dfn></h2>
 			<table class="def propdef">
 			    <tbody>
 				<tr>
@@ -136,6 +136,54 @@
 				    </tr>
 			    </tbody>
 			</table>
+			<section data-dfn-for="TemporalAgreement">
+					<h2><dfn>Temporal Agreement</dfn></h2>
+					<table class="def propdef">
+					    <tbody>
+						<tr>
+						    <th>Definition:</th><td>An enduring container for the various iterations of an Agreement through time.</td>
+						</tr><tr>
+						    <th>Label:</th><td>Temporal Agreement</td>
+						</tr><tr>
+						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement">http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement</a></td>
+						</tr><tr>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						</tr>
+					    </tbody>
+					</table>
+			    </section>
+			    <section data-dfn-for="TemporalOffer">
+					<h2><dfn>Temporal Offer</dfn></h2>
+					<table class="def propdef">
+					    <tbody>
+						<tr>
+						    <th>Definition:</th><td>An enduring container for the various iterations of an Offer through time.</td>
+						</tr><tr>
+						    <th>Label:</th><td>Temporal Offer</td>
+						</tr><tr>
+						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalOffer">http://www.w3.org/ns/odrl/2/temporal/TemporalOffer</a></td>
+						</tr><tr>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicyr">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						</tr>
+					    </tbody>
+					</table>
+			    </section>
+			    <section data-dfn-for="TemporalSet">
+					<h2><dfn>Temporal Set</dfn></h2>
+					<table class="def propdef">
+					    <tbody>
+						<tr>
+						    <th>Definition:</th><td>An enduring container for the various iterations of a Set through time.</td>
+						</tr><tr>
+						    <th>Label:</th><td>Temporal Set</td>
+						</tr><tr>
+						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalSet">http://www.w3.org/ns/odrl/2/temporal/TemporalSet</a></td>
+						</tr><tr>
+						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy"http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+						</tr>
+					    </tbody>
+					</table>
+			    </section>
 		    </section>
 		    <section data-dfn-for="TemporalRule">
 				<h2><dfn>Temporal Rule</dfn></h2>
@@ -217,30 +265,26 @@
 		<section id='PropertiesOfTemporalObjects'>
 		    <h2>Properties Of Temporal Objects</h2>
 		    <p>
-			...
+			Temporal Objects use the version property to track its iterations through time.
 		    </p>
 		    <section data-dfn-for="Version">
 				<h2><dfn>version</dfn></h2>
 				<table class="def propdef">
-				    <tbody>
-					<tr>
-					    <th>Definition:</th><td>A property that points from a temporal object to its time-limited versions.</td>
-					</tr><tr>
-					    <th>Label:</th><td>version</td>
-					</tr><tr>
-					    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/version">http://www.w3.org/ns/odrl/2/temporal/version</a></td>
-					</tr><tr>
-					    <th>Domain:</th><td>Temporal Object</td>
-					</tr><tr>
-					    <th>Range:</th><td>Rule</td>
-					</tr>
-				    </tbody>
+					<tbody>
+						<tr>
+							<th>Definition:</th><td>A property that points from a temporal object to its time-limited versions.</td>
+						</tr><tr>
+							<th>Label:</th><td>version</td>
+						</tr><tr>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/version">http://www.w3.org/ns/odrl/2/temporal/version</a></td>
+						</tr><tr>
+							<th>Domain:</th><td>Temporal Object</td>
+						</tr><tr>
+							<th>Range:</th><td>Rule</td>
+						</tr>
+					</tbody>
 				</table>
-			    
+			</section>
 		</section>
-
-
-			
 	</body>
 </html>
-	
