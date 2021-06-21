@@ -1,0 +1,326 @@
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:	 	<http://purl.org/dc/terms/> .
+@prefix dcat:	<http://www.w3.org/ns/dcat#> .
+@prefix time:	<http://www.w3.org/2006/time#> .
+@prefix odrl:	<http://www.w3.org/ns/odrl/2/> .
+@prefix prov:	<http://www.w3.org/ns/prov#> .
+
+@prefix md:	 	<http://www.w3.org/md-odrl-profile/> .
+@prefix cfi:	<https://www.iso.org/standard/73564/> .
+@prefix gsa:	<http://www.gs.com/agents/> .
+@prefix dbru:	<https://example.com/rules/> .
+@prefix dbre:	<https://example.com/resources/> .
+@prefix dbdo:	<https://example.com/documents/> .
+@prefix dd:	 	<http://www.deonticdata.com/ontologies/deontic_state/> .
+@prefix con:	<http://www.deonticdata.com/ontologies/contracts/> .
+@prefix ux:	 	<http://www.deonticdata.com/ontologies/ux/> .
+@prefix rbim:	<http://example.org/rbim/> .
+@prefix rdoc:	<http://example.org/documents/> .
+
+# CONTRACTED PARTY POLICY ##################################################################################################
+dbru:Pol1		a 					odrl:Policy ;
+				odrl:permission 	dbru:P1-1-1-1 .
+
+
+# CONTRACTED PARTY DISTRIBUTION PERMISSIONS ################################################################################
+# Realtime distribution to a Consumer
+dbru:P1-1-1-1	a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/1> ;
+				odrl:assignee 		<https://example.com/2> ;
+				md:users			[	a 	md:InternalParty ] , 
+									[ 
+										a				md:ExternalParty ;
+										md:role			[ 
+															a 				md:ServiceFacilitator ;
+														]
+									] ;
+				odrl:action 		[ 
+										a 				md:Distribute ;
+										md:recipients 	[
+															a 				md:ExternalParty ;
+															md:role 		md:Consumer ;
+														]
+									] ;
+				odrl:duty			dbru:D7 , dbru:D3 , dbru:D4 ;
+				odrl:target 		[
+										a 							md:Asset ;
+										md:timelinessOfDelivery		[	a 	md:Realtime	] ;
+									] .
+
+
+# SUBSCRIBER POLICY ##################################################################################################
+# From Realtime distribution to a Consumer
+dbru:Pol2 		a 					odrl:Policy ;
+				odrl:permission 	dbru:P2-2-1 , dbru:P2-2-2 , dbru:P2-3-1, dbru:P2-3-2 , dbru:P2-4 .
+
+# From derive CFDs
+dbru:Pol7-1 	a 					odrl:Policy ;
+				odrl:permission 	dbru:P3-1 , dbru:P3-2 .
+
+# From distribute CFDs
+dbru:Pol7-2		a 					odrl:Policy ;
+				odrl:permission 	dbru:P3-2 .
+
+
+# SUBSCRIBER PERMISSIONS ##################################################################################################
+# Realtime display permission to a closed user group
+dbru:P2-2-1 	a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:controls 		[ 	a 	md:ClosedUserGroup ] ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[	a 	md:Display ] ;
+				odrl:duty 			dbru:D6 ;
+				odrl:target 		[
+										a 							md:Asset ;
+										md:timelinessOfDelivery		[	a 	md:Realtime ] ;
+									] .
+
+# Delayed display permission to an open user gropu
+dbru:P2-2-2 	a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[ 	a 	md:Display ] ;
+				odrl:target 		[
+										a 							md:Asset ;
+										md:timelinessOfDelivery		[ a md:Delayed ] ;
+									] .
+
+# Realtime non-display
+dbru:P2-3-1 	a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:controls 		[ 	a 	md:ClosedUserGroup ] ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[ 	a 	md:NonDisplay ] ;
+				odrl:duty 			dbru:D6 ;
+				odrl:target 		[
+										a 							md:Asset ;
+										md:timelinessOfDelivery		[ a md:Realtime ] ;
+									] .
+		
+# Delayed non-display
+dbru:P2-3-2 	a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[ 	a 	md:NonDisplay ] ;
+				odrl:target 		[
+										a 							md:Asset ;
+										md:timelinessOfDelivery		[ a md:Delayed ] ;
+									] .
+
+# Derive CFDs
+dbru:P2-4 		a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:controls 		[ 	a 	md:ClosedUserGroup ] ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[ 
+										a 					md:Derive ;
+										md:derivationTypes 	[ a md:Irreversible ] , [ a md:Non-Substitutive ] ;
+									] ;
+				odrl:output         [
+										a 				md:Asset ;
+										md:assetClass 	[ 
+															a 				cfi:JESXCC ;
+															dc:title 		"Contract for Difference"
+														] ;
+									] ;
+				odrl:duty 			dbru:D11 .
+
+
+# DISTRIBUTION & USE OF CFDs ##################################################################################################
+# Distribute CFDs
+dbru:P3-1 		a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				odrl:action 		[ 	a 	md:Distribute ] ;
+				odrl:duty           dbru:D12 , dbru:D5 ;
+				md:services 		[
+										a 				md:Service ;
+										md:provides 	[
+															a 				md:Asset ;
+															md:assetClass 	[ 
+																				a 				cfi:JESXCC ;
+																				dc:title 		"Contract for Difference"
+																			] ;
+														] ;
+									] ;
+				odrl:target 		[
+										a 				md:Asset ;
+										md:assetClass 	[ 
+															a 				cfi:JESXCC ;
+															dc:title 		"Contract for Difference"
+														] ;
+									] .
+
+# Use CFDs
+dbru:P3-2 		a 					odrl:Permission ;
+				odrl:assigner 		<https://example.com/2> ;
+				odrl:assignee 		<https://example.com/3> ;
+				md:users 			[ 	a 	md:Internal ] ;
+				odrl:action 		[	a 	md:Use ] ;
+				odrl:duty 			dbru:D2 ;
+				md:services 		[
+										a 				md:Service ;
+										md:provides 	[
+															a 				md:Asset ;
+															md:assetClass 	[ 
+																				a 				cfi:JESXCC ;
+																				dc:title 		"Contract for Difference"
+																			] ;
+														] ;
+									] ;
+				odrl:target 		[
+										a 				md:Asset ;
+										md:assetClass 	[ 
+															a 				cfi:JESXCC ;
+															dc:title 		"Contract for Difference"
+														] ;
+									] .
+
+
+#### NEXT POLICY DUTIES ####################################################################################
+
+dbru:D7 		a 					odrl:Duty ;
+				md:subject          <https://example.com/2> ; 
+                md:object           [ a md:ExternalParty ] ; 
+				odrl:action 		[ a md:NextPolicy ] ;
+				odrl:target         dbru:Pol2 .
+
+dbru:D11 		a 					odrl:Duty ;
+				md:subject          <https://example.com/2> ; 
+                md:object           [ a md:ExternalParty ] ; 
+				odrl:action 		[ a md:NextPolicy ] ;
+				odrl:target         dbru:Pol7-1 .
+
+dbru:D12 		a 					odrl:Duty ;
+				md:subject          <https://example.com/2> ; 
+                md:object           [ a md:ExternalParty ] ; 
+				odrl:action 		[ a md:NextPolicy ] ;
+				odrl:target         dbru:Pol7-2 .
+
+
+#### REPORTING DUTIES ####################################################################################
+dbru:D6 		a					odrl:Duty ;
+				dc:title			"Report" ;
+				dc:description		"Report Usage by User ID" ;
+				odrl:assigner		<https://example.com/1> ;
+				odrl:assignee		<https://example.com/2> ;
+				md:subject			<https://example.com/1> ;
+				md:object			<https://example.com/2> ;
+				odrl:action			[	
+										a						md:Report ;
+										dc:title				"Report" ;
+										odrl:unitOfCount		[	a	md:UserID ] ;
+									] ;
+				odrl:target 		[	a	md:Usage ]  .
+
+
+
+#### CONSENT DUTIES ##########################################################################################
+# Consent for a Service Facilitator
+dbru:D3		 	a					odrl:Duty ;
+				dc:title			"Consent" ;
+				dc:description		"Consent to a Service Provider" ;
+				odrl:assigner		<https://example.com/1> ;
+				odrl:assignee		<https://example.com/2> ;
+				md:subject			<https://example.com/1> ;
+				md:object			<https://example.com/2> ;
+				odrl:action			[	
+										a						md:Consent ;
+										dc:title				"Consent" ;
+										odrl:unitOfCount		[	
+																	a						md:ExternalParty ;
+																	md:role                 [ 
+																								a						md:ServiceFacilitator ;
+																							] ;
+																] ;
+									] ;
+				odrl:duty			dbru:D3-1 .
+
+
+dbru:D3-1		a					odrl:Duty ;
+				dc:title			"Request Consent" ;
+				dc:description		"Request consent for a Service Provider" ;
+				odrl:assigner		<https://example.com/1> ;
+				odrl:assignee		<https://example.com/2> ;
+				md:subject			<https://example.com/2> ;
+				md:object			<https://example.com/1> ;
+				odrl:action			[	
+										a						md:Request ;
+										dc:title				"Request consent" ;
+										odrl:unitOfCount		[	
+																	a						md:ExternalParty ;
+																	md:role                 [ 
+																								a						md:ServiceFacilitator ;
+																							] ;
+																] ;
+									] ;
+				md:recipient		[ 
+										a						md:ExternalParty ;
+										md:role					[ 
+																	a						md:ServiceFacilitator ;
+																] ;
+									] .
+
+
+#### ATTRIBUTIONS, DISCLAIMERS, AND PROSCRIPTIONS ##########################################################################################
+dbru:D2		 	a					odrl:Duty ;
+				dc:title			"Attach Attribution" ;
+				dc:description		"Attribute Ownership" ;
+				odrl:assigner		<https://example.com/1> ;
+				odrl:assignee		<https://example.com/2> ;
+				md:subject			<https://example.com/2> ;
+				md:object			<https://example.com/1> ;
+				odrl:action			[	
+										a						md:Attach ;
+										dc:title				"Attach" ;
+									] ;
+				odrl:target			[	
+										a						md:Attribution ;
+										md:wording				"Source: Market X" ;
+									] ;
+				md:recipient        [ a md:ExternalParty ] .
+
+
+dbru:D4		 	a					odrl:Duty ;
+				dc:title			"Agree" ;
+				dc:description		"Agree Proscription on onward dissemination without Consent" ;
+				odrl:assigner		<https://example.com/2> ;
+				odrl:assignee		<https://example.com/3> ;
+				md:subject			<https://example.com/2> ;
+				md:object			<https://example.com/3> ;
+				odrl:action			[	
+										a						md:Agree ;
+										dc:title				"Agree" ;
+									] ;
+				odrl:target			[	
+										a						md:Proscription ;
+										md:wording				"No dissemination to third parties without the consent of Market X" ;
+
+									]  ;
+				md:recipient        [ a md:ExternalParty ].
+
+dbru:D5		 	a					odrl:Duty ;
+				dc:title			"Attach" ;
+				dc:description		"Attach Proscription on onward dissemination without Consent" ;
+				odrl:assigner		<https://example.com/2> ;
+				odrl:assignee		<https://example.com/3> ;
+				md:subject			<https://example.com/2> ;
+				md:object			<https://example.com/3> ;
+				odrl:action			[	
+										a						md:Attach ;
+										dc:title				"Attach" ;
+									] ;
+				odrl:target			[	
+										a						md:Proscription ;
+										md:wording				"No dissemination to third parties without the consent of Market X Group" ;
+
+									]  ;
+				md:recipient        [ a md:ExternalParty ] .
+
