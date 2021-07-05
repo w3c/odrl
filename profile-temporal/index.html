@@ -24,7 +24,7 @@
 			<p>This document presents a model for describing the ways the rights and obligation conrtolling the use of an asset change over time.</p>
 			 
 		</section>
-		<section id='sotd'>
+		<section id="sotd">
 
 		</section> 
 	
@@ -119,7 +119,7 @@
 
 		    </section>   				
 		</section>
-		<section id='TemporalObjects'>
+		<section id="TemporalObjects">
 		    <h2>Temporal Objects</h2>
 		    <p>
 			Temporal objects exist in time descibing versions of themselves as they change. We're interested in tracking Policies, Rules, and Assets.
@@ -182,6 +182,13 @@
 					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">before</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
 					<span class="w">                                </span><span class="p">] ;</span>
 					<span class="w">        </span><span class="nn">temp:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1-V1</span><span class="p"> .</span>  
+
+                    <span class="nv">:T1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
+					<span class="w">        </span><span class="nn">temp:</span><span class="nt">effectiveDate</span><span class="w">      </span><span class="p">[</span>
+					<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
+					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">after</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+					<span class="w">                                </span><span class="p">] ;</span>
+					<span class="w">        </span><span class="nn">temp:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1-V1</span><span class="p"> , </span><span class="nv">:P2-V1</span><span class="p"> .</span>  
 				</pre>
 			    <section data-dfn-for="TemporalOffer">
 					<h2><dfn>Temporal Offer</dfn></h2>
@@ -288,14 +295,14 @@
 							<th>Label:</th><td>Temporal Asset</td>
 						</tr><tr>
 							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAsset">http://www.w3.org/ns/odrl/2/temporal/TemporalAsset</a></td>
-						</tr>tr>
+						</tr><tr>
 							<th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Object</a></td>
 						</tr>
 				    </tbody>
 				</table>
 		    </section>
 		</section>
-		<section id='PropertiesOfTemporalObjects'>
+		<section id="PropertiesOfTemporalObjects">
 		    <h2>Properties Of Temporal Objects</h2>
 		    <p>
 			A Temporal Objects use the version property to track its iterations through time.
@@ -319,7 +326,7 @@
 				</table>
 			</section>
 		</section>
-		<section id='PropertiesOfPoliciesRulesAssets'>
+		<section id="PropertiesOfPoliciesRulesAssets">
 		    <h2>Properties Of Policies, Rules, and Assets</h2>
 		    <p>
 				...
