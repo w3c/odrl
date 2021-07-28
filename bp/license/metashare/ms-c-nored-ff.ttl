@@ -1,0 +1,44 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:ms-c-nored-ff  a           odrl:Policy ;
+        rdfs:label          "META-SHARE Commercial NoRedistribution For-A-Fee" ;
+        rdfs:seeAlso        <http://www.meta-net.eu/meta-share/meta-share-licenses/Tabular%20Presentation%20of%20No%20redistribution%20Licences.pdf> ;
+        ms:conditionsOfUse  ms:languageEngineeringResearch , ms:noRedistribution , cc:Attribution , cc:CommercialUse ;
+        ms:licenseCategory  ms:PUB ;
+        dct:alternative     "MS C-NoReD-FF" ;
+        dct:hasVersion      "1.0" ;
+        dct:language        <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher       "Meta-Share" ;
+        dct:source          <http://www.meta-net.eu/meta-share/meta-share-licenses/META-SHARE%20Commercial%20%20NoRedistribution_v0%207.pdf> ;
+        dct:title           "META-SHARE Commercial NoRedistribution For-A-Fee" ;
+        odrl:permission     [ odrl:action      odrl:aggregate , odrl:extract , cc:DerivativeWorks , cc:Reproduction , cc:CommercialUse ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:spatial   "only at assignee's site"
+                                               ] ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:purpose   ms:languageEngineeringResearch
+                                               ] ;
+                              odrl:duty        [ odrl:action  cc:Attribution ] ;
+                              odrl:duty        [ odrl:action  odrl:pay ;
+                                                 odrl:target  :resource
+                                               ]
+                            ] ;
+        odrl:prohibition    [ odrl:action  cc:Distribution ] .
+

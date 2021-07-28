@@ -1,0 +1,35 @@
+[
+  {
+    "id": "GPL-3.0",
+    "title": "GNU General Public License 3.0",
+    "source": "http://gnu.org/licenses/gpl-3.0.html",
+    "mapping": [
+      "official/gpl-3.0.rdf"
+    ]
+  },
+  {
+    "id": "APACHE-2.0",
+    "title": "",
+    "source": "",
+    "mapping": [
+      "dalicc/APACHE_v2"
+    ]
+  },
+  {
+    "id": "AFL-3.0",
+    "title": "Academic Free License 3.0",
+    "source": "",
+    "mapping": [
+      "rdflicense/afl3.0",
+      "dalicc/AcademicFreeLicense30"
+    ]
+  },
+  {
+    "id": "CCBYNC-3.0-AZ",
+    "title": "CC Attribution Non-Commercial 3.0 Azerbaijan",
+    "source": "",
+    "mapping": [
+      "dalicc/AttributionNoncommercial30Azerbaijan"
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:elra-var  a                odrl:Policy ;
+        rdfs:label          "LANGUAGE RESOURCES VALUE-ADDED-RESELLER AGREEMENT" ;
+        rdfs:seeAlso        <http://www.elda.org/en/services-around-lrs/distribution/licensing/> ;
+        cc:legalcode        "\r\nThis agreement is made by and between:\r\n\" .............................. \" (hereinafter called VAR), having its principal place of business at: ...................................\r\n...................................................................................................................................................................................\r\nand represented by: ...................................................................................................................................................,\r\nacting as: .....................................................................................................................................................................\r\nAND\r\nELDA S.A.S., (hereinafter called DISTRIBUTOR), the distribution agency commissioned by ELRA, having its\r\nprincipal place of business at: 9 rue des Cordelières - 75013 Paris, FRANCE\r\nSociété par Actions Simplifiée registered at the Tribunal de commerce de Paris (with a registered capital of\r\n250,000 €):\r\nRCS Paris B 402 781 876 (95b147 95),\r\nand represented by Mr. Khalid CHOUKRI, acting as the Managing Director of ELDA,\r\n- both referred to as \"the parties\" -\r\nwhereby it is agreed as follows:\r\n1. Language Resources, object of this AGREEMENT, for which DISTRIBUTOR obtained distribution rights\r\nfrom the rightful holder, are described in Exhibit A.\r\n2. The site of use of the Language Resources is mentioned in Exhibit B.\r\n3. Within this AGREEMENT VAR means “Value Added Reseller”.\r\n4. DISTRIBUTOR grants VAR the right to reproduce the Language Resources temporarily or permanently, to\r\ntranslate, adapt, arrange and modify by any means the Language Resources, if one or all of these acts, which\r\nnormally require an authorization from the Language Resources owner, are necessary to access and make\r\nthe agreed use of the contents of the Language Resources.\r\n5. DISTRIBUTOR grants VAR the right to rework and build upon the Language Resources, or any component\r\nthereof, as necessary or desirable for the purposes of their own internal language engineering research\r\nactivities or their own internal technology development, at VAR’s site (defined in Exhibit B). All rights\r\ngranted hereunder are perpetual, royalty free and worldwide.\r\n6. DISTRIBUTOR grants VAR the non-exclusive right to distribute and market any derivative product or\r\nservice based on all or a substantial part of the Language Resources (according to VAR's commercialization\r\npolicies).\r\nAdd your initials here :\r\nELDA - Commercial in confidence Date: 01/04/2015 Page 2/4\r\n7. VAR is not permitted to make available to the public all or any substantial part of the contents of the\r\nLanguage Resources, evaluated quantitatively and/or qualitatively, by the distribution of copies, by renting,\r\nleasing or any other form of distribution, including free or open-source ones.\r\n8. VAR is not permitted to make products or services available to third parties in any form that allows to\r\nreconstruct the original Language Resources.\r\n9. VAR acquires no ownership, rights or title in all or any parts of the Language Resources.\r\n10. Without prejudice to the other provisions, the rights referred to herein shall be non transferable to any other\r\nentity. The Language Resources shall not be transferred to or accessed from any other site.\r\n11. DISTRIBUTOR and OWNERS accept no responsibility for the accuracy or completeness of the data or for\r\nthe consequences of their use. DISTRIBUTOR and OWNERS give no warranty for merchantability and/or\r\nfitness for a particular purpose of the Language Resources. Language Resources are provided on an \"as is\r\nwith all defects\" basis. DISTRIBUTOR does not guarantee the quality or the adequate nature for the intended\r\nuse of the data.\r\n12. VAR and DISTRIBUTOR are independent contractors. Nothing contained in this AGREEMENT shall be\r\nconstrued as creating an employer-employee relationship, a partnership or a Joint Venture between VAR and\r\nDISTRIBUTOR.\r\n13. VAR has no right or authority to incur, assume or create, in writing or otherwise, any warranty, liability or\r\nother obligation of any kind, express or implied, in the name of or on behalf of DISTRIBUTOR, it being\r\nintended that each party shall remain an independent contractor responsible for its own actions.\r\n14. Neither party shall be responsible for damages caused by the other party's non-fulfillment of provisions of this\r\nAGREEMENT.\r\n15.Both parties exclude all liability of whatsoever nature for direct, consequential or indirect loss or damage\r\nsuffered by the other.\r\n16. VAR shall give appropriate references to Distributor, as well as to the name and reference of the Language\r\nResources in scholarly literature when the Language Resources are mentioned. The following\r\nacknowledgement is required: “LANGUAGE RESOURCE NAME, ELRA catalogue\r\n(http://catalog.elra.info), ISLRN: XXX-XXX-XXX-XXX-X, ELRA ID: ELRA-XXXXX”.\r\n17. VAR shall not use the name of Distributor in any publication in any manner that would imply an endorsement\r\nof VAR or any product or service offered by VAR.\r\n18. VAR agrees to pay DISTRIBUTOR a compensation. The mode of payment and schedule of payments are\r\nincorporated in Exhibit C and form part of this AGREEMENT.\r\n19. This AGREEMENT is subject to, construed and interpreted in accordance with the Law of France. Should it\r\nnot be possible to settle amicably differences of interpretation out of this AGREEMENT, then the case shall\r\nbe brought before the regular courts of law for a decision. The \"Tribunal de commerce de Paris\" shall be the\r\nonly competent court.\r\nThe entire AGREEMENT is composed of the 19 articles herein together with Exhibits A, B, and C thereafter.\r\nIn witness whereof, intending to be bound, the parties hereto have executed this AGREEMENT by their duly\r\nauthorized officers.\r\n"@en ;
+        ms:conditionsOfUse  ms:noRedistribution , ms:forAFee , ms:spatialConstraint , cc:Attribution , ms:languageEngineeringResearch ;
+        ms:licenseCategory  ms:RES ;
+        dct:alternative     "ELRA-VAR" ;
+        dct:language        <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher       "Elra" ;
+        dct:source          <http://www.elda.org/media/filer_public/2014/08/01/var_140312.pdf> ;
+        odrl:permission     [ odrl:action      cc:DerivativeWorks , cc:Reproduction , odrl:modify , odrl:translate ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:purpose   ms:languageEngineeringResearch
+                                               ] ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:spatial   "only at assignee's site"
+                                               ] ;
+                              odrl:duty        [ odrl:action           cc:Attribution ;
+                                                 odrl:attributedParty  ms:distributionRightsHolder
+                                               ] ;
+                              odrl:duty        [ odrl:action  odrl:compensate ]
+                            ] ;
+        odrl:prohibition    [ odrl:action  cc:Distribution ] .
+

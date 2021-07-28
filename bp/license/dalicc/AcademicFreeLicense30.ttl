@@ -1,0 +1,60 @@
+@prefix ns1: <http://www.w3.org/ns/odrl/2/> .
+@prefix ns2: <https://dalicc.net/node/> .
+@prefix ns3: <http://creativecommons.org/ns#> .
+@prefix ns4: <https://dalicc.net/license/> .
+@prefix ns5: <https://dalicc.net/user/> .
+@prefix ns6: <https://dalicc.poolparty.biz/DALICC/> .
+
+<https://dalicc.net/license-library/AcademicFreeLicense30> a ns1:Set ;
+    <http://purl.org/dc/terms/identifier> "AFL-3.0" ;
+    ns3:jurisdiction ns6:worldwide ;
+    ns1:permission [ a ns1:Permission ;
+            ns1:action ns1:derive,
+                ns1:display,
+                ns1:grantUse,
+                ns1:present,
+                ns1:reproduce,
+                <https://creativecommons.org/ns#CommercialUse>,
+                ns6:chargeDistributionFee,
+                ns6:chargeLicenseFee,
+                ns6:noWarrantyNotice ;
+            ns1:assigner "urn:dalicc:assigner:6eee8281-599c-556b-89bd-14baa1b17f2a" ;
+            ns1:target "urn:dalicc:target:6eee8281-599c-556b-89bd-14baa1b17f2a" ],
+        [ a ns1:Permission ;
+            ns1:action ns3:DerivativeWorks ;
+            ns1:assigner "urn:dalicc:assigner:6eee8281-599c-556b-89bd-14baa1b17f2a" ;
+            ns1:duty [ a ns1:Duty ;
+                    ns1:action ns3:Attribution,
+                        ns3:Notice,
+                        ns3:SourceCode,
+                        ns6:modificationNotice ] ;
+            ns1:target "urn:dalicc:target:6eee8281-599c-556b-89bd-14baa1b17f2a" ],
+        [ a ns1:Permission ;
+            ns1:action ns1:distribute ;
+            ns1:assigner "urn:dalicc:assigner:6eee8281-599c-556b-89bd-14baa1b17f2a" ;
+            ns1:duty [ a ns1:Duty ;
+                    ns1:action ns3:Attribution,
+                        ns3:Notice,
+                        ns3:SourceCode ] ;
+            ns1:target "urn:dalicc:target:6eee8281-599c-556b-89bd-14baa1b17f2a" ],
+        [ a ns1:Permission ;
+            ns1:action ns1:modify ;
+            ns1:assigner "urn:dalicc:assigner:6eee8281-599c-556b-89bd-14baa1b17f2a" ;
+            ns1:duty [ a ns1:Duty ;
+                    ns1:action ns6:modificationNotice ] ;
+            ns1:target "urn:dalicc:target:6eee8281-599c-556b-89bd-14baa1b17f2a" ] ;
+    ns1:prohibition [ a ns1:Prohibition ;
+            ns1:action ns3:ShareAlike,
+                ns6:addStatement,
+                ns6:promote ;
+            ns1:assigner "urn:dalicc:assigner:6eee8281-599c-556b-89bd-14baa1b17f2a" ;
+            ns1:target "urn:dalicc:target:6eee8281-599c-556b-89bd-14baa1b17f2a" ] ;
+    ns4:class "private",
+        "standard" ;
+    ns4:status "published",
+        "unpublished" ;
+    ns2:id "86" ;
+    ns5:id "9" ;
+    ns6:WarrantyDisclaimer "Under no circumstances and under no legal theory, whether in tort (including negligence), contract, or otherwise, shall the Licensor be liable to anyone for any indirect, special, incidental, or consequential damages of any character arising as a result of this License or the use of the Original Work including, without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses. This limitation of liability shall not apply to the extent applicable law prohibits such limitation." ;
+    ns6:validityType ns6:perpetual .
+

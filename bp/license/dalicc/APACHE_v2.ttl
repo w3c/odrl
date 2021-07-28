@@ -1,0 +1,11 @@
+@prefix ns1: <https://dalicc.net/license/> .
+@prefix ns2: <https://dalicc.net/user/> .
+@prefix ns3: <https://dalicc.net/node/> .
+
+<https://dalicc.net/license-library/APACHE_v2> a <http://www.w3.org/ns/odrl/2/Set> ;
+	<http://purl.org/dc/terms/identifier> "APACHE-2.0" ;
+    ns1:class "private" ;
+    ns1:status "published" ;
+    ns3:id "34" ;
+    ns2:id "1" .
+
