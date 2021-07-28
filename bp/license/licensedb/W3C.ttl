@@ -1,0 +1,15 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/W3C> a cc:License;
+   schema:sameAs <http://www.opensource.org/licenses/W3C>;
+   li:id "W3C";
+   li:name "W3C Software License";
+   dc:title "W3C Software License";
+   dc:creator <http://www.w3.org/>;
+   li:libre <http://opensource.org/>;
+   cc:legalcode <http://www.opensource.org/licenses/W3C>.

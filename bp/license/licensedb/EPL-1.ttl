@@ -1,0 +1,37 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/EPL-1> a cc:License;
+   schema:sameAs <http://www.eclipse.org/legal/epl-v10.html>;
+   li:id "EPL-1";
+   li:name "EPL 1.0";
+   dc:title "Eclipse Public License";
+   dc:hasVersion "1.0";
+   dc:creator <http://www.eclipse.org/>;
+   li:plaintext <http://opensource.org/licenses/eclipse-1.0.txt>;
+   cc:legalcode <http://www.eclipse.org/legal/epl-v10.html>;
+   dc:replaces <https://licensedb.org/id/CPL-1.0>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   spdx:licenseId "EPL-1.0";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """/*******************************************************************************
+ * Copyright (c) {{year}} {{rightsholder}}.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    __________________ - initial API and implementation
+ *******************************************************************************/ 
+""".

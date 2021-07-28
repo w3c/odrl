@@ -1,0 +1,13 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/DSL> a cc:License;
+   li:id "DSL";
+   li:name "Design Science License";
+   dc:title "DSL";
+   li:libre <http://opendefinition.org/>;
+   cc:legalcode <https://licensedb.org/id/DSL.txt>.

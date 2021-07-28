@@ -1,0 +1,14 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://licensedb.org/id/WTFPL-1.1> a cc:License;
+   li:id "WTFPL-1.1";
+   li:name "Do What The Fuck You Want To Public License";
+   dc:hasVersion "1.1";
+   dc:isReplacedBy <https://licensedb.org/id/WTFPL-2>;
+   dc:title "Do What The Fuck You Want To Public License";
+   cc:legalcode <http://git.savannah.gnu.org/cgit/threadmill.git/plain/COPYING.WTFPL>;
+   li:plaintext <http://git.savannah.gnu.org/cgit/threadmill.git/plain/COPYING.WTFPL>.

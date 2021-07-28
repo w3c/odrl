@@ -1,0 +1,20 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Apache-1> a cc:License;
+   schema:sameAs <http://www.apache.org/licenses/LICENSE-1.0>;
+   li:id "Apache-1";
+   li:name "Apache 1.0";
+   li:plaintext <http://www.apache.org/licenses/LICENSE-1.0.txt>;
+   dc:isReplacedBy <https://licensedb.org/id/Apache-1.1>;
+   dc:title "Apache License";
+   dc:creator <http://apache.org/>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://debian.org/>;
+   dc:hasVersion "1.0";
+   cc:legalcode <http://www.apache.org/licenses/LICENSE-1.0>;
+   spdx:licenseId "Apache-1.0".

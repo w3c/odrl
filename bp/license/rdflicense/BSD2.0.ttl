@@ -1,0 +1,29 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:BSD2.0  a               odrl:Policy ;
+        rdfs:label       "2-clause BSD License" ;
+        cc:legalcode     "\r\n\r\n<OWNER> = Regents of the University of California\r\n<YEAR> = 1998\r\n\r\nCopyright (c) <YEAR>, <OWNER>\r\nAll rights reserved.\r\n\r\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\r\n\r\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\r\n\r\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\r\n\r\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\r\n        "@en ;
+        dct:hasVersion   "2.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "The FreeBSD Project" ;
+        dct:source       <http://www.linfo.org/bsdlicense.html> ;
+        owl:sameAs       <https://licensedb.org/id/BSD-2-Clause> ;
+        odrl:permission  [ odrl:action  cc:Distribution , odrl:modify ;
+                           odrl:duty    [ odrl:action  cc:Notice , cc:ShareAlike ]
+                         ] .
+

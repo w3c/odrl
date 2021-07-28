@@ -1,0 +1,18 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/AGPL-1> a cc:License;
+   schema:sameAs <http://www.affero.org/oagpl.html>;
+   li:id "AGPL-1";
+   li:name "AGPLv1";
+   dc:isReplacedBy <https://licensedb.org/id/AGPL-2>;
+   dc:isReplacedBy <https://licensedb.org/id/AGPL-3>;
+   dc:title "Affero General Public License";
+   dc:creator <http://www.affero.org/>;
+   li:libre <http://fsf.org/>;
+   dc:hasVersion "1";
+   cc:legalcode <http://www.affero.org/oagpl.html>.

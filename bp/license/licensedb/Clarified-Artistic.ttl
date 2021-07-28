@@ -1,0 +1,19 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Clarified-Artistic> a cc:License;
+   schema:sameAs <http://www.ncftp.com/ncftp/doc/LICENSE.txt>;
+   li:id "Clarified-Artistic";
+   li:name "Clarified Artistic";
+   dc:replaces <https://licensedb.org/id/Artistic>;
+   dc:isReplacedBy <https://licensedb.org/id/Artistic-2>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://debian.org/>;
+   dc:title "Clarified Artistic License";
+   cc:legalcode <http://www.ncftp.com/ncftp/doc/LICENSE.txt>;
+   li:plaintext <http://www.ncftp.com/ncftp/doc/LICENSE.txt>;
+   spdx:licenseId "ClArtistic".

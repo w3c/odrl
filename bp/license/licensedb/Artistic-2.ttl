@@ -1,0 +1,36 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Artistic-2> a cc:License;
+   schema:sameAs <http://www.perlfoundation.org/artistic_license_2_0>;
+   li:id "Artistic-2";
+   li:name "Artistic 2.0";
+   dc:replaces <https://licensedb.org/id/Artistic>;
+   dc:title "Artistic License 2.0";
+   dc:hasVersion "2.0";
+   dc:creator <http://perlfoundation.org/>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   cc:legalcode <http://www.perlfoundation.org/artistic_license_2_0>;
+   li:plaintext <http://www.perlfoundation.org/attachment/legal/artistic-2_0.txt>;
+   spdx:licenseId "Artistic-2.0";
+   li:notice _:notice1;
+   owl:sameAs <magnet:?xt=urn:btih:54fd2283f9dbdf29466d2df1a98bf8f65cafe314&dn=artistic-2.0.txt>.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """{{title}} is Copyright {{years}}, {{rightshoolder}}.
+
+{{title}} is free software; you
+can redistribute it and/or modify it under the terms of the
+Artistic License 2.0. For details, see the full text of the
+license in the file LICENSE.
+""".
+

@@ -1,0 +1,28 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:GOVTRACK1.0  a           odrl:Policy ;
+        rdfs:label        "Govtrack License" ;
+        cc:legalcode      "\r\nThe terms below are our standard terms of service. By using our data or API, you agree to these terms. If you’re okay with these terms, get hacking! Drop us a note to say hi though, 'cause we like to hear from folks using our data/API.\r\n\r\nIf these terms aren’t okay for you, or if you are interested in a contractual agreement with us to establish a SLA, see below.\r\n\r\nAny data files we make available from the Source Data page for which we own the copyright we release into the public domain.\r\nAttribution with a link back to GovTrack.us would be appreciated wherever you use the data.\r\nNo warranty is provided for this data, and, by downloading the data, you agree that we shall not be liable for inaccuracies or other problems in the data or documentation, and that you indemnify us harmless against any claims resulting from your use of the data. Use at your own risk.\r\nYou are permitted and encouraged to download the data following the guidelines given and subject to normal Internet etiquette — unless we have explicitly denied you access. We reserve the right to discontinue your access to our source data for any reason at any time.\r\n"@en ;
+        dct:language      <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher     "GovTrack" ;
+        dct:source        <https://www.govtrack.us/developers/license> ;
+        odrl:permission   [ odrl:action  cc:Reproduction , odrl:reproduce ;
+                            odrl:duty    [ odrl:action  cc:ShareAlike , cc:Attribution ]
+                          ] ;
+        odrl:prohibition  [ odrl:action  cc:CommercialUse , cc:Distribution ] .
+

@@ -1,0 +1,86 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/GPL-3> a cc:License;
+   schema:sameAs <http://gnu.org/licenses/gpl-3.0.html>;
+   owl:sameAs <magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt>;
+   li:id "GPL-3";
+   li:name "GNU GPLv3";
+   dc:hasVersion "3.0";
+   li:plaintext <http://gnu.org/licenses/gpl-3.0.txt>;
+   dc:replaces <https://licensedb.org/id/GPL-2>;
+   li:libre <http://freedomdefined.org/>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   spdx:licenseId "GPL-3.0";
+   spdx:licenseId "GPL-3.0+";
+   spdx:licenseId "GPL-3.0-with-autoconf-exception";
+   spdx:licenseId "GPL-3.0-with-GCC-exception";
+   li:notice _:notice1, _:notice2, _:notice3, _:notice4 .
+
+_:notice1
+   li:orlater true;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice2
+   li:orlater false;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License GPLv3-only: GNU GPL version 3 <http://gnu.org/licenses/gpl-3.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice3
+   li:orlater true;
+   li:short false;
+   li:canonical true;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+""".
+
+_:notice4
+   li:orlater false;
+   li:short false;
+   li:canonical false;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 3 as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+""".
+

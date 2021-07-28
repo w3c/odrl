@@ -1,0 +1,30 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/CC0> a cc:License;
+   schema:sameAs <http://creativecommons.org/publicdomain/zero/1.0/>;
+   owl:sameAs <magnet:?xt=urn:btih:90dc5c0be029de84e523b9b3922520e79e0e6f08&dn=cc0.txt>;
+   li:id "CC0";
+   li:name "CC0";
+   dc:hasVersion "1.0";
+   li:plaintext <http://creativecommons.org/publicdomain/zero/1.0/legalcode.txt>,
+      <https://licensedb.org/id/CC0.txt>;
+   spdx:licenseId "CC0-1.0";
+   li:libre <http://fsf.org/>,
+       <http://freedomdefined.org/>,
+       <http://creativecommons.org/>,
+       <http://opendefinition.org/>;
+   li:notice _:notice1 .
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical false;
+   li:text """To the extent possible under law, {{rightsholder}} has waived all
+copyright and related or neighboring rights to {{title}}.  See
+http://creativecommons.org/publicdomain/zero/1.0/ for more
+information.  """.

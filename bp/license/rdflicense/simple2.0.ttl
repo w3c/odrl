@@ -1,0 +1,30 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:simple2.0  a            odrl:Policy ;
+        rdfs:label       "Simple Public License" ;
+        rdfs:seeAlso     <http://opensource.org/licenses/SimPL-2.0> ;
+        cc:legalcode     "\r\nPreamble\r\nThis Simple Public License 2.0 (SimPL-2.0 for short) is a plain language implementation of GPL 2.0.  The words are different, but the goal is the same - to guarantee for all users the freedom to share and change software.  If anyone wonders about the meaning of the SimPL, they should interpret it as consistent with GPL 2.0.\r\nSimple Public License (SimPL) 2.0\r\nThe SimPL applies to the software's source and object code and comes with any rights that I have in it (other than trademarks). You agree to the SimPL by copying, distributing, or making a derivative work of the software.\r\n\r\nYou get the royalty free right to:\r\nUse the software for any purpose;\r\nMake derivative works of it (this is called a \"Derived Work\");\r\nCopy and distribute it and any Derived Work.\r\nIf you distribute the software or a Derived Work, you must give back to the community by:\r\nProminently noting the date of any changes you make;\r\nLeaving other people's copyright notices, warranty disclaimers, and license terms  in place;\r\nProviding the source code, build scripts, installation scripts, and interface definitions in a form that is easy to get and best to modify;\r\nLicensing it to everyone under SimPL, or substantially similar terms (such as GPL 2.0), without adding further restrictions to the rights provided;\r\nConspicuously announcing that it is available under that license.\r\nThere are some things that you must shoulder:\r\nYou get NO WARRANTIES. None of any kind;\r\nIf the software damages you in any way, you may only recover direct damages up to the amount you paid for it (that is zero if you did not pay anything). You may not recover any other damages, including those called \"consequential damages.\" (The state or country where you live may not allow you to limit your liability in this way, so this may not apply to you);\r\nThe SimPL continues perpetually, except that your license rights end automatically if:\r\nYou do not abide by the \"give back to the community\" terms (your licensees get to keep their rights if they abide);\r\nAnyone prevents you from distributing the software under the terms of the SimPL.\r\n"@en ;
+        dct:creator      <http://fsf.org/> ;
+        dct:hasVersion   "2.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "Free Software Foundation" ;
+        dct:source       <http://opensource.org/licenses/SimPL-2.0> ;
+        odrl:permission  [ odrl:action  cc:Distribution , cc:Reproduction , cc:DerivativeWorks ;
+                           odrl:duty    [ odrl:action  cc:SourceCode , cc:Notice , cc:Copyleft ]
+                         ] .
+

@@ -1,0 +1,28 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:EUC1.0  a               odrl:Policy ;
+        rdfs:label       "European Commission Copyright" ;
+        cc:legalcode     "\r\n© Unión Europea, 1995-2015 \r\n\r\nReutilización autorizada siempre que se indique la fuente. La política de reutilización de la Comisión Europea se basa en la Decisión de 12 de diciembre de 2011  [730KB].\r\nEl principio general de la reutilización puede estar supeditado al cumplimiento de condiciones específicas de determinados avisos de derechos de autor. Por lo tanto, se aconseja a los usuarios que consulten los avisos de derechos de autor específicos de los sitios web publicados en el portal \"Europa\" y de cada documento. La reutilización no se aplica a los documentos sujetos a derechos de propiedad intelectual de terceros.\r\n"@es , "\r\n© Union européenne, 1995-2015\r\n\r\nRéutilisation autorisée moyennant mention de la source. La politique de réutilisation de la Commission européenne relève d'une décision du 12 décembre 2011  [731KB] .\r\n\r\nLe principe général de réutilisation peut être soumis à des conditions définies dans des déclarations spécifiques concernant les droits d'auteur. Les utilisateurs sont donc invités à se référer aux déclarations relatives aux droits d'auteur figurant sur les différents sites hébergés par Europa, ainsi qu'à celles qui sont jointes à certains documents. Le principe de réutilisation ne s'applique pas aux documents soumis aux droits de propriété intellectuelle de tiers.\r\n"@fr , "\r\n© European Union, 1995-2015 \r\n\r\nReuse is authorised, provided the source is acknowledged. The reuse policy of the European Commission is implemented by a Decision of 12 December 2011 [728KB] . \r\n\r\nThe general principle of reuse can be subject to conditions which may be specified in individual copyright notices. Therefore users are advised to refer to the copyright notices of the individual websites maintained under Europa and of the individual documents. Reuse is not applicable to documents subject to intellectual property rights of third parties. \r\n"@en ;
+        cc:legalcode     <http://ec.europa.eu/geninfo/legal_notices_en.htm#copyright> ;
+        dct:hasVersion   "1.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "European Commission" ;
+        odrl:permission  [ odrl:action  cc:Reproduction ;
+                           odrl:duty    [ odrl:action  cc:Attribution ]
+                         ] .
+

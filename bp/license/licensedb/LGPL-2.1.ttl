@@ -1,0 +1,86 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/LGPL-2.1> a cc:License;
+   schema:sameAs <http://gnu.org/licenses/lgpl-2.1.html>;
+   li:id "LGPL-2.1";
+   li:name "GNU LGPL 2.1";
+   li:plaintext <http://gnu.org/licenses/lgpl-2.1.txt>;
+   dc:replaces <https://licensedb.org/id/LGPL-2>;
+   dc:isReplacedBy <https://licensedb.org/id/LGPL-3>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   spdx:licenseId "LGPL-2.1";
+   spdx:licenseId "LGPL-2.1+";
+   li:notice _:notice1, _:notice2, _:notice3, _:notice4;
+   owl:sameAs <magnet:?xt=urn:btih:5de60da917303dbfad4f93fb1b985ced5a89eac2&dn=lgpl-2.1.txt>.
+
+_:notice1
+   li:orlater true;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License LGPLv2.1+:
+GNU Lesser GPL version 2 or later <http://gnu.org/licenses/lgpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice2
+   li:orlater false;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License LGPLv2.1-only:
+GNU Lesser GPL version 2 <http://gnu.org/licenses/lgpl-2.1.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice3
+   li:orlater true;
+   li:short false;
+   li:canonical true;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+""".
+
+_:notice4
+   li:orlater false;
+   li:short false;
+   li:canonical false;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License, version
+2.1 as published by the Free Software Foundation.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+""".

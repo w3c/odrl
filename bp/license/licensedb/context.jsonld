@@ -1,0 +1,28 @@
+{
+    "@context": {
+        "cc": "http://creativecommons.org/ns#",
+        "dc": "http://purl.org/dc/terms/",
+        "dc11": "http://purl.org/dc/elements/1.1/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "li": "https://licensedb.org/ns#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "schema": "http://schema.org/",
+        "spdx": "http://spdx.org/rdf/terms#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "cc:legalcode":      { "@type": "@id" },
+        "cc:permits":        { "@type": "@id" },
+        "cc:requires":       { "@type": "@id" },
+        "cc:prohibits":      { "@type": "@id" },
+        "cc:jurisdiction":   { "@type": "@id" },
+        "cc:licenseClass":   { "@type": "@id" },
+        "dc:creator":        { "@type": "@id" },
+        "dc:source":         { "@type": "@id" },
+        "dc:replaces":       { "@type": "@id" },
+        "dc:isBasedOn":      { "@type": "@id" },
+        "dc:isReplacedBy":   { "@type": "@id" },
+        "foaf:logo":         { "@type": "@id" },
+        "li:plaintext":      { "@type": "@id" },
+        "li:libre":          { "@type": "@id" },
+        "owl:sameAs":        { "@type": "@id" }
+    }
+}

@@ -1,0 +1,27 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:FREEBSD1.0  a           odrl:Policy ;
+        rdfs:label       "Free BSD Documentation License" ;
+        cc:legalcode     "\r\nCopyright 1994-2015 The FreeBSD Project. All rights reserved.\r\n\r\nRedistribution and use in source (SGML DocBook) and 'compiled' forms (SGML, HTML, PDF, PostScript, RTF and so forth) with or without modification, are permitted provided that the following conditions are met:\r\n\r\nRedistributions of source code (SGML DocBook) must retain the above copyright notice, this list of conditions and the following disclaimer as the first lines of this file unmodified.\r\n\r\nRedistributions in compiled form (transformed to other DTDs, converted to PDF, PostScript, RTF and other formats) must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\r\n\r\nTHIS DOCUMENTATION IS PROVIDED BY THE FREEBSD DOCUMENTATION PROJECT \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE FREEBSD DOCUMENTATION PROJECT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\r\n"@en ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "The FreeBSD Project" ;
+        dct:source       <http://www.freebsd.org/copyright/freebsd-doc-license.html> ;
+        odrl:permission  [ odrl:action  cc:Distribution , odrl:modify ;
+                           odrl:duty    [ odrl:action  cc:Notice , cc:ShareAlike ]
+                         ] .
+

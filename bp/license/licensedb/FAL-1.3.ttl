@@ -1,0 +1,14 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/FAL-1.3> a cc:License;
+   li:id "FAL-1.3";
+   li:name "Free Art License";
+   dc:title "FAL 1.3";
+   li:libre <http://opendefinition.org/>;
+   cc:legalcode <https://licensedb.org/id/FAL-1.3.txt>.
+

@@ -1,0 +1,28 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/PDDL-1> a cc:License;
+   schema:sameAs <http://opendatacommons.org/licenses/pddl/1.0/>;
+   li:id "PDDL-1";
+   li:name "ODC PDDL";
+   cc:legalcode <http://opendatacommons.org/licenses/pddl/1.0/>;
+   dc:title "Public Domain Dedication and License";
+   dc:creator <http://opendatacommons.org/>;
+   li:libre <http://opendefinition.org/>;
+   dc:hasVersion "1.0";
+   dc:identifier "PDDL" ;
+   spdx:licenseID "PDDL-1.0";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """{{title}} is made available under the Public Domain Dedication and
+License v1.0 whose full text can be found at:
+http://www.opendatacommons.org/licenses/pddl/1.0/.
+""".

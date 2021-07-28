@@ -1,0 +1,31 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:OGCDocument1.0  a       odrl:Policy ;
+        rdfs:label       "Open Geospatial Consortium Document" ;
+        cc:legalcode     "Document Notice\r\n\r\nPublic documents on the OGC site are provided by the copyright holders under the following license. The software or Document Type Definitions (DTDs) associated with OGC specifications are governed by the Software Notice. By using and/or copying this document, or the OGC document from which this statement is linked, you (the licensee) agree that you have read, understood, and will comply with the following terms and conditions:\r\nPermission to use, copy, and distribute the contents of this document, or the OGC document from which this statement is linked, in any medium for any purpose and without fee or royalty is hereby granted, provided that you include the following on ALL copies of the document, or portions thereof, that you use:\r\nInclude a link or URL to the original OGC document.\r\nThe pre-existing copyright notice of the original author, or if it doesn't exist, a notice of the form: \"Copyright © <date-of-document> Open Geospatial Consortium, Inc. All Rights Reserved. http://www.opengeospatial.org/ogc/document (Hypertext is preferred, but a textual representation is permitted.)\r\nIf it exists, the STATUS of the OGC document.\r\nWhen space permits, inclusion of the full text of this NOTICE should be provided. We request that authorship attribution be provided in any software, documents, or other items or products that you create pursuant to the implementation of the contents of this document, or any portion thereof.\r\nNo right to create modifications or derivatives of OGC documents is granted pursuant to this license. However, if additional requirements (documented in the Copyright FAQ) are satisfied, the right to create modifications or derivatives is sometimes granted by the OGC to individuals complying with those requirements.\r\nTHIS DOCUMENT IS PROVIDED \"AS IS,\" AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS\r\nCOPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.\r\nThe name and trademarks of copyright holders may NOT be used in advertising or publicity pertaining to this document or its contents without specific, written prior permission. Title to copyright in this document will at all times remain with copyright holders.\r\n"@en ;
+        dct:hasVersion   "1.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "Open Geospatial Consortium, Inc." ;
+        dct:source       <http://www.opengeospatial.org/ogc/document> ;
+        odrl:permission  [ a            odrl:Permission ;
+                           odrl:action  cc:Distribution , odrl:modify , odrl:reproduce ;
+                           odrl:duty    [ a            odrl:Duty ;
+                                          odrl:action  cc:Notice , cc:ShareAlike
+                                        ]
+                         ] .
+

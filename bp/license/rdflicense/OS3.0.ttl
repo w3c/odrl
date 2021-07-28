@@ -1,0 +1,28 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:OS3.0  a                odrl:Policy ;
+        rdfs:label       "OS Open Data License" ;
+        cc:legalcode     "\r\nOS makes a number of datasets available free of charge under the terms of the current Open Government Licence (OGL). These datasets – which include raster and vector mapping, height, boundary and gazetteer products – are available for download.\r\n\r\nThe OGL allows you to:\r\n\r\ncopy, distribute and transmit the data;\r\nadapt the data; and\r\nexploit the data commercially, whether by sub-licensing it, combining it with other data, or including it in your own product or application.\r\nYou are therefore able to use the OS OpenData datasets in any way and for any purpose. We simply ask that you acknowledge the copyright and the source of the data by including the following attribution statement:\r\n\r\nContains OS data © Crown copyright [and database right] (year)\r\n\r\nWhere you use Code-Point Open data you must also use the following attribution statements:\r\n\r\nContains Royal Mail data © Royal Mail copyright and Database right [year]\r\n\r\nContains National Statistics data © Crown copyright and database right [year]\r\n\r\nYou must also:\r\n\r\ninclude the same acknowledgement requirement in any sub-licences of the data that you grant, and a requirement that any further sub-licences do the same;\r\nensure that you do not use the data in a way that suggests OS endorses you or your use of the data; and\r\nmake sure you do not misrepresent the data or its source.\r\n"@en ;
+        dct:hasVersion   "3.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "Ordnance Survey" ;
+        dct:source       <http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html> ;
+        odrl:permission  [ odrl:action  cc:CommercialUse , cc:Distribution , cc:DerivativeWorks , cc:Reproduction ;
+                           odrl:duty    [ odrl:action  cc:Attribution ]
+                         ] .
+

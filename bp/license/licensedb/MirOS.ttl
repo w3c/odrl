@@ -1,0 +1,44 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/MirOS> a cc:License;
+   schema:sameAs <http://mirbsd.de/MirOS-Licence>;
+   li:id "MirOS";
+   li:name "MirOS";
+   dc:title "MirOS";
+   cc:legalcode <http://mirbsd.de/MirOS-Licence>;
+   spdx:licenseId "MirOS";
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   li:libre <http://opendefinition.org/>;
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short false;
+   li:canonical true;
+   li:text """/*
+* Copyright (C) {{year}}
+* {{rightsholder}}
+*
+* Provided that these terms and disclaimer and all copyright notices
+* are retained or reproduced in an accompanying document, permission
+* is granted to deal in this work without restriction, including un‐
+* limited rights to use, publicly perform, distribute, sell, modify,
+* merge, give away, or sublicence.
+*
+* This work is provided "AS IS" and WITHOUT WARRANTY of any kind, to
+* the utmost extent permitted by applicable law, neither express nor
+* implied; without malicious intent or gross negligence. In no event
+* may a licensor, author or contributor be held liable for indirect,
+* direct, other damage, loss, or other issues arising in any way out
+* of dealing in the work, even if advised of the possibility of such
+* damage or existence of a defect, except proven that it results out
+* of said person's immediate fault when using the work as intended.
+*/
+""".

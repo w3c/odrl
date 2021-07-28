@@ -1,0 +1,36 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/CPL-1> a cc:License;
+   schema:sameAs <http://www.ibm.com/developerworks/library/os-cpl.html>;
+   li:id "CPL-1";
+   li:name "CPL 1.0";
+   dc:title "Common Public License";
+   dc:hasVersion "1.0";
+   dc:creator <http://www.ibm.com/>;
+   cc:legalcode <http://www.ibm.com/developerworks/library/os-cpl.html>;
+   dc:isReplacedBy <https://licensedb.org/id/EPL-1>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   spdx:licenseId "CPL-1.0";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """/*******************************************************************************
+ * Copyright (c) {{year}} {{rightsholder}}.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ *
+ * Contributors:
+ *    ______________ - initial API and implementation
+ *******************************************************************************/
+""".

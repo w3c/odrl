@@ -1,0 +1,33 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:clarin_aca_by  a                 odrl:Policy ;
+        rdfs:label                "CLARIN ACAdemic BY" ;
+        cc:legalcode              <https://kitwiki.csc.fi/twiki/bin/view/FinCLARIN/ClarinEULA> ;
+        ms:conditionsOfUse        cc:Attribution , ms:academicUser ;
+        ms:licenseClarinCategory  ms:ACA ;
+        dct:alternative           "CLARIN ACA BY" ;
+        dct:hasVersion            "1.0" ;
+        dct:language              <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher             "Clarin" ;
+        odrl:permission           [ odrl:action      odrl:aggregate , odrl:extract , cc:Reproduction ;
+                                    odrl:constraint  [ odrl:industry  ms:publicInstitution ;
+                                                       odrl:operator  odrl:eq
+                                                     ] ;
+                                    odrl:duty        [ odrl:action  cc:Attribution ]
+                                  ] .
+

@@ -1,0 +1,15 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/GFDL-1.3> a cc:License;
+   schema:sameAs <http://gnu.org/licenses/fdl-1.3.html>;
+   li:id "GFDL-1.3";
+   li:name "GNU FDL 1.3";
+   dc:replaces <https://licensedb.org/id/GFDL-1.2>;
+   li:plaintext <http://gnu.org/licenses/fdl-1.3.txt>;
+   li:libre <http://fsf.org/>;
+   spdx:licenseId "GFDL-1.3".

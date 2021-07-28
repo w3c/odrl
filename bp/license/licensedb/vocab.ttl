@@ -1,0 +1,162 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema-datatypes#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+
+<https://licensedb.org/ns#> rdf:type owl:Ontology ;
+   dc:title """The License Database vocabulary"""@en-US ;
+   dc:creator "Kuno Woudt <kuno@frob.nl>" ;
+   dc:modified "2015-02-22" ;
+   xhv:license <http://www.apache.org/licenses/LICENSE-2.0.html> ;
+   vann:preferredNamespacePrefix "li" ;
+   vann:preferredNamespaceUri "https://licensedb.org/ns#" ;
+   rdfs:comment """## Introduction
+
+There are a few situations where it would be useful to have a
+machine-readable database of commonly used free culture and free
+software licenses. The initial goal is to make this data available for
+authoring and publishing software, to make it easier for creators to
+pick any license they want and have the appropriate notices
+automatically included when a copyrighted work is packaged for
+distribution or published on a published platform.
+
+The License Database vocabulary extends The Creative Commons Rights
+Expression Language ([CC REL](http://wiki.creativecommons.org/CC_REL))
+with additional properties to describe existing copyright and database
+licenses in more detail.
+
+[The License Database](https://licensedb.org/) project uses this
+vocabulary to describe existing free software licenses, open source
+licenses and free culture licenses used today.
+
+
+## Status of this document
+
+This is an editor's draft without any formal standing. It is not
+endorsed by any organisation. Anything in this document is subject to
+change, the editors welcome feedback on this document. Please send any
+comments to [kuno@frob.nl](mailto:kuno@frob.nl) or contact "kuno" on
+freenode irc.
+
+"""@en-US .
+
+li:License a rdfs:Class ;
+   rdfs:comment """A standard text which can be applied by authors of
+a creative work to license that work to users.  The standard text can
+be copyright license, database rights license, trademark license,
+patent grant, etc.."""@en-US ;
+   rdfs:subClassOf cc:License, _:mustHaveTitle, _:mayHaveCreator,
+      _:mayHaveIdentifier, _:mayHaveVersion .
+
+_:mustHaveTitle a owl:Restriction ;
+   owl:minCardinality 1 ;
+   owl:onProperty dc:title .
+
+_:mayHaveCreator a owl:Restriction ;
+   owl:minCardinality 0 ;
+   owl:onProperty dc:creator .
+
+_:mayHaveIdentifier a owl:Restriction ;
+   owl:minCardinality 0 ;
+   owl:onProperty dc:identifier .
+
+_:mayHaveVersion a owl:Restriction ;
+   owl:minCardinality 0 ;
+   owl:maxCardinality 1 ;
+   owl:onProperty dc:hasVersion .
+
+
+li:Notice a rdfs:Class ;
+    rdfs:comment """A set of notices used to apply a particular license
+to a work. Typically these notices disclaim warranty and state where
+the full license text can be found. (If the license text is very short
+this may contain the full license text).
+
+Often the recommended (canonical) notices to use with a particular
+license are a template where an author is expected to fill in their
+details when using it to apply the license to a work -- this is
+implemented in the License Database using the
+[Mustache](http://mustache.github.com/mustache.5.html) template
+language. The keys which may be used by a license notice template are:
+{{year}}, {{rightsholder}}, {{description}} and {{title}}. """@en-US .
+
+
+li:id a rdf:Property ;
+   rdfs:domain li:License ;
+   rdfs:range xsd:string ;
+   rdfs:comment """The identifier assigned to the license by
+the LicenseDB project. (the intent is to follow the same naming
+scheme as defined in
+[DEP5](http://dep.debian.net/deps/dep5/#license-specification))"""@en-US .
+
+li:name a rdf:Property ;
+   rdfs:domain li:License ;
+   rdfs:range rdfs:Literal ;
+   rdfs:comment """A short name assigned to the license. This should
+be a short name suitable for display in a dropdown menu of a simple
+license chooser or the copyright notice where there is limited room
+for such notices.
+
+For example, "CC BY-SA 3.0 NL" is the li:name for a creative commons
+license which has "Attribution-ShareAlike 3.0 Netherlands" as
+dc:title."""@en-US .
+
+li:plaintext a rdf:Property ;
+   rdfs:comment """The license is available as a plain text formatted
+document at the linked resource.  This is usually the preferred format
+to include in a packaged software project."""@en-US ;
+   rdfs:domain li:License ;
+   rdfs:range rdfs:Resource ;
+   rdfs:subPropertyOf dc:hasFormat .
+
+li:libre a rdf:Property ;
+   rdfs:domain li:License ;
+   rdfs:range rdfs:Resource ;
+   rdfs:comment """This property states that a license is suitable for
+use in free software, open source software, free culture or open data
+according to a particular organization."""@en-US .
+
+li:compatible a rdf:Property ;
+   rdfs:domain li:License ;
+   rdfs:range li:License ;
+   rdfs:comment """This property states that works under these licenses
+can be combined into a single work."""@en-US .
+
+
+li:text a rdf:Property ;
+   rdfs:comment "The text used to apply a license to a work."@en-US ;
+   rdfs:domain li:License ;
+   rdfs:range rdfs:Literal .
+
+li:short a rdf:Property ;
+   rdfs:comment """A boolean, if true signifies that this particular
+notice is a short notice typically used in user interfaces where there
+is not enough room for a longer text. If false the notice is a slightly
+longer text typically used in software source code files and
+[README](http://en.wikipedia.org/wiki/README) files or anywhere else
+where there is sufficient room for a slightly longer text."""@en-US ;
+   rdfs:domain li:Notice ;
+   rdfs:range xsd:boolean .
+
+li:orlater a rdf:Property ;
+   rdfs:comment """A boolean, if true signifies that this particular
+notice is a notice typically used to apply an "or-later" clause to a
+versioned license. If false the notice will not allow the licensee to
+upgrade to a newer version of the license."""@en-US ;
+   rdfs:domain li:Notice ;
+   rdfs:range xsd:boolean .
+
+li:canonical a rdf:Property ;
+   rdfs:comment """A boolean, if true signifies that this particular
+notice is a canonical notice recommended by the publisher of the license
+(e.g. in the license text itself). This is also set as "true" for short
+(permissive) licenses where the notice is the full license."""@en-US ;
+   rdfs:domain li:Notice ;
+   rdfs:range xsd:boolean .

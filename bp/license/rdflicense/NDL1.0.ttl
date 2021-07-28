@@ -1,0 +1,26 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:NDL1.0  a                odrl:Policy ;
+        rdfs:label        "Web NDL Authority License" ;
+        cc:legalcode      "\r\n利用条件\r\n\r\n当ウェブサイトの著作権は、特記されていない限り、国立国会図書館に帰属します。ご利用にあたっては、以下の点にご留意ください。\r\n1. 当サービスの利用条件\r\n\r\nSPARQL・URI等による機械的連携\r\n非営利目的の場合、Web NDL Authoritiesと連携していることを明示することを条件に、申請なしでご利用していただくことができます。営利目的の場合は、個別に審査が必要ですので、「お問い合わせ」のフォームからご一報ください。\r\n典拠データの一括ダウンロード用ファイル\r\n非営利目的の利用の場合、申請なしでご利用いただけます。当データを利用した成果物を公表する際には、その旨明示してください。営利目的の場合は、個別に審査が必要ですので、「お問い合わせ」のフォームからご一報ください。\r\n典拠データの個別ダウンロード\r\n特に利用条件に制限はありませんが、公序良俗、法令等に違反するサイトでの利用など、不適当と判断される事例を発見した場合には、利用をお断りします。\r\nWeb NDL Authoritiesトップページ並びに各コンテンツへのリンク\r\nWeb NDL Authoritiesへのリンクは自由です。Web NDL Authorities内の各ページにリンクされる場合は、そのページがWeb NDL Authorities内にあることが分かるように明記してください。\r\nなお、リンクされる際には、以下のバナーをお使いいただけます。\r\n国立国会図書館典拠データ検索・提供サービス（Web NDL Authorities）用バナー\r\n▲このページの先頭へ\r\n\r\n\r\n2. 免責事項\r\n\r\n当システムの利用またはリンク先サイトを利用されたことに起因または関連して生じた一切の損害（間接的であると直接的であるとを問わない）について、国立国会図書館は責任を負いません。また国立国会図書館外部サイトにリンクしている場合、国立国会図書館はそのリンク先サイトの内容の正確性を保証するものではありません。\r\n"@jp ;
+        dct:language      <http://www.lexvo.org/page/iso639-3/jpn> ;
+        dct:publisher     "Web NDL Authority" ;
+        dct:source        <http://iss.ndl.go.jp/ndla/use/> ;
+        odrl:permission   [ odrl:action  cc:Distribution , cc:Reproduction ] ;
+        odrl:prohibition  [ odrl:action  cc:CommercialUse ] .
+

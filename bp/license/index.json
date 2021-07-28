@@ -1,5 +1,13 @@
 [
   {
+    "id": "CC-BY-4.0",
+    "title": "Creative Commons Attribution 4.0 International",
+    "source": "",
+    "mapping": [
+      "official/ccby4.0.ttl", "rdflicense/cc-by4.0.ttl"
+    ]
+  },
+  {
     "id": "GPL-3.0",
     "title": "GNU General Public License 3.0",
     "source": "http://gnu.org/licenses/gpl-3.0.html",
@@ -12,7 +20,7 @@
     "title": "",
     "source": "",
     "mapping": [
-      "dalicc/APACHE_v2"
+      "dalicc/APACHE_v2.ttl"
     ]
   },
   {
@@ -20,8 +28,8 @@
     "title": "Academic Free License 3.0",
     "source": "",
     "mapping": [
-      "rdflicense/afl3.0",
-      "dalicc/AcademicFreeLicense30"
+      "rdflicense/afl3.0.ttl",
+      "dalicc/AcademicFreeLicense30.ttl"
     ]
   },
   {
@@ -29,7 +37,7 @@
     "title": "CC Attribution Non-Commercial 3.0 Azerbaijan",
     "source": "",
     "mapping": [
-      "dalicc/AttributionNoncommercial30Azerbaijan"
+      "dalicc/AttributionNoncommercial30Azerbaijan.ttl"
     ]
   }
 ]

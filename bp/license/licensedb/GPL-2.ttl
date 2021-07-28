@@ -1,0 +1,90 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/GPL-2> a cc:License;
+   schema:sameAs <http://gnu.org/licenses/gpl-2.0.html>;
+   li:id "GPL-2";
+   li:name "GNU GPLv2";
+   li:plaintext <http://gnu.org/licenses/gpl-2.0.txt>;
+   dc:replaces <https://licensedb.org/id/GPL-1>;
+   dc:isReplacedBy <https://licensedb.org/id/GPL-3>;
+   li:libre <http://debian.org/>;
+   li:libre <http://freedomdefined.org/>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   spdx:licenseId "GPL-2.0";
+   spdx:licenseId "GPL-2.0+";
+   spdx:licenseId "GPL-2.0-with-autoconf-exception";
+   spdx:licenseId "GPL-2.0-with-bison-exception";
+   spdx:licenseId "GPL-2.0-with-classpath-exception";
+   spdx:licenseId "GPL-2.0-with-font-exception";
+   spdx:licenseId "GPL-2.0-with-GCC-exception";
+   li:notice _:notice1, _:notice2, _:notice3, _:notice4;
+   owl:sameAs <magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&dn=gpl-2.0.txt>.
+
+_:notice1
+   li:orlater true;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice2
+   li:orlater false;
+   li:short true;
+   li:canonical false;
+   li:text """Copyright (C) {{year}}  {{rightsholder}}
+License GPLv2-only: GNU GPL version 2 <http://gnu.org/licenses/gpl-2.0.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+""".
+
+_:notice3
+   li:orlater true;
+   li:short false;
+   li:canonical true;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+""".
+
+_:notice4
+   li:orlater false;
+   li:short false;
+   li:canonical false;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2 as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+""".

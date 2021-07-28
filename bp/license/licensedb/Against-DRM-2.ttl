@@ -1,0 +1,31 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Against-DRM-2> a cc:License;
+   schema:sameAs <http://www.opendefinition.org/licenses/against-drm>;
+   li:id "Against-DRM-2";
+   li:name "Against DRM 2.0";
+   dc:title "Against DRM License";
+   li:libre <http://opendefinition.org/>;
+   dc:hasVersion "2.0";
+   cc:legalcode <http://www.opendefinition.org/licenses/against-drm>;
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """[Original work] Copyright (C) {{year}} {{rightsholder}}
+[Work] Copyright (C) {{year}} {{rightsholder}}
+[Derivative work] Copyright (C) {{year}} {{rightholder}}
+
+Licensee must keep intact copyright notice and all notices that refer
+to this license.
+
+Licensee must include a copy of this license with every copy of the work
+the licensee distributes, publicly demonstrates or publicly performs.
+""".

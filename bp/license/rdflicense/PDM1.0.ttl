@@ -1,0 +1,26 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:PDM1.0  a               odrl:Policy ;
+        rdfs:label       "Public Domain Mark" ;
+        cc:legalcode     "\r\nThis work has been identified as being free of known restrictions under copyright law, including all related and neighboring rights.\r\n\r\nYou can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. See Other Information below.\r\nOther Information\r\nThe work may not be free of known copyright restrictions in all jurisdictions.\r\nPersons may have other rights in or related to the work, such as patent or trademark rights, and others may have rights in how the work is used, such as publicity or privacy rights.\r\nIn some jurisdictions moral rights of the author may persist beyond the term of copyright. These rights may include the right to be identified as the author and the right to object to derogatory treatments.\r\nUnless expressly stated otherwise, the person who identified the work makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.\r\nWhen using or citing the work, you should not imply endorsement by the author or the person who identified the work.\r\n"@en ;
+        dct:hasVersion   "1.0" ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "Creative Commons" ;
+        dct:source       <http://creativecommons.org/publicdomain/mark/1.0/> ;
+        odrl:permission  [ odrl:action  cc:Distribution , cc:DerivativeWorks , cc:Reproduction ] .
+

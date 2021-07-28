@@ -1,0 +1,16 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/MS-PL> a cc:License;
+   schema:sameAs <http://www.opensource.org/licenses/MS-PL>;
+   li:id "MS-PL";
+   li:name "MS-PL";
+   dc:title "Microsoft Public License (MS-PL)";
+   dc:creator <http://microsoft.com/>;
+   cc:legalcode <http://www.opensource.org/licenses/MS-PL>;
+   li:libre <http://opensource.org/>;
+   spdx:licenseId "MS-PL".

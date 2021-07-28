@@ -1,0 +1,39 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/CDDL-1> a cc:License;
+   schema:sameAs <http://opensource.org/licenses/CDDL-1.0>;
+   li:id "CDDL-1";
+   li:name "CDDL 1.0";
+   dc:title "Common Development and Distribution License";
+   dc:hasVersion "1.0";
+   cc:legalcode <http://opensource.org/licenses/CDDL-1.0>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   spdx:licenseId "CDDL-1.0";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short false;
+   li:canonical false;
+   li:text """The contents of this file are subject to the terms of the Common
+Development and Distribution License (the "License"). You may not use this file
+except in compliance with the License. You can obtain a copy of the License at
+http://opensource.org/licenses/CDDL-1.0. See the License for the specific
+language governing permissions and limitations under the License. When
+distributing the software, include this License Header Notice in each file and
+include the License file at http://opensource.org/licenses/CDDL-1.0.
+
+Contributor(s):
+
+The Original Software is ______________.
+
+The Initial Developer of the Original Software is ______________.
+
+Portions Copyright _____________________. All Rights Reserved.
+""".

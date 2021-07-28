@@ -1,0 +1,42 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Apache-2> a cc:License;
+   schema:sameAs <http://www.apache.org/licenses/LICENSE-2.0>;
+   owl:sameAs <magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt>;
+   li:id "Apache-2";
+   li:name "Apache 2.0";
+   li:plaintext <http://www.apache.org/licenses/LICENSE-2.0.txt>;
+   dc:replaces <https://licensedb.org/id/Apache-1.1>;
+   dc:title "Apache License";
+   dc:creator <http://apache.org/>;
+   li:libre <http://fsf.org/>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   dc:hasVersion "2.0";
+   cc:legalcode <http://www.apache.org/licenses/LICENSE-2.0>;
+   spdx:licenseId "Apache-2.0";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short false;
+   li:canonical true;
+   li:text """Copyright {{year}} {{rightsholder}}
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+""".

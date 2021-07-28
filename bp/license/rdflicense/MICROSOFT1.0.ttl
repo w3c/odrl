@@ -1,0 +1,26 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:MICROSOFT1.0  a          odrl:Policy ;
+        rdfs:label        "Microsoft Reference Source License" ;
+        cc:legalcode      "\r\nTHIRD-PARTY SOFTWARE NOTICES AND INFORMATION\r\n\r\nDo Not Translate or Localize\r\n\r\nThis product incorporates copyrighted material from the open source projects\r\n\r\nlisted below (Third Party IP). The license terms of Microsoft Corporation's\r\n\r\nproduct do not apply to the Third Party IP which is licensed to you under its\r\n\r\noriginal license terms which are provided below. Microsoft reserves all rights\r\n\r\nnot expressly granted herein, whether by implication, estoppel or otherwise.\r\n\r\nYou may find a copy of the source code, if and as required under the Third\r\n\r\nParty IP License, at http://3rdpartysource.microsoft.com. You may also obtain\r\n\r\na copy of the source code, if and as required under the Third Party IP license,\r\n\r\nfor a period of three years after our last shipment of this product, by sending\r\n\r\na check or money order for US$5.00 to:\r\n\r\n \r\n\r\nSource Code Compliance Team\r\n\r\nMicrosoft Corporation\r\n\r\nOne Microsoft Way\r\n\r\nRedmond, WA 98052 USA\r\n"@en ;
+        dct:language      <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher     "Microsoft" ;
+        dct:source        <http://referencesource.microsoft.com/referencesourcelicensing.aspx> ;
+        odrl:permission   [ odrl:action  odrl:read ] ;
+        odrl:prohibition  [ odrl:action  cc:Distribution , odrl:modify ] .
+

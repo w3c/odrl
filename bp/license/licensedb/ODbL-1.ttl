@@ -1,0 +1,29 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/ODbL-1> a cc:License;
+   schema:sameAs <http://opendatacommons.org/licenses/odbl/1.0/>;
+   li:id "ODbL-1";
+   li:name "ODC ODbL 1.0";
+   cc:legalcode <http://opendatacommons.org/licenses/odbl/1.0/>;
+   li:plaintext <http://www.opendatacommons.org/wp-content/uploads/2009/06/odbl-10.txt>;
+   dc:title "Open Database License";
+   dc:creator <http://opendatacommons.org/>;
+   li:libre <http://opendefinition.org/>;
+   dc:hasVersion "1.0";
+   dc:identifier "ODbL" ;
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater false;
+   li:short true;
+   li:canonical true;
+   li:text """{{title}} is made available under the Open Database License:
+http://opendatacommons.org/licenses/odbl/1.0/.  Any rights in
+individual contents of the database are licensed under the Database
+Contents License: http://opendatacommons.org/licenses/dbcl/1.0/.
+""".

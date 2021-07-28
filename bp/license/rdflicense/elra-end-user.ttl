@@ -1,0 +1,43 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:elra-end-user  a           odrl:Policy ;
+        rdfs:label          "Language Resources End-User Agreement"@en ;
+        rdfs:seeAlso        <http://www.elda.org/en/services-around-lrs/distribution/licensing/> ;
+        cc:legalcode        "\r\nThis agreement is made by and between:\r\n\" .............................. \", (hereinafter called END-USER), having its principal place of business at: .......................\r\n...................................................................................................................................................................................\r\nAND\r\nELDA S.A.S., (hereinafter called DISTRIBUTOR), the distribution agency commissioned by ELRA, having its\r\nprincipal place of business at: 9 rue des Cordelières - 75013 Paris, FRANCE\r\nregistered at the Tribunal de commerce de Paris:\r\nRCS Paris B 402 781 876 (95b147 95)\r\nwhereby it is agreed as follows:\r\n1. Evaluation Packages, object of this Agreement, for which DISTRIBUTOR obtained distribution rights from\r\nthe rightful holder, are described in Exhibit A.\r\n2. The site of use of the Evaluation Packages is mentioned in Exhibit B.\r\n3. Within this Agreement DISTRIBUTOR grants END-USER, engaged in bona fide language engineering\r\nresearch, the non-exclusive right to use the Evaluation Packages, exclusively for the purposes of evaluating\r\ntheir Human Language Technologies.\r\n4. END-USER is not permitted to reproduce the Evaluation Packages for commercial or distribution purposes\r\nand to commercialise (or distribute for free) in any form or by any means the Evaluation Packages or any\r\nderivative product or services based on all or a substantial part of it. Summaries, analyses and interpretations\r\nof the linguistic properties of the information may be derived and published, provided it is not possible to\r\nreconstruct the information from these summaries. Small excerpts of the information may be displayed to\r\nothers or published in a scientific or technical context, solely for the purpose of describing the research and\r\ndevelopment and related issues. Any such use shall not infringe on the rights of any third party including, but\r\nlimited to, the authors and publishers of the excerpts.\r\n5. DISTRIBUTOR grants END-USER the right to reproduce the Evaluation Packages temporarily or\r\npermanently, to translate, adapt, arrange and modify by any means the Evaluation Packages, if one or all of\r\nthese acts are necessary to access and make the agreed use of the contents of the Evaluation Packages. ENDUSER\r\nis permitted to make a copy of the Evaluation Packages for purposes of archiving only.\r\n6. Without prejudice to the other provisions, the rights referred to herein shall be non transferable to any other\r\nentity. The Evaluation Packages shall not be transferred to or accessed from any other site.\r\nAdd your initials here :\r\nELDA - Commercial in confidence Date: 01/04/2015 Page 2/4\r\n7. END-USER acquires no ownership, rights or title in all or any parts of the Evaluation Packages.\r\n8. DISTRIBUTOR and OWNERS accept no responsibility for the accuracy or completeness of the data or for\r\nthe consequences of their use. DISTRIBUTOR and OWNERS give no warranty for merchantibility and/or\r\nfitness for a particular purpose of the LRs.\r\n9. END-USER shall give appropriate references to DISTRIBUTOR, as well as to the name and reference of the\r\nEvaluation Packages in scholarly literature when the Evaluation Packages are mentioned. The following\r\nacknowledgement is required: “LANGUAGE RESOURCE NAME, ELRA catalogue\r\n(http://catalog.elra.info), ISLRN: XXX-XXX-XXX-XXX-X, ELRA ID: ELRA-XXXXX.”\r\n10. END-USER shall not use the name of DISTRIBUTOR in any publication in any manner that would imply an\r\nendorsement of END-USER or any product or service offered by END-USER.\r\n11. END-USER has no right or authority to incur, assume or create, in writing or otherwise, any warranty,\r\nliability or other obligation of any kind, express or implied, in the name of or on behalf of DISTRIBUTOR, it\r\nbeing intended that each party shall remain an independent contractor responsible for its own actions.\r\n12. Neither party shall be responsible for damages caused by the other party's non-fulfillment of provisions of this\r\nAGREEMENT.\r\n13.Both parties exclude all liability of whatsoever nature for direct, consequential or indirect loss or damage\r\nsuffered by the other.\r\n14. END-USER agrees to pay DISTRIBUTOR a compensation. The mode of payment and schedule of payments\r\nare incorporated in Exhibit C and form part of this AGREEMENT.\r\n15.In order to preserve the desired, pre- competitive nature of the Human Language Technology evaluations,\r\nDISTRIBUTOR has developed a set of guidelines constraining the dissemination and publication of\r\nevaluation results. These guidelines are meant to preclude the publication of incomplete or inaccurate\r\ninformation that could damage the reputation of DISTRIBUTOR or Human Language Technologies / players\r\nand could discourage participation in future evaluation campaigns. The guidelines (listed in Exhibit D) shall\r\nbe implemented by END-USER.\r\n16. This Agreement is subject to, construed and interpreted in accordance with the Law of France. Should it not\r\nbe possible to settle amicably differences of interpretation out of this Agreement, then the case shall be\r\nbrought before the regular courts of law for a decision. The \"Tribunal de commerce de Paris\" shall be the\r\nonly competent court.\r\nThe entire AGREEMENT is composed of the 16 articles herein together with Exhibits A, B, and C thereafter.\r\nIn witness whereof, intending to be bound, the parties hereto have executed this AGREEMENT by their duly\r\nauthorized \r\n"@en ;
+        cc:legalcode        <http://www.elda.org/media/filer_public/2014/08/01/enduser_140312.pdf> ;
+        ms:conditionsOfUse  ms:noRedistribution , ms:noDerivatives , ms:forAFee , ms:spatialConstraint , cc:Attribution , ms:languageEngineeringResearch ;
+        ms:licenseCategory  ms:RES ;
+        dct:alternative     "ELRA-END-USER" ;
+        dct:language        <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher       "Elra" ;
+        odrl:permission     [ odrl:action      cc:Reproduction , odrl:modify , odrl:translate ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:spatial   "only at assignee's site"
+                                               ] ;
+                              odrl:constraint  [ a              odrl:Constraint ;
+                                                 odrl:operator  odrl:eq ;
+                                                 odrl:purpose   ms:languageEngineeringResearch
+                                               ] ;
+                              odrl:duty        [ odrl:action           cc:Attribution ;
+                                                 odrl:attributedParty  ms:distributionRightsHolder
+                                               ] ;
+                              odrl:duty        [ odrl:action  odrl:compensate ]
+                            ] ;
+        odrl:prohibition    [ odrl:action  cc:Distribution , cc:DerivativeWorks ] .
+

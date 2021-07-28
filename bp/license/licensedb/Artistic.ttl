@@ -1,0 +1,20 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/Artistic> a cc:License;
+   schema:sameAs <http://www.perlfoundation.org/artistic_license_1_0>;
+   li:id "Artistic";
+   li:name "Artistic 1.0";
+   dc:isReplacedBy <https://licensedb.org/id/Artistic-2>;
+   li:libre <http://opensource.org/>;
+   li:libre <http://debian.org/>;
+   dc:title "Artistic License";
+   dc:hasVersion "1.0";
+   dc:creator <http://perlfoundation.org/>;
+   cc:legalcode <http://www.perlfoundation.org/artistic_license_1_0>;
+   li:plaintext <http://www.perlfoundation.org/attachment/legal/Artistic_1.0.txt>;
+   spdx:licenseId "Artistic-1.0".

@@ -1,0 +1,45 @@
+@prefix li: <https://licensedb.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/GPL-1> a cc:License;
+   schema:sameAs <http://gnu.org/licenses/gpl-1.0.html>;
+   li:id "GPL-1";
+   li:name "GNU GPLv1";
+   li:plaintext <http://gnu.org/licenses/gpl-1.0.txt>;
+   dc:isReplacedBy <https://licensedb.org/id/GPL-2>;
+   dc:title "GNU General Public License";
+   dc:creator <http://fsf.org/>;
+   li:libre <http://freedomdefined.org/>;
+   li:libre <http://fsf.org/>;
+   dc:hasVersion "1.0";
+   dc:identifier "GNU GPL" ;
+   cc:legalcode <http://gnu.org/licenses/gpl-1.0.html>;
+   spdx:licenseId "GPL-1.0";
+   spdx:licenseId "GPL-1.0+";
+   li:notice _:notice1.
+
+_:notice1
+   li:orlater true;
+   li:short false;
+   li:canonical true;
+   li:text """{{description}}
+Copyright (C) {{year}}  {{rightsholder}}
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 1, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA  02110-1301 USA
+""".

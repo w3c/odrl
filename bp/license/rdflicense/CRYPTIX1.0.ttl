@@ -1,0 +1,28 @@
+
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix :      <http://purl.org/NET/rdflicense/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ms:    <http://purl.org/NET/ms-rights#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix l4lod: <http://ns.inria.fr/l4lod/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix provo: <http://purl.org/net/provenance/ns#> .
+@prefix ldr:   <http://purl.org/NET/ldr/ns#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+:CRYPTIX1.0  a           odrl:Policy ;
+        rdfs:label       "Cryptix General License" ;
+        rdfs:seeAlso     <http://cryptix.org/LICENSE.TXT> ;
+        cc:legalcode     "\r\nCryptix General License\r\n\r\nCopyright (c) 1995-2005 The Cryptix Foundation Limited.\r\nAll rights reserved.\r\n\r\nRedistribution and use in source and binary forms, with or without\r\nmodification, are permitted provided that the following conditions are\r\nmet:\r\n\r\n  1. Redistributions of source code must retain the copyright notice,\r\n     this list of conditions and the following disclaimer.\r\n  2. Redistributions in binary form must reproduce the above copyright\r\n     notice, this list of conditions and the following disclaimer in\r\n     the documentation and/or other materials provided with the\r\n     distribution.\r\n\r\nTHIS SOFTWARE IS PROVIDED BY THE CRYPTIX FOUNDATION LIMITED AND\r\nCONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,\r\nINCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF\r\nMERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\r\nIN NO EVENT SHALL THE CRYPTIX FOUNDATION LIMITED OR CONTRIBUTORS BE\r\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\r\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\r\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR\r\nBUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,\r\nWHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE\r\nOR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN\r\nIF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\r\n"@en ;
+        dct:language     <http://www.lexvo.org/page/iso639-3/eng> ;
+        dct:publisher    "The Cryptix Foundation Limited" ;
+        dct:source       <http://cryptix.org/LICENSE.TXT> ;
+        odrl:permission  [ odrl:action  cc:Distribution , odrl:modify ;
+                           odrl:duty    [ odrl:action  cc:Notice , cc:ShareAlike ]
+                         ] .
+

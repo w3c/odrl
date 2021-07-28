@@ -1,0 +1,24 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix li: <https://licensedb.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://licensedb.org/id/copyleft-next-0.3.0> a cc:License;
+   li:id "copyleft-next-0.3.0";
+   li:name "copyleft-next 0.3.0";
+   li:plaintext <https://raw.githubusercontent.com/richardfontana/copyleft-next/master/Releases/copyleft-next-0.3.0>;
+   cc:legalcode <https://raw.githubusercontent.com/richardfontana/copyleft-next/master/Releases/copyleft-next-0.3.0>;
+   cc:permits cc:DerivativeWorks, cc:Distribution, cc:Reproduction;
+   cc:requires cc:Copyleft, cc:Notice, cc:SourceCode;
+   dc:hasVersion "0.3.0";
+   dc:identifier "copyleft-next";
+   dc:title "copyleft-next";
+   dc:creator <https://www.wikidata.org/entity/Q7325725>;
+   dc:creator <http://dbpedia.org/resource/Richard_Fontana>;
+   dc:replaces <https://licensedb.org/id/copyleft-next-0.2.1>.
+
+<https://www.wikidata.org/entity/Q7325725> owl:sameAs <http://dbpedia.org/page/Richard_Fontana>.
+
