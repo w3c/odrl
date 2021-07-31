@@ -136,7 +136,8 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0br",
-    "title": "Creative Commons CC-BY-NC-ND Brazil",
+    "title": "Creative Commons CC-BY-NC-ND 3.0 Brazil 3.0",
+    "deprecated" : "true",
     "source": "",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0br.ttl"
@@ -144,7 +145,8 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0ch",
-    "title": "Creative Commons CC-BY-NC-ND Switzerland",
+    "title": "Creative Commons CC-BY-NC-ND Switzerland 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/ch",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0ch.ttl"
@@ -152,7 +154,8 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0cl",
-    "title": "Creative Commons CC-BY-NC-ND Chile",
+    "title": "Creative Commons CC-BY-NC-ND Chile 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/cl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0cl.ttl"
@@ -160,7 +163,8 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0cn",
-    "title": "Creative Commons CC-BY-NC-ND China",
+    "title": "Creative Commons CC-BY-NC-ND China 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/cn",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0cn.ttl"
@@ -168,15 +172,16 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0de",
-    "title": "Creative Commons CC-BY-NC-ND Germany",
+    "title": "Creative Commons CC-BY-NC-ND Germany 3.0",
     "source": "",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0de.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0ec",
-    "title": "Creative Commons CC-BY-NC-ND Ecuador",
+    "title": "Creative Commons CC-BY-NC-ND Ecuador 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/ec",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0ec.ttl"
@@ -186,37 +191,42 @@
     "licenseid": "cc-by-nc-nd3.0es",
     "title": "Creative Commons CC-BY-NC-ND Spain 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/es",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0es.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0fr",
-    "title": "Creative Commons CC-BY-NC-ND France",
+    "title": "Creative Commons CC-BY-NC-ND France 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/fr",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0fr.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0gr",
-    "title": "Creative Commons CC-BY-NC-ND Greece",
+    "title": "Creative Commons CC-BY-NC-ND Greece 3.0" ,
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/gr",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0gr.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0ie",
-    "title": "Creative Commons CC-BY-NC-ND 3.0 Ireland",
+    "title": "Creative Commons CC-BY-NC-ND 3.0 Ireland 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/ie",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0ie.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0it",
-    "title": "Creative Commons CC-BY-NC-ND 3.0 Italy",
+    "title": "Creative Commons CC-BY-NC-ND 3.0 Italy 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/it",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0it.ttl"
@@ -226,6 +236,7 @@
     "licenseid": "cc-by-nc-nd3.0nl",
     "title": "Creative Commons CC-BY-NC-ND 3.0 Netherlands",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/nl",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0nl.ttl"
     ]
@@ -234,22 +245,25 @@
     "licenseid": "cc-by-nc-nd3.0pt",
     "title": "Creative Commons CC-BY-NC-ND 3.0 Portugal",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/pt",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0pt.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0ro",
-    "title": "Creative Commons CC-BY-NC-ND Romania",
+    "title": "Creative Commons CC-BY-NC-ND Romania 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/ro",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0ro.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nc-nd3.0ve",
-    "title": "Creative Commons CC-BY-NC-ND Venezuela",
+    "title": "Creative Commons CC-BY-NC-ND Venezuela 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/ve",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0ve.ttl"
     ]
@@ -328,7 +342,8 @@
   },
   {
     "licenseid": "cc-by-nd2.0be",
-    "title": "Creative Commons CC-BY-ND Belgium",
+    "title": "Creative Commons CC-BY-ND Belgium 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/2.0/be",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd2.0be.ttl"
@@ -336,7 +351,7 @@
   },
   {
     "licenseid": "cc-by-nd2.5dk",
-    "title": "Creative Commons CC-BY-ND Denmark",
+    "title": "Creative Commons CC-BY-ND Denmark 2.0",
     "source": "http://creativecommons.org/licenses/by-nd/2.5/dk",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd2.5dk.ttl"
@@ -344,7 +359,7 @@
   },
   {
     "licenseid": "cc-by-nd3.0",
-    "title": "Creative Commons CC-BY-ND",
+    "title": "Creative Commons CC-BY-ND 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0.ttl"
@@ -352,7 +367,8 @@
   },
   {
     "licenseid": "cc-by-nd3.0at",
-    "title": "Creative Commons CC-BY-ND Austria",
+    "title": "Creative Commons CC-BY-ND Austria 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/at",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0at.ttl"
@@ -360,15 +376,17 @@
   },
   {
     "licenseid": "cc-by-nd3.0au",
-    "title": "Creative Commons CC-BY-ND Australia",
+    "title": "Creative Commons CC-BY-ND Australia 3.0",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/au",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0au.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nd3.0br",
-    "title": "Creative Commons CC-BY-ND Brazil",
+    "title": "Creative Commons CC-BY-ND Brazil 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/br",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0br.ttl"
@@ -376,15 +394,17 @@
   },
   {
     "licenseid": "cc-by-nd3.0ch",
-    "title": "Creative Commons CC-BY-ND Switzerland",
+    "title": "Creative Commons CC-BY-ND Switzerland 3.0",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/ch",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0ch.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nd3.0cl",
-    "title": "Creative Commons CC-BY-ND Chile",
+    "title": "Creative Commons CC-BY-ND Chile 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/cl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0cl.ttl"
@@ -392,15 +412,17 @@
   },
   {
     "licenseid": "cc-by-nd3.0cn",
-    "title": "Creative Commons CC-BY-ND China",
+    "title": "Creative Commons CC-BY-ND China 3.0",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/cn",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0cn.ttl"
     ]
   },
   {
     "licenseid": "cc-by-nd3.0de",
-    "title": "Creative Commons CC-BY-ND Germany",
+    "title": "Creative Commons CC-BY-ND Germany 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/de",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0de.ttl"
@@ -408,8 +430,9 @@
   },
   {
     "licenseid": "cc-by-nd3.0ec",
-    "title": "Creative Commons CC-BY-ND Ecuador",
+    "title": "Creative Commons CC-BY-ND Ecuador 3.0",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/ec",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0ec.ttl"
     ]
@@ -418,6 +441,7 @@
     "licenseid": "cc-by-nd3.0es",
     "title": "Creative Commons CC-BY-ND 3.0 Spain",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/es",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0es.ttl"
     ]
@@ -440,7 +464,8 @@
   },
   {
     "licenseid": "cc-by-nd3.0ie",
-    "title": "Creative Commons CC-BY-ND Ireland",
+    "title": "Creative Commons CC-BY-ND Ireland 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/ie",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0ie.ttl"
@@ -449,6 +474,7 @@
   {
     "licenseid": "cc-by-nd3.0it",
     "title": "Creative Commons CC-BY-ND 3.0 Italy",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/it",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0it.ttl"
@@ -457,6 +483,7 @@
   {
     "licenseid": "cc-by-nd3.0nl",
     "title": "Creative Commons CC-BY-ND 3.0 Netherlands",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/nl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0nl.ttl"
@@ -465,6 +492,7 @@
   {
     "licenseid": "cc-by-nd3.0pt",
     "title": "Creative Commons CC-BY-ND 3.0 Portugal",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/pt",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0pt.ttl"
@@ -473,6 +501,7 @@
   {
     "licenseid": "cc-by-nd3.0ro",
     "title": "Creative Commons CC-BY-ND 3.0 Romania",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/ro",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0ro.ttl"
@@ -481,6 +510,7 @@
   {
     "licenseid": "cc-by-nd3.0ve",
     "title": "Creative Commons CC-BY-ND 3.0 Venezuela",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-nd/3.0/ve",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nd3.0ve.ttl"
@@ -516,6 +546,7 @@
   {
     "licenseid": "cc-by-sa3.0at",
     "title": "Creative Commons CC-BY-SA 3.0 Austria",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/at",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0at.ttl"
@@ -524,6 +555,7 @@
   {
     "licenseid": "cc-by-sa3.0au",
     "title": "Creative Commons CC-BY-SA 3.0 Australia",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/au",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0au.ttl"
@@ -532,6 +564,7 @@
   {
     "licenseid": "cc-by-sa3.0br",
     "title": "Creative Commons CC-BY-SA 3.0 Brazil",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/br",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0br.ttl"
@@ -540,6 +573,7 @@
   {
     "licenseid": "cc-by-sa3.0ch",
     "title": "Creative Commons CC-BY-SA 3.0 Switzerland",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/ch",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0ch.ttl"
@@ -548,6 +582,7 @@
   {
     "licenseid": "cc-by-sa3.0cl",
     "title": "Creative Commons CC-BY-SA 3.0 Chile",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/cl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0cl.ttl"
@@ -556,6 +591,7 @@
   {
     "licenseid": "cc-by-sa3.0cn",
     "title": "Creative Commons CC-BY-SA 3.0 China",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/cn",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0cn.ttl"
@@ -564,6 +600,7 @@
   {
     "licenseid": "cc-by-sa3.0de",
     "title": "Creative Commons CC-BY-SA 3.0 Germany",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/de",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0de.ttl"
@@ -572,6 +609,7 @@
   {
     "licenseid": "cc-by-sa3.0ec",
     "title": "Creative Commons CC-BY-SA 3.0 Ecuador",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/ec",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0ec.ttl"
@@ -580,6 +618,7 @@
   {
     "licenseid": "cc-by-sa3.0es",
     "title": "Creative Commons CC-BY-SA 3.0 Spain",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/es",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0es.ttl"
@@ -588,6 +627,7 @@
   {
     "licenseid": "cc-by-sa3.0fr",
     "title": "Creative Commons CC-BY-SA 3.0 France",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/fr",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0fr.ttl"
@@ -597,6 +637,7 @@
     "licenseid": "cc-by-sa3.0gr",
     "title": "Creative Commons CC-BY-SA 3.0 Greece",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/gr",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0gr.ttl"
     ]
@@ -605,6 +646,7 @@
     "licenseid": "cc-by-sa3.0ie",
     "title": "Creative Commons CC-BY-SA Ireland",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/ie",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0ie.ttl"
     ]
@@ -619,7 +661,8 @@
   },
   {
     "licenseid": "cc-by-sa3.0nl",
-    "title": "Creative Commons CC-BY-SA Netherlands",
+    "title": "Creative Commons CC-BY-SA Netherlands 3.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/nl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0nl.ttl"
@@ -627,8 +670,9 @@
   },
   {
     "licenseid": "cc-by-sa3.0pt",
-    "title": "Creative Commons CC-BY-SA Portugal",
+    "title": "Creative Commons CC-BY-SA Portugal 3.0",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/pt",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0pt.ttl"
     ]
@@ -637,6 +681,7 @@
     "licenseid": "cc-by-sa3.0ro",
     "title": "Creative Commons CC-BY-SA Romania 3.0",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/ro",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0ro.ttl"
     ]
@@ -645,6 +690,7 @@
     "licenseid": "cc-by-sa3.0ve",
     "title": "Creative Commons CC-BY-SA 3.0 Venezuela",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/ve",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-sa3.0ve.ttl"
     ]
@@ -679,6 +725,7 @@
   {
     "licenseid": "cc-by2.0at",
     "title": "Creative Commons CC-BY 2.0 Austria",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/at",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0at.ttl"
@@ -687,6 +734,7 @@
   {
     "licenseid": "cc-by2.0au",
     "title": "Creative Commons CC-BY 2.0 Australia",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/au",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0au.ttl"
@@ -694,7 +742,8 @@
   },
   {
     "licenseid": "cc-by2.0be",
-    "title": "Creative Commons CC-BY Belgium",
+    "title": "Creative Commons CC-BY Belgium 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/be",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0be.ttl"
@@ -704,6 +753,7 @@
     "licenseid": "cc-by2.0br",
     "title": "Creative Commons CC-BY 2.0 Brazil",
     "source": "http://creativecommons.org/licenses/by/2.0/br",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0br.ttl"
     ]
@@ -712,21 +762,24 @@
     "licenseid": "cc-by2.0ca",
     "title": "Creative Commons CC-BY Canada",
     "source": "http://creativecommons.org/licenses/by/2.0/ca",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0ca.ttl"
     ]
   },
   {
     "licenseid": "cc-by2.0cl",
-    "title": "Creative Commons CC-BY Chile",
+    "title": "Creative Commons CC-BY Chile 2.0",
     "source": "http://creativecommons.org/licenses/by/2.0/cl",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0cl.ttl"
     ]
   },
   {
     "licenseid": "cc-by2.0de",
-    "title": "Creative Commons CC-BY Germany",
+    "title": "Creative Commons CC-BY Germany 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/de",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0de.ttl"
@@ -734,7 +787,8 @@
   },
   {
     "licenseid": "cc-by2.0es",
-    "title": "Creative Commons CC-BY Spain",
+    "title": "Creative Commons CC-BY Spain 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/es",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0es.ttl"
@@ -742,7 +796,8 @@
   },
   {
     "licenseid": "cc-by2.0fr",
-    "title": "Creative Commons CC-BY France",
+    "title": "Creative Commons CC-BY France 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/fr",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0fr.ttl"
@@ -750,7 +805,8 @@
   },
   {
     "licenseid": "cc-by2.0it",
-    "title": "Creative Commons CC-BY Italy",
+    "title": "Creative Commons CC-BY Italy 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/it",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0it.ttl"
@@ -758,7 +814,8 @@
   },
   {
     "licenseid": "cc-by2.0jp",
-    "title": "Creative Commons CC-BY Japan",
+    "deprecated" : "true",
+    "title": "Creative Commons CC-BY Japan 2.0",
     "source": "http://creativecommons.org/licenses/by/2.0/jp",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0jp.ttl"
@@ -766,7 +823,8 @@
   },
   {
     "licenseid": "cc-by2.0kr",
-    "title": "Creative Commons CC-BY Korea",
+    "title": "Creative Commons CC-BY Korea 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/kr",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0kr.ttl"
@@ -774,7 +832,8 @@
   },
   {
     "licenseid": "cc-by2.0nl",
-    "title": "Creative Commons CC-BY Netherlands",
+    "title": "Creative Commons CC-BY Netherlands 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/nl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0nl.ttl"
@@ -782,7 +841,8 @@
   },
   {
     "licenseid": "cc-by2.0uk",
-    "title": "Creative Commons CC-BY England & Wales",
+    "title": "Creative Commons CC-BY England and Wales 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/uk",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0uk.ttl"
@@ -790,7 +850,8 @@
   },
   {
     "licenseid": "cc-by2.0za",
-    "title": "Creative Commons CC-BY South Africa",
+    "title": "Creative Commons CC-BY South Africa 2.0",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/za",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.0za.ttl"
@@ -799,6 +860,7 @@
   {
     "licenseid": "cc-by2.5ar",
     "title": "Creative Commons CC-BY Argentina",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/mx",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5ar.ttl"
@@ -807,6 +869,7 @@
   {
     "licenseid": "cc-by2.5bg",
     "title": "Creative Commons CC-BY Bulgaria",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/bg",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5bg.ttl"
@@ -815,6 +878,7 @@
   {
     "licenseid": "cc-by2.5ch",
     "title": "Creative Commons CC-BY Switzerland",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/ch",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5ch.ttl"
@@ -823,6 +887,7 @@
   {
     "licenseid": "cc-by2.5cz",
     "title": "Creative Commons CC-BY Czech Republic",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/dz",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5cz.ttl"
@@ -830,7 +895,8 @@
   },
   {
     "licenseid": "cc-by2.5dk",
-    "title": "Creative Commons CC-BY Denmark",
+    "title": "Creative Commons CC-BY Denmark 2.5",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/dk",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5dk.ttl"
@@ -838,15 +904,17 @@
   },
   {
     "licenseid": "cc-by2.5hu",
-    "title": "Creative Commons CC-BY Hungary",
+    "title": "Creative Commons CC-BY Hungary 2.5",
     "source": "http://creativecommons.org/licenses/by/2.5/hu",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5hu.ttl"
     ]
   },
   {
     "licenseid": "cc-by2.5il",
-    "title": "Creative Commons CC-BY Israel",
+    "title": "Creative Commons CC-BY Israel 2.5",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/il",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5il.ttl"
@@ -854,7 +922,8 @@
   },
   {
     "licenseid": "cc-by2.5in",
-    "title": "Creative Commons CC-BY India",
+    "title": "Creative Commons CC-BY India 2.5",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/in",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5in.ttl"
@@ -862,7 +931,8 @@
   },
   {
     "licenseid": "cc-by2.5mx",
-    "title": "Creative Commons CC-BY Mexico",
+    "title": "Creative Commons CC-BY Mexico 2.5",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/mx",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5mx.ttl"
@@ -871,6 +941,7 @@
   {
     "licenseid": "cc-by2.5pe",
     "title": "Creative Commons CC-BY 2.5 Peru",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/pe",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5pe.ttl"
@@ -879,6 +950,7 @@
   {
     "licenseid": "cc-by2.5pt",
     "title": "Creative Commons CC-BY 2.5 Portugal",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.0/pt",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5pt.ttl"
@@ -886,7 +958,8 @@
   },
   {
     "licenseid": "cc-by2.5scotland",
-    "title": "Creative Commons CC-BY Scotland",
+    "title": "Creative Commons CC-BY Scotland 2.5",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/scotland",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5scotland.ttl"
@@ -895,6 +968,7 @@
   {
     "licenseid": "cc-by2.5se",
     "title": "Creative Commons CC-BY 2.5 Sweden",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/2.5/se",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by2.5se.ttl"
@@ -913,6 +987,7 @@
     "licenseid": "cc-by3.0at",
     "title": "Creative Commons CC-BY 3.0 Austria",
     "source": "http://creativecommons.org/licenses/by/3.0/at",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0at.ttl"
     ]
@@ -920,6 +995,7 @@
   {
     "licenseid": "cc-by3.0au",
     "title": "Creative Commons CC-BY 3.0 Australia",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/au",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0au.ttl"
@@ -928,6 +1004,7 @@
   {
     "licenseid": "cc-by3.0br",
     "title": "Creative Commons CC-BY 3.0 Brazil",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/br",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0br.ttl"
@@ -936,6 +1013,7 @@
   {
     "licenseid": "cc-by3.0ch",
     "title": "Creative Commons CC-BY 3.0 Switzerland",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/ch",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0ch.ttl"
@@ -944,6 +1022,7 @@
   {
     "licenseid": "cc-by3.0cl",
     "title": "Creative Commons CC-BY 3.0 Chile",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/cl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0cl.ttl"
@@ -952,6 +1031,7 @@
   {
     "licenseid": "cc-by3.0cn",
     "title": "Creative Commons CC-BY 3.0 China",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/cn",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0cn.ttl"
@@ -960,6 +1040,7 @@
   {
     "licenseid": "cc-by3.0de",
     "title": "Creative Commons CC-BY 3.0 Germany",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/de",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0de.ttl"
@@ -968,6 +1049,7 @@
   {
     "licenseid": "cc-by3.0ec",
     "title": "Creative Commons CC-BY 3.0 Ecuador",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/ec",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0ec.ttl"
@@ -977,6 +1059,7 @@
     "licenseid": "cc-by3.0eg",
     "title": "Creative Commons CC-BY Egypt",
     "source": "http://creativecommons.org/licenses/by/3.0/eg",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0eg.ttl"
     ]
@@ -985,6 +1068,7 @@
     "licenseid": "cc-by3.0es",
     "title": "Creative Commons CC-BY 3.0 Spain",
     "source": "http://creativecommons.org/licenses/by/3.0/es",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0es.ttl"
     ]
@@ -992,6 +1076,7 @@
   {
     "licenseid": "cc-by3.0fr",
     "title": "Creative Commons CC-BY 3.0 France",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/fr",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0fr.ttl"
@@ -1001,6 +1086,7 @@
     "licenseid": "cc-by3.0gr",
     "title": "Creative Commons CC-BY Greece",
     "source": "http://creativecommons.org/licenses/by/3.0/gr",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0gr.ttl"
     ]
@@ -1009,6 +1095,7 @@
     "licenseid": "cc-by3.0ie",
     "title": "Creative Commons CC-BY Ireland",
     "source": "http://creativecommons.org/licenses/by/3.0/ie",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0ie.ttl"
     ]
@@ -1016,6 +1103,7 @@
   {
     "licenseid": "cc-by3.0it",
     "title": "Creative Commons CC-BY 3.0 Italy",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/it",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0it.ttl"
@@ -1024,6 +1112,7 @@
   {
     "licenseid": "cc-by3.0lu",
     "title": "Creative Commons CC-BY Luxemburg",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/lu",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0lu.ttl"
@@ -1032,6 +1121,7 @@
   {
     "licenseid": "cc-by3.0nl",
     "title": "Creative Commons CC-BY 3.0 Netherlands",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/nl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0nl.ttl"
@@ -1040,6 +1130,7 @@
   {
     "licenseid": "cc-by3.0nz",
     "title": "Creative Commons CC-BY New Zealand",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/nz",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0nz.ttl"
@@ -1048,6 +1139,7 @@
   {
     "licenseid": "cc-by3.0pl",
     "title": "Creative Commons CC-BY 3.0 Poland",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/pl",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0pl.ttl"
@@ -1056,6 +1148,7 @@
   {
     "licenseid": "cc-by3.0pt",
     "title": "Creative Commons CC-BY Portugal",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/pt",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0pt.ttl"
@@ -1064,6 +1157,7 @@
   {
     "licenseid": "cc-by3.0ro",
     "title": "Creative Commons CC-BY 3.0 Romania",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/ro",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0ro.ttl"
@@ -1072,6 +1166,7 @@
   {
     "licenseid": "cc-by3.0th",
     "title": "Creative Commons CC-BY Thailand",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/th",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0th.ttl"
@@ -1080,6 +1175,7 @@
   {
     "licenseid": "cc-by3.0us",
     "title": "Creative Commons CC-BY United States",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/us",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0us.ttl"
@@ -1088,6 +1184,7 @@
   {
     "licenseid": "cc-by3.0ve",
     "title": "Creative Commons CC-BY Venezuela",
+    "deprecated" : "true",
     "source": "http://creativecommons.org/licenses/by/3.0/ve",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by3.0ve.ttl"
@@ -1097,6 +1194,7 @@
     "licenseid": "cc-by4.0",
     "title": "Creative Commons CC-BY",
     "source": "http://creativecommons.org/licenses/by/4.0/",
+    "deprecated" : "true",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by4.0.ttl"
     ]

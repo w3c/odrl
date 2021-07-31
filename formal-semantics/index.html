@@ -72,6 +72,22 @@ The W3C has produced several "Semantics" documents each of them with a different
 <p>The PROV Ontology Working Group has produced 12 specifications to facilitate the interchange of provenance information in the Web (where provenance is …information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness"). Besides having published a <a href="https://www.w3.org/TR/prov-o/">PROVO Ontology</a> to facilitate the expression of provenance as RDF, the family of documents also define an EBNF notation "which allows serializations of PROV instances to be created in a compact manner", a set of constraints to "ensure that a PROV instance represents a consistent history of objects and their interactions that is safe to use for the purpose of logical reasoning" and statements in the PROV Data Model are seen "as atomic formulas in the sense of first-order logic […and…] the constraints and inferences specified in PROV-CONSTRAINTS as a first-order theory". 
  </p> 
 
+<h3>2.2 ODRL Formalization</h3>
+<p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>p>
+
+<p>RDF documents instantiating the "Policy" class of the ODRL Ontology or using the XML or JSON syntaxes are called simply "ODRL Policies". The ODRL Ontology is already a formalization of the ODRL information model and vocabulary. The ontology of the version 2.1 consists of 1111 axioms with low complexity, but a comprehensive definition of each element (classes and relations) and a systematic definition of domains and ranges for the properties. Some ODRL concepts are represented as SKOS concepts ordered in SKOS collection. Reasoning with the ontology would be computationally inexpensive, but the usefulness of the possible reasoning tasks with the ontology is very limited. </p>
+
+<p>The ODRL 2.1 Ontology is not the first ODRL Ontology and other ontologies had been proposed before [García05][Kasten10]. However, neither these ontologies nor the ODRL 2.1 Ontology directly supported any reasoning tasks of practical use. Other more generic rights ontologiesexist, claiming tocomprise the concepts of ODRL, with the ambition of facilitating interoperability. Thus, Delgado (2003) and Nadah (2007) have proposed ontologies as a bridge to make transformation between rights expression languages like ODRL and MPEG-21 REL, whereas Rodríguez (2013) underlined the similarities of seven policy languages with an ontology design pattern. Other alternative means of achieving interoperability do not require ontologies, as Guth did (2003) defining an abstract object model.</p>
+
+<p>Some other formalizations of ODRL have been proposed with the purpose of determining whether a request is permitted given a set of policies and a certain history of events:we can name this task as theauthorisation decision.With that purpose, Gunter and Pucella had defined general logics for rights (2001 and 2002 respectively). Pucella then extended his work to model ODRL1.1 statements (2004) as formulas in a many-sorted first-order logic with equality,to determinewhether a permission was implied by a set of ODRL statements. Holzer et al. (2004) also enriched the authorisation decision modelling the dynamic aspects of licenses with finite-automata like structures (useful when the property of an asset is transferred, or when the number of plays is limited to a certain number of times). Chong et al. (2006) modelled licenses with multiset rewritingand logic programming (Prolog), including the ability to evaluate and merge licenses and to track the dynamic aspects of the rights evolution. Barth and Mitchell (2006) observed that the authorisation decision of a sequence of actions given a set of ODRL licenses is NP-complete because of the interval constraints, and proposed using propositional linear logic to grant efficient computability. Sheppard and Sfavi(2009) defined an algorithm for the authorisation decision with some of the most common ODRL elements, giving the pseudo-code for a virtual machine. Steyskal and Polleres (2015) defined an abstract syntax for expressing ODRL policies, where the dependencies among ODRL actions and the different conflict resolution strategies were explicitly considered in the rules for taking the authorisation decision. </p>
+
+<p>Besides the problems of facilitating interoperability and making the authorisation decision, other problems of interest have been modeled with formalizations of ODRL. One of them is how to evaluate the compatibility and composition of licenses, useful when handling with differently licensed content or data. In this line, Gangadharan et al. (2007)proposed a matchmaking algorithm to analyze the compatibility of licenses and make license compositions; Jamkhedkarand Heileman (2008) showed how the combination of ODRL, CreativeCommons REL and the XrML (embryo of the MPEG-21 REL) licenses was possible with an abstract model and several rules. Villata and Gandon (2012) also defined a framework with algorithms to validate compatibility and to obtain composite licenses. Rotolo et al. (2013) defined a deontic logic system for the composition of licenses, with strict rules, defasible rules and defeater rules. More recent critics </p>
+
+<p>It is evident that some policies can be used to grant automated access to resources. For example, verifying the execution of a payment can be automatically done. However, the satisfaction of some constraints cannot be digitally evaluated. Policies then play a double role, as automatable expressions in a computer system and as constracts with a certain legal value. Steyskal and Kirrane (2015) show how to use ODRL to specify access requests, data offers and agreements, distinguishing between enforceable and non-enforceable access policies, proposing an algorithm to auto-generate contracts for the latter.</p>
+
+<p>In more recent efforts, de Vos et al. (2019) transforms ODRL expressions into Answer Set Programming to model policies and check compliance – specifically in the area of personal data processing, where ODRL has also been recently used (Esteves et al. 2021). Other profiles and initiatives have been proposed (Kim et al. 2020), on despite of several limitations found by Kebede at al. (2020).</p>
+
+
 
 	<section id="conventions">
 	<h2>Document Conventions</h2>
@@ -151,6 +167,81 @@ The W3C has produced several "Semantics" documents each of them with a different
       </table>
 
     </section>   				
+
+<section>References</section>
+<small>
+[Wieringa93] Wieringa, R. J., & Meyer, J. J. C. (1993). Applications of deontic logic in computer science: A concise overview. Deontic logic in computer science, pp. 17-40 John Wiley & Sons.
+
+[Gunter01] Gunter, C. A., Weeks, S. T., & Wright, A. K. (2001, January). Models and languages for digital rights. In System Sciences, 2001. Proceedings of the 34th Annual Hawaii International Conference on (pp. 5-pp). IEEE.
+
+[ODRL02] Ianella, R. Open Digital Rights Language (ODRL) Version 1.1. 
+Formerly available <a href="http://odrl.net/1.1/ODRL-11.pdf">online</a>.
+
+[Pucella02] Pucella, R., &Weissman, V. (2002). A logic for reasoning about digital rights. In Computer Security Foundations Workshop, 2002. Proceedings. 15th IEEE (pp. 282-294). IEEE.
+
+[XACML03] Anderson, A., Nadalin, A., Parducci, B., Engovatov, D., Lockhart, H., Kudo, M., ... & Moses, T. (2003). extensible access control markup language (xacml) version 1.0. OASIS.
+
+[Delgado03] Delgado, J., Gallego, I., Llorente, S., & García, R. (2003, December). IPROnto: An ontology for digital rights management. In 16th Annual Conference on Legal Knowledge and Information Systems, JURIX (Vol. 106).
+
+[Guth03] Guth, S., Neumann, G., &Strembeck, M. (2003, October). Experiences with the enforcement of access rights extracted from ODRL-based digital contracts. In Proceedings of the 3rd ACM workshop on Digital rights management (pp. 90-102). ACM.
+
+[Pucella04] RiccardoPucella , Vicky Weissman. A formal foundation for ODRL, In Proc. of the Workshop on Issues in the Theory of Security (WIST’04)
+
+[Wang04] Wang, X. (2004). MPEG-21 rights expression language: Enabling interoperable digital rights management. IEEE MultiMedia, 11(4), 84-87.
+
+[García05] García, R., Gil, R., Gallego, I., & Delgado, J. (2005, July). Formalising ODRL semantics using web ontologies. In Proc. 2nd Intl. ODRL Workshop (pp. 1-10).
+
+[Barth06] Adam Barth and John C. Mitchell. Managing digital rights using linear logic. In LICS ’06: Proceedings of the 21st Annual IEEE Symposium on Logic in Computer Science, pages 127–136,Washington, DC, USA, 2006. IEEE Computer Society
+
+[Chong06] Chong, C. N., Corin, R., Doumen, J., Etalle, S., Hartel, P., Law, Y. W., &Tokmakoff, A. (2006). LicenseScript: a logical language for digital rights management. Annals of Telecommunications, 61(3), 284-331.
+
+[Nadah07] Nadia Nadah, Melanie Dulong de Rosnay, Bruno Bachimont. Licensing Digital Content With
+A Generic Ontology: Escaping From The Rights Expression Language Jungle. ACM. ICAIL2007 - 11th international conference on Articial intelligence and law, Jun 2007, Stanford, United States. pp.65-69, 2007, Proceedings of the 11th international conference on Articial intelligence and law
+
+[Gangadharan07] Gangadharan G.R., Weiss M., D’Andrea V., Iannella R. (2007) Service License Composition and Compatibility Analysis. In: Krämer B.J., Lin KJ., Narasimhan P. (eds) Service-Oriented Computing – ICSOC 2007. ICSOC 2007. Lecture Notes in Computer Science, vol 4749. Springer, Berlin, Heidelberg
+
+[Jamkhedkar08] Pramod Arvind Jamkhedkar, Gregory L. Heileman. Conceptual Model For Rights. Proceedings of the 8th ACM workshop on Digital rights management Pages 29-38, 2008
+
+[Sheppard09] Sheppard, N. P., &Safavi-Naini, R. (2009, November). On the operational semantics of rights expression languages. In Proceedings of the nineth ACM workshop on Digital rights management (pp. 17-28). ACM.
+
+[Kasten10] Andreas Kasten and Rüdiger Grimm. Making the Semantics of ODRL and URM Explicit Using Web Ontologies. Virtual Goods, pages 77–91, 2010.
+
+[Villata12] Serena Villata and FabienGandon. Licenses compatibilityand composition in the web of data. In The 2ndInternational Workshop on Consuming Linked Data.2012.
+[Rodriguez13] Rodríguez-Doncel, V., Suárez-Figueroa, M. C., Gómez-Pérez, A., & Poveda-Villalón, M. (2013, October). License linked data resources pattern. In Proceedings of the 4th International Conference on Ontology and Semantic Web Patterns-Volume 1188 (pp. 84-87). CEUR-WS. org.
+
+[Rotolo13] Antonino Rotolo, Serena Villata, and Fabien Gandon. A deontic logic semantics
+for licenses composition in the web of data. In Int’l Conf. on Artificial Intelligence
+and Law ICAIL, pages 111–120, 2013.
+
+[Steyskal14] Simon Steyskal and Axel Polleres. Defining expressive access policies for linked data using the ODRL ontology 2.0. In Proceedings of the 10th International Conference on Semantic Systems, SEMANTICS 2014, Leipzig, Germany, September 4-5, 2014, pages 20–23, 2014
+
+[Cabrio14] Elena Cabrio, Alessio Palmero Aprosio, and Serena Villata. These are your rights - A natural language processing approach to automated RDF licenses generation. In The Semantic Web: Trends and Challenges - 11th International Conference, ESWC 2014, Anissaras, Crete, Greece, May 25-29, 2014. Proceedings, pages 255– 269, 2014
+
+[Ianella15b] R. Iannella, M. Steidl, S. Guth (eds). Open Digital Rights Language (ODRL) Version 2.1 – Common Vocabulary. Final Specification, W3C ODRL Community Group
+http://www.w3.org/community/odrl/vocab/2.1/
+
+[Ianella15] R. Iannella& S. Guth& D. Paehler& A. Kasten (eds). Open Digital Rights Language (ODRL) Version 2.1 – Core Model. Final Specification, W3C ODRL Community Group. http://www.w3.org/community/odrl/model/2.1/
+
+[McRoberts15] M. McRoberts, V. Rodríguez Doncel. Open Digital Rights Language (ODRL) Version 2.1 – Ontology. Final Specification, W3C ODRL Community Group
+http://www.w3.org/ns/odrl/2/
+
+[Rodriguez15] Rodríguez, E., Delgado, J., Boch, L., & Rodríguez-Doncel, V. (2015). Media Contract Formalization Using a Standardized Contract Expression Language. IEEE multimedia, 22(2), 64-74.
+
+[Steyskal15] Steyskal, S., &Kirrane, S. (2015). If you can't enforce it, contract it: Enforceability in Policy-Driven (Linked) Data Markets. In SEMANTiCS (Posters & Demos) (pp. 63-66).
+
+[Steyskal15b] Steyskal, S., &Polleres, A. (2015, August). Towards formal semantics for ODRL policies. In International Symposium on Rules and Rule Markup Languages for the Semantic Web (pp. 360-375). Springer International Publishing.
+
+[Rodriguez16] Rodríguez-Doncel, V., Delgado, J., Llorente, S., Rodríguez, E., & Boch, L. (2016). Overview of the MPEG-21 Media Contract Ontology. Semantic Web, 7(3), 311-332.
+
+[DeVos19] De Vos, M., Kirrane, S., Padget, J., & Satoh, K. (2019, September). ODRL policy modelling and compliance checking. In International Joint Conference on Rules and Reasoning (pp. 36-51). Springer, Cham.
+
+[Kebede20] Kebede, M. G., Sileno, G., & van Engers, T. (2020). A critical reflection on ODRL. Springer Lecture Notes Artificial Intelligence, AICOL2021, to appear.
+
+[Kim20] Kim, J. M., & Chung, H. S. (2020). ODRL Ontology Extention Model and Prototype Design for the Specification of the Rights to use Digital Contents. Journal of Convergence for Information Technology, 10(1), 13-21.
+
+[Esteves21] Esteves, B., Pandit, H. J., & Rodrıguez-Doncel, V. ODRL Profile for Expressing Consent through Granular Access Control Policies in Solid. To appear, proc. of the Workshop on Consent Management in Online Services, Networks and Things (COnSeNT) - co-located with IEEE European Symposium on Security and Privacy (EuroS&P 2021)
+</small>
+
 </section>   				
 	
 	</body>
