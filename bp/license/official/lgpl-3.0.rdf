@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:cc='http://creativecommons.org/ns#'
+  xmlns:foaf='http://xmlns.com/foaf/0.1/'
+  xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+  xmlns:dcq='http://purl.org/dc/terms/'
+>
+  <cc:License rdf:about="http://gnu.org/licenses/lgpl-3.0.html">
+    <dcq:hasVersion>3.0</dcq:hasVersion>
+    <foaf:logo rdf:resource="http://www.gnu.org/graphics/lgplv3-88x31.png"/>
+    <foaf:logo rdf:resource="http://www.gnu.org/graphics/lgplv3-147x51.png"/>
+    <dcq:identifier>GNU LGPL</dcq:identifier>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#LesserCopyleft"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#SourceCode"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+    <cc:legalcode rdf:resource="http://gnu.org/licenses/lgpl-3.0.html"/>
+    <dcq:title>GNU Lesser General Public License</dcq:title>
+    <dcq:creator rdf:resource="http://fsf.org/"/>
+  </cc:License>
+</rdf:RDF>

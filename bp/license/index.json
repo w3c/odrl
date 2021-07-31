@@ -60,6 +60,7 @@
     "source": "http://opensource.org/licenses/Artistic-2.0",
     "mapping": [
       "http://purl.org/NET/rdflicense/ARTISTIC2.0.ttl",
+      "https://raw.githubusercontent.com/warpr/licensedb/master/data/Artistic-2.ttl",
       "https://spdx.org/licenses/Artistic-2.0.json"      
     ]
   },
@@ -87,7 +88,8 @@
     "source": "http://www.linfo.org/bsdlicense.html",
     "mapping": [
       "http://purl.org/NET/rdflicense/BSD3.0.ttl",
-      "https://spdx.org/licenses/BSD-3-Clause.json"    ]
+      "https://spdx.org/licenses/BSD-3-Clause.json"    
+    ]
   },
   {
     "licenseid": "BSD4.0",
@@ -103,7 +105,8 @@
     "title": "Creative Commons CC-BY-NC-ND 2.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-nd2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-nd2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-ND-2.0.json"
     ]
   },
   {
@@ -111,7 +114,8 @@
     "title": "Creative Commons CC-BY-NC-ND 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-ND-3.0.json"
     ]
   },
   {
@@ -180,7 +184,7 @@
   },
   {
     "licenseid": "cc-by-nc-nd3.0es",
-    "title": "Creative Commons CC-BY-NC-ND Spain",
+    "title": "Creative Commons CC-BY-NC-ND Spain 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/3.0/es",
     "mapping": [
       "http://purl.org/NET/rdflicense/cc-by-nc-nd3.0es.ttl"
@@ -252,66 +256,74 @@
   },
   {
     "licenseid": "cc-by-nc-nd4.0",
-    "title": "Creative Commons CC-BY-NC-ND",
+    "title": "Creative Commons CC-BY-NC-ND 4.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-nd4.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-nd4.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-ND-4.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc-sa2.0",
-    "title": "Creative Commons CC-BY-NC-SA",
+    "title": "Creative Commons CC-BY-NC-SA 2.0",
     "source": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-sa2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-sa2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-SA-2.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc-sa3.0",
-    "title": "Creative Commons CC-BY-NC-SA",
+    "title": "Creative Commons CC-BY-NC-SA 3.0",
     "source": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-sa3.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-sa3.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-SA-3.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc-sa4.0",
-    "title": "Creative Commons CC-BY-NC-SA",
+    "title": "Creative Commons CC-BY-NC-SA 4.0",
     "source": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc-sa4.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc-sa4.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-SA-4.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc2.0",
-    "title": "Creative Commons CC-BY-NC",
+    "title": "Creative Commons CC-BY-NC 2.0",
     "source": "http://creativecommons.org/licenses/by-nc/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-2.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc3.0",
-    "title": "Creative Commons CC-BY-NC",
+    "title": "Creative Commons CC-BY-NC 3.0",
     "source": "http://creativecommons.org/licenses/by-nc/3.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc3.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc3.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-3.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nc4.0",
-    "title": "Creative Commons CC-BY-NC",
+    "title": "Creative Commons CC-BY-NC 4.0",
     "source": "http://creativecommons.org/licenses/by-nc/4.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nc4.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nc4.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-NC-4.0.json"
     ]
   },
   {
     "licenseid": "cc-by-nd2.0",
-    "title": "Creative Commons CC-BY-ND",
+    "title": "Creative Commons CC-BY-ND 2.0",
     "source": "http://creativecommons.org/licenses/by-nc-nd/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nd2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nd2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-ND-2.0.json"
     ]
   },
   {
@@ -476,26 +488,29 @@
   },
   {
     "licenseid": "cc-by-nd4.0",
-    "title": "Creative Commons CC-BY-ND",
+    "title": "Creative Commons CC-BY-ND 4.0",
     "source": "http://creativecommons.org/licenses/by-nd/4.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-nd4.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-nd4.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-ND-4.0.json"
     ]
   },
   {
     "licenseid": "cc-by-sa2.0",
-    "title": "Creative Commons CC-BY-SA",
+    "title": "Creative Commons CC-BY-SA 2.0",
     "source": "http://creativecommons.org/licenses/by-sa/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-sa2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-sa2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-SA-2.0.json"
     ]
   },
   {
     "licenseid": "cc-by-sa3.0",
-    "title": "Creative Commons CC-BY-SA",
+    "title": "Creative Commons CC-BY-SA 3.0",
     "source": "http://creativecommons.org/licenses/by-sa/3.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-sa3.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-sa3.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-SA-3.0.json"
     ]
   },
   {
@@ -639,7 +654,8 @@
     "title": "Creative Commons CC-BY-SA 4.0",
     "source": "http://creativecommons.org/licenses/by-sa/4.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by-sa4.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by-sa4.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-SA-4.0.json"
     ]
   },
   {
@@ -647,7 +663,8 @@
     "title": "Creative Commons CC-BY 1.0",
     "source": "http://creativecommons.org/licenses/by/1.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by1.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by1.0.ttl",
+      "https://spdx.org/licenses/CC-BY-1.0.json"
     ]
   },
   {
@@ -655,7 +672,8 @@
     "title": "Creative Commons CC-BY 2.0",
     "source": "http://creativecommons.org/licenses/by/2.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by2.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by2.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-2.0.json"
     ]
   },
   {
@@ -884,10 +902,11 @@
   },
   {
     "licenseid": "cc-by3.0",
-    "title": "Creative Commons CC-BY",
+    "title": "Creative Commons CC-BY 3.0",
     "source": "http://creativecommons.org/licenses/by/3.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-by3.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-by3.0.ttl", 
+      "https://spdx.org/licenses/CC-BY-3.0.json"
     ]
   },
   {
@@ -1084,18 +1103,20 @@
   },
   {
     "licenseid": "cc-zero1.0",
-    "title": "Creative Commons CC0",
+    "title": "Creative Commons CC0 v1.0 Universal",
     "source": "http://creativecommons.org/publicdomain/zero/1.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/cc-zero1.0.ttl"
+      "http://purl.org/NET/rdflicense/cc-zero1.0.ttl",
+      "https://spdx.org/licenses/CC0-1.0.json"
     ]
   },
   {
     "licenseid": "CDDL1.0",
-    "title": "Common Development and Distribution License",
+    "title": "Common Development and Distribution License 1.0 ",
     "source": "http://opensource.org/licenses/CDDL-1.0",
     "mapping": [
-      "http://purl.org/NET/rdflicense/CDDL1.0.ttl"
+      "http://purl.org/NET/rdflicense/CDDL1.0.ttl", 
+      "https://spdx.org/licenses/CDDL-1.0.json"
     ]
   },
   {
@@ -1119,7 +1140,8 @@
     "title": "Common Public License",
     "source": "http://opensource.org/licenses/cpl1.0.php",
     "mapping": [
-      "http://purl.org/NET/rdflicense/COMMON1.0.ttl"
+      "http://purl.org/NET/rdflicense/COMMON1.0.ttl",
+      "https://spdx.org/licenses/CPL-1.0.json"
     ]
   },
   {
@@ -1132,10 +1154,11 @@
   },
   {
     "licenseid": "ECLIPSE1.0",
-    "title": "Eclipse Public License",
+    "title": "Eclipse Public License 1.0",
     "source": "https://www.eclipse.org/legal/epl-v10.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/ECLIPSE1.0.ttl"
+      "http://purl.org/NET/rdflicense/ECLIPSE1.0.ttl",
+      "https://spdx.org/licenses/EPL-1.0.json"
     ]
   },
   {
@@ -1167,7 +1190,8 @@
     "title": "European Union Public License",
     "source": "https://joinup.ec.europa.eu/software/page/eupl/licence-eupl",
     "mapping": [
-      "http://purl.org/NET/rdflicense/EUPL1.1.ttl"
+      "http://purl.org/NET/rdflicense/EUPL1.1.ttl",
+      "https://spdx.org/licenses/EUPL-1.1.json"
     ]
   },
   {
@@ -1183,7 +1207,8 @@
     "title": "Free BSD Documentation License",
     "source": "http://www.freebsd.org/copyright/freebsd-doc-license.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/FREEBSD1.0.ttl"
+      "http://purl.org/NET/rdflicense/FREEBSD1.0.ttl", 
+      "https://spdx.org/licenses/FreeBSD-DOC.json"
     ]
   },
   {
@@ -1191,15 +1216,17 @@
     "title": "GNU Free Documentation License",
     "source": "https://gnu.org/licenses/fdl.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/gfdl1.1.ttl"
+      "http://purl.org/NET/rdflicense/gfdl1.1.ttl",
+      "https://spdx.org/licenses/GFDL-1.1.json"
     ]
   },
   {
     "licenseid": "gfdl1.3",
-    "title": "GNU Free Documentation License",
+    "title": "GNU Free Documentation License 1.3",
     "source": "https://gnu.org/licenses/fdl.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/gfdl1.3.ttl"
+      "http://purl.org/NET/rdflicense/gfdl1.3.ttl",
+      "https://spdx.org/licenses/GFDL-1.3.rdf"
     ]
   },
   {
@@ -1212,26 +1239,30 @@
   },
   {
     "licenseid": "gpl1.0",
-    "title": "GNU General Public License",
+    "title": "GNU General Public License 1.0",
     "source": "http://gnu.org/licenses/gpl-1.0.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/gpl1.0.ttl"
+      "http://purl.org/NET/rdflicense/gpl1.0.ttl",
+      "https://www.gnu.org/licenses/lgpl-1.0.rdf",
+      "https://spdx.org/licenses/LGPL-1.0.json"
     ]
   },
   {
     "licenseid": "gpl2.0",
-    "title": "GNU General Public License",
+    "title": "GNU General Public License 2.0",
     "source": "http://gnu.org/licenses/gpl-2.0.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/gpl2.0.ttl"
+      "http://purl.org/NET/rdflicense/gpl2.0.ttl",
+      "https://www.gnu.org/licenses/gpl-2.0.rdf",
+      "https://spdx.org/licenses/GPL-2.0.json"
     ]
   },
   {
     "licenseid": "gpl3.0",
-    "title": "GNU General Public License",
+    "title": "GNU General Public License 3.0",
     "source": "http://gnu.org/licenses/gpl-3.0.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/gpl3.0.ttl", ,
+      "http://purl.org/NET/rdflicense/gpl3.0.ttl", 
       "https://spdx.org/licenses/OGL-UK-3.0.json"
     ]
   },
@@ -1240,7 +1271,8 @@
     "title": "IBM Public License",
     "source": "http://opensource.org/licenses/IPL-1.0",
     "mapping": [
-      "http://purl.org/NET/rdflicense/IBM1.0.ttl"
+      "http://purl.org/NET/rdflicense/IBM1.0.ttl",
+      "https://spdx.org/licenses/IPL-3.0.json"
     ]
   },
   {
@@ -1253,47 +1285,57 @@
   },
   {
     "licenseid": "lgpl2.0",
-    "title": "GNU Library General Public License",
+    "title": "GNU Library General Public License 2.0",
     "source": "https://www.gnu.org/licenses/lgpl.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/lgpl2.0.ttl"
+      "http://purl.org/NET/rdflicense/lgpl2.0.ttl",
+      "https://spdx.org/licenses/LGPL-2.0.json",
+      "https://www.gnu.org/licenses/lgpl-2.0.rdf"
     ]
   },
   {
     "licenseid": "lgpl2.1",
-    "title": "GNU Lesser General Public License",
+    "title": "GNU Lesser General Public License 2.1",
     "source": "https://www.gnu.org/licenses/lgpl.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/lgpl2.1.ttl"
+      "http://purl.org/NET/rdflicense/lgpl2.1.ttl",
+      "https://spdx.org/licenses/LGPL-2.1.json",
+      "https://www.gnu.org/licenses/lgpl-2.1.rdf"
     ]
   },
   {
     "licenseid": "lgpl3.0",
-    "title": "GNU Lesser General Public License",
+    "title": "GNU Lesser General Public License 3.0",
     "source": "https://www.gnu.org/licenses/lgpl.html",
     "mapping": [
-      "http://purl.org/NET/rdflicense/lgpl3.0.ttl"
+      "http://purl.org/NET/rdflicense/lgpl3.0.ttl",
+      "https://spdx.org/licenses/LGPL-3.0.json", 
+      "official/lgpl-3.0.ttl"
+
     ]
   },
   {
     "licenseid": "MICROSOFT1.0",
-    "title": "Microsoft Reference Source License",
+    "title": "Microsoft Reference Source License 1.0",
     "source": "http://referencesource.microsoft.com/referencesourcelicensing.aspx",
     "mapping": [
-      "http://purl.org/NET/rdflicense/MICROSOFT1.0.ttl"
+      "http://purl.org/NET/rdflicense/MICROSOFT1.0.ttl",
+      "https://spdx.org/licenses/MS-PL.json"
     ]
   },
   {
     "licenseid": "MIT1.0",
-    "title": "MIT License",
+    "title": "MIT License 1.0",
     "source": "http://opensource.org/licenses/MIT",
     "mapping": [
-      "http://purl.org/NET/rdflicense/MIT1.0.ttl"
+      "http://purl.org/NET/rdflicense/MIT1.0.ttl",
+      "https://raw.githubusercontent.com/warpr/licensedb/master/data/MIT.ttl",
+      "https://spdx.org/licenses/MIT.json"
     ]
   },
   {
     "licenseid": "MOZILLA2.0",
-    "title": "Mozilla Public License",
+    "title": "Mozilla Public License 2.0",
     "source": "https://www.mozilla.org/MPL/2.0/",
     "mapping": [
       "http://purl.org/NET/rdflicense/MOZILLA2.0.ttl"
@@ -1325,7 +1367,7 @@
   },
   {
     "licenseid": "NDL1.0",
-    "title": "Web NDL Authority License",
+    "title": "Web NDL Authority License 1.0",
     "source": "http://iss.ndl.go.jp/ndla/use/",
     "mapping": [
       "http://purl.org/NET/rdflicense/NDL1.0.ttl"
@@ -1333,15 +1375,16 @@
   },
   {
     "licenseid": "odbc-by1.0",
-    "title": "Open Data Commons Attribution License",
+    "title": "Open Data Commons Attribution License 1.0",
     "source": "http://opendatacommons.org/licenses/odc-by/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/odbc-by1.0.ttl"
+      "http://purl.org/NET/rdflicense/odbc-by1.0.ttl", 
+      "https://spdx.org/licenses/ODC-By-1.0.json"
     ]
   },
   {
     "licenseid": "odbc-pddl1.0",
-    "title": "Open Data Commons Public Domain Dedication and License",
+    "title": "Open Data Commons Public Domain Dedication and License 1.0",
     "source": "http://opendatacommons.org/licenses/pddl/",
     "mapping": [
       "http://purl.org/NET/rdflicense/odbc-pddl1.0.ttl", 
@@ -1350,23 +1393,15 @@
   },
   {
     "licenseid": "odbl1.0",
-    "title": "Open Data Commons Open Database License",
+    "title": "Open Data Commons Open Database License 1.0",
     "source": "http://opendatacommons.org/licenses/odbl/",
     "mapping": [
       "http://purl.org/NET/rdflicense/odbl1.0.ttl"
     ]
   },
   {
-    "licenseid": "gpl-3.0.html",
-    "title": "gpl-3.0",
-    "source": "",
-    "mapping": [
-      "http://gnu.org/licenses/gpl-3.0.html.ttl"
-    ]
-  },
-  {
     "licenseid": "OGCDocument1.0",
-    "title": "Open Geospatial Consortium Document",
+    "title": "Open Geospatial Consortium Document 1.0",
     "source": "http://www.opengeospatial.org/ogc/document",
     "mapping": [
       "http://purl.org/NET/rdflicense/OGCDocument1.0.ttl"
@@ -1405,14 +1440,6 @@
     ]
   },
   {
-    "licenseid": "ORACLE1.0",
-    "title": "Oracle Berkely DB License",
-    "source": "http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/oslicense-093458.html",
-    "mapping": [
-      "http://purl.org/NET/rdflicense/ORACLE1.0.ttl"
-    ]
-  },
-  {
     "licenseid": "OS3.0",
     "title": "OS Open Data License",
     "source": "http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html",
@@ -1425,7 +1452,8 @@
     "title": "Public Domain Mark",
     "source": "http://creativecommons.org/publicdomain/mark/1.0/",
     "mapping": [
-      "http://purl.org/NET/rdflicense/PDM1.0.ttl"
+      "http://purl.org/NET/rdflicense/PDM1.0.ttl",
+      "https://spdx.org/licenses/CC-PDDC.json"
     ]
   },
   {

@@ -6,11 +6,11 @@ var respecConfig = {
                      company:    "Universita' della Svizzera italiana",
                      companyURL: "https://www.usi.ch/en",
                       mailto:     "person email"},
-         	 {  name:       "Name",
-                    url:        "linkedIn URL",
-                    company:    "Org",
-                   companyURL: "Org URL",
-                    mailto:     "person email"
+         	 {  name:       "Víctor Rodríguez-Doncel",
+                    url:        "http://cosasbuenas.es",
+                    company:    "Ontology Engineering Group, Universidad Politécnica de Madrid",
+                   companyURL: "http://oeg-upm.net",
+                    mailto:     "n.a."
            }
     ],
     group: "odrl",
