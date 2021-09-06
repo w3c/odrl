@@ -281,18 +281,23 @@
 						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:P1-V1</span><span class="p"> , </span><span class="nv">:P1-V2</span><span class="p"> . </span>
 						<br/>
 						<span class="nv">:P1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
+						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
 						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="p">[</span>
+						<span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
+						<span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="p">] ;</span>
 						<span class="w">                                </span><span class="p">] ;</span>
-						<span class="w">        </span><span class="p">... </span>
 						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> , </span><span class="nn">odrl:</span><span class="nt">Distribute</span><span class="p"> ; </span>
 						<span class="w">        </span><span class="p">... </span>
 						<br/>
 						<span class="nv">:P1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
+						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
 						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="p">[</span>
+						<span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
+						<span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="p">] ;</span>
 						<span class="w">                                </span><span class="p">] ;</span>
 						<span class="w">        </span><span class="p">... </span>
 						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> ; </span>
