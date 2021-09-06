@@ -170,23 +170,26 @@
 					</table>
 			    </section>
 				<p>
-					The Temporal Agreement below offers one (temporal) permission prior to the first of January 2020 and two permissions after.
+					The Temporal Agreement below offers one (temporal) permission prior to the first of January 2020 and two permissions hasBeginning.
 				</p>
 				<pre class="example nohighlight turtle" title="Temporal Agreement" id="TemporalAgreement">
 					<span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalAgreement</span><span class="p"> ;</span>
 					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:T1-V1</span><span class="p"> , </span><span class="nv">:T1-V2</span><span class="p"> . </span>
 					<br/>
 					<span class="nv">:T1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveDate</span><span class="w">      </span><span class="p">[</span>
+					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
 					<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">before</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="p">[</span>
+                    <span class="w">                                                                </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
+                    <span class="w">                                                                </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">             </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+                                                                                                    </span><span class="p">] ;</span>
 					<span class="w">                                </span><span class="p">] ;</span>
 					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1</span><span class="p"> . </span>
                     <br/>
 					<span class="nv">:T1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveDate</span><span class="w">      </span><span class="p">[</span>
+					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
 					<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">after</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
 					<span class="w">                                </span><span class="p">] ;</span>
 					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1</span><span class="p"> , </span><span class="nv">:P2</span><span class="p"> . </span>  
 				</pre>
@@ -268,25 +271,25 @@
 					    </tbody>
 					</table>
 					<p>
-						The Temporal Permission below offers both display and distrubute actions until 2020, but only a display action afterwards.
+						The Temporal Permission below offers both display and distrubute actions until 2020, but only a display action hasBeginningwards.
 					</p>
 					<pre class="example nohighlight turtle" title="Temporal Permission" id="TemporalPermission">
 						<span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalPermission</span><span class="p"> ;</span>
 						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:P1-V1</span><span class="p"> , </span><span class="nv">:P1-V2</span><span class="p"> . </span>
 						<br/>
 						<span class="nv">:P1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveDate</span><span class="w">      </span><span class="p">[</span>
+						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
 						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">before</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
 						<span class="w">                                </span><span class="p">] ;</span>
 						<span class="w">        </span><span class="p">... </span>
 						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> , </span><span class="nn">odrl:</span><span class="nt">Distribute</span><span class="p"> ; </span>
 						<span class="w">        </span><span class="p">... </span>
 						<br/>
 						<span class="nv">:P1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveDate</span><span class="w">      </span><span class="p">[</span>
+						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">      </span><span class="p">[</span>
 						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">after</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
 						<span class="w">                                </span><span class="p">] ;</span>
 						<span class="w">        </span><span class="p">... </span>
 						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> ; </span>
@@ -365,7 +368,7 @@
 						</tr><tr>
 							<th>Label:</th><td>has effective date</td>
 						</tr><tr>
-							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/effectiveData">http://www.w3.org/ns/odrl/2/temporal/effectiveDate</a></td>
+							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/effectiveData">http://www.w3.org/ns/odrl/2/temporal/effectiveInterval</a></td>
 						</tr><tr>
 							<th>Domain:</th><td><a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Rule">Rule</a>, <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a></td>
 						</tr><tr>
