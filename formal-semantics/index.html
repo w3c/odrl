@@ -73,7 +73,7 @@ The W3C has produced several "Semantics" documents each of them with a different
  </p> 
 
 <h3>2.2 ODRL Formalization</h3>
-<p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>p>
+<p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>
 
 <p>RDF documents instantiating the "Policy" class of the ODRL Ontology or using the XML or JSON syntaxes are called simply "ODRL Policies". The ODRL Ontology is already a formalization of the ODRL information model and vocabulary. The ontology of the version 2.1 consists of 1111 axioms with low complexity, but a comprehensive definition of each element (classes and relations) and a systematic definition of domains and ranges for the properties. Some ODRL concepts are represented as SKOS concepts ordered in SKOS collection. Reasoning with the ontology would be computationally inexpensive, but the usefulness of the possible reasoning tasks with the ontology is very limited. </p>
 
@@ -87,7 +87,8 @@ The W3C has produced several "Semantics" documents each of them with a different
 
 <p>In more recent efforts, de Vos et al. (2019) transforms ODRL expressions into Answer Set Programming to model policies and check compliance – specifically in the area of personal data processing, where ODRL has also been recently used (Esteves et al. 2021). Other profiles and initiatives have been proposed (Kim et al. 2020), on despite of several limitations found by Kebede at al. (2020).</p>
 
-
+<p> In Fornara and Colombetti (2019) the  ODRL 2.2 policy language has been extended in two directions. Firstly, by inserting in the model the notion of activation event, secondly, by considering the temporal aspects of obligations, permissions, and prohibitions
+(e.g. expiration dates and deadlines) as part of the application independent model of policies.
 
 	<section id="conventions">
 	<h2>Document Conventions</h2>
@@ -242,7 +243,10 @@ http://www.w3.org/ns/odrl/2/<br/>
 [Kim20] Kim, J. M., & Chung, H. S. (2020). ODRL Ontology Extention Model and Prototype Design for the Specification of the Rights to use Digital Contents. Journal of Convergence for Information Technology, 10(1), 13-21.<br/>
 
 [Esteves21] Esteves, B., Pandit, H. J., & Rodrıguez-Doncel, V. ODRL Profile for Expressing Consent through Granular Access Control Policies in Solid. To appear, proc. of the Workshop on Consent Management in Online Services, Networks and Things (COnSeNT) - co-located with IEEE European Symposium on Security and Privacy (EuroS&P 2021)<br/>
+
+[Fornara19] N. Fornara and M. Colombetti. Using Semantic Web Technologies and Production Rules for Reasoning on Obligations, Permissions, and Prohibitions. AI Communications, vol. 32, no. 4, pp. 319-334, 2019. 
 </small>
+			
 
 </section>   				
 	
