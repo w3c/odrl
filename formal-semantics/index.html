@@ -33,7 +33,21 @@
 		The ODRL ontology can be used to write machine-readable policies (sample policies are available here <a href="https://w3c.github.io/odrl/bp/">https://w3c.github.io/odrl/bp/</a>)
 			and associate them to digital assets. This will allow consumers <em>search</em> for policies, for example they can easily retrieve all the permissions they have on a given 
 		picture or all the prohibitions associated to a movie.<br>
-		<em>Monitoring</em> and <em>simulation</em> are two other useful services that can be provided on a set of machine-readable policies. Monitoring is useful, for example, for being able to:
+			
+		Other types of services that would be useful to implement on a set of ODRL policies are:
+		<ol>
+		<li> Monitoring/Simulation or compliance checking: input: set of policies + actions performed by agents output: fulfilled and violated policies. </li>
+		<li> Planning: for example I want to do an action, I don't have permission to do it, what do I have to do to get permission to do it?</li>
+                <li> License composition: input: set of policies output: either an empty policy (incompatible) or a policy with the restrictions to be fulfilled to satisfy them all (comment: a well-studied problem by Governatori, Villata, et al.)</li>
+                <li> Authorization: input: set of policies, request, context output: Boolean, modification of context comment: it will be used in the framework of privacy and in the framework of language resources.
+                <li> Authorization with OWL reasoning: same as above, but with the RDF, RDFS and OWL inferences. </li>
+                <li> Validation: input: one license, one set of RDF SHACL Shapes output: boolean (+ string with explanation). <a href="http://odrlapi.appspot.com/">ODRL Validator and Evaluator Sandbox</a></li>.
+                <li> Transformation (Victor): input: one license output: solidity (Ethereum smart contract), mpeg-21, xacl, others. license in another language</li>
+		</ol>
+		
+		<h3> Monitoring, simulation, and compliance checking <h3>
+		<em>Monitoring, simulation, and compliance checking</em> are useful services that can be provided on a set of machine-readable policies. 
+			Monitoring or compliance checking are useful, for example, for being able to:
 		<ul>
 			<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if the behaviour of its employees 
 				is compliant with the policies attached to the digital assets used inside the company.</li>
@@ -42,7 +56,7 @@
 		</ul>
 	        Simulation may be used by consumers for a what-if analysis and test if the performance of an action on a digital asset will I violate one of its policies.<br>
 			
-                In order to automatically provide monitoring or simulation services on a set of policies we need to be able to formally specify their meaning, i.e. the course 
+                In order to automatically provide those services on a set of policies we need to be able to formally specify their meaning, i.e. the course 
 		of actions that will bring to their violation or fulfilment. The meaning of having an ORDL permission, prohibition or obligation is currently specified only 
 		in natural language. For example, this is the ODRL specification of <a href="https://www.w3.org/TR/odrl-model/#prohibition">prohibition</a>: 
 		''A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.''.<br>
@@ -52,7 +66,7 @@
 			<li> A machine-readable representation of the actions performed (for monitoring) or planned (for simulation) by a set of agents;</li>
 			<li> A mechanism for automatically computing the activation of policies (i.e. checking if their constraints are satisfied);</li>
 			<li> A mechanism for automatically checking if a given action (realized on a given asset by a certain agent) is regulated by a set of active policies;</li>
-			<li> A mechanism for automatically computing if the active policies that regulate such an action are fulfilled or violated by its performance.</li>
+			<li> A mechanism for automatically computing if the active policies that regulate such an action are fulfilled or violated by the performance of certain actions.</li>
 		</ol>
 			
 		</section>
