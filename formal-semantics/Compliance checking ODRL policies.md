@@ -38,8 +38,8 @@ The following policy express: "the permission for everybody to display the movie
 
 Approaches for testing class membership:
    
-  1. By translating the class of actions described in one ODRL policy into a SPARQL query and searching the instances of the class of actions regulated by the policy.
-  2. By translating the class of actions described in one ODRL policy into a production rule and searching the matching between the class of actions regulated by the policy and the real actions performed by the agents.
+  1. Translating the class of actions described in one ODRL policy (using an individual) into a SPARQL query and searching the instances of the class of actions regulated by the policy.
+  2. Translating the class of actions described in one ODRL policy into a production rule and searching the matching between the class of actions regulated by the policy and the real actions performed by the agents.
 
 In both approaches we need to define an Action Ontology with a hierarchy of classes that can be created using the ODRL Vocabulary https://www.w3.org/TR/odrl-vocab/.
 
