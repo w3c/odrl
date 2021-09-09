@@ -72,3 +72,28 @@ Policy Evaluator Wiki discussion on the need of checking the activation of polic
 The PROV Ontology (PROV-O) provides a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. https://www.w3.org/TR/prov-o/
 
 DALIC project, references?
+
+-----------------------------
+
+**Meeting on ODRL Semantics:**
+
+1. Thursday 1st April 2021
+2. Tueasday 11th May 2021
+3. Monday 21st June 2021
+4. Monday 27th September 2021
+
+**Participants:**
+  
+  1. Nicoletta Fornara (nicoletta.fornara@usi.ch),  Univeristà della Svizzera italiana, Lugano, Switzerland
+  2. Soheil Roshanskish (Ph.D. student) (soheil.roshanskish@usi.ch), Univeristà della Svizzera italiana, Lugano, Switzerland
+  3. Víctor Rodríguez Doncel (vrodriguez@fi.upm.es), Ontology Engineering Group, Departamento de Inteligencia Artificial – Universidad Politécnica de Madrid (UPM)
+  4. Rana Saniei (Ph.D. student) (r.saniei@upm.es), Ontology Engineering Group, Departamento de Inteligencia Artificial – Universidad Politécnica de Madrid (UPM)
+  5. Beatriz Esteves (Ph.D. student) (beatriz.gesteves@upm.es), Ontology Engineering Group, Departamento de Inteligencia Artificial – Universidad Politécnica de Madrid (UPM)
+  6. Benedict Whittam Smith, (ben@deonticdata.com) Refinitiv an LSEG (London Stock Exchange Group)
+
+We can invite:
+   - Simon Steyskal (simon.steyskal@gmail.com) Ph.D. student at TU Vienna
+   - Harshvardhan J. Pandit (me@harshp.com) postoc at Trinity College Dublin
+  
+ We can also send a message in the ODRL mailing list community group.
+ 
