@@ -71,8 +71,7 @@ Policy Evaluator Wiki discussion on the need of checking the activation of polic
 
 The PROV Ontology (PROV-O) provides a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. https://www.w3.org/TR/prov-o/
 
-DALIC project, references?
-
+DALICC is a software framework that supports the automated clearance of rights https://www.dalicc.net/
 -----------------------------
 
 **Meeting on ODRL Semantics:**
