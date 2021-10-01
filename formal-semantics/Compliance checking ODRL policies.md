@@ -14,7 +14,7 @@ This may create errors in writing policies.
 
 **Example**
 
-Suppose that I want to write a policy that express "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
+Suppose that I want to write the following policy: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
      {
