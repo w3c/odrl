@@ -36,17 +36,20 @@ Problem: I can use a leftOperand that is not meaningful for the "display" action
 
 Solution: If we define an ontology where Display is a class, I can define the object property "spatial" that has as range the Display class (or better "spatial" has as range the Action class that is superclass of the Display class). In this way the "spatial" property is meaningful only for describing actions. This is a change in the model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual like here:
 
-{
+     {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
       "@type": "Set",
       "uid": "http://example.com/policy:1010",
       "permission": [{
-           "target": "http://example.com/asset:9898.movie",
-           "action": [{
-               "@type": Display,
-               "spatial": "https://www.wikidata.org/wiki/Q183"
+ 	      "target": "http://example.com/asset:9898.movie",
+	      "action": [{
+	          "@type": Display,
+                  "spatial": "https://www.wikidata.org/wiki/Q183",
+	          "comment": "i.e Germany"
+              }]
        }]
     }
+
 
 With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
 
