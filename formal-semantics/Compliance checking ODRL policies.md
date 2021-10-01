@@ -1,22 +1,21 @@
      
 **Requirement: Monitoring or compliance checking of ODRL policies**
 
-1. Semantics of the **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed using a constraint.
+1. Semantics of the **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
 
 2. Semantics of the **policy**: it depends on the type of the policy, i.e. duty (obligation), prohibition, or permission. Computing the fulfilment or violation of policies requires to check if a real action belongs to the **class of actions** regulated by the policy (testing class membership).
 
 **PROBLEM**: 
 
-In ODRL 2.2 the activation condition of the policy and the class of actions regulated by the policy are expressed using individuals, they are not expressed using classes. This is probably due to the fact that the value of the "action" property cannot be a class in OWL 2.
-This creates a problem when there is the requirement to match the description of the class of actions regulated by one policy with real actions.
+In ODRL 2.2 the class of actions regulated by the policy are expressed using individuals and they are constrained using a refinement.
+This may create errors in writing policies. 
+
 
 **Example**
 
-For example in the following ODRL policy (taken from the ODRL Implementation Best Practices (https://w3c.github.io/odrl/bp/#examples)) the class of actions regulated is the display of the specific movie asset:9898.movie in Germany. This class is represented with the "display" individual that belongs to the ordl:Action class (it is also possible to constraint the class of the regulated actions by using the odrl:constraint or odrl:refinement property).
+Suppose that I want to write a policy that express "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
+I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
-The following policy express: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany".
-      
-    Example 1.2A in ODRL 2.2
      {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
       "@type": "Set",
@@ -24,35 +23,36 @@ The following policy express: "the permission for everybody to display the movie
       "permission": [{
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": "display",
-	      "constraint": [{
-           "leftOperand": "spatial",
-           "operator": "eq",
-           "rightOperand":  "https://www.wikidata.org/wiki/Q183",
+	      "refinement": [{
+                  "leftOperand": "spatial",
+                  "operator": "eq",
+                  "rightOperand":  "https://www.wikidata.org/wiki/Q183",
 	          "comment": "i.e Germany"
+              }]
        }]
-    }]
     }
 
+Problem: I can use a leftOperand that is not meaningful for the "display" action, for example I can use "version". (I hope I understood correctly the model).
 
-**Testing class membership**
+Solution: If we define an ontology where Display is a class, I can define the object property "spatial" that has as range the Display class (or better "spatial" has as range the Action class that is superclass of the Display class). In this way the "spatial" property is meaningful only for describing actions. This is a change in the model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual like here:
 
-Approaches for testing class membership:
-   
-  1. Translating the class of actions described in one ODRL policy (using an individual) into a SPARQL query and searching the instances of the class of actions regulated by the policy.
-  2. Translating the class of actions described in one ODRL policy into a production rule and searching the matching between the class of actions regulated by the policy and the real actions performed by the agents.
+{
+      "@context": "http://www.w3.org/ns/odrl.jsonld",
+      "@type": "Set",
+      "uid": "http://example.com/policy:1010",
+      "permission": [{
+           "target": "http://example.com/asset:9898.movie",
+           "action": [{
+               "@type": Display,
+               "spatial": "https://www.wikidata.org/wiki/Q183"
+       }]
+    }
 
-In both approaches we need to define an Action Ontology with a hierarchy of classes that can be created using the ODRL Vocabulary https://www.w3.org/TR/odrl-vocab/.
+With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
 
-**Question**: Is it possible to automatically translate the class of actions described in one ODRL policy into a SPARQL query or production rule?
-
-If yes, we are able to compute the fulfilment or violation of policies. 
-
-If no, we need to propose a new version of the ODRL language!!
+Please let me know your opinion.
 
 
-**Could you please write here your opinion?**
-
-..............
 
 
 
