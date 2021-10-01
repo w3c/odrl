@@ -1,15 +1,16 @@
      
-**Requirement: Monitoring or compliance checking of ODRL policies**
+**Requirement: Monitoring or Performing compliance checking of ODRL policies**
+
+The semantics of plocies is given by the semantics of their **activation condition** and by the semantics of their type.
 
 1. Semantics of the **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
 
-2. Semantics of the **policy**: it depends on the type of the policy, i.e. duty (obligation), prohibition, or permission. Computing the fulfilment or violation of policies requires to check if a real action belongs to the **class of actions** regulated by the policy (testing class membership).
+2. Semantics of the **policy**: it depends on the type of the policy, i.e. duty (obligation), prohibition, or permission. Computing the fulfilment or violation of policies requires to check if a real action performed by agents belongs to the **class of actions** regulated by the policy (testing class membership).
 
-**PROBLEM**: 
+**PROBLEM 1**: 
 
 In ODRL 2.2 the class of actions regulated by the policy are expressed using individuals and they are constrained using a refinement.
 This may create errors in writing policies. 
-
 
 **Example**
 
