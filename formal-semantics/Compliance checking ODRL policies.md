@@ -44,7 +44,7 @@ Solution: If we define an ontology where Display is a class, I can define the ob
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": [{
 	          "@type": Display,
-                  "spatial": "https://www.wikidata.org/wiki/Q183",
+		  "spatial": "https://www.wikidata.org/wiki/Q183",
 	          "comment": "i.e Germany"
               }]
        }]
