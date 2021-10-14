@@ -1,19 +1,18 @@
-     
+Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
+
 **Requirement: Monitoring or Performing compliance checking of ODRL policies**
 
-The semantics of plocies is given by the semantics of their **activation condition** and by the semantics of their type.
+The semantics of plocies is given by the semantics of their **activation condition** and by the semantics of their **type**.
 
 1. Semantics of the **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
 
-2. Semantics of the **policy**: it depends on the type of the policy, i.e. duty (obligation), prohibition, or permission. Computing the fulfilment or violation of policies requires to check if a real action performed by agents belongs to the **class of actions** regulated by the policy (testing class membership).
+2. Semantics of the **policy**: it depends on the **type** of the policy, i.e. duty (obligation), prohibition, or permission and on the **class of actions** regulated by the policy. Computing the fulfilment or violation of policies requires to check if a real action performed by an agent belongs to the **class of actions** regulated by the policy (test of class membership).
 
 **PROBLEM 1**: 
 
-In ODRL 2.2 the class of actions regulated by the policy are expressed using individuals and they are constrained using a refinement.
-This may create errors in writing policies. 
+In ODRL 2.2 the class of actions regulated by one policy is expressed using an individual of the class odrl:Action and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression into a class of actions regulated by the policy and then perform a test of class membership.
 
 **Example**
-
 Suppose that I want to write the following policy: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
@@ -33,9 +32,12 @@ I have to create a refinement of the action "display" in the following way (this
        }]
     }
 
-Problem: I can use a leftOperand that is not meaningful for the "display" action, for example I can use "version". (I hope I understood correctly the model).
+Problem 1: the norm designer can use a leftOperand that is not meaningful for the "display" action, for example the "version" leftoperand.
+Problem 2: how is it possible to perform a test of class membership? What is the class of actions regulated by the policy?
 
-Solution: If we define an ontology where Display is a class, I can define the object property "spatial" that has as range the Display class (or better "spatial" has as range the Action class that is superclass of the Display class). In this way the "spatial" property is meaningful only for describing actions. This is a change in the model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual like here:
+Solution1: 
+Define an ontology with the Display class that is sublcass of the odrl:Action class and the object property "spatial": odrl:Action -> State. 
+We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the class Display having as value of the spacial property the state Germany, like here:
 
      {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
@@ -45,8 +47,7 @@ Solution: If we define an ontology where Display is a class, I can define the ob
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": [{
 	          "@type": Display,
-		  "spatial": "https://www.wikidata.org/wiki/Q183",
-	          "comment": "i.e Germany"
+		  "spatial": germany
               }]
        }]
     }
