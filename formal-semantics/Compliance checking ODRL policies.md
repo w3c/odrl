@@ -37,7 +37,7 @@ Problem 2: how is it possible to perform a test of class membership? What is the
 
 Solution1: 
 Define an ontology with the Display class that is sublcass of the odrl:Action class and the object property "spatial": odrl:Action -> State. 
-We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the class Display having as value of the spacial property the state Germany, like here:
+We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the state Germany, like here:
 
      {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
