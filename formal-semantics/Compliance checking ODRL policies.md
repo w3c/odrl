@@ -11,9 +11,9 @@ The semantics of ODRL policies is given by the semantics of:
 
 **PROBLEM 1**: 
 
-In ODRL 2.2 the class of actions regulated by one policy is expressed using an individual of the class odrl:Action and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression into a class of actions regulated by the policy and then perform a test of class membership.
+In ODRL 2.2 the class of actions regulated by one policy is expressed using an individual of the class odrl:Action and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression into a class of actions regulated by the policy and then perform a test of class membership. Secondly the norm designer can in principle use a leftOperand that is not meaningful for the "display" action, for example the "version" leftoperand.
 
-**Example**
+Example
 Suppose that I want to write the following policy: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
@@ -31,12 +31,10 @@ I have to create a refinement of the action "display" in the following way (this
 	          "comment": "i.e Germany"
               }]
        }]
-    }
+   
 
-Problem 1: the norm designer can use a leftOperand that is not meaningful for the "display" action, for example the "version" leftoperand.
-Problem 2: how is it possible to perform a test of class membership? What is the class of actions regulated by the policy?
+**Solution 1**
 
-Solution 1: 
 Define an ontology with the Display class that is sublcass of the odrl:Action class and the object property "spatial": odrl:Action -> State. 
 We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the state Germany, like here:
 
@@ -56,8 +54,10 @@ We need to change the ODRL 2.2 model because instead of using the refinement pro
 
 With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
 
-Solution 2:
+**Solution 2**
+Using solution 1 it is not easy to express constraints as less than or greater than.
 
+Another solution consists in 
 
 
 Please let me know your opinion.
