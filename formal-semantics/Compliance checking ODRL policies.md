@@ -55,15 +55,12 @@ We need to change the ODRL 2.2 model because instead of using the refinement pro
 With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
 
 **Solution 2**
-Using solution 1 it is not easy to express constraints as less than or greater than.
+One drawback of solution 1 is that it is not easy to express constraints as less than or greater than.
 
-Another solution consists in 
+Another solution consists in expressing the class of actions regulated by one policy by using a conjunctive semantic formula over an ontology. Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-Ins for comparisons like swrlb:lessThan.
 
-
-Please let me know your opinion.
-
-
-
+In the example above the class of actions regulated by the policy can be described as:
+Display(?a) and spatial(?a, germany)
 
 
 **State of the art on policies monitoring**
