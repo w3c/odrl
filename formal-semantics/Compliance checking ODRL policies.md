@@ -1,12 +1,13 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-**Requirement: Monitoring or Performing compliance checking of ODRL policies**
+**Goal: monitor or control compliance with ODRL policies**
 
-The semantics of plocies is given by the semantics of their **activation condition** and by the semantics of their **type**.
+The semantics of ODRL policies is given by the semantics of:
 
-1. Semantics of the **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
+1. Their **activation condition**: when something happens or a certain state of affairs is satisfied the policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
+2. The **class of actions** regulated by the policy: when an instance of the class of actions regulated by the policy is performed with all refinements satisfied, the policy is fulfilled or violated on the basis of its type.
+3. Their **type**: if the type is duty (obligation) performing an instance of the **class of actions** regulated by the policy brings about a fulfillment, if the type is prohibition performing an instance of the class of actions regulated by the policy brings about a violation, if the type is permission ...
 
-2. Semantics of the **policy**: it depends on the **type** of the policy, i.e. duty (obligation), prohibition, or permission and on the **class of actions** regulated by the policy. Computing the fulfilment or violation of policies requires to check if a real action performed by an agent belongs to the **class of actions** regulated by the policy (test of class membership).
 
 **PROBLEM 1**: 
 
@@ -35,7 +36,7 @@ I have to create a refinement of the action "display" in the following way (this
 Problem 1: the norm designer can use a leftOperand that is not meaningful for the "display" action, for example the "version" leftoperand.
 Problem 2: how is it possible to perform a test of class membership? What is the class of actions regulated by the policy?
 
-Solution1: 
+Solution 1: 
 Define an ontology with the Display class that is sublcass of the odrl:Action class and the object property "spatial": odrl:Action -> State. 
 We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the state Germany, like here:
 
@@ -54,6 +55,10 @@ We need to change the ODRL 2.2 model because instead of using the refinement pro
 
 
 With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
+
+Solution 2:
+
+
 
 Please let me know your opinion.
 
