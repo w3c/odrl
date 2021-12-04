@@ -1,0 +1,44 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ogc: <http://www.opengis.net/def/licenses/ogc/> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.opengis.net/def/licenses/ogc>
+    a odrl:Policy , cc:License , skos:Concept ;
+    dcterms:title "OGC License Agreement" ;
+    dcterms:description "The standard OGC License"@en ;
+    rdfs:seeAlso "https://www.ogc.org/license"^^xsd:anyURI ;
+    cc:legalcode "https://www.ogc.org/license"^^xsd:anyURI ;
+    skos:definition """Permission is hereby granted ... remedies available to it."""@en ;
+    odrl:permission [
+        odrl:action 
+            odrl:use ,    
+            odrl:reproduce ;
+        odrl:duty [
+            odrl:action 
+                odrl:attribute , 
+                odrl:attachPolicy ,
+                ogc:attachNoticeOfUnapprovedChanges ;
+        ] ;
+    ] ;
+    odrl:prohibition [ 
+        odrl:action
+            ogc:licensorNameUseForPromotionRequiresPermission ;
+    ] ;
+.
+
+ogc:attachNoticeOfUnapprovedChanges
+	a odrl:Action, skos:Concept ;
+	skos:prefLabel "Attach notice of unapproved changes"@en ;
+	skos:definition "The act of adding a notice to the asset stating that changed made to the source asset have not been approved or adopted by licensor."@en ;
+	skos:closeMatch cc:Notice ;
+.
+
+ogc:promotionWithLicensorName
+    a odrl:Action , skos:Concept ;
+	skos:prefLabel "Promotion With Licensor Name"@en ;
+	skos:definition "The name of licensor is used in promotions, without prior written authorization of LICENSOR."@en ;
+.   
