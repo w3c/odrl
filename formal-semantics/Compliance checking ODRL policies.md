@@ -68,23 +68,11 @@ Another solution consists in expressing the class of actions regulated by one po
       "permission": [{
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": [{
-	          "@type": Display,
-		  "spatial": germany
+	          Display(?a) and spatial(?a, germany)
               }]
        }]
     }
 
-
-
-{
-      "@context": "http://www.w3.org/ns/odrl.jsonld",
-      "@type": "Set",
-      "uid": "http://example.com/policy:1010",
-      "permission": [{
- 	      "target": "http://example.com/asset:9898.movie",
-	      "action": Display(?a) and spatial(?a, germany).
-              }]
- }
 
 Main problem: the value of the action property is not any more an individual therefore the specific rule inside the policy is not any more an individual belonging to the class Rule.
 
