@@ -74,7 +74,7 @@ Another solution consists in expressing the class of actions regulated by one po
     }
 
 
-Main problem: the value of the action property is not any more an individual therefore the specific rule inside the policy is not any more an individual belonging to the class Rule.
+Main problem of solution 2: the value of the action property is not any more an individual therefore the specific rule inside the policy is not any more an individual belonging to the class Rule.
 
 
 **State of the art on policies monitoring**
