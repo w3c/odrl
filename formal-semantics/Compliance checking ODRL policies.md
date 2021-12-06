@@ -60,6 +60,22 @@ One drawback of solution 1 is that it is not easy to express certain constraints
 
 Another solution consists in expressing the class of actions regulated by one policy by using a conjunctive semantic formula over an ontology. Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-Ins for comparisons like swrlb:lessThan. The example above becomes:
 
+
+     {
+      "@context": "http://www.w3.org/ns/odrl.jsonld",
+      "@type": "Set",
+      "uid": "http://example.com/policy:1010",
+      "permission": [{
+ 	      "target": "http://example.com/asset:9898.movie",
+	      "action": [{
+	          "@type": Display,
+		  "spatial": germany
+              }]
+       }]
+    }
+
+
+
 {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
       "@type": "Set",
