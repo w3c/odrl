@@ -15,6 +15,7 @@ In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an
 A second problem is that the norm designer who writes the policy using the ODRL policy language can in principle use in the refinement a leftOperand propery that is not meaningful for the  action refined, for example by using the "version" leftoperand for the "display" action.
 
 Example
+
 Suppose that I want to write the policy that contains the following rule: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
