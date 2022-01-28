@@ -112,10 +112,8 @@ DALICC is a software framework that supports the automated clearance of rights h
   4. Rana Saniei (Ph.D. student) (r.saniei@upm.es), Ontology Engineering Group, Departamento de Inteligencia Artificial – Universidad Politécnica de Madrid (UPM)
   5. Beatriz Esteves (Ph.D. student) (beatriz.gesteves@upm.es), Ontology Engineering Group, Departamento de Inteligencia Artificial – Universidad Politécnica de Madrid (UPM)
   6. Benedict Whittam Smith, (ben@deonticdata.com) Refinitiv an LSEG (London Stock Exchange Group)
-  7. (Starting from January 2022) Simon Steyskal (simon.steyskal@siemens.com) Siemens AG Austria Vienna.
+  7. (Staring from September 2021) Harshvardhan J. Pandit (me@harshp.com) postoc at Trinity College Dublin.
+  8. (Starting from January 2022) Simon Steyskal (simon.steyskal@siemens.com) Siemens AG Austria Vienna.
 
-We can invite:
-   - Harshvardhan J. Pandit (me@harshp.com) postoc at Trinity College Dublin
-  
  We can also send a message in the ODRL mailing list community group.
  
