@@ -46,8 +46,8 @@ Define an ontology with the Display class that is sublcass of the odrl:Action cl
       "permission": [{
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": [{
-	          "@type": Display,
-		  "spatial": germany
+	          "@type": "Display",
+		  "spatial": "Germany"
               }]
        }]
     }
