@@ -78,17 +78,22 @@ Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL r
 
 Problems:
 1. The value of the property odrl:action is no longer an instance of the class odrl:Action. As a consequence, the rule (the permission) inside the policy is no longer an individual belonging to the class odrl:Rule.
-2. Not all ODRL constraint operators can be represented right now using SWRL'a built-ins for comparisons, e.g. https://www.w3.org/TR/odrl-vocab/#term-isNoneOf or
-http://www.w3.org/ns/odrl/2/andSequence don't have a "direct" match in SWRL.
+2. Not all ODRL constraint operators can be represented right now using SWRL'a built-ins for comparisons, e.g. https://www.w3.org/TR/odrl-vocab/#term-isNoneOf and
+http://www.w3.org/ns/odrl/2/andSequence have not a "direct" match in SWRL.
 3. ODRL constraints are not exclusively for use with ODRL actions, they can also be used to constrain Asset and Party Collections (https://www.w3.org/TR/odrl-vocab/#term-refinement).
 
 
+**Solution 3**
+A third solution that is also the most voted consists in using SHACL (Rules) instead of SWRL -> https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
+with which you can basically express anything you can also express with SPARQL.
 
 
 
 
 
-**State of the art on policies monitoring**
+
+
+**References on policies monitoring and compliance checking**
 
 N. Fornara and M. Colombetti. Using Semantic Web Technologies and Production Rules for Reasoning on Obligations, Permissions, and Prohibitions. AI Communications, vol. 32, no. 4, pp. 319-334, 2019. https://people.lu.usi.ch/fornaran/AIComm2019/AIComm32(2019)_Fornara.pdf
 
@@ -96,6 +101,10 @@ M. Sensoy, T. J. Norman, W. W. Vasconcelos, K. P. Sycara, OWL-POLAR: A framework
 https://doi.org/10.1016/j.websem.2011.11.005
 
 N. Fornara, S. Roshankish, and M. Colombetti (2021) A Framework for Automatic Monitoring of Norms that regulate Time Constrained Actions. International Workshop on Coordination, Organizations, Institutions, Norms and Ethics for Governance of Multi-Agent Systems (COINE), co-located with AAMAS 2021, London, UK, 3rd May, 2021. https://arxiv.org/pdf/2105.00200.pdf
+
+De Vos M., Kirrane S., Padget J., Satoh K. (2019) ODRL Policy Modelling and Compliance Checking. In: Fodor P., Montali M., Calvanese D., Roman D. (eds) Rules and Reasoning. RuleML+RR 2019. Lecture Notes in Computer Science, vol 11784. Springer, Cham. https://doi.org/10.1007/978-3-030-31095-0_3
+
+ODRL Regulatory Compliance Profile Unofficial Draft 10 August 2020 https://ai.wu.ac.at/policies/orcp/regulatory-model.html
 
 Wiki of the The Permissions and Obligations Expression (POE) Working Group. Discussion on Policy Inference. https://www.w3.org/2016/poe/wiki/Policy_Inference#Semantics_of_Action_Relations
 
