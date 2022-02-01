@@ -16,7 +16,7 @@ A second problem is that the norm designer who writes the policy using the ODRL 
 
 Example
 
-Suppose that I want to write the policy that contains the following rule: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
+Suppose that I want to write the policy that contains the following Rule 1.0: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
      {
@@ -55,11 +55,12 @@ Define an ontology with the Display class that is sublcass of the odrl:Action cl
 
 With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
 
-**Solution 2**
-
 One drawback of solution 1 is that it is not easy to express certain constraints like ''less than'' or ''greater than''.
 
-Another solution consists in expressing the class of actions regulated by one policy by using a conjunctive semantic formula over an ontology. Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-Ins for comparisons like swrlb:lessThan. The example above becomes:
+**Solution 2**
+
+A second solution consists in expressing the class of actions regulated by one policy by using a conjunctive semantic formula over an ontology. 
+Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-ins for comparisons like swrlb:lessThan. The formalization of the Rule 1.0 (see above) becomes:
 
 
      {
@@ -75,7 +76,16 @@ Another solution consists in expressing the class of actions regulated by one po
     }
 
 
-Main problem of solution 2: the value of the action property is not any more an individual therefore the specific rule inside the policy is not any more an individual belonging to the class Rule.
+Problems:
+1. The value of the property odrl:action is no longer an instance of the class odrl:Action. As a consequence, the rule (the permission) inside the policy is no longer an individual belonging to the class odrl:Rule.
+2. Not all ODRL constraint operators can be represented right now using SWRL'a built-ins for comparisons, e.g. https://www.w3.org/TR/odrl-vocab/#term-isNoneOf or
+http://www.w3.org/ns/odrl/2/andSequence don't have a "direct" match in SWRL.
+3. ODRL constraints are not exclusively for use with ODRL actions, they can also be used to constrain Asset and Party Collections (https://www.w3.org/TR/odrl-vocab/#term-refinement).
+
+
+
+
+
 
 
 **State of the art on policies monitoring**
