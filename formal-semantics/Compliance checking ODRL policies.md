@@ -14,9 +14,9 @@ The semantics of ODRL policies is given by the semantics of:
 In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an **individual** belonging to the odrl:Action class and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression (an individual) into the description of a **class** of actions regulated by the rule and then perform a test of class membership for computing the fulfillment or violation of the rule. 
 A second problem is that the norm designer who writes the policy using the ODRL policy language can in principle use in the refinement a leftOperand propery that is not meaningful for the  action refined, for example by using the "version" leftoperand for the "display" action.
 
-Example
+**Example 1.1**
 
-Suppose that I want to write the policy that contains the following Rule 1.0: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
+Suppose that I want to write the policy that contains the following Rule 1.1: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany". 
 I have to create a refinement of the action "display" in the following way (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
      {
