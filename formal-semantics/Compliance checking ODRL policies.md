@@ -85,8 +85,9 @@ http://www.w3.org/ns/odrl/2/andSequence have not a "direct" match in SWRL.
 
 **Solution 3**
 
-A third solution that is also the most voted consists in using SHACL (Rules) instead of SWRL -> https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
-with which you can basically express anything you can also express with SPARQL.
+A third solution that is also the most voted consists in using SHACL (Rules) instead of SWRL with which you can basically express anything you can also express with SPARQL.
+
+References: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
 
 
