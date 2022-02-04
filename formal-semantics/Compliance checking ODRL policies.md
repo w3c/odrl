@@ -101,6 +101,7 @@ The **data graph** contains one ODRL policy, for example:
  	      "target": "http://example.com/asset:9898.movie",
 	      "action": "display",
        }]
+}       
 
 The **shape** written using SHACL shoud express the constraint for matching all the Diplay actions on the target "http://example.com/asset:9898.movie" performed in Germany.
 
