@@ -99,37 +99,25 @@ The **data graph** contains one ODRL policy, for example:
       "uid": "http://example.com/policy:1010",
       "permission": [{
  	      "target": "http://example.com/asset:9898.movie",
-	      "action": [{
-	          Display(?a) and spatial(?a, germany)
-              }]
+	      "action": "display"
        }]
     }
     
-    
-    
-{
-      "@context": "http://www.w3.org/ns/odrl.jsonld",
-      "@type": "Set",
-      "uid": "http://example.com/policy:1010",
-      "permission": [{
- 	      "target": "http://example.com/asset:9898.movie",
-	      "action": "display",
-       }]
-}       
+   
+The **shape** written using SHACL has to match all the Diplay actions on the target "http://example.com/asset:9898.movie" performed in Germany. It is not actually a constraint because for the policy it is a permitted action.
 
-The **shape** written using SHACL shoud express the constraint for matching all the Diplay actions on the target "http://example.com/asset:9898.movie" performed in Germany.
-
-.....
+Insert here the SHACL expression.
 
 The corresponding SPARQL query is:
 
+```
 SELECT ?a
 WHERE {
 ?a rdf:type odrl:Display.
 ?a odrl:spatial "germany"ˆˆxsd:string.
 ?a odrl:target  http://example.com/asset:9898.movie.
 }
-
+```
 
 
 -------------------------------------------------------
