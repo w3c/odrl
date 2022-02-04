@@ -119,6 +119,7 @@ WHERE {
 }
 ```
 
+PROBLEM: connecting the policy with the SHACL constraint or SPARQL query
 
 -------------------------------------------------------
 
