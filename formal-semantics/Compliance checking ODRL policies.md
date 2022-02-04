@@ -134,6 +134,8 @@ N. Fornara, S. Roshankish, and M. Colombetti (2021) A Framework for Automatic Mo
 
 De Vos M., Kirrane S., Padget J., Satoh K. (2019) ODRL Policy Modelling and Compliance Checking. In: Fodor P., Montali M., Calvanese D., Roman D. (eds) Rules and Reasoning. RuleML+RR 2019. Lecture Notes in Computer Science, vol 11784. Springer, Cham. https://doi.org/10.1007/978-3-030-31095-0_3
 
+H. Dibowski, S. Schmid, Y. Svetashova, C. Henson, T. Tran. Using Semantic Technologies to Manage a Data Lake: Data Catalog, Provenance and Access Control. In T. Liebig, A. Fokoue, Z. Wu, editors, Proceedings of the 12th International Workshop on Scalable Semantic Web Knowledge Base Systems co-located with 19th International Semantic Web Conference (ISWC 2020), Athens, Greece, November 2, 2020. Volume 2757 of CEUR Workshop Proceedings, pages 65-80, CEUR-WS.org, 2020. http://ceur-ws.org/Vol-2757/SSWS2020_paper5.pdf
+
 ODRL Regulatory Compliance Profile Unofficial Draft 10 August 2020 https://ai.wu.ac.at/policies/orcp/regulatory-model.html
 
 Wiki of the The Permissions and Obligations Expression (POE) Working Group. Discussion on Policy Inference. https://www.w3.org/2016/poe/wiki/Policy_Inference#Semantics_of_Action_Relations
@@ -143,6 +145,8 @@ Policy Evaluator Wiki discussion on the need of checking the activation of polic
 The PROV Ontology (PROV-O) provides a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. https://www.w3.org/TR/prov-o/
 
 DALICC is a software framework that supports the automated clearance of rights https://www.dalicc.net/
+
+The SPECIAL Policy Log Vocabulary: A vocabulary for privacy-aware logs, transparency and compliance - version 1.0 https://ai.wu.ac.at/policies/policylog/
 
 -----------------------------
 
