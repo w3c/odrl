@@ -85,12 +85,35 @@ http://www.w3.org/ns/odrl/2/andSequence have not a "direct" match in SWRL.
 
 **Solution 3**
 
-A third solution that is also the most voted consists in using SHACL (Rules) instead of SWRL with which you can basically express anything you can also express with SPARQL.
+A third solution (which is also the most voted by the members of the sub-group) consists in using SHACL instead of SWRL for describing the class of actions regulated by one rule. 
 
 References: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
+By using SHACL it is possible to specify which **node** into a **data graph** must conform to a **shape**. 
 
+The **data graph** contains one ODRL policy, for example:
 
+{
+      "@context": "http://www.w3.org/ns/odrl.jsonld",
+      "@type": "Set",
+      "uid": "http://example.com/policy:1010",
+      "permission": [{
+ 	      "target": "http://example.com/asset:9898.movie",
+	      "action": "display",
+       }]
+
+The **shape** written using SHACL shoud express the constraint for matching all the Diplay actions on the target "http://example.com/asset:9898.movie" performed in Germany.
+
+.....
+
+The corresponding SPARQL query is:
+
+SELECT ?a
+WHERE {
+?a rdf:type odrl:Display.
+?a odrl:spatial "germany"ˆˆxsd:string.
+?a odrl:target  http://example.com/asset:9898.movie.
+}
 
 
 
