@@ -33,11 +33,17 @@ I have to create a refinement of the action "display" in the following way (this
 	          "comment": "i.e Germany"
               }]
        }]
-   
+       
+ 
+ In all solutions we need to define an ontology where:
+ - the Display class is sublcass of the odrl:Action class -> ```odrl:Display subclassOf odrl:Action```
+ - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State ->  ```odrl:spatial odrl:Action -> odrl:State```
+  
+  Advantage of defining an ontology: it is impossible to use a leftOperand that is not meaningful for the class of the action.
 
 **Solution 1**
 
-Define an ontology with the Display class that is sublcass of the odrl:Action class and the object property "spatial": odrl:Action -> State. (By defining an ontology it is impossible to use a leftOperand that is not meaningful for the class of the action). We need to change the ODRL 2.2 model because instead of using the refinement property we can describe the actions regulated by the rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the country Germany, like here:
+Describe the actions regulated by one rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the country Germany, like here:
 
      {
       "@context": "http://www.w3.org/ns/odrl.jsonld",
@@ -59,7 +65,7 @@ One drawback of solution 1 is that it is not easy to express certain constraints
 
 **Solution 2**
 
-A second solution consists in expressing the class of actions regulated by one policy by using a conjunctive semantic formula over an ontology. 
+Express the class of actions regulated by one policy by using a conjunctive semantic formula over an ODRL ontology of actions. 
 Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-ins for comparisons like swrlb:lessThan. The formalization of the Rule 1.0 (see above) becomes:
 
 
@@ -87,39 +93,33 @@ http://www.w3.org/ns/odrl/2/andSequence have not a "direct" match in SWRL.
 
 A third solution (which is also the most voted by the members of the sub-group) consists in using SHACL instead of SWRL for describing the class of actions regulated by one rule. 
 
-References: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
+References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
-By using SHACL it is possible to specify which **node** into a **data graph** must conform to a **shape**. 
+In ODRL the target property has as domain the odrl:Policy or  odrl:Rule classes.
+Here we need to consider it as a property of an action and change its domain to odrl:Action class.
 
-The **data graph** contains one ODRL policy, for example:
-
-     {
-      "@context": "http://www.w3.org/ns/odrl.jsonld",
-      "@type": "Set",
-      "uid": "http://example.com/policy:1010",
-      "permission": [{
- 	      "target": "http://example.com/asset:9898.movie",
-	      "action": "display"
-       }]
-    }
-    
-   
-The **shape** written using SHACL has to match all the Diplay actions on the target "http://example.com/asset:9898.movie" performed in Germany.
-
-_Insert here the SHACL expression._
-
-The corresponding SPARQL query is:
+This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
 
 ```
-SELECT ?a
-WHERE {
-?a rdf:type odrl:Display.
-?a odrl:spatial "germany"ˆˆxsd:string.
-?a odrl:target  http://example.com/asset:9898.movie.
-}
+ex:SampleShape a sh:NodeShape ;
+        sh:targetClass odrl:Display ;
+        sh:property [
+                sh:path odrl:spatial ;
+                sh:hasValue "Germany" ;
+                sh:minCount 1 ;
+                sh:maxCount 1;
+        ] ;
+        sh:property [
+                sh:path odrl:target ;
+                sh:hasValue <http://example.com/asset:9898.movie>;
+                sh:minCount 1 ;
+                sh:maxCount 1;
+        ] .
 ```
 
-PROBLEM: connecting the policy with the SHACL constraint or SPARQL query
+
+
+We need to decide how to connect the policy with its SHACL constraint.
 
 -------------------------------------------------------
 
