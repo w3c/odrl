@@ -117,9 +117,34 @@ ex:SampleShape a sh:NodeShape ;
         ] .
 ```
 
-
-
 We need to decide how to connect the policy with its SHACL constraint.
+
+If it is required to get all actions that conform to those constraints reported (and not use any of SHACL's Advanced Features https://www.w3.org/TR/shacl-af/#SPARQLTarget) it is possible to get them like this:
+
+```
+ex:SampleShape a sh:NodeShape ;
+        sh:targetClass odrl:Display ;
+        sh:not [
+                sh:and (
+                        [
+                                sh:property [
+                                        sh:path odrl:spatial ;
+                                        sh:hasValue "Germany" ;
+                                        sh:minCount 1 ;
+                                        sh:maxCount 1;
+                ]
+            ]
+                 [
+                sh:property [
+                    sh:path odrl:target ;
+                    sh:hasValue <http://example.com/asset:9898.movie>;
+                    sh:minCount 1 ;
+                    sh:maxCount 1;
+                ]
+            ])
+        ] .
+```
+i.e. state the negation which leads to all actions being reported that actually do conform to your initial query. (cf https://s.zazuko.com/2reFCP)
 
 -------------------------------------------------------
 
