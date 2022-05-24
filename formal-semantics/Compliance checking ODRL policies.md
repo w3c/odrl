@@ -46,7 +46,8 @@ Define an ontology where:
  - the object property odrl:spatial has as domain the class odrl:Action and as range a class odrl:State
  - the object property odrl:target has as domain the class odrl:Action (instead of odrl:Policy or odrl:Rule).
 
-This ontology is used to formalize the state of the world.
+This ontology is used to formalize the state of the world where the real actions of the agents are represented. 
+For example it could contain the following information: Robert performs a display action of the movie 9898.movie in Germany. Anna performs a display action of the movie 9898.movie in Switzerland.
   
  **Solution TO PROBLEM 1 and 2**:
  
@@ -72,7 +73,7 @@ ex:SampleShape a sh:NodeShape ;
         ] .
 ```
 
-If it is required to get all actions that conform to those constraints reported (and not use any of SHACL's Advanced Features https://www.w3.org/TR/shacl-af/#SPARQLTarget) it is possible to get them like this:
+If it is required to get all actions that conform to those constraints (and not use any of SHACL's Advanced Features https://www.w3.org/TR/shacl-af/#SPARQLTarget) it is possible to get them like this:
 
 ```
 ex:SampleShape a sh:NodeShape ;
@@ -100,7 +101,6 @@ ex:SampleShape a sh:NodeShape ;
 i.e. state the negation which leads to all actions being reported that actually do conform to your initial query. (cf https://s.zazuko.com/2reFCP)
 
 We need to decide how to connect the policy with its SHACL constraint.
-
 
 
 **References on policies monitoring and compliance checking**
