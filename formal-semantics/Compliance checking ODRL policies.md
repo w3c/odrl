@@ -50,11 +50,10 @@ This ontology is used to formalize the state of the world.
   
  **Solution TO PROBLEM 1 and 2**:
  
-Use SHACL (Shapes Constraint Language) for describing the class of actions regulated by one rule. 
-
+Use SHACL (Shapes Constraint Language) for describing the class of actions regulated by one ODRL Rule. 
 References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
-This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display class) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
+This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display class) conforms to the **state constraints** (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
 
 ```
 ex:SampleShape a sh:NodeShape ;
@@ -72,8 +71,6 @@ ex:SampleShape a sh:NodeShape ;
                 sh:maxCount 1;
         ] .
 ```
-
-We need to decide how to connect the policy with its SHACL constraint.
 
 If it is required to get all actions that conform to those constraints reported (and not use any of SHACL's Advanced Features https://www.w3.org/TR/shacl-af/#SPARQLTarget) it is possible to get them like this:
 
@@ -102,7 +99,9 @@ ex:SampleShape a sh:NodeShape ;
 ```
 i.e. state the negation which leads to all actions being reported that actually do conform to your initial query. (cf https://s.zazuko.com/2reFCP)
 
--------------------------------------------------------
+We need to decide how to connect the policy with its SHACL constraint.
+
+
 
 **References on policies monitoring and compliance checking**
 
