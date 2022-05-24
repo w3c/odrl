@@ -80,16 +80,16 @@ ex:SampleShape a sh:NodeShape ;
         sh:targetClass odrl:Display ;
         sh:not [
                 sh:and (
-                        [
-                                sh:property [
-                                        sh:path odrl:spatial ;
-                                        sh:hasValue "Germany" ;
-                                        sh:minCount 1 ;
-                                        sh:maxCount 1;
-                ]
-            ]
+                  [
+                    sh:property [
+                      sh:path odrl:spatial ;
+                      sh:hasValue "Germany" ;
+                      sh:minCount 1 ;
+                      sh:maxCount 1;
+                    ]
+                 ]
                  [
-                sh:property [
+                   sh:property [
                     sh:path odrl:target ;
                     sh:hasValue <http://example.com/asset:9898.movie>;
                     sh:minCount 1 ;
