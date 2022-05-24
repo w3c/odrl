@@ -45,15 +45,18 @@ Define an ontology where:
  - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State
   
  **Solution TO PROBLEM 1 and 2**
-
-**Solution** (which is the most voted by the members of the sub-group)
-
-Use SHACL for describing the class of actions regulated by one rule. 
+Use SHACL (Shapes Constraint Language) for describing the class of actions regulated by one rule. 
 
 References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
 In ODRL the target property has as domain the odrl:Policy class or the odrl:Rule class.
 We need to consider it as a property of an action and change its domain to the odrl:Action class.
+
+We assume that the world state is formalized using an OWL Ontology done in this way:
+
+
+
+
 
 This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
 
