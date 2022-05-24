@@ -14,16 +14,11 @@ In order to check whether the **activation condition** is satisfied it must be e
 In order to check whether an individual belonging to the  **class of actions** regulated by the rule is actually performed there must be a match between the class of actions described in the rule and the **state of the world**.
 
 **PROBLEM 1**: 
-
 In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an **individual** belonging to the odrl:Action class and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression (an individual) into the description of a **class** of actions regulated by the rule. Therefore, it is not easy to perform a class membership test for computing the fulfillment or violation of the rule. 
 
-**PROBLEM 2**: 
+**PROBLEM 2**: Defining a new constraint language is not one of the goals of the ODRL working group, it is better to reuse an existing one.
 
-Defining a new constraint language is not one of the goals of the ODRL working group, it is better to reuse an existing one.
-
-**PROBLEM 3**:
-
-The person who is formalizing a rule with ODRL 2.2 can in principle use in the refinement a leftOperand propery that is not meaningful for the action refined, for example by using the "version" leftoperand for the "display" action.
+**PROBLEM 3**: The person who is formalizing a rule with ODRL 2.2 can in principle use in the refinement a leftOperand propery that is not meaningful for the action refined, for example by using the "version" leftoperand for the "display" action. 
 
 **Running Example**
 
@@ -44,69 +39,21 @@ Suppose that I want to write the policy that contains the following rule: "the p
               }]
        }]
        
- 
- In all solutions we need to define an ontology where:
- - the Display class is sublcass of the odrl:Action class -> ```odrl:Display subclassOf odrl:Action```
- - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State ->  ```odrl:spatial odrl:Action -> odrl:State```
+**SOLUTION TO PROBLEM 3**:  
+Define an ontology where:
+ - the odrl:Display class is sublcass of the odrl:Action class
+ - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State
   
-  Advantage of defining an ontology: it is impossible to use a leftOperand that is not meaningful for the class of the action.
+ **Solution TO PROBLEM 1 and 2**
 
-**Solution 1**
+**Solution** (which is the most voted by the members of the sub-group)
 
-Describe the actions regulated by one rule by using an anonymous individual that is an instance of the Display class having as value of the spacial property the country Germany, like here:
-
-     {
-      "@context": "http://www.w3.org/ns/odrl.jsonld",
-      "@type": "Set",
-      "uid": "http://example.com/policy:1010",
-      "permission": [{
- 	      "target": "http://example.com/asset:9898.movie",
-	      "action": [{
-	          "@type": "Display",
-		  "spatial": "Germany"
-              }]
-       }]
-    }
-
-
-With this solution, it would be impossible to confuse a constraint of the rule (which usually is an activation condition or an expiration condition of the rule) with a refinement used for describing the class of actions regulated by the rule.
-
-One drawback of solution 1 is that it is not easy to express certain constraints like ''less than'' or ''greater than''.
-
-**Solution 2**
-
-Express the class of actions regulated by one policy by using a conjunctive semantic formula over an ODRL ontology of actions. 
-Its syntax can be based on the Human Readable Syntax of the antecedent of SWRL rules https://www.w3.org/Submission/SWRL/#2.2 with the use of variables and the possibility to use built-ins for comparisons like swrlb:lessThan. The formalization of the Rule 1.0 (see above) becomes:
-
-
-     {
-      "@context": "http://www.w3.org/ns/odrl.jsonld",
-      "@type": "Set",
-      "uid": "http://example.com/policy:1010",
-      "permission": [{
- 	      "target": "http://example.com/asset:9898.movie",
-	      "action": [{
-	          Display(?a) and spatial(?a, germany)
-              }]
-       }]
-    }
-
-
-Problems:
-1. The value of the property odrl:action is no longer an instance of the class odrl:Action. As a consequence, the rule (the permission) inside the policy is no longer an individual belonging to the class odrl:Rule.
-2. Not all ODRL constraint operators can be represented right now using SWRL'a built-ins for comparisons, e.g. https://www.w3.org/TR/odrl-vocab/#term-isNoneOf and
-http://www.w3.org/ns/odrl/2/andSequence have not a "direct" match in SWRL.
-3. ODRL constraints are not exclusively for use with ODRL actions, they can also be used to constrain Asset and Party Collections (https://www.w3.org/TR/odrl-vocab/#term-refinement).
-
-
-**Solution 3**
-
-A third solution (which is also the most voted by the members of the sub-group) consists in using SHACL instead of SWRL for describing the class of actions regulated by one rule. 
+Use SHACL for describing the class of actions regulated by one rule. 
 
 References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
-In ODRL the target property has as domain the odrl:Policy or  odrl:Rule classes.
-Here we need to consider it as a property of an action and change its domain to odrl:Action class.
+In ODRL the target property has as domain the odrl:Policy class or the odrl:Rule class.
+We need to consider it as a property of an action and change its domain to the odrl:Action class.
 
 This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
 
