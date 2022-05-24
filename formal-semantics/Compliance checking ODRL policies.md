@@ -43,8 +43,8 @@ Suppose that I want to write the policy that contains the following rule: "the p
 
 Define an ontology where:
  - the odrl:Display class is sublcass of the odrl:Action class
- - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State
- - the target property has domain odrl:Action (instead of odrl:Policy or odrl:Rule).
+ - the object property odrl:spatial has as domain the class odrl:Action and as range a class odrl:State
+ - the object property odrl:target has as domain the class odrl:Action (instead of odrl:Policy or odrl:Rule).
 
 This ontology is used to formalize the state of the world.
   
@@ -54,11 +54,7 @@ Use SHACL (Shapes Constraint Language) for describing the class of actions regul
 
 References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
 
-
-
-
-
-This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
+This is a SHACL shape that checks whether a focus node (in this case any instance of type odrl:Display class) conforms to the state constraints (having as target "http://example.com/asset:9898.movie" and being performed in Germany):
 
 ```
 ex:SampleShape a sh:NodeShape ;
