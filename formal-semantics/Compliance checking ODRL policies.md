@@ -9,6 +9,10 @@ The semantics of an ODRL Rule is given by:
 2. The **class of actions** regulated by the rule inside a policy: when an instance of the class of actions regulated by the rule is performed with all refinements satisfied, the rule is fulfilled or violated on the basis of its type.
 3. Their **type**: if the rule is a duty (or obligation), performing an instance of the **class of actions** regulated by the rule brings about a fulfillment, if the type is prohibition, performing an instance of the class of actions regulated by the rule brings about a violation, if the type is permission ...
 
+In order to check whether the **activation condition** is satisfied it must be evaluated on the **state of the world**.
+
+In order to check whether an individual belonging to the  **class of actions** regulated by the rule is actually performed it must be a matching between the class of actions and the **state of the world** must be searched.
+
 
 **PROBLEM 1**: 
 
