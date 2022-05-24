@@ -1,12 +1,13 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-**Goal: monitor or control compliance with ODRL policies**
+**Goal: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
 
-The semantics of ODRL policies is given by the semantics of:
+The semantics of an ODRL policiy is given by the semantics of its rules.
 
-1. Their **activation condition**: when something happens or a certain state of affairs is satisfied the rule inside a policy becomes active or in force. In ODRL 2.2 the activation condition is expressed by specifying a constraint of a Rule.
+The semantics of an ODRL Rule is given by:
+1. Their **activation condition**: when something happens or a certain state of affairs is satisfied the rule inside a policy becomes active or in force. In ODRL 2.2 the activation condition must be expressed by specifying the conditions applicable to a Rule by means of a set of constraints.
 2. The **class of actions** regulated by the rule inside a policy: when an instance of the class of actions regulated by the rule is performed with all refinements satisfied, the rule is fulfilled or violated on the basis of its type.
-3. Their **type**: if the rule is a duty (or obligation) performing an instance of the **class of actions** regulated by the rule brings about a fulfillment, if the type is prohibition performing an instance of the class of actions regulated by the rule brings about a violation, if the type is permission ...
+3. Their **type**: if the rule is a duty (or obligation), performing an instance of the **class of actions** regulated by the rule brings about a fulfillment, if the type is prohibition, performing an instance of the class of actions regulated by the rule brings about a violation, if the type is permission ...
 
 
 **PROBLEM 1**: 
