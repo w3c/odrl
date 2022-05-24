@@ -40,19 +40,19 @@ Suppose that I want to write the policy that contains the following rule: "the p
        }]
        
 **SOLUTION TO PROBLEM 3**:  
+
 Define an ontology where:
  - the odrl:Display class is sublcass of the odrl:Action class
  - the object property odrl:spatial has as domain odrl:Action and as range a class odrl:State
+ - the target property has domain odrl:Action (instead of odrl:Policy or odrl:Rule).
+
+This ontology is used to formalize the state of the world.
   
- **Solution TO PROBLEM 1 and 2**
+ **Solution TO PROBLEM 1 and 2**:
+ 
 Use SHACL (Shapes Constraint Language) for describing the class of actions regulated by one rule. 
 
 References for SHACL: https://www.w3.org/TR/shacl; https://www.w3.org/TR/shacl-af/#rules
-
-In ODRL the target property has as domain the odrl:Policy class or the odrl:Rule class.
-We need to consider it as a property of an action and change its domain to the odrl:Action class.
-
-We assume that the world state is formalized using an OWL Ontology done in this way:
 
 
 
