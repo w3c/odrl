@@ -108,6 +108,7 @@ i.e. state the negation which leads to all actions being reported that actually 
 - How to connect a rule with a SHACL expression for expressing the activation condition of the rule; (For example the permission expressed in Example 1 is activated between the first and the fifth of July 2022.
 - How to connect a rule with a SHACL expression for expressing the class of actions regulated by the rule; Is it a text?
 - How to use a SHACL expression for constraining an asset or a party.
+- What ontology do we want to use for formalizing the examples? (for example the ODRL vocabulary transformed into an OWL ontology?).
 
 
 **References on policies monitoring and compliance checking**
