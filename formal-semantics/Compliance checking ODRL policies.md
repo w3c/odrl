@@ -2,16 +2,19 @@ Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera
 
 **Goal: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
 
-The semantics of an ODRL policiy is given by the semantics of its rules.
+The semantics of an ODRL policiy is given by the semantics of its rules. The semantics of one ODRL Rule is expressed by:
 
-The semantics of an ODRL Rule is given by:
-1. Their **activation condition**: when something happens or a certain state of affairs is satisfied the rule inside a policy becomes active or in force. In ODRL 2.2 the activation condition must be expressed by specifying the conditions applicable to a Rule by means of a set of constraints.
-2. The **class of actions** regulated by the rule inside a policy: when an instance of the class of actions regulated by the rule is performed with all refinements satisfied, the rule is fulfilled or violated on the basis of its type.
-3. Their **type**: if the rule is a duty (or obligation), performing an instance of the **class of actions** regulated by the rule brings about a fulfillment, if the type is prohibition, performing an instance of the class of actions regulated by the rule brings about a violation, if the type is permission ...
+1. Its **activation condition**: when something happens or a certain state of affairs is satisfied the rule becomes active or in force. In ODRL 2.2 the activation condition must be expressed by specifying the conditions applicable to a Rule by means of a set of constraints.
+2. The **class of actions** regulated by the rule: when an instance of the class of actions regulated by the rule is performed with all refinements satisfied, the rule is fulfilled or violated on the basis of its type.
+3. Its **type**: if the rule is a duty (or obligation), performing an instance of the **class of actions** regulated by the rule brings about a fulfillment. If the type is prohibition, performing an instance of the class of actions regulated by the rule brings about a violation. If the type is permission ...
 
 In order to check whether the **activation condition** is satisfied it must be evaluated on the **state of the world**.
 
-In order to check whether an individual belonging to the  **class of actions** regulated by the rule is actually performed there must be a match between the class of actions described in the rule and the **state of the world**.
+In order to check whether an individual belonging to the  **class of actions** regulated by the rule is actually performed there must be an individual in the **state of the world** that belongs to the class of actions. 
+
+Therefore it is crucial that the activation condition and the class of actions regulated by the rule are expressed with an **ontology** that can be aligned or matched with the **ontology** used for expressing the state of the worl.
+
+**PROBLEMS OF ODRL 2.2**
 
 **PROBLEM 1**: 
 In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an **individual** belonging to the odrl:Action class and the class of actions is constrained using a refinement (which is an instance of the odrl:Constraint class). It is not easy to automatically translate such an expression (an individual) into the description of a **class** of actions regulated by the rule. Therefore, it is not easy to perform a class membership test for computing the fulfillment or violation of the rule. 
@@ -20,7 +23,7 @@ In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an
 
 **PROBLEM 3**: The person who is formalizing a rule with ODRL 2.2 can in principle use in the refinement a leftOperand propery that is not meaningful for the action refined, for example by using the "version" leftoperand for the "display" action. 
 
-**Running Example**
+**Running Example 1**
 
 Suppose that I want to write the policy that contains the following rule: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany" (this example is partially taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
@@ -41,13 +44,14 @@ Suppose that I want to write the policy that contains the following rule: "the p
        
 **SOLUTION TO PROBLEM 3**:  
 
-Define an ontology where:
+Define the following ontology for expressing the rules inside policies and the state of the world where the real actions of the agents are represented:
  - the odrl:Display class is sublcass of the odrl:Action class
  - the object property odrl:spatial has as domain the class odrl:Action and as range a class odrl:State
  - the object property odrl:target has as domain the class odrl:Action (instead of odrl:Policy or odrl:Rule).
 
-This ontology is used to formalize the state of the world where the real actions of the agents are represented. 
-For example it could contain the following information: Robert performs a display action of the movie 9898.movie in Germany. Anna performs a display action of the movie 9898.movie in Switzerland.
+For example the ontolgy could contain the following information: 
+- Robert performs a display action of the movie 9898.movie in Germany. 
+- Anna performs a display action of the movie 9898.movie in Switzerland.
   
  **Solution TO PROBLEM 1 and 2**:
  
@@ -100,7 +104,10 @@ ex:SampleShape a sh:NodeShape ;
 ```
 i.e. state the negation which leads to all actions being reported that actually do conform to your initial query. (cf https://s.zazuko.com/2reFCP)
 
-We need to decide how to connect the policy with its SHACL constraint.
+**OPEN PROBLEMS**:
+- How to connect a rule with a SHACL expression for expressing the activation condition of the rule; (For example the permission expressed in Example 1 is activated between the first and the fifth of July 2022.
+- How to connect a rule with a SHACL expression for expressing the class of actions regulated by the rule; Is it a text?
+- How to use a SHACL expression for constraining an asset or a party.
 
 
 **References on policies monitoring and compliance checking**
