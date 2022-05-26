@@ -105,11 +105,10 @@ ex:SampleShape a sh:NodeShape ;
 i.e. state the negation which leads to all actions being reported that actually do conform to your initial query. (cf https://s.zazuko.com/2reFCP)
 
 **OPEN PROBLEMS**:
-- How to connect a rule with a SHACL expression for expressing the activation condition of the rule; (For example the permission expressed in Example 1 is activated between the first and the fifth of July 2022.
-- How to connect a rule with a SHACL expression for expressing the class of actions regulated by the rule; Is it a text?
+ - How to connect a rule with a SHACL expression for expressing the activation condition of the rule; (For example for formalizing that the permission in Example 1 is valid between the first and the fifth of July 2022).
+- How to connect a rule with a SHACL expression used to formalize the class of actions regulated by the rule; Is it ok to treat it as a text?
 - How to use a SHACL expression for constraining an asset or a party.
-- What ontology do we want to use for formalizing the examples? (for example the ODRL vocabulary transformed into an OWL ontology?).
-
+-What ontology do we want to use for formalizing the ODRL examples? (for example the ODRL vocabulary transformed into an OWL ontology?).
 
 **References on policies monitoring and compliance checking**
 
