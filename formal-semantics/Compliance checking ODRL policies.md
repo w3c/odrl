@@ -27,7 +27,7 @@ In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an
 
 Suppose we want to write the policy that contains the following rule: "the permission for everybody to display the movie http://example.com/asset:9898.movie in Germany" (this example is taken from Example 1.2A in https://w3c.github.io/odrl/bp/#examples): 
 
- 
+``` 
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
@@ -43,6 +43,7 @@ Suppose we want to write the policy that contains the following rule: "the permi
        }]
  }]
 }
+```
        
 **SOLUTION TO PROBLEM 3**:  
 
