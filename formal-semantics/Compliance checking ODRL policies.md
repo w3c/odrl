@@ -21,7 +21,7 @@ In ODRL 2.2 the **class** of actions regulated by one rule is expressed using an
 
 **PROBLEM 2**: Defining a new constraint language is not one of the goals of the ODRL working group, it is better to reuse an existing one.
 
-**PROBLEM 3**: The person who is formalizing a rule with ODRL 2.2 can in principle use in the refinement a leftOperand propery that is not meaningful for the action refined, for example by using the "version" leftoperand for the "display" action. 
+**PROBLEM 3**: When a new Rule is formalized using ODRL 2.2, in the definition of its Refinement component, it is possible to use a leftOperand propery that is not meaningful for the action refined, for example it is possible to use the "version" leftoperand for the "display" action. 
 
 **Running Example 1**
 
