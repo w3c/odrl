@@ -1,6 +1,12 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-**Goal: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
+**Scenario 1 Policy Monitoring**: autonomous agents intect in an open interaction system and perform various type of actions, those actions are represented in a world state. A set of norms (N) regulate the behaviour of those agents. Policy monitoring consists of automatic computation of fulfilment or violation of norms in N based on the actions of agents.
+
+**Goal 1: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
+
+**Scenario 2 Access Control**:
+
+**Goal 2:**
 
 The semantics of an ODRL policiy is given by the semantics of its rules. The semantics of one ODRL Rule is expressed by:
 
