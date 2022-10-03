@@ -4,7 +4,7 @@ Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera
 
 **Goal 1: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
 
-**Scenario 2 Access Control**:
+**Scenario 2 Access Control to digital resources**:
 
 **Goal 2:**
 
