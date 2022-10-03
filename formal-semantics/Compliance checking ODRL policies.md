@@ -1,6 +1,7 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-**Scenario 1 Policy Monitoring**: autonomous agents intect in an open interaction system and perform various type of actions, those actions are represented in a world state. A set of norms (N) regulate the behaviour of those agents. Policy monitoring consists of automatic computation of fulfilment or violation of norms in N based on the actions of agents.
+**Scenario 1 Policy Monitoring**: 
+Various autonomous agents interact in an open interaction system and perform various types of actions. These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) and the time instant at which they are done, are digitally represented in a '**system state**'. A set of norms (N) regulate the behaviour of those agents. Policy monitoring consists of automatic computation of fulfilment or violation of norms in N based on the actions of agents.
 
 **Goal 1: Check whether the behavior of agents constrained by ODRL policies is compliant with those policies**
 
