@@ -11,7 +11,11 @@ Various autonomous agents interact in an open interaction system and perform var
 
 **Core differences between these scenarios**:
 
-1. In an open interaction system, described in Scenario 1, it is assumed that agents are free to perform all actions, even prohibited ones. In this scenario, a permission is an exception to a prohibition. In Scenario 2 if an agent has not the permission to access certain data she/he will not access the data, the prohibition is regimented.
+Difference 1. 
+
+In an open interaction system, described in Scenario 1, it is assumed that agents are free to perform all actions, even prohibited ones. The performance of a prohibited action implies a violation. In this scenario, a permission is an exception to a prohibition. 
+ 
+In Scenario 2, if an agent does not have permission to access certain data, it will not access the data, the prohibition is regimented and cannot be violated.
 
 
 
