@@ -1,4 +1,7 @@
-Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
+Authors: 
+- Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera
+- Beatriz Esteves, Universidad Politécnica de Madrid, Madrid, Spain
+- add more
 
 **Scenario 1 Policy Monitoring**: 
 Various autonomous agents interact in an open interaction system and perform various types of actions. These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) and the time instant at which they are done, are digitally represented in a '**system state**'. A set of norms (N) regulate the behaviour of those agents. Policy monitoring consists of automatic computation of fulfilment or violation of norms in N based on the actions of agents.
@@ -6,19 +9,21 @@ Various autonomous agents interact in an open interaction system and perform var
 **Goal 1: Check whether the behavior of agents that is constrained by ODRL policies is compliant with those policies**
 
 **Scenario 2 Access Control to digital resources**:
+Access control policies can be used to determine access by users or software agents to digital resources. This is particularly important in decentralised systems where the users are the entities responsible to grant or deny access to the data and are responsible to define or adhere to a set of policies that satisfy their preferences. By using these policies in an algorithm to match with incoming access requests for data, a system can provide a fine-grained access control mechanism to its users.
 
-**Goal 2:**
+**Goal 2: Match access requests with ODRL policies determining access control to stored digital resources**
 
 **Core differences between these scenarios**:
 
-Difference 1. 
+*Difference 1.*
 
 In an open interaction system, described in Scenario 1, it is assumed that agents are free to perform all actions, even prohibited ones. The performance of a prohibited action implies a violation. In this scenario, a permission is an exception to a prohibition. 
  
 In Scenario 2, if an agent does not have permission to access certain data, it will not access the data, the prohibition is regimented and cannot be violated.
 
+*Difference 2.*
 
-
+In Scenario 1, policies are focused on duties and consequences of agents performing certain actions, while in Scenario 2, the agents establish constraints, e.g. purpose, recipient, temporal or spatial constraints, for the specific action of granting access to certain resources or types of resources.
 
 --------------------------------------------------------------
 
