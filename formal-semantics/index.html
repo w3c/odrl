@@ -88,14 +88,22 @@
 			In this scenario, it is assumed that agents are free to perform all actions, even prohibited ones. 
 			The performance of a prohibited action implies a violation. A permission is interesting when it is an exception to a prohibition.
 			
-			<h3>Access Control to digital resources</h3>
+		<h3>Access Control to digital resources</h3>
 			
 			
-			<h3>
-			
-		
-			
-			
+		<h3>License composition</h3>
+			Two resources differently licensed ("policed") need to be integrated in a new work. Which range of policies will be compatible with these two previous policies?
+			Are these two policies compatible at all?
+			The works of Villata, DALICC and many others addressed this problem, but their results and ideas were never incorporated into ODRL. A pity!
+
+		<h3> Validation</h3>
+			ODRL is being used in a Language Resource Data Portal. Anybody can freely upload a resource, and anybody can post ODRL policies associated to them. The ids of the content resources and the assigners are verified, but the rest is left to the users.
+			However, if they upload broken or malicious policies, they could break the system (e.g. a policy with 1 million rules).
+			How to validate the ODRL policies so that they are conformant with a limited subset of them?
+
+		<h3>Planning</h3>
+			I want to do an action, I don't have permission to do it, what do I have to do to get permission to do it?
+			Which is the sequence of messages to be exchanged within a protocol?		
 			
 		</section>
 
