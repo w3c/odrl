@@ -58,16 +58,16 @@
 			
 		<section id="section2">
 		<h2>Scenarios</h2>
-			<h3>Policy Monitoring/Simulation or Compliance Checking</h3>
+			<h3>Policy Monitoring or Simulation</h3>
 			
 			Various autonomous agents interact in an open interaction system and perform various types of actions. 
 			These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) 
-			and the time instant at which they are done, are digitally represented in a 'world state' or 'system state'.
+			and the time instant at which they are done, are digitally represented in a 'world state' or 'system state'.<br>
 			(What model of data (ontology) is used for representing the state of the world?)<br> 
 			
 			A set of ODRL policies (P) regulate the behaviour of those agents. <br>
 			
-			Policy monitoring or compliance checking consists of automatic computation at every instant of time of fulfilment or violation of the 
+			Policy monitoring (or compliance checking) consists of automatic computation at every instant of time of fulfilment or violation of the 
 			various rules inside the policies in P based on the actions of the agents and on the state of the world.<br>
 			
 			In a given instant of time it is required to compute if a rule is activated (for duty and prohibition) or if it is valid (for permission). 
@@ -75,14 +75,18 @@
 						
 			Monitoring or compliance checking are useful, for example, for being able to:
 			<ul>
-				<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if the behaviour of its employees 
-				is compliant with the policies attached to the digital assets used inside the company.</li>
-                        	<li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture the prohibition to sell it and 
-				I would like to automatically monitor if the actions performed on that picture are compliant with such a prohibition.</li>
+				<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if 
+				the behaviour of its employees is compliant with the policies attached to the digital assets used inside the company.</li>
+                        	<li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture 
+				the prohibition to sell it and I would like to automatically monitor if the actions performed on that picture are 
+				compliant with such a prohibition.</li>
 			</ul>
 			
 			Simulation may be used by consumers for a what-if analysis and evaluate if the performance of an action on a digital asset will 
-			I violate one of its policies.
+			I violate one of its policies.<br>
+			
+			In this scenario, it is assumed that agents are free to perform all actions, even prohibited ones. 
+			The performance of a prohibited action implies a violation. A permission is interesting when it is an exception to a prohibition.
 			
 			<h3>Access Control to digital resources</h3>
 			
