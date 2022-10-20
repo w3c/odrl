@@ -40,14 +40,20 @@
 		able to automatically compute if:
 			<ul>
 				<li>a prohibition has been infringed by an action being exercised;</li>
-				<li>an obligation is fulfilled by an action being exercised;</li>
+				<li>an obligation is fulfilled by an action being exercised or it is violated by an action not being performed;</li>
 				<li>a permission is valid and allows an action to be exercised.</li>
 			</ul>
 		
-		The meaning of having an ORDL permission, prohibition or obligation is currently specified only in natural language. For example, this is the 
-		ODRL specification of the notion of <a href="https://www.w3.org/TR/odrl-model/#prohibition">Prohibition</a>: 
-		''A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.''.<br>
+		The meaning of having an ORDL permission, prohibition or duty is currently specified in natural language as follows:		
+			<ol>
+				<li><a href="https://www.w3.org/TR/odrl-model/#prohibition">Prohibition</a>: 
+					A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.</li>
+				<li><a href="https://www.w3.org/TR/odrl-model/#duty-policy">Duty</a>: 
+					A Duty is the obligation to exercise an action, with all refinements satisfied. A Duty is fulfilled if all constraints are satisfied and if its action, with all refinements satisfied, has been exercised. 
+				<li><a href="https://www.w3.org/TR/odrl-model/#permission">Permission</a>: 
+					A Permission allows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied and if all duties are fulfilled.
 		
+					
 		<section id="section2">
 		<h2>Section 2. Scenarios</h2>
 			
