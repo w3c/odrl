@@ -141,7 +141,10 @@ The SPECIAL Policy Log Vocabulary: A vocabulary for privacy-aware logs, transpar
 
 -----------------------------
 
-**Meeting on ODRL Semantics:** the list is available here https://www.w3.org/community/odrl/wiki/Formal_Semantics_for_ODRL
+**Meeting on ODRL Semantics:** 
+The list of meeting is available here https://www.w3.org/community/odrl/wiki/Formal_Semantics_for_ODRL
+
+The Agenda is available here https://github.com/w3c/odrl/projects/2
 
 **Participants:**
   
