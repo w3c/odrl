@@ -65,14 +65,17 @@
 			and the time instant at which they are done, are digitally represented in a <b>'world state'<b> or 'system state'.<br>
 			(What model of data (ontology) is used for representing the state of the world?)</li> 
 			
-			<li>A set of ODRL policies (P) regulate the behaviour of those agents, every policy contains some rules (R).</li>
+			<li>A set of ODRL policies (P) regulate the behaviour of those agents, every policy contains some rules (R) that are prohibitions, duties, or permissions.</li>
 			
-			<li>Policy monitoring (or compliance checking) consists of automatic computation at every instant of time of fulfilment or violation of the 
-			various rules inside the policies in P for duties and prohibitions and the validity of permissions. 
-			This computation is based on the actions of the agents and their effects represented in the state of the world.<br>
-			In every instant of time it is required to compute if a rule is activated (for duty and prohibition) or if it is valid (for permission). 
-			Then when the rule is activated/valid it is required to check if the action regulated by the rule is performed.</li>
-						
+			<li><b>Policy monitoring</b> (or compliance checking) consists of computing at every instant of time:
+			<ul>
+				<li>the set of obligations or prohibitions that are active (i.e. checking if their constraints are satisfied);</li>
+				<li>the set of permissions that are valid (i.e. check if all constraints are satisfied and if all duties are fulfilled);</li>
+				<li>the set of active obligations or prohibitions that are fulfilled or violated by the performance of certain actions 
+				(i.e. check if the performance of an action matches the action regulated by an obligation or a prohibition taking into account
+					all the refinements used for describing the action in the policy;</li>
+			</ul>	
+									
 			Monitoring or compliance checking are useful, for example, for being able to:
 			<ul>
 				<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if 
