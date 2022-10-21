@@ -1,27 +1,5 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-**Scenario 1 Policy Monitoring**: 
-Various autonomous agents interact in an open interaction system and perform various types of actions. These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) and the time instant at which they are done, are digitally represented in a '**system state**'. A set of norms (N) regulate the behaviour of those agents. Policy monitoring consists of automatic computation of fulfilment or violation of norms in N based on the actions of agents.
-
-**Goal 1: Check whether the behavior of agents that is constrained by ODRL policies is compliant with those policies**
-
-**Scenario 2 Access Control to digital resources**:
-
-**Goal 2:**
-
-**Core differences between these scenarios**:
-
-Difference 1. 
-
-In an open interaction system, described in Scenario 1, it is assumed that agents are free to perform all actions, even prohibited ones. The performance of a prohibited action implies a violation. In this scenario, a permission is an exception to a prohibition. 
- 
-In Scenario 2, if an agent does not have permission to access certain data, it will not access the data, the prohibition is regimented and cannot be violated.
-
-
-
-
---------------------------------------------------------------
-
 The semantics of an ODRL policiy is given by the semantics of its rules. The semantics of one ODRL Rule is expressed by:
 
 1. Its **activation condition**: when something happens or a certain state of affairs is satisfied the rule becomes active or in force. In ODRL 2.2 the activation condition must be expressed by specifying the conditions applicable to a Rule by means of a set of constraints.
