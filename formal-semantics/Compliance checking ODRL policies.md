@@ -141,12 +141,7 @@ The SPECIAL Policy Log Vocabulary: A vocabulary for privacy-aware logs, transpar
 
 -----------------------------
 
-**Meeting on ODRL Semantics:**
-
-1. Thursday 1st April 2021
-2. Tueasday 11th May 2021
-3. Monday 21st June 2021
-4. Monday 27th September 2021
+**Meeting on ODRL Semantics:** the list is available here https://www.w3.org/community/odrl/wiki/Formal_Semantics_for_ODRL
 
 **Participants:**
   
