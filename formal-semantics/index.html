@@ -59,19 +59,19 @@
 		<section id="section2">
 		<h2>Scenarios</h2>
 			<h3>Policy Monitoring or Simulation</h3>
-			
-			Various autonomous agents interact in an open interaction system and perform various types of actions. 
+			<ul>
+			<li>Various autonomous agents interact in an open interaction system and perform various types of actions. 
 			These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) 
-			and the time instant at which they are done, are digitally represented in a 'world state' or 'system state'.<br>
-			(What model of data (ontology) is used for representing the state of the world?)<br> 
+			and the time instant at which they are done, are digitally represented in a <b>'world state'<b> or 'system state'.<br>
+			(What model of data (ontology) is used for representing the state of the world?)</li> 
 			
-			A set of ODRL policies (P) regulate the behaviour of those agents. <br>
+			<li>A set of ODRL policies (P) regulate the behaviour of those agents, every policy contains some rules (R).</li>
 			
-			Policy monitoring (or compliance checking) consists of automatic computation at every instant of time of fulfilment or violation of the 
-			various rules inside the policies in P based on the actions of the agents and on the state of the world.<br>
-			
-			In a given instant of time it is required to compute if a rule is activated (for duty and prohibition) or if it is valid (for permission). 
-			Then when the rule is activated/valid it is required to check if the action regulated by the rule is performed.<br>
+			<li>Policy monitoring (or compliance checking) consists of automatic computation at every instant of time of fulfilment or violation of the 
+			various rules inside the policies in P for duties and prohibitions and the validity of permissions. 
+			This computation is based on the actions of the agents and their effects represented in the state of the world.<br>
+			In every instant of time it is required to compute if a rule is activated (for duty and prohibition) or if it is valid (for permission). 
+			Then when the rule is activated/valid it is required to check if the action regulated by the rule is performed.</li>
 						
 			Monitoring or compliance checking are useful, for example, for being able to:
 			<ul>
@@ -86,7 +86,7 @@
 			I violate one of its policies.<br>
 			
 			In this scenario, it is assumed that agents are free to perform all actions, even prohibited ones. 
-			The performance of a prohibited action implies a violation. A permission is interesting when it is an exception to a prohibition.
+			A permission is interesting when it is an exception to a prohibition.
 			
 		<h3>Access Control to digital resources</h3>
 			
