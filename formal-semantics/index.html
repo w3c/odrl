@@ -92,12 +92,20 @@
 			A permission is interesting when it is an exception to a prohibition.
 			
 		<h3>Access Control to digital resources</h3>
-		An agent request to get access to certain resources or to certain data.
-		
-		On the basis of access policies the permission is granted or denied.		
-				
-		In this scenario, if an agent does not have permission to access certain data, it will not access the data, the prohibition is regimented and cannot be violated.
-				
+
+		<p><b>Goal:</b> Match access requests with ODRL policies determining access control to stored digital resources</p>
+
+		<p>Access control policies can be used to determine access by users or software agents to digital resources.</p>
+		<p>This is particularly important in decentralised systems where the users are the entities responsible to grant or deny 
+			access to the data and are responsible to define or adhere to a set of policies that satisfy their preferences.</p>
+		<p>By using these policies in an algorithm to match with incoming access requests for data, a system can provide a 
+			fine-grained access control mechanism to its users.</p>				
+		<p>In this scenario, if an agent does not have permission to access certain data, it will not access the data, 
+			the prohibition is regimented and cannot be violated.</p>
+		<p>Typically in this scenario, the entities responsible to grant or deny access to the data would write <i>odrl:Offer</i> policies 
+			(or new types of policies can be created, e.g., preference, requirement). The agent trying to have access to the data 
+			would write <i>odrl:Request</i> policies and the final agreement between the parties can be stored as an <i>odrl:Agreement</i> 
+			(associated with the <i>odrl:Offer</i> and <i>odrl:Request</i> policies).</p>
 				
 		<h3>License composition</h3>
 			Two resources differently licensed ("policed") need to be integrated in a new work.
