@@ -3,4 +3,4 @@
 This document discusses the importance of providing a formal semantics for ODRL and previous efforts in the area.
 
 ## Useful links
-* [ODRL Formal Semantics Draft Report](https://www.w3.org/formal-semantics/) 
+* [ODRL Formal Semantics Draft Report](https://w3c.github.io/odrl/formal-semantics/) 
