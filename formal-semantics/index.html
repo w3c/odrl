@@ -137,30 +137,33 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	
 The range of both those properties is the Constraint class (https://www.w3.org/TR/odrl-model/#constraint) but their meaning is different:
 <ul>
-	<li>The constraint of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
+	<li>The b>constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
 		can be evaluated independently from the evaluation of the action regulated by the Rule;</li>
-	<li>The refinement of an Action must be used to describe the action regulated by the Rule and it must be evaluated together with the performance of the action.</li>
+	<li>The <b>refinement</b> of an Action must be used to describe the action regulated by the Rule and it must be evaluated together with the performance of the action.</li>
 	</ul>	
 
 Once this distinction has been clarified, we move on to give the semantics of the various types of rules defined in ODRL.<br>
 
-In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is valid (the action is allowed) if:
+In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is allowed) if:
 <ol>
 	<li>all constraints of the Rule are satisfied AND</li>
 	<li>all (active) duties are fulfilled.</li>
 </ol>
-Those two conditions together represent a validity condition similar to an activation condition (see below). If one of those two conditions is not met, the Permission is invalid or not valid.<br>
+Those two conditions together represent a validity condition similar to an activation condition (see below). 
+If one of those two conditions is not met, the Permission is <b>invalid</b> or not valid.<br>
 
-	In ODRL 2.2., a Rule that belongs to the <b>Duty</b> or <b>Prohibition</b> class:
+<p>In ODRL 2.2., a Rule that belongs to the <b>Duty</b> or <b>Prohibition</b> class:</p>
 <ol>
-	<li>is active (it starts to oblige or prohibit someone to do something) if the all constraints of the Rule are satisfied (the constraints of the Rule represent an activation condition see below);</li>
-	<li>an active Duty is fulfilled by the regulated action (with all refinements satisfied) being exercised; it is unfulfilled if the regulated action is not performed but can still be performed; it is violated when the regulated action can no longer be performed;</li>
-	<li>an active Prohibition is infringed by the regulated action (with all refinements satisfied) being exercised;</li>
+	<li>is <b>active</b> (it starts to oblige or prohibit someone to do something) if the all constraints of the Rule are satisfied (the constraints of the Rule represent an activation condition see below);</li>
+	<li>an active Duty is <b>fulfilled</b> by the regulated action (with all refinements satisfied) being exercised (before a deadline?); 
+	it is <b>violated</b> when the regulated action can no longer be performed; 
+	a duty may have one or many consequence property values of type Duty (what is its semantics?)</li>
+	<li>an active Prohibition is <b>infringed</b> by the regulated action (with all refinements satisfied) being exercised;</li>
 </ol>
 	
 The notion of <b>activation condition</b> of a policy/norm is an important component in many policy models in the literature.
 <ol>
-<li>An activation condition is a condition that when is satisfied brings a change in the state (deontic state) of the policy/norm occurs.</li>
+<li>An activation condition is a condition that when is satisfied results in a change in the state (deontic state) of the policy/norm.</li>
 <li>The satisfaction of the activation condition of a policy has to be evaluated on the state of the world (or state of the environment) where the interactions among agents are represented using a suitable notation.</li>
 <li>The satisfaction of the activation condition of a policy must be evaluated independently from the action regulated by the policy and it is the first component of a policy that must be evaluated.</li>
 <li>In some policy/norms models the satisfaction of the activation condition of a policy bounds some variables contained in the activation condition to the values that caused the activation condition to be satisfied. These bounded values are used also in other components of the active policy/norm.</li>
