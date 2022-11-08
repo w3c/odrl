@@ -429,6 +429,39 @@ All the examples above declared that there existed a certain permission, prohibi
 	
 	Although the actions in the ODRL Core Vocabulary do not have these implications, and although the actions in the ODRL Core Vocabulary are hardly dependent from each other, this may be of interest if you some day want to define your own actions.
 	
+	<h3>Connect an odrl:Agreement with an odrl:Offer and an odrl:Request</h3>
+	<p>A party publishes an <code>odrl:Offer</code> policy for the target data <code>http://example.com/asset:1</code> and a second party makes an <code>odrl:Request</code> to that asset. The parties reach an agreement which is recorded using an <code>odrl:Agreement</code>.</p>
+	<p>The <a href="http://purl.org/dc/terms/references">dcterms:references</a> property should be used to connect the agreement with the offer and the request that originated it.</p>
+	<div class="example">
+		<div class="example-title marker"><span>Example X</span></div>
+		<pre>
+			ex:offer a odrl:Offer ;
+				odrl:uid &lt;http://example.com/offer:1> ;
+				odrl:permission [
+					odrl:target &lt;http://example.com/asset:1> ;
+					odrl:assigner &lt;http://example.com/party:A> ;
+					odrl:action odrl:use
+				] .
+
+			ex:request a odrl:Request ;
+				odrl:uid &lt;http://example.com/request:1> ;
+				odrl:permission [
+					odrl:target &lt;http://example.com/asset:1> ;
+					odrl:assignee &lt;http://example.com/party:B> ;
+					odrl:action odrl:use
+				] .
+
+			ex:agreement a odrl:Agreement ;
+				dcterms:references ex:offer, ex:request ;
+				odrl:uid &lt;http://example.com/agreement:1> ;
+				odrl:permission [
+					odrl:target &lt;http://example.com/asset:1> ;
+					odrl:assigner &lt;http://example.com/party:A> ;
+					odrl:assignee &lt;http://example.com/party:B> ;
+					odrl:action odrl:use
+				] .
+		</pre>
+	</div>
 	
 	
 		<h3>92. Representing ODRL with RDF Turtle (I)</h3>		
