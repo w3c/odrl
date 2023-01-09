@@ -129,17 +129,17 @@
 <section id="section3">	
 <h2>Activation conditions of Rules and Constraints</h2> 
 	
-In order to clarify the semantics of ODRL it is important to clarify the different semantics of:
+In order to clarify the semantics of ODRL it is important to clarify the different semantics of the:
 <ul>
-	<li>the <b>constraint</b> of a Rule;</li>
-	<li>the <b>refinement</b> of an Action.</li>
+	<li>the <b>constraint</b> of an ODRL Rule;</li>
+	<li>the <b>refinement</b> of the action (range Action class), of the target (range Asset class), of the assigner/assignee (range Party class) of a Rule.</li> 
 </ul>
 	
-The range of both those properties is the Constraint class (https://www.w3.org/TR/odrl-model/#constraint) but their meaning is different:
+The range of all those properties is the Constraint class (https://www.w3.org/TR/odrl-model/#constraint) but their meaning is different:
 <ul>
 	<li>The <b>constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
 		can be evaluated independently from the evaluation of the action regulated by the Rule;</li>
-	<li>The <b>refinement</b> of an Action must be used to describe the action regulated by the Rule and it must be evaluated together with the performance of the action.</li>
+	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and it must be evaluated together with the performance of the action.</li>
 	</ul>	
 
 Once this distinction has been clarified, we move on to give the semantics of the various types of rules defined in ODRL.<br>
