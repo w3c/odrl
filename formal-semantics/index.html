@@ -155,23 +155,22 @@ In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b>
 	<li>all duties are fulfilled.</li>
 </ol>
 	Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is <b>invalid</b> or not valid.<br>
-		
-	For <b>every</b> permission, it is necessary to perform the following these steps:
+	Therefore in order to evaluate if <b>one</b> permission is valid, it is necessary to perform the following steps:
 	<ol>
 		<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
 		<li> evaluate the duties (output: fulfilled, not fulfilled) on the state of the world; </li>
-		<li> if the constraint is satisfied AND the duties are fullilled then the permission is valid otherwise is invalid.<li>
+		<li> if the constraint is satisfied AND the duties are fullilled then the permission is valid otherwise is invalid.</li>
 	</ol>
 	
 	In a system it is crucial to detect the <b>violations</b>. If the default setting for the policy evaluator is: 
 	"everything is prohibited unless explicitly permitted", whenever an action is performed it is required to check if the action is permitted or not. 
-	Then for every valid permission (computed as above) it is required to evaluate if the action performed satisfies the refinements of the permission.
+	Then for every <b>valid</b> permission (computed as above) it is required to evaluate if the action performed satisfies the refinements of the permission.
 	<ol>
 		<li>evaluate the refinements of the action, parties, asset (ourput: satisfied, not satisfied) on the action performed;</li>
 		<li> if all the refinements are satisfied the permission is used (this may be important for those permissions that can only be used a 
 			limited number of times);</li>
 		<li> if one of the refinement is not satisfied the action is not permitted by the permission under examination, if it is not permitted by 
-			at least one permission then there is a violation;
+			at least one permission then there is a violation;</li>
 	</ol>
 
 <p>In ODRL 2.2., a Rule that belongs to the <b>Duty</b> or <b>Prohibition</b> class:</p>
