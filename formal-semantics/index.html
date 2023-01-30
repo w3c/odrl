@@ -127,7 +127,9 @@
 			
 			
 <section id="section3">	
-<h2>Activation conditions of Rules and Constraints</h2> 
+<h2> Semantics of Permission, Prohibition, and Obligation</h2>	
+
+<h3>Activation conditions of Rules and Constraints</h3> 
 	
 In order to clarify the semantics of ODRL it is important to clarify the different semantics of the:
 <ul>
@@ -136,7 +138,7 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	<li>the <b>duty</b> of an ODRL Permission.</li>
 </ul>
 	
-	The range of the <b>constraint</b> and <b>refinement</b> properties is the same class, the Constraint class (https://www.w3.org/TR/odrl-model/#constraint)
+	The range of the <b>constraint</b> and <b>refinement</b> properties is the same class, the Constraint class (https://www.w3.org/TR/odrl-model/#constraint),
 	but their meaning is different:
 <ul>
 	<li>The <b>constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule 
@@ -144,18 +146,20 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 		can be evaluated independently from the evaluation of the action regulated by the Rule. 
 		When an ODRL rule is a permit, its validity also depends on the fulfilment of its duties.
 	</li>
-	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and it must be evaluated together 
-		with the performance of the action.</li>
+	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and its satisfaction can be evaluated: 
+		(i) after the action has been performed (monitoring); 
+		(ii) before the action has been performed (what-if analysis, access control, planning).</li>
 	</ul>	
 
-We move on to give the semantics of the various types of rules defined in ODRL.<br>
+<h3>Sematics of Permission</h3> 
+	
+	Goal: determine if a Permission is <b>valid</b> and if the performance of an action generates a <b>violation</b>. The process for computing the satisfaction of constraints 
+and the satisfaction of refinements is left to individual implementations. But given these values, all ODRL Evaluators should agree on the state of Permissions and 
+on the violations generated.
 
-In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is allowed) if:
-<ol>
-	<li>all constraints of the Rule are satisfied AND</li>
-	<li>all duties are fulfilled.</li>
-</ol>
-	Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is <b>invalid</b> or not valid.<br>
+In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
+	all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. 
+	If one of those two conditions is not met, the Permission is <b>invalid</b> or not valid.<br>
 	Therefore in order to evaluate if <b>one</b> permission is valid, it is necessary to perform the following steps:
 	<ol>
 		<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
@@ -164,16 +168,29 @@ In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b>
 	</ol>
 	
 	In a system it is crucial to detect the <b>violations</b>. If the default setting for the policy evaluator is: 
-	"everything is prohibited unless explicitly permitted", whenever an action is performed it is required to check if the action is permitted or not. 
-	Then for every <b>valid</b> permission (computed as above) it is required to evaluate if the action performed satisfies the refinements of the permission.
+	"everything is prohibited unless explicitly permitted", whenever an action is performed (or in access control there is a request to perform an action) 
+	it is required to check if the action was (is) permitted or not. It is necessary to perform the following steps:
 	<ol>
-		<li>evaluate the refinements of the action, parties, asset (ourput: satisfied, not satisfied) on the action performed;</li>
+		<li>When an action is performed or planned; </li>
+		<li>For every <b>valid</b> permission (computed as above), evaluate if the action performed satisfies its refinements (output: satisfied, not satisfied).
+		This means to check the value of the action, target, and assigner properties.</li>
 		<li> if all the refinements are satisfied the permission is used (this may be important for those permissions that can only be used a 
-			limited number of times);</li>
-		<li> if one of the refinements is not satisfied the action is not permitted by the permission under examination, if it is not permitted by 
-			at least one of the other permissions then there is a violation;</li>
+			limited number of times)(it is possible that the action is prohibited by another Rule see below);</li>
+		<li> if one of the refinements is not satisfied the action is not permitted by the permission under examination;</li>
+		<li> if the action is not permitted by at least one of the permissions then there is a violation;</li>
 	</ol>
+	
+<h3>Sematics of Duty used as a validity condition of Permission</h3> 	
 
+Goal: determine if a Duty is fulfilled.
+
+In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if  A Duty is fulfilled if all 
+constraints are satisfied and if its action, with all refinements satisfied, has been performed. 
+	Therefore in order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+	
+	
+<h3>Sematics of Prohibition</h3> 		
+	
 <p>In ODRL 2.2., a Rule that belongs to the <b>Duty</b> or <b>Prohibition</b> class:</p>
 <ol>
 	<li>is <b>active</b> (it starts to oblige or prohibit someone to do something) if all the constraints of the Rule are satisfied (the constraints of the Rule represent an activation condition see below);</li>
