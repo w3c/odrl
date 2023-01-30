@@ -155,12 +155,13 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	
 	Goal: determine if a Permission is <b>valid</b> and if the performance of an action generates a <b>violation</b>. The process for computing the satisfaction of constraints 
 and the satisfaction of refinements is left to individual implementations. But given these values, all ODRL Evaluators should agree on the state of Permissions and 
-on the violations generated.
+on the violations generated.<br>
 
 In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
-	all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. 
-	If one of those two conditions is not met, the Permission is <b>invalid</b> or not valid.<br>
-	Therefore in order to evaluate if <b>one</b> permission is valid, it is necessary to perform the following steps:
+all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is 
+	<b>invalid</b> or not valid.<br> 
+	
+	Therefore in order to evaluate if <b>one</b> permission is <b>valid</b>, it is necessary to perform the following steps:
 	<ol>
 		<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
 		<li> evaluate the duties (output: fulfilled, not fulfilled) on the state of the world; </li>
@@ -171,22 +172,28 @@ In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b>
 	"everything is prohibited unless explicitly permitted", whenever an action is performed (or in access control there is a request to perform an action) 
 	it is required to check if the action was (is) permitted or not. It is necessary to perform the following steps:
 	<ol>
-		<li>When an action is performed or planned; </li>
+		<li>When an action is performed (or planned or requested); </li>
 		<li>For every <b>valid</b> permission (computed as above), evaluate if the action performed satisfies its refinements (output: satisfied, not satisfied).
 		This means to check the value of the action, target, and assigner properties.</li>
 		<li> if all the refinements are satisfied the permission is used (this may be important for those permissions that can only be used a 
-			limited number of times)(it is possible that the action is prohibited by another Rule see below);</li>
+			limited number of times)(it is possible that the action is prohibited by another Rule we dicuss the semantics of Prohibitions below);</li>
 		<li> if one of the refinements is not satisfied the action is not permitted by the permission under examination;</li>
-		<li> if the action is not permitted by at least one of the permissions then there is a violation;</li>
+		<li> if the action is not permitted by at least one of the permissions then there is a <b>violation</b>;</li>
 	</ol>
 	
-<h3>Sematics of Duty used as a validity condition of Permission</h3> 	
+<h3>Sematics of Duty used as a validity condition of Permission</h3> 
 
 Goal: determine if a Duty is fulfilled.
 
-In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if  A Duty is fulfilled if all 
-constraints are satisfied and if its action, with all refinements satisfied, has been performed. 
-	Therefore in order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
+with all refinements satisfied, has been performed. <br>
+
+	The initial state of a duty is <b>not fulfilled</b>. In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+<ol>
+	<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
+	<li> evaluate if the action with all refinements satisfied has been performed (output: satisfied, not satisfied) on the state of the world.</li>
+	<li> if the constraint is satisfied AND the action has been performed the duty is <b>fulfilled</b>.</li>
+</ol>
 	
 	
 <h3>Sematics of Prohibition</h3> 		
