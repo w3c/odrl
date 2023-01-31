@@ -164,22 +164,22 @@ all duties are fulfilled. Those two conditions together represent a <b>validity 
 	
 	Therefore in order to evaluate if <b>one</b> permission is <b>valid</b>, it is necessary to perform the following steps:
 	<ol>
-		<li> evaluate the satisfaction of the constraints on the state of the world, output: satisfied, not satisfied;</li>
-		<li> evaluate the duties on the state of the world, output: fulfilled, not fulfilled (see <a href="#sematics-of-duty-used-as-a-validity-condition-of-permission">below</a>)</li>
-		<li> if the constraint is satisfied AND the duties are fullilled then the permission is valid otherwise is invalid.</li>
+		<li> Evaluate the satisfaction of the constraints on the state of the world, output: satisfied, not satisfied;</li>
+		<li> Evaluate the duties on the state of the world, output: fulfilled, not fulfilled (see <a href="#sematics-of-duty-used-as-a-validity-condition-of-permission">below</a>)</li>
+		<li> If the constraints are satisfied AND the duties are fullilled then the permission is valid otherwise is invalid.</li>
 	</ol>
 	
 	In a system it is crucial to detect the <b>violations</b>. If the default setting for the policy evaluator is: 
 	"everything is prohibited unless explicitly permitted", whenever an action is performed (or in access control there is a request to perform an action) 
-	it is required to check if the action was (is) permitted or not. It is necessary to perform the following steps:
+	it is required to check if the action was (is) permitted or not. This can be done by performing the following steps:
 	<ol>
 		<li>When an action is performed (or planned or requested); </li>
 		<li>For every <b>valid</b> permission (computed as above), evaluate if the action performed satisfies its refinements (output: satisfied, not satisfied).
 		This means to check the value of the action, target, and assigner properties.</li>
-		<li> if all the refinements are satisfied the permission is used (this may be important for those permissions that can only be used a 
-			limited number of times)(it is possible that the action is prohibited by another Rule we dicuss the semantics of Prohibitions below);</li>
-		<li> if one of the refinements is not satisfied the action is not permitted by the permission under examination;</li>
-		<li> if the action is not permitted by at least one of the permissions then there is a <b>violation</b>;</li>
+		<li> If all the refinements are satisfied the permission is used (this may be important for those permissions that can only be used a 
+			limited number of times)(it is also possible that the action is prohibited by another Rule, we dicuss the semantics of Prohibitions below);</li>
+		<li> If one of the refinements is not satisfied the action is not permitted by the permission under examination;</li>
+		<li> If the action is not permitted by at least one of the permissions then there is a <b>violation</b>;</li>
 	</ol>
 	
 <h3>Sematics of Duty used as a validity condition of Permission</h3> 
@@ -191,9 +191,10 @@ with all refinements satisfied, has been performed. <br>
 
 	The initial state of a duty is <b>not fulfilled</b>. In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
-	<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
-	<li> evaluate if the action with all refinements satisfied has been performed (output: satisfied, not satisfied) on the state of the world.</li>
-	<li> if the constraint is satisfied AND the action has been performed the duty is <b>fulfilled</b>.</li>
+	<li> Evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
+	<li> Evaluate if the action of the duty, with all refinements satisfied, has been performed (output: satisfied, not satisfied) on the state of the world.</li>
+	<li> If the constraints are satisfied AND the action has been performed the duty is <b>fulfilled</b> otherwise remains not fulfilled.</li>
+	<li> Once a duty has been fulfilled, it cannot become not fullilled.</li>
 </ol>
 	
 	
