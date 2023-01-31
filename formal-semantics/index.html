@@ -149,7 +149,7 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and its satisfaction can be evaluated: 
 		(i) after the action has been performed (monitoring); 
 		(ii) before the action has been performed (access control, what-if analysis and planning, see 
-		<a href="https://w3c.github.io/odrl/formal-semantics/#section2"> scenarios</a>).</li>
+		<a href="#section2"> scenarios</a>).</li>
 	</ul>	
 
 <h3>Sematics of Permission</h3> 
@@ -164,8 +164,8 @@ all duties are fulfilled. Those two conditions together represent a <b>validity 
 	
 	Therefore in order to evaluate if <b>one</b> permission is <b>valid</b>, it is necessary to perform the following steps:
 	<ol>
-		<li> evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
-		<li> evaluate the duties (output: fulfilled, not fulfilled) on the state of the world; </li>
+		<li> evaluate the satisfaction of the constraints on the state of the world, output: satisfied, not satisfied;</li>
+		<li> evaluate the duties on the state of the world, output: fulfilled, not fulfilled (see <a href="#sematics-of-duty-used-as-a-validity-condition-of-permission">below</a>)</li>
 		<li> if the constraint is satisfied AND the duties are fullilled then the permission is valid otherwise is invalid.</li>
 	</ol>
 	
