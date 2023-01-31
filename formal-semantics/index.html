@@ -154,9 +154,13 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 
 <h3>Sematics of Permission</h3> 
 	
-	Goal: determine if a Permission is <b>valid</b> and if the performance of an action generates a <b>violation</b>. The process for computing the satisfaction of constraints 
-and the satisfaction of refinements is left to individual implementations. But given these values, all ODRL Evaluators should agree on the state of Permissions and 
-on the violations generated.<br>
+	Goal: determine if a Permission is <b>valid</b> and if the performance of an action generates a <b>violation</b>. The process for computing the 
+	satisfaction of constraints, the satisfaction of refinements, the fulfillment of duties is left to individual implementations. 
+	But given these values, all ODRL Evaluators should agree on the state of Permissions and on the violations generated.<br>
+	
+	In literature there are different approaches for realizing such a computation, for example by using SPARQL queries, production rules, or a SHACL evaluator.<br>
+	<b>Open problem</b>: link between knowledge represented in the state of the world and ODRL policies.
+
 
 In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
 all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is 
