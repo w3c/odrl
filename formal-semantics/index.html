@@ -201,6 +201,38 @@ with all refinements satisfied, has been performed. <br>
 	<li> Once a duty has been fulfilled, it cannot become not fullilled.</li>
 </ol>
 	
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> from ODRL Information Model 2.2.
+	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
+	The permission includes a duty for the compensate action that has a refinement of payAmount of $EU5.00.
+The semantics of Permission requires that the action of payment must be performed in order to get a valid permission.
+	<table>
+  	<tr>
+    		<th>ID</th>
+    		<th>Duty Refinement (pay 5 euro)</th>
+		<th>Duty status</th>
+		<th>Permission status</th>
+		<th>Permission Action+Refinement</th>
+		<th>Violation</th>
+  </tr>
+  <tr>
+    <td>Ex22-1</td>
+    <td>not satisfied</td>
+    <td>not fulfilled</td>
+    <td>not valid</td>
+    <td>performed</td>	  
+    <td>possible violation depends on other permissions and default setting</td>	  
+  </tr>
+  <tr>
+    <td>Ex22-1</td>
+    <td>satisfied</td>
+    <td>fulfilled</td>
+    <td>valid</td>
+   <td>performed</td>
+   <td>permission is used</td>
+  </tr>
+</table>
+
+	
 	
 <h3>Sematics of Prohibition</h3> 		
 	
