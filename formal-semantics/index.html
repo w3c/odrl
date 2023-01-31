@@ -138,8 +138,8 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	<li>the <b>duty</b> of an ODRL Permission.</li>
 </ul>
 	
-	The range of the <b>constraint</b> and <b>refinement</b> properties is the same class, the Constraint class (https://www.w3.org/TR/odrl-model/#constraint),
-	but their meaning is different:
+	Although the range of the <b>constraint</b> and <b>refinement</b> properties is the same class, i.e. the Constraint class 
+	(https://www.w3.org/TR/odrl-model/#constraint),	their meaning is different:
 <ul>
 	<li>The <b>constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule 
 		expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
@@ -148,7 +148,8 @@ In order to clarify the semantics of ODRL it is important to clarify the differe
 	</li>
 	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and its satisfaction can be evaluated: 
 		(i) after the action has been performed (monitoring); 
-		(ii) before the action has been performed (what-if analysis, access control, planning).</li>
+		(ii) before the action has been performed (access control, what-if analysis and planning, see 
+		<a href="https://w3c.github.io/odrl/formal-semantics/#section2"> scenarios</a>).</li>
 	</ul>	
 
 <h3>Sematics of Permission</h3> 
