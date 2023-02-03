@@ -235,15 +235,26 @@ The semantics of Permission requires that the action of payment must be performe
 	
 	
 <h3>Sematics of Prohibition</h3> 		
+work in progress....
+
+(an active Prohibition is <b>infringed</b> by the regulated action (with all refinements satisfied) being exercised)
 	
-<p>In ODRL 2.2., a Rule that belongs to the <b>Duty</b> or <b>Prohibition</b> class:</p>
+	
+<h3>Sematics of Obligation</h3> 	
+	
+(In ODRL 2.2 there is not a class Obligation, there is a property obligation that connects a policy to an instance of the class Duty).
+	
+<p>In ODRL 2.2., an Obligation</p>
 <ol>
-	<li>is <b>active</b> (it starts to oblige or prohibit someone to do something) if all the constraints of the Rule are satisfied (the constraints of the Rule represent an activation condition see below);</li>
-	<li>an active Duty is <b>fulfilled</b> by the regulated action (with all refinements satisfied) being exercised (before a deadline?); 
-	it is <b>violated</b> when the regulated action can no longer be performed; 
-	a duty may have one or many consequence property values of type Duty (what is its semantics?)</li>
-	<li>an active Prohibition is <b>infringed</b> by the regulated action (with all refinements satisfied) being exercised;</li>
+	<li>is <b>active</b> (it starts to oblige someone to do something) if all the constraints of the Rule are satisfied 
+		(the constraints of the Rule represent an activation condition see below);</li>
+	<li>an active Obligation becomes <b>fulfilled</b> when the regulated action (with all refinements satisfied) being exercised; 
+	Given that there is not a deadline the active obligation cannot become violated; 
+	<li>an obligation may have one or many consequence property values of type Duty (is it a Duty or an obligation?)</li>
 </ol>
+Open problems: 
+	<ol><li>It is impossible to reason about deadline.</li>
+	</ol>
 	
 The notion of <b>activation condition</b> of a policy/norm is an important component in many policy models in the literature.
 <ol>
@@ -255,7 +266,8 @@ The notion of <b>activation condition</b> of a policy/norm is an important compo
 	
 Open problems:
 <ol>
-	<li>Meaning of the constraint of a rule: a constraint of a Rule is expressed as 'leftOperand operator rightOperand' (for example: spatial eq Germany) where the leftOperand is a property, what is the domain of the property? For example is spatial a property having as domain the class Agent?</li>
+<li>Meaning of the constraint of a rule: a constraint of a Rule is expressed as 'leftOperand operator rightOperand' (for example: spatial eq Germany) 
+	where the leftOperand is a property, what is the domain of the property? For example is spatial a property having as domain the class Agent?</li>
 <li>How is it possible to verify that the constraints of a Rule can be evaluated independently of the action regulated by the Rule?</li>
 	</ol>
 	
