@@ -1,4 +1,4 @@
-var respecConfig = {
+var respecConfig = { 
     specStatus: "CG-DRAFT",
     shortName: "profile-bigdata",
     editors: [	{   name:       "Name",
