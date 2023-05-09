@@ -129,41 +129,34 @@
 <section id="section3">	
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
 
-<h3>Activation conditions of Rules and Constraints</h3> 
+<h3>Constraint, Refinement, Duty</h3> 
 	
 In order to clarify the semantics of ODRL it is important to clarify the different semantics of the:
 <ul>
-	<li>the <b>constraint</b> of an ODRL Rule;</li>
-	<li>the <b>refinement</b> of the action (range Action class), of the target (range Asset class), of the assigner/assignee (range Party class) of a Rule;</li>
-	<li>the <b>duty</b> of an ODRL Permission.</li>
+	<li>the <b>Constraint</b> of an ODRL Rule;</li>
+	<li>the <b>Refinement</b> of the action (range Action class), of the target (range Asset class), of the assigner/assignee (range Party class) of a Rule;</li>
+	<li>the <b>Duty</b> of an ODRL Permission.</li>
 </ul>
 	
 	Although the range of the <b>constraint</b> and <b>refinement</b> properties is the same class 
 	(i.e. the <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> class) their meaning is different:
 <ul>
-	<li>The <b>constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule 
+	<li>The <b>Constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule 
 		expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
 		can be evaluated independently from the evaluation of the action regulated by the Rule. 
 		When an ODRL rule is a permit, its validity also depends on the fulfilment of its duties.
 	</li>
-	<li>The <b>refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule and its satisfaction can be evaluated: 
-		(i) after the action has been performed (monitoring); 
-		(ii) before the action has been performed (access control, what-if analysis and planning, see 
-		<a href="#section2"> scenarios</a>).</li>
+	<li>The <b>Refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule.
 	</ul>	
 
 <h3>Sematics of Permission</h3> 
 	
-	Goal: determine if a Permission is <b>valid</b> and if the performance of an action generates a <b>violation</b>. The process for computing the 
-	satisfaction of constraints, the satisfaction of refinements, the fulfillment of duties is left to individual implementations. 
+	Goal: determine if a Permission is <b>valid</b> and if the performance of a certain action generates a <b>violation</b>. 
+	The process for computing the satisfaction of constraints, the satisfaction of refinements, the fulfillment of duties is left to individual implementations. 
 	But given these values, all ODRL Evaluators should agree on the state of Permissions and on the violations generated.<br>
 	
-	In literature there are different approaches for realizing such a computation, for example by using SPARQL queries, production rules, or a SHACL evaluator.<br>
-	<b>Open problem</b>: link between knowledge represented in the state of the world and ODRL policies.
-
-
-In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
-all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is 
+	In ODRL 2.2., a Rule that belongs to the <b>Permission</b> class is <b>valid</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
+	all duties are fulfilled. Those two conditions together represent a <b>validity condition</b>. If one of those two conditions is not met, the Permission is 
 	<b>invalid</b> or not valid.<br> 
 	
 	Therefore in order to evaluate if <b>one</b> permission is <b>valid</b>, it is necessary to perform the following steps:
@@ -200,6 +193,9 @@ with all refinements satisfied, has been performed. <br>
 	<li> If the constraints are satisfied AND the action has been performed the duty is <b>fulfilled</b> otherwise remains not fulfilled.</li>
 	<li> Once a duty has been fulfilled, it cannot become not fullilled.</li>
 </ol>
+	<b>Problem</b>: using the "compatible" ontologies for representing the knowledge regarding the state of the world and for expressing ODRL policies.<br>
+<br>
+	
 	
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> from ODRL Information Model 2.2.
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
