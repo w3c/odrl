@@ -129,13 +129,12 @@
 <section id="section3">	
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
 	
-	The deontic modalities of Permission, Prohibition and Obligations can be represented in ODRL as instances of the classes odrl:Permission, odrl:Prohibition and 
-	odrl:Duty (the latter whenever it is connected to the policy through the "odrl:obligation" property). 
-	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. <br>
+	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
+	odrl:Permission, odrl:Prohibition and odrl:Duty (the latter whenever it is connected to the policy through the "odrl:obligation" property). 
+	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. <br><br>
 	
-	Permissions, Prohibitions and Obligations, collectively named Rules, can be applicable/active or not applicable/active. <br>
-	
-	In addition, Obligations and Prohibitions can be violated or fulfilled. <br>
+	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>applicable/active</b> or <b>not applicable/inactive</b>. 
+	In addition, Obligations and Prohibitions can be <b>violated</b> or <b>fulfilled</b>. <br><br>
 
 	A rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its <b>activation condition</b> holds. 
 	This activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
@@ -145,7 +144,8 @@
 		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
 		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.<li>
 	</lu>
-
+	<br>
+	
 	In order to clarify the semantics of ODRL it is important to clarify the different semantics of the <b>Constraint</b> of an ODRL Rule and 
 	the <b>Refinement</b> of the action (range odrl:Action class), the <b>Refinement</b> of the target (range odrl:Asset class), 
 	the <b>Refinement</b> of the assigner/assignee (range odrl:Party class). Although the range of the odrl:constraint and odrl:refinement properties 
@@ -158,7 +158,7 @@
 		The odrl:refinement of an odrl:Party must be used to refine the assignee or the assigner of a Rule.
 	</ul>
 	
-	Problem: with the odrl:constraint it is impossible to express a constraint on a certain object, 
+	<b>Problem</b>: with the odrl:constraint it is impossible to express a constraint on a certain object, 
 	for example it is impossible to say that a rule is activated when state of a payment is executed.
 
 <h3>Sematics of Permission</h3> 
