@@ -248,12 +248,13 @@ The semantics of Permission requires that the action of payment must be performe
 	
 	In ODRL 2.2., an Obligation that belongs to the <b>odrl:Duty</b> class (it would be better to have an odrl:Obligation class) is <b>active</b> (its action,  
 	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
-<ol>
-	<li>an active Obligation becomes <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
-	<li>an active Obligation becomes <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
-	<li>an obligation may have one or many consequence property values of type Duty.</li>
-</ol>
-
+	An active Obligation becomes:
+	<ul>
+	<li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
+	<li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
+	</ul>
+	A violated obligation may have one or many consequence property values of type Duty. <br>
+	
 	<b>Problem</b>: reasonning about deadline.
 		
 </section>	
