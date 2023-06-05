@@ -131,7 +131,9 @@
 	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
 	odrl:Permission, odrl:Prohibition and odrl:Duty (the latter whenever it is connected to the policy through the "odrl:obligation" property). 
-	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. <br><br>
+	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. 
+	An Obligation can be violated or fullfilled. Differently a Duty, when it is used as an activation condition of a Permission, can only be fulfilled or not fullfilled.
+	<br><br>
 	
 	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>applicable/active</b> or <b>not applicable/inactive</b>. 
 	In addition, Obligations and Prohibitions can be <b>violated</b> or <b>fulfilled</b>. <br><br>
@@ -187,7 +189,7 @@
 	If one of the refinements is not satisfied the action is not permitted by the permission under examination. <br>
 	If the action is not permitted by at least one of the permissions then there is a <b>violation</b>.<br>
 		
-<h4>Sematics of Duty used as a validity condition of Permission</h4> 
+<h4>Sematics of Duty used as an activation condition of Permission</h4> 
 
 Goal: determine if a Duty is fulfilled.<br>
 
