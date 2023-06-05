@@ -200,15 +200,12 @@ with all refinements satisfied, has been performed. <br>
 
 	The initial state of a duty is <b>not fulfilled</b>. In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
-	<li> Evaluate the satisfaction of the constraints (output: satisfied, not satisfied) on the state of the world;</li>
+	<li> Evaluate the satisfaction of its constraints (output: satisfied, not satisfied) on the state of the world;</li>
 	<li> Evaluate if the action of the duty, with all refinements satisfied, has been performed (output: satisfied, not satisfied) on the state of the world.</li>
 	<li> If the constraints are satisfied AND the action has been performed the duty is <b>fulfilled</b> otherwise remains not fulfilled.</li>
 	<li> Once a duty has been fulfilled, it cannot become not fullilled.</li>
 </ol>
-	<b>Problem</b>: using the "compatible" ontologies for representing the knowledge regarding the state of the world and for expressing ODRL policies.<br>
-<br>
-	
-	
+<br>		
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> from ODRL Information Model 2.2.
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
 	The permission includes a duty for the compensate action that has a refinement of payAmount of $EU5.00.
@@ -245,12 +242,7 @@ The semantics of Permission requires that the action of payment must be performe
 <h3>Sematics of Prohibition</h3> 		
 work in progress....
 
-(an active Prohibition is <b>infringed</b> by the regulated action (with all refinements satisfied) being exercised)
-	
-	
 <h3>Sematics of Obligation</h3> 	
-	
-(In ODRL 2.2 there is not a class Obligation, there is a property obligation that connects a policy to an instance of the class Duty).
 	
 <p>In ODRL 2.2., an Obligation</p>
 <ol>
@@ -258,27 +250,12 @@ work in progress....
 		(the constraints of the Rule represent an activation condition see below);</li>
 	<li>an active Obligation becomes <b>fulfilled</b> when the regulated action (with all refinements satisfied) being exercised; 
 	Given that there is not a deadline the active obligation cannot become violated; 
-	<li>an obligation may have one or many consequence property values of type Duty (is it a Duty or an obligation?)</li>
+	<li>an obligation may have one or many consequence property values of type Duty (is it a Duty or an Obligation?)</li>
 </ol>
 Open problems: 
 	<ol><li>It is impossible to reason about deadline.</li>
 	</ol>
-	
-The notion of <b>activation condition</b> of a policy/norm is an important component in many policy models in the literature.
-<ol>
-<li>An activation condition is a condition that when is satisfied results in a change in the state (deontic state) of the policy/norm.</li>
-<li>The satisfaction of the activation condition of a policy has to be evaluated on the state of the world (or state of the environment) where the interactions among agents are represented using a suitable notation.</li>
-<li>The satisfaction of <b>the activation condition of a policy must be evaluated independently from the action regulated by the policy</b> and it is the first component of a policy that must be evaluated.</li>
-<li>In some policy/norms models the satisfaction of the activation condition of a policy bounds some variables contained in the activation condition to the values that caused the activation condition to be satisfied. These bounded values are used also in other components of the active policy/norm.</li>
-</ol>
-	
-Open problems:
-<ol>
-<li>Meaning of the constraint of a rule: a constraint of a Rule is expressed as 'leftOperand operator rightOperand' (for example: spatial eq Germany) 
-	where the leftOperand is a property, what is the domain of the property? For example is spatial a property having as domain the class Agent?</li>
-<li>How is it possible to verify that the constraints of a Rule can be evaluated independently of the action regulated by the Rule?</li>
-	</ol>
-	
+		
 </section>	
 	
 
