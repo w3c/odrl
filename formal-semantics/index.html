@@ -128,23 +128,39 @@
 			
 <section id="section3">	
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
+	
+	The deontic modalities of Permission, Prohibition and Obligations can be represented in ODRL as instances of the classes odrl:Permission, odrl:Prohibition and 
+	odrl:Duty (the latter whenever it is connected to the policy through the "odrl:obligation" property). 
+	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. <br>
+	
+	Permissions, Prohibitions and Obligations, collectively named Rules, can be applicable/active or not applicable/active. <br>
+	
+	In addition, Obligations and Prohibitions can be violated or fulfilled. <br>
 
-<h3>Constraint, Refinement, Duty</h3> 
+	A rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its activation condition holds. 
+	This activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
+	<ul>
+		<li>A <b>Permission</b> rule is active if the rule constraints are satisfied and the duties connected to 
+			it through the property odrl:duty are fulfilled.</li>
+		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
+		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.<li>
+	</lu>
+
+
+
+<h3>Constraint vs. Refinement</h3> 
 	
 In order to clarify the semantics of ODRL it is important to clarify the different semantics of the:
 <ul>
 	<li>the <b>Constraint</b> of an ODRL Rule;</li>
 	<li>the <b>Refinement</b> of the action (range Action class), of the target (range Asset class), of the assigner/assignee (range Party class) of a Rule;</li>
-	<li>the <b>Duty</b> of an ODRL Permission.</li>
 </ul>
 	
 	Although the range of the <b>constraint</b> and <b>refinement</b> properties is the same class 
 	(i.e. the <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> class) their meaning is different:
 <ul>
-	<li>The <b>Constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation or validity (when the Rule 
-		expresses a Permission) of the rule. It is crucial that the satisfaction of the constraint of a Rule 
-		can be evaluated independently from the evaluation of the action regulated by the Rule. 
-		When an ODRL rule is a permit, its validity also depends on the fulfilment of its duties.
+	<li>The <b>Constraint</b> of a Rule is a property of the Rule and must be used to express conditions for the activation of the rule. 
+		It is crucial that the satisfaction of the constraint of a Rule can be evaluated independently from the evaluation of the action regulated by the Rule. 
 	</li>
 	<li>The <b>Refinement</b> of an Action, Asset, Party must be used to describe the action regulated by the Rule.
 	</ul>	
