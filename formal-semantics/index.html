@@ -129,6 +129,12 @@
 <section id="section3">	
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
 	Previous proposal of an ODRL evaluator: <a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
+
+	<b>Goal of this section</b>: define an ODRL Evaluator, the task of an ODRL Evaluator is to determine, given a particular state of the world 
+	(represented using the classes and properties define in a specific ontology), which Permissions, Prohibitions, Obligations are active and if 
+	the performance of a certain action generates <b>violations</b>. The process for computing the satisfaction of constraints, the satisfaction of refinements, 
+	the fulfillment of duties with respect to the state of the world is left to individual implementations. 
+	But given these values, all ODRL Evaluators should agree on the state of Permissions, Prohibitions, and Obligations and on the violations generated.<br>
 	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
 	<code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.<br>
@@ -172,12 +178,6 @@
 	<b>Problem</b>: with the odrl:constraint it is impossible to express a constraint on a certain object, 
 	for example it is impossible to say that a rule is activated when the state of a payment is equal to executed.<br><br>
 	
-	<b>Goal of this section</b>: define an ODRL Evaluator, the task of an ODRL Evaluator is to determine, given a particular state of the world 
-	(represented using the classes and properties define in a specific ontology), which Permissions, Prohibitions, Obligations are active and if 
-	the performance of a certain action generates <b>violations</b>. The process for computing the satisfaction of constraints, the satisfaction of refinements, 
-	the fulfillment of duties with respect to the state of the world is left to individual implementations. 
-	But given these values, all ODRL Evaluators should agree on the state of Permissions, Prohibitions, and Obligations and on the violations generated.<br>
-
 <h3>Sematics of Permission</h3> 
 	
 	In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if all constraints of the Rule are satisfied AND 
