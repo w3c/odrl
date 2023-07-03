@@ -101,10 +101,10 @@
 			fine-grained access control mechanism to its users.</p>				
 		<p>In this scenario, if an agent does not have permission to access certain data, it will not access the data, 
 			the prohibition is regimented and cannot be violated.</p>
-		<p>Typically in this scenario, the entities responsible to grant or deny access to the data would write <i>odrl:Offer</i> policies 
+		<p>Typically in this scenario, the entities responsible to grant or deny access to the data would write <code>odrl:Offer</code> policies 
 			(or new types of policies can be created, e.g., preference, requirement). The agent trying to access the data 
-			would write <i>odrl:Request</i> policies and the final agreement between the parties can be stored as an <i>odrl:Agreement</i> 
-			(associated with the <i>odrl:Offer</i> and <i>odrl:Request</i> policies).</p>
+			would write <code>odrl:Request</code> policies and the final agreement between the parties can be stored as an <i>odrl:Agreement</i> 
+			(associated with the <code>odrl:Offer</code> and <code>odrl:Request</code> policies).</p>
 				
 		<h3>License composition</h3>
 			<p>Two resources differently licensed ("policed") need to be integrated in a new work.
@@ -131,26 +131,26 @@
 	Previous proposal of an ODRL evaluator: <a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
 	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
-	odrl:Permission, odrl:Prohibition and odrl:Duty. <br>
-	We would like to clarify the differet uses of the class odrl:Duty in ODRL.
+	<code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.<br>
+	Instances of the class <code>odrl:Duty</code> may have different meanings in ODRL.
 	<ul>
-		<li>An instance of the class odrl:Duty represents an <b>Obligation</b> when it is connected to the odrl:Policy through the "odrl:obligation" property. 
+		<li>An instance of the class <code>odrl:Duty</code> represents an <b>Obligation</b> when it is connected to the <code>odrl:Policy</code> through the <code>odrl:obligation</code> property. 
 		An Obligation can be violated or fullfilled.</li>
-		<li>An instance of the class odrl:Duty represents a condition for a <b>Permission</b> to be valid or active when it is connected to the odrl:Permission through the odrl:duty property.
-		When an instance of the odrl:Duty class is used as an activation condition of a Permission, can only be fulfilled or not fullfilled.</li>
-		<li>An instance of the class odrl:Duty represents a sanction for a ?? when it is connected to the odrl:Duty through the odrl:consequence property. </li>
-		<li>An instance of the class odrl:Duty represents a ?? for a odrl:Prohibition when it is connected to the odrl:Duty through the odrl:remedy property. </li>
+		<li>An instance of the class <code>odrl:Duty</code> represents a condition for a <b>Permission</b> to be valid or active when it is connected to the odrl:Permission through the odrl:duty property.
+		When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, can only be fulfilled or not fullfilled.</li>
+		<li>An instance of the class <code>odrl:Duty</code> represents a consequence (<i>sanction</i>) when it is connected to the <code>odrl:Duty</code> through the <code>odrl:consequence</code> property. </li>
+		<li>An instance of the class <code>odrl:Duty</code> represents a remedy for a odrl:Prohibition when it is connected to the <code>odrl:Duty</code> through the <code>odrl:remedy</code> property. </li>
 	</ul>
 	<br><br>
 	
-	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>applicable/active</b> or <b>not applicable/inactive</b>. 
+	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>active</b> or <b>inactive</b>. 
 	In addition, Obligations and Prohibitions can be <b>violated</b> or <b>fulfilled</b>. <br><br>
 
 	A rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its <b>activation condition</b> holds. 
 	This activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
 	<ul>
 		<li>A <b>Permission</b> rule is active if the rule constraints are satisfied and the duties connected to 
-			it through the property odrl:duty are fulfilled.</li>
+			it through the property <code>odrl:duty</code> are fulfilled.</li>
 		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
 		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.</li>
 	</ul>
@@ -159,14 +159,14 @@
 	
 	In order to clarify the semantics of ODRL it is important to clarify the different semantics of the <b>Constraint</b> of an ODRL Rule and 
 	the <b>Refinement</b> of the action (range odrl:Action class), the <b>Refinement</b> of the target (range odrl:Asset class), 
-	the <b>Refinement</b> of the assigner/assignee (range odrl:Party class). Although the range of the odrl:constraint and odrl:refinement properties 
+	the <b>Refinement</b> of the assigner/assignee (range <code>odrl:Party</code> class). Although the range of the odrl:constraint and odrl:refinement properties 
 	is the same class (i.e. the <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> class) their meaning is different:
 	<ul>
-		<li>The odrl:constraint of a Rule is a property of the Rule and must be used to express conditions for the activation of the rule. 
+		<li>The <code>odrl:constraint</code> of a Rule is a property of the Rule and must be used to express conditions for the activation of the rule. 
 		It is crucial that the satisfaction of the constraint of a Rule can be evaluated independently from the evaluation of the action regulated by the Rule. </li>
-		<li>The odrl:refinement of an odrl:Action must be used to describe the action regulated by the Rule.
-		The odrl:refinement of an odrl:Asset must be used to refine the digital asset whose use is reguated by the Rule.
-		The odrl:refinement of an odrl:Party must be used to refine the assignee or the assigner of a Rule.
+		<li>The <code>odrl:refinement</code> of an <code>odrl:Action</code> must be used to describe the action regulated by the Rule.
+		The <code>odrl:refinement</code> of an <code>odrl:Asset</code> must be used to refine the digital asset whose use is reguated by the Rule.
+		The <code>odrl:refinement</code> of an <code>odrl:Party</code> must be used to refine the assignee or the assigner of a Rule.
 	</ul>
 	
 	<b>Problem</b>: with the odrl:constraint it is impossible to express a constraint on a certain object, 
@@ -248,21 +248,36 @@ The semantics of Permission requires that the action of payment must be performe
 	
 <h3>Sematics of Prohibition</h3> 		
 
-	In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
-	cannot be exercised) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
+In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
+cannot be exercised) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
+
+In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its constraints on the state of the world (constraints are either satisfied or unsatisfied). <br>
+
+Duties on prohibitions have no defined meaning.<br>
+
+An ODRL Evaluator will determine that a violation has been produced if the action on an active prohibition is executed. If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. The ODRL Evaluator will calculate the state of the prohibition to be within one of these possibilities:
+	<ul>
+	<li> <b>not violated</b> when the regulated action with all refinements satisfied has not been executed; </li>
+	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
+	</ul>
+
+
+A prohibition may include an <code>odrl:consequence</code> for its violation. <br>
+
 
 <h3>Sematics of Obligation</h3> 	
 	
-	In ODRL 2.2., an Obligation that belongs to the <b>odrl:Duty</b> class (it would be better to have an odrl:Obligation class) is <b>active</b> (its action,  
+	In ODRL 2.2., an Obligation that belongs to the <code>odrl:Duty</code> class (it would be better to have an <code>odrl:Obligation</code> class) is <b>active</b> (its action,  
 	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 	An active Obligation becomes:
 	<ul>
-	<li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
+	<li> <b>fulfilled or not violated</b> when the regulated action with all refinements satisfied is executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
+	<li> <b>unknown</b> when the regulated action with all refinements satisfied can be executed but has not been so far; </li>
 	</ul>
-	An obligation may include an odrl:consequence of not fulfilling that obligation. <br>
+	An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br>
 	
-	<b>Problem</b>: reasonning about deadline.
+	<b>Problem</b>: reasoning about deadline.
 		
 </section>	
 	
