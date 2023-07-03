@@ -131,9 +131,16 @@
 	Previous proposal of an ODRL evaluator: <a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
 	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
-	odrl:Permission, odrl:Prohibition and odrl:Duty (the latter whenever it is connected to the policy through the "odrl:obligation" property). 
-	For the rest of this document, the word <b>Obligation</b> will refer to a Duty connected to the policy through the "odrl:obligation" property. 
-	An Obligation can be violated or fullfilled. Differently a Duty, when it is used as an activation condition of a Permission, can only be fulfilled or not fullfilled.
+	odrl:Permission, odrl:Prohibition and odrl:Duty. <br>
+	We would like to clarify the differet uses of the class odrl:Duty in ODRL.
+	<ul>
+		<li>An instance of the class odrl:Duty represents an <b>Obligation</b> when it is connected to the odrl:Policy through the "odrl:obligation" property. 
+		An Obligation can be violated or fullfilled.</li>
+		<li>An instance of the class odrl:Duty represents a condition for a <b>Permission</b> to be valid or active when it is connected to the odrl:Permission through the odrl:duty property.
+		When an instance of the odrl:Duty class is used as an activation condition of a Permission, can only be fulfilled or not fullfilled.</li>
+		<li>An instance of the class odrl:Duty represents a sanction for a ?? when it is connected to the odrl:Duty through the odrl:consequence property. </li>
+		<li>An instance of the class odrl:Duty represents a ?? for a odrl:Prohibition when it is connected to the odrl:Duty through the odrl:remedy property. </li>
+	</ul>
 	<br><br>
 	
 	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>applicable/active</b> or <b>not applicable/inactive</b>. 
