@@ -164,20 +164,30 @@
 	
 	<br>
 	
-	In order to clarify the semantics of ODRL it is important to clarify the different semantics of the <b>Constraint</b> of an ODRL Rule and 
-	the <b>Refinement</b> of the action (range odrl:Action class), the <b>Refinement</b> of the target (range odrl:Asset class), 
-	the <b>Refinement</b> of the assigner/assignee (range <code>odrl:Party</code> class). Although the range of the odrl:constraint and odrl:refinement properties 
-	is the same class (i.e. the <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> class) their meaning is different:
+	In order to clarify the semantics of ODRL it is important to clarify the different meaning of:
+	<ul>
+		<li>The odrl:Constraint of an ODRL Rule that is connected to the odrl:Rule using the <code>odrl:constraint</code> property;</li>
+		<li>The odrl:Constraint of the Action of a Rule that is connected to the action using the <code>odrl:refinement</code> property; </li>
+		<li>The odrl:Constraint of the Asset Collection of a Rule that is connected to the Asset Collection using the <code>odrl:refinement</code> property; </li>
+		<li>The odrl:Constraint of the Party Collection of a Rule that is connected to the Party Collection using the <code>odrl:refinement</code> property. </li>
+	</ul>
+	Although the range of the odrl:constraint and odrl:refinement properties is the same class 
+	(i.e. the <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> class) their meaning is different:
 	<ul>
 		<li>The <code>odrl:constraint</code> of a Rule is a property of the Rule and must be used to express conditions for the activation of the rule. 
 		It is crucial that the satisfaction of the constraint of a Rule can be evaluated independently from the evaluation of the action regulated by the Rule. </li>
 		<li>The <code>odrl:refinement</code> of an <code>odrl:Action</code> must be used to describe the action regulated by the Rule.
 		The <code>odrl:refinement</code> of an <code>odrl:Asset</code> must be used to refine the digital asset whose use is reguated by the Rule.
 		The <code>odrl:refinement</code> of an <code>odrl:Party</code> must be used to refine the assignee or the assigner of a Rule.
-	</ul>
+	</ul><br>
+
+	For example, if the prohibition on sharing a video is activated when the video is posted online and the prohibition is active for two months after 
+	it is posted, it is crucial it is crucial to first calculate the activation of the prohibition and then monitor the execution of the sharing action.
+	When nothing has to be computed at the activation of the Rule, the difference between the odrl:constraint of a Rule and the odrl:refinement may be less crucial.
 	
 	<b>Problem</b>: with the odrl:constraint it is impossible to express a constraint on a certain object, 
-	for example it is impossible to say that a rule is activated when the state of a payment is equal to executed.<br><br>
+	for example it is impossible to say that a rule is activated when the state of a payment is equal to executed. For permissions
+	this problem can be partially solved using the Duty as pre-condition but for obligations and prohibitions this is a problem.<br><br>
 	
 <h3>Sematics of Permission</h3> 
 	
