@@ -206,8 +206,8 @@ with all refinements satisfied, has been performed. <br>
 	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
 	<li> Evaluate the satisfaction of its constraints (output: satisfied, not satisfied) on the state of the world; if its constraints are all satisfied
-	the duty becomes <b>active</b> (or <b>not fulfilled</b>). 
-	<li>If the duty is <b>active</b> and one of its constraints becomes not satisfied the duty becomes inactive.</li>
+	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). 
+	<li>If the duty is <b>active</b> and one of its constraints becomes not satisfied the duty becomes <b>inactive</b>.
 	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
 	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active/not fulfilled.
 	Once a duty is fulfilled, it cannot become active/not fullfilled.</li>
@@ -217,7 +217,7 @@ The life cycle of a duty is depicted in the figure below:
 
 	
 <hr>		
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> from ODRL Information Model 2.2.<br>
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> (from the ODRL Information Model 2.2).<br>
 	
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
 	The permission includes a duty for the compensate action that has a refinement of payAmount of $EU5.00.
