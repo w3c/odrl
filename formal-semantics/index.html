@@ -202,14 +202,15 @@ Goal: determine if a Duty is fulfilled.<br>
 In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
 with all refinements satisfied, has been performed. <br>
 
-	The initial state of a duty is <b>inactive</b>. In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+	The initial state of a duty is <b>inactive</b> if it has at least one Constraint. The initial state of a duty is <b>active</b> if it has not Constraints.<br>
+	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
 	<li> Evaluate the satisfaction of its constraints (output: satisfied, not satisfied) on the state of the world; if its constraints are all satisfied
-	the duty becomes active (or not fulfilled). If the duty is active and one of its constraints becomes not satisfied the duty becomes inactive.
+	the duty becomes <b>active</b> (or <b>not fulfilled</b>). 
+	<li>If the duty is <b>active</b> and one of its constraints becomes not satisfied the duty becomes inactive.</li>
 	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
-	<li> If the duty is active, then evaluate if the action of the duty, with all refinements satisfied, has been performed.</li>
-	<li> If the duty is active and its action has been performed the duty becomes <b>fulfilled</b> otherwise remains active/not fulfilled.</li>
-	<li> Once a duty has been fulfilled, it cannot become active/not fullfilled.</li>
+	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active/not fulfilled.
+	Once a duty is fulfilled, it cannot become active/not fullfilled.</li>
 </ol>
 
 The life cycle of a duty is depicted in the figure below:
