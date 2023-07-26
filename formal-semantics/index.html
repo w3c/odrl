@@ -169,16 +169,14 @@
 	</ul>
 	<br>
 	
-	A rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its <b>activation condition</b> holds. 
-	This activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
+	A Rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its <b>activation condition</b> holds. 
+	The activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
 	<ul>
 		<li>A <b>Permission</b> rule is active if the rule constraints are satisfied and the duties connected to 
 			it through the property <code>odrl:duty</code> are fulfilled.</li>
 		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
 		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.</li>
 	</ul>
-	
-	<br>
 		
 <h3>Sematics of Permission</h3> 
 	
