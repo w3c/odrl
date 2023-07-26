@@ -141,9 +141,10 @@
 	The <b>deontic state</b> of Permissions, Prohibitions, and Obligations is determined by the status of the Duties, by the status of the Constraints it references, 
 	and by the status of the refinement of their Action, the refinement of the Asset Collection, the refinement of the Party Collection. <br>
 	The status of Constraints (connected to the Rule using the odrl:constraint property) is <b>satisfied</b> or <b>not satisfied</b>.<br>
-	The status of the refinement of an Action (connected to the Action using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>.
+	The status of the refinement of an Action (connected to the Action using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>. 
 	The status of the refinement of an Asset Collection (connected to the Asset Collection using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>.
 	The status of the refinement of a Party Collection (connected to the Action using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>.<br><br>
+	If all the refinements are satisfied it means that the action described by the rule has been <b>performed</b>.
 	
 	The process for computing the satisfaction of constraints and the satisfaction of refinements with respect to the state of the world is left to 
 	individual implementations. But given these values, all ODRL Evaluators should agree on the deontic state of Permissions, Prohibitions, and Obligations 
@@ -206,9 +207,11 @@ with all refinements satisfied, has been performed. <br>
 	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
 	<li> Evaluate the satisfaction of its constraints (output: satisfied, not satisfied) on the state of the world; if its constraints are all satisfied
-	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). 
+	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). </li>
+		
 	<li>If the duty is <b>active</b> and one of its constraints becomes not satisfied the duty becomes <b>inactive</b>.
 	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
+	
 	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active/not fulfilled.
 	Once a duty is fulfilled, it cannot become active/not fullfilled.</li>
 </ol>
@@ -220,42 +223,37 @@ The life cycle of a duty is depicted in the figure below:
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> (from the ODRL Information Model 2.2).<br>
 	
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
-	The permission includes a duty for the compensate action that has a refinement of payAmount of $EU5.00.
-The semantics of Permission requires that the action of compensate (it is an activation condition) must be performed before to get a valid permission.
-	(In <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> this temporal requirement is represented with a constraint of the duty).
-	The Permission P1 has a Duty D1. The Duty D1 has an Action A1 that is refined by Constraint R1:
+	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
+	The semantics of Permission requires that the compensate action (included in the duty) must be performed <b>before</b> to get an active permission.
+	(In <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> this temporal requirement is represented with a constraint of the duty, but it is useless).
+	The general formulation of Example 22 is: the Permission P1 has a Duty D1 and an Action A2 (play the file). 
+	The Duty D1 has not a constraint. D1 has an Action A1 (compensate) that is refined by constraint R1 (5 euro):
 	<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>Duty Refinement (pay 5 euro)</th>
-		<th>Duty status</th>
-		<th>Permission status</th>
-		<th>Permission Action+Refinement (play file)</th>
-		<th>Violation</th>
+    		<th>D1.R1</th>
+		<th>D1</th>
+		<th>P1</th>
+		<th>P1.A2</th>
+		<th>Violations</th>
   </tr>
   <tr>
     <td>E22-1</td>
     <td>not satisfied</td>
-    <td>not fulfilled</td>
-    <td>not active/valid</td>
+    <td>active/not fulfilled</td>
+    <td>inactive</td>
     <td>performed</td>	  
-    <td>violation depends on other permissions and on the default setting</td>	  
+    <td>depends on default setting and other permissions</td>	  
   </tr>
   <tr>
     <td>E22-2</td>
-    <td>satisfied</td>
+    <td>satisfied (performed)</td>
     <td>fulfilled</td>
-    <td>active/valid</td>
+    <td>active</td>
    <td>performed</td>
-   <td>permission is used, no violation.</td>
+   <td>No (P1 is used).</td>
   </tr>
 </table>
-<br>
-	Questions: 
-	<ol>
-		<li> When the duty of a permission P1 is not active (or it is inactive) (this means that its activation condition is not satisfied), can P1 be active?</li>
-		
-	</ol>
 	
 <h3>Sematics of Prohibition</h3> 		
 
