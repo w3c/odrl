@@ -266,7 +266,7 @@ The life cycle of a duty is depicted in the figure below:
 
 	<hr>
 
-	Example 22-bis (Permission) = to Example 22 + constraint C1 to the duty D1: the compensate action is required only on Sundays. <br>
+	Example 22-bis (Permission) = to Example 22 + duty D1 has a constraint C1, i.e. the compensate action is required only on Sundays. <br>
 	Example 22-bis can be formulated as: the Permission P1 has a Duty D1 and the permitted Action A2 (play mp3 file). 
 	The Duty D1 has a Constraint C1 (it is Sunday). D1 has an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro):
 	<table border="1">
@@ -326,14 +326,16 @@ In order to evaluate if a prohibition is active, it is necessary to evaluate the
 
 Duties on prohibitions have no defined meaning.<br>
 
-An ODRL Evaluator will determine that a violation has been produced if the action on an active prohibition is executed. If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. The ODRL Evaluator will calculate the state of the prohibition to be within one of these possibilities:
+An ODRL Evaluator will determine that a violation has been produced if the action on an active prohibition is executed. 
+If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
+The ODRL Evaluator will calculate the state of an <b>active</b> prohibition to be within one of these possibilities:
 	<ul>
 	<li> <b>not violated</b> when the regulated action with all refinements satisfied has not been executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
 	</ul>
-
-
 A prohibition may include an <code>odrl:consequence</code> for its violation. <br>
+
+
 
 
 <h3>Sematics of Obligation</h3> 	
