@@ -227,7 +227,7 @@ The life cycle of a duty is depicted in the figure below:
 
 	
 <hr>		
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> (taken from the ODRL Information Model 2.2).<br>
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22 (Permission)</a> (taken from the ODRL Information Model 2.2).<br>
 	
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
 	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
@@ -245,33 +245,70 @@ The life cycle of a duty is depicted in the figure below:
 		<th>P1</th>
 		<th>P1.A2</th>
 		<th>Violations</th>
-  </tr>
-  <tr>
-    <td>E22-1</td>
-    <td>not satisfied</td>
-    <td>active/not fulfilled</td>
-    <td>inactive</td>
-    <td>performed</td>	  
-    <td>depends on default setting and other permissions</td>	  
-  </tr>
-  <tr>
-    <td>E22-2</td>
-    <td>satisfied (performed)</td>
-    <td>fulfilled</td>
-    <td>active</td>
-   <td>performed</td>
-   <td>No (P1 is used).</td>
-  </tr>
-</table>
+ 	 </tr>
+  	<tr>
+    		<td>E22-1</td>
+    		<td>not satisfied</td>
+    		<td>active/not fulfilled</td>
+    		<td>inactive</td>
+    		<td>performed</td>	  
+    		<td>depends on default setting and other permissions</td>	  
+  	</tr>
+  	<tr>
+    		<td>E22-2</td>
+    		<td>satisfied (performed)</td>
+    		<td>fulfilled</td>
+    		<td>active</td>
+   		<td>performed</td>
+   		<td>No (P1 is used).</td>
+  	</tr>
+	</table>
 
 	<hr>
 
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22-bis</a> 
-	we add a constraint C1 to the duty D1, the compensate action is required only on Sundays.<br>
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22-bis (Permission)</a> 
+	add the following constraint C1 to the duty D1: the compensate action is required only on Sundays.<br>
+	Example 22-bis can be formulated as: the Permission P1 has a Duty D1 and the permitted Action A2 (play mp3 file). 
+	The Duty D1 has a Constraint C1 (it is Sunday). D1 has an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro):
+	<table border="1">
+  	<tr>
+    		<th>ID</th>
+		<th>D1.C1</th>
+    		<th>D1.R1</th>
+		<th>D1</th>
+		<th>P1</th>
+		<th>P1.A2</th>
+		<th>Violations</th>
+ 	 </tr>
+		<tr>
+    		<td>E22bis-1</td>
+		<td>not satisfied</td>
+    		<td>not satisfied</td>
+    		<td>active/not fulfilled</td>
+    		<td>inactive</td>
+    		<td>performed</td>	  
+    		<td>depends on default setting and other permissions</td>	  
+  	</tr>
+  	<tr>
+    		<td>E22bis-2</td>
+		<td>satisfied</td>
+    		<td>not satisfied</td>
+    		<td>active/not fulfilled</td>
+    		<td>inactive</td>
+    		<td>performed</td>	  
+    		<td>depends on default setting and other permissions</td>	  
+  	</tr>
+  	<tr>
+    		<td>E22-2</td>
+    		<td>satisfied (performed)</td>
+    		<td>fulfilled</td>
+    		<td>active</td>
+   		<td>performed</td>
+   		<td>No (P1 is used).</td>
+  	</tr>
+	</table>
 
-	
-	
-<h3>Sematics of Prohibition</h3> 		
+	<h3>Sematics of Prohibition</h3> 		
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
