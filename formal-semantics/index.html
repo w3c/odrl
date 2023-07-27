@@ -139,12 +139,14 @@
 	Active, inactive, violated, and fulfilled are called <b>deontic states</b>.<br><br>	
 	
 	The <b>deontic state</b> of Permissions, Prohibitions, and Obligations is determined by the status of the Duties, by the status of the Constraints it references, 
-	and by the status of the refinement of their Action, the refinement of the Asset Collection, the refinement of the Party Collection. <br>
-	The status of Constraints (connected to the Rule using the odrl:constraint property) is <b>satisfied</b> or <b>not satisfied</b>.<br>
-	The status of the refinement of an Action (connected to the Action using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>. 
-	The status of the refinement of an Asset Collection (connected to the Asset Collection using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>.
-	The status of the refinement of a Party Collection (connected to the Action using the odrl:refinement property) is <b>satisfied</b> or <b>not satisfied</b>.<br><br>
-	If all the refinements are satisfied it means that the action described by the rule has been <b>performed</b>.
+	and by the status of the refinements of their Action, of their Asset Collection, and of their Party Collection. <br>
+	The status of Constraints (connected to the Rule using the odrl:constraint property) may be <b>satisfied</b> or <b>not satisfied</b>. 
+	The status can switch from one state to another multiple times.<br>
+	The status of the refinement (connected to the Action using the odrl:refinement property) of an Action to be exercised on an Asset by a Party may be <b>satisfied</b> or <b>not satisfied</b>. 
+	The status of the refinement (connected to the Asset Collection using the odrl:refinement property) of the Asset Collection on which the Action is exercised may be <b>satisfied</b> or <b>not satisfied</b>.
+	The status of the refinement (connected to the Action using the odrl:refinement property) of the Party Collection that performs the Action may <b>satisfied</b> or <b>not satisfied</b>.<br><br>
+	If all those refinements are satisfied it means that an instance of the action described by the Rule has been <b>performed</b>.
+	When the action is performed with all the refinements satisfied they cannot return to being unsatisfied.
 	
 	The process for computing the satisfaction of constraints and the satisfaction of refinements with respect to the state of the world is left to 
 	individual implementations. But given these values, all ODRL Evaluators should agree on the deontic state of Permissions, Prohibitions, and Obligations 
