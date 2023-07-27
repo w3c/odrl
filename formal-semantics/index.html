@@ -171,7 +171,8 @@
 		<li>An instance of the class <code>odrl:Duty</code> represents a remedy for a odrl:Prohibition when it is connected to the <code>odrl:Duty</code> 
 			through the <code>odrl:remedy</code> property. </li>
 	</ul>
-	<br>
+	
+	<hr>
 	
 	A Rule (Permission, Prohibition, Obligation) is said to be <b>active</b> if its <b>activation condition</b> holds. 
 	The activation condition is different for Permissions, Prohibitions and Obligations (constraints directly defined at policy level are not directly considered):
@@ -181,7 +182,8 @@
 		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
 		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.</li>
 	</ul>
-	The mechanisms for computing the fulfillment of Prohibitions and Obligations is different. Therefore we continue by discussing their semantics in separated sections.
+	Also the mechanisms for computing the fulfillment of Prohibitions and Obligations is different. 
+	Therefore we continue by discussing the semantics of Permissions, Prohibitions, and Obligations in separated sections.
 		
 <h3>Sematics of Permission</h3> 
 	
@@ -207,24 +209,25 @@ Goal: determine if a Duty is fulfilled.<br>
 In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
 with all refinements satisfied, has been performed. <br>
 
-	The initial state of a duty is <b>inactive</b> if it has at least one Constraint. The initial state of a duty is <b>active</b> if it has not Constraints.<br>
+	The initial state of a duty is <b>inactive</b> if it has at least one Constraint.<br>
+	The initial state of a duty is <b>active</b> if it has not Constraints.<br>
 	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
 <ol>
-	<li> Evaluate the satisfaction of its constraints (output: satisfied, not satisfied) on the state of the world; if its constraints are all satisfied
+	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; if its Constraints are all satisfied
 	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). </li>
 		
-	<li>If the duty is <b>active</b> and one of its constraints becomes not satisfied the duty becomes <b>inactive</b>.
+	<li>If the duty is <b>active</b> and one of its Constraints becomes not satisfied the duty becomes <b>inactive</b>.
 	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
 	
-	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active/not fulfilled.
-	Once a duty is fulfilled, it cannot become active/not fullfilled.</li>
+	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active.
+	Once a duty is fulfilled, it cannot become again active/not fullfilled.</li>
 </ol>
 
 The life cycle of a duty is depicted in the figure below:
 
 	
 <hr>		
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> (from the ODRL Information Model 2.2).<br>
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> (taken from the ODRL Information Model 2.2).<br>
 	
 	The Party http://example.com/assigner:sony makes an Offer to play the target asset http://example.com/music/1999.mp3. 
 	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
