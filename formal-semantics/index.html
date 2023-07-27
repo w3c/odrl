@@ -144,12 +144,13 @@
 	The status can switch from one state to another multiple times.<br>
 	The status of the refinement (connected to the Action using the odrl:refinement property) of an Action to be exercised on an Asset by a Party may be <b>satisfied</b> or <b>not satisfied</b>. 
 	The status of the refinement (connected to the Asset Collection using the odrl:refinement property) of the Asset Collection on which the Action is exercised may be <b>satisfied</b> or <b>not satisfied</b>.
-	The status of the refinement (connected to the Action using the odrl:refinement property) of the Party Collection that performs the Action may <b>satisfied</b> or <b>not satisfied</b>.<br><br>
+	The status of the refinement (connected to the Action using the odrl:refinement property) of the Party Collection that performs the Action may <b>satisfied</b> or <b>not satisfied</b>.
 	If all those refinements are satisfied it means that an instance of the action described by the Rule has been <b>performed</b>.
-	When the action is performed with all the refinements satisfied they cannot return to being unsatisfied.
+	When the action is performed with all the refinements satisfied they cannot return to being unsatisfied.<br><br>
 	
-	The process for computing the satisfaction of constraints and the satisfaction of refinements with respect to the state of the world is left to 
-	individual implementations. But given these values, all ODRL Evaluators should agree on the deontic state of Permissions, Prohibitions, and Obligations 
+	The process for computing the satisfaction of constraints and the satisfaction of refinements of the action  described by the Rule 
+	with respect to the state of the world is <b>left to individual implementations</b>. 
+	But given these values, all ODRL Evaluators should agree on the deontic state of Permissions, Prohibitions, and Obligations 
 	and on the violations and fulfillments generated.
 
 	<hr>
@@ -180,6 +181,7 @@
 		<li>A <b>Prohibition</b> rule is active if the rule constraints are satisfied.</li>
 		<li>An <b>Obligation</b> rule is active if the rule constraints are satisfied.</li>
 	</ul>
+	The mechanisms for computing the fulfillment of Prohibitions and Obligations is different. Therefore we continue by discussing their semantics in separated sections.
 		
 <h3>Sematics of Permission</h3> 
 	
