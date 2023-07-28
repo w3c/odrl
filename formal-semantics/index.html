@@ -190,7 +190,7 @@
 	In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
 	<ul>
 		<li>all constraints of the Rule are satisfied AND</li> 
-		<li>all its duties are fulfilled. </li>
+		<li>all its duties are fulfilled or inactive. </li>
 	</ul>
 	If one of those two conditions is not met, the Permission is <b>inactive</b>.<br> 
 	
@@ -201,6 +201,9 @@
 	If all the refinements are satisfied then the permission is used. <br>
 	If one of the refinements is not satisfied the action is not permitted by the permission under examination. <br>
 	If the action is not permitted by at least one of the permissions then there is a <b>violation</b>.<br>
+
+	The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):
+	<img src="ODRLPermission.png">
 		
 <h4>Semantics of Duty when it is used as an activation condition of a Permission</h4> 
 
