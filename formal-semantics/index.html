@@ -130,16 +130,12 @@
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
 	Previous proposal of an ODRL evaluator: <a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
 
-	<b>Goal of this section</b>: define an ODRL Evaluator, the task of an ODRL Evaluator is to determine, given a particular state of the world 
-	(represented using the classes and properties defined in a specific ontology), which Permissions, Prohibitions, and Obligations are <b>active</b> and 
-	whether or not performing a certain action leads to <b>violations</b> or to <b>fulfillments</b>.<br><br>
+	This section defines the behaviour of an <b>ODRL Evaluator</b>. Given a collection of <b>ODRL Rules</b> and a particular state of the world, the objective of an <b>ODRL Evaluator</b> is to determine: (i) which Permissions, Prohibitions, and Obligations are <b>active</b>; (ii) which Prohibitions and Obligations have been <b>violated</b>. <br> 
 
-	Permissions, Prohibitions and Obligations, collectively named Rules, can be <b>active</b> or <b>inactive</b>. 
-	When Obligations and Prohibitions are active can become <b>violated</b> or <b>fulfilled</b>. 
-	Active, inactive, violated, and fulfilled are called <b>deontic states</b>.<br><br>	
+	Permissions, Prohibitions and Obligations, collectively named Rules, have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>. An inactive Rule has no effect. 
+	Obligations and Prohibitions have a property called <b>violation</b>. When Obligations and Prohibitions are active, they can become <b>violated</b> or <b>not-violated</b>.</br> 
 	
-	The <b>deontic state</b> of Permissions, Prohibitions, and Obligations is determined by the status of the Duties, by the status of the Constraints it references, 
-	and by the status of the refinements of their Action, of their Asset Collection, and of their Party Collection. <br>
+	The <b>activation state</b> of Permissions, Prohibitions, and Obligations is determined by the status of the Duties, by the status of the Constraints it references, and by the status of the refinements of their Action, of their Asset Collection, and of their Party Collection. <br>
 	The status of Constraints (connected to the Rule using the odrl:constraint property) may be <b>satisfied</b> or <b>not satisfied</b>. 
 	The status can switch from one state to another multiple times.<br>
 	The status of the refinement (connected to the Action using the odrl:refinement property) of an Action to be exercised on an Asset by a Party may be <b>satisfied</b> or <b>not satisfied</b>. 
