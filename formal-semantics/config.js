@@ -20,9 +20,23 @@ var respecConfig = {
             {  
                 name: "Beatriz Esteves",
                 url: "https://besteves4.github.io",
-                company: "Ontology Engineering Group, Universidad Politécnica de Madrid",
-                companyURL: "https://oeg.fi.upm.es/",
-                mailto: "beatriz.gesteves@upm.es"
+                company: "imec",
+                companyURL: "https://www.imec-int.com/",
+                mailto: "beatriz.esteves@ugent.be"
+            },
+            {  
+                name: "Simon Steyskal",
+                url: "",
+                company: "Siemens",
+                companyURL: "https://www.siemens.com/",
+                mailto: ""
+            },
+            {  
+                name: "Benedict Whittam Smith",
+                url: "",
+                company: "Deontic Data",
+                companyURL: "https://www.deonticdata.com/",
+                mailto: ""
             },
         ],
     group: "odrl",

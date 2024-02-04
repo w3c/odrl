@@ -22,37 +22,50 @@
 
 		</section> 
 	
+
+
+
 		<section id="intro">
 		<h2>Introduction</h2> 	
-		 The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted and prohibited actions over a certain asset, 
-		 as well as obligated actions.<br>
-			
-		The ODRL <a href="https://www.w3.org/TR/odrl-model/#infoModel">Information Model</a> formally defines the core abstract concepts (classes) of the model and their 
-		properties by means of an OWL 2 Ontology (which is available in various format at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>).<br>
-			
-			The ODRL ontology can be used to write <em>machine-readable</em> policies (sample policies are available here <a href="https://w3c.github.io/odrl/bp/">https://w3c.github.io/odrl/bp/</a>)
-		and associate them to digital assets. The advantage of representing policies with a machine-readable language is that you can provide certain useful services 
-                on policies, e.g. you can <em>search</em> for policies that meet certain criteria, you can easily retrieve all the permissions a user has on a given 
-		picture or all the prohibitions associated to a movie.<br>
-			
-		There are other types of services that would be useful to provide on a set of ODRL policies. They are described below in the <em>Scenarios</em> section. 
-		In order to automatically provide those services on a set of policies we need to be able to formally specify their <em>meaning</em>, i.e.: we need to be 
-		able to automatically compute if:
-			<ul>
-				<li>a prohibition has been infringed by an action being exercised;</li>
-				<li>an obligation is fulfilled by an action being exercised or it is violated by an action not being performed;</li>
-				<li>a permission is valid and allows an action to be exercised.</li>
-			</ul>
-		
-		The meaning of having an ORDL permission, prohibition or duty is specified as follows:		
-			<ol>
-				<li><a href="https://www.w3.org/TR/odrl-model/#prohibition">Prohibition</a>: 
-					A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.</li>
-				<li><a href="https://www.w3.org/TR/odrl-model/#duty-policy">Duty</a>: 
-					A Duty is the obligation to exercise an action, with all refinements satisfied. A Duty is fulfilled if all constraints are satisfied and if its action, with all refinements satisfied, has been exercised. 
-				<li><a href="https://www.w3.org/TR/odrl-model/#permission">Permission</a>:
-					A Permission allows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied and if all duties are fulfilled.</li>
-			</ol>
+		<p>
+			The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted, prohibited, 
+			and obligated actions over a certain asset.
+		</p>
+		<p>
+			The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts
+			of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>),
+			which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification.	
+		</p>
+		<p>
+			The ODRL ontology can be used as a model to represent machine-readable Policies and associate them with digital assets.
+			By using a machine-readable language to represent policies, a set of useful services can be provided such as a policy search
+			engine for certain assets, actions, users, or constraints, or a policy compatibility checker.
+		</p>
+		<p>
+			ODRL policies consist of one or more of the classic deontic modalities, e.g., prohibitions, obligations 
+			(named Duties in the spec.), and permissions. The meaning of having an ODRL permission, prohibition, or duty is specified as follows:
+		</p>
+		<ol>
+			<li><a href="https://www.w3.org/TR/odrl-model/#prohibition">Prohibition</a>: 
+				A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.</li>
+			<li><a href="https://www.w3.org/TR/odrl-model/#duty-policy">Duty</a>: 
+				A Duty is the obligation to exercise an action, with all refinements satisfied. A Duty is fulfilled if all constraints are satisfied 
+				and if its action, with all refinements satisfied, has been exercised. 
+			<li><a href="https://www.w3.org/TR/odrl-model/#permission">Permission</a>:
+				A Permission allows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied and if all 
+				duties are fulfilled.</li>
+		</ol>
+		<p>
+			In addition to the previously mentioned policy-based services, there are other types of services that would be useful to provide on a set 
+			of ODRL policies, e.g., access control or compliance checking. In order to automatically provide those services in a consistent manner, 
+			this document provides a formal specification to their meaning, i.e., an ODRL-based system needs to be able to automatically compute if:
+		</p>
+		<ul>
+			<li>a prohibition has been infringed by an action being exercised;</li>
+			<li>an obligation is fulfilled by an action being exercised or it is violated by an action not being performed;</li>
+			<li>a permission is valid and allows an action to be exercised.</li>
+		</ul>
+
 		</section>			
 		
 			
