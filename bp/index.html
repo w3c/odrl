@@ -150,7 +150,7 @@ http://www.europeandataportal.eu/sites/default/files/edp-licence-compatibility-p
 		<h3>Example 3: Representation of rights in rules</h3>
 		Even if ODRL is not capable of accessing the subtleties of legislation, the actions that are forbidden in a certain sorts of noms can be represented in ODRL and act as a summary. 	See <a href="http://w3c.github.io/poe/ucr/#POE.UC.04">UC4</a>. Advantages of an ODRL representation:
 		<ul>
-		<li><em>Summarization</em>. Key actions that are prohibited or permitted are captured in an ODRL policy hance favoring summarization.</li>
+		<li><em>Summarization</em>. Key actions that are prohibited or permitted are captured in an ODRL policy, hence favoring summarization.</li>
 		<li><em>Compliance checking</em>. Business processes can be determined as compliant or non-compliant.</li>
 		</ul>
 		<p>While ODRL can represent elements of a license or regulation for machine consumption, it cannot replace them in court! It is best practice to explicitly point to the license or regulation that a policy models using the dc:terms property provided by the Dublin Core Metadata Initiative.</p>
@@ -250,7 +250,7 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }		
 		</pre></div>	
 			
-<p>We can easily create a permission that only allows the picture to be displayed in Germany after 2018 by adding both Constraints. In this simple scenario ODRL insists both Constraints are satisfied before the Permission becomes active.</p> 
+<p>We can easily create a permission that only allows the picture to be displayed in Germany after 2018 by adding both Constraints. In this simple scenario, ODRL insists both Constraints are satisfied before the Permission becomes active.</p> 
 
 <div class="example"><div class="example-title marker"><span>Example 1.2C</span></div>
 <pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
@@ -279,7 +279,7 @@ If the example above permitted the general use of Movie 9898, this permission pe
 <p>Constraints can also be used to 'inject' additional semantics into the definition of an Action, Asset, or Party</p>
 			
 <h4>2.1 Narrowing the applicability of an Action</h4>			
-<p>The following Permission allows the distribution of a video but resticts the delivery channel to mobile networks only. This video cannot be distributed from a website under this Permission.</p>
+<p>The following Permission allows the distribution of a video but restricts the delivery channel to mobile networks only. This video cannot be distributed from a website under this Permission.</p>
 			
 <div class="example"><div class="example-title marker"><span>Example 2.1</span></div>
 <pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
@@ -303,7 +303,7 @@ If the example above permitted the general use of Movie 9898, this permission pe
 </pre></div>
 
 <h4>2.2 Further specifying an Asset</h4>
-<p>In financial markets the value of a piece of data is sometimes proportional to its timeliness. 15-minute delayed stock price is often much cheaper than real-time. We'd probably want different permissions to reflect this. How would we specify the 15 minute delay?</p>
+<p>In financial markets, the value of a piece of data is sometimes proportional to its timeliness. 15-minute delayed stock price is often much cheaper than real-time. We'd probably want different permissions to reflect this. How would we specify the 15-minute delay?</p>
 <p>We could model them as two different Assets. Or we could use Constraints on the same Asset, the stock price:</p>
 			
 			
@@ -345,7 +345,7 @@ Example 4 shows how to prohibit John playing the movie.
 
 	
 <h3>4 How to represent a permission and a prohibition</h3>		
-	An ODRL can represent one or more <em>rules</em>. For example, the following ODRL policiy might be read as "Alice can use Asset 1, but Bob can't".
+	An ODRL can represent one or more <em>rules</em>. For example, the following ODRL policy might be read as "Alice can use Asset 1, but Bob can't".
 
 	<div class="example"><div class="example-title marker"><span>Example 5</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
@@ -368,7 +368,7 @@ Example 4 shows how to prohibit John playing the movie.
 
 <h3>5 How to simplify policies with more than one rule</h3>	
 ODRL policies with more than one rule can be simplified (<a href="https://www.w3.org/TR/odrl-model/#composition-compact
-">Section 2.7.1</a> in the Information Model). Elements common to every rule can be expressed at root lovel. Policies making use of this feature are called <b>compact policies</b>, an example of them follows.
+">Section 2.7.1</a> in the Information Model). Elements common to every rule can be expressed at root level. Policies making use of this feature are called <b>compact policies</b>, an example of them follows.
 
 	<div class="example"><div class="example-title marker"><span>Example 6</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
@@ -405,7 +405,7 @@ All the examples above declared that there existed a certain permission, prohibi
 		</pre></div>
 	
 <h4>7 How to generalize actions</h4>		
-	Permitting (or prohibiting) some general actions entail permitting (or prohibitting) other specific actions. In the example below, permitting <code>display</code> is redundant because having permitted <code>play</code> also implies permitting <code>display</code>.  
+	Permitting (or prohibiting) some general actions entail permitting (or prohibiting) other specific actions. In the example below, permitting <code>display</code> is redundant because having permitted <code>play</code> also implies permitting <code>display</code>.  
 	
 	<div class="example"><div class="example-title marker"><span>Example 8</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">

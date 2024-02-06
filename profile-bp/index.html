@@ -21,7 +21,7 @@
   <div class="note">
     <p><strong>Status of this Draft: Open to Public Reviews And Comments</strong></p>
     <p>The ODRL CG is active on this draft, reviewed and improved the content multiple times. <br> 
-    Now the ODRL CG invites any party interested in creating an ODRL Policy to use this draft as blue print for their work and to provide feedback on these topics: </p>
+    Now the ODRL CG invites any party interested in creating an ODRL Policy to use this draft as blueprint for their work and to provide feedback on these topics: </p>
     <ul>
       <li>What information is missing?</li>
       <li>What information is unclear (missing details, contradictions inside the document, contradictions between the ODRL 2.2 Recommendation and this Best Practice document)?</li>
@@ -133,23 +133,23 @@
 </section>
 <section id="scope">
   <h2>What an ODRL Profile can define</h2>
-  <p>This sections walks through the <a href="https://www.w3.org/TR/odrl-model/#profile-mechanism">ODRL
+  <p>This section walks through the <a href="https://www.w3.org/TR/odrl-model/#profile-mechanism">ODRL
     Profile Mechanism</a> of the ODRL Information Model. All items below, except the last one, are about adding an ODRL-related specification. Such a specification does not become part of the ODRL 2.2 Recommendation but an ODRL Processor processing ODRL Policies with a specific Profile must be able to understand this Profile's specification.</p>
   <p>The seqence of additional specifications follows priorities of use expected by the ODRL Community Group.</p>
   <section id="action">    
   <h3>Additional Actions for Rules</h3>
-  <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used as value of the mandatory property <code>action </code>of the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, and all its subclasses Permission, Prohibition and Duty (and ones defined by a Profile).The
+  <p>An instance of ODRL <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action </a>is used as value of the mandatory property <code>action </code>of the <a href="https://www.w3.org/TR/odrl-model/#rule">Rule</a> class, and all its subclasses Permission, Prohibition and Duty (and ones defined by a Profile). The
     Recommendation defines only two instances of Action: <code>use</code>, covering any
     use of an asset while the ownership of the asset does not change, and <code>transfer</code>,
     covering the transfer of the ownership of an asset in perpetuity.</p>
-  <p>If these two core Actions are sufficient a Profile does not need to add
-    more. But in most cases additional Action instances are required and the example
+  <p>If these two core Actions are sufficient, a Profile does not need to add
+    more. But in most cases, additional Action instances are required, and the example
     shows how to add two to the Example Profile 1:</p>
   <ul>
     <li><code>digitize </code>is an Action already <a href="https://www.w3.org/TR/odrl-vocab/#term-digitize">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
-      part of the ODRL Recommendation, therefore Actions defined by it must
+      part of the ODRL Recommendation; therefore, Actions defined by it must
       be adopted by the Example Profile 1. <br>
-      Note: an Action defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, its is only required to express that it is included into the Profile. Find more about that in 
+      Note: an Action defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, it is only required to express that it is included into the Profile. Find more about that in 
     Resources defining an ODRL Profile.</li>
     <li><code>changecolours </code>is an Action defined for and by this
       Example Profile 1</li>
@@ -177,14 +177,14 @@ exns1:changecolours
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>leftOperand</code> and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-LeftOperand">Left
     Operand</a> are used as values of this property, the Recommendation does not define any instances.</p>
-  <p>If any Constraint will be used for a Policy using a specific Profile at
+  <p>If any Constraint will be used for a Policy using a specific Profile, at
     least one Left Operand must be defined for the mandatory leftOperand
     property. The example shows how to define two for the Example Profile 1:</p>
   <ul>
     <li><code>elapsedTime </code>is a LeftOperand already <a href="https://www.w3.org/TR/odrl-vocab/#term-elapsedTime">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
-      part of the ODRL Recommendation, therefore LeftOperands defined by it
+      part of the ODRL Recommendation; therefore, LeftOperands defined by it
       must be adopted by the Example Profile 1<br>
-      Note: a LeftOperand defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, its is only required to express that it is included into the Profile. Find more about that in 
+      Note: a LeftOperand defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, it is only required to express that it is included into the Profile. Find more about that in 
     Resources defining an ODRL Profile.    </li>
     <li><code>aggregatedTime </code>is a LeftOperand defined by the Example
       Profile 1</li>
@@ -265,14 +265,14 @@ exns1:aggregatedTime
   <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint-class">Constraint </a>is a class for applying a constraint to a Rule. One of its
     mandatory properties is <code>rightOperand</code> (or its alternative <code>rightOperandReference</code>)
     and instances of <a href="https://www.w3.org/TR/odrl-vocab/#term-RightOperand">RightOperand </a>are used as value of this property, the Recommendation does not define any. </p>
-  <p>If any Constraint will be used for a Policy using a specific Profile it
+  <p>If any Constraint will be used for a Policy using a specific Profile, it
     may be required to define one or more RightsOperands. The example shows
     how to define one for the Example Profile 1:</p>
   <ul>
     <li><code>policyUsage </code>is a RightOperand already <a href="%C2%B4https://www.w3.org/TR/odrl-vocab/#term-policyUsage">defined </a>by the ODRL Common Vocabulary. But this Common Vocabulary is not
-      part of the ODRL Recommendation, therefore RightOperands defined by it
+      part of the ODRL Recommendation; therefore, RightOperands defined by it
       must be adopted by the Example Profile 1.<br>
-      Note: a Right Operand defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, its is only required to express that it is included into the Profile. Find more about that in 
+      Note: a Right Operand defined by the ODRL Common Vocabulary does not have to be included into the specification of a Profile, it is only required to express that it is included into the Profile. Find more about that in 
     Resources defining an ODRL Profile.    </li>
   </ul>
   <div class="example">
@@ -348,12 +348,12 @@ exns1:aggregatedTime
   <ul>
     <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none or one&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; can be defined.</li>
     <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
-    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
+    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrence and its value type must be defined.</li>
   </ul>
   <div class="note">
     <p><strong>Design Strategy</strong></p>
-    <p>The ODRL Community Group highly recommends for Profiles to stick to the basic design of Rule subclasses as defined by the ODRL Informaton Model: the Rule subclasses Permission, Prohibition and Duty cover the key use cases of an ODRL policy and therefore an ODRL Profile should either adopt any of these three classes as they are or define subclasses of the Permission Class, or the Prohibition Class or the Duty Class. Defining a subclass of Rule should be avoided as this may infringe the information model of ODRL. </p>
-    <p><strong>Design Consideration</strong><br>Please check if a rule required by the use case covered by the Profile can be expressed - in this sequence: <br>1) By the Permission, the Probition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) By a new subclass of the Permission or Prohibition or Duty class (the new subclass(es) must be defined by the Profile)<br>3) As a last resort: by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case. (The new subclass(es) of Rule and a new subclass of Policy with a property for each new Rule subclass must be defined by the Profile.)</p>  
+    <p>The ODRL Community Group highly recommends for Profiles to stick to the basic design of Rule subclasses as defined by the ODRL Information Model: the Rule subclasses Permission, Prohibition and Duty cover the key use cases of an ODRL policy and therefore an ODRL Profile should either adopt any of these three classes as they are or define subclasses of the Permission Class, or the Prohibition Class or the Duty Class. Defining a subclass of Rule should be avoided as this may infringe the information model of ODRL. </p>
+    <p><strong>Design Consideration</strong><br>Please check if a rule required by the use case covered by the Profile can be expressed - in this sequence: <br>1) By the Permission, the Prohibition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) By a new subclass of the Permission or Prohibition or Duty class (the new subclass(es) must be defined by the Profile)<br>3) As a last resort: by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case. (The new subclass(es) of Rule and a new subclass of Policy with a property for each new Rule subclass must be defined by the Profile.)</p>  
     <p><strong>How To Define a Subclass of the Permission Class</strong></p>
     <ul>
       <li>A new subclass of Permission is defined by the Profile ...</li>
@@ -457,7 +457,7 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     <li>If the cardinality of a property is defined by the Policy class as &quot;MAY have none, one or many&quot; a &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.</li>
     <li>If the Policy class defines &quot;<em class="rfc2119" title="MUST">MUST</em> have at least
     one&quot; with a list of properties to select from a restricted set of properties and/or a specific combination of properties can be defined. (See the examples for <code>permission</code>, <code>prohibition</code>, or <code>obligation</code> property values above.)</li>
-    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrance and its value type must be defined.</li>
+    <li>One or more additional properties may be defined. For a property its name (identifier), its occurrence and its value type must be defined.</li>
   </ul>
   <div class="note">
     Read the note of the <a href="#rule">Additional Rule Subclasses</a> section. It describes in which cases a new subclass of Policy is required and in which not.
@@ -483,13 +483,13 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     <ul>
       <li>First it should be considered that applying only one profile identifier to the <code>profile</code> property means that two profiles are in use: the default <a href="https://www.w3.org/TR/odrl-model/#profile-core">ODRL Core Profile</a> and this explicitly defined profile.</li>
       <li>Subclasses, sub-properties or instances of a class included into a Profile are defined in either a specific namespace  or in the ODRL namespace if this thing is defined already by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a>.</li>
-      <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g. Example Profil 1 can also be adopted for another Profile, e.g. Example Profile 2. (Note: be aware that the identifier of a Profile and the identifer of a namespace used by it does not have to the same.)</li>
-      <li>If a subclasses, sub-properties or instances of a class is defined in a namespace with an identifier different from the identifier of the Profile this thing can be used by multiple Profiles (with identifiers different from the namespace) but they MUST be defined by each Profile in exactly the same way. E.g. a Rule subclass exns1:StraightPermission defined by Example Profile 1 as not having any property expressing a Duty must not have in a definition of Example Profile 2 a property expressing a Duty.<br>
-        Note: for this purpose this Best Practices document uses the term &quot;adopt&quot; for including the definition of a thing which may be included by other Profiles. In particular this term was used for things defined by the ODRL Common Vocabulary is a use of things defined by it by other Profiles has to be expected.
+      <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g., Example Profil 1 can also be adopted for another Profile, e.g., Example Profile 2. (Note: be aware that the identifier of a Profile and the identifer of a namespace used by it does not have to the same.)</li>
+      <li>If a subclasses, sub-properties or instances of a class is defined in a namespace with an identifier different from the identifier of the Profile this thing can be used by multiple Profiles (with identifiers different from the namespace) but they MUST be defined by each Profile in exactly the same way. E.g., a Rule subclass exns1:StraightPermission defined by Example Profile 1 as not having any property expressing a Duty must not have in a definition of Example Profile 2 a property expressing a Duty.<br>
+        Note: for this purpose this Best Practices document uses the term &quot;adopt&quot; for including the definition of a thing which may be included by other Profiles. In particular, this term was used for things defined by the ODRL Common Vocabulary is a use of things defined by it by other Profiles has to be expected.
       </li>
-      <li>For using a thing defined by Example Profile 1 by a Policy using Example Profile 2 it is not strictly required to adopt this thing of Example Profile 1 for Example Profile 2, formally it is sufficient to apply the identifiers for Example Profile 2 and of Example Profile 1 to the <code>profile</code> property of the Policy.</li>
-      <li>If multiple identifiers of Profiles are applied to the <code>profile</code> property of the Policy all the things defined by all of them are valid for this Policy. If only subsets of the things defined by multiple Profiles should be applied to a Policy a new Profile should be created adopting only the things of this subset.</li>
-      <li>If Party A defines a Profile with things defined by (and in a namespace of) Party B the adoption must comply with the copyright of these things.</li>
+      <li>For using a thing defined by Example Profile 1 by a Policy using Example Profile 2 it is not strictly required to adopt this thing of Example Profile 1 for Example Profile 2; formally it is sufficient to apply the identifiers for Example Profile 2 and of Example Profile 1 to the <code>profile</code> property of the Policy.</li>
+      <li>If multiple identifiers of Profiles are applied to the <code>profile</code> property of the Policy all the things defined by all of them are valid for this Policy. If only subsets of the things defined by multiple Profiles should be applied to a Policy, a new Profile should be created adopting only the things of this subset.</li>
+      <li>If Party A defines a Profile with things defined by (and in a namespace of) Party B, the adoption must comply with the copyright of these things.</li>
     </ul>
   </section>
 </section>
@@ -502,8 +502,8 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     <li>All other profiles defined by the rules of an <a href="https://www.w3.org/TR/odrl-model/#profile">ODRL Profile</a> must be considered as a definition of additional terms</li>
   </ul>
 
-    <p>But it is not mandatory to use all terms of the ODRL Core Profile and of a referenced additional  profile in an ODRL Policy instance.
-    <br>Based on this basic rule a profile may suggest to ignore a term defined by the ODRL Core Profile, e.g. a specific subclass of Policy or Rule, a specific instance of Action, a specific Logical Constraint Operand ... and others, which is not relevant for the use case covered by this profile as long as the <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> does not define its use as mandatory, as a MUST. (Check the terms defined by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-core">ODRL Core Vocabulary</a>.) But a profile must not declare an ODRL Core Profile term as prohibited, as MUST NOT be used!
+    <p>But it is not mandatory to use all terms of the ODRL Core Profile and of a referenced additional profile in an ODRL Policy instance.
+    <br>Based on this basic rule, a profile may suggest to ignore a term defined by the ODRL Core Profile, e.g. a specific subclass of Policy or Rule, a specific instance of Action, a specific Logical Constraint Operand ... and others, which is not relevant for the use case covered by this profile as long as the <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> does not define its use as mandatory, as a MUST. (Check the terms defined by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-core">ODRL Core Vocabulary</a>.) But a profile must not declare an ODRL Core Profile term as prohibited, as MUST NOT be used!
     </p>
   <section id="oos1">    
   <h3>What may be ignored, and what not</h3>
@@ -525,31 +525,31 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
   <p>Each Profile must have a globally unique identifer. 
     Such an identifier 
   must be of type IRI [<a href="#bib-rfc3987">rfc3987</a>] which is in short a URI [<a href="#bib-rfc3986">rfc3986</a>] with an extended, internationalized character set.</p>
-  <p>Be aware that this Profile identifier should not be used for other purposes like the identifer of a namespace of concepts defined by the Profile as it would be hard to distingish if a profile or a namespace is identified when using this identifier.  </p>
+  <p>Be aware that this Profile identifier should not be used for other purposes like the identifier of a namespace of concepts defined by the Profile as it would be hard to distinguish if a profile or a namespace is identified when using this identifier.  </p>
   </section>
   <section id="webresource">
     <h3>The Profile as a stable web resource</h3>
-  <p>If a Profile should be used publicly its definition and optional usage guidelines should be publicly accessible web resources. Consider defining the unique identifier of the Profile as URL of a web resource providing information about the Profile.</p>
+  <p>If a Profile should be used publicly, its definition and optional usage guidelines should be publicly accessible web resources. Consider defining the unique identifier of the Profile as URL of a web resource providing information about the Profile.</p>
   </section>
   <section id="addlspecs">      
   <h3>Generating additional specifications of this Profile</h3>
-  <p>This section covers the procedure of generating specifications in addition to the ODRL Core Profile, details of documents resulting from this procedure are covered in   <a href="#profdef">section 5</a>, and <a href="#pubavail">section 6</a> covers how to make them publicly available.</p>
-  <p>A  Profile should should have a semantic technology specification using a SKOS Collection [<a href="#bib-skos">skos</a>] and making all concepts adopted or created by this Profile a member of this Collection. Use the IRI of the Profile as identifier of this Collection.</p>
+  <p>This section covers the procedure of generating specifications in addition to the ODRL Core Profile, details of documents resulting from this procedure are covered in <a href="#profdef">section 5</a>, and <a href="#pubavail">section 6</a> covers how to make them publicly available.</p>
+  <p>A Profile should have a semantic technology specification using a SKOS Collection [<a href="#bib-skos">skos</a>] and making all concepts adopted or created by this Profile a member of this Collection. Use the IRI of the Profile as identifier of this Collection.</p>
   <p><a href="#scope">Section 3</a> explains what a new ODRL Profile can define in addition to the Core Profile. Walking through this section should result in this output:</p>
   <ul>
-    <li>If a concept from the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a> is adopted it should not be specified by this Profile but it must be made a member of the Profile's Collection.</li>
+    <li>If a concept from the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a> is adopted, it should not be specified by this Profile, but it must be made a member of the Profile's Collection.</li>
     <li>If an existing concept conforming to ODRL 2.2 specifications from a source different from this Profile is adopted: check first if a specification of this concept is publicly accessible. If this is the case this concept should be adopted by adding it as member to the Profile's Collection. If this is not the case it has to be specified like a new concept defined by this Profile, see next item.</li>
-    <li>If a new concept is created for this Profile it must be specified by the documents of this Profile and made a member of the Profile's Collection.</li>
-    <li>If a concept is adopted or created as ODRL Action it should be made a member of a SKOS Collection of all Actions defined by this Profile. </li>
-    <li>If a concept is adopted or created as ODRL Constraint Left Operand it should be made a member of a SKOS Collection of all Constraint Left Operands  defined by this Profile. </li>
-    <li>If a concept is adopted or created as ODRL Constraint Operator it should be made a member of a SKOS Collection of all Constraint Operators defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Party Function it should be made a member of a SKOS Collection of all Party Functions defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Asset Relationship it should be made a member of a SKOS Collection of all Asset Relationships defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Constraint Right Operand it should be made a member of a SKOS Collection of all Constraint Right Operands defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Logical Constraint it should be made a member of a SKOS Collection of all Logical Constraints defined by this Profile.</li>
-    <li>If a concept is adopted or created as ODRL Policy Conflict Strategy Preference it should be made a member of a SKOS Collection of all Policy Conflict Strategy Preferences defined by this Profile.</li>
-    <li>If a subclass is adopted or created as ODRL Rule subclass it should be made a member of a SKOS Collection of all Rule subclasses defined by this Profile.</li>
-    <li>If a subclass is adopted or created as ODRL Policy subclass it should be made a member of a SKOS Collection of all Policy subclasses defined by this Profile.</li>
+    <li>If a new concept is created for this Profile, it must be specified by the documents of this Profile and made a member of the Profile's Collection.</li>
+    <li>If a concept is adopted or created as ODRL Action, it should be made a member of a SKOS Collection of all Actions defined by this Profile. </li>
+    <li>If a concept is adopted or created as ODRL Constraint Left Operand, it should be made a member of a SKOS Collection of all Constraint Left Operands defined by this Profile. </li>
+    <li>If a concept is adopted or created as ODRL Constraint Operator, it should be made a member of a SKOS Collection of all Constraint Operators defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Party Function, it should be made a member of a SKOS Collection of all Party Functions defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Asset Relationship, it should be made a member of a SKOS Collection of all Asset Relationships defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Constraint Right Operand, it should be made a member of a SKOS Collection of all Constraint Right Operands defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Logical Constraint, it should be made a member of a SKOS Collection of all Logical Constraints defined by this Profile.</li>
+    <li>If a concept is adopted or created as ODRL Policy Conflict Strategy Preference, it should be made a member of a SKOS Collection of all Policy Conflict Strategy Preferences defined by this Profile.</li>
+    <li>If a subclass is adopted or created as ODRL Rule subclass, it should be made a member of a SKOS Collection of all Rule subclasses defined by this Profile.</li>
+    <li>If a subclass is adopted or created as ODRL Policy subclass, it should be made a member of a SKOS Collection of all Policy subclasses defined by this Profile.</li>
     </ul>
   <p>Finally: create a W3C Profile Vocabulary [<a href="#bib-dxprof">dx-prof</a>] document. This document sets the normative part of the ODRL Profile - the ODRL 2.2 Information Model and the ODRL 2.2 Core Profile - and lists all documents used for defining this Profile.  </p>
   <p>&nbsp;</p>
@@ -558,8 +558,8 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
 <section id="profdef">
   <h2>Resources defining an ODRL Profile</h2>
   <section id="humanreadable">      
-  <h3>Human readable specification</h3>
-  <p>Humans taking a decision on using a specific ODRL Profile or not like to read a human readable document about it.</p>
+  <h3>Human-readable specification</h3>
+  <p>Humans taking a decision on using a specific ODRL Profile or not like to read a human-readable document about it.</p>
   <p>It should include:</p>
   <ul>
     <li>The name and the globally unique identifier of the Profile</li>
@@ -567,9 +567,9 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     <li>The latest version of the Profile and its date of release</li>
     <li>The purpose(s) of the Profile</li>
     <li>A list of all member concepts of the Profile ...</li>
-    <li>... and a human readable specification of at least all new concepts defined by the Profile ...</li>
-    <li>... if for adopted concepts of other sources a reasonable human readable specification is available their documentation can be referenced. Else a specification created by the owner of this Profile may be created for this document.</li>
-    <li>For each concept or subclass of this Profile its type as listed in <a href="#scope">section 3</a> should be indicated.</li>
+    <li>... and a human-readable specification of at least all new concepts defined by the Profile ...</li>
+    <li>... if for adopted concepts of other sources a reasonable human-readable specification is available, their documentation can be referenced. Else a specification created by the owner of this Profile may be created for this document.</li>
+    <li>For each concept or subclass of this Profile, its type as listed in <a href="#scope">section 3</a> should be indicated.</li>
     <li>For any type of concept or subclass as listed in <a href="#scope">section 3</a> a list of its additional concepts or subclasses defined by this Profile may be included.</li>
     <li>A list of all used identifiers of namespaces, other ODRL Profiles, vocabularies of ODRL concept and other relevant resources.</li>
     <li>A list of all standards used by this Profile.</li>
@@ -582,7 +582,7 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     This ontology should include:</p>
   <ul>
     <li>A definition of all used prefixes, if the used syntax supports or requires that.</li>
-    <li>A definition of the ontology as a whole. As identifier of the ontology the identifier of the Profile must be used.</li>
+    <li>A definition of the ontology as a whole. As identifier of the ontology, the identifier of the Profile must be used.</li>
     <li>A SKOS [<a href="#bib-skos">skos</a>] Collection of all concepts defined by this Profile, either a concept specified by this ontology or a concept defined by another source.</li>
     <li>A SKOS Collection for each type of additional concepts or subclasses (see <a href="#scope">section 3</a>) if at least one concept is defined for it.</li>
     <li>A declaration of all used annotation properties to keep this ontology within OWL DL.</li>
@@ -804,7 +804,7 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
   </section>
   <section id="jsonld">      
   <h3>JSON-LD context document </h3>
-  <p>Whether the OWL Ontology of a Profile uses JSON-LD [<a href="#bib-jsonld">JSON-LD</a>] as format or if an ODRL Policy is expressed as JSON-LD the uses of a JSON-LD Context is highly recommended. It is used for mapping short-term aliases of concept identifiers to the original identifier.</p>
+  <p>Whether the OWL Ontology of a Profile uses JSON-LD [<a href="#bib-jsonld">JSON-LD</a>] as format or if an ODRL Policy is expressed as JSON-LD, the uses of a JSON-LD Context is highly recommended. It is used for mapping short-term aliases of concept identifiers to the original identifier.</p>
   <p>The Example below covers the concepts of the (virtual) ODRL <em>Profile Example Profile 1</em>.</p>
   <div class="example">
     <div class="example-title marker"><span>JSON-LD Context Example 1 (JSON-LD)</span></div>
@@ -831,15 +831,15 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
 </section>
 <section id="pubavail">
   <h2>Making an ODRL Profile publicly available</h2>
-  <p> If an ODRL Profile should be used by a public audience it is highly recommended to make its spefications publicly accessible:</p>
+  <p> If an ODRL Profile should be used by a public audience, it is highly recommended to make its specifications publicly accessible:</p>
   <ul>
-    <li>A human readable specification as HTML web document</li>
+    <li>A human-readable specification as an HTML web document</li>
     <li>An OWL Ontology as resource using a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
-    <li>A resource using the W3C Profile Vocabulary  in a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
-    <li>If the JSON-LD form should be supported for ODRL Policies a JSON-LD Context resource.</li>
+    <li>A resource using the W3C Profile Vocabulary in a common Semantic Web format, like RDF/Turtle, RDF/XML, RDF/N-Triples, or JSON-LD</li>
+    <li>If the JSON-LD form should be supported for ODRL Policies, a JSON-LD Context resource.</li>
   </ul>
   <p>All these resourced can be made accessible by URLs.</p>
-  <p>An alternative option is based on http request-based content negotiation, this feature must be supported by the web server delivering the documents. In this case a generic URL is defined for the human readable HTML document and the OWL Ontology in Semantic Web formats. Depending of the IANA Media Type expressed by the accept-header of the http(s) request the corresponding resource is delivered by the http(s) response.</p>
+  <p>An alternative option is based on http request-based content negotiation; this feature must be supported by the web server delivering the documents. In this case, a generic URL is defined for the human-readable HTML document and the OWL Ontology in Semantic Web formats. Depending on the IANA Media Type expressed by the accept-header of the http(s) request the corresponding resource is delivered by the http(s) response.</p>
   <p>The URL(s) used for such resources should be persistent over time. The publisher of a Profile should consider whether to reflect the version of the Profile in the URL or to use version-agnostic URLs.</p>
 </section>
 <section id="regodrlcg">
@@ -850,8 +850,8 @@ exprof1:ProfileVocabulary-ttl  # The Example Profile 1 Profile vocabulary terms 
     <li>Business name of the profile</li>
     <li>Name and web URL of the party having created and planning to maintain the profile</li>
     <li>Identifier of the profile</li>
-    <li>URL of the human readable specification document</li>
-    <li>URL of the OWL Ontology and the name of the used format (e.g. RDF/Turtle, RDF/XML, JSON-LD)</li>
+    <li>URL of the human-readable specification document</li>
+    <li>URL of the OWL Ontology and the name of the used format (e.g., RDF/Turtle, RDF/XML, JSON-LD)</li>
     <li>Optional: URL of the JSON-LD context resource</li>
     <li>Optional: URL of the W3C Profile Vocabulary resource</li>
   </ul>

@@ -1,6 +1,6 @@
 Author: Nicoletta Fornara, Universita' della Svizzera italiana, Lugano, Svizzera.
 
-The semantics of an ODRL policiy is given by the semantics of its rules. The semantics of one ODRL Rule is expressed by:
+The semantics of an ODRL policy is given by the semantics of its rules. The semantics of one ODRL Rule is expressed by:
 
 1. Its **activation condition**: when something happens or a certain state of affairs is satisfied the rule becomes active or in force. In ODRL 2.2 the activation condition must be expressed by specifying the conditions applicable to a Rule by means of a set of constraints.
 2. The **class of actions** regulated by the rule: when an instance of the class of actions regulated by the rule is performed with all refinements satisfied, the rule is fulfilled or violated on the basis of its type.
@@ -10,7 +10,7 @@ In order to check whether the **activation condition** is satisfied it must be e
 
 In order to check whether an individual belonging to the  **class of actions** regulated by the rule is actually performed there must be an individual in the **state of the world** that belongs to the class of actions. 
 
-Therefore it is crucial that the activation condition and the class of actions regulated by the rule are expressed with an **ontology** that can be aligned or matched with the **ontology** used for expressing the state of the worl.
+Therefore it is crucial that the activation condition and the class of actions regulated by the rule are expressed with an **ontology** that can be aligned or matched with the **ontology** used for expressing the state of the world.
 
 **PROBLEMS OF ODRL 2.2**
 
@@ -46,11 +46,11 @@ Suppose we want to write the policy that contains the following rule: "the permi
 **SOLUTION TO PROBLEM 3**:  
 
 Define the following ontology for expressing the rules inside policies and the state of the world where the real actions of the agents are represented:
- - the odrl:Display class is sublcass of the odrl:Action class
+ - the odrl:Display class is subclass of the odrl:Action class
  - the object property odrl:spatial has as domain the class odrl:Action and as range a class odrl:State
  - the object property odrl:target has as domain the class odrl:Action (instead of odrl:Policy or odrl:Rule).
 
-For example the ontolgy could contain the following information: 
+For example the ontology could contain the following information: 
 - Robert performs a display action of the movie 9898.movie in Germany. 
 - Anna performs a display action of the movie 9898.movie in Switzerland.
   
