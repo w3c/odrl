@@ -39,7 +39,12 @@
 		<p> <!-- the need for clarifying the semantics, the need for this document -->
 			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describe the behaviour of an ODRL implementation. 
 			This specification defines the expected behaviour of an <b>ODRL Evaluator</b>. 
-			Given a collection of <b>ODRL Rules</b> and a particular state of the world, the objective of an <b>ODRL Evaluator</b> is to determine: (i) which Permissions, Prohibitions, and Obligations are <b>active</b>; (ii) which Prohibitions and Obligations have been <b>violated</b>.<br>
+			Given a collection of <b>ODRL policies</b> and a particular state of the world, the objective of an <b>ODRL Evaluator</b> is to determine: 
+			<ol>
+				<li>Which Permissions, Prohibitions, and Obligations are <b>active</b></li>
+				<li>Which Prohibitions and Obligations have been <b>violated</b>.</li>
+			</ol>
+					<br>
 			The <b>ODRL Evaluator</b> is expected to work in at least these two activities:
 			<ol>
 				<li><b>Policy monitoring</b> (or compliance checking): given a set of policies and a state of the world, the task to determine whether obligations or prohibitions have been fulfilled or violated by the performance of certain actions, and which permissions have been used.</li>
