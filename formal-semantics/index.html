@@ -34,23 +34,27 @@
 			The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification.	
 		</p>
 		<p> <!-- the use of ontologies -->
-			The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system or a policy planning system.
+			The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system.
 		</p>
 		<p> <!-- the need for clarifying the semantics, the need for this document -->
-			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describe the behaviour of an ODRL implementation. 
-			This specification defines the expected behaviour of an <b>ODRL Evaluator</b>. 
-			Given a collection of <b>ODRL policies</b> and a particular state of the world, the objective of an <b>ODRL Evaluator</b> is to determine: 
+			However, neither the specification of the model (which is in a text form) nor the vocabulary (which is in an OWL ontology) accurately describe the behaviour of an ODRL implementation. 
+			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. Namely, given a collection of <b>ODRL policies</b> 
+			and a formal description of a particular <b>state of the world</b>, the objective of an <b>ODRL Evaluator</b> is to determine: 
 			<ol>
-				<li>Which Permissions, Prohibitions, and Obligations are <b>active</b></li>
-				<li>Which Prohibitions and Obligations have been <b>violated</b>.</li>
+				<li>Which Permissions, Prohibitions, and Obligations are <b>active</b>;</li>
+				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 			</ol>
-					<br>
+			<br>
 			The <b>ODRL Evaluator</b> is expected to work in at least these two activities:
 			<ol>
-				<li><b>Policy monitoring</b> (or compliance checking): given a set of policies and a state of the world, the task to determine whether obligations or prohibitions have been fulfilled or violated by the performance of certain actions, and which permissions have been used.</li>
-				<li><b>Access control</b>: the computation that determines the access by users or software agents to digital resources considering a set of policies and the state of the world.</li>
+				<li><b>Access control</b>: the computation that determines the access by users or software agents to digital resources
+					considering a set of policies, the state of the world, and the action that the user/agent request to perform.</li>
+				<li><b>Policy monitoring</b> (or compliance checking): given a set of policies and a state of the world, the task to 
+					determine whether obligations or prohibitions have been fulfilled or violated by the performance of certain 
+					actions, and which permissions have been used.</li>
+				
 			</ol>
-			Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. 
+			 <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
 		</p>
 		<p>
 			This document describes the expected behaviour of this ODRL Evaluator, with a textual description, a formal semantics and a collection of examples.
