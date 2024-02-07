@@ -41,7 +41,8 @@
 			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. Namely, given a collection of <b>ODRL policies</b> 
 			and a formal description of a particular <b>state of the world</b>, the objective of an <b>ODRL Evaluator</b> is to determine: 
 			<ol>
-				<li>Which Permissions, Prohibitions, and Obligations are <b>active</b>;</li>
+				<li>Which Permissions, Prohibitions, and Obligations (collectively named Rules) 
+					are <b>active</b>, i.e. a Rule is said to be active if it is in effect.</li>
 				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 			</ol>
 			The <b>ODRL Evaluator</b> is expected to work in at least these two activities:
@@ -159,9 +160,9 @@
 	<a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
 
 <hr>
-	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
 	<code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.<br>
+	
 	Instances of the class <code>odrl:Duty</code> may have different meanings in ODRL.
 	<ul>
 		<li>An instance of the class <code>odrl:Duty</code> represents an <b>Obligation</b> when it is connected to the <code>odrl:Policy</code> through the <code>odrl:obligation</code> property. 
@@ -179,7 +180,6 @@
 	
 	<hr>
 
-		
 	Permissions, Prohibitions and Obligations, collectively named Rules, have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>. An inactive Rule has no effect. 
 	Obligations and Prohibitions have a property called <b>violation</b>. When Obligations and Prohibitions are active, they can become <b>violated</b> or <b>not-violated</b>.</br> 
 	
