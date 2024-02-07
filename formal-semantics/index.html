@@ -39,16 +39,18 @@
 		<p> <!-- the need for clarifying the semantics, the need for this document -->
 			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describe the behaviour of an ODRL implementation. 
 			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. Namely, given a collection of <b>ODRL policies</b> 
-			and a formal description of a particular <b>state of the world</b>, the objective of an <b>ODRL Evaluator</b> is to determine: 
+			and a formal description of the <b>state of the world</b>, the objective of an <b>ODRL Evaluator</b> is to determine: 
 			<ol>
 				<li>Which Permissions, Prohibitions, and Obligations (collectively named Rules) 
-					are <b>active</b>, i.e. a Rule is said to be active if it is in effect.</li>
+					are <b>active</b>. A Rule is said to be active if it is in effect.</li>
 				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
+				<li>Which Permissions have been <b>used</b>.</li>
 			</ol>
 			The <b>ODRL Evaluator</b> is expected to work in at least these two activities:
 			<ol>
 				<li><b>Access control</b>: the computation that determines the access by users or software agents to digital resources
-					considering a set of policies, the state of the world, and the description of the action that the user/agent requests to perform on certain digital resources.</li>
+					considering a set of policies, the state of the world, and the description of the action that the user/agent 
+					requests/attempts to perform on certain digital resources.</li>
 				<li><b>Policy monitoring</b> (or compliance checking): given a set of policies and a state of the world, the task to 
 					determine whether obligations or prohibitions have been fulfilled or violated by the performance of certain 
 					actions, and which permissions have been used.</li>
@@ -183,41 +185,50 @@
 	Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:
 	<ul>
 		<li>Permission, Prohibition, Obligation (duty at the root level), Condition (duty not at the root level) 
-		have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.
-		The value of the activation state is determined by the status of Constraints it references, 
-		and by the status of the Refinements of their Action, of their Asset Collection, and of their Party Collection.
-		</li>
-		<li>Prohibition, Obligation, and Condition have a property called <b>deontic state</b>, which can take the values of
-		 <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>. They can become violated or fulfilled only when they are active.</li>
+		have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
+		
+		<li>Prohibition, Obligation, and Condition have a property called <b>deontic state</b>, 
+		which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
+		They can become violated or fulfilled only when they are active.</li>
+
+		<li>Permission have a property called <b>deontic state</b>, 
+		which can take the value of <b>used</b>. It can become used only when it is active.</li>
+
 		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
 		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
-		A not-satisfied constraint can become satisfied and become agian not-satisfied<./li>
-		<li>Refinement (connected to an Action, to an AssetCollection or to a PartyCollection using the 
+		A not-satisfied constraint may become satisfied and return to being not-satisfied.
+		The value of the satisfaction state of a Constraint is calculated according to the state of the world.
+		Constraints directly defined at policy level are not directly considered.</li>
+		
+		<li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
 		odrl:refinement property) has a property called <b>satisfaction state</b> 
 		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
-		The value is computed on the basis of the action that the user/agent requests to perform on 
-		certain digital resources (access control).</li>
-		<li>Action (that is not requested (attempted) but it is actually performed (for example pay)), 
-		has a property called <b>performance state</b> which can take the values of <b>performed</b> or <b>not-performed</b>.</li>
+		In the access control scenario, the value of the satisfaction state of a Refinement is computed according to the action that the 
+		user/agent requests to perform on digital resources.</li>
+		
+		<li>Action with all its refinements has a property called <b>performance state</b> 
+		which can take the values of <b>performed</b> or <b>not-performed</b>.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinements of a requested 
-	action, and the performance state of an Action with respect to the state of the world and the requested action 
-	is <b>left to individual implementations</b>. But given these values, all ODRL Evaluators should agree on the value of the 
-	activation state and deontic states of the policies.<br>
+	action, and the performance state of an Action is <b>left to individual implementations</b>. 
+	But given these values, all ODRL Evaluators should agree on the value of the activation state and deontic states of 
+	the rules.<br>
 	
-	The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations  and the violation of 
-	fulfillment of Prohibitions and Obligations are different. Therefore we continue by discussing the semantics of 
+	The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations and the violation or 
+	fulfillment of Prohibitions and Obligations are all different. Therefore we continue by discussing the semantics of 
 	Permissions, Prohibitions, and Obligations in separated sections.
 		
+
 <h3>Sematics of Permission</h3> 
-	<!-- constraints directly defined at policy level are not directly considered -->
-	In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
-	<ul>
-		<li>all constraints of the Rule are satisfied AND</li> 
-		<li>all its duties are fulfilled or inactive. </li>
+
+In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
+<ul>
+	<li>all constraints of the Rule are satisfied AND</li> 
+	<li>all its duties are fulfilled or inactive. </li>
+	<li> all refinements are satisfied (only for the access control scenario).</li>
 	</ul>
-	If one of those two conditions is not met, the Permission is <b>inactive</b>.<br> 
+	If one of those conditions is not met, the Permission is <b>inactive</b>.<br> 
 	
 	In a system it is crucial to detect the <b>violations</b>. If the default setting for the ODRL Evaluator is: 
 	"everything is prohibited unless explicitly permitted", whenever an action is performed the ODRL Evaluator has to check if the action was permitted or not. 
