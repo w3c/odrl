@@ -167,7 +167,7 @@
 	<ul>
 		<li>An instance of the class <code>odrl:Duty</code> represents an <b>Obligation</b> when it is connected to the <code>odrl:Policy</code> through the <code>odrl:obligation</code> property. 
 		An Obligation can be activated, violated, or fullfilled.</li>
-		<li>An instance of the class <code>odrl:Duty</code> represents a condition for a <b>Permission</b> to be active when it is connected to the odrl:Permission 
+		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <b>Permission</b> to be active when it is connected to the odrl:Permission 
 		through the odrl:duty property.
 		When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, it can be active, fulfilled or not fullfilled.
 		This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.
@@ -180,24 +180,31 @@
 	
 	<hr>
 
-	Permissions, Prohibitions and Obligations, collectively named Rules, have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>. An inactive Rule has no effect. 
-	Obligations and Prohibitions have a property called <b>violation</b>. When Obligations and Prohibitions are active, they can become <b>violated</b> or <b>not-violated</b>.</br> 
-	
-	The <b>activation state</b> of Permissions, Prohibitions, and Obligations is determined by the status of the Duties, by the status of the Constraints it references, and by the status of the refinements of their Action, of their Asset Collection, and of their Party Collection. <br>
-	The status of Constraints (connected to the Rule using the odrl:constraint property) may be <b>satisfied</b> or <b>not satisfied</b>. 
-	The status can switch from one state to another multiple times.<br>
-	The status of the refinement (connected to the Action using the odrl:refinement property) of an Action to be exercised on an Asset by a Party may be <b>satisfied</b> or <b>not satisfied</b>. 
-	The status of the refinement (connected to the Asset Collection using the odrl:refinement property) of the Asset Collection on which the Action is exercised may be <b>satisfied</b> or <b>not satisfied</b>.
-	The status of the refinement (connected to the Action using the odrl:refinement property) of the Party Collection that performs the Action may <b>satisfied</b> or <b>not satisfied</b>.
-	If all those refinements are satisfied it means that an instance of the action described by the Rule has been <b>performed</b>.
-	When the action is performed with all the refinements satisfied they cannot return to being unsatisfied.<br><br>
-	
-	The process for computing the satisfaction of constraints and the satisfaction of refinements of the action  described by the Rule 
-	with respect to the state of the world is <b>left to individual implementations</b>. 
-	But given these values, all ODRL Evaluators should agree on the deontic state of Permissions, Prohibitions, and Obligations 
-	and on the violations and fulfillments generated.
-
-	
+	Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:
+	<ul>
+		<li>Permission, Prohibition, Obligation (duty at the root level), Condition (duty not at the root level) 
+		have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.
+		The value of the activation state is determined by the status of Constraints it references, 
+		and by the status of the Refinements of their Action, of their Asset Collection, and of their Party Collection.
+		</li>
+		<li>Prohibition, Obligation, and Condition have a property called <b>deontic state</b>, which can take the values of
+		 <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>. They can become violated or fulfilled only when they are active.</li>
+		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
+		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+		A not-satisfied constraint can become satisfied and become agian not-satisfied<./li>
+		<li>Refinement (connected to an Action, to an AssetCollection or to a PartyCollection using the 
+		odrl:refinement property) has a property called <b>satisfaction state</b> 
+		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+		The value is computed on the basis of the action that the user/agent requests to perform on 
+		certain digital resources (access control).</li>
+		<li>Action (that is not requested (attempted) but it is actually performed (for example pay)), 
+		has a property called <b>performance state</b> which can take the values of <b>performed</b> or <b>not-performed</b>.</li>
+	</ul>
+		
+	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinements of a requested 
+	action, and the performance state of an Action with respect to the state of the world and the requested action 
+	is <b>left to individual implementations</b>. But given these values, all ODRL Evaluators should agree on the value of the 
+	activation state and deontic states of the policies.<br>
 	
 	The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations  and the violation of 
 	fulfillment of Prohibitions and Obligations are different. Therefore we continue by discussing the semantics of 
