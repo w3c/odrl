@@ -324,13 +324,13 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<th>P1.action.R1</th>
 		<th>P1</th>
 		<th>Requested Action</th>
-		<th>P1.usage_state</th>
+		<th>P1.usage state</th>
 	 </tr>
   	<tr>
     		<td>E14-1</td>
     		<td>not-satisfied</td>
     		<td>inactive</td>
-		<td>blocked</td>
+		<td>not-performed</td>
 		<td>not-used</td>
     	</tr>
   	<tr>
@@ -351,7 +351,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<th>P1</th>
 		<th>P1.action.R1</th>
 		<th>P1.Action</th>
-		<th>P1.deontic state</th>
+		<th>P1.usage state</th>
 	 </tr>
   	<tr>
     		<td>E14-1</td>
@@ -368,7 +368,8 @@ The life cycle of a duty is depicted in the figure below (states with the double
 		<td>not-used</td>
     	</tr>
 	</table>
-	In this scenario the permission is active even if the refinement is not satisfied, because the activation state of the permission
+	<br>
+	In this scenario, the permission is active even if the refinement is not satisfied, because the activation state of the permission
 	is computed independently from the refinement of the regulated action.<br>
 	
 	If the situation is as described in row E13-2 and assuming that P1 is the only permission
