@@ -229,11 +229,13 @@
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
 <ul>
-	<li>all constraints of the Rule are satisfied;</li> 
-	<li>all its duties are fulfilled or inactive; </li>
-	<li>all refinements are satisfied (only for the access control scenario).</li>
+	<li>all the existing constraints of the Rule are satisfied;</li> 
+	<li>all the existing duties of the Rule are fulfilled or inactive; </li>
+	<li>all the existing refinements of the Action, AssetCollection, PartyCollection are satisfied 
+	(only for the access control scenario).</li>
 	</ul>
-	If one of those conditions is not met, the Permission is <b>inactive</b>.
+	If one of those conditions is not met, the Permission is <b>inactive</b>.<br>
+The meaning of an active or inactive permission depends on the scenario.<br>
 
 	<!--
 	In a system it is crucial to detect the <b>violations</b>. If the default setting for the ODRL Evaluator is: 
@@ -247,31 +249,8 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
 	<img src="ODRLPermission.png">
 	-->
-		
-<h4>Semantics of Duty when it is used as an activation Condition of a Permission</h4> 
 
-Goal: determine if a Duty is fulfilled.<br>
-
-In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
-with all refinements satisfied, has been performed. <br>
-
-	The initial state of a duty is <b>inactive</b> if it has at least one Constraint.<br>
-	The initial state of a duty is <b>active</b> if it has not Constraints.<br>
-	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
-<ol>
-	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; if its Constraints are all satisfied
-	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). </li>
-		
-	<li>If the duty is <b>active</b> and one of its Constraints becomes not satisfied the duty becomes <b>inactive</b>.
-	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
-	
-	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active.
-	Once a duty is fulfilled, it cannot become again active/not fullfilled.</li>
-</ol>
-
-The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
-	<img src="ODRLDuty.png">
-
+We will begin by exemplifying the semantics of permissions that are not constrained by duties.
 	
 <hr>		
 	The ODRL policy examples used below to exemplify the semantics of Permission are taken from the examples in the 
@@ -371,6 +350,34 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	is computed independently from the refinement of the regulated action.<br>
 	
 	<hr>
+
+		
+		
+<h4>Semantics of Duty when it is used as an activation Condition of a Permission</h4> 
+
+Goal: determine if a Duty is fulfilled.<br>
+
+In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
+with all refinements satisfied, has been performed. <br>
+
+	The initial state of a duty is <b>inactive</b> if it has at least one Constraint.<br>
+	The initial state of a duty is <b>active</b> if it has not Constraints.<br>
+	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+<ol>
+	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; if its Constraints are all satisfied
+	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). </li>
+		
+	<li>If the duty is <b>active</b> and one of its Constraints becomes not satisfied the duty becomes <b>inactive</b>.
+	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
+	
+	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active.
+	Once a duty is fulfilled, it cannot become again active/not fullfilled.</li>
+</ol>
+
+The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
+	<img src="ODRLDuty.png">
+
+
 
 	<!--
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
