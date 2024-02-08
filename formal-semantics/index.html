@@ -311,13 +311,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	
 	<b>Acces control scenario</b>: if the requested print action satisfies the refinement, 
 	the action is permitted otherwise it is not permitted and the system will block it.<br>
-
-	<b>Monitoring scenario</b>: if a print action that satisfies the refinement is performed the permission is used.
-	If a print action that does not satisfies the refinement is performed and there is not another 
-	permission that permit it and assuming that default setting for the ODRL Evaluator is: 
-	"everything is prohibited unless explicitly permitted", then there is a violation.<br>
-        
-	<b>Acces control scenario</b>:
+	
 	<table border="1">
   	<tr>
     		<th>ID</th>
@@ -342,9 +336,12 @@ The life cycle of a duty is depicted in the figure below (states with the double
     	</tr>
 	</table>
 	<br>
-	
-	<b>Monitoring scenario</b>:
 
+	<b>Monitoring scenario</b>: if a print action that satisfies the refinement is performed the permission is used.
+	If a print action that does not satisfies the refinement is performed (line E14-2) and there is not another 
+	permission that permit the performed print action and assuming that default setting for the ODRL Evaluator is 
+	"everything is prohibited unless explicitly permitted", then there is a <b>violation</b> of the defaul prohibition.<br>
+	
 <table border="1">
   	<tr>
     		<th>ID</th>
@@ -371,12 +368,6 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<br>
 	In this scenario, the permission is active even if the refinement is not satisfied, because the activation state of the permission
 	is computed independently from the refinement of the regulated action.<br>
-	
-	If the situation is as described in row E13-2 (a print action is performed but the refinement is not satisfied)
-	assuming that: 
-	P1 is the only permission that regulates the print action and 
-	"everything is prohibited unless explicitly permitted", 
-	then there is a <b>violation</b> of the defaul prohibition.
 	
 	<hr>
 
