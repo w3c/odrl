@@ -272,7 +272,31 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	The ODRL policy examples used below to exemplify the semantics of Permission are taken from the examples in the 
 	<a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.<br><br>
 	
-	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a>
+	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
+	Type of Permission: Permission P1 is constrained by the Constraint C1. <br>
+	(The permission allows the <code>target</code> asset to be distributed, and includes a constraint of a dateTime condition 
+	that the permission can only be exercised until 2018-01-01).<br>
+
+	<table border="1">
+  	<tr>
+    		<th>ID</th>
+    		<th>P1.C1</th>
+		<th>P1</th>
+	 </tr>
+  	<tr>
+    		<td>E13-1</td>
+    		<td>not-satisfied</td>
+    		<td>inactive</td>
+    	</tr>
+  	<tr>
+    		<td>E13-2</td>
+    		<td>satisfied</td>
+    		<td>active</td>
+    	</tr>
+	</table>
+
+	<hr>
+
 	
 	
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22 (Permission)</a> <br>
