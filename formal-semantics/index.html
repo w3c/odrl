@@ -203,12 +203,16 @@
 		
 		<li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
 		odrl:refinement property) has a property called <b>satisfaction state</b> 
-		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. <br>
 		In the access control scenario, the value of the satisfaction state of a Refinement is computed according to the action that the 
-		user/agent requests to perform on digital resources.</li>
+		user/agent requests to perform on digital resources.<br>
+		In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions
+		represented in the state of the world.
+		</li>
 		
-		<li>Action with all its refinements has a property called <b>performance state</b> 
-		which can take the values of <b>performed</b> or <b>not-performed</b>.</li>
+		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
+		which can take the values of <b>performed</b> or <b>not-performed</b>. An action is performed if an action 
+                belonging to the "type" described in the Rule is actually performed on the basis of the state of the world.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinements of a requested 
@@ -317,17 +321,17 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>P1.R1</th>
+    		<th>P1.action.R1</th>
 		<th>P1</th>
-		<th>P1.Action</th>
-		<th>P1.deontic state</th>
+		<th>Requested Action</th>
+		<th>P1.usage_state</th>
 	 </tr>
   	<tr>
     		<td>E14-1</td>
     		<td>not-satisfied</td>
     		<td>inactive</td>
 		<td>blocked</td>
-		<td>not used</td>
+		<td>not-used</td>
     	</tr>
   	<tr>
     		<td>E14-2</td>
@@ -337,14 +341,15 @@ The life cycle of a duty is depicted in the figure below (states with the double
 		<td>used</td>
     	</tr>
 	</table>
-
+	<br>
+	
 	<b>Monitoring scenario</b>:
 
 <table border="1">
   	<tr>
     		<th>ID</th>
     		<th>P1</th>
-		<th>P1.Action.R1</th>
+		<th>P1.action.R1</th>
 		<th>P1.Action</th>
 		<th>P1.deontic state</th>
 	 </tr>
@@ -358,7 +363,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
   	<tr>
     		<td>E13-2</td>
     		<td>active</td>
-    		<td>not satisfied</td>
+    		<td>not-satisfied</td>
 		<td>performed</td>
 		<td>not-used</td>
     	</tr>
