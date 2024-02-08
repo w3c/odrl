@@ -233,16 +233,16 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	<li>all the existing refinements of the Action, AssetCollection, PartyCollection are satisfied 
 	(only for the access control scenario).</li>
 	</ul>
-	If one of those conditions is not met, the Permission is <b>inactive</b>.<br>
+	If one of those conditions is not met, the Permission is <b>inactive</b>.<br><br>
 	
 	When an action (with all the refinements satisfied) regulated by an <b>active</b> permission is performed 
-	the permission is used.<br>
+	the permission is <b>used</b>.<br><br>
 	
-	In the access control scenario: if one of the refinements of the <b>requested</b> action does not satisfy
+	In the <b>access control scenario</b>: if one of the refinements of the <b>requested</b> action does not satisfy
 	the refinements of the permission, the action is not permitted and it is blocked, 
-	therefore it is not performed.<br>
+	therefore it is not performed.<br><br>
 	
-	In the monitoring scenario: 
+	In the <b>monitoring scenario</b>: 
 	if there is a <b>performed action</b> belonging to the type regulated by the permission that does not satisfy
 	one of the refinements (of the action, of the target, or of the assigneee of the Permission) 
 	a violation may be generated (this depends on the other permissions and if the default setting for the ODRL Evaluator
@@ -251,12 +251,9 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	<!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
 	<img src="ODRLPermission.png">
 	-->
-
-In the following the semantics of permissions that are not constrained by duties is discussed by using some real examples.
-	
 <hr>		
-	The ODRL policy examples used below to exemplify the semantics of Permission are taken from the examples in the 
-	<a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.<br><br>
+	The ODRL policy examples used below to exemplify the semantics of Permission that are not constrained by duties 
+	are taken from the examples in the <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.<br><br>
 	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
 	<b>Type of Permission</b>: Permission P1 is constrained by the Constraint C1. <br>
