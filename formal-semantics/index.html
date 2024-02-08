@@ -279,9 +279,10 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
 	<b>Type of Permission</b>: Permission P1 is constrained by the Constraint C1. <br>
-	(The permission allows the <code>target</code> asset to be distributed, and includes a <code>constraint</code>
-	of a <code>dateTime</code> condition that the permission can only be exercised until 2018-01-01).<br>
-	When the constraint is no longer satisfied and the permission is no longer active.<br>
+	(The permission allows the target asset to be distributed, it includes a constraint 
+	that the permission can only be exercised until 2018-01-01).<br>
+	When the constraint is satisfied, i.e. before the first day of 2018) the permission is active.<br>
+	When the constraint is no longer satisfied, the permission is no longer active.<br>
 
 	<table border="1">
   	<tr>
@@ -306,11 +307,11 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	
 <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a><br>
 	<b>Type of Permission</b>: Permission P1 permits an action that is refined by Refinement R1. <br>
-	(The permission allows the target asset to be printed, and also include a refinement of less 
-	than or equal to 1200 dpi resolution).<br>
+	(The permission allows the target asset to be printed and also include a refinement indicating that the resolution 
+	must be less than or equal to 1200 dpi).<br>
 	
 	<b>Acces control scenario</b>: if the requested print action satisfies the refinement, 
-	the action is permitted otherwise it is not permitted and the system will block it.<br>
+	the action is permitted, otherwise it is not permitted and the system will block it.<br>
 	
 	<table border="1">
   	<tr>
@@ -358,7 +359,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 		<td>used</td>
     	</tr>
   	<tr>
-    		<td>E13-2</td>
+    		<td>E14-2</td>
     		<td>active</td>
     		<td>not-satisfied</td>
 		<td>performed</td>
