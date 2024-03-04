@@ -400,10 +400,10 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
 	The semantics of Permission requires that the compensate action (included in the duty) must be performed <b>before</b> to get an active permission.
 	(In <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> such a temporal requirement is expressed with a constraint of the duty, 
-	but it is useless because it is given by the semantics of Permissions).<br>
+	but it is useless because it is given by the semantics of Permissions).<br><br>
 
 	<b>Acces control scenario</b>: if the Duty is fullfilled the requested play action (the type of the requested action must be play) is permitted, 
-	otherwise it is not permitted and the system will block it. Given that the Duty has not Constraints is always active.<br>
+	otherwise it is not permitted and the system will block it. Given that the Duty has not Constraints, it is always active.<br>
 	
 	<table border="1">
   	<tr>
@@ -434,7 +434,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 
 
 	<b>Monitoring scenario</b>: The Permission may be active or inactive. If the Permission is active and a play action of the target asset is performed, the permission is used.
-	If the Permission is inactive and a play action of the target asset is performed, then there is a <b>violation</b>.<br>
+	If the Permission is inactive and a play action of the target asset is performed, then there is a <b>violation</b>.<br><br>
 
 	<table border="1">
   	<tr>
@@ -444,7 +444,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 		<th>P1</th>
 		<th>P2.Action</th>
 		<th>P1.usage state</th>
-		<th>Violations</th>
+		<th>Violation</th>
  	 </tr>
   	<tr>
     		<td>E22-1-m</td>
