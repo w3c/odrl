@@ -217,7 +217,9 @@
 		
 		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
 		which can take the values of <b>performed</b> or <b>not-performed</b>. An action is performed if an action 
-                belonging to the "type" described in the Rule is actually performed on the basis of the state of the world.</li>
+                belonging to the "type" described in the Rule is actually performed 
+			(i.e. the odrl:action property has value "play" and an action belonging to the type "play" is actually performed)
+			on the basis of the state of the world.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
@@ -362,27 +364,22 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 
 Goal: determine if a Duty is fulfilled.<br>
 
-In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all constraints are satisfied and if its action, 
+In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and if its action, 
 with all refinements satisfied, has been performed. <br>
 
-	The initial state of a duty is <b>inactive</b> if it has at least one Constraint.<br>
-	The initial state of a duty is <b>active</b> if it has not Constraints.<br>
-	In order to evaluate if a duty is fulfilled, it is necessary to perform the following steps:
+	The initial state of a duty is <b>inactive</b>.<br>
+	In order to evaluate if a Duty is fulfilled, it is necessary to perform the following steps:
 <ol>
-	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; if its Constraints are all satisfied
-	the duty becomes <b>active</b> (which is equal to <b>not fulfilled</b>). </li>
+	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; <br>
+	- if its Constraints are all satisfied the duty is <b>active</b>. <br>
+	- if one of its Constraints is not satisfied the duty is <b>inactive. (For example, the duty to pay a ticket to enter a museum may be active only on Sundays.)</b>
+	</li>
 		
-	<li>If the duty is <b>active</b> and one of its Constraints becomes not satisfied the duty becomes <b>inactive</b>.
-	(For example, the duty to pay a ticket to enter a museum may be active only on Sundays.).</li>
-	
-	<li> If the duty is active and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b> otherwise remains active.
-	Once a duty is fulfilled, it cannot become again active/not fullfilled.</li>
+	<li> If the Duty is <b>active</b> and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b>.</li>
 </ol>
 
 The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
 	<img src="ODRLDuty.png">
-
-
 
 	<!--
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
