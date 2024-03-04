@@ -217,8 +217,8 @@
 		
 		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
 		which can take the values of <b>performed</b> or <b>not-performed</b>. An action is performed if an action 
-                belonging to the "type" described in the Rule is actually performed 
-			(i.e. the odrl:action property has value "play" and an action belonging to the type "play" is actually performed)
+                belonging to the "type" described in the Rule is actually performed on the target asset
+			(i.e. the odrl:action property has value "play" and an action belonging to the type "play" on the target asset is actually performed)
 			on the basis of the state of the world.</li>
 	</ul>
 		
@@ -434,8 +434,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 
 
 	<b>Monitoring scenario</b>: The Permission may be active or inactive. If the Permission is active and a play action of the target asset is performed, the permission is used.
-	If the Permission is inactive and a play action of the target asset is performed and assuming that there is not another permission that permit such an action, 
-	then there is a <b>violation</b>.<br>
+	If the Permission is inactive and a play action of the target asset is performed, then there is a <b>violation</b>.<br>
 
 	<table border="1">
   	<tr>
@@ -445,6 +444,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 		<th>P1</th>
 		<th>P2.Action</th>
 		<th>P1.usage state</th>
+		<th>Violations</th>
  	 </tr>
   	<tr>
     		<td>E22-1-m</td>
@@ -452,7 +452,8 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<td>active</td>
     		<td>inactive</td>
     		<td>performed</td>	  
-    		<td>used</td>	  
+    		<td>not-used</td>	  
+		<td>Yes</td>	  
   	</tr>
   	<tr>
     		<td>E22-2-m</td>
@@ -460,7 +461,8 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<td>fulfilled</td>
     		<td>active</td>
    		<td>performed</td>
-   		<td>violation</td>
+   		<td>used</td>
+		<td>No</td>
   	</tr>
 	</table>
 <!--
