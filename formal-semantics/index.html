@@ -381,44 +381,57 @@ with all refinements satisfied, has been performed. <br>
 The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
 	<img src="ODRLDuty.png">
 
-	<!--
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
+	<h4>Examples (Permission with duties)</h4> 
 	
-	The Party <code>http://example.com/assigner:sony</code> makes an Offer to play the target asset http://example.com/music/1999.mp3. 
+	
+	The ODRL policy examples used below to exemplify the semantics of Permission are taken from the examples 
+	in the <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.
+	The <code>@type</code> of the policies in the examples is assumed to be <code>set</code> and not <code>offer</code> as it is in the 
+	ODRL Information Model 2.2.
+	<br><br>
+	
+	
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
+	<b>Type of Permission</b>: Permission P1 permits an action A2 (play the target) and it is constrained by the Duty D1. 
+	The Duty D1 has not Constraints. 
+	The Duty D1 regulates an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro).<br>
+	
+	The Party <code>http://example.com/assigner:sony</code> sets a permission to play the target asset http://example.com/music/1999.mp3. 
 	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
 	The semantics of Permission requires that the compensate action (included in the duty) must be performed <b>before</b> to get an active permission.
 	(In <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> such a temporal requirement is expressed with a constraint of the duty, 
 	but it is useless because it is given by the semantics of Permissions).<br>
-	Example 22 can be formulated as: the Permission P1 to perform Action A2 (play mp3 file) constrained by the Duty D1. 
-	The Duty D1 has not Constraints. D1 has an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro):
+
+	<b>Acces control scenario</b>: if the Duty is fullfilled the requested play action (the type of the requested action must be play) is permitted, 
+	otherwise it is not permitted and the system will block it. Given that the Duty has not Constraints is always active.<br>
 	
 	<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>D1.R1</th>
+    		<th>D1.Action.R1</th>
 		<th>D1</th>
 		<th>P1</th>
-		<th>P1.A2</th>
-		<th>Violations</th>
+		<th>PRequested Action</th>
+		<th>P1.usage state</th>
  	 </tr>
   	<tr>
-    		<td>E22-1</td>
+    		<td>E22-1-ac</td>
     		<td>not satisfied</td>
-    		<td>active/not fulfilled</td>
+    		<td>active</td>
     		<td>inactive</td>
-    		<td>performed</td>	  
-    		<td>depends on default setting and other permissions</td>	  
+    		<td>not-performed</td>	  
+    		<td>not-used</td>	  
   	</tr>
   	<tr>
-    		<td>E22-2</td>
-    		<td>satisfied (performed)</td>
+    		<td>E22-2-ac</td>
+    		<td>satisfied</td>
     		<td>fulfilled</td>
     		<td>active</td>
    		<td>performed</td>
-   		<td>No (P1 is used).</td>
+   		<td>used</td>
   	</tr>
 	</table>
-
+<!--
 	<hr>
 
 	Example 22-bis (Permission) = to Example 22 + duty D1 has a constraint C1, i.e. the compensate action is required only on Sundays. <br>
