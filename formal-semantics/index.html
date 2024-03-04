@@ -411,7 +411,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<th>D1.Action.R1</th>
 		<th>D1</th>
 		<th>P1</th>
-		<th>PRequested Action</th>
+		<th>Requested Action</th>
 		<th>P1.usage state</th>
  	 </tr>
   	<tr>
@@ -429,6 +429,38 @@ The life cycle of a duty is depicted in the figure below (states with the double
     		<td>active</td>
    		<td>performed</td>
    		<td>used</td>
+  	</tr>
+	</table>
+
+
+	<b>Monitoring scenario</b>: The Permission may be active or inactive. If the Permission is active and a play action of the target asset is performed, the permission is used.
+	If the Permission is inactive and a play action of the target asset is performed and assuming that there is not another permission that permit such an action, 
+	then there is a <b>violation</b>.<br>
+
+	<table border="1">
+  	<tr>
+    		<th>ID</th>
+    		<th>D1.Action.R1</th>
+		<th>D1</th>
+		<th>P1</th>
+		<th>P2.Action</th>
+		<th>P1.usage state</th>
+ 	 </tr>
+  	<tr>
+    		<td>E22-1-m</td>
+    		<td>not satisfied</td>
+    		<td>active</td>
+    		<td>inactive</td>
+    		<td>performed</td>	  
+    		<td>used</td>	  
+  	</tr>
+  	<tr>
+    		<td>E22-2-m</td>
+    		<td>satisfied</td>
+    		<td>fulfilled</td>
+    		<td>active</td>
+   		<td>performed</td>
+   		<td>violation</td>
   	</tr>
 	</table>
 <!--
