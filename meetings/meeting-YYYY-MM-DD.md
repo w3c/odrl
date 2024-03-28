@@ -3,9 +3,12 @@
 ## Attendees
 
 **Present:** renato, beatriz, victor, nicoletta, ...
-**Regrets:** 
-**Chair:** 
-**Scribe:** 
+
+**Regrets:** ...
+
+**Chair:** ...
+
+**Scribe:** ...
 
 ## Link to previous meeting notes
 
@@ -22,11 +25,13 @@
 ### Topic 1
 
 *beatriz:* comment on topic 1
+
 *renato:* follow up comment
 
 ### Topic 2
 
 *beatriz:* comment on topic 2
+
 *renato:* follow up comment
 
 ## Next meeting
