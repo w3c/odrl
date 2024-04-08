@@ -221,8 +221,8 @@ If the example above permitted the general use of Movie 9898, this permission pe
 	"constraint": [{
            "leftOperand": "spatial",
            "operator": "eq",
-           "rightOperand":  "https://www.wikidata.org/wiki/Q183",
-	   "comment": "i.e Germany"
+           "rightOperand":  "https://www.wikidata.org/resource/Q183",
+	         "dct:comment": "i.e Germany"
        }]
  }]
 }		
@@ -302,10 +302,11 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }
 </pre></div>
 
+<!--
 <h4>2.2 Further specifying an Asset</h4>
 <p>In financial markets, the value of a piece of data is sometimes proportional to its timeliness. 15-minute delayed stock price is often much cheaper than real-time. We'd probably want different permissions to reflect this. How would we specify the 15-minute delay?</p>
 <p>We could model them as two different Assets. Or we could use Constraints on the same Asset, the stock price:</p>
-			
+-->			
 			
 			
 			
@@ -375,7 +376,7 @@ ODRL policies with more than one rule can be simplified (<a href="https://www.w3
 {
 	"@context": "http://www.w3.org/ns/odrl.jsonld",
 	"@type": "Set",
-	"uid": "http://example.org/policy/5",
+	"uid": "http://example.org/policy/6",
 	"action": "use",
 	"target": "http://example.com/asset/1",
 	"permission": [{
@@ -386,33 +387,34 @@ ODRL policies with more than one rule can be simplified (<a href="https://www.w3
 	}]
 }	
 	</pre></div>
-	
+
+<!--	
 <h4>6 How to represent an agreement and an offer</h4>		
-All the examples above declared that there existed a certain permission, prohibition or obligation. Example 7 shows ....
+All the examples above declared that there existed a certain permission, prohibition or obligation. In Example 2, John has been offered the permission to play a movie 
 
 <div class="example"><div class="example-title marker"><span>Example 7</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
- "@type": "Set",
+ "@type": "Offer",
  "uid": "http://example.com/policy:1010",
  "prohibition": [{
 	"target": "http://example.com/asset:9898.movie",
-	"assignee": "John",
+	"assigner": "John",
 	"action": "play"
  }]
 }		
-		</pre></div>
+		</pre></div> -->
 	
 <h4>7 How to generalize actions</h4>		
 	Permitting (or prohibiting) some general actions entail permitting (or prohibiting) other specific actions. In the example below, permitting <code>display</code> is redundant because having permitted <code>play</code> also implies permitting <code>display</code>.  
 	
-	<div class="example"><div class="example-title marker"><span>Example 8</span></div>
+	<div class="example"><div class="example-title marker"><span>Example 7</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
 	"@context": "http://www.w3.org/ns/odrl.jsonld",
 	"@type": "Set",
-	"uid": "http://example.org/policy/5",
+	"uid": "http://example.org/policy/7",
 	"permission": [{
 		"assignee": "http://example.com/party/Alice",
 		"action": [ "play", <strike>"display"</strike> ],
