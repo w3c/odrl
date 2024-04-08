@@ -291,8 +291,8 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }		
 </pre></div>	
 
-<h3>Refining Action, Asset, or Party</h3>
-<p>Constraints can also be used to 'inject' additional semantics into the definition of an Action, Asset, or Party</p>
+<!--<h3>Refining Action, Asset, or Party</h3>
+<p>Constraints can also be used to 'inject' additional semantics into the definition of an Action, Asset, or Party</p>-->
 			
 <h4>How to narrow the applicability of an Action</h4>			
 <p>The following Permission allows the distribution of a video but restricts the delivery channel to mobile networks only. This video cannot be distributed from a website under this Permission.</p>
@@ -378,8 +378,8 @@ An ODRL can represent one or more <em>rules</em>. For example, the following ODR
 }		
 </pre></div>
 
-<h4>Shortcuts</h4>
-<h3>How to simplify policies with more than one rule</h3>	
+<h3>Practical questions</h3>
+<h4>How to simplify policies with more than one rule</h4>	
 ODRL policies with more than one rule can be simplified (<a href="https://www.w3.org/TR/odrl-model/#composition-compact
 ">Section 2.7.1</a> in the Information Model). Elements common to every rule can be expressed at root level. Policies making use of this feature are called <b>compact policies</b>, an example of them follows.
 
@@ -461,7 +461,7 @@ ODRL policies with more than one rule can be simplified (<a href="https://www.w3
 	
 	
 	
-<h3>How to use inferences</h3>		
+<h4>How to use inferences</h4>		
 	As per RDFS <a href="https://www.w3.org/TR/rdf-mt/#RDFSRules">entailment rule rdfs2</a>, the class of the policy resource <code>odrl:Policy</code> can be inferred, hence its specification is not necessary. As per the ODRL Information Model (<a href="https://www.w3.org/TR/odrl-model/#policy-set">2.1.1 Set Class</a>), Set is the default type of policy, hence its specification is not necessary. The policy shown in Example 3 is also equivalent to the policies in Example 1  (odrl prefix declaration has also been removed for clarity).
 
 	<div class="example"><div class="example-title marker"><span>Example 13</span></div>
