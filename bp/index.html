@@ -16,7 +16,7 @@
 		
 	</head>
 	<body>
-		<section  id="abstract">
+		<section  id="examples">
 			<p>This document presents several examples of the use of ODRL V2.2, describes good implementation practices and provides sample ODRL policies.</p>
 			 
 		</section>
@@ -115,12 +115,12 @@
 		  
 		</section>
 
-		<section id="examples">
-		<h2>Examples of use</h2> 	
+		<section id="scenarios">
+		<h2>Scenarios</h2> 	
 		
 		ODRL is a structured language to express that something is permitted, forbidden or obliged, possibly limited by some constraints. ODRL is of particular interest for representing computer policies, licenses and any document where deontic modalities need to have a digital form. ODRL was specified considering <a href="http://w3c.github.io/poe/ucr/">27 use cases</a>, nonetheless a few examples of use follow.
 		
-		<h3>Example 1: Representation of common licenses</h3> 
+		<h3>Scenario 1: Representation of common licenses</h3> 
 		The use of common licenses has become popular among those publishing software, data, photographs and other resources online. These text licenses describe under which conditions the resource can be used. Examples of licenses are the GNU General Public License, the Creative Commons CC-BY 4.0 license, or the UK Open Government License. 
 		
 		The key information in these text documents (waived rights, constraints, prohibitions and obligations) can be represented in a structured language (they have been actually represented in RDF, for example see <a href="https://www.w3.org/2012/pyRdfa/extract?uri=http%3A%2F%2Fwww.nationalarchives.gov.uk%2Fdoc%2Fopen-government-licence%2Fversion%2F3%2F&format=turtle&rdfagraph=output&vocab_expansion=false&rdfa_lite=false&embedded_rdf=true&space_preserve=true&vocab_cache=true&vocab_cache_report=false&vocab_cache_refresh=false">the latter</a>). ODRL can also be used to describe the core information in the licenses. Having the licensing information in a digital form enables:
@@ -140,14 +140,14 @@ http://licentia.inria.fr/
 http://www.europeandataportal.eu/sites/default/files/edp-licence-compatibility-published_v1_0.xlsx		
 		-->
 		
-		<h3>Example 2: Representation of access policies to digital resources</h3> 
+		<h3>Scenario 2: Representation of access policies to digital resources</h3> 
 		Computer policies govern the access to digital resources. Whereas ODRL provides no mechanism whatsoever to implement any access control logic, ODRL policies can describe how an external access control system should behave. Advantages of having an ODRL representation of access policies:
 		<ul>
 		<li><em>Neutrality</em>. ODRL is completely neutral about the technology used (if any) to grant access to a certain resource.</li>
 		<li><em>Extendability</em>. New allowed actions and new constraints can be created. They can be arranged in a hierarchical form.</li>
 		</ul>
 			
-		<h3>Example 3: Representation of rights in rules</h3>
+		<h3>Scenario 3: Representation of rights in rules</h3>
 		Even if ODRL is not capable of accessing the subtleties of legislation, the actions that are forbidden in a certain sorts of noms can be represented in ODRL and act as a summary. 	See <a href="http://w3c.github.io/poe/ucr/#POE.UC.04">UC4</a>. Advantages of an ODRL representation:
 		<ul>
 		<li><em>Summarization</em>. Key actions that are prohibited or permitted are captured in an ODRL policy, hence favoring summarization.</li>
@@ -162,17 +162,18 @@ http://www.europeandataportal.eu/sites/default/files/edp-licence-compatibility-p
 
 
 		<section id="styles">
-		<h2>Sample policies</h2> 
+		<h2>Cookbook</h2> 
 <!--		We can resume here the examples in the <a href="https://www.w3.org/2016/poe/wiki/Best_Practices">wiki</a>. -->
 
-		<h3>1 How to Represent a General Permission</h3>
+		<h3>Simple Permissions</h3>
+		<h4>How to represent a policy in JSON-LD</h4>
 		The following ODRL policy might be read as "<i>Movie 9898 can be used</i>".
-		<div class="example"><div class="example-title marker"><span>Example 1.0</span></div>
+		<div class="example"><div class="example-title marker"><span>Example 1</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 00  {
 01	 "@context": "http://www.w3.org/ns/odrl.jsonld",
 02	 "@type": "Set",
-03	 "uid": "http://example.com/policy:1010",
+03	 "uid": "https://w3c.github.io/odrl/bp/examples/1",
 04	 "permission": [{
 05 		"target": "http://example.com/asset:9898.movie",
 06 		"action": "use"
@@ -184,20 +185,35 @@ http://www.europeandataportal.eu/sites/default/files/edp-licence-compatibility-p
 		<li>An ODRL policy is represented as a JSON Object (lines 00 and 08). In particular, ODRL policies can be represented in <a href="https://json-ld.org/">JSON-LD</a> -a lightweight Linked Data format.</li>
 	    <li>The context of the JSON-LD policy is, as in every ODRL policy, <code>http://www.w3.org/ns/odrl.jsonld</code> (see line 01).</li>
 	    <li>Type <code>odrl:Set</code> means this is positive assertion. Somebody <i>affirms</i> that Movie 9898 can be used (line 02).</li>
-	    <li>The policy is identified as <code>http://example.com/policy:1010</code>. ODRL policies are best identified with <a href="https://tools.ietf.org/html/rfc3986">URI</a>s (see line 03).</li>
+	    <li>The policy is identified as <code>https://w3c.github.io/odrl/bp/examples/1</code>. ODRL policies are best identified with <a href="https://tools.ietf.org/html/rfc3986">URI</a>s (see line 03).</li>
 		<li>ODRL policies have one or more rules: permissions, obligations, prohibitions (line 04). You may want to see the main <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL diagram</a>.  </li>
 	    <li>The target of the policy is the resource referenced by <code>http://example.com/asset:9898.movie</code>, probably a movie (line 05). Assets are best identified with URIs.</li>
 	    <li>The permitted action on the asset is <i>use</i> (line 06). You may want to read its <a href="https://www.w3.org/TR/odrl-vocab/#term-use">definition</a>, or browse other possible actions predefined by the ODRL specs.</li>
 		</ul>
 		
-<h4>1.1 How to restrict the permission to a specified party</h4>		
+<h4>How to represent an ODRL policy with RDF Turtle</h4>		
+		JSON-LD is only one of the possible serializations of ODRL a policy. The following example shows the same policy as in Example 1 but in RDF Turtle. 
+		An <a href="https://www.w3.org/TR/vocab-odrl/#term-Policy">ODRL policy</a> is an instance of the class <code>odrl:Policy</code>, which is defined in the ODRL Ontology. No knowledge on the ODRL Ontology is needed if you want to use ODRL.		
+		<div class="example"><div class="example-title marker"><span>Example 1 (turtle)</span></div>
+		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
+@prefix odrl: &lt;http://www.w3.org/ns/odrl/2/&gt;
+
+&lt;http://example.org/policy/1&gt; a odrl:Policy, odrl:Set ;
+  odrl:permission [
+    odrl:target &lt;https://w3c.github.io/odrl/bp/examples/1&gt; ;
+    odrl:assignee &lt;http://example.com/party/Alice&gt; ;
+    odrl:action odrl:use
+  ] ;
+		</pre></div>	
+
+<h4>How to restrict the permission to a specified party</h4>		
 If the example above permitted the general use of Movie 9898, this permission permits only John to play the movie.
-<div class="example"><div class="example-title marker"><span>Example 1.1</span></div>
+<div class="example"><div class="example-title marker"><span>Example 2</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/2",
  "permission": [{
  	"target": "http://example.com/asset:9898.movie",
 	"assignee": "John",
@@ -206,15 +222,15 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }		
 		</pre></div>
 
-<h4>1.2 How to restrict the validity of a permission to a specific circumstance or set of circumstances</h4>		
-<p>Photographs are often licensed on a geographic basis: global rights will likely be more expensive than a country-specific permission. Such conditions are frequently modelled in ODRL by Constraints.</p>
+<h4>How to restrict the validity of a permission to a specific location</h4>		
+<p>Photographs are often licensed on a geographic basis: global rights will likely be more expensive than a country-specific permission. Such conditions are frequently modelled in ODRL by Constraints. The way of representing a geographic entity has not been standardized, though.</p>
 
-<div class="example"><div class="example-title marker"><span>Example 1.2A</span></div>
+<div class="example"><div class="example-title marker"><span>Example 3</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/3",
  "permission": [{
  	"target": "http://example.com/asset:9898.movie",
 	"action": "display",
@@ -228,65 +244,65 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }		
 		</pre></div>
 
-<p>Photographs for the news media can sometimes be "embargoed" - only publishable after a certain data. We can achieve this by putting a time-Constraint on the Permission.</p>
-			
+<h4>How to restrict the validity of a permission to a specific time</h4>		
+<p>Photographs for the news media can sometimes be "embargoed" - only publishable after a certain data. We can achieve this by putting a time-Constraint on the Permission.</p>			
 <p>The following permission can only be exercised after the turn of the New Year in 2019.</p>
-
-<div class="example"><div class="example-title marker"><span>Example 1.2B</span></div>
+<div class="example"><div class="example-title marker"><span>Example 4</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/4",
  "permission": [{
  	"target": "http://example.com/asset:9898.movie",
 	"action": "display",
 	"constraint": [{
            "leftOperand": "dateTime",
-           "operator": "gt",
+           "operator": "gte",
            "rightOperand":  { "@value": "2019-01-01", "@type": "xsd:date" }
        }]
  }]
 }		
 		</pre></div>	
 			
+<h4>How to restrict the validity of a permission to both a location and a time</h4>					
 <p>We can easily create a permission that only allows the picture to be displayed in Germany after 2018 by adding both Constraints. In this simple scenario, ODRL insists both Constraints are satisfied before the Permission becomes active.</p> 
 
-<div class="example"><div class="example-title marker"><span>Example 1.2C</span></div>
+<div class="example"><div class="example-title marker"><span>Example 5</span></div>
 <pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/5",
  "permission": [{
  	"target": "http://example.com/asset:9898.movie",
 	"action": "display",
 	"constraint": [{
            "leftOperand": "dateTime",
-           "operator": "gt",
+           "operator": "gte",
            "rightOperand":  { "@value": "2019-01-01", "@type": "xsd:date" }
 	   }, {
            "leftOperand": "spatial",
            "operator": "eq",
-           "rightOperand":  "https://www.wikidata.org/wiki/Q183",
+           "rightOperand":  "https://www.wikidata.org/resource/Q183",
 	   "comment": "i.e Germany"
        }]
  }]
 }		
 </pre></div>	
 
-<h3>2 How to refine the specification of an Action, Asset, or Party</h3>
+<h3>Refining Action, Asset, or Party</h3>
 <p>Constraints can also be used to 'inject' additional semantics into the definition of an Action, Asset, or Party</p>
 			
-<h4>2.1 Narrowing the applicability of an Action</h4>			
+<h4>How to narrow the applicability of an Action</h4>			
 <p>The following Permission allows the distribution of a video but restricts the delivery channel to mobile networks only. This video cannot be distributed from a website under this Permission.</p>
 			
-<div class="example"><div class="example-title marker"><span>Example 2.1</span></div>
+<div class="example"><div class="example-title marker"><span>Example 6</span></div>
 <pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
     "@context": "http://www.w3.org/ns/odrl.jsonld",
     "@type": "Set",
-    "uid": "http://example.com/policy:6161",
+    "uid": "https://w3c.github.io/odrl/bp/examples/6",
     "permission": [{
        "target": "http://example.com/asset:9898.movie",
        "assigner": "http://example.com/org:616",
@@ -302,23 +318,18 @@ If the example above permitted the general use of Movie 9898, this permission pe
 }
 </pre></div>
 
-<!--
-<h4>2.2 Further specifying an Asset</h4>
-<p>In financial markets, the value of a piece of data is sometimes proportional to its timeliness. 15-minute delayed stock price is often much cheaper than real-time. We'd probably want different permissions to reflect this. How would we specify the 15-minute delay?</p>
-<p>We could model them as two different Assets. Or we could use Constraints on the same Asset, the stock price:</p>
--->			
 			
 			
-			
-<h3>2 How to represent an obligation</h3>
-Example 3 shows how to oblige John to play the movie.
+<h3>Obligations and permissions</h3>
+<h4>How to specify an obligation</h4>			
+This example shows how to oblige John to play the movie.
 
-<div class="example"><div class="example-title marker"><span>Example 3</span></div>
+<div class="example"><div class="example-title marker"><span>Example 7</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/7",
  "obligation": [{
 	"target": "http://example.com/asset:9898.movie",
 	"assignee": "John",
@@ -327,33 +338,33 @@ Example 3 shows how to oblige John to play the movie.
 }		
 		</pre></div>
 
-<h3>3 How to represent a prohibition </h3>
-Example 4 shows how to prohibit John playing the movie.
-
-<div class="example"><div class="example-title marker"><span>Example 4</span></div>
+<h4>How to represent a prohibition</h4>
+This example shows how to prohibit John playing the movie.
+<div class="example"><div class="example-title marker"><span>Example 8</span></div>
 		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
  "@context": "http://www.w3.org/ns/odrl.jsonld",
  "@type": "Set",
- "uid": "http://example.com/policy:1010",
+ "uid": "https://w3c.github.io/odrl/bp/examples/8",
  "prohibition": [{
 	"target": "http://example.com/asset:9898.movie",
 	"assignee": "John",
 	"action": "play"
  }]
 }		
-		</pre></div>
+		</pre>
+	</div>
 
 	
-<h3>4 How to represent a permission and a prohibition</h3>		
-	An ODRL can represent one or more <em>rules</em>. For example, the following ODRL policy might be read as "Alice can use Asset 1, but Bob can't".
+<h4>How to represent a permission and a prohibition</h4>		
+An ODRL can represent one or more <em>rules</em>. For example, the following ODRL policy might be read as "Alice can use Asset 1, but Bob can't".
 
-	<div class="example"><div class="example-title marker"><span>Example 5</span></div>
+	<div class="example"><div class="example-title marker"><span>Example 9</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
 	"@context": "http://www.w3.org/ns/odrl.jsonld",
 	"@type": "Set",
-	"uid": "http://example.org/policy/5",
+	"uid": "http://example.org/policy/9",
 	"permission": [{
 		"target": "http://example.com/asset/1",
 		"assignee": "http://example.com/party/Alice",
@@ -367,16 +378,17 @@ Example 4 shows how to prohibit John playing the movie.
 }		
 </pre></div>
 
-<h3>5 How to simplify policies with more than one rule</h3>	
+<h4>Shortcuts</h4>
+<h3>How to simplify policies with more than one rule</h3>	
 ODRL policies with more than one rule can be simplified (<a href="https://www.w3.org/TR/odrl-model/#composition-compact
 ">Section 2.7.1</a> in the Information Model). Elements common to every rule can be expressed at root level. Policies making use of this feature are called <b>compact policies</b>, an example of them follows.
 
-	<div class="example"><div class="example-title marker"><span>Example 6</span></div>
+	<div class="example"><div class="example-title marker"><span>Example 10</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
 	"@context": "http://www.w3.org/ns/odrl.jsonld",
 	"@type": "Set",
-	"uid": "http://example.org/policy/6",
+	"uid": "http://example.org/policy/10",
 	"action": "use",
 	"target": "http://example.com/asset/1",
 	"permission": [{
@@ -388,33 +400,15 @@ ODRL policies with more than one rule can be simplified (<a href="https://www.w3
 }	
 	</pre></div>
 
-<!--	
-<h4>6 How to represent an agreement and an offer</h4>		
-All the examples above declared that there existed a certain permission, prohibition or obligation. In Example 2, John has been offered the permission to play a movie 
-
-<div class="example"><div class="example-title marker"><span>Example 7</span></div>
-		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-{
- "@context": "http://www.w3.org/ns/odrl.jsonld",
- "@type": "Offer",
- "uid": "http://example.com/policy:1010",
- "prohibition": [{
-	"target": "http://example.com/asset:9898.movie",
-	"assigner": "John",
-	"action": "play"
- }]
-}		
-		</pre></div> -->
 	
-<h4>7 How to generalize actions</h4>		
-	Permitting (or prohibiting) some general actions entail permitting (or prohibiting) other specific actions. In the example below, permitting <code>display</code> is redundant because having permitted <code>play</code> also implies permitting <code>display</code>.  
-	
-	<div class="example"><div class="example-title marker"><span>Example 7</span></div>
+<h4>How to use the class hierarchy</h4>		
+	Permitting (or prohibiting) some general actions entail permitting (or prohibiting) other specific actions. In the example below, permitting <code>display</code> is redundant because having permitted <code>play</code> also implies permitting <code>display</code>.  	
+	<div class="example"><div class="example-title marker"><span>Example 11</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 {
 	"@context": "http://www.w3.org/ns/odrl.jsonld",
 	"@type": "Set",
-	"uid": "http://example.org/policy/7",
+	"uid": "http://example.org/policy/11",
 	"permission": [{
 		"assignee": "http://example.com/party/Alice",
 		"action": [ "play", <strike>"display"</strike> ],
@@ -431,124 +425,93 @@ All the examples above declared that there existed a certain permission, prohibi
 	
 	Although the actions in the ODRL Core Vocabulary do not have these implications, and although the actions in the ODRL Core Vocabulary are hardly dependent from each other, this may be of interest if you some day want to define your own actions.
 	
-	<h3>Connect an odrl:Agreement with an odrl:Offer and an odrl:Request</h3>
+	<h4>How to connect an odrl:Agreement with an odrl:Offer and an odrl:Request</h4>
 	<p>A party publishes an <code>odrl:Offer</code> policy for the target data <code>http://example.com/asset:1</code> and a second party makes an <code>odrl:Request</code> to that asset. The parties reach an agreement which is recorded using an <code>odrl:Agreement</code>.</p>
 	<p>The <a href="http://purl.org/dc/terms/references">dcterms:references</a> property should be used to connect the agreement with the offer and the request that originated it.</p>
 	<div class="example">
-		<div class="example-title marker"><span>Example X</span></div>
+		<div class="example-title marker"><span>Example 12</span></div>
 		<pre>
 			ex:offer a odrl:Offer ;
-				odrl:uid &lt;http://example.com/offer:1> ;
+				odrl:uid &lt;http://example.com/offer:1&gt; ;
 				odrl:permission [
-					odrl:target &lt;http://example.com/asset:1> ;
-					odrl:assigner &lt;http://example.com/party:A> ;
+					odrl:target &lt;http://example.com/asset:1&gt; ;
+					odrl:assigner &lt;http://example.com/party:A&gt; ;
 					odrl:action odrl:use
 				] .
 
 			ex:request a odrl:Request ;
-				odrl:uid &lt;http://example.com/request:1> ;
+				odrl:uid &lt;http://example.com/request:1&gt; ;
 				odrl:permission [
-					odrl:target &lt;http://example.com/asset:1> ;
-					odrl:assignee &lt;http://example.com/party:B> ;
+					odrl:target &lt;http://example.com/asset:1&gt; ;
+					odrl:assignee &lt;http://example.com/party:B&gt; ;
 					odrl:action odrl:use
 				] .
 
 			ex:agreement a odrl:Agreement ;
 				dcterms:references ex:offer, ex:request ;
-				odrl:uid &lt;http://example.com/agreement:1> ;
+				odrl:uid &lt;http://example.com/agreement:1&gt; ;
 				odrl:permission [
-					odrl:target &lt;http://example.com/asset:1> ;
-					odrl:assigner &lt;http://example.com/party:A> ;
-					odrl:assignee &lt;http://example.com/party:B> ;
+					odrl:target &lt;http://example.com/asset:1&gt; ;
+					odrl:assigner &lt;http://example.com/party:A&gt; ;
+					odrl:assignee &lt;http://example.com/party:B&gt; ;
 					odrl:action odrl:use
 				] .
 		</pre>
 	</div>
 	
 	
-		<h3>92. Representing ODRL with RDF Turtle (I)</h3>		
-		JSON-LD is only one of the possible serializations of ODRL a policy. The following example shows the same policy as in Example 1 but in RDF Turtle. It can also be XML.
-		An <a href="https://www.w3.org/TR/vocab-odrl/#term-Policy">ODRL policy</a> is an instance of the class <code>odrl:Policy</code>, which is defined in the ODRL Ontology. No knowledge on the ODRL Ontology is needed if you want to use ODRL.
-		
-		Example 1 and Example 2 have the same meaning.
-		<div class="example"><div class="example-title marker"><span>Example 2</span></div>
-		<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-@prefix odrl: &lt;http://www.w3.org/ns/odrl/2/&gt;
-
-&lt;http://example.org/policy/1&gt; a odrl:Policy, odrl:Set ;
-  odrl:permission [
-    odrl:target &lt;http://example.com/asset/1&gt; ;
-    odrl:assignee &lt;http://example.com/party/Alice&gt; ;
-    odrl:action odrl:use
-  ] ;
-		</pre></div>	
 	
-<h3>93. Representing ODRL with RDF Turtle (II)</h3>		
-	As per RDFS <a href="https://www.w3.org/TR/rdf-mt/#RDFSRules">entailment rule rdfs2</a>, the class of the policy resource <code>odrl:Policy</code> can be inferred, hence its specification is not necessary. As per the ODRL Information Model (<a href="https://www.w3.org/TR/odrl-model/#policy-set">2.1.1 Set Class</a>), Set is the default type of policy, hence its specification is not necessary. The policy shown in Example 3 is also equivalent to the policies in Example 1 and Example 2 (odrl prefix declaration has also been removed for clarity).
+<h3>How to use inferences</h3>		
+	As per RDFS <a href="https://www.w3.org/TR/rdf-mt/#RDFSRules">entailment rule rdfs2</a>, the class of the policy resource <code>odrl:Policy</code> can be inferred, hence its specification is not necessary. As per the ODRL Information Model (<a href="https://www.w3.org/TR/odrl-model/#policy-set">2.1.1 Set Class</a>), Set is the default type of policy, hence its specification is not necessary. The policy shown in Example 3 is also equivalent to the policies in Example 1  (odrl prefix declaration has also been removed for clarity).
 
-	<div class="example"><div class="example-title marker"><span>Example 3a</span></div>
+	<div class="example"><div class="example-title marker"><span>Example 13</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-&lt;http://example.com/policy:1010&gt; odrl:permission [
+&lt;http://example.org/policy/13&gt; odrl:permission [
   odrl:target &lt;http://example.com/asset:9898.movie&gt; ;
   odrl:action odrl:use
 ] ;
 	</pre></div>
+
+<h4>How to use hasPolicy</h4>		
 	Alternative forms for the same policy are also possible. For example, one might want to attribute a certain policy to a certain asset. 
 	As specified in the <a href="https://www.w3.org/TR/odrl-model/#policy-has">ODRL Information Model</a>, the following code would be equivalent.
 	The RDF triple in line 02 of Example 3b may be stored in a content repository, whereas lines 03 through 06 may be stored in a license repository.
-	<div class="example"><div class="example-title marker"><span>Example 3b</span></div>
+	<div class="example"><div class="example-title marker"><span>Example 14</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
 01 @prefix dct: &lt;http://purl.org/dc/terms/&gt; 
-02 &lt;http://example.com/asset:9898.movie&gt; odrl:hasPolicy &lt;http://example.com/policy:1010&gt; .
-03 &lt;http://example.com/policy:1010&gt; odrl:permission [
+02 &lt;http://example.com/asset:9898.movie&gt; odrl:hasPolicy &lt;http://example.org/policy/14&gt; .
+03 &lt;http://example.org/policy/14&gt; odrl:permission [
 04   odrl:target &lt;http://example.com/asset:9898.movie&gt; ;
 05   odrl:action odrl:use
 06 ] ;
 	</pre></div>	
-	
-	
-<h3>94. Representing ODRL with RDF Turtle (III)</h3>		
 
-Example XXX shows a second example, equivalent to Example 2.
-	<div class="example"><div class="example-title marker"><span>Example XXX</span></div>
+	<h4>How to embed a policy within a license</h4>		
+Let us imagine there is a license already in RDF, but with no embedded policies (like <a href="https://www.w3.org/community/odrl/wiki/Europeana/DPLA_In_Copyright_-_Educational_Use_Only">DPLA's license</a>). In this case, an odrl:permission is added, provided that the upper resource is made to be a odrl:Policy too.
+
+	<div class="example"><div class="example-title marker"><span>Example 15</span></div>
 	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-&lt;http://example.org/policy/5&gt; odrl:permission [
-  odrl:target &lt;http://example.com/asset/1&gt; ;
-  odrl:assignee &lt;http://example.com/party/Alice&gt; ;
-  odrl:action odrl:use
- ];
- odrl:prohibition [
-   odrl:target &lt;http://example.com/asset/1&gt; ;
-   odrl:assignee &lt;http://example.com/party/Bob&gt; ;
-   odrl:action odrl:use
- ].
- 	</pre></div>
-	
-Example XXX shows a second example, equivalent to Example 3.	
-	<div class="example"><div class="example-title marker"><span>Example XXX</span></div>
-	<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-&lt;http://example.org/policy/5&gt; 
-  odrl:target &lt;http://example.com/asset/1&gt; ;
-  odrl:action odrl:use ;
-  odrl:permission [
-    odrl:assignee &lt;http://example.com/party/Alice&gt; ;
-  ];
-  odrl:prohibition [
-   odrl:assignee &lt;http://example.com/party/Bob&gt; ;
-  ].
- 	</pre></div>	
-	
-	
+  &lt;http://rightsstatements.org/rs/ic-edu&gt; a dcterms:RightsStatement , <strike>odrl:Policy</strike> ;
+    skos:prefLabel "In Copyright - Educational Use Only"@en ;
+    skos:definition "This digital object is protected by copyright and/or related rights. For educational uses, no additional copyright permission is required from the copyright holder. Please refer to the Data Provider for additional information."@en ;
+    dc:creator: "Digital Public Library of America and Europeana Rights Working Group" ;
+    dcterms:hasVersion "1.0" ;
+    dcterms:modified "2014-12-18" ;
+    dc:identifier "ic-edu" ;
+    skos:relatedMatch premiscopy:cpr ;
+    <strike>odrl:permission [
+           odrl:action odrl:use ;
+           odrl:constraint [
+             odrl:operator odrl:eq ;
+             odrl:purpose &lt;http://rightsstatements.org/purpose/education&gt; # This would be preferably from an existing namespace, not ours.
+           ]</strike>
+    ] .
+		</pre></div>	
 	
         </section>
 		
-		
-		
-		
-<!--		<section id="implementation">
-		<h2>Implementation guidance</h2> 	
-		Two operations are defined over ODRL expressions: validation and evaluation. This section provides some guidance on how to implement the validation and the evaluation. See the <a href="https://www.w3.org/2016/poe/wiki/Validation">validation</a> article in the wiki.
-        </section> -->
+	
+<!--
 
 		<section id="data">
 		<h2>Sample ODRL policies</h2> 	
@@ -605,7 +568,7 @@ Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-software-200
 This version makes clear that the license is applicable to both software and text, by changing the name and substituting &quot;work&quot; for instances of &quot;software and its documentation.&quot; It moves &quot;notice of changes or modifications to the files&quot; to the copyright notice, to make clear that the license is compatible with other liberal licenses.
 &quot;&quot;&quot;@en .
 </pre></div>		
-        </section>
+        </section> -->
 		<section class='appendix'>
 			<h2>References</h2>
 				<dl class="bibliography" resource="">
