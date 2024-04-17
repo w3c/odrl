@@ -39,19 +39,21 @@
 		<p> <!-- the need for clarifying the semantics, the need for this document -->
 			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describe the behaviour of an ODRL implementation. 
 			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. Namely, given a collection of <b>ODRL policies</b>, 
-			a formal description of the <b>state of the world</b>, and for the access control scenario a requested/attempted action, the objective of an <b>ODRL Evaluator</b> is to determine: 
+			a formal description of the <b>state of the world</b>, and for the access control scenario a formal description of the action attempted by a given user located in a given place, 
+			the objective of an <b>ODRL Evaluator</b> is to determine: 
 			<ol>
 				<li>Which Permissions, Prohibitions, and Obligations (collectively named Rules) 
 					are <b>active</b>. A Rule is said to be active if it is in effect.</li>
-				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 				<li>Which Permissions have been <b>used</b>.</li>
+				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
+				
 			</ol>
-			The <b>ODRL Evaluator</b> is expected to work in at least these two activities:
+			The <b>ODRL Evaluator</b> is expected to work in at least one of these two scenarios:
 			<ol>
-				<li><b>Access control scenario</b>: the computation that determines the access/use by users or software agents to/of digital resources
-					considering a set of policies, the state of the world, and the description of the action that the user/agent 
-					requests/attempts to perform on certain digital resources.</li>
-				<li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and a state of the world, the task to 
+				<li><b>Access control scenario</b>: the evaluator determines the access by users or software agents to digital resources
+					considering a set of policies, the state of the world, and the description of the action that a user 
+					attempts to perform on certain digital resources.</li>
+				<li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world, the evaluator has to 
 					determine whether obligations or prohibitions have been fulfilled or violated by the performance of certain 
 					actions, and which permissions have been used.</li>
 				
@@ -268,11 +270,10 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
 
-	Type of Permission: <b>Permission P1 is constrained by Constraint C1.</b> <br>
-	The permission P1 in this example allows the target asset <code>http://example.com/document:1234</code> to be distributed, it includes a constraint C1	
+	Type of Permission: <b>Permission that is constrained by a Constraint.</b> <br>
+	The permission P6163 in this example allows the target asset <code>http://example.com/document:1234</code> to be distributed, it includes a constraint C	
 	that the permission can only be exercised until 2018-01-01.<br>
-	When the constraint C1 is satisfied, i.e. before the first day of 2018, the permission P1 is active.<br>
-	When the constraint C1 is no longer satisfied, the permission P1 is no longer active.<br>
+	
 <pre>
 {
     "@context": "http://www.w3.org/ns/odrl.jsonld",
@@ -292,28 +293,36 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 }
 </pre>
 <br>
+Evalution of P6163:<br>
+The constraint C must be evaluated on the state of the world, which includes a representation of the current time 
+(for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
+As long as the current time (represented in the state of the world) is before the first day of 2018, 
+the permission P1 is active. When the current time becomes after the first day of 2018 the permission becomes inactive.<br>
 	
-
-	<table border="1">
+<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>P1.C1</th>
-		<th>P1</th>
+    		<th>P6163.C</th>
+		<th>P6163</th>
 	 </tr>
   	<tr>
     		<td>E13-1</td>
-    		<td>not-satisfied</td>
-    		<td>inactive</td>
+		<td>satisfied</td>
+    		<td>active</td>
     	</tr>
   	<tr>
     		<td>E13-2</td>
-    		<td>satisfied</td>
-    		<td>active</td>
+    		<td>not-satisfied</td>
+    		<td>inactive</td>	
     	</tr>
-	</table>
+</table>
 
-	<hr>
+<b>Acces control scenario</b>. Given a formal description of the attempted action, if its type is "distribute" and its object is "http://example.com/document:1234" 
+and the permission P6163 is active then the action is performed, otherwise it is blocked.<br>
 
+<b>Monitoring scenario</b>. If an action with type "distribute" and object equal to "http://example.com/document:1234" is performed and the permission is active, the permission is used.<br>
+
+<hr>
 	
 <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a><br>
 	Type of Permission: <b>Permission P1 permits an action that is refined by Refinement R1</b>. <br>
