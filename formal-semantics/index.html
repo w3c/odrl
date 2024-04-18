@@ -249,7 +249,7 @@ the permission P6163 is active. When the first day of 2018 is passed, the author
 <table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>P6163.C</th>
+    		<th>P6163.Const</th>
 		<th>P6163</th>
 	 </tr>
   	<tr>
@@ -306,15 +306,15 @@ and the permission P6163 is active then the action is performed, otherwise it is
 The time evolution of Permission P6161 above depends on the scenario.<br>
 	
 	<b>Acces control scenario</b>: 
-	Given a formal description of the attempted action, if its <code>type</code> is <code>print</code>
-and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
-and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) then the permission 
-	is active and the attempted action is performed, otherwise the permission is inactive and the action is blocked.<br>
+	Given a formal description of the attempted action, if its <code>type</code> is <code>print</code>, 
+	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, 
+and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) then the permission P6161
+	is active and the attempted action is performed, otherwise the permission P6161 is inactive and the action is blocked.<br>
 	
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P6161.action.R </th>
+    		<th> P6161.action.Ref </th>
 		<th> P6161 </th>
 		<th> Attempted Action </th>
 		<th> P6161.usage state </th>
@@ -337,10 +337,10 @@ and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies 
 	<br>
 
 	<b>Monitoring scenario</b>: 
-	The Permission above is always active.
-	Given a formal description a performed action, if its <code>type</code> is <code>print</code>
-and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
-and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
+	The above Permission is always active because it has neither constraints nor duties.
+	Given a formal description a performed action, if its <code>type</code> is <code>print</code>, 
+	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, and its 
+	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
 	then the permission is used otherwise it is not used.<br>
 	
 <table border="1">
