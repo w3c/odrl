@@ -38,7 +38,9 @@
 		</p>
 		<p> <!-- the need for clarifying the semantics, the need for this document -->
 			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an ODRL implementation. 
-			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>.<br> 
+			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. 
+			(A previous proposal of an ODRL evaluator is available here: 
+	<a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.)<br><br> 
 
 		The <b>ODRL Evaluator</b> is expected to work in at least one of these two scenarios:
 		<ol>
@@ -54,7 +56,7 @@
 		the <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>), 
 		the agent that is the <code>performer</code> of the action, 
 		the <code>object</code> upon which the action is carried out, 
-		the <code>atTime</code> when the action happens or starts.<br>
+		the <code>atTime</code> when the action happens or starts.<br><br>
 					
 		More precisely, given:
 			<ul>
@@ -65,10 +67,10 @@
 			</ul>
 			the objective of the <b>ODRL Evaluator</b> is to determine: 
 			<ol>
-				<li>Which Permissions, Prohibitions, and Obligations (collectively named Rules) 
-					are <b>active</b>. A Rule is said to be active if it is in effect.</li>
-				<li>Which Permissions have been <b>used</b>.</li>
-				<li>Which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
+				<li>which Permissions, Prohibitions, and Obligations (collectively named Rules) 
+					are <b>active</b>. A Rule is said to be active if it is in effect;</li>
+				<li>which Permissions have been <b>used</b>;</li>
+				<li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 			</ol>			
 			
 			 <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
@@ -173,9 +175,7 @@
 -->			
 <section id="section3">	
 <h2> Semantics of Permission, Prohibition, and Obligation</h2>	
-	A first proposal of an ODRL evaluator is available here: 
-	<a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.<br><br>
-
+	
 	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
 	<code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.<br>
 	
@@ -220,21 +220,18 @@
 		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
 		<ul>
 			<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement is computed according to the action that the 
-		user/agent requests to perform on digital resources. When the satisfaction of a refinement is evaluated, the type of action governed by the Rule and 
-		the type of requested action must match.</li>
+		user/agent attempts to perform on digital resources.</li>
 				
 		<li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is computed according to the actual actions
-		represented in the state of the world. When the satisfaction of a refinement is evaluated, the type of action governed by the Rule and 
-		the type of the action performed that is represented in the state of the world must match.</li>
+		represented in the state of the world.</li>
 		</ul>
 			
 		</li>
 		
 		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
-		which can take the values of <b>performed</b> or <b>not-performed</b>. An action is performed if an action 
-                belonging to the "type" described in the Rule is actually performed on the target asset
-			(i.e. the odrl:action property has value "play" and an action belonging to the type "play" on the target asset is actually performed)
-			on the basis of the state of the world.</li>
+		which initially takes the values <b>not-performed</b> and 
+		can become <b>performed</b> when an action with all the properties values (i.e. the type, the performer, the object)  that match with the values
+		described in the Rule is actually performed at an instant of time and its performance is represented in the state of the world.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
