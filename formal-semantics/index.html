@@ -50,20 +50,20 @@
 		certain actions, and which permissions have been used.</li>
 		</ol>
 
-		We assume that (attempted or performed) actions are described in RDF by specifying at least: its <code>type</code> (a list of actions types is available in 
+		We assume that (attempted or performed) <b>actions</b> are described in RDF by specifying at least: its <code>type</code> (a list of actions types is available in 
 		the <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>), 
 		the agent that is the <code>performer</code> of the action, 
 		the <code>object</code> upon which the action is carried out, 
 		the <code>atTime</code> when the action happens or starts.<br>
 					
-		More precisely, the ODRL Evaluator, given:
+		More precisely, given:
 			<ul>
-				<li>a collection of ODRL Policies</li>; 
+				<li>a collection of ODRL Policies;</li>
 				<li>a formal description of the state of the world, that includes the performed actions;</li>
 				<li>for the access control scenario,
-					a formal description of the action attempted by a given user located in a given place</li>;, 
+				a formal description of the action attempted by a given user located in a given place;</li>
 			</ul>
-			the objective of an <b>ODRL Evaluator</b> is to determine: 
+			the objective of the <b>ODRL Evaluator</b> is to determine: 
 			<ol>
 				<li>Which Permissions, Prohibitions, and Obligations (collectively named Rules) 
 					are <b>active</b>. A Rule is said to be active if it is in effect.</li>
