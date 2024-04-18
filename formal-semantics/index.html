@@ -270,9 +270,9 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
 
-	Type of Permission: <b>Permission that is constrained by a Constraint.</b> <br>
-	The permission P6163 in this example allows the target asset <code>http://example.com/document:1234</code> to be distributed, it includes a constraint C	
-	that the permission can only be exercised until 2018-01-01.<br>
+	<b>Type</b> of Permission: <b>Permission only constrained by Constraint(s).</b> <br>
+	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
+	it includes a constraint C that the permission can only be exercised until 2018-01-01.<br>
 	
 <pre>
 {
@@ -293,11 +293,13 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 }
 </pre>
 <br>
-Evalution of P6163:<br>
-The constraint C must be evaluated on the state of the world, which includes a representation of the current time 
+Time Evalution of the Permission P6163:<br>
+	
+The constraint C must be evaluated on the state of the world, which must include a representation of the current time 
 (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
 As long as the current time (represented in the state of the world) is before the first day of 2018, 
-the permission P1 is active. When the current time becomes after the first day of 2018 the permission becomes inactive.<br>
+the permission P6163 is active. When the first day of 2018 is passed, the authorisation becomes inactive.
+(The activation of this type of permission does not depend on the actions attempted by the agents).<br><br>
 	
 <table border="1">
   	<tr>
@@ -320,7 +322,8 @@ the permission P1 is active. When the current time becomes after the first day o
 <b>Acces control scenario</b>. Given a formal description of the attempted action, if its type is "distribute" and its object is "http://example.com/document:1234" 
 and the permission P6163 is active then the action is performed, otherwise it is blocked.<br>
 
-<b>Monitoring scenario</b>. If an action with type "distribute" and object equal to "http://example.com/document:1234" is performed and the permission is active, the permission is used.<br>
+<b>Monitoring scenario</b>. If an action with type "distribute" and object equal to "http://example.com/document:1234" is 
+	performed when the permission is active, then the permission is used.<br>
 
 <hr>
 	
