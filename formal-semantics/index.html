@@ -264,17 +264,20 @@ the permission P6163 is active. When the first day of 2018 is passed, the author
     	</tr>
 </table>
 
-<b>Acces control scenario</b>. Given a formal description of the attempted action, if its type is "distribute" and its object is "http://example.com/document:1234" 
+<b>Acces control scenario</b>. Given a formal description of the attempted action, if its <code>type</code> is <code>distribute</code>
+and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
 and the permission P6163 is active then the action is performed, otherwise it is blocked.<br>
 
-<b>Monitoring scenario</b>. If an action with type "distribute" and object equal to "http://example.com/document:1234" is 
-	performed when the permission is active, then the permission is used.<br>
+<b>Monitoring scenario</b>. If an action with <code>type</code> equal to <code>distribute</code>
+	and <code>object</code> is equale to <code>http://example.com/document:1234</code> is 
+	performed (it is represented in the state of the world as performed) 
+	when the permission is active, then the permission is used.<br>
 
 <hr>
 	
 <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a><br>
 	<b>Type</b> of Permission: <b>Permission that regulates an action that is refined by Refinement(s)</b>. <br>
-	The permission allows the target asset <code>http://example.com/document:1234</code>to be printed and also include a refinement indicating that the resolution 
+	The permission below allows the target asset <code>http://example.com/document:1234</code>to be printed and also include a refinement indicating that the resolution 
 	of the printing action must be less than or equal to 1200 dpi.<br>
 
 	<pre>
@@ -300,63 +303,64 @@ and the permission P6163 is active then the action is performed, otherwise it is
 	</pre>
 	<br>
 
-The time evolution of Permission P6161 above depends on the scenario.
+The time evolution of Permission P6161 above depends on the scenario.<br>
 	
-	<b>Acces control scenario</b>: if the attempted print action (the type of the attempted action must be print) satisfies the refinement, 
-	the action is permitted, otherwise it is not permitted and the system will block it.<br>
+	<b>Acces control scenario</b>: 
+	Given a formal description of the attempted action, if its <code>type</code> is <code>print</code>
+and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
+and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) then the permission 
+	is active and the attempted action is performed, otherwise the permission is inactive and the action is blocked.<br>
 	
 	<table border="1">
   	<tr>
-    		<th>ID</th>
-    		<th>P1.action.R1</th>
-		<th>P1</th>
-		<th>Attempted Action</th>
-		<th>P1.usage state</th>
+    		<th> ID </th>
+    		<th> P6161.action.R </th>
+		<th> P6161 </th>
+		<th> Attempted Action </th>
+		<th> P6161.usage state </th>
 	 </tr>
   	<tr>
     		<td>E14-1-ac</td>
-    		<td>not-satisfied</td>
-    		<td>inactive</td>
-		<td>not-performed</td>
-		<td>not-used</td>
+    		<td> not-satisfied by the attempted action </td>
+    		<td> inactive </td>
+		<td> not-performed </td>
+		<td> not-used by the attempted action </td>
     	</tr>
   	<tr>
     		<td>E14-2-ac</td>
-    		<td>satisfied</td>
-    		<td>active</td>
-		<td>performed</td>
-		<td>used</td>
+    		<td> satisfied by the attempted action </td>
+    		<td> active </td>
+		<td> performed </td>
+		<td> used by the attempted action </td>
     	</tr>
 	</table>
 	<br>
 
-	<b>Monitoring scenario</b>: if a print action that satisfies the refinement is performed, the permission is used.
-	If a print action that does not satisfies the refinement is performed (line E14-2-m) 
-	(i.e. a print action with a resolution greater than 1200 dpi is performed) and there is not another 
-	permission that permit the performed print action and assuming that default setting for the ODRL Evaluator is 
-	"everything is prohibited unless explicitly permitted", then there is a <b>violation</b>.<br>
+	<b>Monitoring scenario</b>: 
+	The Permission above is always active.
+	Given a formal description a performed action, if its <code>type</code> is <code>print</code>
+and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
+and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
+	then the permission is used otherwise it is not used.<br>
 	
 <table border="1">
   	<tr>
-    		<th>ID</th>
-    		<th>P1</th>
-		<th>P1.action.R1</th>
-		<th>P1.Action</th>
-		<th>P1.usage state</th>
+    		<th> ID </th>
+    		<th> P6161 </th>
+		<th> P6161.action.R </th>
+		<th> P6161.usage state</th>
 	 </tr>
   	<tr>
-    		<td>E14-1-m</td>
-    		<td>active</td>
-		<td>satisfied</td>
-    		<td>performed</td>
-		<td>used</td>
+    		<td> E14-1-m </td>
+    		<td> active </td>
+		<td> satisfied by the performed action </td>
+    		<td> used  by the performed action </td>
     	</tr>
   	<tr>
-    		<td>E14-2-m</td>
-    		<td>active</td>
-    		<td>not-satisfied</td>
-		<td>performed</td>
-		<td>not-used</td>
+    		<td> E14-2-m </td>
+    		<td> active </td>
+    		<td> not-satisfied by the performed action </td>
+		<td> not-used by the performed action </td>
     	</tr>
 	</table>
 	<br>
