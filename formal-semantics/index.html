@@ -66,12 +66,12 @@
 				a formal description of the action attempted by a given user located in a given place;</li>
 			</ul>
 			the objective of the <b>ODRL Evaluator</b> is to determine: 
-			<ol>
+			<ul>
 				<li>which Permissions, Prohibitions, and Obligations (collectively named Rules) 
 					are <b>active</b>. A Rule is said to be active if it is in effect;</li>
 				<li>which Permissions have been <b>used</b>;</li>
 				<li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
-			</ol>			
+			</ul>			
 			
 			 <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
 		</p>
@@ -230,8 +230,9 @@
 		
 		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
 		which initially takes the values <b>not-performed</b> and 
-		can become <b>performed</b> when an action with all the properties values (i.e. the type, the performer, the object)  that match with the values
-		described in the Rule is actually performed at an instant of time and its performance is represented in the state of the world.</li>
+		can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
+			<code>performer</code>, <code>object</code>,...)  that matches with the values
+		described in the Rule (i.e. <code>action</code>, <code>target</code>, <code>assignee</code>) is actually performed at an instant of time and its performance is represented in the state of the world.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
