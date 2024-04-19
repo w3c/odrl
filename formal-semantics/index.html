@@ -407,7 +407,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<pre>
 {
     "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Offer",
+    "@type": "Set",
     "uid": "http://example.com/policy:88",
     "profile": "http://example.com/odrl:profile:09",
     "permission": [{
@@ -429,26 +429,44 @@ The life cycle of a duty is depicted in the figure below (states with the double
 }  
 </pre>
 
+The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
+The Duty has not Constraints, so it is always active. The Duty fulfilled by the performance of the payment of 5 euro.<br>
+
+<table border="1">
+  	<tr>
+    		<th> ID </th>
+    		<th> Duty.Action.Ref </th>
+		<th> Duty </th>	
+
+	 </tr>
+  	<tr>
+    		<td>E22</td>
+    		<td>not satisfied by performed actions</td>
+    		<td> active </td>
+	</tr>
+  	<tr>
+    		<td>E22</td>
+    		<td>satisfied by a payment action </td>
+    		<td> fulfilled </td>
+	</tr>
+	</table>
+<br><br>
 	<b>Acces control scenario</b>: 
 
 	 Given a formal description of the attempted action, if its <code>type</code> is <code>play</code>
 and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
-and the Permission P88 is active then the action is performed, otherwise it is blocked.
-The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
-The Duty has not Constraints, so it is always active. The Duty fulfilled by the permance of the payment of 5 euro.<br>
+and the Permission P88 is active then the action is performed, otherwise it is blocked.<br>
 	
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> Duty.Action.Ref </th>
-		<th> Duty </th>
+    		<th> Duty </th>
 		<th> P88 </th>
 		<th> Attempted Action </th>
 		<th> P88.usage state </th>
  	 </tr>
   	<tr>
     		<td>E22-1-ac</td>
-    		<td>not satisfied by performed actions</td>
     		<td> active </td>
     		<td> inactive </td>
     		<td>not-performed</td>	  
@@ -456,7 +474,6 @@ The Duty has not Constraints, so it is always active. The Duty fulfilled by the 
   	</tr>
   	<tr>
     		<td>E22-2-ac</td>
-    		<td>satisfied by a payment action </td>
     		<td> fulfilled </td>
     		<td> active </td>
    		<td>performed</td>
@@ -465,8 +482,15 @@ The Duty has not Constraints, so it is always active. The Duty fulfilled by the 
 	</table>
 <br>
 
-	<b>Monitoring scenario</b>: The Permission may be active or inactive. If the Permission is active and a play action of the target asset is performed, the permission is used.
-	If the Permission is inactive and a play action of the target asset is performed, then there is a <b>violation</b>.<br>
+	<b>Monitoring scenario</b>: 
+
+	Given a formal description a performed action, if its <code>type</code> is <code>play</code>
+and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
+and the Permission P88 is active then the Permission is used, if the Permission P88 is inactive the permission is not used 
+	(there might be a violation but it depends on the other permissions and the default assumption 
+	as to what is prohibited).
+	
+	<br>
 
 	<table border="1">
   	<tr>
