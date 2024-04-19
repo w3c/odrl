@@ -429,33 +429,38 @@ The life cycle of a duty is depicted in the figure below (states with the double
 }  
 </pre>
 
-	<b>Acces control scenario</b>: if the Duty is fullfilled the attempted play action (the type of the attempted action must be play) is permitted, 
-	otherwise it is not permitted and the system will block it. Given that the Duty has not Constraints, it is always active.<br>
+	<b>Acces control scenario</b>: 
+
+	 Given a formal description of the attempted action, if its <code>type</code> is <code>play</code>
+and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
+and the Permission P88 is active then the action is performed, otherwise it is blocked.
+The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
+The Duty has not Constraints, so it is always active. The Duty fulfilled by the permance of the payment of 5 euro.<br>
 	
 	<table border="1">
   	<tr>
-    		<th>ID</th>
-    		<th>D1.Action.R1</th>
-		<th>D1</th>
-		<th>P1</th>
-		<th>Attempted Action</th>
-		<th>P1.usage state</th>
+    		<th> ID </th>
+    		<th> Duty.Action.Ref </th>
+		<th> Duty </th>
+		<th> P88 </th>
+		<th> Attempted Action </th>
+		<th> P88.usage state </th>
  	 </tr>
   	<tr>
     		<td>E22-1-ac</td>
-    		<td>not satisfied</td>
-    		<td>active</td>
-    		<td>inactive</td>
+    		<td>not satisfied by performed actions</td>
+    		<td> active </td>
+    		<td> inactive </td>
     		<td>not-performed</td>	  
-    		<td>not-used</td>	  
+    		<td>not-used by the attempted action</td>	  
   	</tr>
   	<tr>
     		<td>E22-2-ac</td>
-    		<td>satisfied</td>
-    		<td>fulfilled</td>
-    		<td>active</td>
+    		<td>satisfied by a payment action </td>
+    		<td> fulfilled </td>
+    		<td> active </td>
    		<td>performed</td>
-   		<td>used</td>
+   		<td>used by the attempted action </td>
   	</tr>
 	</table>
 <br>
