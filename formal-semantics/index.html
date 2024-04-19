@@ -379,7 +379,8 @@ with all refinements satisfied, has been performed. <br>
 <ol>
 	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; <br>
 	- if its Constraints are all satisfied the duty is <b>active</b>. <br>
-	- if one of its Constraints is not satisfied the duty is <b>inactive. (For example, the duty to pay a ticket to enter a museum may be active only on Sundays.)</b>
+	- if one of its Constraints is not satisfied the duty is <b>inactive</b>. 
+	(For example, the duty to pay a ticket to get an active permission enter a museum may be active only on Sundays).
 	</li>
 		
 	<li> If the Duty is <b>active</b> and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b>.</li>
@@ -391,23 +392,42 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<h4>Examples (Permission with duties)</h4> 
 	
 	
-	The ODRL policy examples used below to exemplify the semantics of Permission are taken from the examples 
-	in the <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.
-	The <code>@type</code> of the policies in the examples is assumed to be <code>set</code> and not <code>offer</code> as it is in the 
-	ODRL Information Model 2.2.
-	<br><br>
-	
-	
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
-	<b>Type of Permission</b>: Permission P1 permits an action A2 (play the target) and it is constrained by the Duty D1. 
-	The Duty D1 has not Constraints. 
-	The Duty D1 regulates an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro).<br>
+	<b>Type</b> of Permission: 
+	<b>Permission that regulates an action, the permission is constrained by a Duty. The Duty has not Constraints. 
+	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
 	
-	The Party <code>http://example.com/assigner:sony</code> sets a permission to play the target asset http://example.com/music/1999.mp3. 
-	The permission includes a duty for the compensate action that has a refinement of payAmount of euro 5.00.
-	The semantics of Permission requires that the compensate action (included in the duty) must be performed <b>before</b> to get an active permission.
-	(In <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> such a temporal requirement is expressed with a constraint of the duty, 
-	but it is useless because it is given by the semantics of Permissions).<br><br>
+	The Permission below is granted by the Party <code>http://example.com/assigner:sony</code>. It allows the  
+	target asset <code>http://example.com/music/1999.mp3</code> to be played. 
+	The permission includes a duty to perform the compensate action that has a refinement of <code>payAmount</code> 
+	of euro 5.00.
+	The semantics of Permission requires that the compensate action (included in the duty) must be performed 
+	<b>before</b> the play action in order to get an active permission to perform the play action.<br><br>
+
+	<pre>
+{
+    "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@type": "Offer",
+    "uid": "http://example.com/policy:88",
+    "profile": "http://example.com/odrl:profile:09",
+    "permission": [{
+        "assigner": "http://example.com/assigner:sony",
+        "target": "http://example.com/music/1999.mp3",
+        "action": "play",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "odrl:compensate" },
+              "refinement": [{
+                 "leftOperand": "payAmount",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+                 "unit": "http://dbpedia.org/resource/Euro"
+              }]
+            }]
+        }]
+    }]
+}  
+</pre>
 
 	<b>Acces control scenario</b>: if the Duty is fullfilled the attempted play action (the type of the attempted action must be play) is permitted, 
 	otherwise it is not permitted and the system will block it. Given that the Duty has not Constraints, it is always active.<br>
