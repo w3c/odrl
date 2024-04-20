@@ -394,7 +394,7 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
 	<b>Type</b> of Permission: 
-	<b>Permission that regulates an action, the permission is constrained by a Duty. The Duty has not Constraints. 
+	<b>Permission that is constrained by a Duty. The Duty has not Constraints. 
 	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
 	
 	The Permission below is granted by the Party <code>http://example.com/assigner:sony</code>. It allows the  
@@ -430,7 +430,9 @@ The life cycle of a duty is depicted in the figure below (states with the double
 </pre>
 
 The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
-The Duty has not Constraints, so it is always active. The Duty fulfilled by the performance of the payment of 5 euro.<br>
+The Duty has not Constraints, so it never inactive, it starts to be active and can become fulfilled when in the state of the world
+	there is a representation that a payment action 
+	of 5 euro to the assigner of the permission is performed.<br>
 
 <table border="1">
   	<tr>
@@ -446,7 +448,7 @@ The Duty has not Constraints, so it is always active. The Duty fulfilled by the 
 	</tr>
   	<tr>
     		<td>E22</td>
-    		<td>satisfied by a payment action </td>
+    		<td>satisfied by the correct payment action </td>
     		<td> fulfilled </td>
 	</tr>
 	</table>
