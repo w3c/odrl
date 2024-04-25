@@ -520,11 +520,49 @@ and the Permission P88 is active then the Permission is used, if the Permission 
 <!--
 	<hr>
 
-	Example 22-bis (Permission) = to Example 22 + duty D1 has a constraint C1, i.e. the compensate action is required only on Sundays. <br>
-	Example 22-bis can be formulated as: the Permission P1 has a Duty D1 and the permitted Action A2 (play mp3 file). 
-	The Duty D1 has a Constraint C1 (it is Sunday). D1 has an Action A1 (compensate) that is refined by constraint R1 (payAmount = 5 euro):
-	<table border="1">
-  	<tr>
+	Example 22 + Constraint for the Duty <br>
+
+ 	<b>Type</b> of Permission: 
+	<b>Permission that is constrained by a Duty. The Duty HAS Constraints. 
+	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
+	
+	The Permission below is granted by the Party <code>http://example.com/assigner:sony</code>. It allows the  
+	target asset <code>http://example.com/music/1999.mp3</code> to be played. 
+	The permission includes a duty to perform the compensate action that has a refinement of <code>payAmount</code> 
+	of euro 5.00. The Duty has a Constraint, i.e. the compensate action is required only on Sundays.
+	The semantics of Permission requires that the compensate action (included in the duty) must be performed 
+	<b>before</b> the play action in order to get an active permission to perform the play action.<br><br>
+
+	<pre>
+{
+    "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@type": "Set",
+    "uid": "http://example.com/policy:88",
+    "profile": "http://example.com/odrl:profile:09",
+    "permission": [{
+        "assigner": "http://example.com/assigner:sony",
+        "target": "http://example.com/music/1999.mp3",
+        "action": "play",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "odrl:compensate" },
+              "refinement": [{
+                 "leftOperand": "payAmount",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+                 "unit": "http://dbpedia.org/resource/Euro"
+              }]
+            }],
+	    "constraint": [{
+                "leftOperand": "event",
+                "operator": "lt",
+                "rightOperand": { "@id": "odrl:policyUsage" }
+            }]
+        }]
+    }]
+}  
+</pre>
+	  	<tr>
     		<th>ID</th>
 		<th>D1.C1</th>
     		<th>D1.R1</th>
