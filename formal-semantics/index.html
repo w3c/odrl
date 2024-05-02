@@ -111,20 +111,20 @@
 	
 	Instances of the class <code>odrl:Duty</code> may have the following different meanings in ODRL:
 	<ul>
-		<li>An instance of the class <code>odrl:Duty</code> represents an <b>Obligation</b> when it is connected to the 
-		<code>odrl:Policy</code> through the <code>odrl:obligation</code> property. 
+		<li>An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
+		when a <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
 		<!--An Obligation can be activated, violated, or fullfilled.--></li>
 		
-		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <b>Permission</b> to be active 
-		when it is connected to the <code>odrl:Permission</code> through the <code>odrl:duty</code> property.
+		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <b>Permission</b> 
+		to be active when the <code>odrl:Permission</code> refers to it by means of the <code>odrl:duty</code> property.
 		<!--When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, it can be active, fulfilled or not fullfilled.
 		This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.-->
 		</li>
 		
-		<li>An instance of the class <code>odrl:Duty</code> represents a consequence (<i>sanction</i>) when it is connected to the <code>odrl:Duty</code> 
-			through the <code>odrl:consequence</code> property. </li>
-		<li>An instance of the class <code>odrl:Duty</code> represents a remedy for a odrl:Prohibition when it is connected to the <code>odrl:Duty</code> 
-			through the <code>odrl:remedy</code> property. </li>
+		<li>An instance of the class <code>odrl:Duty</code> represents a consequence for a <code>odrl:Duty</code> 
+			when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
+		<li>An instance of the class <code>odrl:Duty</code> represents a remedy for a <code>odrl:Prohibition</code> 
+			when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
 	</ul>
 	
 	<hr>
