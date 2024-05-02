@@ -131,10 +131,10 @@
 
 	Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:
 	<ul>
-		<li>Permission, Prohibition, Obligation (duty at the root level), Condition (duty not at the root level) 
-		have a property called <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
+		<li>Permission, Prohibition, and Obligation, <!-- and Condition -->	have a property called 
+		<b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
 		
-		<li>Prohibition, Obligation, and Condition have a property called <b>deontic state</b>, 
+		<li>Prohibition and Obligation <!-- and Condition --> have a property called <b>deontic state</b>, 
 		which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
 		They can become violated or fulfilled only when they are active.</li>
 
@@ -145,20 +145,19 @@
 		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
 		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
 		A not-satisfied constraint may become satisfied and return to being not-satisfied.
-		The value of the satisfaction state of a Constraint is calculated according to the state of the world.
+		The value of the satisfaction state of a Constraint is calculated according to the <b>state of the world</b>.
 		Constraints directly defined at policy level are not directly considered.</li>
 		
 		<li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
 		odrl:refinement property) has a property called <b>satisfaction state</b> 
 		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
 		<ul>
-			<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
-				is computed according to the action that an 
-		agent attempts to perform on digital resources.</li>
+		<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
+		is computed according to the action that an agent <b>attempts</b> to perform on digital resources.</li>
 				
 		<li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
-			computed according to the actual actions that are performed by agents and that are
-		represented in the state of the world.</li>
+		computed according to the actual actions that are performed by the agents and that are
+		represented in the <b>state of the world</b>.</li>
 		</ul>
 			
 		</li>
@@ -167,8 +166,9 @@
 		which initially takes the values <b>not-performed</b> and 
 		can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
 			<code>performer</code>, <code>object</code>,...)  that matches with the values
-		described in the Rule (i.e. <code>action</code>,  <code>assignee</code>,<code>target</code>) 
-			is actually performed at a given instant of time and its performance is represented in the state of the world.</li>
+		described in the Rule (i.e. <code>action</code>, <code>assignee</code>, <code>target</code>) 
+			is actually performed at a given instant of time and its performance is represented 
+			in the state of the world.</li>
 	</ul>
 		
 	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
