@@ -270,15 +270,23 @@ the permission P6163 is active. When the first day of 2018 is passed, the permis
     	</tr>
 </table> <br>
 
-<b>Acces control scenario</b>. Given a formal description of the attempted action, if its <code>type</code> is <code>distribute</code>
-and its <code>object</code> is equale to <code>http://example.com/document:1234</code> 
-and the permission P6163 is active then the action is performed. 
-If one the those three conditions is not satisfied by considering only P6163 the action is not performed.<br><br>
-
-<b>Monitoring scenario</b>. If an action with <code>type</code> equal to <code>distribute</code>
-	and <code>object</code> is equale to <code>http://example.com/document:1234</code> is 
-	performed (it is represented in the state of the world as performed) 
-	when the permission is active, then the permission is used.<br>
+<b>Acces control scenario</b>. 
+Given a formal description of the attempted action. 
+<ul>
+<li>If such an action belongs to the class of actions regulated by the permission P6163
+(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
+and the permission P6163 is active then the action is performed. </li>
+<li>If such an action belongs to the class of actions regulated by the permission P6163, but the 
+permission P6163 is inactive, assuming that only the permission P6163 is considered 
+(this is because other permissions could regulate this action), then the action is blocked and it is not performed.</li>
+<li>If such an action does not belong to the class of actions regulated by the permission P6163 nothing can be stated.</li>
+</ul><br>
+	
+<b>Monitoring scenario</b>. 
+Given a formal description of a performed action. 
+If such an action belongs to the class of actions regulated by the permission P6163
+(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
+and the permission is active, then the permission is used.<br>
 
 <hr>
 	
