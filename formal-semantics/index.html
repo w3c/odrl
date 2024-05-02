@@ -195,12 +195,15 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	When an action (with all the refinements satisfied) regulated by an <b>active</b> permission is performed 
 	the permission is <b>used</b>.<br><br>
 	
-	In the <b>access control scenario</b>: if one of the refinements of the <b>attempted</b> action does not satisfy
-	the refinements of the permission, and there is not another active permission that permits such an action, 
+	In the <b>access control scenario</b>: 
+	When an action is <b>attempted</b>,
+	if one of its property values does not satisfy the refinements of the permission, 
+	and there is not another active permission that permits such an action, 
 	it means that the action is not permitted and it is blocked.<br><br>
 	
 	In the <b>monitoring scenario</b>: 
-	When an action A is performed, if there is no active permission to do so (i.e. there is no active permission regulating a class 
+	When an action is <b>performed</b> (and it is represented in the state of the world), 
+	if there is no active permission to do so (i.e. there is no active permission regulating a class 
 	of action to which the executed action belongs) and the default setting for the ODRL Evaluator
 	is set to "everything is prohibited unless explicitly permitted" a violation is generated.
 	This evaluation is not exemplified below.
