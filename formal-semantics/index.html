@@ -273,13 +273,14 @@ the permission P6163 is active. When the first day of 2018 is passed, the permis
 <b>Acces control scenario</b>. 
 Given a formal description of the attempted action. 
 <ul>
-<li>If such an action belongs to the class of actions regulated by the permission P6163
+<li>(E-13-1) If such an action belongs to the class of actions regulated by the permission P6163
 (its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
 and the permission P6163 is active then the action is performed. </li>
-<li>If such an action belongs to the class of actions regulated by the permission P6163, but the 
+<li>(E-13-2) If such an action belongs to the class of actions regulated by the permission P6163, but the 
 permission P6163 is inactive, assuming that only the permission P6163 is considered 
 (this is because other permissions could regulate this action), then the action is blocked and it is not performed.</li>
-<li>If such an action does not belong to the class of actions regulated by the permission P6163 nothing can be stated.</li>
+<li>If such an action does not belong to the class of actions regulated by the permission P6163 it means that P6163 
+is not relevant.</li>
 </ul><br>
 
 	<table border="1">
@@ -345,13 +346,22 @@ then nothing can be deduced.</li>
 	</pre>
 	<br>
 
-The time evolution of Permission P6161 above depends on the scenario.<br>
+<b>Time evolution of Permission P6161.</b><br>
 	
-	<b>Acces control scenario</b>: 
-	Given a formal description of the attempted action, if its <code>type</code> is <code>print</code>, 
-	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, 
-and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) then the permission P6161
-	is active and the attempted action is performed, otherwise the permission P6161 is inactive and the action is blocked.<br>
+	<b>Acces control scenario</b>: Given a formal description of the attempted action.
+	<ol>
+	<il>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
+	(its <code>type</code> is <code>print</code>, 
+	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
+	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+	then the permission P6161 is active and the attempted action is performed.
+	</il>
+	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
+	but the refinement of the action is not satisfied, then the permission P6161 is inactive. 
+	Assuming that only the permission P6161 is considered (this is because other permissions could regulate this action), 
+	then the action is blocked and it is not performed.</li>
+	</ol>
+	<br>
 	
 	<table border="1">
   	<tr>
@@ -363,17 +373,17 @@ and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies 
 	 </tr>
   	<tr>
     		<td>E14-1-ac</td>
-    		<td> not-satisfied by the attempted action </td>
-    		<td> inactive </td>
-		<td> not-performed </td>
-		<td> not-used by the attempted action </td>
-    	</tr>
-  	<tr>
-    		<td>E14-2-ac</td>
     		<td> satisfied by the attempted action </td>
     		<td> active </td>
 		<td> performed </td>
 		<td> used by the attempted action </td>
+    	</tr>
+	<tr>
+    		<td>E14-2-ac</td>
+    		<td> not-satisfied by the attempted action </td>
+    		<td> inactive </td>
+		<td> not-performed </td>
+		<td> not-used by the attempted action </td>
     	</tr>
 	</table>
 	<br>
@@ -383,7 +393,9 @@ and its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies 
 	Given a formal description a performed action, if its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, and its 
 	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
-	then the permission is used otherwise it is not used. In this scenario, the permission is active even if the refinement is not satisfied, because the activation state of the permission
+	then the permission is used by the performed action. 
+	In this scenario, the permission is active even if the refinement is not satisfied, 
+	because the activation state of the permission
 	is computed independently from the refinement of the regulated action.<br>
 	
 <table border="1">
