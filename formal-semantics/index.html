@@ -294,24 +294,27 @@ permission P6163 is inactive, assuming that only the permission P6163 is conside
     		<td>E13-1</td>
 		<td>active</td>
     		<td>satisfied by the attempted action</td>
-		<td>performed (executable)</td>
+		<td>performed (executable for P6163)</td>
 		<td>used by the attempted action</td>
     	</tr>
   	<tr>
     		<td>E13-2</td>
     		<td>inactive</td>
     		<td>satisfied by the attempted action</td>
-		<td>not-performed(not-executable)</td>
-		<td>not-used by the attempted action</td>
+		<td>not-performed (not-executable for P6163)</td>
+		<td></td>
     	</tr>
 </table> <br><br>
 	
 <b>Monitoring scenario</b>. 
 Given a formal description of a performed action. 
-If such an action belongs to the class of actions regulated by the permission P6163
+<ol>
+<li>If such an action belongs to the class of actions regulated by the permission P6163
 (its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
-and the permission is active, then the permission is used.<br>
-
+and the permission is active, then the action is permitted by P6163 and it is used by the performed action.</li>
+<li>If such an action belongs to the class of actions regulated by the permission P6163 and the permission is inactive,
+then nothing can be deduced.</li>
+</ol>
 <hr>
 	
 <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a><br>
