@@ -349,18 +349,18 @@ then nothing can be deduced.</li>
 <b>Time evolution of Permission P6161.</b><br>
 	
 	<b>Acces control scenario</b>: Given a formal description of the attempted action.
-	<ol>
-	<il>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
+	<ul>
+	<li>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
 	(its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
 	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
 	then the permission P6161 is active and the attempted action is performed.
-	</il>
+	</li>
 	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
 	but the refinement of the action is not satisfied, then the permission P6161 is inactive. 
 	Assuming that only the permission P6161 is considered (this is because other permissions could regulate this action), 
 	then the action is blocked and it is not performed.</li>
-	</ol>
+	</ul>
 	<br>
 	
 	<table border="1">
