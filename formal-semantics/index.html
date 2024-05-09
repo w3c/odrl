@@ -353,7 +353,7 @@ then nothing can be deduced.</li>
 	<li>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
 	(its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
-	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement)
 	then the permission P6161 is active and the attempted action is performed.
 	</li>
 	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
@@ -368,35 +368,37 @@ then nothing can be deduced.</li>
     		<th> ID </th>
     		<th> P6161.action.Ref </th>
 		<th> P6161 </th>
-		<th> Attempted Action </th>
+		<th> Attempted Action.performance state </th>
 		<th> P6161.usage state </th>
 	 </tr>
   	<tr>
     		<td>E14-1-ac</td>
     		<td> satisfied by the attempted action </td>
     		<td> active </td>
-		<td> performed </td>
+		<td> performed (executable)</td>
 		<td> used by the attempted action </td>
     	</tr>
 	<tr>
     		<td>E14-2-ac</td>
     		<td> not-satisfied by the attempted action </td>
     		<td> inactive </td>
-		<td> not-performed </td>
-		<td> not-used by the attempted action </td>
+		<td> not-performed (not-executable)</td>
+		<td>  </td>
     	</tr>
 	</table>
 	<br>
 
 	<b>Monitoring scenario</b>: 
 	The above Permission is always active because it has neither constraints nor duties.
-	Given a formal description a performed action, if its <code>type</code> is <code>print</code>, 
+	Given a formal description a performed action. <br>
+	<ul>
+	<li>If such an action belongs to the class of actions regulated by the permission P6161 (
+	its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, and its 
-	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
-	then the permission is used by the performed action. 
-	In this scenario, the permission is active even if the refinement is not satisfied, 
-	because the activation state of the permission
-	is computed independently from the refinement of the regulated action.<br>
+	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+	then the permission is used by the performed action.
+	</li>
+	</ul>
 	
 <table border="1">
   	<tr>
