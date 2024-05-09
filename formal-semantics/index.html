@@ -366,7 +366,7 @@ then nothing can be deduced.</li>
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P6161.action.Ref </th>
+    		<th> P6161.action.all_attributes </th>
 		<th> P6161 </th>
 		<th> Attempted Action.performance state </th>
 		<th> P6161.usage state </th>
@@ -375,14 +375,14 @@ then nothing can be deduced.</li>
     		<td>E14-1-ac</td>
     		<td> satisfied by the attempted action </td>
     		<td> active </td>
-		<td> performed (executable)</td>
+		<td> performed (executable for P6161)</td>
 		<td> used by the attempted action </td>
     	</tr>
 	<tr>
     		<td>E14-2-ac</td>
     		<td> not-satisfied by the attempted action </td>
     		<td> inactive </td>
-		<td> not-performed (not-executable)</td>
+		<td> not-performed (not-executable for P6161)</td>
 		<td>  </td>
     	</tr>
 	</table>
@@ -404,20 +404,20 @@ then nothing can be deduced.</li>
   	<tr>
     		<th> ID </th>
     		<th> P6161 </th>
-		<th> P6161.action.Ref </th>
+		<th> P6161.action.all_attributes</th>
 		<th> P6161.usage state</th>
 	 </tr>
   	<tr>
     		<td> E14-1-m </td>
     		<td> active </td>
 		<td> satisfied by the performed action </td>
-    		<td> used  by the performed action </td>
+    		<td> used by the performed action </td>
     	</tr>
   	<tr>
     		<td> E14-2-m </td>
     		<td> active </td>
     		<td> not-satisfied by the performed action </td>
-		<td> not-used by the performed action </td>
+		<td>  </td>
     	</tr>
 	</table>
 	<br>
@@ -485,15 +485,17 @@ The life cycle of a duty is depicted in the figure below (states with the double
 }  
 </pre>
 
-The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
-The Duty has not Constraints, so it never inactive, it starts to be active and can become fulfilled when in the state of the world
-	there is a representation that a payment action 
-	of 5 euro to the assigner of the permission is performed.<br>
+<b>Time evolution of the Duty of P88</b>.<br>
+The Duty has not Constraints, so it is never inactive. It starts to be active and can become fulfilled 
+when in the state of the world there is a representation of a performed action that matches with the 
+the class of actions described in the duty, i.e. its <code>type</code> is <code>compensate</code> and its 
+<code>payAmount</code> is equal to <code>5 euro</code> its <code>target</code> is equal to the assigner of the 
+permission (?).<br>
 
 <table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> Duty.Action.Ref </th>
+    		<th> Duty.Action.all_attributes </th>
 		<th> Duty </th>	
 
 	 </tr>
@@ -504,14 +506,18 @@ The Duty has not Constraints, so it never inactive, it starts to be active and c
 	</tr>
   	<tr>
     		<td>E22</td>
-    		<td>satisfied by the correct payment action </td>
-    		<td> fulfilled </td>
+    		<td>satisfied by one of the performed actions </td>
+    		<td> fulfilled by the action</td>
 	</tr>
 	</table>
 <br><br>
+	
+<b>Time evolution of permission P88</b><br>
+The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.<br>
+	
 	<b>Acces control scenario</b>: 
 
-	 Given a formal description of the attempted action, if its <code>type</code> is <code>play</code>
+	 Given a formal description of the attempted action.  if its <code>type</code> is <code>play</code>
 and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
 and the Permission P88 is active then the action is performed, otherwise it is blocked.<br>
 	
@@ -520,7 +526,7 @@ and the Permission P88 is active then the action is performed, otherwise it is b
     		<th> ID </th>
     		<th> Duty </th>
 		<th> P88 </th>
-		<th> Attempted Action </th>
+		<th> Attempted Action.performance state </th>
 		<th> P88.usage state </th>
  	 </tr>
   	<tr>
@@ -528,7 +534,7 @@ and the Permission P88 is active then the action is performed, otherwise it is b
     		<td> active </td>
     		<td> inactive </td>
     		<td>not-performed</td>	  
-    		<td>not-used by the attempted action</td>	  
+    		<td> </td>	  
   	</tr>
   	<tr>
     		<td>E22-2-ac</td>
@@ -542,11 +548,9 @@ and the Permission P88 is active then the action is performed, otherwise it is b
 
 	<b>Monitoring scenario</b>: 
 
-	Given a formal description a performed action, if its <code>type</code> is <code>play</code>
+	Given a formal description of a performed action. If its <code>type</code> is <code>play</code>
 and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
-and the Permission P88 is active then the Permission is used, if the Permission P88 is inactive the permission is not used 
-	(there might be a violation but it depends on the other permissions and the default assumption 
-	as to what is prohibited).
+and the Permission P88 is active then the Permission is used.
 	
 	<br>
 
@@ -563,7 +567,7 @@ and the Permission P88 is active then the Permission is used, if the Permission 
     		<td>active</td>
     		<td>inactive</td>
     		<td>performed</td>	  
-    		<td>not-used</td>	  	  
+    		<td></td>	  	  
   	</tr>
   	<tr>
     		<td>E22-2-m</td>
