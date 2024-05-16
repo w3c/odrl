@@ -138,9 +138,17 @@
 		which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
 		They can become violated or fulfilled only when they are active.</li>
 
+<!-- Commented by Nicoletta on 16th May 2023 because:
+as long as a "set" Permission is active, it can be used by many concrete actions performed by different agents 
+(a "set" Permission has not a specific assignee). 
+The "usage state" is not a state of the permission but it is a log that a specific permission has been used by 
+a specific action. This log can be useful when setting an upper limit on the number of times a permission may be 
+used by a particular agent (an "agreement" permission) and wanting to monitor the fulfilment of this condition. 
+		
 		<li>Permission have a property called <b>usage state</b>, 
 		which can take the value of <b>used</b> or <b>not-used</b>. 
 		A permission can become used only when it is active.</li>
+-->
 
 		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
 		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
@@ -275,10 +283,10 @@ Given a formal description of the attempted action.
 <ul>
 <li>(E-13-1) If such an action belongs to the class of actions regulated by the permission P6163
 (its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
-and the permission P6163 is active then the action is performed. </li>
+and the permission P6163 is active then the action can be performed. </li>
 <li>(E-13-2) If such an action belongs to the class of actions regulated by the permission P6163, but the 
 permission P6163 is inactive, assuming that only the permission P6163 is considered 
-(this is because other permissions could regulate this action), then the action is blocked and it is not performed.</li>
+(this is because other permissions could regulate this action), then the action is blocked and it cannot be performed.</li>
 <li>If such an action does not belong to the class of actions regulated by the permission P6163 it means that P6163 
 is not relevant.</li>
 </ul><br>
@@ -289,21 +297,18 @@ is not relevant.</li>
     		<th>P6163.activation state</th>
 		<th>P6163.action.all_attributes</th>
 		<th>Attempted Action.performance state</th>
-		<th>P6163.usage state</th>
 	 </tr>
   	<tr>
     		<td>E13-1</td>
 		<td>active</td>
     		<td>satisfied by the attempted action</td>
-		<td>performed (executable for P6163)</td>
-		<td>used by the attempted action</td>
+		<td>performed</td>
     	</tr>
   	<tr>
     		<td>E13-2</td>
     		<td>inactive</td>
     		<td>satisfied by the attempted action</td>
-		<td>not-performed (not-executable for P6163)</td>
-		<td></td>
+		<td>not-performed</td>
     	</tr>
 </table> <br><br>
 	
@@ -354,12 +359,12 @@ then nothing can be deduced.</li>
 	(its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
 	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement)
-	then the permission P6161 is active and the attempted action is performed.
+	then the permission P6161 is active and the attempted action can be performed.
 	</li>
 	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
 	but the refinement of the action is not satisfied, then the permission P6161 is inactive. 
 	Assuming that only the permission P6161 is considered (this is because other permissions could regulate this action), 
-	then the action is blocked and it is not performed.</li>
+	then the action is blocked and it cannot be performed.</li>
 	</ul>
 	<br>
 	
@@ -369,21 +374,18 @@ then nothing can be deduced.</li>
     		<th> P6161.action.all_attributes </th>
 		<th> P6161 </th>
 		<th> Attempted Action.performance state </th>
-		<th> P6161.usage state </th>
 	 </tr>
   	<tr>
     		<td>E14-1-ac</td>
     		<td> satisfied by the attempted action </td>
     		<td> active </td>
-		<td> performed (executable for P6161)</td>
-		<td> used by the attempted action </td>
+		<td> performed</td>
     	</tr>
 	<tr>
     		<td>E14-2-ac</td>
     		<td> not-satisfied by the attempted action </td>
     		<td> inactive </td>
-		<td> not-performed (not-executable for P6161)</td>
-		<td>  </td>
+		<td> not-performed</td>
     	</tr>
 	</table>
 	<br>
@@ -405,19 +407,16 @@ then nothing can be deduced.</li>
     		<th> ID </th>
     		<th> P6161 </th>
 		<th> P6161.action.all_attributes</th>
-		<th> P6161.usage state</th>
 	 </tr>
   	<tr>
     		<td> E14-1-m </td>
     		<td> active </td>
 		<td> satisfied by the performed action </td>
-    		<td> used by the performed action </td>
     	</tr>
   	<tr>
     		<td> E14-2-m </td>
     		<td> active </td>
     		<td> not-satisfied by the performed action </td>
-		<td>  </td>
     	</tr>
 	</table>
 	<br>
