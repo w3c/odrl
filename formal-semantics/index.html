@@ -138,9 +138,17 @@
 		which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
 		They can become violated or fulfilled only when they are active.</li>
 
+<!-- Commented by Nicoletta on 16th May 2023 because:
+as long as a "set" Permission is active, it can be used by many concrete actions performed by different agents 
+(a "set" Permission has not a specific assignee). 
+The "usage state" is not a state of the permission but it is a log that a specific permission has been used by 
+a specific action. This log can be useful when setting an upper limit on the number of times a permission may be 
+used by a particular agent (an "agreement" permission) and wanting to monitor the fulfilment of this condition. 
+		
 		<li>Permission have a property called <b>usage state</b>, 
 		which can take the value of <b>used</b> or <b>not-used</b>. 
 		A permission can become used only when it is active.</li>
+-->
 
 		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
 		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
@@ -275,10 +283,10 @@ Given a formal description of the attempted action.
 <ul>
 <li>(E-13-1) If such an action belongs to the class of actions regulated by the permission P6163
 (its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
-and the permission P6163 is active then the action is performed. </li>
+and the permission P6163 is active then the action can be performed. </li>
 <li>(E-13-2) If such an action belongs to the class of actions regulated by the permission P6163, but the 
 permission P6163 is inactive, assuming that only the permission P6163 is considered 
-(this is because other permissions could regulate this action), then the action is blocked and it is not performed.</li>
+(this is because other permissions could regulate this action), then the action is blocked and it cannot be performed.</li>
 <li>If such an action does not belong to the class of actions regulated by the permission P6163 it means that P6163 
 is not relevant.</li>
 </ul><br>
@@ -289,21 +297,18 @@ is not relevant.</li>
     		<th>P6163.activation state</th>
 		<th>P6163.action.all_attributes</th>
 		<th>Attempted Action.performance state</th>
-		<th>P6163.usage state</th>
 	 </tr>
   	<tr>
     		<td>E13-1</td>
 		<td>active</td>
     		<td>satisfied by the attempted action</td>
-		<td>performed (executable for P6163)</td>
-		<td>used by the attempted action</td>
+		<td>performed</td>
     	</tr>
   	<tr>
     		<td>E13-2</td>
     		<td>inactive</td>
     		<td>satisfied by the attempted action</td>
-		<td>not-performed (not-executable for P6163)</td>
-		<td></td>
+		<td>not-performed</td>
     	</tr>
 </table> <br><br>
 	
@@ -349,73 +354,69 @@ then nothing can be deduced.</li>
 <b>Time evolution of Permission P6161.</b><br>
 	
 	<b>Acces control scenario</b>: Given a formal description of the attempted action.
-	<ol>
-	<il>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
+	<ul>
+	<li>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
 	(its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
-	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-	then the permission P6161 is active and the attempted action is performed.
-	</il>
+	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement)
+	then the permission P6161 is active and the attempted action can be performed.
+	</li>
 	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
 	but the refinement of the action is not satisfied, then the permission P6161 is inactive. 
 	Assuming that only the permission P6161 is considered (this is because other permissions could regulate this action), 
-	then the action is blocked and it is not performed.</li>
-	</ol>
+	then the action is blocked and it cannot be performed.</li>
+	</ul>
 	<br>
 	
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P6161.action.Ref </th>
+    		<th> P6161.action.all_attributes </th>
 		<th> P6161 </th>
-		<th> Attempted Action </th>
-		<th> P6161.usage state </th>
+		<th> Attempted Action.performance state </th>
 	 </tr>
   	<tr>
     		<td>E14-1-ac</td>
     		<td> satisfied by the attempted action </td>
     		<td> active </td>
-		<td> performed </td>
-		<td> used by the attempted action </td>
+		<td> performed</td>
     	</tr>
 	<tr>
     		<td>E14-2-ac</td>
     		<td> not-satisfied by the attempted action </td>
     		<td> inactive </td>
-		<td> not-performed </td>
-		<td> not-used by the attempted action </td>
+		<td> not-performed</td>
     	</tr>
 	</table>
 	<br>
 
 	<b>Monitoring scenario</b>: 
 	The above Permission is always active because it has neither constraints nor duties.
-	Given a formal description a performed action, if its <code>type</code> is <code>print</code>, 
+	Given a formal description a performed action. <br>
+	<ul>
+	<li>If such an action belongs to the class of actions regulated by the permission P6161 (
+	its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, and its 
-	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement) 
-	then the permission is used by the performed action. 
-	In this scenario, the permission is active even if the refinement is not satisfied, 
-	because the activation state of the permission
-	is computed independently from the refinement of the regulated action.<br>
+	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+	then the permission is used by the performed action.
+	</li>
+	</ul>
 	
 <table border="1">
   	<tr>
     		<th> ID </th>
     		<th> P6161 </th>
-		<th> P6161.action.Ref </th>
-		<th> P6161.usage state</th>
+		<th> P6161.action.all_attributes</th>
 	 </tr>
   	<tr>
     		<td> E14-1-m </td>
     		<td> active </td>
 		<td> satisfied by the performed action </td>
-    		<td> used  by the performed action </td>
     	</tr>
   	<tr>
     		<td> E14-2-m </td>
     		<td> active </td>
     		<td> not-satisfied by the performed action </td>
-		<td> not-used by the performed action </td>
     	</tr>
 	</table>
 	<br>
@@ -483,15 +484,18 @@ The life cycle of a duty is depicted in the figure below (states with the double
 }  
 </pre>
 
-The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.
-The Duty has not Constraints, so it never inactive, it starts to be active and can become fulfilled when in the state of the world
-	there is a representation that a payment action 
-	of 5 euro to the assigner of the permission is performed.<br>
+<b>Time evolution of the Duty of P88</b>.<br>
+The Duty has not Constraints, so it is never inactive. It starts to be active and can become fulfilled 
+when in the state of the world there is a representation of a performed action that matches with the 
+the class of actions described in the duty, i.e. its <code>type</code> is <code>compensate</code> and its 
+<code>payAmount</code> is equal to <code>5 euro</code> its <code>target</code> is equal to the assigner of the 
+permission (?).<br>
+Question: Is the performer of the compensate action that gets an active permission to play the file?<br>
 
 <table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> Duty.Action.Ref </th>
+    		<th> Duty.Action.all_attributes </th>
 		<th> Duty </th>	
 
 	 </tr>
@@ -502,14 +506,18 @@ The Duty has not Constraints, so it never inactive, it starts to be active and c
 	</tr>
   	<tr>
     		<td>E22</td>
-    		<td>satisfied by the correct payment action </td>
-    		<td> fulfilled </td>
+    		<td>satisfied by one of the performed actions </td>
+    		<td> fulfilled by the action</td>
 	</tr>
 	</table>
 <br><br>
+	
+<b>Time evolution of permission P88</b><br>
+The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.<br>
+	
 	<b>Acces control scenario</b>: 
 
-	 Given a formal description of the attempted action, if its <code>type</code> is <code>play</code>
+	 Given a formal description of the attempted action.  if its <code>type</code> is <code>play</code>
 and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
 and the Permission P88 is active then the action is performed, otherwise it is blocked.<br>
 	
@@ -518,7 +526,7 @@ and the Permission P88 is active then the action is performed, otherwise it is b
     		<th> ID </th>
     		<th> Duty </th>
 		<th> P88 </th>
-		<th> Attempted Action </th>
+		<th> Attempted Action.performance state </th>
 		<th> P88.usage state </th>
  	 </tr>
   	<tr>
@@ -526,7 +534,7 @@ and the Permission P88 is active then the action is performed, otherwise it is b
     		<td> active </td>
     		<td> inactive </td>
     		<td>not-performed</td>	  
-    		<td>not-used by the attempted action</td>	  
+    		<td> </td>	  
   	</tr>
   	<tr>
     		<td>E22-2-ac</td>
@@ -540,11 +548,9 @@ and the Permission P88 is active then the action is performed, otherwise it is b
 
 	<b>Monitoring scenario</b>: 
 
-	Given a formal description a performed action, if its <code>type</code> is <code>play</code>
+	Given a formal description of a performed action. If its <code>type</code> is <code>play</code>
 and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
-and the Permission P88 is active then the Permission is used, if the Permission P88 is inactive the permission is not used 
-	(there might be a violation but it depends on the other permissions and the default assumption 
-	as to what is prohibited).
+and the Permission P88 is active then the Permission is used.
 	
 	<br>
 
@@ -561,7 +567,7 @@ and the Permission P88 is active then the Permission is used, if the Permission 
     		<td>active</td>
     		<td>inactive</td>
     		<td>performed</td>	  
-    		<td>not-used</td>	  	  
+    		<td></td>	  	  
   	</tr>
   	<tr>
     		<td>E22-2-m</td>
