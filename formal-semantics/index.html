@@ -238,14 +238,9 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	-->
 <h4>Examples (Permission without duties)</h4> 
 	
-	The ODRL policy examples used below to exemplify the semantics of Permission are partially taken from the examples 
-	in the <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model</a>.
-	<!--The <code>@type</code> of the policies in the examples is assumed to be <code>set</code> and not <code>offer</code> as it is in the 
-	ODRL Information Model 2.2.-->
-	<br><br>
-	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
-
+        (Differences from the example in the ODRL specification: its type is <code>odrl:Set</code>)<br>
+	
 	<b>Type</b> of Permission: <b>Permission only constrained by Constraint(s).</b> <br>
 	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
 	it includes the constraint that the permission may only be exercised until 2018-01-01.<br>
@@ -269,19 +264,19 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 }
 </pre>
 <br>
-<b>Time evolution of Permission P6163</b><br>
+<b>Time evolution of the Permission</b><br>
 	
 The constraint must be evaluated on the state of the world, which must include a representation of the current time 
 (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
 As long as the current time is before the first day of 2018, 
-the permission P6163 is active. When the first day of 2018 is passed, the permission becomes inactive.
+the Permission is active. When the first day of 2018 is passed, the Permission becomes inactive.
 (The activation of this type of permission does not depend on the actions attempted by the agents).<br><br>
 	
 <table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>P6163.Constraint</th>
-		<th>P6163.activation state</th>
+    		<th>Permission.Constraint</th>
+		<th>Permission.activation state</th>
 	 </tr>
   	<tr>
     		<td>E13-1</td>
@@ -298,21 +293,20 @@ the permission P6163 is active. When the first day of 2018 is passed, the permis
 <b>Acces control scenario</b>. 
 Given a formal description of the attempted action. 
 <ul>
-<li>(E-13-1) If such an action belongs to the class of actions regulated by the permission P6163
-(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
-and the permission P6163 is active then the action can be performed. </li>
-<li>(E-13-2) If such an action belongs to the class of actions regulated by the permission P6163, but the 
-permission P6163 is inactive, assuming that only the permission P6163 is considered 
-(this is because other permissions could regulate this action), then the action is blocked and it cannot be performed.</li>
-<li>If such an action does not belong to the class of actions regulated by the permission P6163 it means that P6163 
-is not relevant.</li>
+<li>(E-13-1) If such an action belongs to the class of actions regulated by the Permission 
+(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to <code>http://example.com/document:1234</code>)
+and the Permission is active then the action can be performed. </li>
+<li>(E-13-2) If such an action belongs to the class of actions regulated by the Permission, but the 
+Permission is inactive, assuming that only such Permission is considered 
+(this is because other permissions could regulate this action), the action is blocked and it cannot be performed.</li>
+<li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission is not relevant.</li>
 </ul><br>
 
 	<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>P6163.activation state</th>
-		<th>P6163.action.all_attributes</th>
+    		<th>Permission.activation state</th>
+		<th>Permission.action.all_attributes</th>
 		<th>Attempted Action.performance state</th>
 	 </tr>
   	<tr>
@@ -332,15 +326,17 @@ is not relevant.</li>
 <b>Monitoring scenario</b>. 
 Given a formal description of a performed action. 
 <ol>
-<li>If such an action belongs to the class of actions regulated by the permission P6163
-(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equale to <code>http://example.com/document:1234</code>)
-and the permission is active, then the action is permitted by P6163 and it is used by the performed action.</li>
-<li>If such an action belongs to the class of actions regulated by the permission P6163 and the permission is inactive,
+<li>If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
+then the action is permitted and the Permission is used by the performed action.</li>
+<li>If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
 then nothing can be deduced.</li>
 </ol>
 <hr>
+
 	
 <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a><br>
+	 (Differences from the example in the ODRL specification: its type is <code>odrl:Set</code>)<br>
+	
 	<b>Type</b> of Permission: <b>Permission that regulates an action that is refined by Refinement(s)</b>. <br>
 	The permission below allows the target asset <code>http://example.com/document:1234</code>to be printed and also include a refinement indicating that the resolution 
 	of the printing action must be less than or equal to 1200 dpi.<br>
@@ -368,19 +364,19 @@ then nothing can be deduced.</li>
 	</pre>
 	<br>
 
-<b>Time evolution of Permission P6161.</b><br>
+<b>Time evolution of the Permission.</b><br>
 	
 	<b>Acces control scenario</b>: Given a formal description of the attempted action.
 	<ul>
-	<li>(E14-1) If such an action belongs to the class of actions regulated by the permission P6161 
+	<li>(E14-1) If such an action belongs to the class of actions regulated by the Permission
 	(its <code>type</code> is <code>print</code>, 
 	its <code>object</code> is equale to <code>http://example.com/document:1234</code>) and 
-	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement)
-	then the permission P6161 is active and the attempted action can be performed.
+	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+	then the Permission is active and the attempted action can be performed.
 	</li>
-	<li>(E14-2) If such an action belongs to the class of actions regulated by the permission P6161, 
-	but the refinement of the action is not satisfied, then the permission P6161 is inactive. 
-	Assuming that only the permission P6161 is considered (this is because other permissions could regulate this action), 
+	<li>(E14-2) If such an action belongs to the class of actions regulated by the Permission, 
+	but the refinement of the action is not satisfied, then the Permission is inactive. 
+	Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
 	then the action is blocked and it cannot be performed.</li>
 	</ul>
 	<br>
@@ -388,8 +384,8 @@ then nothing can be deduced.</li>
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P6161.action.all_attributes </th>
-		<th> P6161 </th>
+    		<th> Permission.action.all_attributes </th>
+		<th> Permission </th>
 		<th> Attempted Action.performance state </th>
 	 </tr>
   	<tr>
@@ -408,22 +404,14 @@ then nothing can be deduced.</li>
 	<br>
 
 	<b>Monitoring scenario</b>: 
-	The above Permission is always active because it has neither constraints nor duties.
-	Given a formal description a performed action. <br>
-	<ul>
-	<li>If such an action belongs to the class of actions regulated by the permission P6161 (
-	its <code>type</code> is <code>print</code>, 
-	its <code>object</code> is equale to <code>http://example.com/document:1234</code>, and its 
-	<code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-	then the permission is used by the performed action.
-	</li>
-	</ul>
+	The above Permission is always active because it has neither constraints nor duties. Given a formal description a performed action. 
+	If such an action belongs to the class of actions regulated by the Permission then the permission is used by the performed action.
 	
 <table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P6161 </th>
-		<th> P6161.action.all_attributes</th>
+    		<th> Permission </th>
+		<th> Permission.action.all_attributes</th>
 	 </tr>
   	<tr>
     		<td> E14-1-m </td>
