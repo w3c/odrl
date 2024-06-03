@@ -464,7 +464,8 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<h4>Examples (Permission with duties)</h4> 
 	
 	
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> <br>
+	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a><br>
+	(Differences from the example in the ODRL specification: its type is <code>odrl:Agreement</code> and it has an <code>odrl:assignee</code>)<br>
 	<b>Type</b> of Permission: 
 	<b>Permission that is constrained by a Duty. The Duty has not Constraints. 
 	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
@@ -479,11 +480,12 @@ The life cycle of a duty is depicted in the figure below (states with the double
 	<pre>
 {
     "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Set",
+    "@type": "Agreement",
     "uid": "http://example.com/policy:88",
     "profile": "http://example.com/odrl:profile:09",
     "permission": [{
         "assigner": "http://example.com/assigner:sony",
+	"assignee": "http://example.com/party:person:billie",
         "target": "http://example.com/music/1999.mp3",
         "action": "play",
         "duty": [{
@@ -501,11 +503,12 @@ The life cycle of a duty is depicted in the figure below (states with the double
 }  
 </pre>
 
-<b>Time evolution of the Duty of P88</b>.<br>
+<b>Time evolution of the Duty</b>.<br>
 The Duty has not Constraints, so it is never inactive. It starts to be active and can become fulfilled 
 when in the state of the world there is a representation of a performed action that matches with the 
-the class of actions described in the duty, i.e. its <code>type</code> is <code>compensate</code> and its 
-<code>payAmount</code> is equal to <code>5 euro</code>.<br>
+the class of actions described in the duty: i.e. its <code>type</code> is <code>compensate</code>, its 
+<code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of the <code>odrl:compensate</code> action is not specified) 
+its <code>beneficiary</code> is the assigner of the permission <code>http://example.com/assigner:sony</code>.<br>
 
 <table border="1">
   	<tr>
@@ -515,57 +518,52 @@ the class of actions described in the duty, i.e. its <code>type</code> is <code>
 
 	 </tr>
   	<tr>
-    		<td>E22</td>
+    		<td>E22-1</td>
     		<td>not satisfied by performed actions</td>
     		<td> active </td>
 	</tr>
   	<tr>
-    		<td>E22</td>
+    		<td>E22-2</td>
     		<td>satisfied by one of the performed actions </td>
     		<td> fulfilled by the action</td>
 	</tr>
 	</table>
 <br><br>
 	
-<b>Time evolution of permission P88</b><br>
-The Permission P88 is active if its Duty is fulfilled, otherwise it is inactive.<br>
+<b>Time evolution of the Permission</b><br>
+The Permission is active if its Duty is fulfilled, otherwise it is inactive.<br><br>
 	
 	<b>Acces control scenario</b>: 
 
-	 Given a formal description of the attempted action.  if its <code>type</code> is <code>play</code>
-and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
-and the Permission P88 is active then the action is performed, otherwise it is blocked.<br>
+	 Given a formal description of the attempted action. If such an action belongs to the class of actions regulated by the Permission 
+	(i.e. its <code>type</code> is <code>play</code>, its <code>object</code> is equal to <code>http://example.com/music/1999.mp3</code>, and its <code>performer</code> is 
+        <code>http://example.com/party:person:billie</code>) and the Permission is active, then the action is performed, otherwise it is blocked.<br>
 	
 	<table border="1">
   	<tr>
     		<th> ID </th>
     		<th> Duty </th>
-		<th> P88 </th>
+		<th> Permission</th>
 		<th> Attempted Action.performance state </th>
-		<th> P88.usage state </th>
  	 </tr>
   	<tr>
     		<td>E22-1-ac</td>
     		<td> active </td>
     		<td> inactive </td>
     		<td>not-performed</td>	  
-    		<td> </td>	  
   	</tr>
   	<tr>
     		<td>E22-2-ac</td>
     		<td> fulfilled </td>
     		<td> active </td>
    		<td>performed</td>
-   		<td>used by the attempted action </td>
   	</tr>
 	</table>
 <br>
 
 	<b>Monitoring scenario</b>: 
-
-	Given a formal description of a performed action. If its <code>type</code> is <code>play</code>
-and its <code>object</code> is equale to <code>http://example.com/music/1999.mp3</code> 
-and the Permission P88 is active then the Permission is used.
+	Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
+then the permission is used by the performed action.
 	
 	<br>
 
@@ -573,23 +571,17 @@ and the Permission P88 is active then the Permission is used.
   	<tr>
     		<th>ID</th>
     		<th>Duty</th>
-		<th>P88</th>
-		<th>P88.Action</th>
-		<th>P88.usage state</th>
+		<th>Permission</th>
 		</tr>
   	<tr>
     		<td>E22-1-m</td>
     		<td>active</td>
-    		<td>inactive</td>
-    		<td>performed</td>	  
-    		<td></td>	  	  
+    		<td>inactive</td>  
   	</tr>
   	<tr>
     		<td>E22-2-m</td>
     		<td>fulfilled</td>
     		<td>active</td>
-   		<td>performed</td>
-   		<td>used</td>
   	</tr>
 	</table>
 <!--
