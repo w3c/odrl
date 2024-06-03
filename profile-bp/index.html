@@ -302,7 +302,7 @@ exns1:aggregatedTime
   a rdf:Property , owl:ObjectProperty, skos:Concept ;
   rdfs:isDefinedBy expf1: ;
   rdfs:subPropertyOf :operand ;
-  skos:definition "The relation is satisfied when only two, and not less or more, of the Constaints is satisfied"@en ;
+  skos:definition "The relation is satisfied when only two, and not less or more, of the Constraints is satisfied"@en ;
   rdfs:label "Exactly Two"@en ;
   skos:note "This property MUST only be used for Logical Constraints."@en .
 </pre>
@@ -353,7 +353,8 @@ exns1:aggregatedTime
   <div class="note">
     <p><strong>Design Strategy</strong></p>
     <p>The ODRL Community Group highly recommends for Profiles to stick to the basic design of Rule subclasses as defined by the ODRL Information Model: the Rule subclasses Permission, Prohibition and Duty cover the key use cases of an ODRL policy and therefore an ODRL Profile should either adopt any of these three classes as they are or define subclasses of the Permission Class, or the Prohibition Class or the Duty Class. Defining a subclass of Rule should be avoided as this may infringe the information model of ODRL. </p>
-    <p><strong>Design Consideration</strong><br>Please check if a rule required by the use case covered by the Profile can be expressed - in this sequence: <br>1) By the Permission, the Prohibition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) By a new subclass of the Permission or Prohibition or Duty class (the new subclass(es) must be defined by the Profile)<br>3) As a last resort: by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case. (The new subclass(es) of Rule and a new subclass of Policy with a property for each new Rule subclass must be defined by the Profile.)</p>  
+    <p><strong>Design Consideration</strong><br>Please check if a rule required by the use case covered by the Profile can be expressed - in this sequence: <br>1) By the Permission, the Prohibition or the Duty class as defined by ODRL Recommendation (this does not need a definition by a Profile)<br>2) By a new subclass of the Permission or Prohibition or Duty class (the new subclass(es) must be defined by the Profile)<br>3) As a last resort: by a subclass of the Rule class as defined by the ODRL Recommendation as none of the items above fits the needs of the use case. (The new subclass(es) of Rule and a new subclass of Policy with a property for each new Rule subclass must be defined by the Profile.)</p>
+    <p><strong>For the definitions of the following Rules below:</strong> it is not required to create a new subclass of Policy. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of an obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</p>
     <p><strong>How To Define a Subclass of the Permission Class</strong></p>
     <ul>
       <li>A new subclass of Permission is defined by the Profile ...</li>
@@ -369,7 +370,6 @@ exns1:aggregatedTime
       <li>Example definition:
         <pre>ex:myPermission rdfs:subClassOf odrl:Permission ;
 owl:disjointWith odrl:Prohibition, odrl:Duty .</pre></li>
-      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
     </ul>
     <p><strong>How To Define a Subclass of the Prohibition Class</strong> </p>
     <ul>
@@ -386,7 +386,6 @@ owl:disjointWith odrl:Prohibition, odrl:Duty .</pre></li>
       <li>Example definition:
         <pre>ex:myProhibition rdfs:subClassOf odrl:Prohibition ;
 owl:disjointWith odrl:Permission, odrl:Duty .</pre></li>
-      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
     </ul>
     <p><strong>How To Define a Subclass of the Duty Class</strong> </p>
     <ul>
@@ -403,7 +402,6 @@ owl:disjointWith odrl:Permission, odrl:Duty .</pre></li>
       <li>Example definition:
         <pre>ex:myDuty rdfs:subClassOf odrl:Duty ;
 owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
-      <li>It is not required to create a new subclass of Policy for this purpose. The requirements that the value of a permission property must be of type Permission (or a subclass of it) and that the value of a prohibition property must be of type Prohibition (or a subclass of it) and that the value of a obligation property must be of type Duty (or a subclass of it) is fulfilled. <br>Only the requirement to use one of the properties permission, prohibition or obligation needs to be fulfilled.</li>
     </ul>
   </div>
   <p>The example shows how to define of a subclass <code>StraightPermission1 </code>for the  Example Profile 1</p>
@@ -476,6 +474,72 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
   skos:note "A Special Offer 1 Policy MUST contain at least one Permission and a Party with Assigner function (in the same Permission or Prohibition). The Offer Policy MAY contain either a specific Party or a Collection of Parties with Assignee function."@en .</pre>
   </div>
   </section>
+  <section id="constraints">
+    <h3>Additional Constraint Subclasses</h3>
+    <p>An ODRL <a href="https://www.w3.org/TR/odrl-model/#constraint">Constraint</a> is a class for applying a
+      constraint to a Rule.
+      The ODRL Profile Mechanism permits to create additional subclasses of the Constraint Class; its definition must
+      comply with the design of the basic Constraint Class.
+    <ul>
+      <li>A Constraint MAY have none or one <code>uid</code> property value (of type IRI [<a href="#bib-rfc3987">rfc3987</a>]) to identify the
+        Constraint.
+      </li>
+      <li>A Constraint MUST have one <code>leftOperand</code> property value of type LeftOperand.</li>
+      <li>A Constraint MUST have one <code>operator</code> property value of type Operator.</li>
+      <li>A Constraint MUST have either:
+        <ul>
+          <li>one <code>rightOperand</code> property value of type:
+            <ul>
+              <li>literal, or IRI [<a href="#bib-rfc3987">rfc3987</a>], or RightOperand; or</li>
+              <li>for set-based operators; list of literals, or list of IRIs [<a href="#bib-rfc3987">rfc3987</a>], or list of RightOperands;
+              </li>
+            </ul>
+          </li>
+          <li>one <code>rightOperandReference</code> property value of type:
+            <ul>
+              <li>IRI [<a href="#bib-rfc3987">rfc3987</a>]; or</li>
+              <li>for set-based operators; list of IRIs [<a href="#bib-rfc3987">rfc3987</a>];</li>
+            </ul>
+            for a reference to a right operand value.
+          </li>
+        </ul>
+      <li>A Constraint MAY have none or one <code>dataType</code> property value for the data type of the
+        rightOperand/Reference.
+      </li>
+
+      <li>A Constraint MAY have none or one <code>unit</code> property value (of type IRI [<a href="#bib-rfc3987">rfc3987</a>]) to set the unit
+        used for the value of the rightOperand/Reference.
+      </li>
+
+      <li>A Constraint MAY have none or one <code>status</code> property value for a value generated from the
+        leftOperand action or for a value related to the leftOperand set as the reference for the comparison.
+      </li>
+    </ul>
+    <p>Defining a subclass of Constraint allows:</p>
+    <ul>
+      <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none or one&quot; a &quot;MUST
+        have one&quot; or a &quot;MUST NOT have one&quot; can be defined.
+      </li>
+      <li>If the cardinality of a property is defined by its superclass as &quot;MAY have none, one or many&quot; a
+        &quot;MUST have one&quot; or a &quot;MUST NOT have one&quot; or a &quot;MUST have many&quot; can be defined.
+      </li>
+      <li>One or more additional properties may be defined. For a property its name (identifier), its occurrence and its
+        value type must be defined.
+      </li>
+    </ul>
+    <p>The example shows a basic definition of a subclass SpecialConstraint for the Example Profile 1</p>
+    <div class="example">
+      <div class="example-title marker"><span>Example 11 (TTL)</span></div>
+      <pre id="exconstraint" class="hljs" aria-busy="false" aria-live="polite">exns1:SpecialConstraint
+        a rdfs:Class , owl:Class, skos:Concept ;
+        rdfs:isDefinedBy expf1:
+        rdfs:subClassOf :Constraint ;
+        rdfs:label "Special Constraint"@en ;
+        skos:definition "A Constraint which requires the unit to be always present."@en ;
+        skos:note "A Special Constraint MUST contain the unit."@en .
+      </pre>
+    </div>
+  </section>
   <section id="multihowto">      
 
     <h3>How to use multiple Profiles in a single Policy</h3>
@@ -483,7 +547,7 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
     <ul>
       <li>First it should be considered that applying only one profile identifier to the <code>profile</code> property means that two profiles are in use: the default <a href="https://www.w3.org/TR/odrl-model/#profile-core">ODRL Core Profile</a> and this explicitly defined profile.</li>
       <li>Subclasses, sub-properties or instances of a class included into a Profile are defined in either a specific namespace  or in the ODRL namespace if this thing is defined already by the <a href="https://www.w3.org/TR/odrl-vocab/#vocab-common">ODRL Common Vocabulary</a>.</li>
-      <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g., Example Profil 1 can also be adopted for another Profile, e.g., Example Profile 2. (Note: be aware that the identifier of a Profile and the identifer of a namespace used by it does not have to the same.)</li>
+      <li>Subclasses, sub-properties or instances of a class defined in a namespace used for e.g., Example Profile 1 can also be adopted for another Profile, e.g., Example Profile 2. (Note: be aware that the identifier of a Profile and the identifier of a namespace used by it does not have to the same.)</li>
       <li>If a subclasses, sub-properties or instances of a class is defined in a namespace with an identifier different from the identifier of the Profile this thing can be used by multiple Profiles (with identifiers different from the namespace) but they MUST be defined by each Profile in exactly the same way. E.g., a Rule subclass exns1:StraightPermission defined by Example Profile 1 as not having any property expressing a Duty must not have in a definition of Example Profile 2 a property expressing a Duty.<br>
         Note: for this purpose this Best Practices document uses the term &quot;adopt&quot; for including the definition of a thing which may be included by other Profiles. In particular, this term was used for things defined by the ODRL Common Vocabulary is a use of things defined by it by other Profiles has to be expected.
       </li>
@@ -509,7 +573,7 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
   <h3>What may be ignored, and what not</h3>
   <p>The <a href="https://www.w3.org/TR/odrl-model">ODRL Information Model</a> claims the use of properties of a class as a MUST (= as mandatory) or that an ODRL Validator MUST support the use of specific sub-properties of a defined property. A validator supporting the ODRL Core Profile and a specific additional profile MUST NOT ignore mandatory ODRL Core requirements but in reverse it may ignore optional ODRL Core requirements.</p>
   <ul>
-    <li>Regarding Policy: a subclass of Policy must be used, but it is not mandatory to use a subclass defined by the ODRL Core Profile if a related profile defines one. Therefore the subclasses of Policy defined by the ODRL Core Profile may be ignored if the related profile defines a new subclass of Policy.</li>
+    <li>Regarding Policy: a subclass of Policy must be used, but it is not mandatory to use a subclass defined by the ODRL Core Profile if a related profile defines one. Therefore, the subclasses of Policy defined by the ODRL Core Profile may be ignored if the related profile defines a new subclass of Policy.</li>
     <li>Regarding the Rule(s) of a Policy: <br>A Policy must use at least one of the properties permission, prohibition or obligation with a corresponding subclass of Rule - Permission Class, or a subclass of it; Prohibition Class, or a subclass of it; Duty Class or a subclass of it - as type, this cannot be omitted.</li>
     <li>Regarding Action: the ODRL Core Profile defines only <a href="https://www.w3.org/TR/odrl-vocab/#actions">two instances of Action</a>: use and transfer. A profile may ignore them as using them and their narrower terms is not defined as mandatory by the Rule Class or the Action Class.</li>
     <li>Regarding Party Functions: The Rule Class defines the use of sub-properties of <code>function</code> as optional, it may be ignored. But if a sub-property of the <a href="https://www.w3.org/TR/odrl-model/#function">function property</a> is used, the two terms defined by the ODRL Core Profile, <code>assigner</code> and <code>assignee</code>, must not be ignored.</li>
@@ -522,7 +586,7 @@ owl:disjointWith odrl:Permission, odrl:Prohibition .</pre></li>
   <h2>Prerequisites for defining an ODRL Profile</h2>
   <section id="guid">      
   <h3>A globally unique identifier of the Profile</h3>
-  <p>Each Profile must have a globally unique identifer. 
+  <p>Each Profile must have a globally unique identifier.
     Such an identifier 
   must be of type IRI [<a href="#bib-rfc3987">rfc3987</a>] which is in short a URI [<a href="#bib-rfc3986">rfc3986</a>] with an extended, internationalized character set.</p>
   <p>Be aware that this Profile identifier should not be used for other purposes like the identifier of a namespace of concepts defined by the Profile as it would be hard to distinguish if a profile or a namespace is identified when using this identifier.  </p>
