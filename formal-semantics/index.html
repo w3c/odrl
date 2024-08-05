@@ -49,12 +49,15 @@
 		certain actions, and which permissions have been used.</li>
 		</ol>
 
-		We assume that (attempted or performed) <b>actions</b> are described in RDF by specifying at least: its <code>type</code> (a list of actions types is available in 
-		the <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>), 
-		the agent that is the <code>performer</code> of the action, 
-		the <code>object</code> upon which the action is carried out, 
-		the <code>atTime</code> when the action happens or starts.<br><br>
-					
+		We assume that attempted or performed <b>actions</b> are described in RDF by specifying at least:<br>
+		<ul>
+			<li>its <code>type</code> (a list of actions types is available in the 
+				<a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
+			<li>e agent that is the <code>performer</code> of the action;</li>	
+			<li>the <code>object</code> upon which the action is carried out;</li>	
+			<li>the <code>atTime</code> when the action happens or starts.</li>
+		</ul>
+						
 		More precisely, given:
 			<ul>
 				<li>a collection of ODRL Policies;</li>
@@ -66,14 +69,15 @@
 			<ul>
 				<li>which Permissions, Prohibitions, and Obligations (collectively named Rules) 
 					are <b>active</b>. A Rule is said to be active if it is in effect;</li>
-				<li>which Permissions have been <b>used</b>;</li>
+				<!--<li>which Permissions have been <b>used</b>;</li>-->
 				<li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 			</ul>			
 			
 			 <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
 		</p>
 		<p>
-			This document describes the expected behaviour of this ODRL Evaluator, with a textual description, a formal semantics and a collection of examples.
+			This document describes the expected behaviour of this ODRL Evaluator, with a textual description and a collection of examples.
+			<!--(Nicoletta: I removed a "formal semantics")-->
 		</p>
 		<!--
 		<ol>
