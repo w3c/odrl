@@ -226,25 +226,21 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 <ul>
 	<li>all the existing constraints of the Rule are satisfied;</li> 
 	<li>all the existing duties of the Rule are fulfilled or inactive; </li>
-	<li> (only for the access control scenario) all the existing refinements of the 
+	<li>only for the access control scenario: all the existing refinements of the 
 		Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
 	</ul>
 	If one of those conditions is not met, the Permission is <b>inactive</b>.<br><br>
 	
-	When an action (with all the refinements satisfied) regulated by an <b>active</b> permission is performed 
-	the permission is <b>used</b>.<br><br>
+	When an action, which is regulated by an <b>active</b> permission, is performed, the permission is used by such an action.<br><br>
 	
-	In the <b>access control scenario</b>: 
-	When an action is <b>attempted</b>,
-	if one of its property values does not satisfy the refinements of the permission, 
-	and there is not another active permission that permits such an action, 
+	In the <b>access control scenario</b>: when an action is <b>attempted</b>,
+	if there is not an active permission that permits such an action, 
 	it means that the action is not permitted and it is blocked.<br><br>
 	
-	In the <b>monitoring scenario</b>: 
-	When an action is <b>performed</b> (and it is represented in the state of the world), 
+	In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
 	if there is no active permission to do so (i.e. there is no active permission regulating a class 
 	of action to which the executed action belongs) and the default setting for the ODRL Evaluator
-	is set to "everything is prohibited unless explicitly permitted" a violation is generated.
+	is set to "everything is prohibited unless explicitly permitted" a violation should be generated.
 	This evaluation is not exemplified below.
 	
 	<!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
@@ -252,12 +248,13 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	-->
 <h4>Examples (Permission without duties)</h4> 
 	
-	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a><br>
-        (Differences from the example in the ODRL specification: its type is <code>odrl:Set</code>)<br>
-	
-	<b>Type</b> of Permission: <b>Permission only constrained by Constraint(s).</b> <br>
+	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
+	(similar to the one in the ODRL Information Model 2.2, with the difference that the type is <code>odrl:Set</code>)<br>
+        	
+	<b>Type of Permission</b>: <b>Permission only constrained by Constraint(s).</b> <br>
 	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
-	it includes the constraint that the permission may only be exercised until 2018-01-01.<br>
+	it includes the constraint that the permission may only be exercised until 2018-01-01. 
+	The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.<br>
 	
 <pre>
 {
@@ -278,7 +275,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 }
 </pre>
 <br>
-<b>Time evolution of the Permission</b><br>
+<b>Evaluation of the activation of the Permission</b><br>
 	
 The constraint must be evaluated on the state of the world, which must include a representation of the current time 
 (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
@@ -289,8 +286,8 @@ the Permission is active. When the first day of 2018 is passed, the Permission b
 <table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>Permission.Constraint</th>
-		<th>Permission.activation state</th>
+    		<th>P.Constraint.satisfaction state</th>
+		<th>P.activation state</th>
 	 </tr>
   	<tr>
     		<td>E13-1</td>
