@@ -444,21 +444,14 @@ then nothing can be deduced.</li>
 	
 <h4>Semantics of Duty when it is used as an activation Condition of a Permission</h4> 
 
-Goal: determine if a Duty is fulfilled.<br>
+In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and 
+if its action, with all refinements satisfied, has been performed. <br>
 
-In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and if its action, 
-with all refinements satisfied, has been performed. <br>
-
-	The initial state of a duty is <b>inactive</b>.<br>
-	In order to evaluate if a Duty is fulfilled, it is necessary to perform the following steps:
 <ol>
-	<li> Evaluate the satisfaction of its Constraints (output: satisfied, not satisfied) on the state of the world; <br>
-	- if its Constraints are all satisfied the duty is <b>active</b>. <br>
-	- if one of its Constraints is not satisfied the duty is <b>inactive</b>. 
-	(For example, the duty to pay a ticket to get an active permission enter a museum may be active only on Sundays).
-	</li>
-		
-	<li> If the Duty is <b>active</b> and its action with all refinements satisfied, is performed the duty becomes <b>fulfilled</b>.</li>
+<li>The initial state of a duty is <b>inactive</b>.</li>
+<li>If the Constraints of the duty are all satisfied, the duty is <b>active</b>, otherwise it is <b>inactive</b> 
+(for example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays).</li>
+<li> If the Duty is <b>active</b> and its action with all refinements satisfied, is performed the duty is <b>fulfilled</b>.</li>
 </ol>
 
 The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
