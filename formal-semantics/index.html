@@ -447,15 +447,18 @@ then nothing can be deduced.</li>
 In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and 
 if its action, with all refinements satisfied, has been performed. <br>
 
-<ol>
+<ol> 
 <li>The initial state of a duty is <b>inactive</b>.</li>
-<li>If the Constraints of the duty are all satisfied, the duty is <b>active</b>, otherwise it is <b>inactive</b> 
-(for example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays).</li>
-<li> If the Duty is <b>active</b> and its action with all refinements satisfied, is performed the duty is <b>fulfilled</b>.</li>
+<li>If at least one of the Constraints of the duty is not satisfied, then the duty is <b>inactive</b>. 
+(For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
+and inactive the other days).</li>	
+<li>If the Constraints of the duty are all satisfied or there are no Constraints, then the duty is <b>active</b>.
+<li> If the Duty is <b>active</b> and its action with all refinements+properties satisfied is performed, 
+	then duty is <b>fulfilled</b> by the performance of the action.</li>
 </ol>
 
-The life cycle of a duty is depicted in the figure below (states with the double outline are terminal states):
-	<img src="ODRLDuty.png">
+The life cycle of a duty is depicted in the figure below:
+	<img src="2024ODRLDuty.png">
 
 	<h4>Examples (Permission with duties)</h4> 
 	
