@@ -304,20 +304,22 @@ the Permission is active. When the first day of 2018 is passed, the Permission b
 <b>Acces control scenario</b>. 
 Given a formal description of the attempted action. 
 <ul>
-<li>(E-13-1) If such an action belongs to the class of actions regulated by the Permission 
-(its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to <code>http://example.com/document:1234</code>)
-and the Permission is active then the action can be performed. </li>
-<li>(E-13-2) If such an action belongs to the class of actions regulated by the Permission, but the 
-Permission is inactive, assuming that only such Permission is considered 
-(this is because other permissions could regulate this action), the action is blocked and it cannot be performed.</li>
-<li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission is not relevant.</li>
+<li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
+(i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
+the target of the permission <code>http://example.com/document:1234</code>)
+and the Permission is active then the action can be executed. </li>
+<li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
+Permission is inactive, assuming that only this Permission is considered 
+(this is because other permissions could regulate this action), the action is blocked and it cannot be executed.</li>
+<li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
+is not relevant.</li>
 </ul><br>
 
 	<table border="1">
   	<tr>
     		<th>ID</th>
-    		<th>Permission.activation state</th>
-		<th>Permission.action.all_attributes</th>
+    		<th>P.activation state</th>
+		<th>P.action.all_attributes</th>
 		<th>Attempted Action.performance state</th>
 	 </tr>
   	<tr>
