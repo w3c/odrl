@@ -400,7 +400,7 @@ then nothing can be deduced.</li>
   	<tr>
     		<th> ID </th>
     		<th> P.action.all_attributes </th>
-		<th> P </th>
+		<th> P.activation state </th>
 		<th> Attempted Action.performance state </th>
 	 </tr>
   	<tr>
@@ -425,7 +425,7 @@ then nothing can be deduced.</li>
 <table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> P </th>
+    		<th> P.activation state </th>
 		<th> P.action.all_attributes</th>
 	 </tr>
   	<tr>
@@ -504,28 +504,32 @@ The life cycle of a duty is depicted in the figure below:
 }  
 </pre>
 
-<b>Time evolution of the Duty</b>.<br>
-The Duty has not Constraints, so it is never inactive. It starts to be active and can become fulfilled 
+<b>Evaluation of the Duty</b>.<br>
+The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and can become fulfilled 
 when in the state of the world there is a representation of a performed action that matches with the 
 the class of actions described in the duty: i.e. its <code>type</code> is <code>compensate</code>, its 
-<code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of the <code>odrl:compensate</code> action is not specified) 
-its <code>beneficiary</code> is the assigner of the permission <code>http://example.com/assigner:sony</code>.<br>
+<code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
+the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
+<code>http://example.com/assigner:sony</code>.<br>
 
 <table border="1">
   	<tr>
     		<th> ID </th>
     		<th> Duty.Action.all_attributes </th>
-		<th> Duty </th>	
+		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
 
 	 </tr>
   	<tr>
     		<td>E22-1</td>
     		<td>not satisfied by performed actions</td>
     		<td> active </td>
+		<td> not-set </td>
 	</tr>
   	<tr>
     		<td>E22-2</td>
     		<td>satisfied by one of the performed actions </td>
+		<td> active </td>
     		<td> fulfilled by the action</td>
 	</tr>
 	</table>
