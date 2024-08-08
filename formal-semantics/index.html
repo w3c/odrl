@@ -465,7 +465,8 @@ The life cycle of a duty is depicted in the figure below:
 	
 	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> 
 	(similar to the one in the ODRL Information Model 2.2, with the differences that the type is 
-	<code>odrl:Agreement</code> and the permission has an <code>odrl:assignee</code>).<br><br>
+	<code>odrl:Agreement</code> and the permission has an <code>odrl:assignee</code>, this is to make explicit 
+	which agent will have the active permission if the duty is fulfilled).<br><br>
 	
 	<b>Type of Permission</b>: 
 	<b>Permission that is constrained by a Duty. The Duty has not Constraints. 
@@ -506,15 +507,15 @@ The life cycle of a duty is depicted in the figure below:
 </pre>
 
 <b>Evaluation of the Duty</b>.<br>
-The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and it is fulfilled 
+The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
 when in the state of the world there is a representation of an executed action that matches with the 
-the class of actions described in the duty: i.e. its <code>type</code> is <code>compensate</code>, its 
+the class of actions described in the duty. I.e. the <code>type</code> of the action is <code>compensate</code>, its 
 <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
 the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
 <code>http://example.com/assigner:sony</code>. It is not required that the agent who performs the compensate action is 
 <code>http://example.com/party:person:billie</code> because, for example, a company can pay for its employees 
-(it would be useful for actions of compensation or payment to contain a reference to the contract and the party for which 
-they are executed). <br>
+(feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a reference to a policy or a rule and to 
+the party for whom they are executed). <br>
 
 <table border="1">
   	<tr>
