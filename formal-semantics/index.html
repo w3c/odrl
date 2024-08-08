@@ -472,11 +472,11 @@ The life cycle of a duty is depicted in the figure below:
 	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
 	
 	The Permission below is granted by the Party <code>http://example.com/assigner:sony</code>. It allows the  
-	target asset <code>http://example.com/music/1999.mp3</code> to be played. 
+	target asset <code>http://example.com/music/1999.mp3</code> to be played by the Party <code>http://example.com/party:person:billie</code>. 
 	The permission includes a duty to perform the compensate action that has a refinement of <code>payAmount</code> 
 	of euro 5.00.
 	The semantics of Permission requires that the compensate action (included in the duty) must be performed 
-	<b>before</b> the play action in order to get an active permission to perform the play action.<br><br>
+	<b>before</b> the play action in order to get an <code>active</code> permission to perform the play action.<br><br>
 
 	<pre>
 {
@@ -505,12 +505,15 @@ The life cycle of a duty is depicted in the figure below:
 </pre>
 
 <b>Evaluation of the Duty</b>.<br>
-The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and can become fulfilled 
-when in the state of the world there is a representation of a performed action that matches with the 
+The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and it is fulfilled 
+when in the state of the world there is a representation of an executed action that matches with the 
 the class of actions described in the duty: i.e. its <code>type</code> is <code>compensate</code>, its 
 <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
 the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
-<code>http://example.com/assigner:sony</code>.<br>
+<code>http://example.com/assigner:sony</code>. It is not required that the agent who performs the compensate action is 
+<code>http://example.com/party:person:billie</code> because, for example, a company can pay for its employees 
+(it would be useful for actions of compensation or payment to contain a reference to the contract and the party for which 
+they are executed). <br>
 
 <table border="1">
   	<tr>
@@ -536,7 +539,8 @@ the <code>odrl:compensate</code> action is not specified) its <code>beneficiary<
 <br><br>
 	
 <b>Evaluation of the Permission</b><br>
-The Permission is active if its Duty is fulfilled, otherwise it is inactive.<br><br>
+If the Duty is active but it is not fullfilled the Permission is inactive.<br>
+If the Duty is fulfilled the Permission is active.<br><br>
 	
 	<b>Acces control scenario</b>: 
 
@@ -547,13 +551,13 @@ The Permission is active if its Duty is fulfilled, otherwise it is inactive.<br>
 	<table border="1">
   	<tr>
     		<th> ID </th>
-    		<th> Duty </th>
+    		<th> Duty.deontic state </th>
 		<th> Permission</th>
 		<th> Attempted Action.performance state </th>
  	 </tr>
   	<tr>
     		<td>E22-1-ac</td>
-    		<td> active </td>
+    		<td> not-set </td>
     		<td> inactive </td>
     		<td>not-performed</td>	  
   	</tr>
@@ -570,25 +574,6 @@ The Permission is active if its Duty is fulfilled, otherwise it is inactive.<br>
 	Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
 then the permission is used by the performed action.
 	
-	<br>
-
-	<table border="1">
-  	<tr>
-    		<th>ID</th>
-    		<th>Duty</th>
-		<th>Permission</th>
-		</tr>
-  	<tr>
-    		<td>E22-1-m</td>
-    		<td>active</td>
-    		<td>inactive</td>  
-  	</tr>
-  	<tr>
-    		<td>E22-2-m</td>
-    		<td>fulfilled</td>
-    		<td>active</td>
-  	</tr>
-	</table>
 <!--
 	<hr>
 
