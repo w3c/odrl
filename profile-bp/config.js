@@ -1,6 +1,6 @@
 var respecConfig = {
-    specStatus: "CG-DRAFT",
-    publishDate: "2024-04-08",
+    specStatus: "CG-FINAL",
+    publishDate: "2024-08-08",
     shortName: "profile-bp",
   
     editors: [
