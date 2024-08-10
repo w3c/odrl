@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>ODRL Profile: Data Spaces</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+		<script class="remove" src="config.js"></script>
+		
+	
+	<link rel="stylesheet" href="https://www.w3.org/TR/vocab-duv/localstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE"/>
+	<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
+		
+	</head>
+	<body>
+		<section  id="abstract">
+			<p>This document presents a new profile called ODRL Data Usage Control (DUC) that extends from ODRL core vocabulary and expresion focused on data processing
+                over big data systems</p>
+            <p>DUC is a Rights Expresson Language for the big data industry. With DUC profile, every single piece of content, a data asset,
+                released by a news data provider or or data publisher can be annotated with machine-readable instructions that spell out
+                the particular permissions and restrictions for this data asset.</p>
+            <p></p>
+			 
+		</section>
+
+		<section id='sotd'>
+
+		</section>
+
+        <section id="ack">
+            <h2>Acknowledgments</h2>
+            <p>
+                This document is the result of a team effort by members of the Universidad Politécnica de Madrid 2020 with input and assistance from other contributors.
+
+                Development and maintenance of DUC was done by these persons (ordered by surname): Munoz-Arcentales Andrés, Salvachua Joaquín, Lopez-Pernas Sonsoles, Huecas Gabriel, Alejandro Pozo,  Alonso Álvaro
+            </p>
+        </section>
+
+        <section id='spec'>
+            <h2>DUC specifications</h2>
+            <p>This section extends the ODRL Recommendation [ODRL22] by terms required by the big data industry.</p>
+        </section>
+
+	
+		<section id="intro">
+		<h2>Introduction</h2>
+			<p>
+				This ODRL extension for policy definition regarding access and usage control. This means that data ownership along different phases of processing could be specified.
+
+                                     The different use cases are been develop inside the FIWARE initiative (like Implement Data spaces, Machine Learning, Federated Learning, Secure Data sharing, Data Markets).
+                                 Policy enforcement implemented via translation into a formal CSP like process algebra to specify the allowed behavior. Later is transformed into an extended automata that checks against Big Data platform logging information (like Apache Spark or Apache Flink).
+			</p>
+
+            <section id="conventions">
+                <h2>Document Conventions</h2>
+                    <p>
+                    </p>
+
+                <table class="def">
+                    <tbody>
+                      <tr>
+                        <th>Prefix</th>
+                        <th>Namespace</th>
+                        <th>Description</th>
+                      </tr>
+                      <tr>
+                        <td>odrl</td>
+                        <td>http://www.w3.org/ns/odrl/2/</td>
+                        <td>[[odrl-vocab]] [[odrl-model]]</td>
+                      </tr>
+                      <tr>
+                        <td>rdf</td>
+                        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                        <td>[[rdf11-concepts]]</td>
+                      </tr>
+                      <tr>
+                        <td>rdfs</td>
+                        <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                        <td>[[rdf-schema]]</td>
+                      </tr>
+                         <tr>
+                        <td>owl</td>
+                        <td>http://www.w3.org/2002/07/owl#</td>
+                        <td>[[owl2-overview]]</td>
+                      </tr>
+                    <tr>
+                        <td>xsd</td>
+                        <td>http://www.w3.org/2001/XMLSchema#</td>
+                        <td>[[xmlschema11-2]]</td>
+                      </tr>
+                          <tr>
+                        <td>skos</td>
+                        <td>http://www.w3.org/2004/02/skos/core#</td>
+                        <td>[[skos-reference]]</td>
+                      </tr>
+                      <tr>
+                        <td>dcterms</td>
+                        <td>http://purl.org/dc/terms/</td>
+                        <td>[[dcterms]]</td>
+                      </tr>
+                        <tr>
+                        <td>vcard</td>
+                        <td>http://www.w3.org/2006/vcard/ns#</td>
+                        <td>[[vcard-rdf]]</td>
+                      </tr>
+                      <tr>
+                        <td>foaf</td>
+                        <td>http://xmlns.com/foaf/0.1/</td>
+                        <td>[[foaf]]</td>
+                      </tr>
+
+                      <tr>
+                        <td>schema</td>
+                        <td>http://schema.org/</td>
+                        <td><a href="http://schema.org/">schema.org</a></td>
+                      </tr>
+
+                         <tr>
+                        <td>cc</td>
+                        <td>https://creativecommons.org/ns#</td>
+                        <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
+                      </tr>
+
+                         <tr>
+                        <td>ex</td>
+                        <td>http://example.com/ns#</td>
+                        <td></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+            </section>
+
+	
+		</section>
+
+        <section id="actions">
+            <h2>Actions for Rules</h2>
+            <p>For the class Action (http://www.w3.org/ns/odrl/2/Action), used with Rules, these instances are defined.
+            </p>
+            <section>
+                <h4 id="x4-4-1-accept-query">Query</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To query some data asset.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Query</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptQuery">http://www.w3.org/ns/odrl/2/acceptQuery</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-write">Publish</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To write or publish some data.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Publish</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptPublish">http://www.w3.org/ns/odrl/2/acceptPublish</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-train">Train</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To train a machine learning model.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Train</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptTrain">http://www.w3.org/ns/odrl/2/acceptTrain</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-evaluate">Evaluate</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To evaluate a machine learning model.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Evaluate</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptEvaluate">http://www.w3.org/ns/odrl/2/acceptEvaluate</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-anonymize">Anonymize</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To anonymize the incoming data.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Anonymize</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptAnonymize">http://www.w3.org/ns/odrl/2/acceptAnonymize</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-anonymize">Transform</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To transform, clean or filter data.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Transform</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/acceptTransform">http://www.w3.org/ns/odrl/2/acceptTransforme</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-aggregate-consumer">Aggregate_by_consumer</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The consumer has to aggregate the data before perform another operation.</td></tr>
+                    <tr><th>Label:</th> <td>duc:AggregateByConsumer</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/AggregateByConsumer">http://www.w3.org/ns/odrl/2/AggregateByConsumer</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-aggregate-provider">Aggregate_by_provider</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The provider has to aggregate the data before publish it.</td></tr>
+                    <tr><th>Label:</th> <td>duc:AggregateByProvider</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/AggregateByProvider">http://www.w3.org/ns/odrl/2/AggregateByProvider</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-remove">Remove_subscription</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To remove the subscription.</td></tr>
+                    <tr><th>Label:</th> <td>duc:RemoveSubscription</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/RemoveSubscription">http://www.w3.org/ns/odrl/2/RemoveSubscription</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-remove">Kill_job</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>To kill the current executing job.</td></tr>
+                    <tr><th>Label:</th> <td>duc:KillJob</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/KillJob">http://www.w3.org/ns/odrl/2/KillJob</a></td></tr>
+                    <tr><th>Included In:</th> <td><a href="http://www.w3.org/ns/odrl/2/use">http://www.w3.org/ns/odrl/2/use</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+        <section id="party">
+            <h2>Party Functions</h2>
+            <p>For the class Party (http://www.w3.org/ns/odrl/2/Party), used with Rules, these instances are defined.
+            </p>
+            <section>
+                <h4 id="x4-4-1-accept-Provider">Provider</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The Party is the issuer of the Rule.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Provider</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/Provider">http://www.w3.org/ns/odrl/2/Provider</a></td></tr>
+                    <tr><th>Parent property:</th> <td><a href="http://www.w3.org/ns/odrl/2/function">function</a></td></tr>
+                    <tr><th>Domain:</th> <td><a href="http://www.w3.org/ns/odrl/2/Policy">Policy</a>, <a href="http://www.w3.org/ns/odrl/2/Rule">Rule</a></td></tr>
+                    <tr><th>Range:</th> <td><a href="http://www.w3.org/ns/odrl/2/Party">Party</a></td></tr>
+                    </tbody></table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-Consumer">Consumer</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The Party is the recipient of the Rule.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Consumer</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/Consumer">http://www.w3.org/ns/odrl/2/Consumer</a></td></tr>
+                    <tr><th>Parent property:</th> <td><a href="http://www.w3.org/ns/odrl/2/function">function</a></td></tr>
+                    <tr><th>Domain:</th> <td><a href="http://www.w3.org/ns/odrl/2/Policy">Policy</a>, <a href="http://www.w3.org/ns/odrl/2/Rule">Rule</a></td></tr>
+                    <tr><th>Range:</th> <td><a href="http://www.w3.org/ns/odrl/2/Party">Party</a></td></tr>
+                    </tbody></table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-Controller">Controller</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The Party is monitoring the application of the Rule.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Controller</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/Controller">http://www.w3.org/ns/odrl/2/Controller</a></td></tr>
+                    <tr><th>Parent property:</th> <td><a href="http://www.w3.org/ns/odrl/2/function">function</a></td></tr>
+                    <tr><th>Domain:</th> <td><a href="http://www.w3.org/ns/odrl/2/Policy">Policy</a>, <a href="http://www.w3.org/ns/odrl/2/Rule">Rule</a></td></tr>
+                    <tr><th>Range:</th> <td><a href="http://www.w3.org/ns/odrl/2/Party">Party</a></td></tr>
+                    </tbody></table>
+            </section>
+            <section>
+                <h4 id="x4-4-1-accept-Broker">Broker</h4>
+                <table class="def propdef">
+                    <tbody><tr><th>Definition:</th> <td>The Party that acts as a broker of the data.</td></tr>
+                    <tr><th>Label:</th> <td>duc:Broker</td></tr>
+                    <tr><th>Identifier:</th> <td><a href="http://www.w3.org/ns/odrl/2/Broker">http://www.w3.org/ns/odrl/2/Broker</a></td></tr>
+                    <tr><th>Parent property:</th> <td><a href="http://www.w3.org/ns/odrl/2/function">function</a></td></tr>
+                    <tr><th>Domain:</th> <td><a href="http://www.w3.org/ns/odrl/2/Policy">Policy</a>, <a href="http://www.w3.org/ns/odrl/2/Rule">Rule</a></td></tr>
+                    <tr><th>Range:</th> <td><a href="http://www.w3.org/ns/odrl/2/Party">Party</a></td></tr>
+                    </tbody></table>
+            </section>
+
+        </section>
+
+
+		<section id="examples">
+		<h2>Examples</h2>
+            <h3 id="x2-how-to-represent-an-obligation">Machine Learning (ML) example<a class="self-link" aria-label="§" href="#styles"></a></h3>
+            <p>Company A wants to share a dataset to Company B.
+                Company A only allows Company B to use the data for generating a ML model.
+                Company B can not transfer any data to internal or external parties.
+            </p>
+            <div class="example"><div class="example-title marker"><span>Example</span></div>
+                <pre id="eg2" class="hljs" aria-busy="false" aria-live="polite"><code class="hljs json">{
+                 <span class="hljs-attr">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/odrl.jsonld"</span>,
+                 <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"Agreement"</span>,
+                 <span class="hljs-attr">"uid"</span>: <span class="hljs-string">"http://example.com/policy:1010"</span>,
+                 <span class="hljs-attr">"duc:provider"</span>: <span class="hljs-string">"http://oem.com/ids#me"</span>,
+                    <span class="hljs-attr">"permission"</span>: : [{
+                        <span class="hljs-attr">"duc:consumer"</span>: <span class="hljs-string">"http://supplier.com/""</span>,
+                    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"http://oem.com/ids/inventory/dataset-1"</span>,
+                    <span class="hljs-attr">"action"</span>: <span class="hljs-string">"duc:train""</span>,
+                    }],
+
+                 <span class="hljs-attr">"obligation"</span>: [{
+                    <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"Duty"</span>,
+                    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"http://oem.com/ids/inventory/dataset-1"</span>,
+                    <span class="hljs-attr">"action"</span>: <span class="hljs-string">"inform"</span>,
+                    <span class="hljs-attr">"consequence"</span>: [{
+                    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"http://oem.com/ids/inventory/dataset-1"</span>,
+                        <span class="hljs-attr">"action"</span>:[{
+                            "rdf:value": { "@id": "duc:KillJob" },
+                            "refinement": [{
+                                "leftOperand": "recipient",
+                                "operator": "eq",
+                                "rightOperand": {
+                                    "@value": "flinkid00",
+                                    "@type": "http://orion.fiware.org/Job"
+                                    }
+                                }]
+                            }]
+                        }]
+                    }],
+                    "prohibition": [{
+                    "assignee": "http://supplier.com/",
+                    "target" : "http://oem.com/ids/inventory/dataset-1",
+                    "action": "print"
+                    }]
+                }</code></pre></div>
+        </section>
+
+
+
+
+
+
+
+	</body>
+</html>
+	
