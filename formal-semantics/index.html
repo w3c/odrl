@@ -542,7 +542,30 @@ the party for whom they are executed). <br>
 	
 <b>Evaluation of the Permission</b><br>
 If the Duty is active but it is not fullfilled the Permission is inactive.<br>
-If the Duty is fulfilled the Permission is active.<br><br>
+If the Duty is fulfilled the Permission is active.
+
+	<table border="1">
+  	<tr>
+    		<th> ID </th>
+    		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+		<th> P.activation state</th>
+
+	 </tr>
+  	<tr>
+    		<td>E22-1</td>
+    		<td> active </td>
+		<td> not-set </td>
+		<td> inactive </td>
+	</tr>
+  	<tr>
+    		<td>E22-2</td>
+    		<td> active </td>
+    		<td> fulfilled by the action</td>
+		<td> active </td>
+	</tr>
+	</table>
+	<br><br>
 	
 	<b>Acces control scenario</b>: 
 
@@ -576,7 +599,6 @@ If the Duty is fulfilled the Permission is active.<br><br>
 	Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
 then the permission is used by the performed action.
 	
-<!--
 	<hr>
 
 	Example 22.1 = Example 22 + Constraint for the Duty <br>
@@ -619,53 +641,81 @@ then the permission is used by the performed action.
 }  
 </pre>
 	
-	  	<tr>
-    		<th>ID</th>
-		<th>D1.C1</th>
-    		<th>D1.R1</th>
-		<th>D1</th>
-		<th>P1</th>
-		<th>P1.A2</th>
-		<th>Violations</th>
- 	 </tr>
-	<tr>
-    		<td>E22bis-1</td>
-		<td>not satisfied</td>
-    		<td>not satisfied</td>
-    		<td>inactive</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
-	<tr>
-    		<td>E22bis-2</td>
-		<td>satisfied</td>
-    		<td>satisfied</td>
-    		<td>fulfilled</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
+	  <b>Evaluation of the Duty</b>.<br>
+The Duty has Constraints. It starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
+(the state of the world satisfies its Constraints, i.e. the current date is a Sunday). When it is active, it is also <b>fulfilled</b> 
+when in the state of the world there is a representation of an executed action that matches with the 
+the class of actions described in the duty. <br>
+
+<table border="1">
   	<tr>
-    		<td>E22bis-3</td>
-		<td>not satisfied</td>
-    		<td>satisfied</td>
-    		<td>inactive</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
+    		<th> ID </th>
+	        <th> Duty.Constraint </th>
+    		<th> Duty.Action.all_attributes </th>
+		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+
+	 </tr>
   	<tr>
-    		<td>E22bis-4</td>
-    		<td>satisfied</td>
-		<td>not satisfied</td>
-    		<td>active/not fulfilled</td>
-    		<td>inactive</td>
-   		<td>performed</td>
-   		<td>depends on default setting and other permissions.</td>
-  	</tr>
+    		<td>E22.1-1</td>
+		<td> not-satisfied </td>
+    		<td> don't care </td>
+    		<td> inactive </td>
+		<td> not-set </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-2</td>
+		<td> satisfied </td>
+    		<td> not satisfied by one of the performed actions </td>
+		<td> active </td>
+    		<td>  not-set </td>
+	</tr>
+	<tr>
+    		<td>E22.1-3</td>
+		<td> satisfied </td>
+    		<td> satisfied by one of the performed actions </td>
+		<td> active </td>
+    		<td> fulfilled by the action</td>
+	</tr>
 	</table>
-	-->
+<br><br>
+
+<b>Evaluation of the Permission</b><br>
+If the Duty is inactive the Permission is active.<br>
+If the Duty is active but it is not fullfilled the Permission is inactive.<br>
+If the Duty is fulfilled the Permission is active.
+
+	<table border="1">
+  	<tr>
+    		<th> ID </th>
+    		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+		<th> P.activation state</th>
+
+	 </tr>
+	<tr>
+    		<td>E22.1-1</td>
+    		<td> inactive </td>
+		<td> don't care </td>
+		<td> active </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-2</td>
+    		<td> active </td>
+		<td> not-set </td>
+		<td> inactive </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-3</td>
+    		<td> active </td>
+    		<td> fulfilled by the action</td>
+		<td> active </td>
+	</tr>
+	</table>
+	
+	
+	<br><br>
+
 
 <h3>Sematics of Prohibition</h3> 		
 
