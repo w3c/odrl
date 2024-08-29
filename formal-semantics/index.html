@@ -720,22 +720,47 @@ If the Duty is fulfilled the Permission is active.
 <h3>Sematics of Prohibition</h3> 		
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
-cannot be exercised) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
+cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 
-In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its constraints on the state of the world (constraints are either satisfied or unsatisfied). <br>
+In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world. <br>
 
 Duties on prohibitions have no defined meaning.<br>
 
-An ODRL Evaluator will determine that a violation has been produced if the action on an active prohibition is executed. 
+An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is executed. 
 If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
-The ODRL Evaluator will calculate the state of an <b>active</b> prohibition to be within one of these possibilities:
+The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibition to be within one of these possibilities:
 	<ul>
-	<li> <b>not violated</b> when the regulated action with all refinements satisfied has not been executed; </li>
+	<li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
 	</ul>
 A prohibition may include an <code>odrl:consequence</code> for its violation. <br>
 
-
+<a href="https://www.w3.org/TR/odrl-model/#prohibition">Example 19</a> 
+	(similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.<br><br>
+	
+	<b>Type of Prohibition</b>: 
+	<b>Prohibition that is constrained by a Constraint.<br>
+	The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action of archiving the specified digital asset is prohibited.
+	The prohibition is specifically active only during the year 2024.<br>	
+<pre>
+{
+    "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@type": "Agreement",
+    "uid": "http://example.com/policy:5555",
+    "profile": "http://example.com/odrl:profile:08",
+    "prohibition": [{
+        "target": "http://example.com/photoAlbum:55",
+        "action": "archive",
+        "assigner": "http://example.com/MyPix:55",
+        "assignee": "http://example.com/assignee:55",
+	"constraint": [{
+           "leftOperand": "dateTime",
+           "operator": "eq",
+           "rightOperand":  { "@value": "2024", "@type": "xsd:gYear" }
+       }]
+    }]
+}
+</pre>
 
 
 <h3>Sematics of Obligation</h3> 	
