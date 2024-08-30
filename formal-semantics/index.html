@@ -542,7 +542,30 @@ the party for whom they are executed). <br>
 	
 <b>Evaluation of the Permission</b><br>
 If the Duty is active but it is not fullfilled the Permission is inactive.<br>
-If the Duty is fulfilled the Permission is active.<br><br>
+If the Duty is fulfilled the Permission is active.
+
+	<table border="1">
+  	<tr>
+    		<th> ID </th>
+    		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+		<th> P.activation state</th>
+
+	 </tr>
+  	<tr>
+    		<td>E22-1</td>
+    		<td> active </td>
+		<td> not-set </td>
+		<td> inactive </td>
+	</tr>
+  	<tr>
+    		<td>E22-2</td>
+    		<td> active </td>
+    		<td> fulfilled by the action</td>
+		<td> active </td>
+	</tr>
+	</table>
+	<br><br>
 	
 	<b>Acces control scenario</b>: 
 
@@ -576,7 +599,6 @@ If the Duty is fulfilled the Permission is active.<br><br>
 	Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
 then the permission is used by the performed action.
 	
-<!--
 	<hr>
 
 	Example 22.1 = Example 22 + Constraint for the Duty <br>
@@ -619,74 +641,162 @@ then the permission is used by the performed action.
 }  
 </pre>
 	
-	  	<tr>
-    		<th>ID</th>
-		<th>D1.C1</th>
-    		<th>D1.R1</th>
-		<th>D1</th>
-		<th>P1</th>
-		<th>P1.A2</th>
-		<th>Violations</th>
- 	 </tr>
-	<tr>
-    		<td>E22bis-1</td>
-		<td>not satisfied</td>
-    		<td>not satisfied</td>
-    		<td>inactive</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
-	<tr>
-    		<td>E22bis-2</td>
-		<td>satisfied</td>
-    		<td>satisfied</td>
-    		<td>fulfilled</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
+	  <b>Evaluation of the Duty</b>.<br>
+The Duty has Constraints. It starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
+(the state of the world satisfies its Constraints, i.e. the current date is a Sunday). When it is active, it is also <b>fulfilled</b> 
+when in the state of the world there is a representation of an executed action that matches with the 
+the class of actions described in the duty. <br>
+
+<table border="1">
   	<tr>
-    		<td>E22bis-3</td>
-		<td>not satisfied</td>
-    		<td>satisfied</td>
-    		<td>inactive</td>
-    		<td>active</td>
-    		<td>performed</td>	  
-    		<td>No (P1 is used).</td>	  
-  	</tr>
+    		<th> ID </th>
+	        <th> Duty.Constraint </th>
+    		<th> Duty.Action.all_attributes </th>
+		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+
+	 </tr>
   	<tr>
-    		<td>E22bis-4</td>
-    		<td>satisfied</td>
-		<td>not satisfied</td>
-    		<td>active/not fulfilled</td>
-    		<td>inactive</td>
-   		<td>performed</td>
-   		<td>depends on default setting and other permissions.</td>
-  	</tr>
+    		<td>E22.1-1</td>
+		<td> not-satisfied </td>
+    		<td> don't care </td>
+    		<td> inactive </td>
+		<td> not-set </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-2</td>
+		<td> satisfied </td>
+    		<td> not satisfied by one of the performed actions </td>
+		<td> active </td>
+    		<td>  not-set </td>
+	</tr>
+	<tr>
+    		<td>E22.1-3</td>
+		<td> satisfied </td>
+    		<td> satisfied by one of the performed actions </td>
+		<td> active </td>
+    		<td> fulfilled by the action</td>
+	</tr>
 	</table>
-	-->
+<br><br>
+
+<b>Evaluation of the Permission</b><br>
+If the Duty is inactive the Permission is active.<br>
+If the Duty is active but it is not fullfilled the Permission is inactive.<br>
+If the Duty is fulfilled the Permission is active.
+
+	<table border="1">
+  	<tr>
+    		<th> ID </th>
+    		<th> Duty.activation state</th>	
+		<th> Duty.deontic state</th>	
+		<th> P.activation state</th>
+
+	 </tr>
+	<tr>
+    		<td>E22.1-1</td>
+    		<td> inactive </td>
+		<td> don't care </td>
+		<td> active </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-2</td>
+    		<td> active </td>
+		<td> not-set </td>
+		<td> inactive </td>
+	</tr>
+  	<tr>
+    		<td>E22.1-3</td>
+    		<td> active </td>
+    		<td> fulfilled by the action</td>
+		<td> active </td>
+	</tr>
+	</table>
+	
+	
+	<br><br>
+
 
 <h3>Sematics of Prohibition</h3> 		
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
-cannot be exercised) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
+cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 
-In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its constraints on the state of the world (constraints are either satisfied or unsatisfied). <br>
+In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world. <br>
 
 Duties on prohibitions have no defined meaning.<br>
 
-An ODRL Evaluator will determine that a violation has been produced if the action on an active prohibition is executed. 
+An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is executed. 
 If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
-The ODRL Evaluator will calculate the state of an <b>active</b> prohibition to be within one of these possibilities:
+The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibition to be within one of these possibilities:
 	<ul>
-	<li> <b>not violated</b> when the regulated action with all refinements satisfied has not been executed; </li>
+	<li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
 	</ul>
 A prohibition may include an <code>odrl:consequence</code> for its violation. <br>
 
+<a href="https://www.w3.org/TR/odrl-model/#prohibition">Example 19</a> 
+	(similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.<br><br>
+	
+	<b>Type of Prohibition</b>: 
+	<b>Prohibition that is constrained by a Constraint</b>.<br>
+	The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action of archiving the specified digital asset is prohibited.
+	The prohibition is specifically active only during the year 2024.<br>	
+<pre>
+{
+    "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@type": "Agreement",
+    "uid": "http://example.com/policy:5555",
+    "profile": "http://example.com/odrl:profile:08",
+    "prohibition": [{
+        "target": "http://example.com/photoAlbum:55",
+        "action": "archive",
+        "assigner": "http://example.com/MyPix:55",
+        "assignee": "http://example.com/assignee:55",
+	"constraint": [{
+           "leftOperand": "dateTime",
+           "operator": "eq",
+           "rightOperand":  { "@value": "2024", "@type": "xsd:gYear" }
+       }]
+    }]
+}
+</pre>
 
-
+<b>Evaluation of the activation state and of the deontic state of the Prohibition</b><br>
+	
+The constraint must be evaluated on the state of the world. As long as the current time is in 2024, 
+the Prohibition is active. Before or after 2024 the Prohibition is inactive. When the Prohibition is active, if the prohibited action is performed there is a violation.<br><br>
+	
+<table border="1">
+  	<tr>
+    		<th>ID</th>
+    		<th>P.Constraint.satisfaction state</th>
+		<th>P.activation state</th>
+		<th>P.action.all_attributes</th>
+		<th>P.deontic state</th>
+	 </tr>
+  	<tr>
+    		<td>E19-1</td>
+		<td>satisfied</td>
+    		<td>active</td>
+		<td>satisfied by a performed action</td>
+		<td>violated</td>
+    	</tr>
+  	<tr>
+    		<td>E19-2</td>
+    		<td>satisfied</td>
+    		<td>active</td>
+		<td>not satisfied by a performed action</td>
+		<td>not-set</td>
+    	</tr>
+	<tr>
+    		<td>E19-3</td>
+    		<td>not-satisfied</td>
+    		<td>inactive</td>
+		<td>satisfied by a performed action</td>
+		<td>not-set</td>
+    	</tr>
+</table> <br>
 
 <h3>Sematics of Obligation</h3> 	
 	
