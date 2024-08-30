@@ -722,7 +722,7 @@ If the Duty is fulfilled the Permission is active.
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 
-In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world. <br>
+In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world.
 
 Duties on prohibitions have no defined meaning.<br>
 
@@ -733,10 +733,10 @@ The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibit
 	<li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
 	</ul>
-A prohibition may include an <code>odrl:consequence</code> for its violation. <br>
+A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-prohib"><code>odrl:remedy</code></a> for its violation. <br><br>
 
 <a href="https://www.w3.org/TR/odrl-model/#prohibition">Example 19</a> 
-	(similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.<br><br>
+	(similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.)<br>
 	
 	<b>Type of Prohibition</b>: 
 	<b>Prohibition that is constrained by a Constraint</b>.<br>
@@ -764,7 +764,7 @@ A prohibition may include an <code>odrl:consequence</code> for its violation. <b
 
 <b>Evaluation of the activation state and of the deontic state of the Prohibition</b><br>
 	
-The constraint must be evaluated on the state of the world. As long as the current time is in 2024, 
+The Constraint must be evaluated on the state of the world. As long as the current time is in 2024, 
 the Prohibition is active. Before or after 2024 the Prohibition is inactive. When the Prohibition is active, if the prohibited action is performed there is a violation.<br><br>
 	
 <table border="1">
@@ -804,14 +804,73 @@ the Prohibition is active. Before or after 2024 the Prohibition is inactive. Whe
 	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 	An active Obligation becomes:
 	<ul>
-	<li> <b>fulfilled or not violated</b> when the regulated action with all refinements satisfied is executed; </li>
+	<li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
 	<li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
-	<li> <b>unknown</b> when the regulated action with all refinements satisfied can be executed but has not been so far; </li>
+	<li> <b>not-set</b> when the regulated action with all refinements satisfied can be executed but has not been so far. </li>
 	</ul>
-	An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br>
+	An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br><br>
 	
-	<b>Problem</b>: reasoning about deadline.
-		
+	<!--<b>Problem</b>: reasoning about deadline.-->
+
+<a href="https://www.w3.org/TR/odrl-model/#duty-policy">Example 20</a> <br>
+	
+	<b>Type of Obligation</b>: 
+	<b>Obligation that is not constrained by a Constraint</b>.<br>
+	The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action to compensate 
+	the assigner for a payment amount of EU500.00 is obliged.<br>	
+
+<pre>
+
+	{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "Agreement",
+  "uid": "http://example.com/policy:42",
+  "profile": "http://example.com/odrl:profile:09",
+  "obligation": [{
+      "assigner": "http://example.com/org:43",
+      "assignee": "http://example.com/person:44",
+      "action": [{
+          "rdf:value": {
+            "@id": "odrl:compensate"
+          },
+          "refinement": [
+            {
+              "leftOperand": "payAmount",
+              "operator": "eq",
+              "rightOperand": { "@value": "500.00", "@type": "xsd:decimal" },
+              "unit": "http://dbpedia.org/resource/Euro"
+            }]
+        }]
+    }]
+}
+	
+</pre>
+
+<b>Evaluation of the activation state and of the deontic state of the Obligation</b><br>
+
+The Obligation is always active. If the obliged action is performed then the obligation is fulfilled.<br><br>
+	
+<table border="1">
+  	<tr>
+    		<th>ID</th>
+    		<th>O.activation state</th>
+		<th>O.action.all_attributes</th>
+		<th>O.deontic state</th>
+	 </tr>
+  	<tr>
+    		<td>E20-1</td>
+		<td>active</td>
+		<td>satisfied by a performed action</td>
+		<td>fulfilled</td>
+    	</tr>
+  	<tr>
+    		<td>E20-2</td>
+    		<td>active</td>
+		<td>not satisfied by a performed action</td>
+		<td>not-set</td>
+    	</tr>
+	</table> <br>	
+	
 </section>	
 	
 
