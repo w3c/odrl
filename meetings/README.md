@@ -11,16 +11,15 @@ The ZOOM meeting connection URL  and password to access is [here](https://lists.
 ## Next Meetings 
 
 
-[Mon 01 July 2024 - AGENDA](meeting-2024-07-01.md)  
-August - NO MEETING  
-Mon 02 September 2024  
+[Mon 02 September 2024  - AGENDA](meeting-2024-09-02.md)  
 Mon 07 October 2024   
 Mon 04 November 2024   
 Mon 02 December 2024  
 
 ## Past Meeting Notes
   
-
+August - NO MEETING  
+[Mon 01 July 2024](meeting-2024-07-01.md)  
 [Mon 03 June 2024](meeting-2024-06-03.md)  
 [Mon 06 May 2024](meeting-2024-05-06.md)  
 [Mon 08 April 2024](meeting-2024-04-08.md)
