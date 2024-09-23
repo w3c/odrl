@@ -11,7 +11,8 @@
 	</head>
 	<body>
 		<section  id="abstract">
-			<p>This document discusses the importance of providing a formal semantics for ODRL.
+			<p>
+                            This document specifies the expected behaviour of an ODRL Evaluator, a piece of software that performs computations based on a set of policies and a certain state of the world. 
 			</p>
 			 
 		</section>
@@ -152,13 +153,16 @@ Regarding actions, we assume that attempted or executed <b>actions</b> are descr
 		This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.-->
 		</li>
 		
-		<li>An instance of the class <code>odrl:Duty</code> represents a consequence for a <code>odrl:Duty</code> 
+		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Consequence</b> for a <code>odrl:Duty</code> 
 			when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
-		<li>An instance of the class <code>odrl:Duty</code> represents a remedy for a <code>odrl:Prohibition</code> 
+		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
 			when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
 	</ul>
 	
+	In addition to this, an instance of the class <code>odrl:Constraint</code> is a <b>Constraint</b> of a <code>odrl:Rule</code> when the rule refers to it by means of the <code>odrl:constraint</code> property. An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. 
+
 	<hr>
+	The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, Prohibition, Obligation, Condition, Consequence, Remedy, Refinement, Constraint and State of the World. 
 
 	Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:
 	<ul>
