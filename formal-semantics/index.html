@@ -220,7 +220,7 @@ used by a particular agent (an "agreement" permission) and wanting to monitor th
 	Permissions, Prohibitions, and Obligations in separated sections.
 		
 
-<h3>Sematics of Permission</h3> 
+<h2>Sematics of Permission</h2> 
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
 <ul>
@@ -249,7 +249,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 <h4>Examples (Permission without duties)</h4> 
 	
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
-	(similar to the one in the ODRL Information Model 2.2, with the difference that the type is <code>odrl:Set</code>)<br>
+	(similar to the one in the ODRL Information Model 2.2).<br>
         	
 	<b>Type of Permission</b>: <b>Permission only constrained by Constraint(s).</b> <br>
 	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
@@ -260,7 +260,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 {
     "@context": "http://www.w3.org/ns/odrl.jsonld",
     "@type": "Set",
-    "uid": "http://example.com/policy:6163",
+    "uid": "http://example.com/policy:13",
     "profile": "http://example.com/odrl:profile:10",
     "permission": [{
        "target": "http://example.com/document:1234",
@@ -715,9 +715,9 @@ If the Duty is fulfilled the Permission is active.
 	
 	
 	<br><br>
+</h2>
 
-
-<h3>Sematics of Prohibition</h3> 		
+<h2>Sematics of Prohibition</h2> 		
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
@@ -797,8 +797,8 @@ the Prohibition is active. Before or after 2024 the Prohibition is inactive. Whe
 		<td>not-set</td>
     	</tr>
 </table> <br>
-
-<h3>Sematics of Obligation</h3> 	
+</h2>
+<h2>Sematics of Obligation</h2> 	
 	
 	In ODRL 2.2., an Obligation that belongs to the <code>odrl:Duty</code> class (it would be better to have an <code>odrl:Obligation</code> class) is <b>active</b> (its action,  
 	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
