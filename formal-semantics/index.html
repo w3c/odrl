@@ -253,8 +253,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 <h4>Example 13: Permission constrained only by Constraint(s)</h4>
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
 	(similar to the one in the ODRL Information Model 2.2).<br>
-        	
-	<b>Type of Permission</b>: <b>Permission only constrained by Constraint(s).</b> <br>
+       	
 	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
 	it includes the constraint that the permission may only be exercised until 2018-01-01. 
 	The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.<br>
@@ -278,7 +277,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 }
 </pre>
 <br>
-<b>Evaluation of the activation of the Permission</b><br>
+<b>Evaluation of the activation state</b><br>
 	
 The constraint must be evaluated on the state of the world, which must include a representation of the current time 
 (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
