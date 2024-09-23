@@ -218,8 +218,10 @@ used by a particular agent (an "agreement" permission) and wanting to monitor th
 	The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations and the violation or 
 	fulfillment of Prohibitions and Obligations are all different. Therefore we continue by discussing the semantics of 
 	Permissions, Prohibitions, and Obligations in separated sections.
-		
+	
+</section>		
 
+<section id="sectionPermissions">
 <h2>Sematics of Permission</h2> 
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
@@ -246,7 +248,7 @@ In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>acti
 	<!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
 	<img src="ODRLPermission.png">
 	-->
-<h3>Permission without duties</h3> 
+<h3>Permission without Duties</h3> 
 
 <h4>Example 13: Permission constrained only by Constraint(s)</h4>
 	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
@@ -443,7 +445,7 @@ then nothing can be deduced.</li>
 	<br>
 	
 	
-<h4>Permissions with Duties</h4> 
+<h3>Permissions with Duties</h3> 
 
 In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and 
 if its action, with all refinements satisfied, has been performed. <br>
@@ -716,9 +718,10 @@ If the Duty is fulfilled the Permission is active.
 	
 	
 	<br><br>
-</h2>
+</section>
 
-<h2>Sematics of Prohibition</h2> 		
+<section id="sectionProhibitions">		
+<h2>Sematics of Prohibitions</h2> 		
 
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
@@ -799,8 +802,11 @@ the Prohibition is active. Before or after 2024 the Prohibition is inactive. Whe
 		<td>not-set</td>
     	</tr>
 </table> <br>
-</h2>
-<h2>Sematics of Obligation</h2> 	
+</section>
+
+
+<section id="sectionObligations">	
+<h2>Sematics of Obligations</h2> 	
 	
 	In ODRL 2.2., an Obligation that belongs to the <code>odrl:Duty</code> class (it would be better to have an <code>odrl:Obligation</code> class) is <b>active</b> (its action,  
 	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
