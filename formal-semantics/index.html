@@ -1,519 +1,518 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>ODRL Formal Semantics</title>
-		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
-		<script class="remove" src="config.js"></script>
-		<link rel="stylesheet" href="https://www.w3.org/TR/vocab-duv/localstyle.css"/>
-		<link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE"/>
-		<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
-	</head>
-	<body>
-		<section  id="abstract">
-			<p>
-                            This document specifies the expected behaviour of an ODRL Evaluator, a piece of software that performs computations based on a set of policies and a certain state of the world. 
-			</p>
-			 
-		</section>
-		<section id='sotd'>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>ODRL Formal Semantics</title>
+            <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+            <script class="remove" src="config.js"></script>
+            <link rel="stylesheet" href="https://www.w3.org/TR/vocab-duv/localstyle.css"/>
+            <link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE"/>
+            <script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
+            <style>
+                kbd {
+                 color: lemonchiffon;
+                 font-family: monospace;
+                 background-color: dimgray ;
+                 border: 1px solid #ccc;
+                 border-radius: 3px;
+                 padding: 2px 4px;
+                 display: inline-block;
+               }
+            </style>
+    </head>
+    <body>
+        <section  id="abstract">
+            <p>
+                This document specifies the expected behaviour of an ODRL Evaluator, a piece of software that performs computations based on a set of policies and a certain state of the world. 
+            </p>
+        </section>
+        <section id='sotd'>
+        </section> 
+        <section id="intro">
+            <h2>Introduction</h2> 	
+            <p> <!-- definition of ODRL -->
+                    The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted, prohibited, and obligated actions over a certain asset. 
+            </p>
+            <p> <!-- reference of official ODRL-documents -->
+                    The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification.	
+            </p>
+            <p> <!-- the use of ontologies -->
+                    The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system, among others.
+            </p>
+            <p> <!-- the need for clarifying the semantics, the need for this document -->
+                    However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an ODRL implementation. 
+                    Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. This specification owes much to the previous description in the 
+                    <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
 
-		</section> 
-	
+        <p> <!-- definition of the evaluator -->
+            The <b>ODRL Evaluator</b> is expected to work in at least one of these two scenarios:
+        </p>
+        <ol>
+            <li><b>Access control scenario</b>: the Evaluator determines the access by users or software agents to digital resources
+            considering a set of policies, the state of the world, and the description of the action that a user 
+            attempts to perform on certain digital resources.</li>
+
+            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world that includes the performed actions,
+            the Evaluator has to determine whether obligations or prohibitions have been fulfilled or violated by the performance of 
+            certain actions, and which permissions are active.</li>
+        </ol>
+
+        <p><!-- state of the world --> 
+            The ODRL Evaluator requires a formal representation of the <b>state of the world</b> to perform computations on both 
+            the access control and the policy monitoring scenarios. This state of the world may include current date, 
+            current location of the assignee or the history of performed actions. 
+            This document does not formally specify how to represent the necessary entities (e.g. country codes). 
+            The formal representation of the world can be a set of RDF triples. 
+            The existence of these triples does not entail their represented world is a reality: the <i>factuality</i> of the 
+            class instances is not entailed, and hypothetical computations are possible. 
+            The implementor of the ODRL Evaluator may want to describe the factuality of relevant class instances. 
+            RDF triples to represent the state of the world may be generated as observations from the world generated by third parties (extrinsic), 
+            by the ODRL Evaluator user or by any other source (intrinsic). Some examples of these state of the world RDF triples are:
+        </p>
+        <ul> <!-- examples of the state of the world -->
+            <li><b>Current Time</b>: a unit of time that represents the current time of the state of the world.</li>
+            <li><b>Time Range</b>: a tuple of time values that represent a start and an end.</li>
+            <li><b>List of Languages</b>: a sequence of languages from a taxonomy (e.g. <a href="https://www.iso.org/iso-639-language-code#">iso639</a>).</li>
+            <li><b>Executed actions</b>: a collection of executed actions.</li>
+            <li><b>Parties</b>: parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
+        </ul>
+        <p> <!-- attempted actions in the state of the world as rdf --> 
+            Regarding actions, we assume that attempted or executed <b>actions</b> are described in RDF by specifying at least:
+        </p>
+        <ul> <!-- examples of attempted actions in the state of the world -->
+            <li>its <code>type</code> (a list of actions types is available in the 
+            <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
+            <li>the agent who is the <code>performer</code> of the action;</li>	
+            <li>the <code>object</code> upon which the action is carried out;</li>	
+            <li>the instant of time at which the action occurs or begins, it is represented with the <code>atTime</code> property.</li>
+        </ul>
+        <p> <!-- objective of the evaluator -->
+            More precisely, given:
+        </p>
+        <ul> <!-- input of the evaluator -->
+            <li>a collection of ODRL Policies;</li>
+            <li>a formal description of the state of the world;</li>
+            <li>for the access control scenario,
+            a formal description of the action attempted by a given user who is located in a given place;</li>
+        </ul>
+        the objective of the <b>ODRL Evaluator</b> is to determine: 
+        <ul>
+            <li>which Permissions, Prohibitions, and Obligations (collectively named Rules) are <b>active</b>. 
+               A Rule is said to be active if it is in effect;</li>
+            <!--<li>which Permissions have been <b>used</b>;</li>-->
+            <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
+        </ul>			
+    <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
+        <p> <!-- Objective of the document. Nicoletta: I removed a "formal semantics")-->
+            This document describes the expected behaviour of this ODRL Evaluator, with a textual description and a collection of examples.
+        </p>
+    </section>			
+
+    <section id="sectionPolicies">	
+        <h2>Semantics of Policies</h2>	
+        <p> <!-- Subclasses of policies -->
+            There are three ODRL Policy subclasses (Agreement, Offer, Set), plus four non-normative ODRL Policy subclasses (Assertion, Privacy, Request, Ticket). Direct instances of the <code>odrl:Policy</code> class must be understood as policy <code>odrl:Set</code> policies. This subsection describes how are these policies to be understood in relation to semantics.
+        </p>
+        <ul>
+            <li>A <code>odrl:Set</code> policy must be considered by an ODRL Evaluator. The <code>odrl:Set</code> is not necessarily linked to <code>odrl:Offer</code> nor <code>odrl:Agreement</code>.<br></li>
+            <li>An <code>odrl:Offer</code> policy must not be considered by an ODRL Evaluator. It is created by an <code>odrl:Assigner</code> as a mere proposition.</li>
+            <li>An <code>odrl:Agreement</code> policy must be considered by an ODRL Evaluator as any other <code>odrl:Set</code> policy. It represents the accord between (<i>at least</i>) one <code>odrl:Assigner</code> and a <code>odrl:Assignee</code>. An instance of <code>odrl:Agreement</code> may have a way for the <code>odrl:Assigner</code> to trace to its related <code>odrl:Offer</code>.</li>
+        </ul>
+    </section>
+
+    <section id="sectionPermissionsProhibitionsObligations">	
+        <h2>Semantics of Permission, Prohibition, and Obligation</h2>	
+        <p> <!-- Relation with deontic logic -->
+            The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances of the classes 
+            <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.
+        </p>
+        <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings in ODRL:</p>
+        <ul><!-- meanings of duty -->
+            <li>An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
+            when the <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
+            <!--An Obligation can be activated, violated, or fullfilled.--></li>
+
+            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <code>odrl:Permission</code> 
+            to be active when the <code>odrl:Permission</code> refers to it by means of the <code>odrl:duty</code> property.
+            <!--When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, it can be active, fulfilled or not fullfilled.
+            This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.-->
+            </li>
+            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Consequence</b> for a <code>odrl:Duty</code> 
+                    when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
+            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
+                    when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
+        </ul>
+        <p>
+        In addition to this:
+        </p>
+        <ul>
+            <li>An instance of the class <code>odrl:Constraint</code> is a <b>Constraint</b> of a <code>odrl:Rule</code> when the rule 
+                refers to it by means of the <code>odrl:constraint</code> property.</li> 
+            <li>An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. </li>
+        </ul>
+        <hr>
+        <p>
+            The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, Prohibition, Obligation, Condition, Consequence, Remedy, Refinement, Constraint and State of the World. 
+            Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
+        <ul> <!-- attributes of the main objects -->
+            <li>Permission, Prohibition, and Obligation, <!-- and Condition -->	have a property called 
+            <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
+
+            <li>Prohibition and Obligation <!-- and Condition --> have a property called <b>deontic state</b>, 
+            which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
+            They can become violated or fulfilled only when they are active.</li>
+
+            <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
+            <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+            A not-satisfied constraint may become satisfied and return to being not-satisfied.
+            The value of the satisfaction state of a Constraint is calculated according to the <b>state of the world</b>.
+            Constraints directly defined at policy level are not directly considered.</li>
+
+            <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
+            odrl:refinement property) has a property called <b>satisfaction state</b> 
+            which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
+            <li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
+            is computed according to the action that an agent <b>attempts</b> to perform on digital resources.</li>
+
+            <li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
+            computed according to the actual actions that are performed by the agents and that are
+            represented in the <b>state of the world</b>.</li>
+            <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
+            which initially takes the values <b>not-performed</b> and 
+            can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
+                    <code>performer</code>, <code>object</code>,...)  that matches with the values
+            described in the Rule (i.e. <code>action</code>, <code>assignee</code>, <code>target</code>) 
+                    is actually performed at a given instant of time and its performance is represented 
+                    in the state of the world.</li>
+            </ul>
+
+        <p> <!-- out of scope -->
+            The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
+            and the performance state of an Action is <b>left to individual implementations</b>. 
+            But given these values, all ODRL Evaluators should agree on the value of the activation state and deontic states of 
+            the rules.
+        </p>
+
+        <p>
+            The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations and the violation or 
+            fulfillment of Prohibitions and Obligations are all different. Therefore we continue by discussing the semantics of 
+            Permissions, Prohibitions, and Obligations in separated sections.
+        </p>
+    </section>		
+
+    <section id="sectionPermissions">
+        <h2>Sematics of Permission</h2> 
+        <h3>Expected behaviour of the ODRL Evaluator</h3>
+        <p> <!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
+            A Permission can impose duties like making a payment (we call these <b>Conditions</b>) and it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
+            In addition, the definition of the permitted action or the asset and party collection can be refined with <b>Refinements</b>. 
+            The evaluation of these Conditions, Constraints and Refinements determine whether the Permission is active or not.  
+            In particular, a Permission is <b>active</b> if:
+        </p>
+        <ul>
+            <li>all the existing constraints of the Rule are satisfied;</li> 
+            <li>all the existing conditions (duties of the Rule) are fulfilled or inactive; </li>
+            <li>only for the access control scenario: all the existing refinements of the 
+            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
+        </ul>
+        <p> <!-- definition of active/inactive -->
+            If the Permission is active, the action is permitted. If one of those conditions is not met, the Permission is <b>inactive</b>. When an action, which is regulated by an <b>active</b> permission is performed, the permission is used by such an action.
+        </p>
+
+        <p>
+            In the <b>access control scenario</b>: when an action is <b>attempted</b>,
+            if there is not an active permission that permits such an action, 
+            it means that the action is not permitted and it is blocked.
+        </p>
+
+        <p>
+            In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
+            if there is no active permission to do so (i.e. there is no active permission regulating a class 
+            of action to which the executed action belongs) and the default setting for the ODRL Evaluator
+            is set to "everything is prohibited unless explicitly permitted" a violation should be generated.
+        </p>
+
+        <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
+        <img src="ODRLPermission.png">
+        -->
+        <h3>Evaluation of constraints</h3>
+        <h4>Example of a constrained permission</h4>
+        <p>
+            <b>Example description</b>
+        </p>
+        <p>
+            <!-- General description of the case --> 
+            A permission may not impose duties (like making a payment), but may have the action limited (in time, in space, etc.). 
+            This is the situation of the following case, similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
+            in the ODRL Information Model 2.2. The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
+            it includes the constraint that the permission may only be exercised until 2018-01-01. 
+            The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.
+        </p>
+
+            <pre>
+            {
+            "@context": "http://www.w3.org/ns/odrl.jsonld",
+            "@type": "Set",
+            "uid": "http://example.com/policy/13",
+            "permission": [{
+               "target": "http://example.com/document/1234",
+               "assigner": "http://example.com/party/16",
+               "action": "distribute",
+               "constraint": [{
+                   "@id": "http://example.com/constraint/1",
+                   "leftOperand": "dateTime",
+                   "operator": "lt",
+                   "rightOperand":  { "@value": "2018-01-01", "@type": "xsd:date" }
+               }]
+            }]
+            }
+            </pre>
+        <p>
+            <b>Expected behaviour of the Evaluator</b>
+        </p>    
+        <p>
+            The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time 
+            (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
+            As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.
+            (The activation of this type of permission does not depend on the actions attempted by the agents).
+        </p>
 
 
+        <i>Access control scenario:</i> 
+        <ul>
+            <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
+            (i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
+            the target of the permission <code>http://example.com/document:1234</code>)
+            and the Permission is active then the action can be executed. </li>
+            <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
+            Permission is inactive, assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is blocked and it cannot be executed.</li>
+            <li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
+            is not relevant.</li>
+        </ul>
+        <p>
+            The table below shows the input and the output of the Evaluator in the different cases. 
+            Please note that namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by "<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.
+        </p>
+        <table border="1" style="font-size:small;">
+            <tr>
+                    <th>Example</th>
+                    <th style="color:darkblue">Policy</th>
+                    <th style="color:darkblue">World</th>
+                    <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
+                    <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:13</code></th>
+             </tr>
+            <tr>
+                    <td>E13-1</td>
+                    <td>policy:13</td>
+                    <td>We are in 2017</td>
+                    <td>satisfied</td>
+                    <td>active</td>
+            </tr>
+            <tr>
+                    <td>E13-2</td>
+                    <td>policy:13</td>
+                    <td>We are in 2019</td>
+                    <td>not-satisfied</td>
+                    <td>inactive</td>
+            </tr>
+        </table>        
+        
+        <p><i>Monitoring scenario:</i></p> 
+        <ul>
+            <li>If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
+            then the action is permitted and the Permission is used by the performed action.</li>
+            <li>If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
+            then nothing can be deduced.</li>
+        </ul>
+        <table border="1" style="font-size:small;">
+            <tr>
+                    <th>Example</th>
+                    <th style="color:darkblue">Policy</th>
+                    <th style="color:darkblue">World</th>
+                    <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
+                    <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>policy:13</code></th>
+                    <th style="color:darkred"><kbd>monitoring</kbd><br/>performance of <br><code>attempted action</code></th>
+             </tr>
+            <tr>
+                    <td>E13-3</td>
+                    <td>policy:13</td>
+                    <td>We are in 2017<br/>The action was acted</td>
+                    <td>satisfied</td>
+                    <td>active</td>
+                    <td>performed</td>
+            </tr>
+            <tr>
+                    <td>E13-4</td>
+                    <td>policy:13</td>
+                    <td>We are in 2019<br/>The action was acted</td>
+                    <td>not-satisfied</td>
+                    <td>inactive</td>
+                    <td>not performed</td>	
+            </tr>
+        </table>
 
-		<section id="intro">
-		<h2>Introduction</h2> 	
-		<p> <!-- definition of ODRL -->
-			The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted, prohibited, and obligated actions over a certain asset. 
-		</p>
-		<p> <!-- reference of official ODRL-documents -->
-			The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification.	
-		</p>
-		<p> <!-- the use of ontologies -->
-			The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system.
-		</p>
-		<p> <!-- the need for clarifying the semantics, the need for this document -->
-			However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an ODRL implementation. 
-			Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. 
-			(A previous proposal of an ODRL evaluator is available here: 
-	<a href="https://www.w3.org/2016/poe/wiki/Evaluator">https://www.w3.org/2016/poe/wiki/Evaluator</a>.)<br><br> 
 
-	The <b>ODRL Evaluator</b> is expected to work in at least one of these two scenarios:
-	<ol>
-	<li><b>Access control scenario</b>: the evaluator determines the access by users or software agents to digital resources
-	considering a set of policies, the state of the world, and the description of the action that a user 
-	attempts to perform on certain digital resources.</li>
-	
-	<li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world that includes the performed actions,
-	the evaluator has to determine whether obligations or prohibitions have been fulfilled or violated by the performance of 
-	certain actions, and which permissions are active.</li>
-	</ol>
-			
-	<!-- moved here by Nicoletta-->
-	The ODRL Evaluator requires a formal representation of the <b>state of the world</b> to perform computations on both 
-	the access control and the policy monitoring scenarios. This state of the world may include current date, 
-	current location of the assignee or the history of performed actions. 
-	This document does not formally specify how to represent the necessary entities (e.g. country codes). </br>
-	The formal representation of the world can be a set of RDF triples. 
-	The existence of these triples does not entail their represented world is a reality: the <i>factuality</i> of the 
-	class instances is not entailed, and hypothetical computations are possible. 
-	The implementor of the ODRL Evaluator may want to describe the factuality of relevant class instances. 
-	RDF triples to represent the state of the world may be generated as observations from the world generated by third parties (extrinsic), 
-	by the ODRL Evaluator user or by any other source (intrinsic).<br/>
-	Some examples of these state of the world RDF triples are:
-		<ul>
-		<li><b>Current Time</b>: a unit of time that represents the current time of the state of the world.</li>
-		<li><b>Time Range</b>: a tuple of time values that represent a start and an end.</li>
-		<li><b>List of Languages</b>: a sequence of languages from a taxonomy (e.g. <a href="https://www.iso.org/iso-639-language-code#">iso639</a>).</li>
-		<li><b>Executed actions</b>: a collection of executed actions.</li>
-		<li><b>Parties</b>: parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
-	</ul>
+    <hr>
+    <h4>Example of a permission whose permitted action is refined</h4>
+        <p>
+            <b>Example description</b>
+        </p>
+        <p>
+            The example below is similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a> in the ODRL Information Model 2.2.
+            It allows the target asset <code>document:1234</code> to be printed and also include a refinement indicating that the resolution 
+            of the printing action must be less than or equal to 1200 dpi. The permission is granted by the organization identified by the URL <code>party:616</code>.
+        </p>
+        <pre>
+        {
+             "@context": "http://www.w3.org/ns/odrl.jsonld",
+             "@type": "Set",
+             "uid": "http://example.com/policy/14",
+             "permission": [{
+                "target": "http://example.com/document/1234",
+                "assigner": "http://example.com/party/616",
+                "action": [{
+                   "rdf:value": { "@id": "odrl:print" },
+                   "refinement": [{
+                      "@id": "http://example.com/refinement/14"
+                      "leftOperand": "resolution",
+                      "operator": "lteq",
+                      "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
+                      "unit": "http://dbpedia.org/resource/Dots_per_inch"
+                    }]
+                }]
+              }]
+        }
+        </pre>
+        <p>
+            <b>Expected behaviour of the Evaluator</b>
+        </p>    
+        <p><i>Access control scenario:</i></p> 
+        <ul>
+            <li>(E14-1-ac) If such the attempted action belongs to the class of actions regulated by the Permission
+            (i.e.: its <code>type</code> is <code>print</code>, 
+            its <code>object</code> is equale to <code>http://example.com/document:1234</code> and 
+            its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
+            then the Permission is active and the attempted action can be performed.
+            </li>
+            <li>(E14-2-ac) If such the attempted action belongs to the class of actions regulated by the Permission, 
+            but the refinement of the action is not satisfied (i.e. its <code>resolution</code> is more than 1200 dpi), 
+            then the Permission is inactive. 
+            Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
+            then the action is blocked and it cannot be performed.</li>
+        </ul>
+        
+        <table border="1" style="font-size:small;">
+        <tr>
+                <th>Example</th>
+                <th style="color:darkblue">Policy</th>
+                <th style="color:darkblue">World</th>
+                <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
+                <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:14</code></th>
+         </tr>
+        <tr>
+                <td>E14-1</td>
+                <td>policy:14</td>
+                <td>Resolution less than 1200 dpi</td> 
+                <td>satisfied</td>
+                <td>active </td>
+        </tr>
+        <tr>
+                <td>E14-1</td>
+                <td>policy:14</td>
+                <td>Resolution more than 1200 dpi</td> 
+                <td>not-satisfied</td>
+                <td>inactive </td>
+        </tr>
+        </table>
+        
+        <p><i>Monitoring scenario:</i></p> 
+        <p>
+            The Permission is always active because it has neither constraints nor duties. Given a formal description a performed action. 
+            If such an action belongs to the class of actions regulated by the Permission then the permission is used by the performed action.
+        </p>
 
-Regarding actions, we assume that attempted or executed <b>actions</b> are described in RDF by specifying at least:<br>
-<ul>
-	<li>its <code>type</code> (a list of actions types is available in the 
-	<a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
-	<li>the agent who is the <code>performer</code> of the action;</li>	
-	<li>the <code>object</code> upon which the action is carried out;</li>	
-	<li>the instant of time at which the action occurs or begins, it is represented with the <code>atTime</code> property.</li>
-</ul>
-						
-		More precisely, given:
-			<ul>
-				<li>a collection of ODRL Policies;</li>
-				<li>a formal description of the state of the world;</li>
-				<li>for the access control scenario,
-				a formal description of the action attempted by a given user who is located in a given place;</li>
-			</ul>
-			the objective of the <b>ODRL Evaluator</b> is to determine: 
-			<ul>
-				<li>which Permissions, Prohibitions, and Obligations (collectively named Rules) 
-					are <b>active</b>. A Rule is said to be active if it is in effect;</li>
-				<!--<li>which Permissions have been <b>used</b>;</li>-->
-				<li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
-			</ul>			
-			
-			 <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
-		</p>
-		<p>
-			This document describes the expected behaviour of this ODRL Evaluator, with a textual description and a collection of examples.
-			<!--(Nicoletta: I removed a "formal semantics")-->
-		</p>
-		<!--
-		<ol>
-			<li><a href="https://www.w3.org/TR/odrl-model/#prohibition">Prohibition</a>: 
-				A Prohibition disallows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied.</li>
-			<li><a href="https://www.w3.org/TR/odrl-model/#duty-policy">Duty</a>: 
-				A Duty is the obligation to exercise an action, with all refinements satisfied. A Duty is fulfilled if all constraints are satisfied 
-				and if its action, with all refinements satisfied, has been exercised. 
-			<li><a href="https://www.w3.org/TR/odrl-model/#permission">Permission</a>:
-				A Permission allows an action, with all refinements satisfied, to be exercised on an Asset if all constraints are satisfied and if all 
-				duties are fulfilled.</li>
-		</ol>
-		<p>
-			In addition to the previously mentioned policy-based services, there are other types of services that would be useful to provide on a set 
-			of ODRL policies, e.g., access control or compliance checking. In order to automatically provide those services in a consistent manner, 
-			this document provides a formal specification to their meaning, i.e., an ODRL-based system needs to be able to automatically compute if:
-		</p>
-		<ul>
-			<li>a prohibition has been infringed by an action being exercised;</li>
-			<li>an obligation is fulfilled by an action being exercised or it is violated by an action not being performed;</li>
-			<li>a permission is valid and allows an action to be exercised.</li>
-		</ul>
--->
-		</section>			
-		
-		<section id="sectionPolicies">	
-			<h2>Semantics of Policies</h2>	
-			There are three ODRL Policy subclasses (Agreement, Offer, Set), plus four non-normative ODRL Policy subclasses (Assertion, Privacy, Request, Ticket). Direct instances of the <code>odrl:Policy</code> class must be understood as policy <code>odrl:Set</code> policies. This subsection describes how are these policies to be understood in relation to semantics.
-			<br/>
-			<li>A <code>odrl:Set</code> policy must be considered by an ODRL Evaluator. The <code>odrl:Set</code> is not necessarily linked to <code>odrl:Offer</code> nor <code>odrl:Agreement</code>.<br></li>
-			<li>An <code>odrl:Offer</code> policy must not be considered by an ODRL Evaluator. It is created by an <code>odrl:Assigner</code> as a mere proposition.</li>
-			<li>An <code>odrl:Agreement</code> policy must be considered by an ODRL Evaluator as any other <code>odrl:Set</code> policy. It represents the accord between (<i>at least</i>) one <code>odrl:Assigner</code> and a <code>odrl:Assignee</code>. An instance of <code>odrl:Agreement</code> may have a way for the <code>odrl:Assigner</code> to trace to its related <code>odrl:Offer</code>.</li>
-			<br/>	
-		</section>
-			
-<section id="sectionPermissionsProhibitionsObligations">	
-<h2> Semantics of Permission, Prohibition, and Obligation</h2>	
-	
-	The deontic modalities of <b>Permissions</b>, <b>Prohibitions</b> and <b>Obligations</b> can be represented in ODRL as instances of the classes 
-	<code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.<br>
-	
-	Instances of the class <code>odrl:Duty</code> may have the following different meanings in ODRL:
-	<ul>
-		<li>An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
-		when the <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
-		<!--An Obligation can be activated, violated, or fullfilled.--></li>
-		
-		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <code>odrl:Permission</code> 
-		to be active when the <code>odrl:Permission</code> refers to it by means of the <code>odrl:duty</code> property.
-		<!--When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, it can be active, fulfilled or not fullfilled.
-		This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.-->
-		</li>
-		
-		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Consequence</b> for a <code>odrl:Duty</code> 
-			when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
-		<li>An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
-			when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
-	</ul>
-	
-	In addition to this, an instance of the class <code>odrl:Constraint</code> is a <b>Constraint</b> of a <code>odrl:Rule</code> when the rule refers to it by means of the <code>odrl:constraint</code> property. An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. 
+        <table border="1" style="font-size:small;">
+        <tr>
+                <th>Example</th>
+                <th style="color:darkblue">Policy</th>
+                <th style="color:darkblue">World</th>
+                <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
+                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>policy:14</code></th>
+                <th style="color:darkred"><kbd>monitoring</kbd><br/>performance of <br><code>attempted action</code></th>
+         </tr>
+        <tr>
+                <td>E14-3</td>
+                <td>policy:14</td>
+                <td>Resolution less than 1200 dpi</td> 
+                <td>satisfied</td>
+                <td>active </td>
+                <td>peformed</td>
+        </tr>
+        <tr>
+                <td>E14-4</td>
+                <td>policy:14</td>
+                <td>Resolution more than 1200 dpi</td> 
+                <td>not-satisfied</td>
+                <td>active </td>
+                <td>not performed</td>
+        </tr>
+        </table>
 
-	<hr>
-	The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, Prohibition, Obligation, Condition, Consequence, Remedy, Refinement, Constraint and State of the World. 
+        <h3>Evaluation of Conditions</h3> 
+        <p>
+            A Condition is <b>fulfilled</b> if all its constraints are satisfied and
+            if its action, with all refinements satisfied, has been performed. 
+        </p>
+        <ol> 
+            <li>The initial state of a duty is <b>inactive</b>.</li>
+            <li>If at least one of the Constraints of the duty is not satisfied, then the duty is <b>inactive</b>. 
+            (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
+            and inactive the other days).</li>	
+            <li>If the Constraints of the duty are all satisfied or there are no Constraints, then the duty is <b>active</b>.
+            <li> If the Duty is <b>active</b> and its action with all refinements+properties satisfied is performed, 
+                then duty is <b>fulfilled</b> by the performance of the action.</li>
+        </ol>
+        <p>The life cycle of a duty is depicted in the figure below:
+            <img src="2024ODRLDuty.png"></p>
 
-	Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:
-	<ul>
-		<li>Permission, Prohibition, and Obligation, <!-- and Condition -->	have a property called 
-		<b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
-		
-		<li>Prohibition and Obligation <!-- and Condition --> have a property called <b>deontic state</b>, 
-		which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
-		They can become violated or fulfilled only when they are active.</li>
+        <h4>Example of a conditioned permission</h4> 
+        <p>
+            The example below, similar to <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a>  in the ODRL Information Model 2.2, is a Permission that is constrained by a Duty (which we call Condition).  The condition does not have Constraints, but its action has a refinement. In this example, the permission is granted by <code>party:sony</code> for <code>party:billie</code> to play the  
+            target asset <code>music:1999</code>. The permission includes the condition to perform the compensate action that has a refinement of <code>payAmount</code> 
+            of euro 5.00. The semantics of Permission requires that the compensate action (included in the duty) must be performed 
+            <b>before</b> the play action in order to get an <code>active</code> permission to perform the play action.
+        </p>
 
-<!-- Commented by Nicoletta on 16th May 2023 because:
-as long as a "set" Permission is active, it can be used by many concrete actions performed by different agents 
-(a "set" Permission has not a specific assignee). 
-The "usage state" is not a state of the permission but it is a log that a specific permission has been used by 
-a specific action. This log can be useful when setting an upper limit on the number of times a permission may be 
-used by a particular agent (an "agreement" permission) and wanting to monitor the fulfilment of this condition. 
-		
-		<li>Permission have a property called <b>usage state</b>, 
-		which can take the value of <b>used</b> or <b>not-used</b>. 
-		A permission can become used only when it is active.</li>
--->
-
-		<li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
-		<b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
-		A not-satisfied constraint may become satisfied and return to being not-satisfied.
-		The value of the satisfaction state of a Constraint is calculated according to the <b>state of the world</b>.
-		Constraints directly defined at policy level are not directly considered.</li>
-		
-		<li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
-		odrl:refinement property) has a property called <b>satisfaction state</b> 
-		which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
-		<ul>
-		<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
-		is computed according to the action that an agent <b>attempts</b> to perform on digital resources.</li>
-				
-		<li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
-		computed according to the actual actions that are performed by the agents and that are
-		represented in the <b>state of the world</b>.</li>
-		</ul>
-			
-		</li>
-		
-		<li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
-		which initially takes the values <b>not-performed</b> and 
-		can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
-			<code>performer</code>, <code>object</code>,...)  that matches with the values
-		described in the Rule (i.e. <code>action</code>, <code>assignee</code>, <code>target</code>) 
-			is actually performed at a given instant of time and its performance is represented 
-			in the state of the world.</li>
-	</ul>
-		
-	The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
-	and the performance state of an Action is <b>left to individual implementations</b>. 
-	But given these values, all ODRL Evaluators should agree on the value of the activation state and deontic states of 
-	the rules.<br><br>
-	
-	The mechanisms for computing the activation of Permissions, Prohibitions, and Obligations and the violation or 
-	fulfillment of Prohibitions and Obligations are all different. Therefore we continue by discussing the semantics of 
-	Permissions, Prohibitions, and Obligations in separated sections.
-	
-</section>		
-
-<section id="sectionPermissions">
-<h2>Sematics of Permission</h2> 
-
-In ODRL 2.2., a Rule that belongs to the <b>odrl:Permission</b> class is <b>active</b> (the action is permitted) if:
-<ul>
-	<li>all the existing constraints of the Rule are satisfied;</li> 
-	<li>all the existing duties of the Rule are fulfilled or inactive; </li>
-	<li>only for the access control scenario: all the existing refinements of the 
-		Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
-	</ul>
-	If one of those conditions is not met, the Permission is <b>inactive</b>.<br><br>
-	
-	When an action, which is regulated by an <b>active</b> permission, is performed, the permission is used by such an action.<br><br>
-	
-	In the <b>access control scenario</b>: when an action is <b>attempted</b>,
-	if there is not an active permission that permits such an action, 
-	it means that the action is not permitted and it is blocked.<br><br>
-	
-	In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
-	if there is no active permission to do so (i.e. there is no active permission regulating a class 
-	of action to which the executed action belongs) and the default setting for the ODRL Evaluator
-	is set to "everything is prohibited unless explicitly permitted" a violation should be generated.
-	This evaluation is not exemplified below.
-	
-	<!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
-	<img src="ODRLPermission.png">
-	-->
-<h3>Permission without Duties</h3> 
-
-<h4>Example 13: Permission constrained only by Constraint(s)</h4>
-	<a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
-	(similar to the one in the ODRL Information Model 2.2).<br>
-       	
-	The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
-	it includes the constraint that the permission may only be exercised until 2018-01-01. 
-	The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.<br>
-	
-<pre>
-{
-    "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Set",
-    "uid": "http://example.com/policy:13",
-    "profile": "http://example.com/odrl:profile:10",
-    "permission": [{
-       "target": "http://example.com/document:1234",
-       "assigner": "http://example.com/org:616",
-       "action": "distribute",
-       "constraint": [{
-           "leftOperand": "dateTime",
-           "operator": "lt",
-           "rightOperand":  { "@value": "2018-01-01", "@type": "xsd:date" }
-       }]
-   }]
-}
-</pre>
-<br>
-<b>Evaluation of the activation state</b><br>
-	
-The constraint must be evaluated on the state of the world, which must include a representation of the current time 
-(for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
-As long as the current time is before the first day of 2018, 
-the Permission is active. When the first day of 2018 is passed, the Permission is inactive.
-(The activation of this type of permission does not depend on the actions attempted by the agents).<br><br>
-	
-<table border="1">
-  	<tr>
-    		<th>ID</th>
-    		<th>P.Constraint.satisfaction state</th>
-		<th>P.activation state</th>
-	 </tr>
-  	<tr>
-    		<td>E13-1</td>
-		<td>satisfied</td>
-    		<td>active</td>
-    	</tr>
-  	<tr>
-    		<td>E13-2</td>
-    		<td>not-satisfied</td>
-    		<td>inactive</td>	
-    	</tr>
-</table> <br>
-
-<b>Acces control scenario</b>. 
-Given a formal description of the attempted action. 
-<ul>
-<li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
-(i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
-the target of the permission <code>http://example.com/document:1234</code>)
-and the Permission is active then the action can be executed. </li>
-<li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
-Permission is inactive, assuming that only this Permission is considered 
-(this is because other permissions could regulate this action), the action is blocked and it cannot be executed.</li>
-<li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
-is not relevant.</li>
-</ul><br>
-
-	<table border="1">
-  	<tr>
-    		<th>ID</th>
-    		<th>P.activation state</th>
-		<th>P.action.all_attributes</th>
-		<th>Attempted Action.performance state</th>
-	 </tr>
-  	<tr>
-    		<td>E13-1</td>
-		<td>active</td>
-    		<td>satisfied by the attempted action</td>
-		<td>performed</td>
-    	</tr>
-  	<tr>
-    		<td>E13-2</td>
-    		<td>inactive</td>
-    		<td>satisfied by the attempted action</td>
-		<td>not-performed</td>
-    	</tr>
-</table> <br><br>
-	
-<b>Monitoring scenario</b>. 
-Given a formal description of a performed action. 
-<ol>
-<li>If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
-then the action is permitted and the Permission is used by the performed action.</li>
-<li>If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
-then nothing can be deduced.</li>
-</ol>
-<hr>
-
-<h4>Example 14: Permission that regulates an action that is refined by Refinement(s)</h4>	
-<a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a>
-	(similar to the one in the ODRL Information Model 2.2, with the difference that the type is <code>odrl:Set</code>).<br>
-	<br>
-	<b>Type of Permission</b>: <b>Permission that regulates an action that is refined by Refinement(s)</b>. <br>
-	The permission below allows the target asset <code>http://example.com/document:1234</code>to be printed and also include a refinement indicating that the resolution 
-	of the printing action must be less than or equal to 1200 dpi. 
-	The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.<br>
-
-	<pre>
- {
-         "@context": "http://www.w3.org/ns/odrl.jsonld",
-         "@type": "Set",
-         "uid": "http://example.com/policy:6161",
-         "profile": "http://example.com/odrl:profile:10",
-         "permission": [{
-            "target": "http://example.com/document:1234",
-            "assigner": "http://example.com/org:616",
-            "action": [{
-               "rdf:value": { "@id": "odrl:print" },
-               "refinement": [{
-                  "leftOperand": "resolution",
-                  "operator": "lteq",
-                  "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
-                  "unit": "http://dbpedia.org/resource/Dots_per_inch"
+        <pre>
+        {
+        "@context": "http://www.w3.org/ns/odrl.jsonld",
+        "@type": "Agreement",
+        "uid": "http://example.com/policy/22",
+        "permission": [{
+            "assigner": "http://example.com/party/sony",
+            "assignee": "http://example.com/party/billie",
+            "target": "http://example.com/music/1999.mp3",
+            "action": "play",
+            "duty": [{
+               "@id" : "http://example.com/condition/1",
+               "action": [{
+                  "rdf:value": { "@id": "odrl:compensate" },
+                  "refinement": [{
+                     "@id" : "http://example.com/refinement/1",
+                     "leftOperand": "payAmount",
+                     "operator": "eq",
+                     "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+                     "unit": "http://dbpedia.org/resource/Euro"
+                  }]
                 }]
             }]
-          }]
- }
-	</pre>
-	<br>
-
-<b>Evaluation of the Permission</b><br>
-	
-	<b>Acces control scenario</b>: Given a formal description of the attempted action.
-	<ul>
-	<li>(E14-1-ac) If such the attempted action belongs to the class of actions regulated by the Permission
-	(i.e.: its <code>type</code> is <code>print</code>, 
-	its <code>object</code> is equale to <code>http://example.com/document:1234</code> and 
-	its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-	then the Permission is active and the attempted action can be performed.
-	</li>
-	<li>(E14-2-ac) If such the attempted action belongs to the class of actions regulated by the Permission, 
-	but the refinement of the action is not satisfied (i.e. its <code>resolution</code> is more than 1200 dpi), 
-	then the Permission is inactive. 
-	Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
-	then the action is blocked and it cannot be performed.</li>
-	</ul>
-	<br>
-	
-	<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> P.action.all_attributes </th>
-		<th> P.activation state </th>
-		<th> Attempted Action.performance state </th>
-	 </tr>
-  	<tr>
-    		<td>E14-1-ac</td>
-    		<td> satisfied by the attempted action </td>
-    		<td> active </td>
-		<td> performed</td>
-    	</tr>
-	<tr>
-    		<td>E14-2-ac</td>
-    		<td> not-satisfied by the attempted action </td>
-    		<td> inactive </td>
-		<td> not-performed</td>
-    	</tr>
-	</table>
-	<br>
-
-	<b>Monitoring scenario</b>: 
-	The above Permission is always active because it has neither constraints nor duties. Given a formal description a performed action. 
-	If such an action belongs to the class of actions regulated by the Permission then the permission is used by the performed action.
-	
-<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> P.activation state </th>
-		<th> P.action.all_attributes</th>
-	 </tr>
-  	<tr>
-    		<td> E14-1-m </td>
-    		<td> active </td>
-		<td> satisfied by the performed action </td>
-    	</tr>
-  	<tr>
-    		<td> E14-2-m </td>
-    		<td> active </td>
-    		<td> not-satisfied by the performed action </td>
-    	</tr>
-	</table>
-	<br>
-	
-	
-<h3>Permissions with Duties</h3> 
-
-In ODRL 2.2., a Rule that belongs to the <b>Duty</b> class is <b>fulfilled</b> if all its constraints are satisfied and 
-if its action, with all refinements satisfied, has been performed. <br>
-
-<ol> 
-<li>The initial state of a duty is <b>inactive</b>.</li>
-<li>If at least one of the Constraints of the duty is not satisfied, then the duty is <b>inactive</b>. 
-(For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
-and inactive the other days).</li>	
-<li>If the Constraints of the duty are all satisfied or there are no Constraints, then the duty is <b>active</b>.
-<li> If the Duty is <b>active</b> and its action with all refinements+properties satisfied is performed, 
-	then duty is <b>fulfilled</b> by the performance of the action.</li>
-</ol>
-
-The life cycle of a duty is depicted in the figure below:
-	<img src="2024ODRLDuty.png">
-
-<h4>Example 22: The Duty has not Constraints </h4> 
-	
-	
-	<a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> 
-	(similar to the one in the ODRL Information Model 2.2, with the differences that the type is 
-	<code>odrl:Agreement</code> and the permission has an <code>odrl:assignee</code>, this is to make explicit 
-	which agent will have the active permission if the duty is fulfilled).<br><br>
-	
-	<b>Type of Permission</b>: 
-	<b>Permission that is constrained by a Duty. The Duty has not Constraints. 
-	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
-	
-	The Permission below is granted by the Party <code>http://example.com/assigner:sony</code>. It allows to the Party 
-	<code>http://example.com/party:person:billie</code> to play the  
-	target asset <code>http://example.com/music/1999.mp3</code>. 
-	The permission includes a duty to perform the compensate action that has a refinement of <code>payAmount</code> 
-	of euro 5.00.
-	The semantics of Permission requires that the compensate action (included in the duty) must be performed 
-	<b>before</b> the play action in order to get an <code>active</code> permission to perform the play action.<br><br>
-
-	<pre>
-{
-    "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Agreement",
-    "uid": "http://example.com/policy:88",
-    "profile": "http://example.com/odrl:profile:09",
-    "permission": [{
-        "assigner": "http://example.com/assigner:sony",
-	"assignee": "http://example.com/party:person:billie",
-        "target": "http://example.com/music/1999.mp3",
-        "action": "play",
-        "duty": [{
-           "action": [{
-              "rdf:value": { "@id": "odrl:compensate" },
-              "refinement": [{
-                 "leftOperand": "payAmount",
-                 "operator": "eq",
-                 "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                 "unit": "http://dbpedia.org/resource/Euro"
-              }]
-            }]
         }]
-    }]
-}  
-</pre>
+        }  
+        </pre>
 
-<b>Evaluation of the Duty</b>.<br>
-The Duty has not Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
+<b>Evaluation of the Condition</b>.<br>
+The Duty <code>condition:1</code> does not have Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
 when in the state of the world there is a representation of an executed action that matches with the 
 the class of actions described in the duty. I.e. the <code>type</code> of the action is <code>compensate</code>, its 
 <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
@@ -523,167 +522,190 @@ the <code>odrl:compensate</code> action is not specified) its <code>beneficiary<
 (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a reference to a policy or a rule and to 
 the party for whom they are executed). <br>
 
-<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> Duty.Action.all_attributes </th>
-		<th> Duty.activation state</th>	
-		<th> Duty.deontic state</th>	
+Once the condition (duty) has been evaluated, the permission can be evaluated.<br>  
+If the Duty (condition) is active but it is not fullfilled then the Permission is inactive.<br>
+If the Duty (condition) is fulfilled then the Permission is active.
 
-	 </tr>
-  	<tr>
-    		<td>E22-1</td>
-    		<td>not satisfied by performed actions</td>
-    		<td> active </td>
-		<td> not-set </td>
-	</tr>
-  	<tr>
-    		<td>E22-2</td>
-    		<td>satisfied by one of the performed actions </td>
-		<td> active </td>
-    		<td> fulfilled by the action</td>
-	</tr>
-	</table>
-<br><br>
-	
-<b>Evaluation of the Permission</b><br>
-If the Duty is active but it is not fullfilled the Permission is inactive.<br>
-If the Duty is fulfilled the Permission is active.
 
-	<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> Duty.activation state</th>	
-		<th> Duty.deontic state</th>	
-		<th> P.activation state</th>
 
-	 </tr>
-  	<tr>
-    		<td>E22-1</td>
-    		<td> active </td>
-		<td> not-set </td>
-		<td> inactive </td>
-	</tr>
-  	<tr>
-    		<td>E22-2</td>
-    		<td> active </td>
-    		<td> fulfilled by the action</td>
-		<td> active </td>
-	</tr>
-	</table>
-	<br><br>
-	
-	<b>Acces control scenario</b>: 
-
-	 Given a formal description of the attempted action. If such an action belongs to the class of actions regulated by the Permission 
-	(i.e. its <code>type</code> is <code>play</code>, its <code>object</code> is equal to <code>http://example.com/music/1999.mp3</code>, and its <code>performer</code> is 
-        <code>http://example.com/party:person:billie</code>) and the Permission is active, then the action is performed, otherwise it is blocked.<br>
-	
-	<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> Duty.deontic state </th>
-		<th> Permission</th>
-		<th> Attempted Action.performance state </th>
- 	 </tr>
-  	<tr>
-    		<td>E22-1-ac</td>
-    		<td> not-set </td>
-    		<td> inactive </td>
-    		<td>not-performed</td>	  
-  	</tr>
-  	<tr>
-    		<td>E22-2-ac</td>
-    		<td> fulfilled </td>
-    		<td> active </td>
-   		<td>performed</td>
-  	</tr>
-	</table>
 <br>
 
-	<b>Monitoring scenario</b>: 
-	Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
+<!--
+    <table border="1" style="font-size:small;">
+    <tr>
+            <th>Example</th>
+            <th style="color:darkblue">Policy</th>
+            <th style="color:darkblue">World</th>
+            <th style="color:darkred">activation of <code>condition:1</code></th>
+            <th style="color:darkred">deontic state of <br/><code>condition:1</code></th>
+     </tr>
+    <tr>
+            <td>E22-1</td>
+            <td>policy:22</td>
+            <td>Payment not made</td> 
+            <td>active</td>
+            <td>not set</td>
+    </tr>
+
+        <table border="1">
+    <tr>
+            <th> ID </th>
+            <th> Duty.activation state</th>	
+            <th> Duty.deontic state</th>	
+            <th> P.activation state</th>
+
+     </tr>
+    <tr>
+            <td>E22-1</td>
+            <td> active </td>
+            <td> not-set </td>
+            <td> inactive </td>
+    </tr>
+    <tr>
+            <td>E22-2</td>
+            <td> active </td>
+            <td> fulfilled by the action</td>
+            <td> active </td>
+    </tr>
+    </table>
+    <br><br>
+-->
+
+    <b>Acces control scenario</b>: 
+     Given a formal description of the attempted action. If such an action belongs to the class of actions regulated by the Permission 
+    (i.e. its <code>type</code> is <code>play</code>, its <code>object</code> is equal to <code>http://example.com/music/1999.mp3</code>, and its <code>performer</code> is 
+    <code>http://example.com/party:person:billie</code>) and the Permission is active, then the action is performed, otherwise it is blocked.<br>
+    <table border="1" style="font-size:small;">
+    <tr>
+            <th>Example</th>
+            <th style="color:darkblue">Policy</th>
+            <th style="color:darkblue">World</th>
+            <th style="color:darkred">activation of <br><code>condition:1</code></th>
+            <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
+            <th style="color:darkred"><kbd>access control</kbd><br>activation <br><code>permission:1</code></th>
+     </tr>
+    <tr>
+            <td>E22-1</td>
+            <td>policy:22</td>
+            <td>Payment not made</td> 
+            <td>active</td>
+            <td>not set</td>
+            <td>inactive</td>
+    </tr>
+    <tr>
+            <td>E22-2</td>
+            <td>policy:22</td>
+            <td>Payment made</td> 
+            <td>active</td>
+            <td>fulfilled</td>
+            <td>active</td>
+    </tr>
+   </table>    
+ 
+    <b>Monitoring scenario</b>: 
+    Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
 then the permission is used by the performed action.
 
-<h4>Example 22.1: The Duty has Constraints.</h4>
+   <table border="1">
+    <tr>
+            <th> ID </th>
+            <th> Duty.deontic state </th>
+            <th> Permission</th>
+            <th> Attempted Action.performance state </th>
+     </tr>
+    <tr>
+            <td>E22-1-ac</td>
+            <td> not-set </td>
+            <td> inactive </td>
+            <td>not-performed</td>	  
+    </tr>
+    <tr>
+            <td>E22-2-ac</td>
+            <td> fulfilled </td>
+            <td> active </td>
+            <td>performed</td>
+    </tr>
+    </table>
 
-	Example 22.1 = Example 22 + Constraint for the Duty <br>
+<h4>Example of a permission whose condition has constraints</h4>
 
- 	<b>Type</b> of Permission: 
-	<b>Permission that is constrained by a Duty. The Duty has Constraints. 
-	The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
-	
-	The permission below has the same description as given for Example 22 above with the addition that Duty is only 
-	activated on Sundays  .<br><br>
+    Example 22.1 = Example 22 + Constraint for the Duty <br>
 
-	<pre>
+    <b>Type</b> of Permission: 
+    <b>Permission that is constrained by a Duty. The Duty has Constraints. 
+    The Duty regulates an Action that is refined by Refinement(s)</b>.<br>
+
+    The permission below has the same description as given for Example 22 above with the addition that Duty is only 
+    activated on Sundays  .<br><br>
+
+    <pre>
 {
-    "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Agreement",
-    "uid": "http://example.com/policy:88",
-    "profile": "http://example.com/odrl:profile:09",
-    "permission": [{
-        "assigner": "http://example.com/assigner:sony",
-        "assignee": "http://example.com/party:person:billie",
-        "target": "http://example.com/music/1999.mp3",
-        "action": "play",
-        "duty": [{
-            "action": [{
-                "rdf:value": { "@id": "odrl:compensate" },
-                "refinement": [{
-                    "leftOperand": "payAmount",
-                    "operator": "eq",
-                    "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                    "unit": "http://dbpedia.org/resource/Euro"
-                }]
-            }],
-            "constraint": [{
-                "leftOperand": "dateTime",
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy:88",
+"profile": "http://example.com/odrl:profile:09",
+"permission": [{
+    "assigner": "http://example.com/assigner:sony",
+    "assignee": "http://example.com/party:person:billie",
+    "target": "http://example.com/music/1999.mp3",
+    "action": "play",
+    "duty": [{
+        "action": [{
+            "rdf:value": { "@id": "odrl:compensate" },
+            "refinement": [{
+                "leftOperand": "payAmount",
                 "operator": "eq",
-                "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
+                "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+                "unit": "http://dbpedia.org/resource/Euro"
             }]
+        }],
+        "constraint": [{
+            "leftOperand": "dateTime",
+            "operator": "eq",
+            "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
         }]
     }]
+}]
 }  
 </pre>
-	
-	  <b>Evaluation of the Duty</b>.<br>
+
+      <b>Evaluation of the Duty</b>.<br>
 The Duty has Constraints. It starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
 (the state of the world satisfies its Constraints, i.e. the current date is a Sunday). When it is active, it is also <b>fulfilled</b> 
 when in the state of the world there is a representation of an executed action that matches with the 
 the class of actions described in the duty. <br>
 
 <table border="1">
-  	<tr>
-    		<th> ID </th>
-	        <th> Duty.Constraint </th>
-    		<th> Duty.Action.all_attributes </th>
-		<th> Duty.activation state</th>	
-		<th> Duty.deontic state</th>	
+    <tr>
+            <th> ID </th>
+            <th> Duty.Constraint </th>
+            <th> Duty.Action.all_attributes </th>
+            <th> Duty.activation state</th>	
+            <th> Duty.deontic state</th>	
 
-	 </tr>
-  	<tr>
-    		<td>E22.1-1</td>
-		<td> not-satisfied </td>
-    		<td> don't care </td>
-    		<td> inactive </td>
-		<td> not-set </td>
-	</tr>
-  	<tr>
-    		<td>E22.1-2</td>
-		<td> satisfied </td>
-    		<td> not satisfied by one of the performed actions </td>
-		<td> active </td>
-    		<td>  not-set </td>
-	</tr>
-	<tr>
-    		<td>E22.1-3</td>
-		<td> satisfied </td>
-    		<td> satisfied by one of the performed actions </td>
-		<td> active </td>
-    		<td> fulfilled by the action</td>
-	</tr>
-	</table>
+     </tr>
+    <tr>
+            <td>E22.1-1</td>
+            <td> not-satisfied </td>
+            <td> don't care </td>
+            <td> inactive </td>
+            <td> not-set </td>
+    </tr>
+    <tr>
+            <td>E22.1-2</td>
+            <td> satisfied </td>
+            <td> not satisfied by one of the performed actions </td>
+            <td> active </td>
+            <td>  not-set </td>
+    </tr>
+    <tr>
+            <td>E22.1-3</td>
+            <td> satisfied </td>
+            <td> satisfied by one of the performed actions </td>
+            <td> active </td>
+            <td> fulfilled by the action</td>
+    </tr>
+    </table>
 <br><br>
 
 <b>Evaluation of the Permission</b><br>
@@ -691,36 +713,36 @@ If the Duty is inactive the Permission is active.<br>
 If the Duty is active but it is not fullfilled the Permission is inactive.<br>
 If the Duty is fulfilled the Permission is active.
 
-	<table border="1">
-  	<tr>
-    		<th> ID </th>
-    		<th> Duty.activation state</th>	
-		<th> Duty.deontic state</th>	
-		<th> P.activation state</th>
+    <table border="1">
+    <tr>
+            <th> ID </th>
+            <th> Duty.activation state</th>	
+            <th> Duty.deontic state</th>	
+            <th> P.activation state</th>
 
-	 </tr>
-	<tr>
-    		<td>E22.1-1</td>
-    		<td> inactive </td>
-		<td> don't care </td>
-		<td> active </td>
-	</tr>
-  	<tr>
-    		<td>E22.1-2</td>
-    		<td> active </td>
-		<td> not-set </td>
-		<td> inactive </td>
-	</tr>
-  	<tr>
-    		<td>E22.1-3</td>
-    		<td> active </td>
-    		<td> fulfilled by the action</td>
-		<td> active </td>
-	</tr>
-	</table>
-	
-	
-	<br><br>
+     </tr>
+    <tr>
+            <td>E22.1-1</td>
+            <td> inactive </td>
+            <td> don't care </td>
+            <td> active </td>
+    </tr>
+    <tr>
+            <td>E22.1-2</td>
+            <td> active </td>
+            <td> not-set </td>
+            <td> inactive </td>
+    </tr>
+    <tr>
+            <td>E22.1-3</td>
+            <td> active </td>
+            <td> fulfilled by the action</td>
+            <td> active </td>
+    </tr>
+    </table>
+
+
+    <br><br>
 </section>
 
 <section id="sectionProhibitions">		
@@ -736,192 +758,192 @@ Duties on prohibitions have no defined meaning.<br>
 An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is executed. 
 If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
 The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibition to be within one of these possibilities:
-	<ul>
-	<li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
-	<li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
-	</ul>
+    <ul>
+    <li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
+    <li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
+    </ul>
 A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-prohib"><code>odrl:remedy</code></a> for its violation. <br><br>
 
 <h4>Example 19: Prohibition with Constraint(s)</h4>
 <a href="https://www.w3.org/TR/odrl-model/#prohibition">Example 19</a> 
-	(similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.)<br>
-	
-	<b>Type of Prohibition</b>: 
-	<b>Prohibition that is constrained by a Constraint</b>.<br>
-	The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action of archiving the specified digital asset is prohibited.
-	The prohibition is specifically active only during the year 2024.<br>	
+    (similar to the one in the ODRL Information Model 2.2, with the differences that it has not a related permission and it has a Constraint.)<br>
+
+    <b>Type of Prohibition</b>: 
+    <b>Prohibition that is constrained by a Constraint</b>.<br>
+    The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action of archiving the specified digital asset is prohibited.
+    The prohibition is specifically active only during the year 2024.<br>	
 <pre>
 {
-    "@context": "http://www.w3.org/ns/odrl.jsonld",
-    "@type": "Agreement",
-    "uid": "http://example.com/policy:5555",
-    "profile": "http://example.com/odrl:profile:08",
-    "prohibition": [{
-        "target": "http://example.com/photoAlbum:55",
-        "action": "archive",
-        "assigner": "http://example.com/MyPix:55",
-        "assignee": "http://example.com/assignee:55",
-	"constraint": [{
-           "leftOperand": "dateTime",
-           "operator": "eq",
-           "rightOperand":  { "@value": "2024", "@type": "xsd:gYear" }
-       }]
-    }]
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy:5555",
+"profile": "http://example.com/odrl:profile:08",
+"prohibition": [{
+    "target": "http://example.com/photoAlbum:55",
+    "action": "archive",
+    "assigner": "http://example.com/MyPix:55",
+    "assignee": "http://example.com/assignee:55",
+    "constraint": [{
+       "leftOperand": "dateTime",
+       "operator": "eq",
+       "rightOperand":  { "@value": "2024", "@type": "xsd:gYear" }
+   }]
+}]
 }
 </pre>
 
 <b>Evaluation of the activation state and of the deontic state of the Prohibition</b><br>
-	
+
 The Constraint must be evaluated on the state of the world. As long as the current time is in 2024, 
 the Prohibition is active. Before or after 2024 the Prohibition is inactive. When the Prohibition is active, if the prohibited action is performed there is a violation.<br><br>
-	
+
 <table border="1">
-  	<tr>
-    		<th>ID</th>
-    		<th>P.Constraint.satisfaction state</th>
-		<th>P.activation state</th>
-		<th>P.action.all_attributes</th>
-		<th>P.deontic state</th>
-	 </tr>
-  	<tr>
-    		<td>E19-1</td>
-		<td>satisfied</td>
-    		<td>active</td>
-		<td>satisfied by a performed action</td>
-		<td>violated</td>
-    	</tr>
-  	<tr>
-    		<td>E19-2</td>
-    		<td>satisfied</td>
-    		<td>active</td>
-		<td>not satisfied by a performed action</td>
-		<td>not-set</td>
-    	</tr>
-	<tr>
-    		<td>E19-3</td>
-    		<td>not-satisfied</td>
-    		<td>inactive</td>
-		<td>satisfied by a performed action</td>
-		<td>not-set</td>
-    	</tr>
+    <tr>
+            <th>ID</th>
+            <th>P.Constraint.satisfaction state</th>
+            <th>P.activation state</th>
+            <th>P.action.all_attributes</th>
+            <th>P.deontic state</th>
+     </tr>
+    <tr>
+            <td>E19-1</td>
+            <td>satisfied</td>
+            <td>active</td>
+            <td>satisfied by a performed action</td>
+            <td>violated</td>
+    </tr>
+    <tr>
+            <td>E19-2</td>
+            <td>satisfied</td>
+            <td>active</td>
+            <td>not satisfied by a performed action</td>
+            <td>not-set</td>
+    </tr>
+    <tr>
+            <td>E19-3</td>
+            <td>not-satisfied</td>
+            <td>inactive</td>
+            <td>satisfied by a performed action</td>
+            <td>not-set</td>
+    </tr>
 </table> <br>
 </section>
 
 
 <section id="sectionObligations">	
 <h2>Sematics of Obligations</h2> 	
-	
-	In ODRL 2.2., an Obligation that belongs to the <code>odrl:Duty</code> class (it would be better to have an <code>odrl:Obligation</code> class) is <b>active</b> (its action,  
-	with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
-	An active Obligation becomes:
-	<ul>
-	<li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
-	<li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
-	<li> <b>not-set</b> when the regulated action with all refinements satisfied can be executed but has not been so far. </li>
-	</ul>
-	An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br><br>
-	
-	<!--<b>Problem</b>: reasoning about deadline.-->
+
+    In ODRL 2.2., an Obligation that belongs to the <code>odrl:Duty</code> class (it would be better to have an <code>odrl:Obligation</code> class) is <b>active</b> (its action,  
+    with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
+    An active Obligation becomes:
+    <ul>
+    <li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
+    <li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
+    <li> <b>not-set</b> when the regulated action with all refinements satisfied can be executed but has not been so far. </li>
+    </ul>
+    An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br><br>
+
+    <!--<b>Problem</b>: reasoning about deadline.-->
 
 <h4>Example 20: Obligation without Constraint(s)</h4>
 <a href="https://www.w3.org/TR/odrl-model/#duty-policy">Example 20</a> <br>
-	
-	<b>Type of Obligation</b>: 
-	<b>Obligation that is not constrained by a Constraint</b>.<br>
-	The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action to compensate 
-	the assigner for a payment amount of EU500.00 is obliged.<br>	
+
+    <b>Type of Obligation</b>: 
+    <b>Obligation that is not constrained by a Constraint</b>.<br>
+    The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action to compensate 
+    the assigner for a payment amount of EU500.00 is obliged.<br>	
 
 <pre>
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
-  "@type": "Agreement",
-  "uid": "http://example.com/policy:42",
-  "profile": "http://example.com/odrl:profile:09",
-  "obligation": [{
-      "assigner": "http://example.com/org:43",
-      "assignee": "http://example.com/person:44",
-      "action": [{
-          "rdf:value": {
-            "@id": "odrl:compensate"
-          },
-          "refinement": [
-            {
-              "leftOperand": "payAmount",
-              "operator": "eq",
-              "rightOperand": { "@value": "500.00", "@type": "xsd:decimal" },
-              "unit": "http://dbpedia.org/resource/Euro"
-            }]
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy:42",
+"profile": "http://example.com/odrl:profile:09",
+"obligation": [{
+  "assigner": "http://example.com/org:43",
+  "assignee": "http://example.com/person:44",
+  "action": [{
+      "rdf:value": {
+        "@id": "odrl:compensate"
+      },
+      "refinement": [
+        {
+          "leftOperand": "payAmount",
+          "operator": "eq",
+          "rightOperand": { "@value": "500.00", "@type": "xsd:decimal" },
+          "unit": "http://dbpedia.org/resource/Euro"
         }]
     }]
+}]
 }
 </pre>
 
 <b>Evaluation of the activation state and of the deontic state of the Obligation</b><br>
 
 The Obligation is always active. If the obliged action is performed then the obligation is fulfilled.<br><br>
-	
+
 <table border="1">
-  	<tr>
-    		<th>ID</th>
-    		<th>O.activation state</th>
-		<th>O.action.all_attributes</th>
-		<th>O.deontic state</th>
-	 </tr>
-  	<tr>
-    		<td>E20-1</td>
-		<td>active</td>
-		<td>satisfied by a performed action</td>
-		<td>fulfilled</td>
-    	</tr>
-  	<tr>
-    		<td>E20-2</td>
-    		<td>active</td>
-		<td>not satisfied by a performed action</td>
-		<td>not-set</td>
-    	</tr>
-	</table> <br>	
+    <tr>
+            <th>ID</th>
+            <th>O.activation state</th>
+            <th>O.action.all_attributes</th>
+            <th>O.deontic state</th>
+     </tr>
+    <tr>
+            <td>E20-1</td>
+            <td>active</td>
+            <td>satisfied by a performed action</td>
+            <td>fulfilled</td>
+    </tr>
+    <tr>
+            <td>E20-2</td>
+            <td>active</td>
+            <td>not satisfied by a performed action</td>
+            <td>not-set</td>
+    </tr>
+    </table> <br>	
 
 <h4>Example 20.1: Obligation with Constraint(s)</h4>
-	
+
 </section>	
-	
 
-		<section id="section3">
-		<h2>Previous efforts</h2> 	
-    	<i>Section authored by Víctor. This section does not pretend to be part of a spec, but may serve as reference</i>
 
-	
+            <section id="section3">
+            <h2>Previous efforts</h2> 	
+    <i>Section authored by Víctor. This section does not pretend to be part of a spec, but may serve as reference</i>
+
+
 <h3>Documents on "formal semantics" in W3C specifications</h3>
-			
-	The W3C has produced several "Semantics" documents each of them with a different objective.
 
-	<p>The <a href="https://www.w3.org/TR/rdf11-mt/">RDF1.1. Semantics</a> defines a model-theoretic semantics to determine the validity of RDF inference processes. A similar approach is followed by the <a href="https://www.w3.org/TR/owl2-direct-semantics/">OWL Semantics</a>, a recommendation providing the direct model-theoretic semantics for OWL 2 and definingthe most common inference problems.</p>
+    The W3C has produced several "Semantics" documents each of them with a different objective.
 
-	<p>XPath (XML Path Language) is a language that can be used to navigate through elements and attributes in an XML document, and it also has <a href="https://www.w3.org/TR/xquery-semantics/">formal semantics</a>. XQuery (XML Query) is a query and functional programming language to query XML data. The "XQuery and XPath Formal Semantics"  intends to complement the specification by defining the meaning of XQuery/XPath expressions with mathematical rigor; thus clarifying the intended meaning of the English specification, and ensuring that no corner cases are left out. For that regard grammar productions are given.</p>
+    <p>The <a href="https://www.w3.org/TR/rdf11-mt/">RDF1.1. Semantics</a> defines a model-theoretic semantics to determine the validity of RDF inference processes. A similar approach is followed by the <a href="https://www.w3.org/TR/owl2-direct-semantics/">OWL Semantics</a>, a recommendation providing the direct model-theoretic semantics for OWL 2 and definingthe most common inference problems.</p>
 
-	<p>The POWDER specification provides a mechanism to describe and discover Web resources, and it also includes a <a href="https://www.w3.org/TR/powder-formal/">Formal Semantics</a> document. POWDER documents are XML documents which can be automatically converted, through a GRDDL transform, into a semantically rich version in RDF (POWDER-S). The "semantics" document describes how to make such transformation. </p>
+    <p>XPath (XML Path Language) is a language that can be used to navigate through elements and attributes in an XML document, and it also has <a href="https://www.w3.org/TR/xquery-semantics/">formal semantics</a>. XQuery (XML Query) is a query and functional programming language to query XML data. The "XQuery and XPath Formal Semantics"  intends to complement the specification by defining the meaning of XQuery/XPath expressions with mathematical rigor; thus clarifying the intended meaning of the English specification, and ensuring that no corner cases are left out. For that regard grammar productions are given.</p>
 
-	<p>The PROV Ontology Working Group has produced 12 specifications to facilitate the interchange of provenance information in the Web (where provenance is …information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness"). Besides having published a <a href="https://www.w3.org/TR/prov-o/">PROVO Ontology</a> to facilitate the expression of provenance as RDF, the family of documents also define an EBNF notation "which allows serializations of PROV instances to be created in a compact manner", a set of constraints to "ensure that a PROV instance represents a consistent history of objects and their interactions that is safe to use for the purpose of logical reasoning" and statements in the PROV Data Model are seen "as atomic formulas in the sense of first-order logic […and…] the constraints and inferences specified in PROV-CONSTRAINTS as a first-order theory". 
- </p> 
+    <p>The POWDER specification provides a mechanism to describe and discover Web resources, and it also includes a <a href="https://www.w3.org/TR/powder-formal/">Formal Semantics</a> document. POWDER documents are XML documents which can be automatically converted, through a GRDDL transform, into a semantically rich version in RDF (POWDER-S). The "semantics" document describes how to make such transformation. </p>
+
+    <p>The PROV Ontology Working Group has produced 12 specifications to facilitate the interchange of provenance information in the Web (where provenance is …information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness"). Besides having published a <a href="https://www.w3.org/TR/prov-o/">PROVO Ontology</a> to facilitate the expression of provenance as RDF, the family of documents also define an EBNF notation "which allows serializations of PROV instances to be created in a compact manner", a set of constraints to "ensure that a PROV instance represents a consistent history of objects and their interactions that is safe to use for the purpose of logical reasoning" and statements in the PROV Data Model are seen "as atomic formulas in the sense of first-order logic […and…] the constraints and inferences specified in PROV-CONSTRAINTS as a first-order theory". 
+</p> 
 
 <h3>ODRL Formalization</h3>
-	<p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>
+    <p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>
 
-	<p>RDF documents instantiating the "Policy" class of the ODRL Ontology or using the XML or JSON syntaxes are called simply "ODRL Policies". The ODRL Ontology is already a formalization of the ODRL information model and vocabulary. The ontology of the version 2.1 consists of 1111 axioms with low complexity, but a comprehensive definition of each element (classes and relations) and a systematic definition of domains and ranges for the properties. Some ODRL concepts are represented as SKOS concepts ordered in SKOS collection. Reasoning with the ontology would be computationally inexpensive, but the usefulness of the possible reasoning tasks with the ontology is very limited. </p>
+    <p>RDF documents instantiating the "Policy" class of the ODRL Ontology or using the XML or JSON syntaxes are called simply "ODRL Policies". The ODRL Ontology is already a formalization of the ODRL information model and vocabulary. The ontology of the version 2.1 consists of 1111 axioms with low complexity, but a comprehensive definition of each element (classes and relations) and a systematic definition of domains and ranges for the properties. Some ODRL concepts are represented as SKOS concepts ordered in SKOS collection. Reasoning with the ontology would be computationally inexpensive, but the usefulness of the possible reasoning tasks with the ontology is very limited. </p>
 
-	<p>The ODRL 2.1 Ontology is not the first ODRL Ontology and other ontologies had been proposed before [García05][Kasten10]. However, neither these ontologies nor the ODRL 2.1 Ontology directly supported any reasoning tasks of practical use. Other more generic rights ontologiesexist, claiming tocomprise the concepts of ODRL, with the ambition of facilitating interoperability. Thus, Delgado (2003) and Nadah (2007) have proposed ontologies as a bridge to make transformation between rights expression languages like ODRL and MPEG-21 REL, whereas Rodríguez (2013) underlined the similarities of seven policy languages with an ontology design pattern. Other alternative means of achieving interoperability do not require ontologies, as Guth did (2003) defining an abstract object model.</p>
+    <p>The ODRL 2.1 Ontology is not the first ODRL Ontology and other ontologies had been proposed before [García05][Kasten10]. However, neither these ontologies nor the ODRL 2.1 Ontology directly supported any reasoning tasks of practical use. Other more generic rights ontologiesexist, claiming tocomprise the concepts of ODRL, with the ambition of facilitating interoperability. Thus, Delgado (2003) and Nadah (2007) have proposed ontologies as a bridge to make transformation between rights expression languages like ODRL and MPEG-21 REL, whereas Rodríguez (2013) underlined the similarities of seven policy languages with an ontology design pattern. Other alternative means of achieving interoperability do not require ontologies, as Guth did (2003) defining an abstract object model.</p>
 
-	<p>Some other formalizations of ODRL have been proposed with the purpose of determining whether a request is permitted given a set of policies and a certain history of events:we can name this task as theauthorisation decision.With that purpose, Gunter and Pucella had defined general logics for rights (2001 and 2002 respectively). Pucella then extended his work to model ODRL1.1 statements (2004) as formulas in a many-sorted first-order logic with equality,to determinewhether a permission was implied by a set of ODRL statements. Holzer et al. (2004) also enriched the authorisation decision modelling the dynamic aspects of licenses with finite-automata like structures (useful when the property of an asset is transferred, or when the number of plays is limited to a certain number of times). Chong et al. (2006) modelled licenses with multiset rewritingand logic programming (Prolog), including the ability to evaluate and merge licenses and to track the dynamic aspects of the rights evolution. Barth and Mitchell (2006) observed that the authorisation decision of a sequence of actions given a set of ODRL licenses is NP-complete because of the interval constraints, and proposed using propositional linear logic to grant efficient computability. Sheppard and Sfavi(2009) defined an algorithm for the authorisation decision with some of the most common ODRL elements, giving the pseudo-code for a virtual machine. Steyskal and Polleres (2015) defined an abstract syntax for expressing ODRL policies, where the dependencies among ODRL actions and the different conflict resolution strategies were explicitly considered in the rules for taking the authorisation decision. </p>
+    <p>Some other formalizations of ODRL have been proposed with the purpose of determining whether a request is permitted given a set of policies and a certain history of events:we can name this task as theauthorisation decision.With that purpose, Gunter and Pucella had defined general logics for rights (2001 and 2002 respectively). Pucella then extended his work to model ODRL1.1 statements (2004) as formulas in a many-sorted first-order logic with equality,to determinewhether a permission was implied by a set of ODRL statements. Holzer et al. (2004) also enriched the authorisation decision modelling the dynamic aspects of licenses with finite-automata like structures (useful when the property of an asset is transferred, or when the number of plays is limited to a certain number of times). Chong et al. (2006) modelled licenses with multiset rewritingand logic programming (Prolog), including the ability to evaluate and merge licenses and to track the dynamic aspects of the rights evolution. Barth and Mitchell (2006) observed that the authorisation decision of a sequence of actions given a set of ODRL licenses is NP-complete because of the interval constraints, and proposed using propositional linear logic to grant efficient computability. Sheppard and Sfavi(2009) defined an algorithm for the authorisation decision with some of the most common ODRL elements, giving the pseudo-code for a virtual machine. Steyskal and Polleres (2015) defined an abstract syntax for expressing ODRL policies, where the dependencies among ODRL actions and the different conflict resolution strategies were explicitly considered in the rules for taking the authorisation decision. </p>
 
-	<p>Besides the problems of facilitating interoperability and making the authorisation decision, other problems of interest have been modeled with formalizations of ODRL. One of them is how to evaluate the compatibility and composition of licenses, useful when handling with differently licensed content or data. In this line, Gangadharan et al. (2007)proposed a matchmaking algorithm to analyze the compatibility of licenses and make license compositions; Jamkhedkarand Heileman (2008) showed how the combination of ODRL, CreativeCommons REL and the XrML (embryo of the MPEG-21 REL) licenses was possible with an abstract model and several rules. Villata and Gandon (2012) also defined a framework with algorithms to validate compatibility and to obtain composite licenses. Rotolo et al. (2013) defined a deontic logic system for the composition of licenses, with strict rules, defasible rules and defeater rules. More recent critics </p>
+    <p>Besides the problems of facilitating interoperability and making the authorisation decision, other problems of interest have been modeled with formalizations of ODRL. One of them is how to evaluate the compatibility and composition of licenses, useful when handling with differently licensed content or data. In this line, Gangadharan et al. (2007)proposed a matchmaking algorithm to analyze the compatibility of licenses and make license compositions; Jamkhedkarand Heileman (2008) showed how the combination of ODRL, CreativeCommons REL and the XrML (embryo of the MPEG-21 REL) licenses was possible with an abstract model and several rules. Villata and Gandon (2012) also defined a framework with algorithms to validate compatibility and to obtain composite licenses. Rotolo et al. (2013) defined a deontic logic system for the composition of licenses, with strict rules, defasible rules and defeater rules. More recent critics </p>
 
-	<p>It is evident that some policies can be used to grant automated access to resources. For example, verifying the execution of a payment can be automatically done. However, the satisfaction of some constraints cannot be digitally evaluated. Policies then play a double role, as automatable expressions in a computer system and as constracts with a certain legal value. Steyskal and Kirrane (2015) show how to use ODRL to specify access requests, data offers and agreements, distinguishing between enforceable and non-enforceable access policies, proposing an algorithm to auto-generate contracts for the latter.</p>
+    <p>It is evident that some policies can be used to grant automated access to resources. For example, verifying the execution of a payment can be automatically done. However, the satisfaction of some constraints cannot be digitally evaluated. Policies then play a double role, as automatable expressions in a computer system and as constracts with a certain legal value. Steyskal and Kirrane (2015) show how to use ODRL to specify access requests, data offers and agreements, distinguishing between enforceable and non-enforceable access policies, proposing an algorithm to auto-generate contracts for the latter.</p>
 
-	<p>In more recent efforts, de Vos et al. (2019) transforms ODRL expressions into Answer Set Programming to model policies and check compliance – specifically in the area of personal data processing, where ODRL has also been recently used (Esteves et al. 2021). Other profiles and initiatives have been proposed (Kim et al. 2020), on despite of several limitations found by Kebede at al. (2020).</p>
+    <p>In more recent efforts, de Vos et al. (2019) transforms ODRL expressions into Answer Set Programming to model policies and check compliance – specifically in the area of personal data processing, where ODRL has also been recently used (Esteves et al. 2021). Other profiles and initiatives have been proposed (Kim et al. 2020), on despite of several limitations found by Kebede at al. (2020).</p>
 
-	<p> In Fornara and Colombetti (2019) the  ODRL 2.2 policy language has been extended in two directions. Firstly, by inserting in the model the notion of activation event, secondly, by considering the temporal aspects of obligations, permissions, and prohibitions
+    <p> In Fornara and Colombetti (2019) the  ODRL 2.2 policy language has been extended in two directions. Firstly, by inserting in the model the notion of activation event, secondly, by considering the temporal aspects of obligations, permissions, and prohibitions
 (e.g. expiration dates and deadlines) as part of the application independent model of policies.
-			
+
 <section id="references">
 <h2>References</h2>
 <small>
@@ -1000,159 +1022,159 @@ http://www.w3.org/ns/odrl/2/<br/>
 
 [Fornara19] N. Fornara and M. Colombetti. Using Semantic Web Technologies and Production Rules for Reasoning on Obligations, Permissions, and Prohibitions. AI Communications, vol. 32, no. 4, pp. 319-334, 2019. 
 </small>
-			
+
 <section id="conventions">
 <h2>Document Conventions</h2>
-	<p></p>
-    <table class="def">
-        <tbody>
+    <p></p>
+<table class="def">
+    <tbody>
+      <tr>
+        <th>Prefix</th>
+        <th>Namespace</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>odrl</td>
+        <td>http://www.w3.org/ns/odrl/2/</td>
+        <td>[[odrl-vocab]] [[odrl-model]]</td>
+      </tr>
+      <tr>
+        <td>rdf</td>
+        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+        <td>[[rdf11-concepts]]</td>
+      </tr>
+      <tr>
+        <td>rdfs</td>
+        <td>http://www.w3.org/2000/01/rdf-schema#</td>
+        <td>[[rdf-schema]]</td>
+      </tr>
+         <tr>
+        <td>owl</td>
+        <td>http://www.w3.org/2002/07/owl#</td>
+        <td>[[owl2-overview]]</td>
+      </tr>
+    <tr>
+        <td>xsd</td>
+        <td>http://www.w3.org/2001/XMLSchema#</td>
+        <td>[[xmlschema11-2]]</td>
+      </tr>
           <tr>
-            <th>Prefix</th>
-            <th>Namespace</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td>odrl</td>
-            <td>http://www.w3.org/ns/odrl/2/</td>
-            <td>[[odrl-vocab]] [[odrl-model]]</td>
-          </tr>
-          <tr>
-            <td>rdf</td>
-            <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-            <td>[[rdf11-concepts]]</td>
-          </tr>
-          <tr>
-            <td>rdfs</td>
-            <td>http://www.w3.org/2000/01/rdf-schema#</td>
-            <td>[[rdf-schema]]</td>
-          </tr>
-             <tr>
-            <td>owl</td>
-            <td>http://www.w3.org/2002/07/owl#</td>
-            <td>[[owl2-overview]]</td>
-          </tr>
+        <td>skos</td>
+        <td>http://www.w3.org/2004/02/skos/core#</td>
+        <td>[[skos-reference]]</td>
+      </tr>
+      <tr>
+        <td>dcterms</td>
+        <td>http://purl.org/dc/terms/</td>
+        <td>[[dcterms]]</td>
+      </tr>
         <tr>
-            <td>xsd</td>
-            <td>http://www.w3.org/2001/XMLSchema#</td>
-            <td>[[xmlschema11-2]]</td>
-          </tr>
-              <tr>
-            <td>skos</td>
-            <td>http://www.w3.org/2004/02/skos/core#</td>
-            <td>[[skos-reference]]</td>
-          </tr>
-          <tr>
-            <td>dcterms</td>
-            <td>http://purl.org/dc/terms/</td>
-            <td>[[dcterms]]</td>
-          </tr>
-            <tr>
-            <td>vcard</td>
-            <td>http://www.w3.org/2006/vcard/ns#</td>
-            <td>[[vcard-rdf]]</td>
-          </tr>
-          <tr>
-            <td>foaf</td>
-            <td>http://xmlns.com/foaf/0.1/</td>
-            <td>[[foaf]]</td>
-          </tr>
-         
-          <tr>
-            <td>schema</td>
-            <td>http://schema.org/</td>
-            <td><a href="http://schema.org/">schema.org</a></td>
-          </tr>
-			
-			 <tr>
-            <td>cc</td>
-            <td>https://creativecommons.org/ns#</td>
-            <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
-          </tr>
-    
-			 <tr>
-            <td>ex</td>
-            <td>http://example.com/ns#</td>
-            <td></td>
-          </tr>
-         
-        </tbody>
-      </table>
+        <td>vcard</td>
+        <td>http://www.w3.org/2006/vcard/ns#</td>
+        <td>[[vcard-rdf]]</td>
+      </tr>
+      <tr>
+        <td>foaf</td>
+        <td>http://xmlns.com/foaf/0.1/</td>
+        <td>[[foaf]]</td>
+      </tr>
 
-    </section>   		
+      <tr>
+        <td>schema</td>
+        <td>http://schema.org/</td>
+        <td><a href="http://schema.org/">schema.org</a></td>
+      </tr>
+
+                     <tr>
+        <td>cc</td>
+        <td>https://creativecommons.org/ns#</td>
+        <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
+      </tr>
+
+                     <tr>
+        <td>ex</td>
+        <td>http://example.com/ns#</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</section>   		
 </section>   				
 
-			<!---		<section id="section2"> 
-		<h2>Scenarios</h2>
-			
-		<h3>Policy Monitoring</h3>
-			<p>Various autonomous agents interact in an open interaction system and perform various types of actions. 
-			These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) 
-			and the time instant at which they are done, are digitally represented in a <b>'world state'</b> or 'system state'.<br>
-			(What model of data (ontology) is used for representing the state of the world?)</p> 
-			
-			<p>A set of ODRL policies (P) regulate the behaviour of those agents, every policy contains some rules (R) that are prohibitions, duties, or permissions.</p>
-			
-			<p><b>Policy monitoring</b> (or compliance checking) is a continuous process that consists of computing at every instant of time:</p>
-			<ul>
-				<li>the set of permissions that are valid (i.e. check if all constraints are satisfied and if all duties are fulfilled);</li>
-				<li>the set of obligations or prohibitions that are active (i.e. checking if all constraints are satisfied);</li>
-				<li>the set of active obligations or prohibitions that are fulfilled or violated by the performance of certain actions 
-					(i.e. check if the performance of an action matches the action regulated by an <b>active</b> obligation or a <b>active</b> 
-					prohibition taking into account all the refinements used for describing the action in the policy;</li>
-			</ul>	
-									
-			<p>Monitoring or compliance checking are useful, for example, for being able to:</p>
-			<ul>
-				<li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if 
-				the behaviour of its employees is compliant with the policies attached to the digital assets used inside the company.</li>
-                        	<li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture 
-				the prohibition to sell it and I would like to automatically monitor if the actions performed on that picture are 
-				compliant with such a prohibition.</li>
-			</ul>
-			
-			<p>Simulation may be used by consumers for a what-if analysis and evaluate if the performance of an action on a digital asset will 
-			I violate one of its policies.<br>
-			In this scenario, it is assumed that agents are free to perform all actions, even prohibited ones. 
-			A permission is interesting when it is an exception to a prohibition.</p>
-			
-		<h3>Access Control</h3>
+                    <!---		<section id="section2"> 
+            <h2>Scenarios</h2>
 
-		<p><b>Goal:</b> Match access requests with ODRL policies determining access control to stored digital resources</p>
+            <h3>Policy Monitoring</h3>
+                    <p>Various autonomous agents interact in an open interaction system and perform various types of actions. 
+                    These actions, with their type (e.g. a payment), various parameters (who paid, how much they paid, etc.) 
+                    and the time instant at which they are done, are digitally represented in a <b>'world state'</b> or 'system state'.<br>
+                    (What model of data (ontology) is used for representing the state of the world?)</p> 
 
-		<p>Access control policies can be used to determine access by users or software agents to digital resources.</p>
-		<p>This is particularly important in decentralised systems where the users are the entities responsible to grant or deny 
-			access to the data and are responsible to define or adhere to a set of policies that satisfy their preferences.</p>
-		<p>By using these policies in an algorithm to match incoming access requests for data, a system can provide a 
-			fine-grained access control mechanism to its users.</p>				
-		<p>In this scenario, if an agent does not have permission to access certain data, it will not access the data, 
-			the prohibition is regimented and cannot be violated.</p>
-		<p>Typically in this scenario, the entities responsible to grant or deny access to the data would write <code>odrl:Offer</code> policies 
-			(or new types of policies can be created, e.g., preference, requirement). The agent trying to access the data 
-			would write <code>odrl:Request</code> policies and the final agreement between the parties can be stored as an <i>odrl:Agreement</i> 
-			(associated with the <code>odrl:Offer</code> and <code>odrl:Request</code> policies).</p>
-				
-		<h3>License composition</h3>
-			<p>Two resources differently licensed ("policed") need to be integrated in a new work.
-			Which range of policies will be compatible with these two previous policies?
-			Are these two policies compatible at all?
-			The works of Governatori, Villata et al., DALICC and many others addressed this problem, but their results and ideas were never incorporated into ODRL.</p>
-				
-		<h3>Validation</h3>
-			<p>ODRL is being used in a Language Resource Data Portal. Anybody can freely upload a resource, and anybody can post ODRL policies 
-		        associated to them. The ids of the content resources and the assigners are verified, but the rest is left to the users.
-			However, if they upload broken or malicious policies, they could break the system (e.g. a policy with 1 million rules).
-			How to validate the ODRL policies so that they are conformant with a limited subset of them?
-				<a href="http://odrlapi.appspot.com/">ODRL Validator and Evaluator Sandbox</a></p>
+                    <p>A set of ODRL policies (P) regulate the behaviour of those agents, every policy contains some rules (R) that are prohibitions, duties, or permissions.</p>
 
-		<h3>Planning</h3>
-			<p>I want to do an action, I don't have permission to do it, what do I have to do to get permission to do it?
-			Which is the sequence of messages to be exchanged within a protocol?</p>
-			
-		</section>
-			
+                    <p><b>Policy monitoring</b> (or compliance checking) is a continuous process that consists of computing at every instant of time:</p>
+                    <ul>
+                            <li>the set of permissions that are valid (i.e. check if all constraints are satisfied and if all duties are fulfilled);</li>
+                            <li>the set of obligations or prohibitions that are active (i.e. checking if all constraints are satisfied);</li>
+                            <li>the set of active obligations or prohibitions that are fulfilled or violated by the performance of certain actions 
+                                    (i.e. check if the performance of an action matches the action regulated by an <b>active</b> obligation or a <b>active</b> 
+                                    prohibition taking into account all the refinements used for describing the action in the policy;</li>
+                    </ul>	
+
+                    <p>Monitoring or compliance checking are useful, for example, for being able to:</p>
+                    <ul>
+                            <li>Check if I am compliant with the policies in which I am involved as a debtor. For example, a company needs to check if 
+                            the behaviour of its employees is compliant with the policies attached to the digital assets used inside the company.</li>
+                            <li>Check if the policies in which I am involved as a creditor are violated. For example, I can attach to a picture 
+                            the prohibition to sell it and I would like to automatically monitor if the actions performed on that picture are 
+                            compliant with such a prohibition.</li>
+                    </ul>
+
+                    <p>Simulation may be used by consumers for a what-if analysis and evaluate if the performance of an action on a digital asset will 
+                    I violate one of its policies.<br>
+                    In this scenario, it is assumed that agents are free to perform all actions, even prohibited ones. 
+                    A permission is interesting when it is an exception to a prohibition.</p>
+
+            <h3>Access Control</h3>
+
+            <p><b>Goal:</b> Match access requests with ODRL policies determining access control to stored digital resources</p>
+
+            <p>Access control policies can be used to determine access by users or software agents to digital resources.</p>
+            <p>This is particularly important in decentralised systems where the users are the entities responsible to grant or deny 
+                    access to the data and are responsible to define or adhere to a set of policies that satisfy their preferences.</p>
+            <p>By using these policies in an algorithm to match incoming access requests for data, a system can provide a 
+                    fine-grained access control mechanism to its users.</p>				
+            <p>In this scenario, if an agent does not have permission to access certain data, it will not access the data, 
+                    the prohibition is regimented and cannot be violated.</p>
+            <p>Typically in this scenario, the entities responsible to grant or deny access to the data would write <code>odrl:Offer</code> policies 
+                    (or new types of policies can be created, e.g., preference, requirement). The agent trying to access the data 
+                    would write <code>odrl:Request</code> policies and the final agreement between the parties can be stored as an <i>odrl:Agreement</i> 
+                    (associated with the <code>odrl:Offer</code> and <code>odrl:Request</code> policies).</p>
+
+            <h3>License composition</h3>
+                    <p>Two resources differently licensed ("policed") need to be integrated in a new work.
+                    Which range of policies will be compatible with these two previous policies?
+                    Are these two policies compatible at all?
+                    The works of Governatori, Villata et al., DALICC and many others addressed this problem, but their results and ideas were never incorporated into ODRL.</p>
+
+            <h3>Validation</h3>
+                    <p>ODRL is being used in a Language Resource Data Portal. Anybody can freely upload a resource, and anybody can post ODRL policies 
+                    associated to them. The ids of the content resources and the assigners are verified, but the rest is left to the users.
+                    However, if they upload broken or malicious policies, they could break the system (e.g. a policy with 1 million rules).
+                    How to validate the ODRL policies so that they are conformant with a limited subset of them?
+                            <a href="http://odrlapi.appspot.com/">ODRL Validator and Evaluator Sandbox</a></p>
+
+            <h3>Planning</h3>
+                    <p>I want to do an action, I don't have permission to do it, what do I have to do to get permission to do it?
+                    Which is the sequence of messages to be exchanged within a protocol?</p>
+
+            </section>
+
 -->			
 
-			
-	</body>
+
+    </body>
 </html>
 	
