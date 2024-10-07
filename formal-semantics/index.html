@@ -246,7 +246,7 @@
             This is the situation of the following case, similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
             in the ODRL Information Model 2.2. The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
             it includes the constraint that the permission may only be exercised until 2018-01-01. 
-            The permission is granted by the organization identified by the URL <code>http://example.com/org:616</code>.
+            The permission is granted by the organization identified by the URL <code>http://example.com/party/16</code>.
         </p>
 
             <pre>
@@ -319,9 +319,9 @@
         
         <p><i>Monitoring scenario:</i></p> 
         <ul>
-            <li>If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
+            <li>(E-13-3)If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
             then the action is permitted and the Permission is used by the performed action.</li>
-            <li>If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
+            <li>(E-13-4)If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
             then nothing can be deduced.</li>
         </ul>
         <table border="1" style="font-size:small;">
@@ -386,13 +386,13 @@
         </p>    
         <p><i>Access control scenario:</i></p> 
         <ul>
-            <li>(E14-1-ac) If such the attempted action belongs to the class of actions regulated by the Permission
+            <li>(E14-1) If such the attempted action belongs to the class of actions regulated by the Permission
             (i.e.: its <code>type</code> is <code>print</code>, 
             its <code>object</code> is equale to <code>http://example.com/document:1234</code> and 
             its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
             then the Permission is active and the attempted action can be performed.
             </li>
-            <li>(E14-2-ac) If such the attempted action belongs to the class of actions regulated by the Permission, 
+            <li>(E14-2) If such the attempted action belongs to the class of actions regulated by the Permission, 
             but the refinement of the action is not satisfied (i.e. its <code>resolution</code> is more than 1200 dpi), 
             then the Permission is inactive. 
             Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
@@ -458,7 +458,7 @@
 
         <h3>Evaluation of conditions</h3> 
         <p>
-            A Condition is <b>fulfilled</b> if all its constraints are satisfied and
+            A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
             if its action, with all refinements satisfied, has been performed. 
         </p>
         <ol> 
