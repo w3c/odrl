@@ -1,0 +1,78 @@
+PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX profile: <http://www.w3.org/ns/dx/prof/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+PREFIX odrl-comm: <#odrl-comm-namespace>
+
+# ------------ TODO: Ontology Metadata ------------------ #
+
+# ------------ Action Concepts ------------------ #
+
+odrl-comm:create a odrl:Action, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+	rdfs:label "Create"@en ;
+	rdfs:comment "To create the Asset."@en ;
+	skos:definition "To create the Asset."@en ;
+    dcterms:source <https://github.com/w3c/odrl/issues/35> .
+
+# ------------ Operator Concepts ------------------ #
+
+odrl-comm:isNotA a odrl:Operator, owl:NamedIndividual, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+    rdfs:label "Is not a"@en ;
+	rdfs:comment "Indicates that a given value is not an instance of the Right Operand of the Constraint."@en ;
+	skos:definition "Indicates that a given value is not an instance of the Right Operand of the Constraint."@en ;
+    skos:example "The purpose constraint of a rule can not be an instance of academic research purpose."@en ;
+    dcterms:source <https://github.com/w3c/odrl/issues/27>, <https://w3id.org/oac#isNotA> .
+
+odrl-comm:seq a odrl:Operator, owl:NamedIndividual, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+    rdfs:label "Semantic equivalence"@en ;
+	rdfs:comment "Indicates that a given value is equal to, an instance or a subclass of the Right Operand of the Constraint."@en ;
+	skos:definition "Indicates that a given value is equal to, an instance or a subclass of the Right Operand of the Constraint."@en ;
+    skos:example "The purpose constraint of a rule can be research and development, an instance of research and development or one of its subclasses such as academic research, non-commercial research or commercial research."@en ;
+    dcterms:source <https://github.com/w3c/odrl/issues/28>, <https://w3id.org/oac#semantic>, <https://w3id.org/aiup#seq> .
+
+odrl-comm:subclass a odrl:Operator, owl:NamedIndividual, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+    rdfs:label "Subclass of"@en ;
+	rdfs:comment "Indicates that a given value is a subclass of the Right Operand of the Constraint."@en ;
+	skos:definition "Indicates that a given value is a subclass of the Right Operand of the Constraint."@en ;
+    skos:example "The purpose constraint of a rule can be a subclass of research and development such as academic research, non-commercial research or commercial research."@en ;
+    skos:note "Right operand value MUST use vocabularies that explicitely define subclass relationships, e.g., using rdfs:subClassOf."@en ;
+    dcterms:source <https://github.com/w3c/odrl/issues/28>, <https://w3id.org/oac#subclass> .
+
+# ------------ Policy Concepts ------------------ #
+
+odrl-comm:Preference a rdfs:Class , owl:Class, skos:Concept ;
+	rdfs:subClassOf odrl:Policy ;
+	owl:disjointWith odrl:Agreement, odrl:Offer, odrl:Privacy, odrl:Request, odrl:Ticket, odrl:Assertion ;
+	rdfs:isDefinedBy odrl-comm: ;
+	rdfs:label "Preference Policy"@en ;
+	rdfs:comment "A Preference Policy is a policy that contains information about the assigner's preferences over an Asset which MAY not be satisfied."@en ;
+	skos:definition "A Preference Policy is a policy that contains information about the assigner's preferences over an Asset which MAY not be satisfied."@en ;
+	skos:note "A Preference Policy MUST contain at least one Permission or Prohibition rule, an Action, a target Asset and a Party with Assigner function (in the same Permission or Prohibition). The Preference Policy MAY contain a Party with Assignee, but MUST not grant any privileges to those Parties."@en ;
+	skos:example "If a preference policy set by a party A does not match a request policy from party B, the request can still be accepted if party A accepts party B's request conditions."@en ;
+    dcterms:source <https://github.com/w3c/odrl/issues/21>, <https://w3id.org/oac#Preference> .
+
+# ------------ Party Concepts ------------------ #
+
+odrl-comm:issuedPolicy a rdf:Property, owl:ObjectProperty, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+	rdfs:label "Issued policy"@en ;
+	rdfs:comment "Indicates that a Party issued a Policy."@en ;
+	skos:definition "Indicates that a Party issued a Policy."@en ;
+	skos:example "Method used to indicate that a party, e.g., Alice, has issued a policy, e.g., related to her preferences for data sharing."@en ;
+	rdfs:domain odrl:Party ;
+	rdfs:range odrl:Policy ;
+	dcterms:source <https://github.com/w3c/odrl/issues/21> .
