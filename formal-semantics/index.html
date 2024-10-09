@@ -38,11 +38,13 @@
             </p>
             <p> <!-- the use of ontologies -->
                     The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system, among others.
-            </p>
+            </p
             <p> <!-- the need for clarifying the semantics, the need for this document -->
 		    
 However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an <b>ODRL Evaluator</b>. 
-The objective of an <b>ODRL Evaluator</b> is to determine: 
+
+<!-- objective of the evaluator -->
+The objective of an <b>ODRL Evaluator</b> is to determine as output: 
 <ul>
   <li>which Permissions, Prohibitions, and Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
   A Rule is said to be active if it is in effect;</li>
@@ -53,6 +55,15 @@ The objective of an <b>ODRL Evaluator</b> is to determine:
 This document describes the expected behaviour of an ODRL Evaluator, with a textual description and a collection of examples.
 This specification owes much to the previous description in the <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
 
+<p> 
+More precisely, the Evaluator uses as input:
+</p>
+<ul> <!-- input of the Evaluator -->
+  <li>a collection of ODRL Policies;</li>
+  <li>a formal description of the state of the world;</li>
+  <li>for the access control scenario: a formal description of the action attempted by a given user who is located in a given place;</li>
+</ul>
+		
 <p> <!-- definition of the evaluator -->
 The <b>ODRL Evaluator</b> for Permissions is expected to work in at least one of these two scenarios:
         </p>
@@ -95,19 +106,6 @@ The <b>ODRL Evaluator</b> for Permissions is expected to work in at least one of
             <li>the <code>object</code> upon which the action is carried out;</li>	
             <li>the instant of time at which the action occurs or begins, it is represented with the <code>atTime</code> property.</li>
         </ul>
-        <p> <!-- objective of the evaluator -->
-            More precisely, given:
-        </p>
-        <ul> <!-- input of the evaluator -->
-            <li>a collection of ODRL Policies;</li>
-            <li>a formal description of the state of the world;</li>
-            <li>for the access control scenario,
-            a formal description of the action attempted by a given user who is located in a given place;</li>
-        </ul>
-        
-    <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
-        <p> <!-- Objective of the document. Nicoletta: I removed a "formal semantics")-->
-        </p>
     </section>			
 
     <section id="sectionPolicies">	
