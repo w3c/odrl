@@ -308,7 +308,7 @@
                     <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
                     <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:13</code></th>
 		    <th style="color:darkblue">Attempted Action</th>
-		    <th style="color:darkred"><kbd>access control</kbd><br/>Output of the Evaluator </th>
+		    <th style="color:darkred"><kbd>access control</kbd><br/> </th>
              </tr>
             <tr>
                     <td>E13-1</td>
@@ -358,7 +358,7 @@
             <tr>
                 <td>E13-4</td>
                 <td>policy:13</td>
-                <td>We are in 2019and <br/>
+                <td>We are in 2019 and <br/>
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>not-satisfied</td>
                 <td>inactive</td>
@@ -373,7 +373,8 @@
         <p>
             The example below is similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a> in the ODRL Information Model 2.2.
             It allows the target asset <code>document:1234</code> to be printed and also include a refinement indicating that the resolution 
-            of the printing action must be less than or equal to 1200 dpi. The permission is granted by the organization identified by the URL <code>party:616</code>.
+            of the printing action must be less than or equal to 1200 dpi. 
+	The permission is granted by the organization <code>party:616</code>.
         </p>
         <pre>
         {
@@ -401,46 +402,49 @@
         </p>    
         <p><i>Access control scenario:</i></p> 
         <ul>
-            <li>(E14-1) If such the attempted action belongs to the class of actions regulated by the Permission
+            <li>(E14-1) If the attempted action belongs to the class of actions regulated by the Permission
             (i.e.: its <code>type</code> is <code>print</code>, 
-            its <code>object</code> is equale to <code>http://example.com/document:1234</code> and 
+            its <code>object</code> is equale to <code>document:1234</code> and 
             its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-            then the Permission is active and the attempted action can be performed.
+            then the Permission is active and the attempted action can be executed.
             </li>
-            <li>(E14-2) If such the attempted action belongs to the class of actions regulated by the Permission, 
-            but the refinement of the action is not satisfied (i.e. its <code>resolution</code> is more than 1200 dpi), 
-            then the Permission is inactive. 
+            <li>(E14-2) If the attempted action belongs to the class of actions regulated by the Permission (it is a  
+            <code>print</code> of <code>document:1234</code>) but the refinement of the action is not satisfied 
+	    (i.e. its <code>resolution</code> is more than 1200 dpi), then the Permission is inactive. 
             Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
-            then the action is blocked and it cannot be performed.</li>
+            then the action is blocked and it cannot be executed.</li>
         </ul>
         
         <table border="1" style="font-size:small;">
         <tr>
             <th>Example</th>
             <th style="color:darkblue">Policy</th>
-            <th style="color:darkblue">World</th>
+            <th style="color:darkblue">Attempted Action</th>
             <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
             <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:14</code></th>
+	    <th style="color:darkred"><kbd>access control</kbd></th>
          </tr>
         <tr>
             <td>E14-1</td>
             <td>policy:14</td>
-            <td>Resolution less than 1200 dpi</td> 
+            <td><code>print</code> of <code>document:1234</code> and resolution less than 1200 dpi</td> 
             <td>satisfied</td>
             <td>active </td>
+	    <td>attempted action can be executed</td>
         </tr>
         <tr>
             <td>E14-1</td>
             <td>policy:14</td>
-            <td>Resolution more than 1200 dpi</td> 
+            <td><code>print</code> of <code>document:1234</code> and resolution more than 1200 dpi</td> 
             <td>not-satisfied</td>
             <td>inactive </td>
+	    <td>attempted action can not be executed</td>
         </tr>
         </table>
         
         <p><i>Monitoring scenario:</i></p> 
         <p>
-            The Permission is always active because it has neither constraints nor duties. Given a formal description a performed action. 
+            The Permission is always active because it has neither Constraints nor Conditions (Duties). Given a formal description a performed action. 
             If such an action belongs to the class of actions regulated by the Permission then the permission is used by the performed action.
         </p>
 
@@ -451,23 +455,20 @@
                 <th style="color:darkblue">World</th>
                 <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>policy:14</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>performance of <br><code>attempted action</code></th>
          </tr>
         <tr>
                 <td>E14-3</td>
                 <td>policy:14</td>
-                <td>Resolution less than 1200 dpi</td> 
+                <td><code>print</code> of <code>document:1234</code> and resolution less than 1200 dpi was performed</td> 
                 <td>satisfied</td>
                 <td>active </td>
-                <td>peformed</td>
         </tr>
         <tr>
                 <td>E14-4</td>
                 <td>policy:14</td>
-                <td>Resolution more than 1200 dpi</td> 
+                <td><code>print</code> of <code>document:1234</code> and resolution more than 1200 dpi was performed</td> 
                 <td>not-satisfied</td>
                 <td>active </td>
-                <td>not performed</td>
         </tr>
         </table>
 
