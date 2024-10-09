@@ -40,12 +40,21 @@
                     The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system, among others.
             </p>
             <p> <!-- the need for clarifying the semantics, the need for this document -->
-                    However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an ODRL implementation. 
-                    Therefore this specification defines the expected behaviour of an <b>ODRL Evaluator</b>. This specification owes much to the previous description in the 
-                    <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
+		    
+However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an <b>ODRL Evaluator</b>. 
+The objective of an <b>ODRL Evaluator</b> is to determine: 
+<ul>
+  <li>which Permissions, Prohibitions, and Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
+  A Rule is said to be active if it is in effect;</li>
+  <!--<li>which Permissions have been <b>used</b>;</li>-->
+  <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
+</ul>
 
-        <p> <!-- definition of the evaluator -->
-            The <b>ODRL Evaluator</b> is expected to work in at least one of these two scenarios:
+This document describes the expected behaviour of an ODRL Evaluator, with a textual description and a collection of examples.
+This specification owes much to the previous description in the <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
+
+<p> <!-- definition of the evaluator -->
+The <b>ODRL Evaluator</b> for Permissions is expected to work in at least one of these two scenarios:
         </p>
         <ol>
             <li><b>Access control scenario</b>: the Evaluator determines the access by users or software agents to digital resources
@@ -95,16 +104,9 @@
             <li>for the access control scenario,
             a formal description of the action attempted by a given user who is located in a given place;</li>
         </ul>
-        the objective of the <b>ODRL Evaluator</b> is to determine: 
-        <ul>
-            <li>which Permissions, Prohibitions, and Obligations (collectively named Rules) are <b>active</b>. 
-               A Rule is said to be active if it is in effect;</li>
-            <!--<li>which Permissions have been <b>used</b>;</li>-->
-            <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
-        </ul>			
+        
     <!-- Whereas violations are possible in a policy monitoring scenarios (and consequences can be triggered), violations are not possible in an access control system. -->
         <p> <!-- Objective of the document. Nicoletta: I removed a "formal semantics")-->
-            This document describes the expected behaviour of this ODRL Evaluator, with a textual description and a collection of examples.
         </p>
     </section>			
 
