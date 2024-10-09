@@ -239,7 +239,7 @@
         <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
         <img src="ODRLPermission.png">
         -->
-        <h3>Evaluation of Constraints</h3>
+        <h3>Evaluation of Constraints and Refinements</h3>
 	<p>Please note that namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
 	    
@@ -334,10 +334,10 @@
         
         <p><i>Monitoring scenario:</i></p> 
         <ul>
-            <li>(E-13-3)If such an action belongs to the class of actions regulated by the Permission and the Permission is active, 
+            <li>(E-13-3) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is active, 
             then the action is permitted and the Permission is used by the performed action.</li>
-            <li>(E-13-4)If such an action belongs to the class of actions regulated by the Permission and the Permission is inactive,
-            then nothing can be deduced.</li>
+            <li>(E-13-4) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is inactive,
+            it means that the permission does not permit the action.</li>
         </ul>
         <table border="1" style="font-size:small;">
             <tr>
@@ -346,26 +346,26 @@
                 <th style="color:darkblue">World</th>
                 <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>policy:13</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>performance of <br><code>attempted action</code></th>
              </tr>
             <tr>
                 <td>E13-3</td>
                 <td>policy:13</td>
-                <td>We are in 2017<br/>The action was acted</td>
+                <td>We are in 2017 and <br/>the action <td><code>distribute</code><br>
+		    of <code>document:1234</code></td> was perfomed</td>
                 <td>satisfied</td>
                 <td>active</td>
-                <td>performed</td>
             </tr>
             <tr>
                 <td>E13-4</td>
                 <td>policy:13</td>
-                <td>We are in 2019<br/>The action was acted</td>
+                <td>We are in 2019and <br/>the action <td><code>distribute</code><br>
+		    of <code>document:1234</code></td> was perfomed</td>
                 <td>not-satisfied</td>
                 <td>inactive</td>
-                <td>not performed</td>	
             </tr>
         </table>
     <hr/>
+	    
     <h4>Example of a permission whose permitted action is refined</h4>
         <p>
             <b>Example description</b>
@@ -471,7 +471,7 @@
         </tr>
         </table>
 
-        <h3>Evaluation of conditions</h3> 
+        <h3>Evaluation of Conditions (Duties)</h3> 
         <p>
             A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
             if its action, with all refinements satisfied, has been performed. 
