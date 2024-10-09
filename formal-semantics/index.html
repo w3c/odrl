@@ -203,13 +203,14 @@
     </section>		
 
     <section id="sectionPermissions">
-        <h2>Sematics of Permission</h2> 
+        <h2>Semantics of Permission</h2> 
         <h3>Expected behaviour of the ODRL Evaluator</h3>
         <p> <!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
-            A Permission can impose duties like making a payment (we call these <b>Conditions</b>) and it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
-            In addition, the definition of the permitted action or the asset and party collection can be refined with <b>Refinements</b>. 
-            The evaluation of these Conditions, Constraints and Refinements determine whether the Permission is active or not.  
-            In particular, a Permission is <b>active</b> if:
+        
+	A Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>, and it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
+        In addition, the definition of the permitted action or the asset and party collection can be refined with <b>Refinements</b>. 
+        The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
+        In particular, a Permission is <b>active</b> if:
         </p>
         <ol>
             <li>all the existing constraints of the Rule are satisfied and;</li> 
@@ -249,7 +250,7 @@
         </p>
         <p>
             <!-- General description of the case --> 
-            A permission may not impose duties (like making a payment), but may have the action limited (in time, in space, etc.). 
+            A permission may have its action limited (in time, in space, etc.) without any Condition (Duty) or Refinement.
             This is the situation of the following case, similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
             in the ODRL Information Model 2.2. The permission below allows the target asset <code>document:1234</code> to be distributed, 
             it includes the constraint that the permission may only be exercised until 2018-01-01. 
