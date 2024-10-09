@@ -171,12 +171,14 @@
             <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
             which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
-            <li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
+            <ul>
+		<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
             is computed according to the action that an agent <b>attempts</b> to perform on digital resources.</li>
-
-            <li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
+		<li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
             computed according to the actual actions that are performed by the agents and that are
             represented in the <b>state of the world</b>.</li>
+	   </ul>
+			
             <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
             can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
@@ -209,12 +211,12 @@
             The evaluation of these Conditions, Constraints and Refinements determine whether the Permission is active or not.  
             In particular, a Permission is <b>active</b> if:
         </p>
-        <ul>
-            <li>all the existing constraints of the Rule are satisfied;</li> 
-            <li>all the existing conditions (duties of the Rule) are fulfilled or inactive; </li>
+        <ol>
+            <li>all the existing constraints of the Rule are satisfied and;</li> 
+            <li>all the existing conditions (duties of the Rule) are fulfilled or inactive and; </li>
             <li>only for the access control scenario: all the existing refinements of the 
             Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
-        </ul>
+        </ol>
         <p> <!-- definition of active/inactive -->
             If the Permission is active, the action is permitted. If one of those conditions is not met, the Permission is <b>inactive</b>. When an action, which is regulated by an <b>active</b> permission is performed, the permission is used by such an action.
         </p>
@@ -229,13 +231,18 @@
             In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
             if there is no active permission to do so (i.e. there is no active permission regulating a class 
             of action to which the executed action belongs) and the default setting for the ODRL Evaluator
-            is set to "everything is prohibited unless explicitly permitted" a violation should be generated.
+            is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
+	In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
+		generation of violations for permissions.
         </p>
 
         <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
         <img src="ODRLPermission.png">
         -->
-        <h3>Evaluation of constraints</h3>
+        <h3>Evaluation of Constraints</h3>
+	<p>Please note that namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
+	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
+	    
         <h4>Example of a constrained permission</h4>
         <p>
             <b>Example description</b>
@@ -244,9 +251,9 @@
             <!-- General description of the case --> 
             A permission may not impose duties (like making a payment), but may have the action limited (in time, in space, etc.). 
             This is the situation of the following case, similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
-            in the ODRL Information Model 2.2. The permission below allows the target asset <code>http://example.com/document:1234</code> to be distributed, 
+            in the ODRL Information Model 2.2. The permission below allows the target asset <code>document:1234</code> to be distributed, 
             it includes the constraint that the permission may only be exercised until 2018-01-01. 
-            The permission is granted by the organization identified by the URL <code>http://example.com/party/16</code>.
+            The permission is granted by the organization <code>party:16</code>.
         </p>
 
             <pre>
@@ -281,7 +288,7 @@
         <ul>
             <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
             (i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
-            the target of the permission <code>http://example.com/document:1234</code>)
+            the target of the permission <code>document:1234</code>)
             and the Permission is active then the action can be executed. </li>
             <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
             Permission is inactive, assuming that only this Permission is considered 
@@ -291,7 +298,7 @@
         </ul>
         <p>
             The table below shows the input and the output of the Evaluator in the different cases. 
-            Please note that namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by "<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.
+            
         </p>
         <table border="1" style="font-size:small;">
             <tr>
@@ -300,6 +307,8 @@
                     <th style="color:darkblue">World</th>
                     <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
                     <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:13</code></th>
+		    <th style="color:darkblue">Attempted Action</th>
+		    <th style="color:darkred"><kbd>access control</kbd><br/>Output of the Evaluator </th>
              </tr>
             <tr>
                     <td>E13-1</td>
@@ -307,6 +316,9 @@
                     <td>We are in 2017</td>
                     <td>satisfied</td>
                     <td>active</td>
+		    <td><code>distribute</code><br>
+		    <code>document:1234</code></td>
+		    <td>attempted action can be executed</td>
             </tr>
             <tr>
                     <td>E13-2</td>
@@ -314,6 +326,9 @@
                     <td>We are in 2019</td>
                     <td>not-satisfied</td>
                     <td>inactive</td>
+		     <td><code>distribute</code><br>
+		    <code>document:1234</code></td>
+		    <td>attempted action can not be executed</td>
             </tr>
         </table>        
         
