@@ -54,6 +54,19 @@ The objective of an <b>ODRL Evaluator</b> is to determine as output:
 
 This document describes the expected behaviour of an ODRL Evaluator, with a textual description and a collection of examples.
 This specification owes much to the previous description in the <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
+	
+<p> <!-- definition of the evaluator -->
+When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in at least one of these two scenarios:
+        </p>
+        <ol>
+            <li><b>Access control scenario</b>: the ODRL Evaluator determines the access by users or software agents to digital resources
+            considering a set of policies, the state of the world, and the description of the action that a user 
+            attempts to perform on certain digital resources.</li>
+
+            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world that includes the performed actions,
+            the ODRL Evaluator has to determine whether obligations or prohibitions have been fulfilled or violated by the performance of 
+            certain actions, and which permissions are active.</li>
+        </ol>
 
 <p> 
 More precisely, the Evaluator uses as input:
@@ -63,19 +76,6 @@ More precisely, the Evaluator uses as input:
   <li>a formal description of the state of the world;</li>
   <li>for the access control scenario: a formal description of the action attempted by a given user who is located in a given place;</li>
 </ul>
-		
-<p> <!-- definition of the evaluator -->
-The <b>ODRL Evaluator</b> for Permissions is expected to work in at least one of these two scenarios:
-        </p>
-        <ol>
-            <li><b>Access control scenario</b>: the Evaluator determines the access by users or software agents to digital resources
-            considering a set of policies, the state of the world, and the description of the action that a user 
-            attempts to perform on certain digital resources.</li>
-
-            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world that includes the performed actions,
-            the Evaluator has to determine whether obligations or prohibitions have been fulfilled or violated by the performance of 
-            certain actions, and which permissions are active.</li>
-        </ol>
 
         <p><!-- state of the world --> 
             The ODRL Evaluator requires a formal representation of the <b>state of the world</b> to perform computations on both 
