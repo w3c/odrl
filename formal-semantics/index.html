@@ -231,14 +231,16 @@ More precisely, the ODRL Evaluator uses as input:
 </p>
 	 <p>
             In the <b>access control scenario</b>: when an action is <b>attempted</b>,
-            the activation of permissions is computed and if there is not an active permission that permits such an action, 
-            it means that the action is not permitted and it is blocked.
+            the activation of permissions is computed. 
+	    If there is an active permission that permits such an action, the action is performed, and the permission is used by such an action.
+	    If there is not an active permission that permits such an action, it is blocked.
         </p>
 
 	     <p>
             In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
             if there is no active permission to do so and the default setting for the ODRL Evaluator
             is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
+	If there is an active permission to perform the action the permission is used by such an action. 
 	
         </p>
 
@@ -259,8 +261,6 @@ More precisely, the ODRL Evaluator uses as input:
 
 <p>
         If the Permission is active, then the action is permitted. <br>
-	When an action, which is regulated by an <b>active</b> permission is performed, 
-	the permission is used by such an action.<br>
 	If one of those conditions is not met, the Permission is <b>inactive</b>. 
 </p>
 
