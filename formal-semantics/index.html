@@ -93,18 +93,22 @@ More precisely, the Evaluator uses as input:
         <ul> <!-- examples of the state of the world -->
             <li>the <code>current time</code> of the state of the world;</li>
 	    <!--<li>Time Range: a tuple of time values that represent a start and an end.</li>-->
-            <li>temporal entities, like instants or intervals with a start and end time that can be represented by re-using the 
+           
+	     <li>temporal entities, like instants or intervals with a start and end time that can be represented by re-using the 
             <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>;</li>
-            <li> a list of languages from a taxonomy (e.g. <a href="https://www.iso.org/iso-639-language-code#">iso639</a>);</li>
-            <li> a collection of executed actions, which are described in RDF by specifying at least:
+            
+	     <li> a list of languages from a taxonomy (e.g. <a href="https://www.iso.org/iso-639-language-code#">iso639</a>);</li>
+           
+	     <li> the parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
+	     
+	     <li> a collection of executed actions, which are described in RDF by specifying at least:
                <ul> 
                   <li>the <code>type</code> (a list of actions types is available in the 
             <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
                   <li>the agent who is the <code>performer</code> of the action;</li>		
                   <li>the <code>object</code> upon which the action is carried out;</li>	
-                  <li>the instant of time at which the action occurs or begins, whcih is represented with the <code>atTime</code> property.</li>
-                </ul>;</li>
-            <li> the parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
+		  <li>the instant of time at which the action occurs or begins, whcih is represented with the <code>atTime</code> property.</li>
+                </ul></li>
         </ul>
         <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, and  <code>object</code>.</p>
       
