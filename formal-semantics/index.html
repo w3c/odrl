@@ -197,10 +197,15 @@ More precisely, the ODRL Evaluator uses as input:
             </ul>
 
         <p> <!-- out of scope -->
-            The process for computing the satisfaction state of Constraints, the satisfaction state of Refinement, 
-            and the performance state of an Action is <b>left to individual implementations</b>. 
-            But given these values, all ODRL Evaluators should agree on the value of the activation state and deontic states of 
-            the rules.
+            The process for computing:
+	<ul>
+		<li>the satisfaction state of Constraints with respect to the state of the world; </li>
+		<li>the satisfaction state of Refinement with respect the attempted action or the state of the world;</li>
+                <li>the performance state of an Action with respect to the state of the world</li>
+	 </ul>
+	 is <b>left to individual implementations</b>.      
+	Given these values, all ODRL Evaluators should agree on the value of the activation state and deontic states of 
+        the rules.
         </p>
 
         <p>
