@@ -101,7 +101,7 @@ More precisely, the ODRL Evaluator uses as input:
            
 	     <li> the parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
 	     
-	     <li> a collection of executed actions, which are described in RDF by specifying at least:
+	     <li> a collection of performed actions, which are described in RDF by specifying at least:
                <ul> 
                   <li>the <code>type</code> (a list of actions types is available in the 
             <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
@@ -127,7 +127,7 @@ More precisely, the ODRL Evaluator uses as input:
     </section>
 
     <section id="sectionPermissionsProhibitionsObligations">	
-        <h2>Semantics of Permission, Prohibition, and Obligation</h2>	
+        <h2>Semantics of Permissions, Prohibitions, and Obligations</h2>	
         <p> <!-- Relation with deontic logic -->
             The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances of the classes 
             <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.
@@ -196,8 +196,8 @@ More precisely, the ODRL Evaluator uses as input:
                     in the state of the world.</li>
             </ul>
 
-        <p> <!-- out of scope -->
-<!-- Nicoletta: I agree that we can remove this part because the computation of the satisfaction of Constraints and 
+<p> <!-- out of scope -->
+<!-- Nicoletta: I agree that we can REMOVE this part because the computation of the satisfaction of Constraints and 
 	Refinement may be realized by the ODRL Evaluator.
 <!--		
             The process for computing:
@@ -220,13 +220,21 @@ More precisely, the ODRL Evaluator uses as input:
     </section>		
 
     <section id="sectionPermissions">
-        <h2>Semantics of Permission</h2> 
+        <h2>Semantics of Permissions</h2> 
+
+	In ODRL 2.2 a Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>, and 
+	it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
+        In addition, the definition of the permitted action, the asset, and the 3party collection can be refined with <b>Refinements</b>. 
+        The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
+
+        The evaluation of permission activation is different in the access control or monitoring scenario.	    
+
+
+	    
         <h3>Expected behaviour of the ODRL Evaluator</h3>
         <p> <!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
         
-	A Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>, and it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
-        In addition, the definition of the permitted action or the asset and party collection can be refined with <b>Refinements</b>. 
-        The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
+	
         In particular, a Permission is <b>active</b> if:
         </p>
         <ol>
@@ -248,7 +256,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
             if there is no active permission to do so (i.e. there is no active permission regulating a class 
-            of action to which the executed action belongs) and the default setting for the ODRL Evaluator
+            of action to which the performed action belongs) and the default setting for the ODRL Evaluator
             is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
 	In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
 		generation of violations for permissions.
@@ -307,10 +315,10 @@ More precisely, the ODRL Evaluator uses as input:
             <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
             (i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
             the target of the permission <code>document:1234</code>)
-            and the Permission is active then the action can be executed. </li>
+            and the Permission is active then the action can be performed. </li>
             <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
             Permission is inactive, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is blocked and it cannot be executed.</li>
+            (this is because other permissions could regulate this action), the action is blocked and it cannot be performed.</li>
             <li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
             is not relevant.</li>
         </ul>
@@ -336,7 +344,7 @@ More precisely, the ODRL Evaluator uses as input:
                     <td>active</td>
 		    <td><code>distribute</code><br>
 		    <code>document:1234</code></td>
-		    <td>attempted action can be executed</td>
+		    <td>attempted action can be performed</td>
             </tr>
             <tr>
                     <td>E13-2</td>
@@ -346,7 +354,7 @@ More precisely, the ODRL Evaluator uses as input:
                     <td>inactive</td>
 		     <td><code>distribute</code><br>
 		    <code>document:1234</code></td>
-		    <td>attempted action can not be executed</td>
+		    <td>attempted action can not be performed</td>
             </tr>
         </table>        
         
@@ -424,13 +432,13 @@ More precisely, the ODRL Evaluator uses as input:
             (i.e.: its <code>type</code> is <code>print</code> and 
             its <code>object</code> is equale to <code>document:1234</code>) and 
             its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-            then the Permission is active and the attempted action can be executed.
+            then the Permission is active and the attempted action can be performed.
             </li>
             <li>(E14-2) If the attempted action belongs to the class of actions regulated by the Permission (it is a  
             <code>print</code> of <code>document:1234</code>) but the refinement of the action is not satisfied 
 	    (i.e. its <code>resolution</code> is more than 1200 dpi), then the Permission is inactive. 
             Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
-            then the action is blocked and it cannot be executed.</li>
+            then the action is blocked and it cannot be performed.</li>
         </ul>
         
         <table border="1" style="font-size:small;">
@@ -448,7 +456,7 @@ More precisely, the ODRL Evaluator uses as input:
             <td><code>print</code> of <code>document:1234</code> and resolution less than 1200 dpi</td> 
             <td>satisfied</td>
             <td>active </td>
-	    <td>attempted action can be executed</td>
+	    <td>attempted action can be performed</td>
         </tr>
         <tr>
             <td>E14-1</td>
@@ -456,7 +464,7 @@ More precisely, the ODRL Evaluator uses as input:
             <td><code>print</code> of <code>document:1234</code> and resolution more than 1200 dpi</td> 
             <td>not-satisfied</td>
             <td>inactive </td>
-	    <td>attempted action can not be executed</td>
+	    <td>attempted action can not be performed</td>
         </tr>
         </table>
         
@@ -551,14 +559,14 @@ More precisely, the ODRL Evaluator uses as input:
         </p>
         <p>
             The condition has to be evaluated first. The Condition <code>condition:1</code> does not have Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
-            when in the state of the world there is a representation of an executed action that matches with the 
+            when in the state of the world there is a representation of a performed action that matches with the 
             the class of actions described in the duty. I.e. the <code>type</code> of the action is <code>compensate</code>, its 
             <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
             <code>party:billie</code> because, for example, a company can pay for its employees 
             (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a reference to a policy or a rule and to 
-            the party for whom they are executed).
+            the party for whom they are performed).
         </p>
         <p>
             Once the condition (duty) has been evaluated, the permission can be evaluated. If the condition is active but it is not fullfilled then the Permission is inactive.
@@ -681,7 +689,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             The duty (condition) has to be evaluated. This duty has constraints. It starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
             (the state of the world satisfies its Constraints, i.e. the current date is a Sunday). When it is active, it is also <b>fulfilled</b> 
-            when in the state of the world there is a representation of an executed action that matches with the 
+            when in the state of the world there is a representation of an performed action that matches with the 
             the class of actions described in the duty. 
         </p>
         <p>
@@ -743,12 +751,12 @@ In order to evaluate if a prohibition is active, it is necessary to evaluate the
 
 Duties on prohibitions have no defined meaning.<br>
 
-An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is executed. 
+An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is performed. 
 If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
 The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibition to be within one of these possibilities:
     <ul>
-    <li> <b>not-set</b> when the regulated action with all refinements satisfied has not been executed; </li>
-    <li> <b>violated</b> when the regulated action with all refinements satisfied has been executed; </li>
+    <li> <b>not-set</b> when the regulated action with all refinements satisfied has not been performed; </li>
+    <li> <b>violated</b> when the regulated action with all refinements satisfied has been performed; </li>
     </ul>
 A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-prohib"><code>odrl:remedy</code></a> for its violation. <br><br>
 
@@ -836,9 +844,9 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
     with all refinements satisfied, should be perfomed) if all constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
     An active Obligation becomes:
     <ul>
-    <li> <b>fulfilled</b> when the regulated action with all refinements satisfied is executed; </li>
-    <li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be executed; </li>
-    <li> <b>not-set</b> when the regulated action with all refinements satisfied can be executed but has not been so far. </li>
+    <li> <b>fulfilled</b> when the regulated action with all refinements satisfied is performed; </li>
+    <li> <b>violated</b> when the regulated action with all refinements satisfied can no longer be performed; </li>
+    <li> <b>not-set</b> when the regulated action with all refinements satisfied can be performed but has not been so far. </li>
     </ul>
     An obligation may include an <code>odrl:consequence</code> of not fulfilling that obligation. <br><br>
 
