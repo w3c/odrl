@@ -221,21 +221,34 @@ More precisely, the ODRL Evaluator uses as input:
 
     <section id="sectionPermissions">
         <h2>Semantics of Permissions</h2> 
-
-	In ODRL 2.2 a Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>, and 
-	it can also be limited by <b>Constraints</b> (in time, in space, etc.). 
-        In addition, the definition of the permitted action, the asset, and the 3party collection can be refined with <b>Refinements</b>. 
+<p>
+	In ODRL 2.2 a Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>.
+	It can also be limited by <b>Constraints</b> (in time, in space, etc.). 
+        In addition, the definition of the permitted action, the asset, and the party collection can be refined with <b>Refinements</b>. 
         The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
 
-        The evaluation of permission activation is different in the access control or monitoring scenario.	    
+        The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.	    
+</p>
+	 <p>
+            In the <b>access control scenario</b>: when an action is <b>attempted</b>,
+            the activation of permissions is computed and if there is not an active permission that permits such an action, 
+            it means that the action is not permitted and it is blocked.
+        </p>
 
+	     <p>
+            In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
+            if there is no active permission to do so and the default setting for the ODRL Evaluator
+            is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
+	
+        </p>
 
 	    
         <h3>Expected behaviour of the ODRL Evaluator</h3>
-        <p> <!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
-        
-	
-        In particular, a Permission is <b>active</b> if:
+        <p> 
+	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
+       	<!-- definition of active/inactive -->
+		
+        The ODRL Evaluator compute that a Permission is <b>active</b> if:
         </p>
         <ol>
             <li>all the existing constraints of the Rule are satisfied and;</li> 
@@ -243,24 +256,18 @@ More precisely, the ODRL Evaluator uses as input:
             <li>only for the access control scenario: all the existing refinements of the 
             Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
         </ol>
-        <p> <!-- definition of active/inactive -->
-            If the Permission is active, the action is permitted. If one of those conditions is not met, the Permission is <b>inactive</b>. When an action, which is regulated by an <b>active</b> permission is performed, the permission is used by such an action.
-        </p>
 
-        <p>
-            In the <b>access control scenario</b>: when an action is <b>attempted</b>,
-            if there is not an active permission that permits such an action, 
-            it means that the action is not permitted and it is blocked.
-        </p>
+<p>
+        If the Permission is active, then the action is permitted. <br>
+	When an action, which is regulated by an <b>active</b> permission is performed, 
+	the permission is used by such an action.<br>
+	If one of those conditions is not met, the Permission is <b>inactive</b>. 
+</p>
 
-        <p>
-            In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
-            if there is no active permission to do so (i.e. there is no active permission regulating a class 
-            of action to which the performed action belongs) and the default setting for the ODRL Evaluator
-            is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
-	In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
-		generation of violations for permissions.
-        </p>
+       
+<p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
+		generation of violations for permissions.</p>
+       
 
         <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
         <img src="ODRLPermission.png">
