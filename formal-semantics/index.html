@@ -253,9 +253,9 @@ More precisely, the ODRL Evaluator uses as input:
         The ODRL Evaluator compute that a Permission is <b>active</b> if:
         </p>
         <ol>
-            <li>all the existing constraints of the Rule are satisfied and;</li> 
-            <li>all the existing conditions (duties of the Rule) are fulfilled or inactive and; </li>
-            <li>only for the access control scenario: all the existing refinements of the 
+            <li>all the existing Constraints of the Rule are satisfied and;</li> 
+            <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive and; </li>
+            <li>only for the access control scenario: all the existing Refinements of the 
             Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
         </ol>
 
@@ -266,15 +266,17 @@ More precisely, the ODRL Evaluator uses as input:
 
        
 <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
-		generation of violations for permissions.</p>
+		generation of violations for permissions. 
+	
        
 
         <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
         <img src="ODRLPermission.png">
         -->
         <h3>Evaluation of Constraints and Refinements</h3>
-	<p>Please note that namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
+	<p>Please note that in the following examples namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
+        Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
 	    
         <h4>Example of a constrained permission</h4>
         <p>
