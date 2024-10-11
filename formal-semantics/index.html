@@ -574,12 +574,12 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
 	The class of actions regulated by this Permission has type equal to <code>play</code>,
 	object equal to the <code>target</code> of the permission, i.e. music:1999.mp3,
-        and the <code>performer</code> is equal to the assignee of the permission, i.e. party:billie.<br>
+        and <code>performer</code> equal to the assignee of the permission, i.e. party:billie.<br><br>
 	
-	The conditions (duties) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
+	The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
 	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
             when in the state of the world there is a representation of a performed action that matches with the 
-            the class of actions described in the Condition (duty). <br>
+            the class of actions described in the <code>condition:1</code>. <br><br>
       
 	The class of actions regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
 	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
@@ -636,7 +636,6 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br>activation <br><code>permission:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br>performance of <br><code>attempted action</code></th>
             </tr>
             <tr>
                 <td>E22-3</td>
@@ -645,7 +644,6 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
-                <td>not performed</td>
             </tr>
             <tr>
                 <td>E22-4</td>
@@ -654,7 +652,6 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-                <td>performed</td>
             </tr>
         </table>    
 
