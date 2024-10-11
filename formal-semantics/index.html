@@ -197,8 +197,8 @@ More precisely, the ODRL Evaluator uses as input:
             </ul>
 
 <p> <!-- out of scope -->
-<!-- Nicoletta: I agree that we can REMOVE this part because the computation of the satisfaction of Constraints and 
-	Refinement may be realized by the ODRL Evaluator.
+<!-- Nicoletta: I agree that we REMOVE this part because the computation of the satisfaction of Constraints and 
+	Refinement has to be realized by the ODRL Evaluator.
 <!--		
             The process for computing:
 	<ul>
@@ -313,10 +313,8 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-            The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time 
-            (for example by using the <a href="https://www.w3.org/TR/owl-time/">Time Ontology in OWL</a>).  
+            3The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
             As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.
-            (The activation of this type of permission does not depend on the actions attempted by the agents).
         </p>
 
         <i>Access control scenario:</i> 
@@ -332,7 +330,7 @@ More precisely, the ODRL Evaluator uses as input:
             is not relevant.</li>
         </ul>
         <p>
-            The table below shows the input and the output of the Evaluator in the different cases. 
+            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in the different cases. 
             
         </p>
         <table border="1" style="font-size:small;">
@@ -340,30 +338,27 @@ More precisely, the ODRL Evaluator uses as input:
                     <th>Example</th>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">World</th>
+		    <th style="color:darkblue">Attempted Action</th>
                     <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
                     <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:13</code></th>
-		    <th style="color:darkblue">Attempted Action</th>
-		    <th style="color:darkred"><kbd>access control</kbd><br/> </th>
              </tr>
             <tr>
                     <td>E13-1</td>
                     <td>policy:13</td>
-                    <td>We are in 2017</td>
-                    <td>satisfied</td>
-                    <td>active</td>
+                    <td>We are in 2017 <br> <code>current time.year=2017</code> </td>
 		    <td><code>distribute</code><br>
 		    <code>document:1234</code></td>
-		    <td>attempted action can be performed</td>
+                    <td>satisfied</td>
+                    <td>active</td>		    
             </tr>
             <tr>
                     <td>E13-2</td>
                     <td>policy:13</td>
-                    <td>We are in 2019</td>
-                    <td>not-satisfied</td>
-                    <td>inactive</td>
+                    <td>We are in 2019 <br> <code>current time.year=2019</code></td>
 		     <td><code>distribute</code><br>
 		    <code>document:1234</code></td>
-		    <td>attempted action can not be performed</td>
+                    <td>not-satisfied</td>
+                    <td>inactive</td>		    
             </tr>
         </table>        
         
