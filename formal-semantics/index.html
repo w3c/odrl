@@ -501,21 +501,31 @@ More precisely, the ODRL Evaluator uses as input:
         </table>
 
         <h3>Evaluation of Conditions (Duties)</h3> 
-        <p>
+       <p>
+	 When a Permission contains Conditions (duties) they have to be evaluated first.     
+       </p>
+	    
+	<p>
             A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
             if its action, with all refinements satisfied, has been performed. 
         </p>
         <ol> 
-            <li>The initial state of a duty is <b>inactive</b>.</li>
-            <li>If at least one of the Constraints of the duty is not satisfied, then the duty is <b>inactive</b>. 
+            <li>The initial state of a Condition (duty) is <b>inactive</b>.</li>
+            <li>If at least one of the Constraints of the Condition (duty) is not satisfied, then the duty is <b>inactive</b>. 
             (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
             and inactive the other days).</li>	
-            <li>If the Constraints of the duty are all satisfied or there are no Constraints, then the duty is <b>active</b>.
-            <li> If the Duty is <b>active</b> and its action with all refinements+properties satisfied is performed, 
-                then duty is <b>fulfilled</b> by the performance of the action.</li>
+            <li>If the Constraints of the Condition (duty) are all satisfied or there are no Constraints, then the duty is <b>active</b>.
+            <li> If the Condition (duty) is <b>active</b> and its action with all refinements+properties satisfied is performed, 
+                then Condition (duty) is <b>fulfilled</b> by the performance of the action.</li>
         </ol>
-        <p>The life cycle of a duty is depicted in the figure below:
+        <p>The life cycle of a Condition (duty) is depicted in the figure below:
             <img src="2024ODRLDuty.png"></p>
+
+	     <p>
+            Once the Condition (duty) has been evaluated, the Permission can be evaluated. 
+	    If the Condition is active but it is not fullfilled then the Permission is inactive.
+            If the Condition is fulfilled then the Permission is active.
+        </p>
 
         <h4>Example of a conditioned permission</h4> 
         <p>
@@ -562,24 +572,24 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-	The class of actions regulated by the Permission has type equal to <code>play</code> 
-	and object equal to the <code>target</code> of the permission, i.e. music:1999.mp3
-        and <code>performer</code> equal the assignee of the permission, i.e. party:billie.<br>
+	The class of actions regulated by this Permission has type equal to <code>play</code>,
+	object equal to the <code>target</code> of the permission, i.e. music:1999.mp3,
+        and the <code>performer</code> is equal to the assignee of the permission, i.e. party:billie.<br>
 	
-	The condition has to be evaluated first. The Condition <code>condition:1</code> does not have Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
+	The conditions (duties) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
+	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
             when in the state of the world there is a representation of a performed action that matches with the 
-            the class of actions described in the duty. I.e. the <code>type</code> of the action is <code>compensate</code>, its 
-            <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
+            the class of actions described in the Condition (duty). <br>
+      
+	The class of actions regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
+	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
             <code>party:billie</code> because, for example, a company can pay for its employees 
-            (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a reference to a policy or a rule and to 
-            the party for whom they are performed).
+            (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a 
+	    reference to a policy or a rule and to the party for whom they are performed).
         </p>
-        <p>
-            Once the condition (duty) has been evaluated, the permission can be evaluated. If the condition is active but it is not fullfilled then the Permission is inactive.
-            If the ccondition is fulfilled then the Permission is active.
-        </p>
+       
 
         <p><i>Access control scenario:</i></p> 
         <p>
