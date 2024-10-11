@@ -428,21 +428,22 @@ More precisely, the ODRL Evaluator uses as input:
         }
         </pre>
         <p>
-            <b>Expected behaviour of the Evaluator</b>
+            <b>Expected behaviour of the Evaluator</b><br>
+
+	The class of actions regulated by the Permission has <code>type</code> equal to <code>print</code> and 
+            its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
+		
         </p>    
         <p><i>Access control scenario:</i></p> 
         <ul>
             <li>(E14-1) If the attempted action belongs to the class of actions regulated by the Permission
-            (i.e.: its <code>type</code> is <code>print</code> and 
-            its <code>object</code> is equale to <code>document:1234</code>) and 
-            its <code>resolution</code> is less than or equal to 1200 dpi (it satisfies the refinement))
-            then the Permission is active and the attempted action can be performed.
+          and it satisfies the refinement of the action (i.e. its <code>resolution</code> is less than or equal to 1200 dpi),
+          then the Permission is active and the attempted action can be performed.
             </li>
-            <li>(E14-2) If the attempted action belongs to the class of actions regulated by the Permission (it is a  
-            <code>print</code> of <code>document:1234</code>) but the refinement of the action is not satisfied 
+            <li>(E14-2) If the attempted action belongs to the class of actions regulated by the Permission 
+	but the refinement of the action is not satisfied 
 	    (i.e. its <code>resolution</code> is more than 1200 dpi), then the Permission is inactive. 
-            Assuming that only this Permission is considered (this is because other permissions could regulate this action), 
-            then the action is blocked and it cannot be performed.</li>
+            Assuming that only this Permission is considered then the action is blocked and it cannot be performed.</li>
         </ul>
         
         <table border="1" style="font-size:small;">
@@ -452,23 +453,20 @@ More precisely, the ODRL Evaluator uses as input:
             <th style="color:darkblue">Attempted Action</th>
             <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
             <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>policy:14</code></th>
-	    <th style="color:darkred"><kbd>access control</kbd></th>
          </tr>
         <tr>
             <td>E14-1</td>
             <td>policy:14</td>
-            <td><code>print</code> of <code>document:1234</code> and resolution less than 1200 dpi</td> 
+            <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</td> 
             <td>satisfied</td>
             <td>active </td>
-	    <td>attempted action can be performed</td>
         </tr>
         <tr>
             <td>E14-1</td>
             <td>policy:14</td>
-            <td><code>print</code> of <code>document:1234</code> and resolution more than 1200 dpi</td> 
+            <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</td> 
             <td>not-satisfied</td>
             <td>inactive </td>
-	    <td>attempted action can not be performed</td>
         </tr>
         </table>
         
@@ -489,14 +487,14 @@ More precisely, the ODRL Evaluator uses as input:
         <tr>
                 <td>E14-3</td>
                 <td>policy:14</td>
-                <td><code>print</code> of <code>document:1234</code> and resolution less than 1200 dpi was performed</td> 
+                <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi was performed</td> 
                 <td>satisfied</td>
                 <td>active </td>
         </tr>
         <tr>
                 <td>E14-4</td>
                 <td>policy:14</td>
-                <td><code>print</code> of <code>document:1234</code> and resolution more than 1200 dpi was performed</td> 
+                <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi was performed</td> 
                 <td>not-satisfied</td>
                 <td>active </td>
         </tr>
