@@ -313,15 +313,15 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-            3The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-            As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.
+            The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
+            As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.<br>
+	The class of actions regulated by the Permission has <code>type</code> equal to <code>distribute</code> and 
+	<code>object</code> equal to the target of the permission, i.e. <code>document:1234</code>.
         </p>
 
         <i>Access control scenario:</i> 
         <ul>
             <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
-            (i.e.: its <code>type</code> is <code>distribute</code> and its <code>object</code> is equal to 
-            the target of the permission <code>document:1234</code>)
             and the Permission is active then the action can be performed. </li>
             <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
             Permission is inactive, assuming that only this Permission is considered 
@@ -380,7 +380,7 @@ More precisely, the ODRL Evaluator uses as input:
             <tr>
                 <td>E13-3</td>
                 <td>policy:13</td>
-                <td>We are in 2017 and <br/>
+                <td>We are in 2017 <code>current time.year=2017</code>  and <br/>
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>satisfied</td>
                 <td>active</td>
@@ -388,7 +388,7 @@ More precisely, the ODRL Evaluator uses as input:
             <tr>
                 <td>E13-4</td>
                 <td>policy:13</td>
-                <td>We are in 2019 and <br/>
+                <td>We are in 2019 <code>current time.year=2018</code>  and <br/>
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>not-satisfied</td>
                 <td>inactive</td>
