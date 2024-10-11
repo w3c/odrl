@@ -523,8 +523,10 @@ More precisely, the ODRL Evaluator uses as input:
         </p>
         
         <p>
-            The example below, similar to <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a>  in the ODRL Information Model 2.2, is a Permission that is constrained by a Duty (which we call Condition).  The condition does not have Constraints, but its action has a refinement. In this example, the permission is granted by <code>party:sony</code> for <code>party:billie</code> to play the  
-            target asset <code>music:1999</code>. The permission includes the condition to perform the compensate action that has a refinement of <code>payAmount</code> 
+            The example below (similar to <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> in the ODRL Information Model 2.2)
+	is a Permission that is constrained by a Condition (Duty).  The Condition does not have Constraints, but its action has a refinement. 
+	This permission is granted by <code>party:sony</code> for <code>party:billie</code> to play the  
+            target asset <code>music:1999</code>. The permission includes the Condition to perform the compensate action that has a refinement of <code>payAmount</code> 
             of euro 5.00. The semantics of Permission requires that the compensate action (included in the duty) must be performed 
             <b>before</b> the play action in order to get an <code>active</code> permission to perform the play action.
         </p>
@@ -560,7 +562,11 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-            The condition has to be evaluated first. The Condition <code>condition:1</code> does not have Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
+	The class of actions regulated by the Permission has type equal to <code>play</code> 
+	and object equal to the <code>target</code> of the permission, i.e. music:1999.mp3
+        and <code>performer</code> equal the assignee of the permission, i.e. party:billie.<br>
+	
+	The condition has to be evaluated first. The Condition <code>condition:1</code> does not have Constraints, so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
             when in the state of the world there is a representation of a performed action that matches with the 
             the class of actions described in the duty. I.e. the <code>type</code> of the action is <code>compensate</code>, its 
             <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
