@@ -725,6 +725,10 @@ More precisely, the ODRL Evaluator uses as input:
         If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
         If the Condition is fulfilled the Permission is active.
         </p>
+<p><i>Access control scenario:</i></p> 
+<p>The monitoring scenario and the access control scenario have the same evaluation when there is no refinement 
+of the permitted action.</p>
+	    
         <table border="1" style="font-size:small;">
             <tr>
                 <th>Example</th>
@@ -734,12 +738,12 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkred">satisfaction of <br><code>refinement:1</code></th>
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><kbd>access control</kbd><br>activation <br><code>permission:1</code></th>
+                <th style="color:darkred"><br>activation of <br><code>permission</code></th>
             </tr>
             <tr>
-                <td>E22-11</td>
+                <td>E88-1</td>
                 <td>policy:88</td>
-                <td>Saturday<br></td> 
+                <td>It is Saturday<br></td> 
                 <td>not satisfied</td>
                 <td>don't care</td>
                 <td>inactive</td>
@@ -747,9 +751,12 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
             </tr>
             <tr>
-                <td>E22-12</td>
+                <td>E88-2</td>
                 <td>policy:88</td>
-                <td>Sunday<br>unpaid by one of the performers</td> 
+                <td>It is Sunday<br>
+		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
+		and <code>beneficiary</code> = <code>party:sony</code> is NOT performed.<br>
+			</td> 
                 <td>satisfied</td>
                 <td>not satisfied</td>
                 <td>active</td>
@@ -757,13 +764,16 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>inactive</td>
             </tr>
             <tr>
-                <td>E22-13</td>
+                <td>E88-3</td>
                 <td>policy:88</td>
-                <td>Sunday<br>paid by all the performers</td> 
+                <td>It is Sunday<br>
+		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
+		and <code>beneficiary</code> = <code>party:sony</code> is performed.<br>
+		</td> 
                 <td>satisfied</td>
                 <td>satisfied</td>
                 <td>active</td>
-                <td>fulfilled by the action</td>
+                <td>fulfilled</td>
                 <td>active</td>
             </tr>
         </table>            
