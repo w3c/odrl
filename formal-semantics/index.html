@@ -672,9 +672,8 @@ More precisely, the ODRL Evaluator uses as input:
                 <b>Example description</b>
             </p>
         <p>
-            This is example is derived from example 22.1. There is a permission constrained by a duty (condition), that has constraints. 
-            The condition regulates an action that is refined by refinements. The permission below has the same description as given for Example 22 above with the addition that Duty is only 
-            activated on Sundays.
+            This policy contains a Permission constrained by a Condition (duty) (like in policy:22) 
+	    with the difference that such Condition has constraints, it is only activated on Sundays.
         </p>
 
         <pre>
@@ -714,15 +713,17 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-            The duty (condition) has to be evaluated. This duty has constraints. It starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
-            (the state of the world satisfies its Constraints, i.e. the current date is a Sunday). When it is active, it is also <b>fulfilled</b> 
-            when in the state of the world there is a representation of an performed action that matches with the 
-            the class of actions described in the duty. 
+        <code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
+	it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
+        (the state of the world satisfies its Constraints, i.e. the current date is a Sunday). 
+	An active Constraint, it is also <b>fulfilled</b> when in the state of the world there is a representation 
+	of an performed action that matches with the class of actions described in the Constraint.
         </p>
         <p>
-            The permission can be evaluated as follows: If the condition is inactive, the Permission is active. 
-            If the condition is active but it is not fullfilled, the permission is inactive. 
-            If the duty is fulfilled the Permission is active.
+        The permission can be evaluated as follows: <br>
+	If the Condition is inactive (its Constraint is not satisfied), the Permission is active. <br>
+        If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
+        If the Condition is fulfilled the Permission is active.
         </p>
         <table border="1" style="font-size:small;">
             <tr>
