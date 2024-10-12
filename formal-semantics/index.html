@@ -315,7 +315,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
             As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.<br>
-	The class of actions regulated by the Permission has <code>type</code> equal to <code>distribute</code> and 
+	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>distribute</code> and 
 	<code>object</code> equal to the target of the permission, i.e. <code>document:1234</code>.
         </p>
 
@@ -430,7 +430,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             <b>Expected behaviour of the Evaluator</b><br>
 
-	The class of actions regulated by the Permission has <code>type</code> equal to <code>print</code> and 
+	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>print</code> and 
             its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
 		
         </p>    
@@ -572,16 +572,16 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-	The class of actions regulated by this Permission has type equal to <code>play</code>,
-	object equal to the <code>target</code> of the permission, i.e. music:1999.mp3,
-        and <code>performer</code> equal to the assignee of the permission, i.e. party:billie.<br><br>
+	The <b>class of actions</b>s regulated by this Permission has type equal to <code>play</code>,
+	object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
+        and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
 	
 	The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
 	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
             when in the state of the world there is a representation of a performed action that matches with the 
             the class of actions described in the <code>condition:1</code>. <br><br>
       
-	The class of actions regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
+	The <b>class of actions</b>s regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
 	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
@@ -594,8 +594,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p><i>Access control scenario:</i></p> 
         <p>
            Given a formal description of the attempted action, if such an action belongs to the class of actions regulated by the Permission 
-           (i.e. its <code>type</code> is <code>play</code>, its <code>object</code> is equal to <code>music:1999.mp3</code>, and its <code>performer</code> is 
-           <code>party:billie</code>) and the Permission is active, then the action is performed, otherwise it is blocked.
+	and the Permission is active, then the action is performed, otherwise it is blocked.
         </p>
 
         <table border="1" style="font-size:small;">
@@ -603,6 +602,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
+		  <th style="color:darkblue">   Attempted Action </th>
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><kbd>access control</kbd><br>activation <br><code>permission</code></th>
@@ -610,7 +610,9 @@ More precisely, the ODRL Evaluator uses as input:
             <tr>
                 <td>E22-1</td>
                 <td>policy:22</td>
-                <td>Payment not made</td> 
+                <td> <code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> and
+			<code>beneficiary</code> = <code>party:sony</code> is not performed</td> 
+		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> and <code>performer</code> = <code>party:billie</code></td>
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
@@ -618,7 +620,9 @@ More precisely, the ODRL Evaluator uses as input:
         <tr>
                 <td>E22-2</td>
                 <td>policy:22</td>
-                <td>Payment made</td> 
+                <td> <code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> and
+			<code>beneficiary</code> = <code>party:sony</code> is performed</td> 
+		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> and <code>performer</code> = <code>party:billie</code></td>
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
@@ -640,7 +644,11 @@ More precisely, the ODRL Evaluator uses as input:
             <tr>
                 <td>E22-3</td>
                 <td>policy:22</td>
-                <td>Payment not made</td> 
+                <td><code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> and
+			<code>beneficiary</code> = <code>party:sony</code> is not performed.<br>
+		<code>play</code> and <code>target</code> = <code>music:1999.mp3</code> and 
+		<code>performer</code> = <code>party:billie</code> is performed.
+		</td> 
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
@@ -648,7 +656,11 @@ More precisely, the ODRL Evaluator uses as input:
             <tr>
                 <td>E22-4</td>
                 <td>policy:22</td>
-                <td>Payment made</td> 
+                <td><code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> and
+			<code>beneficiary</code> = <code>party:sony</code> is performed.<br>
+		<code>play</code> and <code>target</code> = <code>music:1999.mp3</code> and 
+		<code>performer</code> = <code>party:billie</code> is performed.	
+		</td> 
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
