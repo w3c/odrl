@@ -179,14 +179,7 @@ More precisely, the ODRL Evaluator uses as input:
             <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
             which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
-            <ul>
-		<li>In the <b>access control scenario</b>, the value of the satisfaction state of a Refinement 
-            is computed according to the action that an agent <b>attempts</b> to perform on digital resources.</li>
-		<li>In the <b>monitoring scenario</b>, the value of the satisfaction state of a Refinement is 
-            computed according to the actual actions that are performed by the agents and that are
-            represented in the <b>state of the world</b>.</li>
-	   </ul>
-			
+           			
             <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
             can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
@@ -234,14 +227,21 @@ More precisely, the ODRL Evaluator uses as input:
             the activation of permissions is computed. 
 	    If there is an active permission that permits such an action, the action is performed, and the permission is used by such an action.
 	    If there is not an active permission that permits such an action, it is blocked.
+	In the access control scenario, the value of the satisfaction state of a Refinement 
+            is computed according to the action that an agent attempts to perform on digital resources and is used to compute the 
+		 activation of the permission.
         </p>
 
 	     <p>
             In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
             if there is no active permission to do so and the default setting for the ODRL Evaluator
             is set to "everything is prohibited unless explicitly permitted" a violation should be generated. 
-	If there is an active permission to perform the action the permission is used by such an action. 
-	
+	If there is an active permission to perform the action the permission is used by such an action.
+		     In the monitoring scenario, the value of the satisfaction state of a Refinement is 
+            computed according to the actual actions that are performed by the agents and that are
+            represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the
+		     activation of the Permission.
+		     
         </p>
 
 	    
