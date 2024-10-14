@@ -816,7 +816,7 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
         {
         "@context": "http://www.w3.org/ns/odrl.jsonld",
         "@type": "Agreement",
-        "uid": "http://example.com/policy/5555",
+        "uid": "http://example.com/policy/55",
         "prohibition": [{
             "@id" : "http://example.com/prohibition/1",
             "target": "http://example.com/photoAlbum:55",
@@ -947,16 +947,18 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <th style="color:darkred"><kbd>monitoring</kbd><br>deontic state of <br><code>obligation:1</code></th>
             </tr>
             <tr>
-                <td>20-1</td>
+                <td>E42-1</td>
                 <td>policy:42</td>
-                <td>obligation:1 acted <br/>by a performed action</td>                 
+                <td><code>compensate</code> of <code>500 euro</code> by <br>
+		<code>party:44</code> to <code>party:43</code> is performed</td>                 
                 <td>active</td>
                 <td>fulfilled</td>
             </tr>
             <tr>
-                <td>20-2</td>
+                <td>E42-2</td>
                 <td>policy:42</td>
-                <td>obligation:1 not acted <br/>by a performed action</td>                 
+                 <td><code>compensate</code> of <code>500 euro</code> by <br>
+		<code>party:44</code> to <code>party:43</code> is NOT performed</td>                 
                 <td>active</td>
                 <td>not set</td>
             </tr>
