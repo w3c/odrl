@@ -627,6 +627,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><kbd>access control</kbd><br>activation <br><code>permission</code></th>
+		<th style="color:darkred"><kbd>access control</kbd><br/>permitted/not permitted</code></th>   
             </tr>
             <tr>
                 <td>E22-1</td>
@@ -638,6 +639,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
+		<td>the attempted action is not permitted by policy:22</td>    
             </tr>
         <tr>
                 <td>E22-2</td>
@@ -649,6 +651,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
+		 <td>the attempted action is permitted by policy:22</td>    
         </tr>
        </table>    
        <p><i>Monitoring scenario:</i></p>
@@ -663,6 +666,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br>activation <br><code>permission</code></th>
+		<th style="color:darkred"><kbd>monitoring</kbd><br/>permitted/not permitted</code></th>   
             </tr>
             <tr>
                 <td>E22-3</td>
@@ -674,6 +678,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
+		<td>the attempted action is not permitted by policy:22</td>    
             </tr>
             <tr>
                 <td>E22-4</td>
@@ -685,6 +690,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
+		<td>the attempted action is permitted by policy:22</td>    
             </tr>
         </table>    
 
@@ -875,7 +881,7 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
 		by <code>assignee:55</code> is performed</td>                 
                 <td>satisfied</td>
                 <td>active</td>
-                <td>violated by the performed action/td>
+                <td>violated by the performed action</td>
             </tr>
             <tr>
                 <td>E55-2</td>
