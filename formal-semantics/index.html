@@ -168,15 +168,14 @@ More precisely, the ODRL Evaluator uses as input:
 
             <li>Prohibition, Obligation, and Condition (Duty) have a property called <b>deontic state</b>, 
             which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
-            They can become violated or fulfilled only when they are active. 
-	    <!-- For Prohibitions the deontic state is a multivalue state because everytime an active prohibition
-		    is violated the deontic state is used for registering that an specific action 
-		    has violated the Prohibition that remains active and can be violated by another action. 
-		    For obligations is different because by default the obliged action has to be performed only once if the counter is equale to 1.
-		    For Conditions (Duties) ....
-	-->
-	    
+            They can become violated or fulfilled only when they are active. <br>
+	    An active prohibition can be violated many times by different actions, 
+	    therefore when a prohibition is violated it is required
+	     to register the action that brings to the violation. <br>
 	    </li>
+
+	    <li>Permission has a property called <b>control state</b>, which can take the values of <b>permitted</b> or 
+	    <b>not-permitted</b> for a specific attempted or executed action.</li>
 
             <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
             <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
@@ -188,13 +187,14 @@ More precisely, the ODRL Evaluator uses as input:
             odrl:refinement property) has a property called <b>satisfaction state</b> 
             which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
            			
-            <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
+           <!-- <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
             can become <b>performed</b> when an action with all the properties values (i.e. <code>type</code>, 
                     <code>performer</code>, <code>object</code>,...)  that matches with the values
             described in the Rule (i.e. <code>action</code>, <code>assignee</code>, <code>target</code>) 
                     is actually performed at a given instant of time and its performance is represented 
-                    in the state of the world.</li>
+                    in the state of the world.</li> -->
+	
             </ul>
 
 <p> <!-- out of scope -->
