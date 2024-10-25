@@ -163,12 +163,20 @@ More precisely, the ODRL Evaluator uses as input:
 		Constraint, State of the World, and attempted action. 
             Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
         <ul> <!-- attributes of the main objects -->
-            <li>Permission, Prohibition, and Obligation, <!-- and Condition -->	have a property called 
+            <li>Permission, Prohibition, Obligation, and Condition (Duty) have a property called 
             <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
 
-            <li>Prohibition and Obligation <!-- and Condition --> have a property called <b>deontic state</b>, 
+            <li>Prohibition, Obligation, and Condition (Duty) have a property called <b>deontic state</b>, 
             which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
-            They can become violated or fulfilled only when they are active.</li>
+            They can become violated or fulfilled only when they are active. 
+	    <!-- For Prohibitions the deontic state is a multivalue state because everytime an active prohibition
+		    is violated the deontic state is used for registering that an specific action 
+		    has violated the Prohibition that remains active and can be violated by another action. 
+		    For obligations is different because by default the obliged action has to be performed only once if the counter is equale to 1.
+		    For Conditions (Duties) ....
+	-->
+	    
+	    </li>
 
             <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
             <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
