@@ -174,8 +174,8 @@ More precisely, the ODRL Evaluator uses as input:
 	     to register the action that brings to the violation. <br>
 	    </li>
 
-	    <li>Permission has a property called <b>control state</b>, which can take the values of <b>permitted</b> or 
-	    <b>not-permitted</b> for a specific attempted or executed action.</li>
+	    <li>Permission has a property called <b>control state</b>, which can take the values of <b>permit</b> or 
+	    <b>deny</b> of a specific attempted or executed action.</li>
 
             <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
             <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
@@ -348,9 +348,9 @@ More precisely, the ODRL Evaluator uses as input:
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">World</th>
 		    <th style="color:darkblue">Attempted Action</th>
-                    <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
-                    <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>permission</code></th>
-		    <th style="color:darkred"><kbd>access control</kbd><br/>permitted/not permitted</code></th>
+                    <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
+                    <th style="color:darkred"><kbd>access control</kbd><br/>activation state of <br><code>permission</code></th>
+		    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
              </tr>
             <tr>
                     <td>E13-1</td>
@@ -360,7 +360,7 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code></td>
                     <td>satisfied</td>
                     <td>active</td>
-		    <td>the attempted action is permitted by policy:13</td>
+		    <td>permit the attempted action</td>
             </tr>
             <tr>
                     <td>E13-2</td>
@@ -370,7 +370,7 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code></td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
-		    <td>the attempted action is not permitted by policy:13</td>
+		    <td>deny the attempted action</td>
             </tr>
         </table>        
         
@@ -386,9 +386,9 @@ More precisely, the ODRL Evaluator uses as input:
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
-                <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>permitted/not permitted</code></th>
+                <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
+                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation state of <br><code>permission</code></th>
+		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>
              </tr>
             <tr>
                 <td>E13-3</td>
@@ -397,7 +397,7 @@ More precisely, the ODRL Evaluator uses as input:
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>satisfied</td>
                 <td>active</td>
-		<td>the attempted action is permitted by policy:13</td>
+		<td>permit the attempted action</td>
             </tr>
             <tr>
                 <td>E13-4</td>
@@ -406,7 +406,7 @@ More precisely, the ODRL Evaluator uses as input:
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>not-satisfied</td>
                 <td>inactive</td>
-		<td>the attempted action is not permitted by policy:13</td>
+		<td>deny the attempted action</td>
             </tr>
         </table>
     <hr/>
@@ -468,7 +468,7 @@ More precisely, the ODRL Evaluator uses as input:
             <th style="color:darkblue">Attempted Action</th>
             <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
             <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>permission</code></th>
-	    <th style="color:darkred"><kbd>access control</kbd><br/>permitted/not permitted</code></th>
+	    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
          </tr>
         <tr>
             <td>E14-1</td>
@@ -476,7 +476,7 @@ More precisely, the ODRL Evaluator uses as input:
             <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</td> 
             <td>satisfied</td>
             <td>active </td> 
-	    <td>the attempted action is permitted by policy:14</td>
+	    <td>permit the attempted action</td>
         </tr>
         <tr>
             <td>E14-1</td>
@@ -484,7 +484,7 @@ More precisely, the ODRL Evaluator uses as input:
             <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</td> 
             <td>not-satisfied</td>
             <td>inactive </td>
-		<td>the attempted action is not permitted by policy:14</td>
+		<td>deny the attempted action</td>
         </tr>
         </table>
         
@@ -509,7 +509,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkblue">World</th>
                 <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>permitted/not permitted</code></th>
+		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>
          </tr>
         <tr>
                 <td>E14-3</td>
@@ -517,7 +517,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi was performed</td> 
                 <td>satisfied</td>
                 <td>active </td>
-		 <td>the performed action is permitted by policy:14</td>
+		 <td>permit the performed action</td>
         </tr>
         <tr>
                 <td>E14-4</td>
@@ -525,7 +525,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi was performed</td> 
                 <td>not-satisfied</td>
                 <td>active </td>
-		<td>the performed action is not permitted by policy:14</td>
+		<td>deny the performed action</td>
         </tr>
         </table>
 
@@ -632,10 +632,10 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
 		  <th style="color:darkblue">   Attempted Action </th>
-                <th style="color:darkred">activation of <br><code>condition:1</code></th>
+                <th style="color:darkred">activation state of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><kbd>access control</kbd><br>activation <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>access control</kbd><br/>permitted/not permitted</code></th>   
+                <th style="color:darkred"><kbd>access control</kbd><br>activation state <br><code> of permission</code></th>
+		<th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>   
             </tr>
             <tr>
                 <td>E22-1</td>
@@ -647,7 +647,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
-		<td>the attempted action is not permitted by policy:22</td>    
+		<td>deny the attempted action</td>    
             </tr>
         <tr>
                 <td>E22-2</td>
@@ -659,7 +659,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		 <td>the attempted action is permitted by policy:22</td>    
+		 <td>permit the attempted action</td>    
         </tr>
        </table>    
        <p><i>Monitoring scenario:</i></p>
@@ -674,7 +674,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><kbd>monitoring</kbd><br>activation <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>permitted/not permitted</code></th>   
+		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>   
             </tr>
             <tr>
                 <td>E22-3</td>
@@ -686,7 +686,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
-		<td>the attempted action is not permitted by policy:22</td>    
+		<td>deny the attempted action</td>    
             </tr>
             <tr>
                 <td>E22-4</td>
@@ -698,7 +698,7 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		<td>the attempted action is permitted by policy:22</td>    
+		<td>permit the attempted action</td>    
             </tr>
         </table>    
 
@@ -760,9 +760,12 @@ More precisely, the ODRL Evaluator uses as input:
         If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
         If the Condition is fulfilled the Permission is active.
         </p>
-<p><i>Access control scenario:</i></p> 
+<p><i>Access control and monitoring scenario:</i></p> 
 <p>The monitoring scenario and the access control scenario have the same evaluation when there is no refinement 
-of the permitted action.</p>
+to be evaluated on the attempted or executed action that belongs to the class of actionss regulated by this Permission
+(its type is equal to <code>play</code>, its object is equal to the <code>target</code> of the permission, 
+i.e. <code>music:1999.mp3</code>,and its <code>performer</code> is equal to the assignee of the permission, 
+i.e. <code>party:billie</code>).</p>
 	    
         <table border="1" style="font-size:small;">
             <tr>
@@ -774,6 +777,7 @@ of the permitted action.</p>
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
                 <th style="color:darkred"><br>activation of <br><code>permission</code></th>
+		<th style="color:darkred"><br>control state</th>
             </tr>
             <tr>
                 <td>E88-1</td>
@@ -784,6 +788,7 @@ of the permitted action.</p>
                 <td>inactive</td>
                 <td>not set</td>
                 <td>active</td>
+		<td>permit the action</td>
             </tr>
             <tr>
                 <td>E88-2</td>
@@ -797,6 +802,7 @@ of the permitted action.</p>
                 <td>active</td>
                 <td>not set</td>
                 <td>inactive</td>
+		<td>deny the action</td>
             </tr>
             <tr>
                 <td>E88-3</td>
@@ -810,6 +816,7 @@ of the permitted action.</p>
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
+		<td>permit the action</td>
             </tr>
         </table>            
 </section>
