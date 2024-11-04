@@ -20,6 +20,13 @@ var respecConfig = {
             company: "Ontology Engineering Group, Universidad Politécnica de Madrid",
             companyURL: "https://oeg.fi.upm.es/",
             mailto: "beatriz.gesteves@upm.es"
+            },
+            {  
+                name: "Joshua Cornejo",
+                url: "https://github.com/joshcornejo",
+                company: "marketdata",
+                companyURL: "https://marketdata.md",            
+                mailto: "josh@marketdata.md"
             }
         ],
     group: "odrl",
