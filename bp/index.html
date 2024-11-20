@@ -507,7 +507,68 @@ Let us imagine there is a license already in RDF, but with no embedded policies 
            ]</strike>
     ] .
 		</pre></div>	
-	
+				<h4>How to simplify policy management by implementing odrl:Policy also as odrl:Asset</h4>
+At evaluation time, it is often useful to consider the policy as an asset, this allows to shortcut the evaluation of the policy (e.g. temporary disabling a policy when an event is triggered, shortening the evaluation path).
+			<div class="example"><div class="example-title marker"><span>Example 16</span></div>
+			<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">			
+ex:offer_example        terms:description "example of an offer"@en;
+			a odrl:Offer,
+			  odrl:Asset;
+			odrl:conflict odrl:prohibit;
+			odrl:prohibition ex:demo_prohibition;
+			prov:version "0.1"@en.
+
+ex:demo_prohibition     terms:description "example of a prohibition that targets a policy"@en;
+			a odrl:Prohibition;
+			odrl:action odrl:use;
+			odrl:assigner ex:assigner;
+// --- the constraint ellaborates on the conditions for the triggered			
+			odrl:constraint ex:some_constraint; 
+// --- here we target the policy			
+			odrl:target ex:offer_example.          
+			</pre></div>
+			<h4>How to keep the lifecycle of assets, policies and prices separate, decoupling using odrl:RightOperandReference</h4>
+The lifecycle of assets, policies and duties are independent of each other, as such it is useful to implement the <code>odrl:payAmout</code> using an <code>odrl:RightOperandReference</code>
+<div class="example"><div class="example-title marker"><span>Example 17</span></div>
+			<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">			
+ex:demo_duty               a odrl:Duty;
+           terms:description "duty for use of a DPROD asset"@en;
+                 odrl:action md:example_action;
+               odrl:assigner ex:assigner;
+                 odrl:target ex:data_product.                
+
+md:example_action          a odrl:Action;  
+                   rdf:value odrl:compensate;
+             odrl:refinement ex:example_constraint.
+
+ex:example_constraint      a odrl:Constraint;
+            odrl:leftOperand odrl:payAmount;
+               odrl:operator odrl:eq;
+  odrl:rightOperandReference ex:example_roperand.
+
+ex:example_roperand        a odrl:RightOperand;
+// --- values point at respective URI's of an asset and a pricing list    			
+                   rdf:value ex:data_product, ex:pricing_list.      			
+
+ex:data_product            a dprod:DataProduct, odrl:Asset.
+
+// --- the pricing list could be represented in many different ways:
+
+// ----- using schema.org combined with DCAT (https://schema.org/UnitPriceSpecification)
+ex:pricing_list            a dcat:Dataset;
+          dcterms:conformsTo schema:priceSpecification.
+
+// ----- as a DCAT dataset conforming to GoodRelations (http://purl.org/goodrelations/v1)
+ex:pricing_list            a dcat:Dataset;
+          dcterms:conformsTo gr:UnitPriceSpecification.
+	   
+// ----- as a DCAT dataset conforming to the product ontology  (http://www.productontology.org/doc/Price)
+ex:pricing_list            a dcat:Dataset;
+          dcterms:conformsTo pto:Price.
+
+// ----- as a FIBO structured collection of prices
+ex:pricing_list            a fibo-fnd-agr-agr:PriceSpecification.
+   			</pre></div>
         </section>
 		
 	
@@ -567,58 +628,7 @@ Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-software-200
 
 This version makes clear that the license is applicable to both software and text, by changing the name and substituting &quot;work&quot; for instances of &quot;software and its documentation.&quot; It moves &quot;notice of changes or modifications to the files&quot; to the copyright notice, to make clear that the license is compatible with other liberal licenses.
 &quot;&quot;&quot;@en .
-</pre></div>		
-		<section id="practical_tips">
-			<h2>Practical Tips</h2>
-			<h3>Implement odrl:Policy also as odrl:Asset</h3>
-At evaluation time, it is often useful to consider the policy as an asset, this allows to shortcut the evaluation of the policy (e.g. temporary disabling a policy when an event is triggered, shortening the evaluation path).
-			<div class="example"><div class="example-title marker"><span>Example 16</span></div>
-			<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">			
-ex:offer_example        terms:description "example of an offer"@en;
-			a odrl:Offer,
-			  odrl:Asset;
-			odrl:conflict odrl:prohibit;
-			odrl:prohibition ex:demo_prohibition;
-			prov:version "0.1"@en.
-
-ex:demo_prohibition     terms:description "example of a prohibition that targets a policy"@en;
-			a odrl:Prohibition;
-			odrl:action odrl:use;
-			odrl:assigner ex:assigner;
-// --- the constraint ellaborates on the conditions for the triggered			
-			odrl:constraint ex:some_constraint; 
-// --- here we target the policy			
-			odrl:target ex:offer_example.          
-			</pre></div>
-			<h3>Decoupling with odrl:RightOperandReference</h3>
-The lifecycle of assets, policies and duties are independent of each other, as such it is useful to implement the odrl:payAmout using an odrl:RightOperandReference
-<div class="example"><div class="example-title marker"><span>Example 17</span></div>
-			<pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">			
-ex:demo_duty            terms:description "duty for use of a DPROD asset"@en;
-			a odrl:Duty;
-			odrl:action md:example_action;
-			odrl:assigner ex:assigner;
-			odrl:target ex:data_product.                
-
-md:example_action       a odrl:Action;  // <== *** this lines needs to be adjusted to specification update ***
-			rdf:value odrl:compensate;
-			odrl:refinement ex:example_constraint.
-
-ex:example_constraint   a odrl:Constraint;
-			odrl:leftOperand odrl:payAmount;
-			odrl:operator odrl:eq;
-			odrl:rightOperandReference ex:example_roperand.
-
-ex:example_roperand     a odrl:RightOperand;
-// --- values point at respective URI's of an asset and a pricing list    			
-			rdf:value ex:data_product, ex:pricing_list.      			
-
-ex:data_product         a odrl:Asset.
-
-// --- the pricing list could be a FIBO structured collection of prices
-ex:pricing_list         a fibo-ind-ind-ind:PriceStructure.           
-   			</pre></div>
-		</section>			
+</pre></div>					
         </section> -->
 		<section class='appendix'>
 			<h2>References</h2>
