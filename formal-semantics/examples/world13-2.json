@@ -1,0 +1,8 @@
+{
+  "@context": {
+    "ex": "http://www.example.org/ns",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://example.com/state/13/1",
+  "xsd:dateTime": "2017-12-19T15:00:00.999Z"
+}

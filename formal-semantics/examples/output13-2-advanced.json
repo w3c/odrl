@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "odrl": "http://www.w3.org/ns/odrl.jsonld",
+    "ex": "http://example.org/",
+    "report": "http://example.com/report/temp/",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://example.com/policy-report/13",
+  "@type": "report:ComplianceReport",
+  "dct:created": {
+    "@value": "2024-12-19T15:00:00.999Z",
+    "@type": "xsd:dateTime"
+  },
+  "report:policy": "http://example.com/policy/13",
+  "report:policyRequest": "http://example.com/policy/request/13",
+  "ex:permissionReport1": {
+    "@id": "http://example.com/policy-report/13/permission/1",
+    "@type": "report:ruleReport",
+    "report:rule": "http://example.com/document/1234",
+    "report:ruleRequest": "http://example.com/policy/request/13/rule/1",
+    "report:activationState": "report:Inactive",
+    "report:attemptState": "report:Attempted",
+    "report:performanceState": "report:Unknown",
+    "report:deonticState": "report:NonSet"
+  },
+  "ex:constraintReport1": {
+    "@type": "report:ConstraintReport",
+    "@id": "http://example.com/policy-report/13/constraint/1",
+    "report:satisfactionState": "report:NotSatisfied"
+  }
+}

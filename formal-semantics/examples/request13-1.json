@@ -1,0 +1,11 @@
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "Request",
+  "uid": "http://example.com/policy/request/13",
+  "permission": [{
+    "target": "http://example.com/policy/request/13/rule/1",
+    "assignee": "http://example.com/party/1",
+    "assigner": "http://example.com/party/16",
+    "action": "distribute"
+  }]
+}
