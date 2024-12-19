@@ -347,20 +347,22 @@ More precisely, the ODRL Evaluator uses as input:
                     <th>Example</th>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">World</th>
-		    <th style="color:darkblue">Attempted Action</th>
+		    <th style="color:darkblue">Requested Action</th>
                     <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
                     <th style="color:darkred"><kbd>access control</kbd><br/>activation state of <br><code>permission</code></th>
 		    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
+            <th>output</th>
              </tr>
             <tr>
                     <td>E13-1</td>
-                    <td>policy:13</td>
-                    <td>We are in 2017 <br> <code>current time.year=2017</code> </td>
-		    <td><code>distribute</code><br>
-		    <code>document:1234</code></td>
+                    <td>policy:13 (<a href="policy13.ttl">link</a>)</td>
+                    <td>We are in 2017 <br> <code>current time.year=2017</code><br>(<a href="world13-1.ttl">link</a>) </td>
+		    <td><code>distribute</code>
+		    <code>document:1234</code><br><a href="request13-1.ttl">link</a></td>
                     <td>satisfied</td>
                     <td>active</td>
-		    <td>permit the attempted action</td>
+		    <td>permit the requested action</td>
+            <td>(<a href="output13-1-basic.ttl">link 1</a>)<br>(<a href="output13-1-advanced.ttl">link 2</a>)</td>
             </tr>
             <tr>
                     <td>E13-2</td>
@@ -370,7 +372,8 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code></td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
-		    <td>deny the attempted action</td>
+		    <td>deny the requested action</td>
+            <td>(<a href="output13-2-basic.ttl">link 1</a>)<br>(<a href="output13-2-advanced.ttl">link 2</a>)</td>
             </tr>
         </table>        
         
