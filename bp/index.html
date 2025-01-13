@@ -619,15 +619,15 @@ ex:pricing_list            a fibo-fnd-agr-agr:PriceSpecification.
 				   
 				   Our policy can now leverage a refinement that contains a reusable element:<br>
 				   <pre id="eg2" class="hljs json" aria-busy="false" aria-live="polite">
-					   @prefix iso3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes.rdf>.
+					   @prefix iso3166-1: &lt;https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes.rdf&lt;.
 		   
 					   md:uri:some_example a odrl:Constraint;
 										   odrl:leftOperand odrl:spatial;
 										   odrl:operator odrl:isPartOf;
 										   odrl:rightOperandReference md:uri:some_refnmte;
-										   odrl:unit "iso3166-1".          # units can be a string
+										   odrl:unit "iso3166-1".       # units can be a string
 					   md:uri:some_refnmte a md:RightOperandReference;
-										   rdf:value iso3166-1:ESP.        # the right operand now is linked data
+										   rdf:value iso3166-1:ESP.     # the right operand now is linked data
 				   </pre>
 		</section>
 <!--
