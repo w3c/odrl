@@ -8,16 +8,16 @@ The ZOOM meeting connection URL  and password to access is [here](https://lists.
 
 ## Next Meetings 
 
-[Mon 03 February 2025 - AGENDA](2025/meeting-2025-02-03.md)  
-Mon 03 March 2025  
-Mon 07 April 2025  
-Mon 05 May 2025  
-Mon 02 June 2025  
-Mon 07 July 2025  
-Mon 01 September 2025  
-Mon 06 October 2025  
-Mon 03 November 2025  
-Mon 01 December 2025  
+[Mon 03 February 2025 - AGENDA](2025/meeting-2025-02-03.md)  [RI]  
+Mon 03 March 2025    [x]  
+Mon 07 April 2025  [x]  
+Mon 05 May 2025  [x]  
+Mon 02 June 2025  [x]  
+Mon 07 July 2025  [x]  
+Mon 01 September 2025  [x]  
+Mon 06 October 2025  [x]  
+Mon 03 November 2025  [x]  
+Mon 01 December 2025  [x]  
 
 ## Past Meeting Notes
 [Mon 02 December 2024](2024/meeting-2024-12-02.md)  
