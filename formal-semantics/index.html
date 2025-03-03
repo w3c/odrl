@@ -228,28 +228,29 @@ More precisely, the ODRL Evaluator uses as input:
         In addition, the definition of the permitted action, the asset, and the party collection can be refined with <b>Refinements</b>. 
         The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
 
-        The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.	    
+        <!--The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.-->
+	Permissions can be evaluated in two different scenarios: access control or monitoring.
 </p>
 	 <p>
             In the <b>access control scenario</b>: when an action is <b>attempted</b>,
             the activation of permissions is computed. 
 	    If there is an active permission that permits such an action, the action is performed, and the permission is used by such an action.
-	    If there is not an active permission that permits such an action, it is blocked.
-	In the access control scenario, the value of the satisfaction state of a Refinement 
-            is computed according to the action that an agent attempts to perform on digital resources and is used to compute the 
-		 activation of the permission.
+	    If there is not an active permission that permits such an action, the action is blocked.
+	<!--In the access control scenario, the value of the satisfaction state of a Refinement is computed according to the action that an agent 
+	attempts to perform on digital resources and is used to compute the activation of the permission.-->
         </p>
 
 	     <p>
-            In the <b>monitoring scenario</b>: when an action is <b>performed</b> (and it is represented in the state of the world), 
-            if there is no active permission to do so and the default setting for the ODRL Evaluator
+            In the <b>monitoring scenario</b>: when an action is <b>performed</b> it is represented in the state of the world.
+            When the performace of the action is evaluated with respect to the permissions, 
+	    if there is no active permission to do such an action and the default setting for the ODRL Evaluator
             is set to "everything is prohibited unless explicitly permitted" a violation should be generated. <br>
 	
 	If the performed action belongs to class of actions regulated by an active permission AND the performed action satifies the Refinements,
 	then the action is permitted and the permission is used by such an action.<br>
 	
-	In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
-            represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the activation of the Permission.
+	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
+            represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the activation of the Permission.-->
 		     
         </p>
 
