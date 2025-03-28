@@ -4,8 +4,7 @@ var respecConfig = {
     editors: [	{   name:       "Ben Whittam Smith",
                      url:        "linkedIn URL",
                      company:    "Deontic Data",
-                     companyURL: "Org URL",
-                      mailto:     "person email"}
+                     companyURL: "Org URL" }
     ],
     group: "odrl",
     wgPublicList: "public-odrl",
