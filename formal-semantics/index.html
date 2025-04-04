@@ -562,8 +562,8 @@ More precisely, the ODRL Evaluator uses as input:
             (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
             and inactive the other days).</li>	
             <li>If the Constraints of the Condition (duty) are all satisfied or there are no Constraints, then the duty is <b>active</b>.
-            <li> If the Condition (duty) is <b>active</b> and its action with all refinements+properties satisfied is performed, 
-                then Condition (duty) is <b>fulfilled</b> by the performance of the action.</li>
+            <li> If the Condition (duty) is <b>active</b> and an action that belongs to the class of actions regulated by the 
+		Condition with all refinements satisfied is performed, then Condition (duty) is <b>fulfilled</b>.</li>
         </ol>
         <p>The life cycle of a Condition (duty) is depicted in the figure below:
             <img src="2024ODRLDuty.png"></p>
@@ -619,7 +619,7 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-	The <b>class of actions</b>s regulated by this Permission has type equal to <code>play</code>,
+	The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
 	object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
         and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
 	
@@ -628,7 +628,7 @@ More precisely, the ODRL Evaluator uses as input:
             when in the state of the world there is a representation of a performed action that matches with the 
             the class of actions described in the <code>condition:1</code>. <br><br>
       
-	The <b>class of actions</b>s regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
+	The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
 	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
@@ -638,7 +638,7 @@ More precisely, the ODRL Evaluator uses as input:
         </p>
        
 
-        <p><i>Access control scenario:</i></p> 
+        <p><i>Access control or monitorin scenario:</i></p> 
         <p>
            Given a formal description of the attempted action, if such an action belongs to the class of actions regulated by the Permission 
 	and the Permission is active, then the action is performed, otherwise it is blocked.
