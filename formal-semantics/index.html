@@ -110,7 +110,8 @@ More precisely, the ODRL Evaluator uses as input:
 		  <li>the instant of time at which the action occurs or begins, whcih is represented with the <code>atTime</code> property.</li>
                 </ul></li>
         </ul>
-        <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, and  <code>object</code>.</p>
+        <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, 
+		<code>atTime</code>, and <code>object</code>.</p>
       
     </section>			
 
@@ -226,7 +227,9 @@ More precisely, the ODRL Evaluator uses as input:
 	In ODRL 2.2 a Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>.
 	It can also be limited by <b>Constraints</b> (in time, in space, etc.). 
         In addition, the definition of the permitted action, the asset, and the party collection can be refined with <b>Refinements</b>. 
-        The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
+        The evaluation of these Conditions (duties) and Constraints determine whether the Permission is active 
+	(i.e., it permits the performance of an action that belongs to the class of action regulated by the permission
+	and that satisfies all the refinements) or not.  
 
         <!--The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.-->
 	Permissions can be evaluated in two different scenarios: access control or monitoring.
@@ -234,20 +237,21 @@ More precisely, the ODRL Evaluator uses as input:
 	 <p>
             In the <b>access control scenario</b>: when an action is <b>attempted</b>,
             the activation of permissions is computed. 
-	    If there is an active permission that permits such an action, the action is performed, and the permission is used by such an action.
-	    If there is not an active permission that permits such an action, the action is blocked.
-	<!--In the access control scenario, the value of the satisfaction state of a Refinement is computed according to the action that an agent 
-	attempts to perform on digital resources and is used to compute the activation of the permission.-->
+	    If there is an active permission that permits such an action with all refinements satisdied, 
+	    then action is permitted.
+	    If there is not an active permission that permits such an action with all refinements satisdied, 
+	    then action is denied.
         </p>
 
 	     <p>
-            In the <b>monitoring scenario</b>: when an action is <b>performed</b> it is represented in the state of the world.
-            When the performace of the action is evaluated with respect to the permissions, 
-	    if there is no active permission to do such an action and the default setting for the ODRL Evaluator
-            is set to "everything is prohibited unless explicitly permitted" a violation should be generated. <br>
-	
-	If the performed action belongs to class of actions regulated by an active permission AND the performed action satifies the Refinements,
-	then the action is permitted and the permission is used by such an action.<br>
+            In the <b>monitoring scenario</b>: when an action is <b>performed</b>, it is represented in the state of the world.
+            When the performace of the action has to be evaluated with respect to the permissions.
+	    If the performed action belongs to class of actions (with all refinements satisfied) regulated 
+	    by an active permission, then the action is permitted. 
+	    if there is no active permission to do such an action (with all refinements satisfied) and the default 
+	    setting for the ODRL Evaluator is set to "everything is prohibited unless explicitly permitted" a 
+	    violation should be generated. <br>
+	<br>
 	
 	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
             represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the activation of the Permission.-->
