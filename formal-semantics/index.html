@@ -357,8 +357,8 @@ More precisely, the ODRL Evaluator uses as input:
                     <th style="color:darkblue">World</th>
 		    <th style="color:darkblue">Requested/Performed Action</th>
                     <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
-                    <th style="color:darkred"><kbd>access control</kbd><br/>activation state of <br><code>permission</code></th>
-		    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
+                    <th style="color:darkred"><br/>activation state of <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>control state</code></th>
             <th>output</th>
              </tr>
             <tr>
@@ -461,7 +461,11 @@ More precisely, the ODRL Evaluator uses as input:
 	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>print</code> and 
             its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
 		
-        </p>    
+        </p>  
+	<!--
+	Nicoletta: we keep only one table and we do not consider the refinement in the computation of the activation of the permision
+	    like we do for obligations and prohibitions
+	    
         <p><i>Access control scenario:</i></p> 
         <ul>
             <li>(E14-1) If the attempted action belongs to the class of actions regulated by the Permission
@@ -500,18 +504,19 @@ More precisely, the ODRL Evaluator uses as input:
 		<td>deny the attempted action</td>
         </tr>
         </table>
+
+	-->
         
-        <p><i>Monitoring scenario:</i></p> 
+        <p><i>Access control or monitoring scenario:</i></p> 
         <p>
             The Permission is always active because it has neither Constraints nor Conditions (Duties). 
 	Given a formal description a performed action. 
 	</p>
 	<ul>
-        <li>(E14-3) If the performed action belongs to the class of actions regulated by the Permission <i> AND 
-	the performed action satisfies the Refinement</i> then the action is permitted and the permission is used by the performed action.</li>
-	<li>(E14-4)If the performed actions belongs to the class of actions regulated by the Permission <i> AND does not satisfy the Refinement	
-	AND there is not another permission that permits such an action AND everything that is not permitted is prohibited,</i> 
-	then the performed action is not permitted and a violation has to be created.</li>
+        <li>(E14-1) If the requested or performed action belongs to the class of actions regulated by the Permission and 
+	the action satisfies the Refinement, then the permission permits the action.</li>
+	<li>(E14-2) If the requested or performed actions belongs to the class of actions regulated by the Permission 
+	but it does not satisfy the Refinement, then the permission does not permit the action.</li>
 	</ul>
         
 
@@ -519,26 +524,26 @@ More precisely, the ODRL Evaluator uses as input:
         <tr>
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
+                <th style="color:darkblue">Requested/Performed Action</th>
                 <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>
+                <th style="color:darkred">activation of <br><code>permission</code></th>
+		<th style="color:darkred">control state of <br><code>permission</code></th>
          </tr>
         <tr>
-                <td>E14-3</td>
+                <td>E14-1</td>
                 <td>policy:14</td>
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi was performed</td> 
                 <td>satisfied</td>
                 <td>active </td>
-		 <td>permit the performed action</td>
+		 <td>permit the action</td>
         </tr>
         <tr>
-                <td>E14-4</td>
+                <td>E14-2</td>
                 <td>policy:14</td>
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi was performed</td> 
                 <td>not-satisfied</td>
                 <td>active </td>
-		<td>deny the performed action</td>
+		<td>deny the action</td>
         </tr>
         </table>
 
