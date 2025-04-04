@@ -235,7 +235,7 @@ More precisely, the ODRL Evaluator uses as input:
 	Permissions can be evaluated in two different scenarios: access control or monitoring.
 </p>
 	 <p>
-            In the <b>access control scenario</b>: when an action is <b>attempted</b>,
+            In the <b>access control scenario</b>: when an action is <b>attempted/requested</b>,
             the activation of permissions is computed. 
 	    If there is an active permission that permits such an action with all refinements satisdied, 
 	    then action is permitted.
@@ -264,17 +264,17 @@ More precisely, the ODRL Evaluator uses as input:
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
 		
-        The ODRL Evaluator compute that a Permission is <b>active</b> if:
+        The ODRL Evaluator computes that a Permission is <b>active</b> if:
         </p>
         <ol>
             <li>all the existing Constraints of the Rule are satisfied and;</li> 
             <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive and; </li>
-            <li>only for the access control scenario: all the existing Refinements of the 
-            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
+           <!-- <li>only for the access control scenario: all the existing Refinements of the 
+            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>-->
         </ol>
 
 <p>
-        If the Permission is active, then the action is permitted. <br>
+        <!--If the Permission is active, then the action is permitted. <br>-->
 	If one of those conditions is not met, the Permission is <b>inactive</b>. 
 </p>
 
@@ -327,24 +327,27 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-            The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-            As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.<br>
+        The ODRL Evaluator has to calculate first the activation state of the permission. 
+	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
+        As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
+	is passed, the Permission is inactive.<br>
 	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>distribute</code> and 
 	<code>object</code> equal to the target of the permission, i.e. <code>document:1234</code>.
         </p>
 
-        <i>Access control scenario:</i> 
+        <i>Access control or monitoring scenario:</i> 
         <ul>
-            <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action can be performed. </li>
-            <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
-            Permission is inactive, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is blocked and it cannot be performed.</li>
-            <li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
-            is not relevant.</li>
+            <li>(E-13-1) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
+            and the Permission is active then the action is permitted. </li>
+            <li>(E-13-2) If the attempted  or perfomed action belongs to the class of actions regulated by the Permission, 
+	    but the Permission is inactive, then, assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
+            <li>If If the attempted or perfomed action does not belong to the class of actions regulated by the Permission 
+	     then assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
         </ul>
         <p>
-            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in the different cases. 
+            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
             
         </p>
         <table border="1" style="font-size:small;">
@@ -352,7 +355,7 @@ More precisely, the ODRL Evaluator uses as input:
                     <th>Example</th>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">World</th>
-		    <th style="color:darkblue">Requested Action</th>
+		    <th style="color:darkblue">Requested/Performed Action</th>
                     <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
                     <th style="color:darkred"><kbd>access control</kbd><br/>activation state of <br><code>permission</code></th>
 		    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
@@ -366,7 +369,7 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
                     <td>satisfied</td>
                     <td>active</td>
-		    <td>permit the requested action</td>
+		    <td>permit the action</td>
             <td>(<a href="examples/output13-1-basic.json">link 1</a>)<br>(<a href="examples/output13-1-advanced.json">link 2</a>)</td>
             </tr>
             <tr>
@@ -377,11 +380,12 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
-		    <td>deny the requested action</td>
+		    <td>deny the action</td>
             <td>(<a href="examples/output13-2-basic.json">link 1</a>)<br>(<a href="examples/output13-2-advanced.json">link 2</a>)</td>
             </tr>
         </table>        
-        
+
+	    <!--
         <p><i>Monitoring scenario:</i></p> 
         <ul>
             <li>(E-13-3) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is active, 
@@ -417,6 +421,7 @@ More precisely, the ODRL Evaluator uses as input:
 		<td>deny the attempted action</td>
             </tr>
         </table>
+	-->
     <hr/>
 	    
     <h4>Example of a permission whose permitted action is refined</h4>
