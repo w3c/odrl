@@ -110,7 +110,8 @@ More precisely, the ODRL Evaluator uses as input:
 		  <li>the instant of time at which the action occurs or begins, whcih is represented with the <code>atTime</code> property.</li>
                 </ul></li>
         </ul>
-        <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, and  <code>object</code>.</p>
+        <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, 
+		<code>atTime</code>, and <code>object</code>.</p>
       
     </section>			
 
@@ -226,28 +227,31 @@ More precisely, the ODRL Evaluator uses as input:
 	In ODRL 2.2 a Permission can be limited by duties, like making a payment, we call these <b>Conditions</b>.
 	It can also be limited by <b>Constraints</b> (in time, in space, etc.). 
         In addition, the definition of the permitted action, the asset, and the party collection can be refined with <b>Refinements</b>. 
-        The evaluation of these Conditions (duties), Constraints and Refinements determine whether the Permission is active or not.  
+        The evaluation of these Conditions (duties) and Constraints determine whether the Permission is active 
+	(i.e., it permits the performance of an action that belongs to the class of action regulated by the permission
+	and that satisfies all the refinements) or not.  
 
         <!--The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.-->
 	Permissions can be evaluated in two different scenarios: access control or monitoring.
 </p>
 	 <p>
-            In the <b>access control scenario</b>: when an action is <b>attempted</b>,
+            In the <b>access control scenario</b>: when an action is <b>attempted/requested</b>,
             the activation of permissions is computed. 
-	    If there is an active permission that permits such an action, the action is performed, and the permission is used by such an action.
-	    If there is not an active permission that permits such an action, the action is blocked.
-	<!--In the access control scenario, the value of the satisfaction state of a Refinement is computed according to the action that an agent 
-	attempts to perform on digital resources and is used to compute the activation of the permission.-->
+	    If there is an active permission that permits such an action with all refinements satisdied, 
+	    then action is permitted.
+	    If there is not an active permission that permits such an action with all refinements satisdied, 
+	    then action is denied.
         </p>
 
 	     <p>
-            In the <b>monitoring scenario</b>: when an action is <b>performed</b> it is represented in the state of the world.
-            When the performace of the action is evaluated with respect to the permissions, 
-	    if there is no active permission to do such an action and the default setting for the ODRL Evaluator
-            is set to "everything is prohibited unless explicitly permitted" a violation should be generated. <br>
-	
-	If the performed action belongs to class of actions regulated by an active permission AND the performed action satifies the Refinements,
-	then the action is permitted and the permission is used by such an action.<br>
+            In the <b>monitoring scenario</b>: when an action is <b>performed</b>, it is represented in the state of the world.
+            When the performace of the action has to be evaluated with respect to the permissions.
+	    If the performed action belongs to class of actions (with all refinements satisfied) regulated 
+	    by an active permission, then the action is permitted. 
+	    if there is no active permission to do such an action (with all refinements satisfied) and the default 
+	    setting for the ODRL Evaluator is set to "everything is prohibited unless explicitly permitted" a 
+	    violation should be generated. <br>
+	<br>
 	
 	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
             represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the activation of the Permission.-->
@@ -260,17 +264,17 @@ More precisely, the ODRL Evaluator uses as input:
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
 		
-        The ODRL Evaluator compute that a Permission is <b>active</b> if:
+        The ODRL Evaluator computes that a Permission is <b>active</b> if:
         </p>
         <ol>
             <li>all the existing Constraints of the Rule are satisfied and;</li> 
-            <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive and; </li>
-            <li>only for the access control scenario: all the existing Refinements of the 
-            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>
+            <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive; </li>
+           <!-- <li>only for the access control scenario: all the existing Refinements of the 
+            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>-->
         </ol>
 
 <p>
-        If the Permission is active, then the action is permitted. <br>
+        <!--If the Permission is active, then the action is permitted. <br>-->
 	If one of those conditions is not met, the Permission is <b>inactive</b>. 
 </p>
 
@@ -323,24 +327,27 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-            The ODRL Evaluator has to calculate first the activation state. The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-            As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 is passed, the Permission is inactive.<br>
+        The ODRL Evaluator has to calculate first the activation state of the permission. 
+	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
+        As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
+	is passed, the Permission is inactive.<br>
 	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>distribute</code> and 
 	<code>object</code> equal to the target of the permission, i.e. <code>document:1234</code>.
         </p>
 
-        <i>Access control scenario:</i> 
+        <i>Access control or monitoring scenario:</i> 
         <ul>
-            <li>(E-13-1) If the attempted action belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action can be performed. </li>
-            <li>(E-13-2) If the attempted action belongs to the class of actions regulated by the Permission, but the 
-            Permission is inactive, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is blocked and it cannot be performed.</li>
-            <li>If such an action does not belong to the class of actions regulated by the Permission it means that the Permission 
-            is not relevant.</li>
+            <li>(E-13-1) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
+            and the Permission is active then the action is permitted. </li>
+            <li>(E-13-2) If the attempted  or perfomed action belongs to the class of actions regulated by the Permission, 
+	    but the Permission is inactive, then, assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
+            <li>If If the attempted or perfomed action does not belong to the class of actions regulated by the Permission 
+	     then assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
         </ul>
         <p>
-            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in the different cases. 
+            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
             
         </p>
         <table border="1" style="font-size:small;">
@@ -348,10 +355,10 @@ More precisely, the ODRL Evaluator uses as input:
                     <th>Example</th>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">World</th>
-		    <th style="color:darkblue">Requested Action</th>
+		    <th style="color:darkblue">Requested/Performed Action</th>
                     <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
-                    <th style="color:darkred"><kbd>access control</kbd><br/>activation state of <br><code>permission</code></th>
-		    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
+                    <th style="color:darkred"><br/>activation state of the <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>control state of the <br><code>permission</code> </code></th>
             <th>output</th>
              </tr>
             <tr>
@@ -362,7 +369,7 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
                     <td>satisfied</td>
                     <td>active</td>
-		    <td>permit the requested action</td>
+		    <td>permit the action</td>
             <td>(<a href="examples/output13-1-basic.json">link 1</a>)<br>(<a href="examples/output13-1-advanced.json">link 2</a>)</td>
             </tr>
             <tr>
@@ -373,11 +380,12 @@ More precisely, the ODRL Evaluator uses as input:
 		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
-		    <td>deny the requested action</td>
+		    <td>deny the action</td>
             <td>(<a href="examples/output13-2-basic.json">link 1</a>)<br>(<a href="examples/output13-2-advanced.json">link 2</a>)</td>
             </tr>
         </table>        
-        
+
+	    <!--
         <p><i>Monitoring scenario:</i></p> 
         <ul>
             <li>(E-13-3) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is active, 
@@ -413,6 +421,7 @@ More precisely, the ODRL Evaluator uses as input:
 		<td>deny the attempted action</td>
             </tr>
         </table>
+	-->
     <hr/>
 	    
     <h4>Example of a permission whose permitted action is refined</h4>
@@ -452,7 +461,11 @@ More precisely, the ODRL Evaluator uses as input:
 	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>print</code> and 
             its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
 		
-        </p>    
+        </p>  
+	<!--
+	Nicoletta: we keep only one table and we do not consider the refinement in the computation of the activation of the permision
+	    like we do for obligations and prohibitions
+	    
         <p><i>Access control scenario:</i></p> 
         <ul>
             <li>(E14-1) If the attempted action belongs to the class of actions regulated by the Permission
@@ -471,8 +484,8 @@ More precisely, the ODRL Evaluator uses as input:
             <th style="color:darkblue">Policy</th>
             <th style="color:darkblue">Attempted Action</th>
             <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
-            <th style="color:darkred"><kbd>access control</kbd><br/>activation of <br><code>permission</code></th>
-	    <th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>
+            <th style="color:darkred"><kbd>access control</kbd><br/>activation state of the <br><code>permission</code></th>
+	    <th style="color:darkred"><kbd>access control</kbd><br/>control state of the <br><code>permission</code></code></th>
          </tr>
         <tr>
             <td>E14-1</td>
@@ -491,18 +504,19 @@ More precisely, the ODRL Evaluator uses as input:
 		<td>deny the attempted action</td>
         </tr>
         </table>
+
+	-->
         
-        <p><i>Monitoring scenario:</i></p> 
+        <p><i>Access control or monitoring scenario:</i></p> 
         <p>
             The Permission is always active because it has neither Constraints nor Conditions (Duties). 
 	Given a formal description a performed action. 
 	</p>
 	<ul>
-        <li>(E14-3) If the performed action belongs to the class of actions regulated by the Permission <i> AND 
-	the performed action satisfies the Refinement</i> then the action is permitted and the permission is used by the performed action.</li>
-	<li>(E14-4)If the performed actions belongs to the class of actions regulated by the Permission <i> AND does not satisfy the Refinement	
-	AND there is not another permission that permits such an action AND everything that is not permitted is prohibited,</i> 
-	then the performed action is not permitted and a violation has to be created.</li>
+        <li>(E14-1) If the requested or performed action belongs to the class of actions regulated by the Permission and 
+	the action satisfies the Refinement, then the permission permits the action.</li>
+	<li>(E14-2) If the requested or performed actions belongs to the class of actions regulated by the Permission 
+	but it does not satisfy the Refinement, then the permission does not permit the action.</li>
 	</ul>
         
 
@@ -510,26 +524,26 @@ More precisely, the ODRL Evaluator uses as input:
         <tr>
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
+                <th style="color:darkblue">Requested/Performed Action</th>
                 <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation of <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>
+                <th style="color:darkred">activation state of the <br><code>permission</code></th>
+		<th style="color:darkred">control state of the <br><code>permission</code></th>
          </tr>
         <tr>
-                <td>E14-3</td>
+                <td>E14-1</td>
                 <td>policy:14</td>
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi was performed</td> 
                 <td>satisfied</td>
                 <td>active </td>
-		 <td>permit the performed action</td>
+		 <td>permit the action</td>
         </tr>
         <tr>
-                <td>E14-4</td>
+                <td>E14-2</td>
                 <td>policy:14</td>
                 <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi was performed</td> 
                 <td>not-satisfied</td>
                 <td>active </td>
-		<td>deny the performed action</td>
+		<td>deny the action</td>
         </tr>
         </table>
 
@@ -548,8 +562,8 @@ More precisely, the ODRL Evaluator uses as input:
             (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
             and inactive the other days).</li>	
             <li>If the Constraints of the Condition (duty) are all satisfied or there are no Constraints, then the duty is <b>active</b>.
-            <li> If the Condition (duty) is <b>active</b> and its action with all refinements+properties satisfied is performed, 
-                then Condition (duty) is <b>fulfilled</b> by the performance of the action.</li>
+            <li> If the Condition (duty) is <b>active</b> and an action that belongs to the class of actions regulated by the 
+		Condition with all refinements satisfied is performed, then Condition (duty) is <b>fulfilled</b>.</li>
         </ol>
         <p>The life cycle of a Condition (duty) is depicted in the figure below:
             <img src="2024ODRLDuty.png"></p>
@@ -605,7 +619,7 @@ More precisely, the ODRL Evaluator uses as input:
             <b>Expected behaviour of the Evaluator</b>
         </p>
         <p>
-	The <b>class of actions</b>s regulated by this Permission has type equal to <code>play</code>,
+	The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
 	object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
         and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
 	
@@ -614,7 +628,7 @@ More precisely, the ODRL Evaluator uses as input:
             when in the state of the world there is a representation of a performed action that matches with the 
             the class of actions described in the <code>condition:1</code>. <br><br>
       
-	The <b>class of actions</b>s regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
+	The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
 	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
@@ -624,7 +638,7 @@ More precisely, the ODRL Evaluator uses as input:
         </p>
        
 
-        <p><i>Access control scenario:</i></p> 
+        <p><i>Access control or monitorin scenario:</i></p> 
         <p>
            Given a formal description of the attempted action, if such an action belongs to the class of actions regulated by the Permission 
 	and the Permission is active, then the action is performed, otherwise it is blocked.
