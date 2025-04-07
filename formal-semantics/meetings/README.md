@@ -11,4 +11,6 @@ Mon 28 April 2025 12:00 CEST (10 UTC)
 
 ## Past Meeting Notes
 19-20 December 2024 Madrid, see ODRL issues.
-[21 October 2024](meeting-2024-10-07.md)
+[21 October 2024](meeting-2024-10-21.md)
+[2 October 2024](meeting-2024-10-02.md)
+
