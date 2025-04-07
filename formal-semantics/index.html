@@ -770,6 +770,17 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             <b>Expected behaviour of the Evaluator</b>
         </p>
+
+<p>The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
+object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
+and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
+</p>
+	    
+<p>The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
+its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
+the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
+<code>party:sony</code>.  </p>
+	    
         <p>
         <code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
 	it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
@@ -783,29 +794,27 @@ More precisely, the ODRL Evaluator uses as input:
         If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
         If the Condition is fulfilled the Permission is active.
         </p>
-<p><i>Access control and monitoring scenario:</i></p> 
-<p>The monitoring scenario and the access control scenario have the same evaluation when there is no refinement 
-to be evaluated on the attempted or executed action that belongs to the class of actionss regulated by this Permission
-(its type is equal to <code>play</code>, its object is equal to the <code>target</code> of the permission, 
-i.e. <code>music:1999.mp3</code>,and its <code>performer</code> is equal to the assignee of the permission, 
-i.e. <code>party:billie</code>).</p>
-	    
+<p><i>Access control or monitoring scenario:</i></p> 
+   
         <table border="1" style="font-size:small;">
             <tr>
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
+		<th style="color:darkblue">Requested/Performed Action</th>
                 <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
                 <th style="color:darkred">satisfaction of <br><code>refinement:1</code></th>
                 <th style="color:darkred">activation of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><br>activation of <br><code>permission</code></th>
-		<th style="color:darkred"><br>control state</th>
+                <th style="color:darkred"><br>activation of the <br><code>permission</code></th>
+		<th style="color:darkred"><br>control state of the <br><code>permission</code></th>
             </tr>
             <tr>
                 <td>E88-1</td>
                 <td>policy:88</td>
-                <td>It is Saturday<br></td> 
+                <td>It is not Sunday<br></td> 
+		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
+		and <code>performer</code> = <code>party:billie</code></td>
                 <td>not satisfied</td>
                 <td>don't care</td>
                 <td>inactive</td>
@@ -820,6 +829,8 @@ i.e. <code>party:billie</code>).</p>
 		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
 		and <code>beneficiary</code> = <code>party:sony</code> is NOT performed.<br>
 			</td> 
+		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
+		and <code>performer</code> = <code>party:billie</code></td>
                 <td>satisfied</td>
                 <td>not satisfied</td>
                 <td>active</td>
@@ -834,6 +845,8 @@ i.e. <code>party:billie</code>).</p>
 		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
 		and <code>beneficiary</code> = <code>party:sony</code> is performed.<br>
 		</td> 
+		    <td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
+		and <code>performer</code> = <code>party:billie</code></td>
                 <td>satisfied</td>
                 <td>satisfied</td>
                 <td>active</td>
