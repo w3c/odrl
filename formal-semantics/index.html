@@ -61,10 +61,16 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
         <ol>
             <li><b>Access control scenario</b>: the ODRL Evaluator determines the access by users or software agents to digital resources
             considering a set of policies, the state of the world, and the description of the action that a user 
-            requests to perform on certain digital resources.</li>
+            <bold>requests</bold> to perform on certain digital resources. It is possible to distinguished between 
+	    requested and <bold>attempted</bold> action. When an agent attempts to perform an action, 
+            e.g. an agent double-clicks on a picture, if the action is not permitted the attempt is recorded 
+	    and if it is the case sanctioned. 
+	In the case of a request, only the answer is generated: either the action is permitted or the action is denied.
+	    </li>
 
-            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the state of the world that includes the performed actions,
-            the ODRL Evaluator has to determine whether obligations or prohibitions have been fulfilled or violated by the performance of 
+            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the 
+	   state of the world that includes the actions actually <bold>performed</bold>, the ODRL Evaluator has to determine 
+	whether obligations or prohibitions have been fulfilled or violated by the performance of 
             certain actions, and which permissions are active.</li>
         </ol>
 
@@ -74,7 +80,7 @@ More precisely, the ODRL Evaluator uses as input:
 <ul> <!-- input of the Evaluator -->
   <li>a collection of ODRL Policies;</li>
   <li>a formal description of the state of the world;</li>
-  <li>for the access control scenario: a formal description of the action attempted by a given user who is located in a given place;</li>
+  <li>a formal description of the requeted or performed action by a given user who is located in a given place.</li>
 </ul>
 
 <p><!-- state of the world --> 
@@ -101,7 +107,7 @@ More precisely, the ODRL Evaluator uses as input:
            
 	     <li> the parties involved in a given state that have a <code>odrl:function</code> within the policies.</li>
 	     
-	     <li> a collection of performed actions, which are described in RDF by specifying at least:
+	     <li> actions are described in RDF by specifying at least:
                <ul> 
                   <li>the <code>type</code> (a list of actions types is available in the 
             <a href="https://www.w3.org/TR/odrl-vocab/#actionsCommon">ODRL Common Vocabulary</a>); </li>
@@ -110,9 +116,7 @@ More precisely, the ODRL Evaluator uses as input:
 		  <li>the instant of time at which the action occurs or begins, whcih is represented with the <code>atTime</code> property.</li>
                 </ul></li>
         </ul>
-        <p> The attempted actions are represented at least with their <code>type</code>, <code>performer</code>, 
-		<code>atTime</code>, and <code>object</code>.</p>
-      
+
     </section>			
 
     <section id="sectionPolicies">	
@@ -161,7 +165,7 @@ More precisely, the ODRL Evaluator uses as input:
         <p>
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
-		Constraint, State of the World, and attempted action. 
+		Constraint, State of the World, and actions. 
             Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
         <ul> <!-- attributes of the main objects -->
             <li>Permission, Prohibition, Obligation, and Condition (Duty) have a property called 
@@ -176,7 +180,7 @@ More precisely, the ODRL Evaluator uses as input:
 	    </li>
 
 	    <li>Permission has a property called <b>control state</b>, which can take the values of <b>permit</b> or 
-	    <b>deny</b> of a specific attempted or executed action.</li>
+	    <b>deny</b> of a specific action.</li>
 
             <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
             <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
@@ -205,7 +209,7 @@ More precisely, the ODRL Evaluator uses as input:
             The process for computing:
 	<ul>
 		<li>the satisfaction state of Constraints with respect to the state of the world; </li>
-		<li>the satisfaction state of Refinement with respect the attempted action or the state of the world;</li>
+		<li>the satisfaction state of Refinement with respect the action and the state of the world;</li>
                 <li>the performance state of an Action with respect to the state of the world</li>
 	 </ul>
 	 may be realized by another component (independent from the ODRL Evaluator). 
@@ -235,7 +239,7 @@ More precisely, the ODRL Evaluator uses as input:
 	Permissions can be evaluated in two different scenarios: access control or monitoring.
 </p>
 	 <p>
-            In the <b>access control scenario</b>: when an action is <b>attempted/requested</b>,
+            In the <b>access control scenario</b>: when an action is <b>requested</b>,
             the activation of permissions is computed. 
 	    If there is an active permission that permits such an action with all refinements satisdied, 
 	    then action is permitted.
@@ -270,7 +274,7 @@ More precisely, the ODRL Evaluator uses as input:
             <li>all the existing Constraints of the Rule are satisfied and;</li> 
             <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive; </li>
            <!-- <li>only for the access control scenario: all the existing Refinements of the 
-            Action, AssetCollection, PartyCollection are satisfied by the attempted action.</li>-->
+            Action, AssetCollection, PartyCollection are satisfied by the requested action.</li>-->
         </ol>
 
 <p>
@@ -339,10 +343,10 @@ More precisely, the ODRL Evaluator uses as input:
         <ul>
             <li>(E-13-1) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
             and the Permission is active then the action is permitted. </li>
-            <li>(E-13-2) If the attempted  or perfomed action belongs to the class of actions regulated by the Permission, 
+            <li>(E-13-2) If the requested or perfomed action belongs to the class of actions regulated by the Permission, 
 	    but the Permission is inactive, then, assuming that only this Permission is considered 
             (this is because other permissions could regulate this action), the action is denied.</li>
-            <li>If If the attempted or perfomed action does not belong to the class of actions regulated by the Permission 
+            <li>If If the requested or perfomed action does not belong to the class of actions regulated by the Permission 
 	     then assuming that only this Permission is considered 
             (this is because other permissions could regulate this action), the action is denied.</li>
         </ul>
@@ -409,7 +413,7 @@ More precisely, the ODRL Evaluator uses as input:
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>satisfied</td>
                 <td>active</td>
-		<td>permit the attempted action</td>
+		<td>permit the action</td>
             </tr>
             <tr>
                 <td>E13-4</td>
@@ -418,7 +422,7 @@ More precisely, the ODRL Evaluator uses as input:
 		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
                 <td>not-satisfied</td>
                 <td>inactive</td>
-		<td>deny the attempted action</td>
+		<td>deny the action</td>
             </tr>
         </table>
 	-->
@@ -462,17 +466,18 @@ More precisely, the ODRL Evaluator uses as input:
             its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
 		
         </p>  
+	
 	<!--
 	Nicoletta: we keep only one table and we do not consider the refinement in the computation of the activation of the permision
 	    like we do for obligations and prohibitions
 	    
         <p><i>Access control scenario:</i></p> 
         <ul>
-            <li>(E14-1) If the attempted action belongs to the class of actions regulated by the Permission
+            <li>(E14-1) If the requested action belongs to the class of actions regulated by the Permission
           and it satisfies the refinement of the action (i.e. its <code>resolution</code> is less than or equal to 1200 dpi),
-          then the Permission is active and the attempted action can be performed.
+          then the Permission is active and the requested action can be performed.
             </li>
-            <li>(E14-2) If the attempted action belongs to the class of actions regulated by the Permission 
+            <li>(E14-2) If the requested action belongs to the class of actions regulated by the Permission 
 	but the refinement of the action is not satisfied 
 	    (i.e. its <code>resolution</code> is more than 1200 dpi), then the Permission is inactive. 
             Assuming that only this Permission is considered then the action is blocked and it cannot be performed.</li>
