@@ -640,8 +640,9 @@ More precisely, the ODRL Evaluator uses as input:
 
         <p><i>Access control or monitorin scenario:</i></p> 
         <p>
-           Given a formal description of the attempted action, if such an action belongs to the class of actions regulated by the Permission 
-	and the Permission is active, then the action is performed, otherwise it is blocked.
+           Given a formal description of the requested or performed action, if such an action belongs to the class of 
+	actions regulated by the Permission and the Permission is active, then the action is permitted, otherwise it is 
+	denied.
         </p>
 
         <table border="1" style="font-size:small;">
@@ -649,11 +650,11 @@ More precisely, the ODRL Evaluator uses as input:
                 <th>Example</th>
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
-		  <th style="color:darkblue">   Attempted Action </th>
+		  <th style="color:darkblue">Requested/Performed Action</th>
                 <th style="color:darkred">activation state of <br><code>condition:1</code></th>
                 <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><kbd>access control</kbd><br>activation state <br><code> of permission</code></th>
-		<th style="color:darkred"><kbd>access control</kbd><br/>control state</code></th>   
+                <th style="color:darkred">activation state of the <br><code>permission</code></th>
+		<th style="color:darkred">control state of the <br><code>permission</code></th>   
             </tr>
             <tr>
                 <td>E22-1</td>
@@ -663,9 +664,9 @@ More precisely, the ODRL Evaluator uses as input:
 		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
 		and <code>performer</code> = <code>party:billie</code></td>
                 <td>active</td>
-                <td>not set</td>
+                <td>not-set</td>
                 <td>inactive</td>
-		<td>deny the attempted action</td>    
+		<td>deny the action</td>    
             </tr>
         <tr>
                 <td>E22-2</td>
@@ -677,9 +678,11 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		 <td>permit the attempted action</td>    
+		 <td>permit the action</td>    
         </tr>
        </table>    
+
+<!--
        <p><i>Monitoring scenario:</i></p>
        Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
        then the permission is used by the performed action.
@@ -718,7 +721,9 @@ More precisely, the ODRL Evaluator uses as input:
                 <td>active</td>
 		<td>permit the performed action</td>    
             </tr>
-        </table>    
+        </table> 
+
+-->
 
         <h4>Example of a permission whose condition has constraints</h4>
             <p>
