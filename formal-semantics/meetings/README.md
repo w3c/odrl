@@ -7,7 +7,7 @@ Previous meeting notes (from 2022 to 2024) are available [here](https://www.w3.o
 The ZOOM meeting connection URL and password to access is [here](https://lists.w3.org/Archives/Member/internal-odrl/2020May/0000.html) 
 
 ## Next Meetings 
-Mon 28 April 2025 12:00 CEST (10:00 UTC)
+Mon 28 April 2025 12:00 CEST (10:00 UTC): discuss [Formal Semantics issues](https://github.com/w3c/odrl/issues?page=1)
 
 ## Past Meeting Notes
 19-20 December 2024 Madrid, see ODRL issues.
