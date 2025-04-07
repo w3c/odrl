@@ -868,13 +868,11 @@ the <code>odrl:compensate</code> action is not specified) its <code>beneficiary<
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 
-In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world.
-
-Duties on prohibitions have no defined meaning.<br>
+In order to evaluate if a prohibition is active, it is necessary to evaluate the satisfaction of its Constraints on the state of the world.<br>
 
 An ODRL Evaluator will determine that a violation has been produced if the action regulated by an active prohibition is performed. 
 If multiple actions are related to a single prohibition, the execution of a single action will result in a violation. 
-The ODRL Evaluator will calculate the deontic state of an <b>active</b> prohibition to be within one of these possibilities:
+The ODRL Evaluator will calculate the <b>deontic state</b> of an <b>active</b> prohibition to be within one of these possibilities:
     <ul>
     <li> <b>not-set</b> when the regulated action with all refinements satisfied has not been performed; </li>
     <li> <b>violated</b> when the regulated action with all refinements satisfied has been performed; </li>
@@ -889,7 +887,7 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             This is example is similar to <a href="https://www.w3.org/TR/odrl-model/#prohibition">Example 19</a> in the Information 
             Model, with the differences that it has not a related permission and it has a Constraint. In this case, there is a prohibition that is constrained by a constraint.
             The policy below is a formal Agreement between two parties (the assigner and the assignee) that the action of archiving the specified digital asset is prohibited.
-            The prohibition is specifically active only during the year 2024.
+            The prohibition is specifically active before the first day of 2025.
         </p>	
         <pre>
         {
@@ -905,8 +903,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             "constraint": [{
                "@id" : "http://example.com/constraint/1",
                "leftOperand": "dateTime",
-               "operator": "eq",
-               "rightOperand":  { "@value": "2024", "@type": "xsd:gYear" }
+               "operator": "lt",
+                "rightOperand":  { "@value": "2025-01-01", "@type": "xsd:date" }
            }]
         }]
         }
@@ -918,8 +916,10 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             The prohibition has an activation state and a deontic state that have to be calculated. 
         </p>
         <p>
-            In this example, the Constraint must be evaluated on the state of the world. As long as the current time is in 2024, 
-            the Prohibition is active. Before or after 2024 the Prohibition is inactive. When the Prohibition is active, if the prohibited action is performed there is a violation.
+            In this example, the Constraint must be evaluated on the state of the world. 
+	As long as the current time is before the first day of 2025 the Prohibition is active. 
+	After that date the Prohibition is inactive. 
+	When the prohibition is active, a violation occurs if the prohibited action is performed.
         </p>
         <table border="1" style="font-size:small;">
             <tr>
@@ -927,14 +927,14 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
                 <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>                
-                <th style="color:darkred">activation of <br><code>prohibition:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br>deontic state of <br><code>prohibition:1</code></th>
+                <th style="color:darkred">activation of the <br><code>prohibition:1</code></th>
+                <th style="color:darkred">deontic state of the <br><code>prohibition:1</code></th>
             </tr>
             <tr>
                 <td>E55-1</td>
                 <td>policy:55</td>
-                <td>in 2024 and <code>archive</code> of <code>photoAlbum:55</code> <br> 
-		by <code>assignee:55</code> is performed</td>                 
+                <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
+		by <code>assignee:55</code> is performed before 2025-01-01</td>                 
                 <td>satisfied</td>
                 <td>active</td>
                 <td>violated by the performed action</td>
@@ -942,8 +942,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             <tr>
                 <td>E55-2</td>
                 <td>policy:55</td>
-               <td>in 2024 and <code>archive</code> of <code>photoAlbum:55</code> <br> 
-		by <code>assignee:55</code> is NOT performed</td>                        
+               <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
+		by <code>assignee:55</code> is NOT performed before 2025-01-01</td>                        
                 <td>satisfied</td>
                 <td>active</td>
                 <td>not-set</td>
@@ -951,8 +951,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             <tr>
                 <td>E19-3</td>
                 <td>policy:55</td>                
-               <td>in 2025 and <code>archive</code> of <code>photoAlbum:55</code> <br> 
-		by <code>assignee:55</code> is performed</td>        
+               <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
+		by <code>assignee:55</code> is performed after 2025-01-01</td>        
                 <td>not-satisfied</td>
                 <td>inactive</td>
                 <td>not-set</td>
