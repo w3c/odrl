@@ -764,7 +764,7 @@ More precisely, the ODRL Evaluator uses as <b>input</b>:
                 }],
                 "constraint": [{
                     "@id" : "http://example.com/constraint/1",
-                    "leftOperand": "dateTime",
+                    "leftOperand": "ex:dayOfWeek",
                     "operator": "eq",
                     "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
                 }]
@@ -789,7 +789,8 @@ the <code>odrl:compensate</code> action is not specified) its <code>beneficiary<
         <p>
         <code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
 	it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
-        (the state of the world satisfies its Constraints, i.e. the current date is a Sunday). 
+        (the state of the world satisfies its Constraints, i.e. the current date is a Sunday. For expressing this constraint
+	an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
 	An active Constraint, it is also <b>fulfilled</b> when in the state of the world there is a representation 
 	of an performed action that matches with the class of actions described in the Constraint.
         </p>
@@ -937,7 +938,7 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
 		by <code>assignee:55</code> is performed before 2025-01-01</td>                 
                 <td>satisfied</td>
                 <td>active</td>
-                <td>violated by the performed action</td>
+                <td>violated by the action</td>
             </tr>
             <tr>
                 <td>E55-2</td>
