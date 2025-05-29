@@ -20,5 +20,5 @@
         rdfs:label        "All rights reserved"@en ;
         cc:legalcode      <http://en.wikipedia.org/wiki/All_rights_reserved> ;
         dct:publisher     "None" ;
-        odrl:prohibition  [ odrl:action  ldr:IPRRight , ldr:DatabaseRight ] .
+        odrl:prohibition  [ odrl:action  ldr:IPRight , ldr:DatabaseRight ] .
 
