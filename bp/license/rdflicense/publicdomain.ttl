@@ -21,5 +21,5 @@
         cc:legalcode     "This statement can be applied to material truly in the public domain (because rights have expired, forfeited or are innaplicable). This text cannot be deemed as a license -namely, public domain works do not need to be licensed."@en ;
         dct:publisher    " None" ;
         dct:source       <http://en.wikipedia.org/wiki/Public_domain> ;
-        odrl:permission  [ odrl:action  ldr:IPRRight , ldr:DatabaseRight ] .
+        odrl:permission  [ odrl:action  ldr:IPRight , ldr:DatabaseRight ] .
 
