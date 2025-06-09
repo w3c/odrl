@@ -26,4 +26,4 @@ Contributors are invited to add new examples to the formal-semantics/examples fo
 * (Optional) README.md – a brief human-readable description of the example, its purpose, the authors and the context of the example (e.g., a research project or company use case).
 * (Optional) Behaviour – a file containing one of the following words: default, close, or open. In the case this file is not provided, it is considered that the policy should be evaluated following the close behaviour.
 
-Any of the previous RDF files can be submitted in `Turtle`, for this case, use the `.ttl` extension for the tutle files.
+Any of the previous RDF files can be submitted in `Turtle`, for this case, use the `.ttl` extension for the Turtle files.
