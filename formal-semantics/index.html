@@ -82,8 +82,8 @@ More precisely, the ODRL Evaluator uses as <b>input</b>:
   <li>a formal description of the State of the World;</li>
   <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
 the actor who is located in a given place, the target, and an instant of time);</li>
-  <li> the default behaviour when an action is neither permitted nor prohibited. It can be open or closed. The default behaviour 
-       in the following examples is closed. 
+<!!--  <li> an optional parameter specifying the behaviour when an action is neither permitted nor prohibited. Its value can be open or closed. 
+The default value is closed. -->
   </li>
 </ol>
 
@@ -136,11 +136,10 @@ the actor who is located in a given place, the target, and an instant of time);<
         </ul>
 
 	<p>Before providing the semantics of an ODRL Policy that may contain one or more Rules, 
-	we have to provide the semantics of the various types of ODRL Rules: Permission, Prohibition, and Obligation.</p>
+	we have to provide the semantics of the different types of ODRL Rules: Permission, Prohibition, and Obligation.</p>
 
-	<p>Our approach in providing the semantics of an ODRL Policy is first to reach agreement in the ODRL Community Group 
-	on the output of the ODRL Evaluator for the various types of ODRL rules and then to generalise that output for a generic rule 
-	and then for a generic policy.</p>
+	<p>Our approach in providing the semantics of an ODRL Policy is first to reach agreement, inside the ODRL Community Group,
+	on the output of the ODRL Evaluator for different types of ODRL rules and then to generalise that output.</p>
     </section>
 
     <section id="sectionPermissionsProhibitionsObligations">	
