@@ -134,6 +134,13 @@ the actor who is located in a given place, the target, and an instant of time);<
             <li>An <code>odrl:Offer</code> policy must not be considered by an ODRL Evaluator. It is created by an <code>odrl:Assigner</code> as a mere proposition.</li>
             <li>An <code>odrl:Agreement</code> policy must be considered by an ODRL Evaluator as any other <code>odrl:Set</code> policy. It represents the accord between (<i>at least</i>) one <code>odrl:Assigner</code> and a <code>odrl:Assignee</code>. An instance of <code>odrl:Agreement</code> may have a way for the <code>odrl:Assigner</code> to trace to its related <code>odrl:Offer</code>.</li>
         </ul>
+
+	<p>Before providing the semantics of an ODRL Policy that may contain one or more Rules, 
+	we have to provide the semantics of the various types of ODRL Rules: Permission, Prohibition, and Obligation.</p>
+
+	<p>Our approach in providing the semantics of an ODRL Policy is first to reach agreement in the ODRL Community Group 
+	on the output of the ODRL Evaluator for the various types of ODRL rules and then to generalise that output for a generic rule 
+	and then for a generic policy.</p>
     </section>
 
     <section id="sectionPermissionsProhibitionsObligations">	
