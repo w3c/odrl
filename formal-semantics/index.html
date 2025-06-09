@@ -78,9 +78,13 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
 More precisely, the ODRL Evaluator uses as <b>input</b>:
 </p>
 <ul> <!-- input of the Evaluator -->
-  <li>a collection of ODRL Policies;</li>
-  <li>a formal description of the state of the world;</li>
-  <li>a formal description of the requested or performed action by a given user who is located in a given place.</li>
+  <li>an ODRL Policy;</li>
+  <li>a formal description of the State of the World;</li>
+  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
+the actor who is located in a given place, the target, and an instant of time).</li>
+  <li> the default behaviour when an action is neither permitted nor prohibited. It can be open or closed. The default behaviour 
+       in the following examples is closed. 
+  </li>
 </ul>
 
 <p><!-- state of the world --> 
