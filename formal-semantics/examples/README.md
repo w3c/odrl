@@ -1,6 +1,6 @@
 # Formal Semantics Examples
 
-This folder contains examaples of policies that are evaluated according to the [ODRL formal semantics document](https://w3c.github.io/odrl/formal-semantics/).
+This folder contains examples of policies that are evaluated according to the [ODRL formal semantics document](https://w3c.github.io/odrl/formal-semantics/).
 
 These examples are organised into two levels of sub-folders following the taxonomization of policy types described in the [ODRL formal semantics document](https://w3c.github.io/odrl/formal-semantics/). Within each policy type folder several examples are expected to be found, each example consist of at least 4 files: `policy.json`, `state.json` `evaluationrequest.json`, `compliancereport.json`. Following an overview of the tree structure is given: 
 
