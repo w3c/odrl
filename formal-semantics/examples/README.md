@@ -9,10 +9,13 @@ These examples are organised into two levels of sub-folders following the taxono
 └── odrl/formal-semantics/examples/
     ├── A Evaluation of Constraints and Refinements/
     │   ├── A1 Example of a constrained permission
-    │   └── A2 Example of a permission whose permitted action is refined
+    │   ├── A2 Example of a permission whose permitted action is refined
+    │   └── ...
+    │
     └── B Evaluation of Conditions (Duties)/
         ├── B1 Example of a conditioned permission
-        └── B2 Example of a permission whose condition has constraints
+        ├── B2 Example of a permission whose condition has constraints
+        └── ...
 ```
 
 ## How to contribute new examples
