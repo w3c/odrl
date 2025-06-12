@@ -12,10 +12,12 @@ These examples are organised into two levels of sub-folders following the taxono
     │   ├── A2 Example of a permission whose permitted action is refined
     │   └── ...
     │
-    └── B Evaluation of Conditions (Duties)/
-        ├── B1 Example of a conditioned permission
-        ├── B2 Example of a permission whose condition has constraints
-        └── ...
+    ├── B Evaluation of Conditions (Duties)/
+    │   ├── B1 Example of a conditioned permission
+    │   ├── B2 Example of a permission whose condition has constraints
+    │   └── ...
+    │
+    └── ...
 ```
 
 ## How to contribute new examples
