@@ -38,6 +38,13 @@ var respecConfig = {
                 companyURL: "https://www.deonticdata.com/",
                 mailto: ""
             },
+            {
+                name: "Yassir Sellami",
+                url: "https://www.linkedin.com/in/yassir-sellami/",
+                company: "Gaia-X",
+                companyURL: "https://gaia-x.eu/",
+                mailto: "yassir.sellami@gaia-x.eu"
+            },
         ],
     group: "odrl",
     wgPublicList: "public-odrl",
