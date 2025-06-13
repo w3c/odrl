@@ -1,0 +1,28 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix odrl-fs: <https://w3id.org/odrl-fs#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+odrl-fs:EvaluationRequestShape a sh:NodeShape ;
+    sh:targetClass odrl-fs:EvaluationRequest ;
+    
+    sh:property [
+        sh:path odrl:action ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class odrl:Action ;
+    ] ;
+    
+    sh:property [
+        sh:path odrl:assignee ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class odrl:Party ;
+    ] ;
+
+    sh:property [
+        sh:path odrl:target ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class odrl:Asset ;
+    ] .

@@ -1,0 +1,23 @@
+{
+  "@context": {
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "odrl-fs": "https://w3id.org/odrl-fs#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "description": "https://schema.org/description",
+    "EvaluationRequest": "odrl-fs:EvaluationRequest",
+    "action": {
+      "@id": "odrl:action",
+      "@type": "http://www.w3.org/ns/odrl/2/Action"
+    },
+    "assignee": {
+      "@id": "odrl:assignee",
+      "@type": "http://www.w3.org/ns/odrl/2/Party"
+    },
+    "target": {
+      "@id": "odrl:target",
+      "@type": "http://www.w3.org/ns/odrl/2/Asset"
+    }
+  }
+}
