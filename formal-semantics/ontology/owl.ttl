@@ -1,0 +1,26 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix odrl-fs: <https://w3id.org/odrl-fs#> .
+
+odrl-fs:EvaluationRequest a rdfs:Class , owl:Class, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    rdfs:label "Evaluation Request"@en ;
+    skos:definition "The evaluator uses the Evaluation Request to determine whether a particular action by an assignee on a target is permitted according to an ODRL policy."@en ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty odrl:action ;
+        owl:someValuesFrom odrl:Action
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty odrl:assignee ;
+        owl:someValuesFrom odrl:Party
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty odrl:target ;
+        owl:someValuesFrom odrl:Asset
+    ] .
