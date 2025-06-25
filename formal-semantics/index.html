@@ -124,15 +124,20 @@ The default value is closed. -->
 
             <h3>Formal Description of the Evaluation Request</h3>
             <p>
-                As mentioned in the final paragraph of the introduction, an evaluator requires an <code>Evaluation Request</code> as input.
-                The evaluator uses an Evaluation Request as input to assess whether a particular odrl:Action by an odrl:Party on a odrl:Asset can be fulfilled according to an ODRL policy.
-                The <code>Evaluation Request</code>, which is represented in RDF, is formally defined by the class <code>odrl-fs:EvaluationRequest</code> and MUST contain the following properties:
+                As mentioned in the final paragraph of the introduction, an evaluator requires an <b>Evaluation Request</b> as input.
+                <!-- The evaluator uses an Evaluation Request as input to assess whether a particular <code>odrl:Action</code> by an <code>odrl:Party</code> on an <code>odrl:Asset</code> can be fulfilled according to an ODRL policy. -->
+                The <b>Evaluation Request</b>, which is represented in RDF, is formally defined by the class <code>odrl-fs:EvaluationRequest</code> and MUST contain the following properties:
             </p>
             <ul>
                 <li><code>odrl:action</code>: The operation the assignee wants to perform/performed (e.g., use, read, modify).</li>
                 <li><code>odrl:assignee</code>: The party (e.g., person or organization) requesting/requested the action.</li>
                 <li><code>odrl:target</code>: The asset (e.g., file, document, data) on which the action is to be/was performed.</li>
+                <li><code>dcterms:issued</code>: The time of the request.</li>
             </ul>
+            <p>
+                Additional contextual information can also be included in the Evaluation Request, 
+                e.g., a purpose for exercising the requested action.
+            </p>
             <p>
                 To ensure consistency, it is recommended that requests conform to the defined SHACL shapes.
             </p>
