@@ -19,9 +19,9 @@ var respecConfig = {
             },
             {  
                 name: "Beatriz Esteves",
-                url: "https://besteves4.github.io",
-                company: "imec",
-                companyURL: "https://www.imec-int.com/",
+                url: "https://w3id.org/people/besteves",
+                company: "IDLab, Ghent University - IMEC",
+                companyURL: "http://idlab.ugent.be/",
                 mailto: "beatriz.esteves@ugent.be"
             },
             {  
