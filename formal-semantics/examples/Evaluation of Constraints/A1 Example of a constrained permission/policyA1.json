@@ -3,6 +3,7 @@
 "@type": "Set",
 "uid": "http://example.com/policy/A1",
 "permission": [{
+   "@id": "http://example.com/rule/A1",
    "target": "http://example.com/document/1234",
    "assigner": "http://example.com/party/16",
    "action": "distribute",
