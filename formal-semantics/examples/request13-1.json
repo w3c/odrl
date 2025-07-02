@@ -1,10 +1,10 @@
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
-  "@type": "Request",
-  "uid": "http://example.com/policy/request/13",
-  "permission": [{
-    "target": "http://example.com/document/1234",
-    "assignee": "http://example.com/party/1",
-    "action": "distribute"
-  }]
+  "@context": {
+    "http://www.w3.org/ns/odrl.jsonld",
+    "odrl-fs": "https://w3id.org/odrl-fs#"
+  },
+  "@type": "odrl-fs:EvaluationRequest",
+  "action": "odrl:distribute",
+  "assignee": {"@id": "http://example.com/party/1"},
+  "target": "http://example.com/document/1234"
 }
