@@ -23,7 +23,7 @@
     <body>
         <section  id="abstract">
             <p>
-                This document specifies the expected behaviour of an ODRL Evaluator, a piece of software that performs computations based on a set of policies and a certain state of the world. 
+                This document specifies the expected behaviour of an ODRL Evaluator, a piece of software that performs computations based on a set of policies, a request and a certain state of the world. 
             </p>
         </section>
         <section id='sotd'>
@@ -34,7 +34,7 @@
                     The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted, prohibited, and obligated actions over a certain asset. 
             </p>
             <p> <!-- reference of official ODRL-documents -->
-                    The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification. This document does not contradict these documents and its interpretation is subordinated to theirs.	
+                    The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification. This document does not contradict these documents, and its interpretation is subordinate to theirs.	
             </p>
             <p> <!-- the use of ontologies -->
                     The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system, among others.
@@ -72,6 +72,114 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
 	whether obligations or prohibitions have been fulfilled or violated by the performance of 
             certain actions, and which permissions are active.</li>
         </ol>
+
+<section id="conventions">
+<h3>Document Conventions</h3>
+    <p>Within this document, the following namespace prefix bindings are used:</p>
+<table class="def">
+    <tbody>
+      <tr>
+        <th>Prefix</th>
+        <th>Namespace</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>odrl</td>
+        <td>http://www.w3.org/ns/odrl/2/</td>
+        <td>[[odrl-vocab]] [[odrl-model]]</td>
+      </tr>
+      <tr>
+        <td>odrl-fs</td>
+        <td>to be defined</td>
+        <td>Resources defined by this spec</td>
+      </tr>
+      <tr>
+        <td>rdf</td>
+        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+        <td>[[rdf11-concepts]]</td>
+      </tr>
+      <tr>
+        <td>rdfs</td>
+        <td>http://www.w3.org/2000/01/rdf-schema#</td>
+        <td>[[rdf-schema]]</td>
+      </tr>
+         <tr>
+        <td>owl</td>
+        <td>http://www.w3.org/2002/07/owl#</td>
+        <td>[[owl2-overview]]</td>
+      </tr>
+    <tr>
+        <td>xsd</td>
+        <td>http://www.w3.org/2001/XMLSchema#</td>
+        <td>[[xmlschema11-2]]</td>
+      </tr>
+          <tr>
+        <td>skos</td>
+        <td>http://www.w3.org/2004/02/skos/core#</td>
+        <td>[[skos-reference]]</td>
+      </tr>
+      <tr>
+        <td>dcterms</td>
+        <td>http://purl.org/dc/terms/</td>
+        <td>[[dcterms]]</td>
+      </tr>
+        <tr>
+        <td>vcard</td>
+        <td>http://www.w3.org/2006/vcard/ns#</td>
+        <td>[[vcard-rdf]]</td>
+      </tr>
+      <tr>
+        <td>foaf</td>
+        <td>http://xmlns.com/foaf/0.1/</td>
+        <td>[[foaf]]</td>
+      </tr>
+
+      <tr>
+        <td>schema</td>
+        <td>http://schema.org/</td>
+        <td><a href="http://schema.org/">schema.org</a></td>
+      </tr>
+
+                     <tr>
+        <td>cc</td>
+        <td>https://creativecommons.org/ns#</td>
+        <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
+      </tr>
+
+                     <tr>
+        <td>ex</td>
+        <td>http://example.com/ns#</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</section>          
+
+<section id="terminology">
+<h3>Terminology</h3>
+        <ul>
+            <li><b>Condition</b>. An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <code>odrl:Permission</code>
+            when the <code>odrl:Permission</code> refers to it by means of the <code>odrl:duty</code> property.
+            </li>
+
+            <li><b>Consequence</b>. An instance of the class <code>odrl:Duty</code> represents a <b>Consequence</b> for a <code>odrl:Duty</code> 
+                    when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
+            
+            <li><b>Constraint</b>. An instance of the class <code>odrl:Constraint</code> is a <b>Constraint</b> of a <code>odrl:Rule</code> when the rule refers to it by means of the <code>odrl:constraint</code> property.</li>             
+            
+            <li><b>Obligation</b>. An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
+            when the <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
+
+            <li><b>Refinement</b>. An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. </li>
+
+            <li><b>Remedy</b>. An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
+                    when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
+
+        </ul>
+</section>    
+
 
 </section>
         <section id="sotw">
@@ -211,6 +319,7 @@ The ODRL Evaluator uses as <b>input</b>:
 			</aside>
 		<section id="sectionPolicies">	
             <h3>Evaluation Report</h3>
+            Pending to be written.
 		</section>
 
         </section>
@@ -240,31 +349,8 @@ The ODRL Evaluator uses as <b>input</b>:
             The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances of the classes 
             <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.
         </p>
-        <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings in ODRL:</p>
-        <ul><!-- meanings of duty -->
-            <li>An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
-            when the <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
-            <!--An Obligation can be activated, violated, or fullfilled.--></li>
-
-            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Condition</b> for a <code>odrl:Permission</code> 
-            when the <code>odrl:Permission</code> refers to it by means of the <code>odrl:duty</code> property.
-            <!--When an instance of the <code>odrl:Duty</code> class is used as an activation condition of a Permission, it can be active, fulfilled or not fullfilled.
-            This is a crucial difference between a Duty that represents an activation condition of a Permission and a Duty that represents an Obligation.-->
-            </li>
-            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Consequence</b> for a <code>odrl:Duty</code> 
-                    when the <code>odrl:Duty</code> refers to it by means of the <code>odrl:consequence</code> property. </li>
-            <li>An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
-                    when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
-        </ul>
-        <p>
-        In addition to this:
+        <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings: Obligation, Condition, Consequence or Remedy. Instances of the class <code>odrl:Constraint</code> may have the meaning of: Constraint or Refinement.
         </p>
-        <ul>
-            <li>An instance of the class <code>odrl:Constraint</code> is a <b>Constraint</b> of a <code>odrl:Rule</code> when the rule 
-                refers to it by means of the <code>odrl:constraint</code> property.</li> 
-            <li>An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. </li>
-        </ul>
-        <hr/>
         <p>
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
@@ -1237,84 +1323,6 @@ This specification owes much to the previous description in the <a href="https:/
 
 </small>
 
-<section id="conventions">
-<h2>Document Conventions</h2>
-    <p></p>
-<table class="def">
-    <tbody>
-      <tr>
-        <th>Prefix</th>
-        <th>Namespace</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>odrl</td>
-        <td>http://www.w3.org/ns/odrl/2/</td>
-        <td>[[odrl-vocab]] [[odrl-model]]</td>
-      </tr>
-      <tr>
-        <td>rdf</td>
-        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-        <td>[[rdf11-concepts]]</td>
-      </tr>
-      <tr>
-        <td>rdfs</td>
-        <td>http://www.w3.org/2000/01/rdf-schema#</td>
-        <td>[[rdf-schema]]</td>
-      </tr>
-         <tr>
-        <td>owl</td>
-        <td>http://www.w3.org/2002/07/owl#</td>
-        <td>[[owl2-overview]]</td>
-      </tr>
-    <tr>
-        <td>xsd</td>
-        <td>http://www.w3.org/2001/XMLSchema#</td>
-        <td>[[xmlschema11-2]]</td>
-      </tr>
-          <tr>
-        <td>skos</td>
-        <td>http://www.w3.org/2004/02/skos/core#</td>
-        <td>[[skos-reference]]</td>
-      </tr>
-      <tr>
-        <td>dcterms</td>
-        <td>http://purl.org/dc/terms/</td>
-        <td>[[dcterms]]</td>
-      </tr>
-        <tr>
-        <td>vcard</td>
-        <td>http://www.w3.org/2006/vcard/ns#</td>
-        <td>[[vcard-rdf]]</td>
-      </tr>
-      <tr>
-        <td>foaf</td>
-        <td>http://xmlns.com/foaf/0.1/</td>
-        <td>[[foaf]]</td>
-      </tr>
-
-      <tr>
-        <td>schema</td>
-        <td>http://schema.org/</td>
-        <td><a href="http://schema.org/">schema.org</a></td>
-      </tr>
-
-                     <tr>
-        <td>cc</td>
-        <td>https://creativecommons.org/ns#</td>
-        <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
-      </tr>
-
-                     <tr>
-        <td>ex</td>
-        <td>http://example.com/ns#</td>
-        <td></td>
-      </tr>
-
-    </tbody>
-  </table>
-
-</section>   		
 </section>   				
 
                     <!---		<section id="section2"> 
