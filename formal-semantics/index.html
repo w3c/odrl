@@ -44,16 +44,15 @@
 However, neither the specification of the model (in a text form) nor the vocabulary (in an OWL ontology) accurately describes the behaviour of an <b>ODRL Evaluator</b>. 
 
 <!-- objective of the evaluator -->
-The objective of an <b>ODRL Evaluator</b> is to determine as <b>output</b>: 
+The objective of an <b>ODRL Evaluator</b> is to determine: 
 <ul>
-  <li>which Permissions, Prohibitions, and Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
+  <li>which Permissions, Prohibitions, and/or Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
   A Rule is said to be active if it is in effect;</li>
   <!--<li>which Permissions have been <b>used</b>;</li>-->
   <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 </ul>
 
 This document describes the expected behaviour of an ODRL Evaluator, with a textual description and a collection of examples.
-This specification owes much to the previous description in the <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
 	
 <p> <!-- definition of the evaluator -->
 When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in at least one of these two scenarios:
@@ -61,37 +60,42 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
         <ol>
             <li><b>Access control scenario</b>: the ODRL Evaluator determines the access by users or software agents to digital resources
             considering a set of policies, the state of the world, and the description of the action that a user 
-            <b>requests</b> to perform on certain digital resources. It is possible to distinguished between 
+            <b>requests</b> to perform on certain digital resources. It may be useful to distinguish between 
 	    requested and <b>attempted</b> action. When an agent attempts to perform an action, 
             e.g. an agent double-clicks on a picture, if the action is not permitted the attempt is recorded 
 	    and if it is the case sanctioned. 
 	In the case of a request, only the answer is generated: either the action is permitted or the action is denied.
 	    </li>
 
-            <li><b>Policy monitoring scenario</b> (or compliance checking): given a set of policies and the description of the 
+            <li><b>Policy monitoring scenario</b> (also known as compliance checking or usage control): given a set of policies and the description of the 
 	   state of the world that includes the actions actually <b>performed</b>, the ODRL Evaluator has to determine 
 	whether obligations or prohibitions have been fulfilled or violated by the performance of 
             certain actions, and which permissions are active.</li>
         </ol>
 
+</section>
+        <section id="sotw">
+            <h2>ODRL Evaluator</h2> 	
 <p> 
-More precisely, the ODRL Evaluator uses as <b>input</b>:
+The ODRL Evaluator uses as <b>input</b>:
 </p>
-<ol> <!-- input of the Evaluator -->
-  <li>an ODRL Policy;</li>
-  <li>a formal description of the State of the World;</li>
-  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
-the actor who is located in a given place, the target, and an instant of time);</li>
-<!--  <li> an optional parameter specifying the behaviour when an action is neither permitted nor prohibited. Its value can be open or closed. 
-The default value is closed. -->
-  </li>
-</ol>
+			
+	<ol> <!-- input of the Evaluator -->
+	  <li>an ODRL Policy;</li>
+	  <li>a formal description of the State of the World;</li>
+	  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
+	the actor who is located in a given place, the target, and an instant of time);</li>
+	<!--  <li> an optional parameter specifying the behaviour when an action is neither permitted nor prohibited. Its value can be open or closed. 
+	The default value is closed. -->
+	  </li>
+	</ol>
+	This section describes the State of the World and the Evaluation Request.
 
-        <h3>Formal description of the State of the World</h3>
+        <h3>State of the World</h3>
         <p><!-- state of the world --> 
             The ODRL Evaluator requires a formal representation of the <b>state of the world</b>.
-            The state of the world specifies a set of knowledge representing real-world information that aids the evaluation of ODRL Policies.
-            For example, this state of the world may include the current date and time, the location of agents, or the history of performed actions.
+            The state of the world specifies knowledge representing real-world information that aids the evaluation of ODRL Policies.
+            For example, a certain state of the world may include the current date and time, the location of agents, or the history of performed actions.
         </p>
         <p>
             This document aims to provide a formal representation for the state of the world concepts that are necessary to evaluate ODRL policies,
@@ -101,8 +105,8 @@ The default value is closed. -->
             The existence of these triples does not entail their represented world is a reality: the <i>factuality</i> of the 
             class instances is not entailed, and hypothetical computations are possible. 
             The implementor of the ODRL Evaluator may want to describe the factuality of relevant class instances. 
-            RDF triples to represent the state of the world may be generated as observations from the world generated by third parties (extrinsic), 
-            by the ODRL Evaluator user or by any other source (intrinsic).
+            RDF triples to represent the state of the world may be generated as observations from the world generated by third parties or 
+            by the ODRL Evaluator itself.
         </p>
             As such, in this document, we aim to provide a minimal set of information that needs to be represented in the 
             state of the world and respective definitions, which will be formally represented in an 
@@ -153,55 +157,15 @@ The default value is closed. -->
                     sotw:accumulatedTime ex:accumulatedTime ;
                     sotw:recipient ex:recipient .
             </pre>
+        </aside>		
+            <h3>Evaluation Request</h3>
             <p>
-                Example value instantiations for represented SotW:
-            </p>
-            <pre>
-                @prefix dcterms: &lt;http://purl.org/dc/terms/> .
-                @prefix dpv:     &lt;https://w3id.org/dpv#> .
-                @prefix ex:      &lt;https://ex.org/> .
-                @prefix loc:     &lt;https://w3id.org/dpv/loc#> .
-                @prefix odrl:    &lt;http://www.w3.org/ns/odrl/2/> .
-                @prefix time:    &lt;http://www.w3.org/2006/time#> .
-                @prefix report:  &lt;https://w3id.org/force/compliance-report#> .
-                @prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#> .
-
-                ex:currentTime dcterms:issued "2024-01-01T00:00:00"^^xsd:dateTime .
-                ex:location dpv:hasLocation loc:BE .
-                ex:asset odrl:partOf ex:assetCollection .
-                ex:party odrl:partOf ex:partyCollection .
-                ex:report a report:PolicyReport ;
-                    dcterms:created "2024-02-12T11:20:10.999Z"^^xsd:dateTime ;
-                    report:policy ex:policy ;
-                    report:ruleReport [
-                        a report:DutyReport ;
-                        report:attemptState report:Attempted ;
-                        report:rule [
-                            a odrl:Duty ;
-                            odrl:action odrl:compensate ;
-                            odrl:assignee ex:party
-                        ] ;
-                        report:performanceState report:Performed ;
-                        report:deonticState report:Fulfilled
-                    ] .
-                ex:event a time:TemporalEntity ;
-                    dcterms:description "ESWC 2025"^^xsd:string ;
-                    dcterms:source &lt;https://2025.eswc-conferences.org> ;
-                    time:hasBeginning "2025-06-01"^^xsd:date ;
-                    time:hasEnd "2025-06-05"^^xsd:date .
-                ex:accumulatedTime time:hasTemporalDuration "P1DT2H"^^xsd:duration .
-                ex:recipient a dpv:AcademicScientificOrganisation .
-            </pre>
-        </aside>
-		
-            <h3>Formal Description of the Evaluation Request</h3>
-            <p>
-                As mentioned in the final paragraph of the introduction, an evaluator requires an <b>Evaluation Request</b> as input.
+                An evaluator requires an <b>Evaluation Request</b> as input.
                 <!-- The evaluator uses an Evaluation Request as input to assess whether a particular <code>odrl:Action</code> by an <code>odrl:Party</code> on an <code>odrl:Asset</code> can be fulfilled according to an ODRL policy. -->
                 The <b>Evaluation Request</b>, which is represented in RDF, is formally defined by the class <code>odrl-fs:EvaluationRequest</code> and MUST contain the following properties:
             </p>
             <ul>
-                <li><code>odrl:action</code>: The operation the assignee wants to perform/performed (e.g., use, read, modify).</li>
+                <li><code>odrl:action</code>: The action to be evaluated (e.g., use, read, modify).</li>
                 <li><code>odrl:assignee</code>: The party (e.g., person or organization) requesting/requested the action.</li>
                 <li><code>odrl:target</code>: The asset (e.g., file, document, data) on which the action is to be/was performed.</li>
                 <li><code>dcterms:issued</code>: The time of the request.</li>
@@ -224,7 +188,8 @@ The default value is closed. -->
                 </ul>
             </p>
 
-            <b>Evaluation Request Example:</b>
+        <aside class="example" title="Evaluation Request Example">
+            Alice requests the use of document 1234 to be evaluated.
             <pre>
                 {
                   "@context": {
@@ -239,9 +204,12 @@ The default value is closed. -->
                   "target": "http://example.com/document/1234"
                 }
             </pre>
+			</aside>
+		<section id="sectionPolicies">	
+            <h3>Evaluation Report</h3>
+		</section>
 
         </section>
-
 
 
     </section>			
@@ -261,12 +229,9 @@ The default value is closed. -->
 	<p>Before providing the semantics of an ODRL Policy that may contain one or more Rules, 
 	we have to provide the semantics of the different types of ODRL Rules: Permission, Prohibition, and Obligation.</p>
 
-	<p>Our approach in providing the semantics of an ODRL Policy is first to reach agreement, inside the ODRL Community Group,
-	on the output of the ODRL Evaluator for different types of ODRL rules and then to generalise that output.</p>
-    </section>
 
     <section id="sectionPermissionsProhibitionsObligations">	
-        <h2>Semantics of Permission, Prohibition, and Obligation Rules</h2>	
+        <h3>General semantics of Rules</h3>	
         <p> <!-- Relation with deontic logic -->
             The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances of the classes 
             <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.
@@ -358,6 +323,7 @@ The default value is closed. -->
             Permissions, Prohibitions, and Obligations in separated sections.
         </p>
     </section>		
+    </section>
 
     <section id="sectionPermissions">
         <h2>Semantics of Permissions</h2> 
@@ -1182,42 +1148,6 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
 </section>	
 
 
-            <section id="section3">
-            <h2>Previous efforts</h2> 	
-    <i>Section authored by Víctor. This section does not pretend to be part of a spec, but may serve as reference</i>
-
-
-<h3>Documents on "formal semantics" in W3C specifications</h3>
-
-    The W3C has produced several "Semantics" documents each of them with a different objective.
-
-    <p>The <a href="https://www.w3.org/TR/rdf11-mt/">RDF1.1. Semantics</a> defines a model-theoretic semantics to determine the validity of RDF inference processes. A similar approach is followed by the <a href="https://www.w3.org/TR/owl2-direct-semantics/">OWL Semantics</a>, a recommendation providing the direct model-theoretic semantics for OWL 2 and definingthe most common inference problems.</p>
-
-    <p>XPath (XML Path Language) is a language that can be used to navigate through elements and attributes in an XML document, and it also has <a href="https://www.w3.org/TR/xquery-semantics/">formal semantics</a>. XQuery (XML Query) is a query and functional programming language to query XML data. The "XQuery and XPath Formal Semantics"  intends to complement the specification by defining the meaning of XQuery/XPath expressions with mathematical rigor; thus clarifying the intended meaning of the English specification, and ensuring that no corner cases are left out. For that regard grammar productions are given.</p>
-
-    <p>The POWDER specification provides a mechanism to describe and discover Web resources, and it also includes a <a href="https://www.w3.org/TR/powder-formal/">Formal Semantics</a> document. POWDER documents are XML documents which can be automatically converted, through a GRDDL transform, into a semantically rich version in RDF (POWDER-S). The "semantics" document describes how to make such transformation. </p>
-
-    <p>The PROV Ontology Working Group has produced 12 specifications to facilitate the interchange of provenance information in the Web (where provenance is …information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness"). Besides having published a <a href="https://www.w3.org/TR/prov-o/">PROVO Ontology</a> to facilitate the expression of provenance as RDF, the family of documents also define an EBNF notation "which allows serializations of PROV instances to be created in a compact manner", a set of constraints to "ensure that a PROV instance represents a consistent history of objects and their interactions that is safe to use for the purpose of logical reasoning" and statements in the PROV Data Model are seen "as atomic formulas in the sense of first-order logic […and…] the constraints and inferences specified in PROV-CONSTRAINTS as a first-order theory". 
-</p> 
-
-<h3>ODRL Formalization</h3>
-    <p>ODRL was created in in the early 2000's as an XML dialect to represent rights expressions to be used in the framework of Digital Rights Management systems; and its version 1.1 gained much spread [ODRL02]. Different ODRL profiles extended the vocabulary to satisfy the needs in different sectors. In 2011, an ODRL W3C Community Group was established, publishing soon after a new version 2.1 with major changes which included a new information model [Ianella15], a vocabulary [Ianella15b] and an Ontology [McRoberts15]. ODRL 2.1 became then a policy language.Other specifications in XML and similar to ODRL were MPEG-21 Rights Expression Language [Wang94], XACML  or MPEG-21 Contracts Expression Language [Rodríguez15]. The MPEG-21 Media Contracts Ontology [Rodriguez16] defines an ontology to guide the generation of contracts as RDF, with a similar philosophy to that of the ODRL Ontology.</p>
-
-    <p>RDF documents instantiating the "Policy" class of the ODRL Ontology or using the XML or JSON syntaxes are called simply "ODRL Policies". The ODRL Ontology is already a formalization of the ODRL information model and vocabulary. The ontology of the version 2.1 consists of 1111 axioms with low complexity, but a comprehensive definition of each element (classes and relations) and a systematic definition of domains and ranges for the properties. Some ODRL concepts are represented as SKOS concepts ordered in SKOS collection. Reasoning with the ontology would be computationally inexpensive, but the usefulness of the possible reasoning tasks with the ontology is very limited. </p>
-
-    <p>The ODRL 2.1 Ontology is not the first ODRL Ontology and other ontologies had been proposed before [García05][Kasten10]. However, neither these ontologies nor the ODRL 2.1 Ontology directly supported any reasoning tasks of practical use. Other more generic rights ontologiesexist, claiming tocomprise the concepts of ODRL, with the ambition of facilitating interoperability. Thus, Delgado (2003) and Nadah (2007) have proposed ontologies as a bridge to make transformation between rights expression languages like ODRL and MPEG-21 REL, whereas Rodríguez (2013) underlined the similarities of seven policy languages with an ontology design pattern. Other alternative means of achieving interoperability do not require ontologies, as Guth did (2003) defining an abstract object model.</p>
-
-    <p>Some other formalizations of ODRL have been proposed with the purpose of determining whether a request is permitted given a set of policies and a certain history of events:we can name this task as theauthorisation decision.With that purpose, Gunter and Pucella had defined general logics for rights (2001 and 2002 respectively). Pucella then extended his work to model ODRL1.1 statements (2004) as formulas in a many-sorted first-order logic with equality,to determinewhether a permission was implied by a set of ODRL statements. Holzer et al. (2004) also enriched the authorisation decision modelling the dynamic aspects of licenses with finite-automata like structures (useful when the property of an asset is transferred, or when the number of plays is limited to a certain number of times). Chong et al. (2006) modelled licenses with multiset rewritingand logic programming (Prolog), including the ability to evaluate and merge licenses and to track the dynamic aspects of the rights evolution. Barth and Mitchell (2006) observed that the authorisation decision of a sequence of actions given a set of ODRL licenses is NP-complete because of the interval constraints, and proposed using propositional linear logic to grant efficient computability. Sheppard and Sfavi(2009) defined an algorithm for the authorisation decision with some of the most common ODRL elements, giving the pseudo-code for a virtual machine. Steyskal and Polleres (2015) defined an abstract syntax for expressing ODRL policies, where the dependencies among ODRL actions and the different conflict resolution strategies were explicitly considered in the rules for taking the authorisation decision. </p>
-
-    <p>Besides the problems of facilitating interoperability and making the authorisation decision, other problems of interest have been modeled with formalizations of ODRL. One of them is how to evaluate the compatibility and composition of licenses, useful when handling with differently licensed content or data. In this line, Gangadharan et al. (2007)proposed a matchmaking algorithm to analyze the compatibility of licenses and make license compositions; Jamkhedkarand Heileman (2008) showed how the combination of ODRL, CreativeCommons REL and the XrML (embryo of the MPEG-21 REL) licenses was possible with an abstract model and several rules. Villata and Gandon (2012) also defined a framework with algorithms to validate compatibility and to obtain composite licenses. Rotolo et al. (2013) defined a deontic logic system for the composition of licenses, with strict rules, defasible rules and defeater rules. </p>
-
-    <p>It is evident that some policies can be used to grant automated access to resources. For example, verifying the execution of a payment can be automatically done. However, the satisfaction of some constraints cannot be digitally evaluated. Policies then play a double role, as automatable expressions in a computer system and as constracts with a certain legal value. Steyskal and Kirrane (2015) show how to use ODRL to specify access requests, data offers and agreements, distinguishing between enforceable and non-enforceable access policies, proposing an algorithm to auto-generate contracts for the latter.</p>
-
-    <p>In more recent efforts, de Vos et al. (2019) transforms ODRL expressions into Answer Set Programming to model policies and check compliance – specifically in the area of personal data processing, where ODRL has also been recently used (Esteves et al. 2021). Other profiles and initiatives have been proposed (Kim et al. 2020), on despite of several limitations found by Kebede at al. (2020).</p>
-
-    <p> In Fornara and Colombetti (2019) the  ODRL 2.2 policy language has been extended in two directions. Firstly, by inserting in the model the notion of activation event, secondly, by considering the temporal aspects of obligations, permissions, and prohibitions
-(e.g. expiration dates and deadlines) as part of the application independent model of policies.
-
 <section id="references">
 <h2>References</h2>
 <small>
@@ -1298,6 +1228,8 @@ http://www.w3.org/ns/odrl/2/<br/>
 
 [Holzer07] Holzer, M., Katzenbeisser, S., Schallhart, C.: Towards a formal semantics for ODRL. Proceedings of the 1st International workshop on ODRL, pp. 137-148,
 (<a href="https://link.springer.com/chapter/10.1007/978-3-319-21542-6_23">link</a>) (2004)
+
+This specification owes much to the previous description in the <a href="https://www.w3.org/2016/poe/wiki/Evaluator">wiki</a>.</p>
 
 </small>
 
