@@ -34,7 +34,7 @@
                     The Open Digital Rights Language (ODRL) is a policy expression language that can be used to represent permitted, prohibited, and obligated actions over a certain asset. 
             </p>
             <p> <!-- reference of official ODRL-documents -->
-                    The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification.	
+                    The <a href="https://www.w3.org/TR/odrl-model/#infoModel">ODRL Information Model</a> formally defines the core abstract concepts of the model and their properties by means of an OWL 2 Ontology (available at <a href="https://www.w3.org/ns/odrl/2/">https://www.w3.org/ns/odrl/2/</a>), which is described in the ODRL <a href="https://www.w3.org/TR/odrl-vocab/">Vocabulary & Expression</a> specification. This document does not contradict these documents and its interpretation is subordinated to theirs.	
             </p>
             <p> <!-- the use of ontologies -->
                     The ODRL ontology can be used as a data model to represent machine-readable Policies and associate them with digital or analog assets. By using a machine-readable language to represent policies, ODRL implementations can provide useful functionalities such as those of a policy search engine, a policy compatibility checker, an access control system, a monitoring system, or a policy planning system, among others.
@@ -81,7 +81,7 @@ The ODRL Evaluator uses as <b>input</b>:
 </p>
 			
 	<ol> <!-- input of the Evaluator -->
-	  <li>an ODRL Policy;</li>
+	  <li>a Policy;</li>
 	  <li>a formal description of the State of the World;</li>
 	  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
 	the actor who is located in a given place, the target, and an instant of time);</li>
@@ -89,7 +89,11 @@ The ODRL Evaluator uses as <b>input</b>:
 	The default value is closed. -->
 	  </li>
 	</ol>
-	This section describes the State of the World and the Evaluation Request.
+	The ODRL Evaluator produces as <b>output</b>: 
+	<ol> <!-- input of the Evaluator -->
+	  <li>an Evaluation Report;</li>
+	</ol>
+		This section describes the State of the World, the Evaluation Request and the Evaluation Report.
 
         <h3>State of the World</h3>
         <p><!-- state of the world --> 
@@ -216,7 +220,7 @@ The ODRL Evaluator uses as <b>input</b>:
 
 
     <section id="sectionPolicies">	
-        <h2>Semantics of a Policy</h2>	
+        <h2>Semantics of Policies</h2>	
         <p> <!-- Subclasses of policies -->
             There are three ODRL Policy subclasses (Agreement, Offer, Set), plus four non-normative ODRL Policy subclasses (Assertion, Privacy, Request, Ticket). Direct instances of the <code>odrl:Policy</code> class must be understood as policy <code>odrl:Set</code> policies. This subsection describes how are these policies to be understood in relation to semantics.
         </p>
@@ -363,7 +367,7 @@ The ODRL Evaluator uses as <b>input</b>:
         </p>
 
 	    
-        <h3>Expected behaviour of the ODRL Evaluator</h3>
+        <!--<h3>Expected behaviour of the ODRL Evaluator</h3>-->
         <p> 
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
@@ -396,7 +400,7 @@ The ODRL Evaluator uses as <b>input</b>:
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
         Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
 	    
-        <h4>Example of a constrained permission</h4>
+        <big><b>A1 Example of a constrained permission</b></big>
         <p>
             <b>Example description</b>
         </p>
