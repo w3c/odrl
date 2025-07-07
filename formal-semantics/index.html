@@ -544,11 +544,11 @@ The ODRL Evaluator uses as <b>input</b>:
              </tr>
             <tr>
                     <td>EA1-1</td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1 </a></td>
+                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
                     <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
 			    <code>currentTime</code> is 2017-12-19T15:00:00</a></td>
-		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11
-/evaluationrequestA11.json"<code>>party/1 distributes document:1234</code></a></td>
+		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
+			party:1 distributes document:1234</code></a></td>
 		    <td>satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
@@ -558,14 +558,17 @@ The ODRL Evaluator uses as <b>input</b>:
             </tr>
             <tr>
                     <td>EA1-2</td>
-                    <td>policy:A1 (<a href="examples/policy13.json">link</a>)</td>
-                    <td>We are in 2019 <br> <code>current time.year=2019</code><br>(<a href="examples/world13-1.json">link</a>)</td>
-		     <td><code>distribute</code><br>
-		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
+                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
+                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A12/stateA12.ttl">
+			    <code>currentTime</code> is 2019-12-19T15:00:00</a></td>
+		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA12.json"<code>
+			party:1 distributes document:1234</code></a></td>
+		     <td>satisfied</td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
 		    <td>deny the action</td>
-            <td>(<a href="examples/output13-2-basic.json">link 1</a>)<br>(<a href="examples/output13-2-advanced.json">link 2</a>)</td>
+             <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A12.json">
+		    report</a></td>
             </tr>
         </table>  
         <p>Explanation:</p>
