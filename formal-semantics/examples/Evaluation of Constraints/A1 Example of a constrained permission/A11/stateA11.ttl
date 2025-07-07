@@ -5,4 +5,4 @@
 
   ex:sotw a sotw:SotW;
     sotw:currentTime ex:currentTime.
-  ex:currentTime dcterms:issued "2019-12-19T15:00:00"^^xsd:dateTime.
+  ex:currentTime dcterms:issued "2017-12-19T15:00:00"^^xsd:dateTime.
