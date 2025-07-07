@@ -458,7 +458,7 @@ The ODRL Evaluator uses as <b>input</b>:
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
 		
-        The ODRL Evaluator computes that a Permission is <b>active</b> if:
+        The ODRL Evaluator computes that a Permission is <b>active</b> iif:
         </p>
         <ol>
             <li>all the existing Constraints of the Rule are satisfied and;</li> 
@@ -473,14 +473,12 @@ The ODRL Evaluator uses as <b>input</b>:
 </p>
 
        
-<p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
+<!--
+	    <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
 		generation of violations for permissions. 
-	
+	-->
        
 
-        <!--The life cycle of a permission is depicted in the figure below (states with the double outline are terminal states):<br>
-        <img src="ODRLPermission.png">
-        -->
         <h3>Evaluation of Constraints and Refinements</h3>
 	<p>Please note that in the following examples namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
@@ -493,29 +491,30 @@ The ODRL Evaluator uses as <b>input</b>:
         <p>
             <!-- General description of the case --> 
             A permission may have its action limited (in time, in space, etc.) without any Condition (Duty) or Refinement.
-            This is the situation of the following case, similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
-            in the ODRL Information Model 2.2. The permission below allows the target asset <code>document:1234</code> to be distributed, 
+            This is the situation of the following case (similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
+            in the ODRL Information Model 2.2). The permission below allows the target asset <code>document:1234</code> to be distributed, 
             it includes the constraint that the permission may only be exercised until 2018-01-01. 
             The permission is granted by the organization <code>party:16</code>.
         </p>
 
             <pre>
             {
-            "@context": "http://www.w3.org/ns/odrl.jsonld",
-            "@type": "Set",
-            "uid": "http://example.com/policy/13",
-            "permission": [{
-               "target": "http://example.com/document/1234",
-               "assigner": "http://example.com/party/16",
-               "action": "distribute",
-               "constraint": [{
-                   "@id": "http://example.com/constraint/1",
-                   "leftOperand": "dateTime",
-                   "operator": "lt",
-                   "rightOperand":  { "@value": "2018-01-01", "@type": "xsd:date" }
-               }]
-            }]
-            }
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Set",
+"uid": "http://example.com/policy/A1",
+"permission": [{
+   "@id": "http://example.com/rule/A1",
+   "target": "http://example.com/document/1234",
+   "assigner": "http://example.com/party/16",
+   "action": "distribute",
+   "constraint": [{
+       "@id": "http://example.com/constraint/A1",
+       "leftOperand": "dateTime",
+       "operator": "lt",
+       "rightOperand":  { "@value": "2018-01-01", "@type": "xsd:date" }
+   }]
+}]
+}
             </pre>
         <p>
             <b>Expected behaviour of the Evaluator</b>
@@ -525,50 +524,43 @@ The ODRL Evaluator uses as <b>input</b>:
 	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
         As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
 	is passed, the Permission is inactive.<br>
-	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>distribute</code> and 
-	<code>object</code> equal to the target of the permission, i.e. <code>document:1234</code>.
+	The action class regulated is <code>distribute</code> and the target is <code>document:1234</code>, the assignee is not specified.
         </p>
 
-        <i>Access control or monitoring scenario:</i> 
-        <ul>
-            <li>(E-13-1) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action is permitted. </li>
-            <li>(E-13-2) If the requested or perfomed action belongs to the class of actions regulated by the Permission, 
-	    but the Permission is inactive, then, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
-            <li>If the requested or perfomed action does not belong to the class of actions regulated by the Permission 
-	     then assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
-        </ul>
+       
         <p>
             The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
-            
         </p>
+	
         <table border="1" style="font-size:small;">
             <tr>
                     <th>Example</th>
                     <th style="color:darkblue">Policy</th>
-                    <th style="color:darkblue">World</th>
-		    <th style="color:darkblue">Requested/Performed Action</th>
-                    <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
-                    <th style="color:darkred"><br/>activation state of the <br><code>permission</code></th>
-		    <th style="color:darkred"><br/>control state of the <br><code>permission</code> </code></th>
-            <th>output</th>
+                    <th style="color:darkblue">State of the World</th>
+		    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
+                    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
+            	    <th>Evaluation Report</th>
              </tr>
             <tr>
-                    <td>E13-1</td>
-                    <td>policy:13 (<a href="examples/policy13.json">link</a>)</td>
-                    <td>We are in 2017 <br> <code>current time.year=2017</code><br>(<a href="examples/world13-1.json">link</a>) </td>
-		    <td><code>distribute</code>
-		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
+                    <td>EA1-1</td>
+                    <td>(<a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1 </a>)</td>
+                    <td>(<a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">current before 2018</a>) </td>
+		    <td><code><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11
+/evaluationrequestA11.json">distribute</code> of
+		    <code>document:1234</code> </a></td>
+		    <td>action and target are satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
-            <td>(<a href="examples/output13-1-basic.json">link 1</a>)<br>(<a href="examples/output13-1-advanced.json">link 2</a>)</td>
+     		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
+		    report</a></td>
             </tr>
             <tr>
-                    <td>E13-2</td>
-                    <td>policy:13 (<a href="examples/policy13.json">link</a>)</td>
+                    <td>EA1-2</td>
+                    <td>policy:A1 (<a href="examples/policy13.json">link</a>)</td>
                     <td>We are in 2019 <br> <code>current time.year=2019</code><br>(<a href="examples/world13-1.json">link</a>)</td>
 		     <td><code>distribute</code><br>
 		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
@@ -577,7 +569,18 @@ The ODRL Evaluator uses as <b>input</b>:
 		    <td>deny the action</td>
             <td>(<a href="examples/output13-2-basic.json">link 1</a>)<br>(<a href="examples/output13-2-advanced.json">link 2</a>)</td>
             </tr>
-        </table>        
+        </table>  
+        <p>Explanation:</p>
+	  <ul>
+            <li>(A1-1) (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
+            and the Permission is active then the action is permitted. </li>
+            <li>(A1-2)  (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission, 
+	    but the Permission is inactive, then, assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
+            <li>  (TO BE UPDATED) If the requested or perfomed action does not belong to the class of actions regulated by the Permission 
+	     then assuming that only this Permission is considered 
+            (this is because other permissions could regulate this action), the action is denied.</li>
+        </ul>   
 
 	    <!--
         <p><i>Monitoring scenario:</i></p> 
