@@ -523,11 +523,9 @@ The ODRL Evaluator uses as <b>input</b>:
         The ODRL Evaluator has to calculate first the activation state of the permission. 
 	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
         As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
-	is passed, the Permission is inactive.<br>
-	The action class regulated is <code>distribute</code> and the target is <code>document:1234</code>, the assignee is not specified.
+	is passed, the Permission is inactive. The action class regulated by the permission is <code>distribute</code>, the target is <code>document:1234</code>, and the assignee is not specified.
         </p>
-
-       
+     
         <p>
             The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
         </p>
@@ -542,16 +540,17 @@ The ODRL Evaluator uses as <b>input</b>:
                     <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
                     <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
-            	    <th>Evaluation Report</th>
+            	    <th style="color:darkred">Evaluation Report</th>
              </tr>
             <tr>
                     <td>EA1-1</td>
-                    <td>(<a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1 </a>)</td>
-                    <td>(<a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">current before 2018</a>) </td>
+                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1 </a></td>
+                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
+			    <code>currentTime</code> is before 2018</a></td>
 		    <td><code><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11
 /evaluationrequestA11.json">distribute</code> of
 		    <code>document:1234</code> </a></td>
-		    <td>action and target are satisfied</td>
+		    <td>action, target, and assignee are satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
