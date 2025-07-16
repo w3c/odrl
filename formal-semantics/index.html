@@ -466,13 +466,12 @@ The ODRL Evaluator uses as <b>input</b>:
         <ol>
             <li>all the existing Constraints of the Rule are satisfied and;</li> 
             <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive; </li>
-           <!-- <li>only for the access control scenario: all the existing Refinements of the 
-            Action, AssetCollection, PartyCollection are satisfied by the requested action.</li>-->
         </ol>
 
 <p>
-        <!--If the Permission is active, then the action is permitted. <br>-->
-	If one of those conditions is not met, the Permission is <b>inactive</b>. 
+       If one of those conditions is not met, the Permission is <b>inactive</b>. <br>
+      When the Permission is active, it means that an action that belongs to the permitted class and that satisfies all the refinements
+     (action, target, and assignee) is permitted.
 </p>
 
        
@@ -547,30 +546,30 @@ The ODRL Evaluator uses as <b>input</b>:
              </tr>
             <tr>
                     <td>EA1-1</td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
 			    <code>currentTime</code> is 2017-12-19T15:00:00</a></td>
-		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
+		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
 			party:1 distributes document:1234</code></a></td>
 		    <td>satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
-     		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
+     		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
 		    report</a></td>
             </tr>
             <tr>
                     <td>EA1-2</td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A12/stateA12.ttl">
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/stateA12.ttl">
 			    <code>currentTime</code> is 2019-12-19T15:00:00</a></td>
-		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
+		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
 			party:1 distributes document:1234</code></a></td>
 		     <td>satisfied</td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
 		    <td>deny the action</td>
-             <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereport.A12.json">
+             <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereport.A12.json">
 		    report</a></td>
             </tr>
         </table>  
