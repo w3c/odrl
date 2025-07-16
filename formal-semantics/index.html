@@ -576,14 +576,10 @@ The ODRL Evaluator uses as <b>input</b>:
         </table>  
         <p>Explanation:</p>
 	  <ul>
-            <li>(A1-1) (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action is permitted. </li>
-            <li>(A1-2)  (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission, 
-	    but the Permission is inactive, then, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
-            <li>  (TO BE UPDATED) If the requested or perfomed action does not belong to the class of actions regulated by the Permission 
-	     then assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
+            <li>(A1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission 
+            and the Permission is active then the action is permitted by the permission.</li>
+            <li>(A1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission, 
+	    but the Permission is inactive, then the action is permitted by the permission.</li>
         </ul>   
 
 	 <h3>Evaluation of Refinements</h3>
