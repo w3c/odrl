@@ -440,11 +440,14 @@ The ODRL Evaluator uses as <b>input</b>:
 	     <p>
             In the <b>monitoring scenario</b>: when an action is <b>performed</b>, it is represented in the state of the world.
             When the performace of the action has to be evaluated with respect to the permissions.
-	    If the performed action belongs to class of actions (with all refinements satisfied) regulated 
-	    by an active permission, then the action is permitted. 
-	    if there is no active permission to do such an action (with all refinements satisfied) and the default 
+	    If the performed action belongs to class of actions regulated by the active permission and all the refinements satisfied
+	    then the action is permitted by the permission.
+	    If the performed action does not belong to class of actions regulated the permission or the permission is inactive 
+	    then the action is not permitted by the permission.
+	    
+	   <!-- REMOVED JULY 2025 if there is no active permission to do such an action (with all refinements satisfied) and the default 
 	    setting for the ODRL Evaluator is set to "everything is prohibited unless explicitly permitted" a 
-	    violation should be generated. <br>
+	    violation should be generated. <br>-->
 	<br>
 	
 	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
