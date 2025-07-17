@@ -464,25 +464,30 @@ The ODRL Evaluator uses as <b>input</b>:
         The ODRL Evaluator computes that a Permission is <b>active</b> iif:
         </p>
         <ol>
-            <li>all the existing Constraints of the Rule are satisfied and;</li> 
-            <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive; </li>
+            <li>All the existing Constraints of the Rule are satisfied AND;</li> 
+            <li>All the existing Conditions (duties) of the Rule are fulfilled or inactive; </li>
         </ol>
 
 <p>
        If one of those conditions is not met, the Permission is <b>inactive</b>. <br>
-      When the Permission is <b>active</b> it means that an action that belongs to the permitted class with the correct target and assigee (when
-	they are specified) and that satisfies all the refinements (action, target, and assignee) is permitted.
-</p>
-
        
-<!--
-	    <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
-		generation of violations for permissions. 
-	-->
+The ODRL Evaluator computes that the action represented in the Evaluation Request is permitted by a Permission in the given State of the World 
+iff:
+	<ol>
+	    <li>The Permission is <b>active</b> AND </li>	
+	    <li>The action is the Evaluation Request belong to the permitted class of actions with the correct target and assigee (when
+	they are specified) AND </li>
+	    <li> All the refinements (related to action, target, and assignee) are satisfied.</li>
+	</ol>
+</p>
+   
+<!--  <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
+		generation of violations for permissions. -->
 
 	    <p>Please note that in the following examples namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
-        Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
+        
+	    <p>Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
 
         <h3>Evaluation of Constraints</h3>
 		    
@@ -526,10 +531,6 @@ The ODRL Evaluator uses as <b>input</b>:
 	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
         As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
 	is passed, the Permission is inactive. The action class regulated by the permission is <code>distribute</code>, the target is <code>document:1234</code>, and the assignee is not specified.
-        </p>
-     
-        <p>
-            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
         </p>
 	
         <table border="1" style="font-size:small;">
@@ -599,7 +600,8 @@ The ODRL Evaluator uses as <b>input</b>:
              "@type": "Set",
              "uid": "http://example.com/policy/B1",
              "permission": [{
-                "target": "http://example.com/document/1234",
+                "@id": "http://example.com/rule/B1",
+		"target": "http://example.com/document/1234",
                 "assigner": "http://example.com/party/616",
                 "action": [{
                    "rdf:value": { "@id": "odrl:print" },
@@ -619,8 +621,6 @@ The ODRL Evaluator uses as <b>input</b>:
 
 	The class of actions regulated by the Permission is <code>print</code>, the target is <code>document:1234</code>, 
 	and the assignee is not specified.<br>
-
-        The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases.
 	 </p>  
         
         <table border="1" style="font-size:small;">
@@ -637,13 +637,13 @@ The ODRL Evaluator uses as <b>input</b>:
         <tr>
                     <td>B1-1</td>
                     <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
-                    <td><a href="w3c/odrl/formal-semantics/examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
+                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
 			    <code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
 		    <td>satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
-     		    <td><a href="">report</a></td>
+     		    <td><a href="/examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereport.B11.json">report</a></td>
         </tr>
         <tr>
                     <td>B1-2</td>
