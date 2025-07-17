@@ -596,24 +596,24 @@ iff:
         </p>
 <pre>
 {
-	"@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Set",
-        "uid": "http://example.com/policy/B1",
-        "permission": [{
-        	"@id": "http://example.com/rule/B1",
-		"target": "http://example.com/document/1234",
-                "assigner": "http://example.com/party/616",
-                "action": [{
-                   "rdf:value": { "@id": "odrl:print" },
-                   "refinement": [{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Set",
+"uid": "http://example.com/policy/B1",
+"permission": [{
+	"@id": "http://example.com/rule/B1",
+	"target": "http://example.com/document/1234",
+        "assigner": "http://example.com/party/616",
+        "action": [{
+        	"rdf:value": { "@id": "odrl:print" },
+                "refinement": [{
                       "@id": "http://example.com/refinement/B1"
                       "leftOperand": "resolution",
                       "operator": "lteq",
                       "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
                       "unit": "http://dbpedia.org/resource/Dots_per_inch"
-                   }]
-        	}]
+                }]
         }]
+}]
 }     
 </pre>
         <p>
@@ -643,17 +643,19 @@ iff:
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
-     		    <td><a href="/examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereport.B11.json">report</a></td>
+     		    <td><a href="/examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB11.json">
+		     report</a></td>
         </tr>
         <tr>
                     <td>B1-2</td>
                     <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
-                    <td><a href=""><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
+                   <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB12.json">
+			   <code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
 		    <td>satisfied</td>
                     <td>not-satisfied</td>
                     <td>active</td>
 		    <td>deny the action</td>
-     		    <td><a href="">report</a></td>
+     		   <td><a href="/examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB12.json">report</a></td>
         </tr>
         </table>
 
@@ -664,7 +666,7 @@ iff:
         <li>(B1-1) If the requested or performed action belongs to the class of actions regulated by the Permission and 
 	the action satisfies the Refinement, then the action is permitted by the permission.</li>
 	<li>(B1-2) If the requested or performed actions belongs to the class of actions regulated by the Permission 
-	but it does not satisfy the Refinement, then the action is permitted by the permission.</li>
+	but it does not satisfy the Refinement, then the action is NOT permitted by the permission.</li>
 	</ul>
 
         <h3>Evaluation of Conditions (Duties)</h3> 
