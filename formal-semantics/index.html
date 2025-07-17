@@ -594,13 +594,13 @@ iff:
 	    that the resolution of the printing action must be less than or equal to 1200 dpi. The permission is granted by the organization 
 	    <code>party:616</code>.
         </p>
-        <pre>
-        {
-             "@context": "http://www.w3.org/ns/odrl.jsonld",
-             "@type": "Set",
-             "uid": "http://example.com/policy/B1",
-             "permission": [{
-                "@id": "http://example.com/rule/B1",
+<pre>
+{
+	"@context": "http://www.w3.org/ns/odrl.jsonld",
+        "@type": "Set",
+        "uid": "http://example.com/policy/B1",
+        "permission": [{
+        	"@id": "http://example.com/rule/B1",
 		"target": "http://example.com/document/1234",
                 "assigner": "http://example.com/party/616",
                 "action": [{
@@ -611,11 +611,11 @@ iff:
                       "operator": "lteq",
                       "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
                       "unit": "http://dbpedia.org/resource/Dots_per_inch"
-                    }]
-                }]
-              }]
-        }
-        </pre>
+                   }]
+        	}]
+        }]
+}     
+</pre>
         <p>
             <b>Expected behaviour of the Evaluator</b><br>
 
