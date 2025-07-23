@@ -478,9 +478,9 @@ The ODRL Evaluator computes that the action represented in the Evaluation Reques
 iff:
 	<ol>
 	    <li>The Permission is <b>active</b> AND </li>	
-	    <li>The action is the Evaluation Request belong to the permitted class of actions with the correct target and assigee (when
+	    <li>The action in the Evaluation Request belongs to the permitted class of actions with the correct target and assigee (when
 	they are specified) AND </li>
-	    <li> All the refinements (related to action, target, and assignee) are satisfied.</li>
+	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li>
 	</ol>
 </p>
    
@@ -674,14 +674,29 @@ iff:
 
         <h3>Evaluation of Conditions (Duties)</h3> 
        <p>
-	 When a Permission contains Conditions (duties), they have to be evaluated first.     
+	 When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints 
+	 to compute the activation state of the Permission.     
        </p>
 	    
-	<p>
-            A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
-            if its action, with all refinements satisfied, has been performed. 
-        </p>
+	<!-- <p>A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
+            if its action, with all refinements satisfied, has been performed. </p> -->
+	
+	<p>A Condition (duty) is <b>active</b> iif (otherwise it is inactive): </p>
         <ol> 
+	    <li>The Condition (duty) has no Constraints, OR <li>
+	    <li>The Constraints of the Condition (duty) are all satisfied.</li>	
+	</ol>
+
+	<p>A Condition (duty) is <b>fulfilled</b> iif: </p>
+	<ol>
+	    <li>The Condition (duty) is <b>active</b> AND;</li>
+	    <li>There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition
+	    with the correct target and assigee (when they are specified) AND </li>
+	    <li>Such an action satisfies all the refinements (related to action, target, and assignee) 
+	    of the class of action regulated by the Condition</li>
+	</ol>
+	
+	<!-- <ol>
             <li>The initial state of a Condition (duty) is <b>inactive</b>.</li>
             <li>If at least one of the Constraints of the Condition (duty) is not satisfied, then the duty is <b>inactive</b>. 
             (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
@@ -689,15 +704,15 @@ iff:
             <li>If the Constraints of the Condition (duty) are all satisfied or there are no Constraints, then the duty is <b>active</b>.
             <li> If the Condition (duty) is <b>active</b> and an action that belongs to the class of actions regulated by the 
 		Condition with all refinements satisfied is performed, then Condition (duty) is <b>fulfilled</b>.</li>
-        </ol>
-        <p>The life cycle of a Condition (duty) is depicted in the figure below:
-            <img src="2024ODRLDuty.png"></p>
-
-	     <p>
-            Once the Condition (duty) has been evaluated, the Permission can be evaluated. <br>
+        </ol> -->
+	    
+        <!-- <p>The life cycle of a Condition (duty) is depicted in the figure below:
+            <img src="2024ODRLDuty.png"></p> -->
+     
+	<!-- REMOVED BECAUSE IT IS ALREADY STATED IN THE PERMISSION 
+	    <p>Once the Condition (duty) has been evaluated, the Permission can be evaluated. <br>
 	    If the Condition is active but it is not fullfilled then the Permission is inactive.<br>
-            If the Condition is fulfilled then the Permission is active.
-        </p>
+            If the Condition is fulfilled then the Permission is active.</p> -->
 
         <h4>Example of a conditioned permission</h4> 
         <p>
