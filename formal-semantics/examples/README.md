@@ -16,8 +16,8 @@ These examples are organised into two levels of sub-folders following the taxono
     ├── B Evaluation of Refinements/
 
     ├── C Evaluation of Conditions (Duties)/
-    │   ├── B1 Example of a conditioned permission
-    │   ├── B2 Example of a permission whose condition has constraints
+    │   ├── C1 Example of a conditioned permission
+    │   ├── C2 Example of a permission whose condition has constraints
     │   └── ...
     │
     └── ...
