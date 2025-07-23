@@ -46,8 +46,9 @@ However, neither the specification of the model (in a text form) nor the vocabul
 <!-- objective of the evaluator -->
 The objective of an <b>ODRL Evaluator</b> is to determine: 
 <ul>
-  <li>which Permissions, Prohibitions, and/or Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
+  <li>which Permissions, Prohibitions, and/or Obligations (collectively named Rules) are <b>active</b> in a given instant of time with respect to a given state of the world. 
   A Rule is said to be active if it is in effect;</li>
+  <li>If an action, described in the evaluation request, is permitted by a Permission;</li>
   <!--<li>which Permissions have been <b>used</b>;</li>-->
   <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 </ul>
