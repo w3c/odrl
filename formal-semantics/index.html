@@ -356,7 +356,7 @@ The ODRL Evaluator uses as <b>input</b>:
         <p>
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
-		Constraint, State of the World, and actions. 
+		Constraint, State of the World, and Evaluation Request. 
             Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
         <ul> <!-- attributes of the main objects -->
             <li>Permission, Prohibition, Obligation, and Condition (Duty) have a property called 
@@ -381,7 +381,8 @@ The ODRL Evaluator uses as <b>input</b>:
 
             <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
-            which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
+            which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+	    The value of the satisfaction state of a Refinement is calculated according to the Evaluation Request.
            			
            <!-- <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
