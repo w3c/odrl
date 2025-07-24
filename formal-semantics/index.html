@@ -666,9 +666,9 @@ iff:
 	Explanation: the Permission is always active because it has neither Constraints nor Conditions (Duties).
 	</p>
 	<ul>
-        <li>(B1-1) If the requested or performed action belongs to the class of actions regulated by the Permission and 
+        <li>(B1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission and 
 	the action satisfies the Refinement, then the action is permitted by the permission.</li>
-	<li>(B1-2) If the requested or performed actions belongs to the class of actions regulated by the Permission 
+	<li>(B1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission 
 	but it does not satisfy the Refinement, then the action is NOT permitted by the permission.</li>
 	</ul>
 
@@ -733,7 +733,7 @@ iff:
         {
         "@context": "http://www.w3.org/ns/odrl.jsonld",
         "@type": "Agreement",
-        "uid": "http://example.com/policy/22",
+        "uid": "http://example.com/policy/C1",
         "permission": [{
             "assigner": "http://example.com/party/sony",
             "assignee": "http://example.com/party/billie",
@@ -775,90 +775,48 @@ iff:
         </p>
        
         <p>
-           Given a formal description of the requested or performed action, if such an action belongs to the class of 
-	actions regulated by the Permission and the Permission is active, then the action is permitted, otherwise it is 
-	denied.
+           If the action to be evaluated belongs to the class of actions regulated by the Permission and the Permission is active, 
+	then the action is permitted, otherwise it is denied.
         </p>
 
         <table border="1" style="font-size:small;">
-            <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-		  <th style="color:darkblue">Requested/Performed Action</th>
-                <th style="color:darkred">activation state of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred">activation state of the <br><code>permission</code></th>
-		<th style="color:darkred">control state of the <br><code>permission</code></th>   
+             <th>Case</th>
+                    <th style="color:darkblue">Policy</th>
+		    <th style="color:darkblue">State of the World</th>
+                    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred"><br/>Activation state of <br><code>condition:1</code></th>
+		    <th style="color:darkred"><br/>Deontic state of <br><code>condition:1</code></th>
+		    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
+            	    <th style="color:darkred">Evaluation Report</th>
             </tr>
             <tr>
-                <td>E22-1</td>
-                <td>policy:22</td>
-                <td> <code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br> and
-			<code>beneficiary</code> = <code>party:sony</code> is not performed</td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
-		and <code>performer</code> = <code>party:billie</code></td>
-                <td>active</td>
+                <td>C1-1</td>
+                <td><a href="examples/.../policyC1.json">policy:C1</a></td>
+                <td><a href="examples/.../stateC11.json"><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br> and
+			<code>beneficiary</code> = <code>party:sony</code> is NOT performed</a></td>
+		/<td><a href="examples/.../evaluationrequestC11.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		<td>active</td>
                 <td>not-set</td>
                 <td>inactive</td>
-		<td>deny the action</td>    
-            </tr>
+		<td>deny the action</td>   
+     		<td><a href="examples/.../compliancereportC11.json">report</a></td>
+             </tr>
         <tr>
-                <td>E22-2</td>
-                <td>policy:22</td>
-                <td> <code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> <br> and
-			<code>beneficiary</code> = <code>party:sony</code> is performed</td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br>
-		and  <code>performer</code> = <code>party:billie</code></td>
-                <td>active</td>
+                <td>C1-2</td>
+                <td><a href="examples/.../policyC1.json">policy:C1</a></td>
+                <td><a href="examples/.../stateC12.json"><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br> and
+			<code>beneficiary</code> = <code>party:sony</code> is performed</a></td>
+		/<td><a href="examples/.../evaluationrequestC12.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		<td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		 <td>permit the action</td>    
+		<td>permit the action</td>   
+     		<td><a href="examples/.../compliancereportC11.json">report</a></td>
         </tr>
        </table>    
 
-<!--
-       <p><i>Monitoring scenario:</i></p>
-       Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
-       then the permission is used by the performed action.
-
-        <table border="1" style="font-size:small;">
-            <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-                <th style="color:darkred">activation of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br>activation <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>   
-            </tr>
-            <tr>
-                <td>E22-3</td>
-                <td>policy:22</td>
-                <td><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is not performed.<br>
-		<code>play</code> with <code>target</code> = <code>music:1999.mp3</code> <br>
-		and <code>performer</code> = <code>party:billie</code> is performed.</td> 
-                <td>active</td>
-                <td>not-set</td>
-                <td>inactive</td>
-		<td>deny the performed action</td>    
-            </tr>
-            <tr>
-                <td>E22-4</td>
-                <td>policy:22</td>
-                <td><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is performed.<br>
-		<code>play</code> with <code>target</code> = <code>music:1999.mp3</code> <br>
-		and <code>performer</code> = <code>party:billie</code> is performed.</td> 
-                <td>active</td>
-                <td>fulfilled</td>
-                <td>active</td>
-		<td>permit the performed action</td>    
-            </tr>
-        </table> 
-
--->
 
         <h4>Example of a permission whose condition has constraints</h4>
             <p>
