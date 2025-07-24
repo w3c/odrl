@@ -674,18 +674,19 @@ iff:
 
         <h3>Evaluation of Conditions (Duties)</h3> 
        <p>
-	 When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints 
-	 to compute the activation state of the Permission.     
+	 When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints of the Permission
+	 to compute its activation state.     
        </p>
 	    
 	<!-- <p>A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
             if its action, with all refinements satisfied, has been performed. </p> -->
 	
-	<p>A Condition (duty) is <b>active</b> iif (otherwise it is inactive): </p>
+	<p>A Condition (duty) is <b>active</b> iif: </p>
         <ol> 
-	    <li>The Condition (duty) has no Constraints, OR <li>
+	    <li>The Condition (duty) has no Constraints, OR </li>
 	    <li>The Constraints of the Condition (duty) are all satisfied.</li>	
 	</ol>
+	<p> otherwise the Condition is <b>inactive</b></p>
 
 	<p>A Condition (duty) is <b>fulfilled</b> iif: </p>
 	<ol>
@@ -714,14 +715,14 @@ iff:
 	    If the Condition is active but it is not fullfilled then the Permission is inactive.<br>
             If the Condition is fulfilled then the Permission is active.</p> -->
 
-        <h4>Example of a conditioned permission</h4> 
+        <big><b>C1 Example of a conditioned permission</b></big>
         <p>
-            <b>Example description</b>
+        <b>Example description</b>
         </p>
         
         <p>
             The example below (similar to <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> in the ODRL Information Model 2.2)
-	is a Permission that is constrained by a Condition (Duty).  The Condition does not have Constraints, but its action has a refinement. 
+	is a Permission that is constrained by a Condition (Duty). The Condition does not have Constraints and its action has a refinement. 
 	This permission is granted by <code>party:sony</code> for <code>party:billie</code> to play the  
             target asset <code>music:1999</code>. The permission includes the Condition to perform the compensate action that has a refinement of <code>payAmount</code> 
             of euro 5.00. The semantics of Permission requires that the compensate action (included in the duty) must be performed 
@@ -755,21 +756,17 @@ iff:
         }  
         </pre>
 
+        <p><b>Expected behaviour of the Evaluator</b></p>
         <p>
-            <b>Expected behaviour of the Evaluator</b>
-        </p>
-        <p>
-	The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
-	object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
-        and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
+	The <b>class of actions</b> regulated by this Permission is <code>play</code> of the file <code>music:1999.mp3</code> 
+	(the <code>odrl:target</code>) by the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
 	
 	The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
 	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
             when in the state of the world there is a representation of a performed action that matches with the 
-            the class of actions described in the <code>condition:1</code>. <br><br>
-      
-	The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
-	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
+            the class of actions described in the <code>condition:1</code>. The <b>class of actions</b> regulated by <code>condition:1</code> 
+	is <code>compensate</code> of a <code>payAmount</code> equal to <code>5 euro</code>, and 
+	(given that the <code>odrl:compensatedParty</code> of 
             the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
             <code>party:billie</code> because, for example, a company can pay for its employees 
@@ -777,8 +774,6 @@ iff:
 	    reference to a policy or a rule and to the party for whom they are performed).
         </p>
        
-
-        <p><i>Access control or monitorin scenario:</i></p> 
         <p>
            Given a formal description of the requested or performed action, if such an action belongs to the class of 
 	actions regulated by the Permission and the Permission is active, then the action is permitted, otherwise it is 
