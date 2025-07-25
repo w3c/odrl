@@ -1,0 +1,68 @@
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix odrl-fs: <https://w3id.org/odrl-fs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix report: <https://w3id.org/force/compliance-report#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+odrl-fs:EvaluationRequest a rdfs:Class, owl:Class, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    rdfs:label "Evaluation Request"@en ;
+    skos:definition "An Evaluation Request represents a formal description of a requested action by an assignee on a target asset, which can be enriched with further contextual information"@en .
+
+odrl-fs:SotW a rdfs:Class, owl:Class, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    rdfs:label "State of the World"@en ;
+    skos:definition "Knowledge representing real-world information aiding the evaluation of ODRL Policies"@en .
+
+odrl-fs:currentTime a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the current time of the state of the world"@en ;
+    rdfs:domain odrl-fs:SotW ;
+    rdfs:range xsd:date, xsd:dateTime .
+
+odrl-fs:currentLocation a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the current location of an ODRL party"@en ;
+    rdfs:domain odrl-fs:SotW .
+
+odrl-fs:assetCollection a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes an asset that is part of an ODRL asset collection"@en ;
+    rdfs:domain odrl-fs:SotW ;
+    rdfs:range odrl:Asset .
+
+odrl-fs:partyCollection a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes a party that is part of a ODRL party collection"@en ;
+    rdfs:domain odrl-fs:SotW ;
+    rdfs:range odrl:Party .
+
+odrl-fs:existingReport a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes existing reports from previously performed ODRL evaluations"@en ;
+    skos:note "Previous reports can be used to get history of attempted and performed actions"@en ;
+    rdfs:domain odrl-fs:SotW ;
+    rdfs:range report:PolicyReport .
+
+odrl-fs:count a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the amount of times a rule has been exercised"@en ;
+    rdfs:domain odrl-fs:SotW .
+
+odrl-fs:event a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes information about an event that has occurred, e.g., when it has occurred"@en ;
+    rdfs:domain odrl-fs:SotW .
+
+odrl-fs:accumulatedTime a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes an accumulated amount of time a rule has been exercised"@en ;
+    skos:note "The accumulated time value should be represented using an xsd:duration."@en ;
+    rdfs:domain odrl-fs:SotW .
+
+odrl-fs:recipient a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes information about a recipient of a rule that has been exercised"@en ;
+    rdfs:domain odrl-fs:SotW .

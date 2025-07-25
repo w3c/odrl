@@ -201,7 +201,7 @@ The ODRL Evaluator uses as <b>input</b>:
 	<ol> <!-- input of the Evaluator -->
 	  <li>an Evaluation Report;</li>
 	</ol>
-		This section describes the State of the World, the Evaluation Request and the Evaluation Report.
+		This section describes the State of the World, the Evaluation Request, the Behaviour, and the Evaluation Report.
 
         <h3>State of the World</h3>
         <p><!-- state of the world --> 
@@ -222,19 +222,19 @@ The ODRL Evaluator uses as <b>input</b>:
         </p>
             As such, in this document, we aim to provide a minimal set of information that needs to be represented in the 
             state of the world and respective definitions, which will be formally represented in an 
-            <a href="sotw.ttl">RDF vocabulary</a>:
+            <a href="ontology/ontology.ttl">RDF vocabulary</a>:
         </p>
         <ul>
-            <li><code>SotW</code>: A set of knowledge representing real-world information aiding the evaluation of ODRL Policies</li>
-            <li><code>currentTime</code>: Denotes the current time of the state of the world</li>
-            <li><code>location</code>: Denotes the location where the policy is being evaluated</li>
-            <li><code>assetCollection</code>: Denotes an asset that is part of an asset collection</li>
-            <li><code>partyCollection</code>: Denotes a party that is part of a party collection</li>
-            <li><code>report</code>: Denotes existing reports from previously performed ODRL evaluations, i.e., to get history of attempted and performed actions</li>
-            <li><code>count</code>: Denotes the amount of times a rule has been exercised</li>
-            <li><code>event</code>: Denotes information about an event that has occurred, e.g., when it has occurred</li>
-            <li><code>accumulatedTime</code>: Denotes an accumulated amount of time a rule has been exercised</li>
-            <li><code>recipient</code>: Denotes information about a recipient of a rule that has been exercised</li>
+            <li><code>SotW</code>: Knowledge representing real-world information aiding the evaluation of ODRL Policies;</li>
+            <li><code>currentTime</code>: Denotes the current time of the state of the world;</li>
+            <li><code>currentLocation</code>: Denotes the current location of an ODRL party;</li>
+            <li><code>assetCollection</code>: Denotes an asset that is part of an ODRL asset collection;</li>
+            <li><code>partyCollection</code>: Denotes a party that is part of a ODRL party collection;</li>
+            <li><code>existingReport</code>: Denotes existing reports from previously performed ODRL evaluations, i.e., to get history of attempted and performed actions;</li>
+            <li><code>count</code>: Denotes the amount of times a rule has been exercised;</li>
+            <li><code>event</code>: Denotes information about an event that has occurred, e.g., when it has occurred;</li>
+            <li><code>accumulatedTime</code>: Denotes an accumulated amount of time a rule has been exercised;</li>
+            <li><code>recipient</code>: Denotes information about a recipient of a rule that has been exercised;</li>
 	     
 	        <!-- <li> actions are described in RDF by specifying at least:
                 <ul> 
@@ -252,22 +252,19 @@ The ODRL Evaluator uses as <b>input</b>:
             <p>
                 Since we do not want to force the objects of the state of the world triples to be modelled using a specific vocabulary,
                 in this example we abstract it away by using URIs, e.g., <code>ex:currentTime</code> to associate a certain state of the world
-                with the current time.
+                with the SotW current time, i.e., <code>odrl-fs:currentTime</code>.
             </p>
             <pre>
-                @prefix ex:   &lt;https://ex.org/> .
-                @prefix sotw: &lt;https://ex.org/sotw#> .
-
-                ex:sotw a sotw:SotW ;
-                    sotw:currentTime ex:currentTime ;
-                    sotw:location ex:location ;
-                    sotw:assetCollection ex:asset ;
-                    sotw:partyCollection ex:party ;
-                    sotw:report ex:report ;
-                    sotw:count ex:count ;
-                    sotw:event ex:event ;
-                    sotw:accumulatedTime ex:accumulatedTime ;
-                    sotw:recipient ex:recipient .
+                ex:sotw a odrl-fs:SotW ;
+                    odrl-fs:currentTime ex:currentTime ;
+                    odrl-fs:currentLocation ex:location ;
+                    odrl-fs:assetCollection ex:asset ;
+                    odrl-fs:partyCollection ex:party ;
+                    odrl-fs:existingReport ex:report ;
+                    odrl-fs:count ex:count ;
+                    odrl-fs:event ex:event ;
+                    odrl-fs:accumulatedTime ex:accumulatedTime ;
+                    odrl-fs:recipient ex:recipient .
             </pre>
         </aside>		
         
