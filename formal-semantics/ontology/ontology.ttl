@@ -6,10 +6,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
-odrl-fs:EvaluationRequest a rdfs:Class, owl:Class, skos:Concept ;
-    rdfs:isDefinedBy odrl-fs: ;
-    rdfs:label "Evaluation Request"@en ;
-    skos:definition "An Evaluation Request represents a formal description of a requested action by an assignee on a target asset, which can be enriched with further contextual information"@en .
+# TODO: add ontology metadata
+
+### State of the World concepts ###
 
 odrl-fs:SotW a rdfs:Class, owl:Class, skos:Concept ;
     rdfs:isDefinedBy odrl-fs: ;
@@ -59,10 +58,42 @@ odrl-fs:event a rdfs:Property, skos:Concept ;
 odrl-fs:accumulatedTime a rdfs:Property, skos:Concept ;
     rdfs:isDefinedBy odrl-fs: ;
     skos:definition "Denotes an accumulated amount of time a rule has been exercised"@en ;
-    skos:note "The accumulated time value should be represented using an xsd:duration."@en ;
+    skos:note "The accumulated time value should be represented using an xsd:duration"@en ;
     rdfs:domain odrl-fs:SotW .
 
 odrl-fs:recipient a rdfs:Property, skos:Concept ;
     rdfs:isDefinedBy odrl-fs: ;
     skos:definition "Denotes information about a recipient of a rule that has been exercised"@en ;
     rdfs:domain odrl-fs:SotW .
+
+### Evaluation Request concepts ###
+
+odrl-fs:EvaluationRequest a rdfs:Class, owl:Class, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    rdfs:label "Evaluation Request"@en ;
+    skos:definition "An Evaluation Request represents a formal description of a requested action by an assignee on a target asset, which can be enriched with further contextual information"@en .
+
+odrl-fs:requestedAction a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the requested action to be evaluated"@en ;
+    rdfs:domain odrl-fs:EvaluationRequest ;
+    rdfs:range odrl:Action .
+
+odrl-fs:requestingParty a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the party requesting the action"@en ;
+    rdfs:domain odrl-fs:EvaluationRequest ;
+    rdfs:range odrl:Party .
+
+odrl-fs:requestedTarget a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes the asset on which the action is to be performed"@en ;
+    rdfs:domain odrl-fs:EvaluationRequest ;
+    rdfs:range odrl:Asset .
+
+odrl-fs:context a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes additional contextual information that MAY be included in the request to be evaluated"@en ;
+    skos:example "A request to translate an asset to a certain language or to use an asset for a certain purpose"@en ;
+    rdfs:domain odrl-fs:EvaluationRequest ;
+    rdfs:range odrl:Constraint, odrl:LogicalConstraint .

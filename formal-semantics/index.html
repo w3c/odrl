@@ -270,24 +270,62 @@ The ODRL Evaluator uses as <b>input</b>:
         
         <h3>Evaluation Request</h3>
             <p>
-                An evaluator requires an <b>Evaluation Request</b> as input.
+                An ODRL Evaluator requires an <b>Evaluation Request</b> as input.
                 <!-- The evaluator uses an Evaluation Request as input to assess whether a particular <code>odrl:Action</code> by an <code>odrl:Party</code> on an <code>odrl:Asset</code> can be fulfilled according to an ODRL policy. -->
-                The <b>Evaluation Request</b>, which is represented in RDF, is formally defined by the class <code>odrl-fs:EvaluationRequest</code> and MUST contain the following properties:
+                An Evaluation Request represents a formal description of a requested action.
+                In cases where a request is not being made, e.g., during a policy monitoring scenario,
+                an empty Evaluation Request should be provided as input to the ODRL Evaluator.
             </p>
+            <p>
+                The <b>Evaluation Request</b>, which is represented in <a href="ontology/ontology.ttl">RDF</a>,
+                is formally defined by the class <code>odrl-fs:EvaluationRequest</code>
+                and MUST contain the following properties:
+            </p>
+            <div class="issue" title="Define which properties are a MUST or a MAY">
+                Define which properties are mandatory and which are optional,
+                to update existing SHACL shapes for <code>odrl-fs:EvaluationRequest</code>.
+            </div>
             <ul>
-                <li><code>odrl:action</code>: The action to be evaluated (e.g., use, read, modify).</li>
-                <li><code>odrl:assignee</code>: The party (e.g., person or organization) requesting/requested the action.</li>
-                <li><code>odrl:target</code>: The asset (e.g., file, document, data) on which the action is to be/was performed.</li>
                 <li><code>dcterms:issued</code>: The time of the request.</li>
+                <li><code>odrl-fs:requestedAction</code>: The action to be evaluated (e.g., <code>odrl:use</code>, <code>odrl:read</code>, <code>odrl:modify</code>).</li>
+                <li><code>odrl-fs:requestingParty</code>: The party (e.g., person or organization) requesting the action.</li>
+                <li><code>odrl-fs:requestedTarget</code>: The asset (e.g., file, document, data, service) on which the action is to be performed.</li>
             </ul>
             <p>
                 Additional contextual information can also be included in the Evaluation Request, 
                 e.g., a purpose for exercising the requested action.
+                The <code>odrl-fs:context</code> property MAY be used
+                to associate an <code>odrl-fs:EvaluationRequest</code> with ODRL constraints
+                that include this additional contextual information.
             </p>
+            <aside class="example" title="Evaluation Request representation">
+                <p>
+                    Alice, <code>ex:alice</code>, wants to translate the <code>ex:document-1234</code> asset to French.
+                    The following <code>odrl-fs:EvaluationRequest</code> can be modelled to represent such a request:
+                </p>
+                <pre>
+                    ex:request a odrl-fs:EvaluationRequest ;
+                        dcterms:issued "2024-02-12T11:20:10.999Z"^^xsd:dateTime ;
+                        odrl-fs:requestedAction odrl:translate ;
+                        odrl-fs:requestingParty ex:alice ;
+                        odrl-fs:requestedTarget ex:document-1234 ;
+                        odrl-fs:context [
+                            a odrl:Constraint ;
+                            odrl:leftOperand: odrl:language ;
+                            odrl:operator odrl:eq ;
+                            odrl:rightOperand "fr"
+                        ] .
+                </pre>
+            </aside>
             <p>
                 To ensure consistency, it is recommended that requests conform to the defined SHACL shapes.
             </p>
-            <p>
+            <div class="issue" title="Update SHACL shapes and JSON-LD context">
+                The existing <a href="https://w3c.github.io/odrl/formal-semantics/ontology/shacl.ttl" target="_blank">Evaluation Request SHACL Shapes</a> and
+                the <a href="https://w3c.github.io/odrl/formal-semantics/ontology/json-ld_context.json" target="_blank">JSON-LD Context</a>
+                need to be updated.
+            </div>
+            <!-- <p>
                 For formal validation and integration, the <code>odrl-fs:EvaluationRequest</code> class is defined in an OWL ontology, with corresponding
                 SHACL shapes specifying structural constraints and a JSON-LD context to ensure semantic consistency across RDF representations.
                 These resources can be found at the following locations:
@@ -296,9 +334,9 @@ The ODRL Evaluator uses as <b>input</b>:
                     <li><a href="https://w3c.github.io/odrl/formal-semantics/ontology/shacl.ttl" target="_blank">SHACL Shapes</a></li>
                     <li><a href="https://w3c.github.io/odrl/formal-semantics/ontology/json-ld_context.json" target="_blank">JSON-LD Context</a></li>
                 </ul>
-            </p>
+            </p> -->
 
-            <aside class="example" title="Evaluation Request Example">
+            <!-- <aside class="example" title="Evaluation Request Example">
                 Alice requests the use of document 1234 to be evaluated.
                 <pre>
                     {
@@ -314,7 +352,7 @@ The ODRL Evaluator uses as <b>input</b>:
                     "target": "http://example.com/document/1234"
                     }
                 </pre>
-			</aside>
+			</aside> -->
 
         <section id="behaviour">	
             <h3>Behaviour</h3>
