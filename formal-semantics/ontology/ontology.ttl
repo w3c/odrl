@@ -66,6 +66,12 @@ odrl-fs:recipient a rdfs:Property, skos:Concept ;
     skos:definition "Denotes information about a recipient of a rule that has been exercised"@en ;
     rdfs:domain odrl-fs:SotW .
 
+odrl-fs:paidAmount a rdfs:Property, skos:Concept ;
+    rdfs:isDefinedBy odrl-fs: ;
+    skos:definition "Denotes information about a performed financial payment"@en ;
+    rdfs:domain odrl-fs:SotW ;
+    rdfs:range xsd:decimal .
+
 ### Evaluation Request concepts ###
 
 odrl-fs:EvaluationRequest a rdfs:Class, owl:Class, skos:Concept ;
