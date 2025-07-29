@@ -5,10 +5,10 @@
 
   ex:sotw a sotw:SotW;
     sotw:currentTime ex:currentTime;
-    sotw:event ex:event.
+    sotw:action ex:action.
       ex:currentTime dcterms:issued "2025-07-25T00:00:00"^^xsd:dateTime.
-      ex:event rdf:type ex:Compensate.
-      ex:event ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
-      ex:event ex:compensatedParty party:sony.
-      ex:event ex:performanceTime "2025-07-23T00:00:00"^^xsd:dateTime.
-      ex:event ex:performanceState ex:performed.
+      ex:action a ex:Compensate.
+      ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
+      ex:action ex:compensatedParty party:sony.
+      ex:action ex:performanceTime "2025-07-23T00:00:00"^^xsd:dateTime.
+      ex:action ex:performanceState ex:performed.
