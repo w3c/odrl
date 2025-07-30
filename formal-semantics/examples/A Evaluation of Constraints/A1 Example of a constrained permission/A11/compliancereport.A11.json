@@ -14,6 +14,7 @@
   },
   "report:policy": "http://example.com/policy/A1",
   "report:evaluationRequest": "http://example.com/policy/evaluationrequest/A11",
+  "report:state": "http://example.com/policy/state/A11",
   "ex:permissionReportA11": {
     "@id": "http://example.com/policy-report/A1/permission/A11",
     "@type": "report:ruleReport",
