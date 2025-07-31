@@ -794,7 +794,6 @@ iff:
             </tr>
             <tr>
                 <td>C1-1</td>
-		  w3c/odrl/formal-semantics/examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json  
                 <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json">policy:C1</a></td>
                 <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/stateC11.ttl"><code>current time 2025-07-25T00:00:00</code></td>
 		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/evaluationrequestC11.json">
@@ -822,78 +821,64 @@ iff:
         </tr>
        </table>    
 
+<big><b>C2 Example of a Conditioned Permission  whose Condition has Constraints</b></big>
+<p><b>Example description</b></p>
 
-        <h4>Example of a permission whose condition has constraints</h4>
-            <p>
-                <b>Example description</b>
-            </p>
-        <p>
-            This policy contains a Permission constrained by a Condition (duty) (like in policy:22) 
-	    with the difference that such Condition has constraints, it is only activated on Sundays.
-        </p>
+<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has constraints, it is active on Sundays.</p>
 
-        <pre>
-        {
-        "@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Agreement",
-        "uid": "http://example.com/policy/88",
-        "permission": [{
-            "assigner": "http://example.com/party/sony",
-            "assignee": "http://example.com/party/billie",
-            "target": "http://example.com/music/1999.mp3",
-            "action": "play",
-            "duty": [{
-                "@id" : "http://example.com/condition/1",
-                "action": [{
-                    "@id" : "http://example.com/action/payment",
-                    "rdf:value": { "@id": "odrl:compensate" },
-                    "refinement": [{
-                        "@id" : "http://example.com/refinement/1",
-                        "leftOperand": "payAmount",
-                        "operator": "eq",
-                        "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                        "unit": "http://dbpedia.org/resource/Euro"
-                    }]
-                }],
-                "constraint": [{
-                    "@id" : "http://example.com/constraint/1",
-                    "leftOperand": "ex:dayOfWeek",
-                    "operator": "eq",
-                    "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
-                }]
-            }]
-        }]
-        }  
-        </pre>
-        <p>
-            <b>Expected behaviour of the Evaluator</b>
-        </p>
+<pre>
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy/C2",
+"permission": [{
+   "assigner": "http://example.com/party/sony",
+   "assignee": "http://example.com/party/billie",
+   "target": "http://example.com/music/1999.mp3",
+   "action": "play",
+   "duty": [{
+      "@id" : "http://example.com/condition/1",
+      "action": [{
+          "@id" : "http://example.com/action/1",
+          "rdf:value": { "@id": "odrl:compensate" },
+          "refinement": [{
+               "@id" : "http://example.com/refinement/1",
+               "leftOperand": "payAmount",
+               "operator": "eq",
+               "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+               "unit": "http://dbpedia.org/resource/Euro"
+           }]
+        }],
+        "constraint": [{
+        "@id" : "http://example.com/constraint/1",
+        "leftOperand": "ex:dayOfWeek",
+        "operator": "eq",
+        "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
+	}]
+     }]
+}]
+}          
+</pre>
 
-<p>The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
-object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
-and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
-</p>
+<p><b>Expected behaviour of the Evaluator</b></p>
+
+<p>The <b>class of actions</b> regulated by this Permission is <code>play</code> of the file <code>music:1999.mp3</code>,
+by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 	    
-<p>The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
-its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
-the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
-<code>party:sony</code>.  </p>
+<p>The <b>class of actions</b> regulated by <code>condition:1</code> is <code>compensate</code> of <code>payAmount</code> equal to <code>5 euro</code>, and
+<code>beneficiary</code> equal to the assigner of the permission, i.e. <code>party:sony</code>.  </p>
 	    
-        <p>
-        <code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
-	it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
-        (the state of the world satisfies its Constraints, i.e. the current date is a Sunday. For expressing this constraint
-	an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
-	An active Constraint, it is also <b>fulfilled</b> when in the state of the world there is a representation 
-	of an performed action that matches with the class of actions described in the Constraint.
-        </p>
-        <p>
-        The permission can be evaluated as follows: <br>
+<p><code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
+it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied, i.e. it is a Sunday 
+(for expressing this constraint an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
+An active Constraint is <b>fulfilled</b> when in the state of the world there is a representation 
+	of an performed action that matches with the class of actions described in the Constraint.</p>
+       
+<!-- <p>The permission can be evaluated as follows: <br>
 	If the Condition is inactive (its Constraint is not satisfied), the Permission is active. <br>
         If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
         If the Condition is fulfilled the Permission is active.
-        </p>
-<p><i>Access control or monitoring scenario:</i></p> 
+        </p>-->
    
         <table border="1" style="font-size:small;">
             <tr>
