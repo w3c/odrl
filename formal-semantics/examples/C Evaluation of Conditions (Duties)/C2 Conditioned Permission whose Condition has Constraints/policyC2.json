@@ -1,26 +1,31 @@
 {
 "@context": "http://www.w3.org/ns/odrl.jsonld",
 "@type": "Agreement",
-"uid": "http://example.com/policy/C1",
+"uid": "http://example.com/policy/C2",
 "permission": [{
-    "@id": "http://example.com/rule/C1",
-    "assigner": "http://example.com/party/sony",
-    "assignee": "http://example.com/party/billie",
-    "target": "http://example.com/music/1999.mp3",
-    "action": "play",
-    "duty": [{
-       "@id" : "http://example.com/condition/1",
-       "action": [{
+   "assigner": "http://example.com/party/sony",
+   "assignee": "http://example.com/party/billie",
+   "target": "http://example.com/music/1999.mp3",
+   "action": "play",
+   "duty": [{
+      "@id" : "http://example.com/condition/1",
+      "action": [{
           "@id" : "http://example.com/action/1",
           "rdf:value": { "@id": "odrl:compensate" },
           "refinement": [{
-             "@id" : "http://example.com/refinement/1",
-             "leftOperand": "payAmount",
-             "operator": "eq",
-             "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-             "unit": "http://dbpedia.org/resource/Euro"
-          }]
-        }]
-    }]
+               "@id" : "http://example.com/refinement/1",
+               "leftOperand": "payAmount",
+               "operator": "eq",
+               "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+               "unit": "http://dbpedia.org/resource/Euro"
+           }]
+        }],
+        "constraint": [{
+        "@id" : "http://example.com/constraint/1",
+        "leftOperand": "ex:dayOfWeek",
+        "operator": "eq",
+        "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
+	}]
+     }]
 }]
-}
+}        
