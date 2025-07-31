@@ -11,6 +11,7 @@
     "duty": [{
        "@id" : "http://example.com/condition/1",
        "action": [{
+          "@id" : "http://example.com/action/1",
           "rdf:value": { "@id": "odrl:compensate" },
           "refinement": [{
              "@id" : "http://example.com/refinement/1",

@@ -9,7 +9,7 @@
   "@id": "http://example.com/policy-report/C1",
   "@type": "report:ComplianceReport",
   "dct:created": {
-    "@value": "2024-12-19T15:00:00.999Z",
+    "@value": "2025-07-30T15:00:00.999Z",
     "@type": "xsd:dateTime"
   },
   "report:policy": "http://example.com/policy/C1",
@@ -24,8 +24,15 @@
   },
   "ex:conditionReport1": {
     "@type": "report:ConditionReport",
-    "@id": "http://example.com/policy-report/C1/condition/C1",
+    "@id": "http://example.com/policy-report/C1/condition/C11",
+    "report:condition": "http://example.com/condition/1",
     "report:activationState": "report:Satisfied",
     "report:deonticState": "report:Not-set"
+  },
+  "ex:actionReport1": {
+    "@type": "report:ActionReport",
+    "@id": "http://example.com/policy-report/C1/action/C11",
+    "report:action": "http://example.com/action/1",
+    "report:performanceState": "report:Unperformed"
   }
 }

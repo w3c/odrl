@@ -11,4 +11,3 @@
       ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
       ex:action ex:compensatedParty party:sony.
       ex:action ex:performanceTime "2025-07-23T00:00:00"^^xsd:dateTime.
-      ex:action ex:performanceState ex:performed.
