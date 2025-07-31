@@ -730,44 +730,45 @@ iff:
         </p>
 
         <pre>
-        {
-        "@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Agreement",
-        "uid": "http://example.com/policy/C1",
-        "permission": [{
-            "assigner": "http://example.com/party/sony",
-            "assignee": "http://example.com/party/billie",
-            "target": "http://example.com/music/1999.mp3",
-            "action": "play",
-            "duty": [{
-               "@id" : "http://example.com/condition/1",
-               "action": [{
-                  "rdf:value": { "@id": "odrl:compensate" },
-                  "refinement": [{
-                     "@id" : "http://example.com/refinement/1",
-                     "leftOperand": "payAmount",
-                     "operator": "eq",
-                     "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                     "unit": "http://dbpedia.org/resource/Euro"
-                  }]
-                }]
-            }]
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy/C1",
+"permission": [{
+    "@id": "http://example.com/rule/C1",
+    "assigner": "http://example.com/party/sony",
+    "assignee": "http://example.com/party/billie",
+    "target": "http://example.com/music/1999.mp3",
+    "action": "play",
+    "duty": [{
+       "@id" : "http://example.com/condition/1",
+       "action": [{
+          "@id" : "http://example.com/action/1",
+          "rdf:value": { "@id": "odrl:compensate" },
+          "refinement": [{
+             "@id" : "http://example.com/refinement/1",
+             "leftOperand": "payAmount",
+             "operator": "eq",
+             "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+             "unit": "http://dbpedia.org/resource/Euro"
+          }]
         }]
-        }  
+    }]
+}]
+}
         </pre>
 
         <p><b>Expected behaviour of the Evaluator</b></p>
-        <p>
+       
+	<p>
 	The <b>class of actions</b> regulated by this Permission is <code>play</code> of the file <code>music:1999.mp3</code> 
-	(the <code>odrl:target</code>) by the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
+	(the <code>odrl:target</code>) by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 	
-	The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
-	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
-            when in the state of the world there is a representation of a performed action that matches with the 
-            the class of actions described in the <code>condition:1</code>. The <b>class of actions</b> regulated by <code>condition:1</code> 
-	is <code>compensate</code> of a <code>payAmount</code> equal to <code>5 euro</code>, and 
-	(given that the <code>odrl:compensatedParty</code> of 
-            the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
+	<p>The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, so it is never inactive. 
+	It starts to be <b>active</b> and it is <b>fulfilled</b> when in the state of the world there is a representation of a performed 
+	action that matches with the class of actions described in the <code>condition:1</code>. 
+	The <b>class of actions</b> regulated by <code>condition:1</code> is <code>compensate</code> of a <code>payAmount</code> equal to <code>5 euro</code>, and 
+	(given that the <code>odrl:compensatedParty</code> of the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
             <code>party:billie</code> because, for example, a company can pay for its employees 
             (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a 
@@ -775,11 +776,11 @@ iff:
         </p>
        
         <p>
-           If the action to be evaluated belongs to the class of actions regulated by the Permission and the Permission is active, 
+        If the action to be evaluated belongs to the class of actions regulated by the Permission and the Permission is active, 
 	then the action is permitted, otherwise it is denied.
         </p>
 
-        <table border="1" style="font-size:small;">
+<table border="1" style="font-size:small;">
              <th>Case</th>
                     <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
@@ -794,8 +795,9 @@ iff:
             <tr>
                 <td>C1-1</td>
                 <td><a href="examples/C Evaluation of Conditions (Duties)/policyC1.json">policy:C1</a></td>
-                <td><a href="examples/C Evaluation of Conditions (Duties)/C11/stateC11.ttl">current time is 2025-07-25T00:00:00</td>
-		<td><a href="examples/C Evaluation of Conditions (Duties)/C11/evaluationrequestC11.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+                <td><a href="examples/C Evaluation of Conditions (Duties)/C11/stateC11.ttl"><code>current time 2025-07-25T00:00:00</code></td>
+		<td><a href="examples/C Evaluation of Conditions (Duties)/C11/evaluationrequestC11.json">
+		<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
 		<td>satisfied</td>
 		<td>active</td>
                 <td>not-set</td>
@@ -806,8 +808,9 @@ iff:
         <tr>
                 <td>C1-2</td>
                 <td><a href="examples/C Evaluation of Conditions (Duties)/policyC1.json">policy:C1</a></td>
-                 <td><a href="examples/C Evaluation of Conditions (Duties)/C12/stateC12.ttl"><code>compensate</code> <code>5 euro</code> to <code>party:sony</code></a>
-		at time 2025-07-23T00:00:00 and current time is 2025-07-25T00:00:00</td>
+                 <td><a href="examples/C Evaluation of Conditions (Duties)/C12/stateC12.ttl">
+		<code>compensate</code> <code>5 euro</code> to <code>party:sony atTime 2025-07-23T00:00:00</code></a>
+		 and <code>current time 2025-07-25T00:00:00</code></td>
 		/<td><a href="examples/C Evaluation of Conditions (Duties)/C12/evaluationrequestC12.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
 		<td>satisfied</td>
 		<td>active</td>
