@@ -3,6 +3,7 @@
 "@type": "Agreement",
 "uid": "http://example.com/policy/C2",
 "permission": [{
+   "@id": "http://example.com/rule/C2",
    "assigner": "http://example.com/party/sony",
    "assignee": "http://example.com/party/billie",
    "target": "http://example.com/music/1999.mp3",
