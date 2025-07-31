@@ -833,6 +833,7 @@ iff:
 "@type": "Agreement",
 "uid": "http://example.com/policy/C2",
 "permission": [{
+   "@id": "http://example.com/rule/C2",
    "assigner": "http://example.com/party/sony",
    "assignee": "http://example.com/party/billie",
    "target": "http://example.com/music/1999.mp3",
@@ -883,20 +884,22 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
    
         <table border="1" style="font-size:small;">
             <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-		<th style="color:darkblue">Requested/Performed Action</th>
-                <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
-                <th style="color:darkred">satisfaction of <br><code>refinement:1</code></th>
-                <th style="color:darkred">activation of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><br>activation of the <br><code>permission</code></th>
-		<th style="color:darkred"><br>control state of the <br><code>permission</code></th>
+		    <th>Case</th>
+                    <th style="color:darkblue">Policy</th>
+		    <th style="color:darkblue">State of the World</th>
+                    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code></th>
+                <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code></th>
+                <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
+                <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
+                <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
+		<th style="color:darkred"><br>Control state of <br><code>permission</code></th>
+            	<th style="color:darkred">Evaluation Report</th>
             </tr>
             <tr>
-                <td>E88-1</td>
-                <td>policy:88</td>
+                <td>C2-1</td>
+                <td>policy:C2</td>
                 <td>It is not Sunday<br></td> 
 		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
 		and <code>performer</code> = <code>party:billie</code></td>
@@ -908,8 +911,8 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
 		<td>permit the action</td>
             </tr>
             <tr>
-                <td>E88-2</td>
-                <td>policy:88</td>
+                <td>C2-2</td>
+                <td>policy:C2</td>
                 <td>It is Sunday<br>
 		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
 		and <code>beneficiary</code> = <code>party:sony</code> is NOT performed.<br>
