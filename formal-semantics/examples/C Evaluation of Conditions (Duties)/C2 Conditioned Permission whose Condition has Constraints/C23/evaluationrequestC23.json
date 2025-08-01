@@ -4,7 +4,7 @@
     "odrl-fs": "https://w3id.org/odrl-fs#"
   },
   "@type": "odrl-fs:EvaluationRequest",
-  "@id":  "http://example.com/policy/evaluationrequest/C11",
+  "@id":  "http://example.com/policy/evaluationrequest/C23",
   "action": "odrl:play",
   "assignee": {"@id": "http://example.com/party/billie"},
   "target": "http://example.com/music/1999.mp3"

@@ -4,6 +4,7 @@
   @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
   ex:sotw a sotw:SotW;
+    sotw:id "http://example.com/policy/state/C12";
     sotw:currentTime ex:currentTime;
     sotw:action ex:action.
       ex:currentTime dcterms:issued "2025-07-27T00:00:00"^^xsd:dateTime.
