@@ -6,7 +6,7 @@
   ex:sotw a sotw:SotW;
     sotw:currentTime ex:currentTime;
     sotw:action ex:action.
-      ex:currentTime dcterms:issued "2025-08-03T00:00:00"^^xsd:dateTime.
+      ex:currentTime dcterms:issued "2025-07-27T00:00:00"^^xsd:dateTime.
       ex:action a ex:Compensate.
       ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
       ex:action ex:compensatedParty party:sony.
