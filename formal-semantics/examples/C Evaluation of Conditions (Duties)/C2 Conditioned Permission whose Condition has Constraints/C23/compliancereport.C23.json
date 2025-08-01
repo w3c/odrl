@@ -26,19 +26,19 @@
     "@type": "report:ConditionReport",
     "@id": "http://example.com/policy-report/C2/condition/C21",
     "report:constraint": "http://example.com/condition/1",
-    "report:activationState": "report:Inactive",
-    "report:deonticState": "report:Not-set"
+    "report:activationState": "report:Active",
+    "report:deonticState": "report:Fulfilled"
   },
    "ex:constraintReport1": {
     "@type": "report:ConstraintReport",
     "@id": "http://example.com/policy-report/C2/constraint/C21",
     "report:constraint": "http://example.com/constraint/1",
-    "report:satisfactionState": "report:Not-Satisfied"
+    "report:satisfactionState": "report:Satisfied"
   },
   "ex:actionReport1": {
     "@type": "report:ActionReport",
     "@id": "http://example.com/policy-report/C1/action/C21",
     "report:action": "http://example.com/action/1",
-    "report:performanceState": "report:Unperformed"
+    "report:performanceState": "report:Performed"
   }
 }

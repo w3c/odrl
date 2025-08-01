@@ -16,7 +16,7 @@
   "report:evaluationRequest": "http://example.com/policy/evaluationrequest/C11",
   "report:state": "http://example.com/policy/state/C11",
   "ex:permissionReportC11": {
-    "@id": "http://example.com/policy-report/C1/permission/C11",
+    "@id": "http://example.com/policy-report/C1/permission/C1",
     "@type": "report:ruleReport",
     "report:rule": "http://example.com/rule/C1",
     "report:activationState": "report:Inactive",
@@ -24,7 +24,7 @@
   },
   "ex:conditionReport1": {
     "@type": "report:ConditionReport",
-    "@id": "http://example.com/policy-report/C1/condition/C11",
+    "@id": "http://example.com/policy-report/C1/condition/C1",
     "report:condition": "http://example.com/condition/1",
     "report:activationState": "report:Satisfied",
     "report:deonticState": "report:Not-set"

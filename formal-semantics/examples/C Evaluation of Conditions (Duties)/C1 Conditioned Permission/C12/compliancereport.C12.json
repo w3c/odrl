@@ -24,13 +24,14 @@
   },
   "ex:conditionReport1": {
     "@type": "report:ConditionReport",
-    "@id": "http://example.com/policy-report/C1/condition/C1",
+    "@id": "http://example.com/policy-report/C1/condition/C12",
+    "report:condition": "http://example.com/condition/1",
     "report:activationState": "report:Active",
     "report:deonticState": "report:Fulfilled"
   },
    "ex:actionReport1": {
     "@type": "report:ActionReport",
-    "@id": "http://example.com/policy-report/C1/action/C11",
+    "@id": "http://example.com/policy-report/C1/action/C12",
     "report:action": "http://example.com/action/1",
     "report:performanceState": "report:Performed"
   }

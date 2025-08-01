@@ -23,7 +23,8 @@
   },
   "ex:constraintReport1": {
     "@type": "report:ConstraintReport",
-    "@id": "http://example.com/refinement/B1",
+    "@id": "http://example.com/policy-report/A1/constraint/B11",
+    "report:constraint": "http://example.com/refinement/B1",
     "report:satisfactionState": "report:Not-Satisfied"
   }
 }
