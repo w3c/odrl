@@ -25,7 +25,7 @@
   "ex:conditionReport1": {
     "@type": "report:ConditionReport",
     "@id": "http://example.com/policy-report/C1/condition/C1",
-    "report:activationState": "report:Satisfied",
+    "report:activationState": "report:Active",
     "report:deonticState": "report:Fulfilled"
   },
    "ex:actionReport1": {
