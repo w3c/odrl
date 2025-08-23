@@ -5,7 +5,7 @@
     <td colspan="2"><h3>1st International ODRL Workshop 22-23 April 2004 (Vienna, Austria)</h3></td>
   </tr>
   <tr>
-    <td><img src="https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/logo-small.png"/></td>
+    <td><img src="https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/logo-small.png" width="100"></td>
     <td><ul>
     <li>Home: https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/index.html</li>
     <li>Program: https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/program.html </li>
