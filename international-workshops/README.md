@@ -5,11 +5,11 @@
     <td colspan="2"><h3>1st International ODRL Workshop 22-23 April 2004 (Vienna, Austria)</h3></td>
   </tr>
   <tr>
-    <td>![](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/logo-small.png)</td>
+    <td><img src="https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/logo-small.png"/></td>
     <td><ul>
-    <li>[Workshop Home](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/index.html)</li>
-    <li>[Workshop Program](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/program.html) </li>
-    <li>[Workshop Proceedings](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/paper/odrl-workshop-2004.pdf)</li>
+    <li>Home: https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/index.html</li>
+    <li>Program: https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/program.html </li>
+    <li>Proceedings: https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2004/paper/odrl-workshop-2004.pdf</li>
     </ul></td>
   </tr>
 </table>
@@ -19,7 +19,7 @@
     <td colspan="2"><h3>2nd International ODRL Workshop 7-8 July 2005 (Lisbon, Portugal)</h3></td>
   </tr>
   <tr>
-    <td>![](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2005/images/logo-small.png)</td>
+    <td><img src="https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2005/images/logo-small.png"/></td>
     <td><ul>
     <li>[Workshop Home](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2005/index.html)</li>
     <li>[Workshop Program](https://www.w3.org/2012/09/odrl/archive/odrl.net/workshop2005/program.html) </li>
