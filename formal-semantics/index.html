@@ -63,7 +63,7 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
             considering a set of policies, the state of the world, and the description of the action that a user 
             <b>requests</b> to perform on certain digital resources. It may be useful to distinguish between 
 	    requested and <b>attempted</b> action. When an agent attempts to perform an action, 
-            e.g. an agent double-clicks on a picture, if the action is not permitted the attempt is recorded 
+            e.g., an agent double-clicks on a picture, if the action is not permitted the attempt is recorded 
 	    and if it is the case sanctioned. 
 	In the case of a request, only the answer is generated: either the action is permitted or the action is denied.
 	    </li>
@@ -193,17 +193,15 @@ The ODRL Evaluator uses as <b>input</b>:
 	<ol> <!-- input of the Evaluator -->
 	  <li>a Policy;</li>
 	  <li>a formal description of the State of the World;</li>
-	  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g. the type of the action, 
-	the actor who is located in a given place, the target, and an instant of time);</li>
-	<!--  <li> an optional parameter specifying the behaviour when an action is neither permitted nor prohibited. Its value can be open or closed. 
-	The default value is closed. -->
-	  </li>
+	  <li>a formal description of an Evaluation Request that contains at least a description of an action (e.g., the type of the action, the actor requesting/attempting the action, the target, and an instant of time);</li>
+	  <li>an optional parameter specifying the behaviour of the system when a requested/attempted action is neither permitted nor prohibited by the Policy. Its value can be open or closed. The default value is closed.</li>
 	</ol>
+
 	The ODRL Evaluator produces as <b>output</b>: 
 	<ol> <!-- input of the Evaluator -->
 	  <li>an Evaluation Report;</li>
 	</ol>
-		This section describes the State of the World, the Evaluation Request and the Evaluation Report.
+		This section describes the State of the World, the Evaluation Request, the Behaviour, and the Evaluation Report.
 
         <h3>State of the World</h3>
         <p><!-- state of the world --> 
@@ -224,19 +222,20 @@ The ODRL Evaluator uses as <b>input</b>:
         </p>
             As such, in this document, we aim to provide a minimal set of information that needs to be represented in the 
             state of the world and respective definitions, which will be formally represented in an 
-            <a href="sotw.ttl">RDF vocabulary</a>:
+            <a href="ontology/ontology.ttl">RDF vocabulary</a>:
         </p>
         <ul>
-            <li><code>SotW</code>: A set of knowledge representing real-world information aiding the evaluation of ODRL Policies</li>
-            <li><code>currentTime</code>: Denotes the current time of the state of the world</li>
-            <li><code>location</code>: Denotes the location where the policy is being evaluated</li>
-            <li><code>assetCollection</code>: Denotes an asset that is part of an asset collection</li>
-            <li><code>partyCollection</code>: Denotes a party that is part of a party collection</li>
-            <li><code>report</code>: Denotes existing reports from previously performed ODRL evaluations, i.e., to get history of attempted and performed actions</li>
-            <li><code>count</code>: Denotes the amount of times a rule has been exercised</li>
-            <li><code>event</code>: Denotes information about an event that has occurred, e.g., when it has occurred</li>
-            <li><code>accumulatedTime</code>: Denotes an accumulated amount of time a rule has been exercised</li>
-            <li><code>recipient</code>: Denotes information about a recipient of a rule that has been exercised</li>
+            <li><code>SotW</code>: Knowledge representing real-world information aiding the evaluation of ODRL Policies;</li>
+            <li><code>currentTime</code>: Denotes the current time of the state of the world;</li>
+            <li><code>currentLocation</code>: Denotes the current location of an ODRL party;</li>
+            <li><code>assetCollection</code>: Denotes an asset that is part of an ODRL asset collection;</li>
+            <li><code>partyCollection</code>: Denotes a party that is part of a ODRL party collection;</li>
+            <li><code>existingReport</code>: Denotes existing reports from previously performed ODRL evaluations, i.e., to get history of attempted and performed actions;</li>
+            <li><code>count</code>: Denotes the amount of times a rule has been exercised;</li>
+            <li><code>event</code>: Denotes information about an event that has occurred, e.g., when it has occurred;</li>
+            <li><code>accumulatedTime</code>: Denotes an accumulated amount of time a rule has been exercised;</li>
+            <li><code>recipient</code>: Denotes information about a recipient of a rule that has been exercised;</li>
+            <li><code>paidAmount</code>: Denotes information about a performed financial payment;</li>
 	     
 	        <!-- <li> actions are described in RDF by specifying at least:
                 <ul> 
@@ -254,44 +253,80 @@ The ODRL Evaluator uses as <b>input</b>:
             <p>
                 Since we do not want to force the objects of the state of the world triples to be modelled using a specific vocabulary,
                 in this example we abstract it away by using URIs, e.g., <code>ex:currentTime</code> to associate a certain state of the world
-                with the current time.
+                with the SotW current time, i.e., <code>odrl-fs:currentTime</code>.
             </p>
             <pre>
-                @prefix ex:   &lt;https://ex.org/> .
-                @prefix sotw: &lt;https://ex.org/sotw#> .
-
-                ex:sotw a sotw:SotW ;
-                    sotw:currentTime ex:currentTime ;
-                    sotw:location ex:location ;
-                    sotw:assetCollection ex:asset ;
-                    sotw:partyCollection ex:party ;
-                    sotw:report ex:report ;
-                    sotw:count ex:count ;
-                    sotw:event ex:event ;
-                    sotw:accumulatedTime ex:accumulatedTime ;
-                    sotw:recipient ex:recipient .
+                ex:sotw a odrl-fs:SotW ;
+                    odrl-fs:currentTime ex:currentTime ;
+                    odrl-fs:currentLocation ex:location ;
+                    odrl-fs:assetCollection ex:asset ;
+                    odrl-fs:partyCollection ex:party ;
+                    odrl-fs:existingReport ex:report ;
+                    odrl-fs:count ex:count ;
+                    odrl-fs:event ex:event ;
+                    odrl-fs:accumulatedTime ex:accumulatedTime ;
+                    odrl-fs:recipient ex:recipient .
             </pre>
         </aside>		
-            <h3>Evaluation Request</h3>
+        
+        <h3>Evaluation Request</h3>
             <p>
-                An evaluator requires an <b>Evaluation Request</b> as input.
+                An ODRL Evaluator requires an <b>Evaluation Request</b> as input.
                 <!-- The evaluator uses an Evaluation Request as input to assess whether a particular <code>odrl:Action</code> by an <code>odrl:Party</code> on an <code>odrl:Asset</code> can be fulfilled according to an ODRL policy. -->
-                The <b>Evaluation Request</b>, which is represented in RDF, is formally defined by the class <code>odrl-fs:EvaluationRequest</code> and MUST contain the following properties:
+                An Evaluation Request represents a formal description of a requested action.
+                In cases where a request is not being made, e.g., during a policy monitoring scenario,
+                an empty Evaluation Request should be provided as input to the ODRL Evaluator.
             </p>
+            <p>
+                The <b>Evaluation Request</b>, which is represented in <a href="ontology/ontology.ttl">RDF</a>,
+                is formally defined by the class <code>odrl-fs:EvaluationRequest</code>
+                and MUST contain the following properties:
+            </p>
+            <div class="issue" title="Define which properties are a MUST or a MAY">
+                Define which properties are mandatory and which are optional,
+                to update existing SHACL shapes for <code>odrl-fs:EvaluationRequest</code>.
+            </div>
             <ul>
-                <li><code>odrl:action</code>: The action to be evaluated (e.g., use, read, modify).</li>
-                <li><code>odrl:assignee</code>: The party (e.g., person or organization) requesting/requested the action.</li>
-                <li><code>odrl:target</code>: The asset (e.g., file, document, data) on which the action is to be/was performed.</li>
                 <li><code>dcterms:issued</code>: The time of the request.</li>
+                <li><code>odrl-fs:requestedAction</code>: The action to be evaluated (e.g., <code>odrl:use</code>, <code>odrl:read</code>, <code>odrl:modify</code>).</li>
+                <li><code>odrl-fs:requestingParty</code>: The party (e.g., person or organization) requesting the action.</li>
+                <li><code>odrl-fs:requestedTarget</code>: The asset (e.g., file, document, data, service) on which the action is to be performed.</li>
             </ul>
             <p>
                 Additional contextual information can also be included in the Evaluation Request, 
                 e.g., a purpose for exercising the requested action.
+                The <code>odrl-fs:context</code> property MAY be used
+                to associate an <code>odrl-fs:EvaluationRequest</code> with ODRL constraints
+                that include this additional contextual information.
             </p>
+            <aside class="example" title="Evaluation Request representation">
+                <p>
+                    Alice, <code>ex:alice</code>, wants to translate the <code>ex:document-1234</code> asset to French.
+                    The following <code>odrl-fs:EvaluationRequest</code> can be modelled to represent such a request:
+                </p>
+                <pre>
+                    ex:request a odrl-fs:EvaluationRequest ;
+                        dcterms:issued "2024-02-12T11:20:10.999Z"^^xsd:dateTime ;
+                        odrl-fs:requestedAction odrl:translate ;
+                        odrl-fs:requestingParty ex:alice ;
+                        odrl-fs:requestedTarget ex:document-1234 ;
+                        odrl-fs:context [
+                            a odrl:Constraint ;
+                            odrl:leftOperand: odrl:language ;
+                            odrl:operator odrl:eq ;
+                            odrl:rightOperand "fr"
+                        ] .
+                </pre>
+            </aside>
             <p>
                 To ensure consistency, it is recommended that requests conform to the defined SHACL shapes.
             </p>
-            <p>
+            <div class="issue" title="Update SHACL shapes and JSON-LD context">
+                The existing <a href="https://w3c.github.io/odrl/formal-semantics/ontology/shacl.ttl" target="_blank">Evaluation Request SHACL Shapes</a> and
+                the <a href="https://w3c.github.io/odrl/formal-semantics/ontology/json-ld_context.json" target="_blank">JSON-LD Context</a>
+                need to be updated.
+            </div>
+            <!-- <p>
                 For formal validation and integration, the <code>odrl-fs:EvaluationRequest</code> class is defined in an OWL ontology, with corresponding
                 SHACL shapes specifying structural constraints and a JSON-LD context to ensure semantic consistency across RDF representations.
                 These resources can be found at the following locations:
@@ -300,26 +335,45 @@ The ODRL Evaluator uses as <b>input</b>:
                     <li><a href="https://w3c.github.io/odrl/formal-semantics/ontology/shacl.ttl" target="_blank">SHACL Shapes</a></li>
                     <li><a href="https://w3c.github.io/odrl/formal-semantics/ontology/json-ld_context.json" target="_blank">JSON-LD Context</a></li>
                 </ul>
-            </p>
+            </p> -->
 
-        <aside class="example" title="Evaluation Request Example">
-            Alice requests the use of document 1234 to be evaluated.
-            <pre>
-                {
-                  "@context": {
-                    "http://www.w3.org/ns/odrl.jsonld",
-                    "odrl-fs": "https://w3id.org/odrl-fs#"
-                  },
-                  "@type": "odrl-fs:EvaluationRequest",
-                  "action": "odrl:use",
-                  "assignee": {
-                    "@id": "http://example.org/party/Alice"
-                  },
-                  "target": "http://example.com/document/1234"
-                }
-            </pre>
-			</aside>
-		<section id="sectionPolicies">	
+            <!-- <aside class="example" title="Evaluation Request Example">
+                Alice requests the use of document 1234 to be evaluated.
+                <pre>
+                    {
+                    "@context": {
+                        "http://www.w3.org/ns/odrl.jsonld",
+                        "odrl-fs": "https://w3id.org/odrl-fs#"
+                    },
+                    "@type": "odrl-fs:EvaluationRequest",
+                    "action": "odrl:use",
+                    "assignee": {
+                        "@id": "http://example.org/party/Alice"
+                    },
+                    "target": "http://example.com/document/1234"
+                    }
+                </pre>
+			</aside> -->
+
+        <section id="behaviour">	
+            <h3>Behaviour</h3>
+            
+            <p>
+                An evaluator might take as an optional input a parameter that specifies the behaviour of the system 
+                in case a requested/attempted action is neither permitted nor prohibited by the Policy input.
+            </p>
+            <p>
+                In this case, the behaviour input can have three values:
+            </p>
+            <ul>
+                <li><code>open</code>: in case of an open system, anything that is not prohibited is permitted;</li>
+                <li><code>closed</code>: in case of a closed system, anything that is not permitted is prohibited;</li>
+                <li><code>default</code>: the default value is closed.</li>
+            </ul>
+
+		</section>
+
+		<section id="evaluationReport">	
             <h3>Evaluation Report</h3>
             Pending to be written.
 		</section>
