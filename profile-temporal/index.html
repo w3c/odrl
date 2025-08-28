@@ -20,11 +20,19 @@
 	</head>
 	<body>
 
-		<p class="note" role="note">This working draft is not actively being developed. The model presented for temporal conditions may be used for ODRL Policies. Feedback from the community is welcome.</p>
+		<p class="note" role="note">This working draft is being actively developed. The model presented for temporal conditions may be used for ODRL Policies. Feedback from the community is welcome.</p>
 
 		<section  id="abstract">
       	
-			<p>This document presents a model for describing the ways the rights and obligation controlling the use of an asset change over time.</p>
+			<p>This document presents a model for describing the ways the core entities defined in the ODRL Information Model change over time.</p>
+			<p>It does so by extending the Provenance, Authoring and Versioning (PAV) ontology by adding two new concepts:</p>
+			<ol>
+				<li><strong>Temporal Objects: </strong>Entities that exist through time under a stable identifier even as they change (sometimes known as fluents). </li>
+				<li><strong>Effective Times: </strong>The moments at which a version of a temporal object either becomes (<strong>effective from</strong>) or ceases to be (<strong>effective to</strong>) a valid statement.</li>
+			</ol>
+			<p>So, the changes in an entity over time are captured by versioning the temporal object and specifying the effective intervals of these versions. Using these extensions, we can describe how an entity as it is now, once was, and will be.</p>
+			<p>This model provides temporal objects for policies, rules, and assets, allowing them to be tracked over time under a stable identifier.</p>
+			<p>Leaving the temporal object to take the temporal strain, the versions are simple ODRL entities but with <strong>effective from</strong> and/or <strong>effective to</strong> values.</p>
 			 
 		</section>
 		<section id="sotd">
@@ -35,98 +43,17 @@
 		<h2>Introduction</h2>
 			<p>Things change. The rights and obligations controlling the use of data develop as time passes. By providing a temporal model for ODRL, we can ensure that parties in a supply chain share the same view of the past, the present, and the future.</p>
 			<p>Such a model enables us, for example, to:</p>
-			<p class="tab"><strong>Support audits</strong></p>
-			<p class="tab">The model must support an account of history that both the data Provider and the data Consumer can agree upon through the audit process.</p>
-			<p class="tab"><strong>Ensure compliance as policies update</strong></p>
-			<p class="tab">The model must continue to support provably-correct compliance decisions in the present as policies change and update over time.</p>
-			<p class="tab"><strong>Enable forecasting</strong></p>
-			<p class="tab">The model must support an account of the future so actors in the supply chain can predict their capabilities and costs as and when updates are published.</p>
-			<p>The introduction of a temporal object to act as a container for the various versions of a relevant entity (like a Permission) allows us to satisfy these use cases while maintaining a stable identifier for these entities across time.</p>
-		
-		<section id="conventions">
-		    <h2>Document Conventions</h2>
-	            <p></p>
-		    <table class="def">
-			<tbody>
-			  <tr>
-			    <th>Prefix</th>
-			    <th>Namespace</th>
-			    <th>Description</th>
-			  </tr>
-			  <tr>
-			    <td>odrl</td>
-			    <td>http://www.w3.org/ns/odrl/2/</td>
-			    <td>[[odrl-vocab]] [[odrl-model]]</td>
-			  </tr>
-			  <tr>
-			    <td>rdf</td>
-			    <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-			    <td>[[rdf11-concepts]]</td>
-			  </tr>
-			  <tr>
-			    <td>rdfs</td>
-			    <td>http://www.w3.org/2000/01/rdf-schema#</td>
-			    <td>[[rdf-schema]]</td>
-			  </tr>
-			     <tr>
-			    <td>owl</td>
-			    <td>http://www.w3.org/2002/07/owl#</td>
-			    <td>[[owl2-overview]]</td>
-			  </tr>
-			<tr>
-			    <td>xsd</td>
-			    <td>http://www.w3.org/2001/XMLSchema#</td>
-			    <td>[[xmlschema11-2]]</td>
-			  </tr>
-			      <tr>
-			    <td>skos</td>
-			    <td>http://www.w3.org/2004/02/skos/core#</td>
-			    <td>[[skos-reference]]</td>
-			  </tr>
-			  <tr>
-			    <td>dcterms</td>
-			    <td>http://purl.org/dc/terms/</td>
-			    <td>[[dcterms]]</td>
-			  </tr>
-			    <tr>
-			    <td>vcard</td>
-			    <td>http://www.w3.org/2006/vcard/ns#</td>
-			    <td>[[vcard-rdf]]</td>
-			  </tr>
-			  <tr>
-			    <td>foaf</td>
-			    <td>http://xmlns.com/foaf/0.1/</td>
-			    <td>[[foaf]]</td>
-			  </tr>
-
-			  <tr>
-			    <td>schema</td>
-			    <td>http://schema.org/</td>
-			    <td><a href="http://schema.org/">schema.org</a></td>
-			  </tr>
-
-					 <tr>
-			    <td>cc</td>
-			    <td>https://creativecommons.org/ns#</td>
-			    <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
-			  </tr>
-
-					 <tr>
-			    <td>ex</td>
-			    <td>http://example.com/ns#</td>
-			    <td></td>
-			  </tr>
-
-			</tbody>
-		      </table>
-
-		    </section>   				
-		</section>
+			<ul>
+				<li><strong>Support audits: </strong>The model must support an account of history that both the data Provider and the data Consumer can agree upon through the audit process.</li>
+				<li><strong>Ensure compliance as policies update: </strong>The model must continue to support provably-correct compliance decisions in the present as policies change and update over time.</li>
+				<li><strong>Enable forecasting: </strong>The model must support an account of the future so actors in the supply chain can predict their capabilities and costs as and when updates are published.</li>
+			</ul>
+			<p>The introduction of a temporal object to act as a light-weight container for the various versions of a relevant entity allows us to satisfy these use cases while maintaining a stable identifier for these entities across time.</p>
+			<p>For example, we might not want to mint a new permission with a new identifier every time the permission's price changes, especially if that identifier is stored in multiple systems. Instead, we store the temporal permission ID and version it - or, more likely in this case, version the payment duty to which it points. </p>
 		<section id="TemporalObjects">
-		    <h2>Temporal Objects</h2>
-		    <p>
-			Temporal objects exist in time describing versions of themselves as they change. We're interested in tracking Policies, Rules, and Assets.
-		    </p>
+		    <h1>Temporal Objects</h1>
+		    <p>Temporal objects exist through time describing versions of themselves as they change. We're interested in tracking Policies, Rules, and Assets.</p>
+            <p>The only property that a temporal object is required to provide is the <strong>has version</strong> property from the  Provenance, Authoring and Versioning ontology (PAV). </p>
 			<section data-dfn-for="TemporalObject">
 				<h2><dfn>Temporal Object</dfn></h2>
 				<table class="def propdef">
@@ -137,209 +64,210 @@
 						<th>Label:</th><td>Temporal Object</td>
 					</tr><tr>
 						<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalObject">http://www.w3.org/ns/odrl/2/temporal/TemporalObject</a></td>
-						</tr>
+						</tr><tr>
+						<th style="white-space:nowrap;">Sub-class Of:</th><td><a>prov:Entity</a></td>
+					</tr>
 					</tbody>
 				</table>
-			</section>
-		    <section data-dfn-for="TemporalPolicy">
-			<h2><dfn>Temporal Policy</dfn></h2>
-			<table class="def propdef">
-			    <tbody>
-					<tr>
-						<th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a> through time.</td>
-					</tr><tr>
-						<th>Label:</th><td>Temporal Policy</td>
-					</tr><tr>
-						<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
-					</tr><tr>
-						<th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Object</a></td>
-					</tr>
-			    </tbody>
-			</table>
-			<section data-dfn-for="TemporalAgreement">
-					<h2><dfn>Temporal Agreement</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Agreement">Agreement</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Agreement</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement">http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
-						</tr>
-					    </tbody>
-					</table>
-			    </section>
-				<p>
-					The Temporal Agreement below offers one (temporal) permission prior to the first of January 2020 and two permissions hasBeginning.
-				</p>
-				<pre class="example nohighlight turtle" title="Temporal Agreement" id="TemporalAgreement">
-					<span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalAgreement</span><span class="p"> ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:T1-V1</span><span class="p"> , </span><span class="nv">:T1-V2</span><span class="p"> . </span>
-					<br/>
-					<span class="nv">:T1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
-					<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="p">[</span>
-                    <span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
-                    <span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
-                    <span class="w">                                    </span><span class="p">] ;</span>
-					<span class="w">                                </span><span class="p">] ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1</span><span class="p"> . </span>
-                    <br/>
-					<span class="nv">:T1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
-					<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-					<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="p">[</span>
-                    <span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
-                    <span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
-                    <span class="w">                                    </span><span class="p">] ;</span>
-					<span class="w">                                </span><span class="p">] ;</span>
-					<span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w"> </span><span class="nv">:P1</span><span class="p"> , </span><span class="nv">:P2</span><span class="p"> . </span>  
-				</pre>
-			    <section data-dfn-for="TemporalOffer">
-					<h2><dfn>Temporal Offer</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Offer">Offer</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Offer</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalOffer">http://www.w3.org/ns/odrl/2/temporal/TemporalOffer</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
-						</tr>
-					    </tbody>
-					</table>
-			    </section>
-			    <section data-dfn-for="TemporalSet">
-					<h2><dfn>Temporal Set</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Set">Set</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Set</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalSet">http://www.w3.org/ns/odrl/2/temporal/TemporalSet</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Policy</a></td>
-						</tr>
-					    </tbody>
-					</table>
-			    </section>
-		    </section>
-		    <section data-dfn-for="TemporalRule">
-				<h2><dfn>Temporal Rule</dfn></h2>
-				<table class="def propdef">
-				    <tbody>
-					<tr>
-					    <th>Definition:</th><td>An abstract concept that represents the common characteristics of Temporal Permissions, Temporal Prohibitions, and Temporal Duties.</td>
-					</tr><tr>
-					    <th>Label:</th><td>Temporal Rule</td>
-					</tr><tr>
-					    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalRule">http://www.w3.org/ns/odrl/2/temporal/TemporalRule</a></td>
-					</tr>
-				    </tbody>
-				</table>
-			    <section data-dfn-for="TemporalPermission">
-					<h2><dfn>Temporal Permission</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Permission">Permission</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Permission</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPermission">http://www.w3.org/ns/odrl/2/temporal/TemporalPermission</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
-						</tr>
-					    </tbody>
-					</table>
-			    </section>
-			    <section data-dfn-for="TemporalProhibition">
-					<h2><dfn>Temporal Prohibition</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Prohibition">Prohibition</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Prohibition</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition">http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
-						</tr>
-					    </tbody>
-					</table>
-					<p>
-						The Temporal Permission below offers both display and distrubute actions until 2020, but only a display action hasBeginningwards.
-					</p>
-					<pre class="example nohighlight turtle" title="Temporal Permission" id="TemporalPermission">
-						<span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalPermission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:P1-V1</span><span class="p"> , </span><span class="nv">:P1-V2</span><span class="p"> . </span>
-						<br/>
-						<span class="nv">:P1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
-						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="p">[</span>
-						<span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
-						<span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
-						<span class="w">                                    </span><span class="p">] ;</span>
-						<span class="w">                                </span><span class="p">] ;</span>
-						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> , </span><span class="nn">odrl:</span><span class="nt">Distribute</span><span class="p"> ; </span>
-						<span class="w">        </span><span class="p">... </span>
-						<br/>
-						<span class="nv">:P1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
-						<span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
-						<span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
-						<span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="p">[</span>
-						<span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
-						<span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
-						<span class="w">                                    </span><span class="p">] ;</span>
-						<span class="w">                                </span><span class="p">] ;</span>
-						<span class="w">        </span><span class="p">... </span>
-						<span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> ; </span>
-						<span class="w">        </span><span class="p">... </span>
-					</pre>
-			    </section>
-			    <section data-dfn-for="TemporalDuty">
-					<h2><dfn>Temporal Duty</dfn></h2>
-					<table class="def propdef">
-					    <tbody>
-						<tr>
-						    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Duty">Duty</a> through time.</td>
-						</tr><tr>
-						    <th>Label:</th><td>Temporal Duty</td>
-						</tr><tr>
-						    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalDuty">http://www.w3.org/ns/odrl/2/temporal/TemporalDuty</a></td>
-						</tr><tr>
-						    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Rule</a></td>
-						</tr>
-					    </tbody>
-					</table>
-			    </section>
-			</section>
-		    <section data-dfn-for="TemporalAsset">
-				<h2><dfn>Temporal Asset</dfn></h2>
-				<table class="def propdef">
-				    <tbody>
-						<tr>
-							<th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a> through time.</td>
-						</tr><tr>
-							<th>Label:</th><td>Temporal Asset</td>
-						</tr><tr>
-							<th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAsset">http://www.w3.org/ns/odrl/2/temporal/TemporalAsset</a></td>
-						</tr><tr>
-							<th style="white-space:nowrap;">Sub-class Of:</th><td><a>Temporal Object</a></td>
-						</tr>
-				    </tbody>
-				</table>
-		    </section>
+                <section>
+                    <h3>Temporal Poicies</h3>
+                    <p>Policies ...</p>
+                    <section data-dfn-for="TemporalPolicy">
+                    <h3><dfn>Temporal Policy</dfn></h3>
+                    <table class="def propdef">
+                        <tbody>
+                            <tr>
+                                <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Policy">Policy</a> through time.</td>
+                            </tr><tr>
+                                <th>Label:</th><td>Temporal Policy</td>
+                            </tr><tr>
+                                <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy">http://www.w3.org/ns/odrl/2/temporal/TemporalPolicy</a></td>
+                            </tr><tr>
+                                <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalObject</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <section data-dfn-for="TemporalAgreement">
+                            <h3><dfn>Temporal Agreement</dfn></h3>
+                            <table class="def propdef">
+                                <tbody>
+                                <tr>
+                                    <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Agreement">Agreement</a> through time.</td>
+                                </tr><tr>
+                                    <th>Label:</th><td>Temporal Agreement</td>
+                                </tr><tr>
+                                    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement">http://www.w3.org/ns/odrl/2/temporal/TemporalAgreement</a></td>
+                                </tr><tr>
+                                    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalPolicy</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <p>
+                            The Temporal Agreement below offers one (temporal) permission prior to the first of January 2020; then two until January 2024; and then three permissions.
+                        </p>
+                        <pre class="example nohighlight turtle" title="Temporal Agreement" id="TemporalAgreement">
+                            <span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalAgreement</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">pav:</span><span class="nt">hasVersion</span><span class="w">            </span><span class="nv">:T1-V1</span><span class="p"> , </span><span class="nv">:T1-V2</span><span class="p"> , </span><span class="nv">:T1-V3</span><span class="p"> . </span>
+                            <br/>
+                            <span class="nv">:T1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveTo</span><span class="w">         </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w">  </span><span class="nv">:T-P1</span><span class="p"> . </span>
+                            <br/>
+                            <span class="nv">:T1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveFrom</span><span class="w">       </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveTo</span><span class="w">         </span><span class="s">"2024-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w">  </span><span class="nv">:T-P1</span><span class="p"> , </span><span class="nv">:T-P2</span><span class="p"> . </span>  
+                            <br/>
+                            <span class="nv">:T1-V3</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Agreement</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveFrom</span><span class="w">       </span><span class="s">"2024-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">temporalPermission</span><span class="w">  </span><span class="nv">:T-P1</span><span class="p"> , </span><span class="nv">:T-P2</span><span class="p"> , </span><span class="nv">:T-P3</span><span class="p"> . </span>  
+                        </pre>
+                        <section data-dfn-for="TemporalOffer">
+                            <h3><dfn>Temporal Offer</dfn></h3>
+                            <table class="def propdef">
+                                <tbody>
+                                <tr>
+                                    <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Offer">Offer</a> through time.</td>
+                                </tr><tr>
+                                    <th>Label:</th><td>Temporal Offer</td>
+                                </tr><tr>
+                                    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalOffer">http://www.w3.org/ns/odrl/2/temporal/TemporalOffer</a></td>
+                                </tr><tr>
+                                    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalPolicy</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section data-dfn-for="TemporalSet">
+                            <h3><dfn>Temporal Set</dfn></h3>
+                            <table class="def propdef">
+                                <tbody>
+                                <tr>
+                                    <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Set">Set</a> through time.</td>
+                                </tr><tr>
+                                    <th>Label:</th><td>Temporal Set</td>
+                                </tr><tr>
+                                    <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalSet">http://www.w3.org/ns/odrl/2/temporal/TemporalSet</a></td>
+                                </tr><tr>
+                                    <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalPolicy</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+                </section>
+                <section data-dfn-for="TemporalRule">
+                    <h2><dfn>Temporal Rule</dfn></h2>
+                    <table class="def propdef">
+                        <tbody>
+                        <tr>
+                            <th>Definition:</th><td>An abstract concept that represents the common characteristics of Temporal Permissions, Temporal Prohibitions, and Temporal Duties.</td>
+                        </tr><tr>
+                            <th>Label:</th><td>Temporal Rule</td>
+                        </tr><tr>
+                            <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalRule">http://www.w3.org/ns/odrl/2/temporal/TemporalRule</a></td>
+                        </tr>tr>
+                            <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalObject</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <section data-dfn-for="TemporalPermission">
+                        <h2><dfn>Temporal Permission</dfn></h2>
+                        <table class="def propdef">
+                            <tbody>
+                            <tr>
+                                <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Permission">Permission</a> through time.</td>
+                            </tr><tr>
+                                <th>Label:</th><td>Temporal Permission</td>
+                            </tr><tr>
+                                <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalPermission">http://www.w3.org/ns/odrl/2/temporal/TemporalPermission</a></td>
+                            </tr><tr>
+                                <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalRule</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section data-dfn-for="TemporalProhibition">
+                        <h2><dfn>Temporal Prohibition</dfn></h2>
+                        <table class="def propdef">
+                            <tbody>
+                            <tr>
+                                <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Prohibition">Prohibition</a> through time.</td>
+                            </tr><tr>
+                                <th>Label:</th><td>Temporal Prohibition</td>
+                            </tr><tr>
+                                <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition">http://www.w3.org/ns/odrl/2/temporal/TemporalProhibition</a></td>
+                            </tr><tr>
+                                <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalRule</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            The Temporal Permission below offers both display and distrubute actions until 2020, but only a display action hasBeginningwards.
+                        </p>
+                        <pre class="example nohighlight turtle" title="Temporal Permission" id="TemporalPermission">
+                            <span class="p">[]</span><span class="w">      </span><span class="kt">a</span><span class="w">                       </span><span class="nn">tpl:</span><span class="nt">TemporalPermission</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">version</span><span class="w">            </span><span class="nv">:P1-V1</span><span class="p"> , </span><span class="nv">:P1-V2</span><span class="p"> . </span>
+                            <br/>
+                            <span class="nv">:P1-V1</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
+                            <span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
+                            <span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasEnd</span><span class="w">   </span><span class="p">[</span>
+                            <span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
+                            <span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">                                    </span><span class="p">] ;</span>
+                            <span class="w">                                </span><span class="p">] ;</span>
+                            <span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> , </span><span class="nn">odrl:</span><span class="nt">Distribute</span><span class="p"> ; </span>
+                            <span class="w">        </span><span class="p">... </span>
+                            <br/>
+                            <span class="nv">:P1-V2</span><span class="w">  </span><span class="kt">a</span><span class="w">                       </span><span class="nn">odrl:</span><span class="nt">Permission</span><span class="p"> ;</span>
+                            <span class="w">        </span><span class="nn">tpl:</span><span class="nt">effectiveInterval</span><span class="w">   </span><span class="p">[</span>
+                            <span class="w">                                    </span><span class="kt">a</span><span class="w">             </span><span class="nn">time:</span><span class="nt">ProperInterval</span><span class="p"> ;</span>
+                            <span class="w">                                    </span><span class="nn">time:</span><span class="nt">hasBeginning</span><span class="w">   </span><span class="p">[</span>
+                            <span class="w">                                            </span><span class="kt">a</span><span class="w">               </span><span class="nn">time:</span><span class="nt">Instant</span><span class="p"> ;</span>
+                            <span class="w">                                            </span><span class="nn">time:</span><span class="nt">inXSDDate</span><span class="w">  </span><span class="s">"2020-01-01T00:00:00Z"^^xsd:dateTime</span>
+                            <span class="w">                                    </span><span class="p">] ;</span>
+                            <span class="w">                                </span><span class="p">] ;</span>
+                            <span class="w">        </span><span class="p">... </span>
+                            <span class="w">        </span><span class="nn">odrl:</span><span class="nt">action</span><span class="w">            </span><span class="nn">odrl:</span><span class="nt">Display</span><span class="p"> ; </span>
+                            <span class="w">        </span><span class="p">... </span>
+                        </pre>
+                    </section>
+                    <section data-dfn-for="TemporalDuty">
+                        <h2><dfn>Temporal Duty</dfn></h2>
+                        <table class="def propdef">
+                            <tbody>
+                            <tr>
+                                <th>Definition:</th><td>An enduring container for the various iterations of a <a href="https://www.w3.org/TR/odrl-vocab/#term-Duty">Duty</a> through time.</td>
+                            </tr><tr>
+                                <th>Label:</th><td>Temporal Duty</td>
+                            </tr><tr>
+                                <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalDuty">http://www.w3.org/ns/odrl/2/temporal/TemporalDuty</a></td>
+                            </tr><tr>
+                                <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalRule</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <section data-dfn-for="TemporalAsset">
+                    <h2><dfn>Temporal Asset</dfn></h2>
+                    <table class="def propdef">
+                        <tbody>
+                            <tr>
+                                <th>Definition:</th><td>An enduring container for the various iterations of an <a href="https://www.w3.org/TR/odrl-vocab/#term-Asset">Asset</a> through time.</td>
+                            </tr><tr>
+                                <th>Label:</th><td>Temporal Asset</td>
+                            </tr><tr>
+                                <th>Identifier:</th><td><a href="http://www.w3.org/ns/odrl/2/temporal/TemporalAsset">http://www.w3.org/ns/odrl/2/temporal/TemporalAsset</a></td>
+                            </tr><tr>
+                                <th style="white-space:nowrap;">Sub-class Of:</th><td><a>tpl:TemporalObject</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
 		</section>
 		<section id="PropertiesOfTemporalObjects">
 		    <h2>Properties Of Temporal Objects</h2>
@@ -460,6 +388,80 @@
 					</tbody>
 				</table>
 			</section>
+		</section>
+        <section id="conventions">
+		    <h2>Document Conventions</h2>
+	            <p></p>
+		    <table class="def">
+			<tbody>
+			  <tr>
+			    <th>Prefix</th>
+			    <th>Namespace</th>
+			    <th>Description</th>
+			  </tr>
+			  <tr>
+			    <td>odrl</td>
+			    <td>http://www.w3.org/ns/odrl/2/</td>
+			    <td>[[odrl-vocab]] [[odrl-model]]</td>
+			  </tr>
+			  <tr>
+			    <td>rdf</td>
+			    <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+			    <td>[[rdf11-concepts]]</td>
+			  </tr>
+			  <tr>
+			    <td>rdfs</td>
+			    <td>http://www.w3.org/2000/01/rdf-schema#</td>
+			    <td>[[rdf-schema]]</td>
+			  </tr>
+			     <tr>
+			    <td>owl</td>
+			    <td>http://www.w3.org/2002/07/owl#</td>
+			    <td>[[owl2-overview]]</td>
+			  </tr>
+			<tr>
+			    <td>xsd</td>
+			    <td>http://www.w3.org/2001/XMLSchema#</td>
+			    <td>[[xmlschema11-2]]</td>
+			  </tr>
+			      <tr>
+			    <td>skos</td>
+			    <td>http://www.w3.org/2004/02/skos/core#</td>
+			    <td>[[skos-reference]]</td>
+			  </tr>
+			  <tr>
+			    <td>dcterms</td>
+			    <td>http://purl.org/dc/terms/</td>
+			    <td>[[dcterms]]</td>
+			  </tr>
+			    <tr>
+			    <td>vcard</td>
+			    <td>http://www.w3.org/2006/vcard/ns#</td>
+			    <td>[[vcard-rdf]]</td>
+			  </tr>
+			  <tr>
+			    <td>foaf</td>
+			    <td>http://xmlns.com/foaf/0.1/</td>
+			    <td>[[foaf]]</td>
+			  </tr>
+			  <tr>
+			    <td>schema</td>
+			    <td>http://schema.org/</td>
+			    <td><a href="http://schema.org/">schema.org</a></td>
+			  </tr>
+				<tr>
+			    <td>cc</td>
+			    <td>https://creativecommons.org/ns#</td>
+			    <td><a href="https://creativecommons.org/ns#">creativecommons.org</a></td>
+			  </tr>
+				<tr>
+			    <td>ex</td>
+			    <td>http://example.com/ns#</td>
+			    <td></td>
+			  </tr>
+			</tbody>
+		      </table>
+		    </section>   				
 		</section>
 	</body>
 </html>
