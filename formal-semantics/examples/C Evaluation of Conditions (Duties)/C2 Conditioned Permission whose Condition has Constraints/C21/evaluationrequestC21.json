@@ -1,0 +1,11 @@
+{
+  "@context": {
+    "odrl": "http://www.w3.org/ns/odrl.jsonld",
+    "odrl-fs": "https://w3id.org/odrl-fs#"
+  },
+  "@type": "odrl-fs:EvaluationRequest",
+  "@id":  "http://example.com/policy/evaluationrequest/C21",
+  "action": "odrl:play",
+  "assignee": {"@id": "http://example.com/party/billie"},
+  "target": "http://example.com/music/1999.mp3"
+}

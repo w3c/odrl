@@ -1,19 +1,20 @@
 {
      "@context": "http://www.w3.org/ns/odrl.jsonld",
      "@type": "Set",
-     "uid": "http://example.com/policy/14",
+     "uid": "http://example.com/policy/B1",
      "permission": [{
+        "@id": "http://example.com/rule/B1",
         "target": "http://example.com/document/1234",
         "assigner": "http://example.com/party/616",
         "action": [{
            "rdf:value": { "@id": "odrl:print" },
            "refinement": [{
-              "@id": "http://example.com/refinement/14"
+              "@id": "http://example.com/refinement/B1",
               "leftOperand": "resolution",
               "operator": "lteq",
               "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
               "unit": "http://dbpedia.org/resource/Dots_per_inch"
             }]
         }]
-      }]
+    }]
 }

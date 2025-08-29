@@ -46,8 +46,9 @@ However, neither the specification of the model (in a text form) nor the vocabul
 <!-- objective of the evaluator -->
 The objective of an <b>ODRL Evaluator</b> is to determine: 
 <ul>
-  <li>which Permissions, Prohibitions, and/or Obligations (collectively named Rules) are <b>active</b> in a given instant of time. 
+  <li>which Permissions, Prohibitions, and/or Obligations (collectively named Rules) are <b>active</b> in a given instant of time with respect to a given state of the world. 
   A Rule is said to be active if it is in effect;</li>
+  <li>If an action, described in the evaluation request, is permitted by a Permission;</li>
   <!--<li>which Permissions have been <b>used</b>;</li>-->
   <li>which Prohibitions and Obligations have been <b>violated</b> or <b>fulfilled</b>.</li>
 </ul>
@@ -172,7 +173,8 @@ When the <b>ODRL Evaluator</b> evaluates Permissions, it is expected to work in 
             <li><b>Obligation</b>. An instance of the class <code>odrl:Duty</code> is an <b>Obligation</b> of a <code>odrl:Policy</code> 
             when the <code>odrl:Policy</code> refers to it by means of the <code>odrl:obligation</code> property. 
 
-            <li><b>Refinement</b>. An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, <code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:constraint</code> property. </li>
+            <li><b>Refinement</b>. An instance of the class <code>odrl:Constraint</code> is a <b>Refinement</b> when an <code>odrl:Action</code>, 
+	<code>odrl:AssetCollection</code> or <code>odrl:PartyCollection</code> refers to it by means of the <code>odrl:refinement</code> property. </li>
 
             <li><b>Remedy</b>. An instance of the class <code>odrl:Duty</code> represents a <b>Remedy</b> for a <code>odrl:Prohibition</code> 
                     when the <code>odrl:Prohibition</code> refers to it by means of the <code>odrl:remedy</code> property. </li>
@@ -354,7 +356,7 @@ The ODRL Evaluator uses as <b>input</b>:
         <p>
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
-		Constraint, State of the World, and actions. 
+		Constraint, State of the World, and Evaluation Request. 
             Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
         <ul> <!-- attributes of the main objects -->
             <li>Permission, Prohibition, Obligation, and Condition (Duty) have a property called 
@@ -379,7 +381,8 @@ The ODRL Evaluator uses as <b>input</b>:
 
             <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
-            which can take the values of <b>satisfied</b> or <b>not-satisfied</b>.
+            which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
+	    The value of the satisfaction state of a Refinement is calculated according to the Evaluation Request.
            			
            <!-- <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
@@ -440,11 +443,14 @@ The ODRL Evaluator uses as <b>input</b>:
 	     <p>
             In the <b>monitoring scenario</b>: when an action is <b>performed</b>, it is represented in the state of the world.
             When the performace of the action has to be evaluated with respect to the permissions.
-	    If the performed action belongs to class of actions (with all refinements satisfied) regulated 
-	    by an active permission, then the action is permitted. 
-	    if there is no active permission to do such an action (with all refinements satisfied) and the default 
+	    If the performed action belongs to class of actions regulated by the active permission and all the refinements satisfied
+	    then the action is permitted by the permission.
+	    If the performed action does not belong to class of actions regulated the permission or the permission is inactive 
+	    then the action is not permitted by the permission.
+	    
+	   <!-- REMOVED JULY 2025 if there is no active permission to do such an action (with all refinements satisfied) and the default 
 	    setting for the ODRL Evaluator is set to "everything is prohibited unless explicitly permitted" a 
-	    violation should be generated. <br>
+	    violation should be generated. <br>-->
 	<br>
 	
 	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
@@ -461,29 +467,33 @@ The ODRL Evaluator uses as <b>input</b>:
         The ODRL Evaluator computes that a Permission is <b>active</b> iif:
         </p>
         <ol>
-            <li>all the existing Constraints of the Rule are satisfied and;</li> 
-            <li>all the existing Conditions (duties of the Rule) are fulfilled or inactive; </li>
-           <!-- <li>only for the access control scenario: all the existing Refinements of the 
-            Action, AssetCollection, PartyCollection are satisfied by the requested action.</li>-->
+            <li>All the existing Constraints of the Rule are satisfied AND;</li> 
+            <li>All the existing Conditions (duties) of the Rule are fulfilled or inactive; </li>
         </ol>
 
 <p>
-        <!--If the Permission is active, then the action is permitted. <br>-->
-	If one of those conditions is not met, the Permission is <b>inactive</b>. 
+       If one of those conditions is not met, the Permission is <b>inactive</b>. <br>
+       
+The ODRL Evaluator computes that the action represented in the Evaluation Request is permitted by a Permission in the given State of the World 
+iff:
+	<ol>
+	    <li>The Permission is <b>active</b> AND </li>	
+	    <li>The action in the Evaluation Request belongs to the permitted class of actions with the correct target and assigee (when
+	they are specified) AND </li>
+	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li>
+	</ol>
 </p>
+   
+<!--  <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
+		generation of violations for permissions. -->
 
-       
-<!--
-	    <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
-		generation of violations for permissions. 
-	-->
-       
-
-        <h3>Evaluation of Constraints and Refinements</h3>
-	<p>Please note that in the following examples namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
+	    <p>Please note that in the following examples namespaces are used, so that <code>http://example.com/constraint/</code> is simplified by 
 	"<code>constraint:</code>",  <code>http://example.com/policy/</code> is simplified by "<code>policy:</code>",  etc.</p>
-        Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
-	    
+        
+	    <p>Notation used in the example tables: blue colour for the input and red colour for the output of the ODRL Evaluator </p>
+
+        <h3>Evaluation of Constraints</h3>
+		    
         <big><b>A1 Example of a constrained permission</b></big>
         <p>
             <b>Example description</b>
@@ -498,7 +508,7 @@ The ODRL Evaluator uses as <b>input</b>:
         </p>
 
             <pre>
-            {
+{
 "@context": "http://www.w3.org/ns/odrl.jsonld",
 "@type": "Set",
 "uid": "http://example.com/policy/A1",
@@ -525,14 +535,10 @@ The ODRL Evaluator uses as <b>input</b>:
         As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
 	is passed, the Permission is inactive. The action class regulated by the permission is <code>distribute</code>, the target is <code>document:1234</code>, and the assignee is not specified.
         </p>
-     
-        <p>
-            The table below shows the input (blue) and the output (red) of the ODRL Evaluator in different cases. 
-        </p>
 	
         <table border="1" style="font-size:small;">
             <tr>
-                    <th>Example</th>
+                    <th>Case</th>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">State of the World</th>
 		    <th style="color:darkblue">Evaluation Request</th>
@@ -543,217 +549,155 @@ The ODRL Evaluator uses as <b>input</b>:
             	    <th style="color:darkred">Evaluation Report</th>
              </tr>
             <tr>
-                    <td>EA1-1</td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1 </a></td>
-                    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
-			    <code>currentTime</code> is before 2018</a></td>
-		    <td><code><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11
-/evaluationrequestA11.json">distribute</code> of
-		    <code>document:1234</code> </a></td>
-		    <td>action, target, and assignee are satisfied</td>
+                    <td>A1-1</td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
+			    <code>currentTime</code> is 2017-12-19T15:00:00</a></td>
+		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
+			party:1 distributes document:1234</code></a></td>
+		    <td>satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
 		    <td>permit the action</td>
-     		    <td><a href="examples/Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
+     		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
 		    report</a></td>
             </tr>
             <tr>
-                    <td>EA1-2</td>
-                    <td>policy:A1 (<a href="examples/policy13.json">link</a>)</td>
-                    <td>We are in 2019 <br> <code>current time.year=2019</code><br>(<a href="examples/world13-1.json">link</a>)</td>
-		     <td><code>distribute</code><br>
-		    <code>document:1234</code><br><a href="examples/request13-1.json">link</a></td>
+                    <td>A1-2</td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
+                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/stateA12.ttl">
+			    <code>currentTime</code> is 2019-12-19T15:00:00</a></td>
+		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
+			party:1 distributes document:1234</code></a></td>
+		     <td>satisfied</td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
 		    <td>deny the action</td>
-            <td>(<a href="examples/output13-2-basic.json">link 1</a>)<br>(<a href="examples/output13-2-advanced.json">link 2</a>)</td>
+             <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereportA12.json">
+		    report</a></td>
             </tr>
         </table>  
         <p>Explanation:</p>
 	  <ul>
-            <li>(A1-1) (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action is permitted. </li>
-            <li>(A1-2)  (TO BE UPDATED) If the requested or perfomed action belongs to the class of actions regulated by the Permission, 
-	    but the Permission is inactive, then, assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
-            <li>  (TO BE UPDATED) If the requested or perfomed action does not belong to the class of actions regulated by the Permission 
-	     then assuming that only this Permission is considered 
-            (this is because other permissions could regulate this action), the action is denied.</li>
+            <li>(A1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission 
+            and the Permission is active then the action is permitted by the permission.</li>
+            <li>(A1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission, 
+	    but the Permission is inactive, then the action is permitted by the permission.</li>
         </ul>   
 
-	    <!--
-        <p><i>Monitoring scenario:</i></p> 
-        <ul>
-            <li>(E-13-3) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is active, 
-            then the action is permitted and the Permission is used by the performed action.</li>
-            <li>(E-13-4) If the performed action represented in the state of the world belongs to the class of actions regulated by the Permission and the Permission is inactive,
-            it means that this permission does not permit the action.</li>
-        </ul>
-        <table border="1" style="font-size:small;">
-            <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-                <th style="color:darkred">satisfaction state of <br><code>constraint:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br/>activation state of <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>
-             </tr>
-            <tr>
-                <td>E13-3</td>
-                <td>policy:13</td>
-                <td>We are in 2017 <code>current time.year=2017</code>  and <br/>
-		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
-                <td>satisfied</td>
-                <td>active</td>
-		<td>permit the action</td>
-            </tr>
-            <tr>
-                <td>E13-4</td>
-                <td>policy:13</td>
-                <td>We are in 2019 <code>current time.year=2018</code>  and <br/>
-		the action <code>distribute</code> of <code>document:1234</code> was perfomed</td>
-                <td>not-satisfied</td>
-                <td>inactive</td>
-		<td>deny the action</td>
-            </tr>
-        </table>
-	-->
-    <hr/>
-	    
-    <h4>Example of a permission whose permitted action is refined</h4>
+	 <h3>Evaluation of Refinements</h3>
+      
+    <big><b>B1 Example of a permission whose permitted action has a refinement</b></big>
         <p>
             <b>Example description</b>
         </p>
         <p>
-            The example below is similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a> in the ODRL Information Model 2.2.
-            It allows the target asset <code>document:1234</code> to be printed and also include a refinement indicating that the resolution 
-            of the printing action must be less than or equal to 1200 dpi. 
-	The permission is granted by the organization <code>party:616</code>.
+            The example below (which is similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-action">Example 14</a> in the ODRL 
+	    Information Model 2.2) allows the target asset <code>document:1234</code> to be printed and also include a refinement indicating 
+	    that the resolution of the printing action must be less than or equal to 1200 dpi. The permission is granted by the organization 
+	    <code>party:616</code>.
         </p>
-        <pre>
-        {
-             "@context": "http://www.w3.org/ns/odrl.jsonld",
-             "@type": "Set",
-             "uid": "http://example.com/policy/14",
-             "permission": [{
-                "target": "http://example.com/document/1234",
-                "assigner": "http://example.com/party/616",
-                "action": [{
-                   "rdf:value": { "@id": "odrl:print" },
-                   "refinement": [{
-                      "@id": "http://example.com/refinement/14"
-                      "leftOperand": "resolution",
-                      "operator": "lteq",
-                      "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
-                      "unit": "http://dbpedia.org/resource/Dots_per_inch"
-                    }]
-                }]
-              }]
-        }
-        </pre>
+<pre>
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Set",
+"uid": "http://example.com/policy/B1",
+"permission": [{
+    "@id": "http://example.com/rule/B1",
+    "target": "http://example.com/document/1234",
+    "assigner": "http://example.com/party/616",
+    "action": [{
+       	"rdf:value": { "@id": "odrl:print" },
+        "refinement": [{
+            "@id": "http://example.com/refinement/B1"
+            "leftOperand": "resolution",
+            "operator": "lteq",
+            "rightOperand": { "@value": "1200", "@type": "xsd:integer" },
+            "unit": "http://dbpedia.org/resource/Dots_per_inch"
+        }]
+    }]
+}]
+}     
+</pre>
         <p>
             <b>Expected behaviour of the Evaluator</b><br>
 
-	The <b>class of actions</b> regulated by this Permission has <code>type</code> equal to <code>print</code> and 
-            its <code>object</code> is equal to the target of the permission, i.e. <code>document:1234</code>.
-		
-        </p>  
-	
-	<!--
-	Nicoletta: we keep only one table and we do not consider the refinement in the computation of the activation of the permision
-	    like we do for obligations and prohibitions
-	    
-        <p><i>Access control scenario:</i></p> 
-        <ul>
-            <li>(E14-1) If the requested action belongs to the class of actions regulated by the Permission
-          and it satisfies the refinement of the action (i.e. its <code>resolution</code> is less than or equal to 1200 dpi),
-          then the Permission is active and the requested action can be performed.
-            </li>
-            <li>(E14-2) If the requested action belongs to the class of actions regulated by the Permission 
-	but the refinement of the action is not satisfied 
-	    (i.e. its <code>resolution</code> is more than 1200 dpi), then the Permission is inactive. 
-            Assuming that only this Permission is considered then the action is blocked and it cannot be performed.</li>
-        </ul>
+	The class of actions regulated by the Permission is <code>print</code>, the target is <code>document:1234</code>, 
+	and the assignee is not specified.<br>
+	 </p>  
         
         <table border="1" style="font-size:small;">
         <tr>
-            <th>Example</th>
-            <th style="color:darkblue">Policy</th>
-            <th style="color:darkblue">Attempted Action</th>
-            <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
-            <th style="color:darkred"><kbd>access control</kbd><br/>activation state of the <br><code>permission</code></th>
-	    <th style="color:darkred"><kbd>access control</kbd><br/>control state of the <br><code>permission</code></code></th>
+                    <th>Case</th>
+                    <th style="color:darkblue">Policy</th>
+                    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred">Satisfaction state of <br><code>refinement:B1</code></th>
+                    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
+            	    <th style="color:darkred">Evaluation Report</th>
          </tr>
         <tr>
-            <td>E14-1</td>
-            <td>policy:14</td>
-            <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</td> 
-            <td>satisfied</td>
-            <td>active </td> 
-	    <td>permit the attempted action</td>
+                    <td>B1-1</td>
+                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
+                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
+			    <code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
+		    <td>satisfied</td>
+                    <td>satisfied</td>
+                    <td>active</td>
+		    <td>permit the action</td>
+     		    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB11.json">
+		     report</a></td>
         </tr>
         <tr>
-            <td>E14-1</td>
-            <td>policy:14</td>
-            <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</td> 
-            <td>not-satisfied</td>
-            <td>inactive </td>
-		<td>deny the attempted action</td>
+                    <td>B1-2</td>
+                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
+                   <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/evaluationrequestB12.json">
+			   <code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
+		    <td>satisfied</td>
+                    <td>not-satisfied</td>
+                    <td>active</td>
+		    <td>deny the action</td>
+     		   <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/compliancereportB12.json">report</a></td>
         </tr>
         </table>
 
-	-->
-        
-        <p><i>Access control or monitoring scenario:</i></p> 
-        <p>
-            The Permission is always active because it has neither Constraints nor Conditions (Duties). 
-	Given a formal description a performed action. 
+	<p>
+	Explanation: the Permission is always active because it has neither Constraints nor Conditions (Duties).
 	</p>
 	<ul>
-        <li>(E14-1) If the requested or performed action belongs to the class of actions regulated by the Permission and 
-	the action satisfies the Refinement, then the permission permits the action.</li>
-	<li>(E14-2) If the requested or performed actions belongs to the class of actions regulated by the Permission 
-	but it does not satisfy the Refinement, then the permission does not permit the action.</li>
+        <li>(B1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission and 
+	the action satisfies the Refinement, then the action is permitted by the permission.</li>
+	<li>(B1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission 
+	but it does not satisfy the Refinement, then the action is NOT permitted by the permission.</li>
 	</ul>
-        
-
-        <table border="1" style="font-size:small;">
-        <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">Requested/Performed Action</th>
-                <th style="color:darkred">satisfaction of <br><code>refinement:14</code></th>
-                <th style="color:darkred">activation state of the <br><code>permission</code></th>
-		<th style="color:darkred">control state of the <br><code>permission</code></th>
-         </tr>
-        <tr>
-                <td>E14-1</td>
-                <td>policy:14</td>
-                <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi was performed</td> 
-                <td>satisfied</td>
-                <td>active </td>
-		 <td>permit the action</td>
-        </tr>
-        <tr>
-                <td>E14-2</td>
-                <td>policy:14</td>
-                <td><code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi was performed</td> 
-                <td>not-satisfied</td>
-                <td>active </td>
-		<td>deny the action</td>
-        </tr>
-        </table>
 
         <h3>Evaluation of Conditions (Duties)</h3> 
        <p>
-	 When a Permission contains Conditions (duties), they have to be evaluated first.     
+	 When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints of the Permission
+	 to compute its activation state.     
        </p>
 	    
-	<p>
-            A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
-            if its action, with all refinements satisfied, has been performed. 
-        </p>
+	<!-- <p>A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
+            if its action, with all refinements satisfied, has been performed. </p> -->
+	
+	<p>A Condition (duty) is <b>active</b> iif: </p>
         <ol> 
+	    <li>The Condition (duty) has no Constraints, OR </li>
+	    <li>The Constraints of the Condition (duty) are all satisfied.</li>	
+	</ol>
+	<p> otherwise the Condition is <b>inactive</b></p>
+
+	<p>A Condition (duty) is <b>fulfilled</b> iif: </p>
+	<ol>
+	    <li>The Condition (duty) is <b>active</b> AND;</li>
+	    <li>There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition
+	    with the correct target and assigee (when they are specified) AND </li>
+	    <li>Such an action satisfies all the refinements (related to action, target, and assignee) 
+	    of the class of action regulated by the Condition</li>
+	</ol>
+	
+	<!-- <ol>
             <li>The initial state of a Condition (duty) is <b>inactive</b>.</li>
             <li>If at least one of the Constraints of the Condition (duty) is not satisfied, then the duty is <b>inactive</b>. 
             (For example, the duty to pay a ticket to get an active permission to enter in a museum may be active only on Sundays 
@@ -761,24 +705,24 @@ The ODRL Evaluator uses as <b>input</b>:
             <li>If the Constraints of the Condition (duty) are all satisfied or there are no Constraints, then the duty is <b>active</b>.
             <li> If the Condition (duty) is <b>active</b> and an action that belongs to the class of actions regulated by the 
 		Condition with all refinements satisfied is performed, then Condition (duty) is <b>fulfilled</b>.</li>
-        </ol>
-        <p>The life cycle of a Condition (duty) is depicted in the figure below:
-            <img src="2024ODRLDuty.png"></p>
-
-	     <p>
-            Once the Condition (duty) has been evaluated, the Permission can be evaluated. <br>
+        </ol> -->
+	    
+        <!-- <p>The life cycle of a Condition (duty) is depicted in the figure below:
+            <img src="2024ODRLDuty.png"></p> -->
+     
+	<!-- REMOVED BECAUSE IT IS ALREADY STATED IN THE PERMISSION 
+	    <p>Once the Condition (duty) has been evaluated, the Permission can be evaluated. <br>
 	    If the Condition is active but it is not fullfilled then the Permission is inactive.<br>
-            If the Condition is fulfilled then the Permission is active.
-        </p>
+            If the Condition is fulfilled then the Permission is active.</p> -->
 
-        <h4>Example of a conditioned permission</h4> 
+        <big><b>C1 Example of a conditioned permission</b></big>
         <p>
-            <b>Example description</b>
+        <b>Example description</b>
         </p>
         
         <p>
             The example below (similar to <a href="https://www.w3.org/TR/odrl-model/#duty-perm">Example 22</a> in the ODRL Information Model 2.2)
-	is a Permission that is constrained by a Condition (Duty).  The Condition does not have Constraints, but its action has a refinement. 
+	is a Permission that is constrained by a Condition (Duty). The Condition does not have Constraints and its action has a refinement. 
 	This permission is granted by <code>party:sony</code> for <code>party:billie</code> to play the  
             target asset <code>music:1999</code>. The permission includes the Condition to perform the compensate action that has a refinement of <code>payAmount</code> 
             of euro 5.00. The semantics of Permission requires that the compensate action (included in the duty) must be performed 
@@ -786,271 +730,222 @@ The ODRL Evaluator uses as <b>input</b>:
         </p>
 
         <pre>
-        {
-        "@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Agreement",
-        "uid": "http://example.com/policy/22",
-        "permission": [{
-            "assigner": "http://example.com/party/sony",
-            "assignee": "http://example.com/party/billie",
-            "target": "http://example.com/music/1999.mp3",
-            "action": "play",
-            "duty": [{
-               "@id" : "http://example.com/condition/1",
-               "action": [{
-                  "rdf:value": { "@id": "odrl:compensate" },
-                  "refinement": [{
-                     "@id" : "http://example.com/refinement/1",
-                     "leftOperand": "payAmount",
-                     "operator": "eq",
-                     "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                     "unit": "http://dbpedia.org/resource/Euro"
-                  }]
-                }]
-            }]
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy/C1",
+"permission": [{
+    "@id": "http://example.com/rule/C1",
+    "assigner": "http://example.com/party/sony",
+    "assignee": "http://example.com/party/billie",
+    "target": "http://example.com/music/1999.mp3",
+    "action": "play",
+    "duty": [{
+       "@id" : "http://example.com/condition/1",
+       "action": [{
+          "@id" : "http://example.com/action/1",
+          "rdf:value": { "@id": "odrl:compensate" },
+          "refinement": [{
+             "@id" : "http://example.com/refinement/1",
+             "leftOperand": "payAmount",
+             "operator": "eq",
+             "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+             "unit": "http://dbpedia.org/resource/Euro"
+          }]
         }]
-        }  
+    }]
+}]
+}
         </pre>
 
-        <p>
-            <b>Expected behaviour of the Evaluator</b>
-        </p>
-        <p>
-	The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
-	object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
-        and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
+        <p><b>Expected behaviour of the Evaluator</b></p>
+       
+	<p>
+	The <b>class of actions</b> regulated by this Permission is <code>play</code> of the file <code>music:1999.mp3</code> 
+	(the <code>odrl:target</code>) by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 	
-	The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, 
-	so it is never inactive. It starts to be <b>active</b> and it is <b>fulfilled</b> 
-            when in the state of the world there is a representation of a performed action that matches with the 
-            the class of actions described in the <code>condition:1</code>. <br><br>
-      
-	The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
-	its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
-            the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
+	<p>The condition (duty) have to be evaluated first. <code>condition:1</code> does not have Constraints, so it is never inactive. 
+	It starts to be <b>active</b> and it is <b>fulfilled</b> when in the state of the world there is a representation of a performed 
+	action that matches with the class of actions described in the <code>condition:1</code>. 
+	The <b>class of actions</b> regulated by <code>condition:1</code> is <code>compensate</code> of a <code>payAmount</code> equal to <code>5 euro</code>, and 
+	(given that the <code>odrl:compensatedParty</code> of the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
             <code>party:sony</code>. It is not required that the agent who performs the compensate action is 
             <code>party:billie</code> because, for example, a company can pay for its employees 
             (feature for an ODRL profile: it would be useful for actions of compensation or payment to contain a 
 	    reference to a policy or a rule and to the party for whom they are performed).
         </p>
        
-
-        <p><i>Access control or monitorin scenario:</i></p> 
         <p>
-           Given a formal description of the requested or performed action, if such an action belongs to the class of 
-	actions regulated by the Permission and the Permission is active, then the action is permitted, otherwise it is 
-	denied.
+        If the action to be evaluated belongs to the class of actions regulated by the Permission and the Permission is active, 
+	then the action is permitted, otherwise it is denied.
         </p>
 
-        <table border="1" style="font-size:small;">
-            <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-		  <th style="color:darkblue">Requested/Performed Action</th>
-                <th style="color:darkred">activation state of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred">activation state of the <br><code>permission</code></th>
-		<th style="color:darkred">control state of the <br><code>permission</code></th>   
+<table border="1" style="font-size:small;">
+             <th>Case</th>
+                    <th style="color:darkblue">Policy</th>
+		    <th style="color:darkblue">State of the World</th>
+                    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred"><br/>Activation state of <br><code>condition:1</code></th>
+		    <th style="color:darkred"><br/>Deontic state of <br><code>condition:1</code></th>
+		    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
+            	    <th style="color:darkred">Evaluation Report</th>
             </tr>
             <tr>
-                <td>E22-1</td>
-                <td>policy:22</td>
-                <td> <code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br> and
-			<code>beneficiary</code> = <code>party:sony</code> is not performed</td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
-		and <code>performer</code> = <code>party:billie</code></td>
-                <td>active</td>
+                <td>C1-1</td>
+                <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json">policy:C1</a></td>
+                <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/stateC11.ttl"><code>current time 2025-07-25T00:00:00</code></td>
+		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/evaluationrequestC11.json">
+		<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		<td>satisfied</td>
+		<td>active</td>
                 <td>not-set</td>
                 <td>inactive</td>
-		<td>deny the action</td>    
-            </tr>
+		<td>deny the action</td>   
+     		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/compliancereport.C11.json">report</a></td>
+             </tr>
         <tr>
-                <td>E22-2</td>
-                <td>policy:22</td>
-                <td> <code>compensate</code> and <code>payAmount</code> = <code>5 euro</code> <br> and
-			<code>beneficiary</code> = <code>party:sony</code> is performed</td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br>
-		and  <code>performer</code> = <code>party:billie</code></td>
-                <td>active</td>
+                <td>C1-2</td>
+                <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json">policy:C1</a></td>
+                 <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/stateC12.ttl">
+		<code>compensate</code> <code>5 euro</code> to <code>party:sony atTime 2025-07-23T00:00:00</code></a>
+		 and <code>current time 2025-07-25T00:00:00</code></td>
+		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/evaluationrequestC12.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		<td>satisfied</td>
+		<td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		 <td>permit the action</td>    
+		<td>permit the action</td>   
+     		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/compliancereport.C12.json">report</a></td>
         </tr>
-       </table>    
+       </table>  
+<br>
 
-<!--
-       <p><i>Monitoring scenario:</i></p>
-       Given a formal description a performed action. If such an action belongs to the class of actions regulated by the Permission and the Permission is active
-       then the permission is used by the performed action.
+<big><b>C2 Example of a Conditioned Permission  whose Condition has Constraints</b></big>
+<p><b>Example description</b></p>
 
-        <table border="1" style="font-size:small;">
-            <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-                <th style="color:darkred">activation of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><kbd>monitoring</kbd><br>activation <br><code>permission</code></th>
-		<th style="color:darkred"><kbd>monitoring</kbd><br/>control state</code></th>   
-            </tr>
-            <tr>
-                <td>E22-3</td>
-                <td>policy:22</td>
-                <td><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is not performed.<br>
-		<code>play</code> with <code>target</code> = <code>music:1999.mp3</code> <br>
-		and <code>performer</code> = <code>party:billie</code> is performed.</td> 
-                <td>active</td>
-                <td>not-set</td>
-                <td>inactive</td>
-		<td>deny the performed action</td>    
-            </tr>
-            <tr>
-                <td>E22-4</td>
-                <td>policy:22</td>
-                <td><code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is performed.<br>
-		<code>play</code> with <code>target</code> = <code>music:1999.mp3</code> <br>
-		and <code>performer</code> = <code>party:billie</code> is performed.</td> 
-                <td>active</td>
-                <td>fulfilled</td>
-                <td>active</td>
-		<td>permit the performed action</td>    
-            </tr>
-        </table> 
+<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has constraints, it is active on Sundays.</p>
 
--->
+<pre>
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy/C2",
+"permission": [{
+   "@id": "http://example.com/rule/C2",
+   "assigner": "http://example.com/party/sony",
+   "assignee": "http://example.com/party/billie",
+   "target": "http://example.com/music/1999.mp3",
+   "action": "play",
+   "duty": [{
+      "@id" : "http://example.com/condition/1",
+      "action": [{
+          "@id" : "http://example.com/action/1",
+          "rdf:value": { "@id": "odrl:compensate" },
+          "refinement": [{
+               "@id" : "http://example.com/refinement/1",
+               "leftOperand": "payAmount",
+               "operator": "eq",
+               "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
+               "unit": "http://dbpedia.org/resource/Euro"
+           }]
+        }],
+        "constraint": [{
+        "@id" : "http://example.com/constraint/1",
+        "leftOperand": "ex:dayOfWeek",
+        "operator": "eq",
+        "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
+	}]
+     }]
+}]
+}          
+</pre>
 
-        <h4>Example of a permission whose condition has constraints</h4>
-            <p>
-                <b>Example description</b>
-            </p>
-        <p>
-            This policy contains a Permission constrained by a Condition (duty) (like in policy:22) 
-	    with the difference that such Condition has constraints, it is only activated on Sundays.
-        </p>
+<p><b>Expected behaviour of the Evaluator</b></p>
 
-        <pre>
-        {
-        "@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Agreement",
-        "uid": "http://example.com/policy/88",
-        "permission": [{
-            "assigner": "http://example.com/party/sony",
-            "assignee": "http://example.com/party/billie",
-            "target": "http://example.com/music/1999.mp3",
-            "action": "play",
-            "duty": [{
-                "@id" : "http://example.com/condition/1",
-                "action": [{
-                    "@id" : "http://example.com/action/payment",
-                    "rdf:value": { "@id": "odrl:compensate" },
-                    "refinement": [{
-                        "@id" : "http://example.com/refinement/1",
-                        "leftOperand": "payAmount",
-                        "operator": "eq",
-                        "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-                        "unit": "http://dbpedia.org/resource/Euro"
-                    }]
-                }],
-                "constraint": [{
-                    "@id" : "http://example.com/constraint/1",
-                    "leftOperand": "ex:dayOfWeek",
-                    "operator": "eq",
-                    "rightOperand": { "@value": "Sunday", "@type": "xsd:string" }
-                }]
-            }]
-        }]
-        }  
-        </pre>
-        <p>
-            <b>Expected behaviour of the Evaluator</b>
-        </p>
-
-<p>The <b>class of actions</b> regulated by this Permission has type equal to <code>play</code>,
-object equal to the <code>target</code> of the permission, i.e. <code>music:1999.mp3</code>,
-and <code>performer</code> equal to the assignee of the permission, i.e. <code>party:billie</code>.<br><br>
-</p>
+<p>The <b>class of actions</b> regulated by this Permission is <code>play</code> of the file <code>music:1999.mp3</code>,
+by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 	    
-<p>The <b>class of actions</b> regulated by <code>condition:1</code> has <code>type</code> equal to <code>compensate</code>, 
-its <code>payAmount</code> is equal to <code>5 euro</code>, and (given that the <code>odrl:compensatedParty</code> of 
-the <code>odrl:compensate</code> action is not specified) its <code>beneficiary</code> is the assigner of the permission 
-<code>party:sony</code>.  </p>
+<p>The <b>class of actions</b> regulated by <code>condition:1</code> is <code>compensate</code> of <code>payAmount</code> equal to <code>5 euro</code>, and
+<code>beneficiary</code> equal to the assigner of the permission, i.e. <code>party:sony</code>.  </p>
 	    
-        <p>
-        <code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
-	it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied 
-        (the state of the world satisfies its Constraints, i.e. the current date is a Sunday. For expressing this constraint
-	an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
-	An active Constraint, it is also <b>fulfilled</b> when in the state of the world there is a representation 
-	of an performed action that matches with the class of actions described in the Constraint.
-        </p>
-        <p>
-        The permission can be evaluated as follows: <br>
+<p><code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
+it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied, i.e. it is a Sunday 
+(for expressing this constraint an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
+An active Constraint is <b>fulfilled</b> when in the state of the world there is a representation 
+	of an performed action that matches with the class of actions described in the Constraint.</p>
+       
+<!-- <p>The permission can be evaluated as follows: <br>
 	If the Condition is inactive (its Constraint is not satisfied), the Permission is active. <br>
         If the Condition is active but it is not fullfilled, the Permission is inactive. <br>
         If the Condition is fulfilled the Permission is active.
-        </p>
-<p><i>Access control or monitoring scenario:</i></p> 
+        </p>-->
    
         <table border="1" style="font-size:small;">
             <tr>
-                <th>Example</th>
-                <th style="color:darkblue">Policy</th>
-                <th style="color:darkblue">World</th>
-		<th style="color:darkblue">Requested/Performed Action</th>
-                <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>
-                <th style="color:darkred">satisfaction of <br><code>refinement:1</code></th>
-                <th style="color:darkred">activation of <br><code>condition:1</code></th>
-                <th style="color:darkred">deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><br>activation of the <br><code>permission</code></th>
-		<th style="color:darkred"><br>control state of the <br><code>permission</code></th>
+		    <th>Case</th>
+                    <th style="color:darkblue">Policy</th>
+		    <th style="color:darkblue">State of the World</th>
+                    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code></th>
+                <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code></th>
+                <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
+                <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
+                <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
+		<th style="color:darkred"><br>Control state of <br><code>permission</code></th>
+            	<th style="color:darkred">Evaluation Report</th>
             </tr>
             <tr>
-                <td>E88-1</td>
-                <td>policy:88</td>
-                <td>It is not Sunday<br></td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
-		and <code>performer</code> = <code>party:billie</code></td>
-                <td>not-satisfied</td>
+<td>C2-1</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/policyC2.json">policy:C2</a></td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/stateC21.ttl"><code>
+current time 2025-07-29T00:00:00</code></a> (it is not Sunday)</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/evaluationrequestC21.json">
+<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+<td>satisfied</td>
+<td>not-satisfied</td>
                 <td>don't care</td>
                 <td>inactive</td>
                 <td>not-set</td>
                 <td>active</td>
 		<td>permit the action</td>
-            </tr>
-            <tr>
-                <td>E88-2</td>
-                <td>policy:88</td>
-                <td>It is Sunday<br>
-		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is NOT performed.<br>
-			</td> 
-		<td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
-		and <code>performer</code> = <code>party:billie</code></td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/compliancereport.C21.json">report</a></td>
+</tr>
+<tr>
+
+<td>C2-2</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/policyC2.json">policy:C2</a></td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/stateC22.ttl"><code>
+current time 2025-08-03T00:00:00</code></a> (it is Sunday) </td> 
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/evaluationrequestC22.json">
+<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+<td>satisfied</td>
                 <td>satisfied</td>
                 <td>not-satisfied</td>
                 <td>active</td>
                 <td>not-set</td>
                 <td>inactive</td>
 		<td>deny the action</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/compliancereport.C22.json">report</a></td>
             </tr>
-            <tr>
-                <td>E88-3</td>
-                <td>policy:88</td>
-                <td>It is Sunday<br>
-		<code>compensate</code> with <code>payAmount</code> = <code>5 euro</code> <br>
-		and <code>beneficiary</code> = <code>party:sony</code> is performed.<br>
-		</td> 
-		    <td><code>play</code> and <code>target</code> = <code>music:1999.mp3</code> <br> 
-		and <code>performer</code> = <code>party:billie</code></td>
+<tr>
+<td>C2-3</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/policyC2.json">policy:C2</a></td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/stateC23.ttl">
+<code>current time 2025-08-03T00:00:00</code></a> (it is Sunday) and 
+<code>compensate</code> <code>5 euro</code> to <code>party:sony atTime 2025-07-23T00:00:00</code></td> 
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/evaluationrequestC23.json">
+<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+	<td>satisfied</td>
                 <td>satisfied</td>
                 <td>satisfied</td>
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
 		<td>permit the action</td>
+<td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/compliancereport.C23.json">report</a></td>
             </tr>
         </table>            
 </section>

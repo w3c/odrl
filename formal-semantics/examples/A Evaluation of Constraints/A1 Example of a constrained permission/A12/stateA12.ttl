@@ -1,0 +1,8 @@
+  @prefix ex:   <https://ex.org/> .
+  @prefix sotw: <https://ex.org/sotw#> .
+  @prefix dcterms: <http://purl.org/dc/terms/> .
+  @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+  ex:sotw a sotw:SotW;
+    sotw:currentTime ex:currentTime.
+  ex:currentTime dcterms:issued "2019-12-19T15:00:00"^^xsd:dateTime.

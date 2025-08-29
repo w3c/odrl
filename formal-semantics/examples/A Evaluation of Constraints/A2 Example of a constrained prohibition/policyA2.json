@@ -1,0 +1,18 @@
+{
+"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@type": "Agreement",
+"uid": "http://example.com/policy/A2",
+"prohibition": [{
+    "@id" : "http://example.com/prohibition/A2",
+    "target": "http://example.com/photoAlbum:55",
+    "action": "archive",
+    "assigner": "http://example.com/MyPix:55",
+    "assignee": "http://example.com/assignee:55",
+    "constraint": [{
+       "@id" : "http://example.com/constraint/A2",
+       "leftOperand": "dateTime",
+       "operator": "lt",
+        "rightOperand":  { "@value": "2025-01-01", "@type": "xsd:date" }
+   }]
+}]
+}

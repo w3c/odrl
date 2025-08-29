@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "odrl": "http://www.w3.org/ns/odrl.jsonld",
+    "ex": "http://example.org/",
+    "report": "http://example.com/report/temp/",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://example.com/policy-report/C1",
+  "@type": "report:ComplianceReport",
+  "dct:created": {
+    "@value": "2025-07-30T15:00:00.999Z",
+    "@type": "xsd:dateTime"
+  },
+  "report:policy": "http://example.com/policy/C1",
+  "report:evaluationRequest": "http://example.com/policy/evaluationrequest/C12",
+  "report:state": "http://example.com/policy/state/C12",
+  "ex:permissionReportC11": {
+    "@id": "http://example.com/policy-report/C1/permission/C12",
+    "@type": "report:ruleReport",
+    "report:rule": "http://example.com/rule/C1",
+    "report:activationState": "report:Active",
+    "report:controlState": "report:Permit"
+  },
+  "ex:conditionReport1": {
+    "@type": "report:ConditionReport",
+    "@id": "http://example.com/policy-report/C1/condition/C12",
+    "report:condition": "http://example.com/condition/1",
+    "report:activationState": "report:Active",
+    "report:deonticState": "report:Fulfilled"
+  },
+   "ex:actionReport1": {
+    "@type": "report:ActionReport",
+    "@id": "http://example.com/policy-report/C1/action/C12",
+    "report:action": "http://example.com/action/1",
+    "report:performanceState": "report:Performed"
+  }
+}
