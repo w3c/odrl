@@ -3,12 +3,15 @@
   @prefix dcterms: <http://purl.org/dc/terms/> .
   @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-  ex:sotw a sotw:SotW;
-    sotw:id "http://example.com/policy/state/C12";
-    sotw:currentTime ex:currentTime;
-    sotw:action ex:action.
-      ex:currentTime dcterms:issued "2025-07-27T00:00:00"^^xsd:dateTime.
-      ex:action a ex:Compensate.
-      ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
-      ex:action ex:compensatedParty party:sony.
-      ex:action ex:atTime "2025-07-23T00:00:00"^^xsd:dateTime.
+  ex:sotw a sotw:SotW;                                   #ex:sotw is a particular state of the world
+    sotw:id <http://example.com/policy/state/C12>;
+    sotw:currentTime ex:currentTime;                     #TO BE DISCUSSED: Why not direclty giving the xsd:dateTime?
+    sotw:action [                                        #sotw:action is an action that actually took place (what the evaluator knows)
+      a odrl:compensate;                                 #Observation: by stating this triple, we make odrl:compensate to become an owl:Class.
+      ex:payAmount "5.00"^^xsd:decimal;                 #We avoid using odrl:payAmount, for it is not meant to be used as a property.
+      ex:compensatedParty party:sony;
+      dcterms:date "2025-07-23T00:00:00Z"^^xsd:dateTime.  #We use dcterms:date because this was an instant action. Idea: if the action is a prov:Activity,  
+    ]
+
+  ex:currentTime dcterms:issued "2025-07-27T00:00:00Z"^^xsd:dateTime. #why not using dc:time?. 
+
