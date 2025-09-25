@@ -1,14 +1,16 @@
-  @prefix ex:   <https://ex.org/> .
-  @prefix sotw: <https://ex.org/sotw#> .
-  @prefix dcterms: <http://purl.org/dc/terms/> .
-  @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix party: <https://ex.org/party#> .
+@prefix ex:   <https://ex.org/> .
+@prefix sotw: <https://ex.org/sotw#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-  ex:sotw a sotw:SotW;
-    sotw:id "http://example.com/policy/state/C12";
-    sotw:currentTime ex:currentTime;
-    sotw:action ex:action.
-      ex:currentTime dcterms:issued "2025-07-27T00:00:00"^^xsd:dateTime.
-      ex:action a ex:Compensate.
-      ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
-      ex:action ex:compensatedParty party:sony.
-      ex:action ex:atTime "2025-07-23T00:00:00"^^xsd:dateTime.
+  ex:sotw a sotw:SotW;                                   #ex:sotw is a particular state of the world
+    sotw:id <http://example.com/policy/state/C12>;
+    sotw:currentTime "2025-07-27T00:00:00Z"^^xsd:dateTime; #TO BE DISCUSSED: Beatriz was proposing using an intermediate URI. Why?
+    sotw:action [                                       #sotw:action is an action that actually took place (what the evaluator knows)
+      a ex:Compensate;                                  #Observation: we may use odrl:compensate if also declared to be an owl:Class.
+      ex:payAmount "5.00"^^xsd:decimal;                 #We avoid using odrl:payAmount, for it is not meant to be used as a property.
+      odrl:payee party:sony;
+      dcterms:issued "2025-07-23T00:00:00Z"^^xsd:dateTime  #Idea: if the action is a prov:Activity, then we can have start and end time for the action.  
+    ] .
