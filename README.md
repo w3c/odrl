@@ -1,31 +1,41 @@
 # W3C ODRL Community Group
 
-The ODRL Community Group supports the promotion and future development of the W3C ODRL recommendations:
+The W3C ODRL Community Group supports the promotion and future development of the W3C ODRL recommendations:
 
-* [ODRL Information Model](https://www.w3.org/TR/odrl-model/)
-* [ODRL Vocabulary & Expression](https://www.w3.org/TR/odrl-vocab/)
+* [W3C ODRL Information Model V2.2](https://www.w3.org/TR/odrl-model/)
+* [W3C ODRL Vocabulary & Expression V2.2](https://www.w3.org/TR/odrl-vocab/)
 
-Specifically, the ODRL CG will:
+## ODRL Community Group Objectives
 
-* Promote ODRL V2.2 to existing and new sectors/industries
+* Promote ODRL V2.2 to existing and new sectors and industries
 * Nurture an ODRL implementors community
 * Publish reports related to ODRL usage
-* Support development of ODRL Profiles (and host for smaller communities)
-* Register ODRL Profiles
-* Collaborate with W3C on ODRL [errata maintenance](https://github.com/w3c/odrl/issues/6)
+* Support/Register the development of ODRL Profiles (and host for smaller communities)
+* Manage the ODRL Recommendation [errata maintenance](https://github.com/w3c/poe/issues)
+* Collabroate with W3C community and working groups
 * Plan for future major enhancements to ODRL (V3.0)
 
 ## Participate
+See the [ODRL Community Group Home Page](https://www.w3.org/community/odrl/)  
+Join the [ODRL Community Group](https://www.w3.org/community/odrl/join)  
+See the upcoming [general meetings](https://w3c.github.io/odrl/meetings/), including past meeting notes.  
+See the community group email archive [public-odrl@w3.org](https://lists.w3.org/Archives/Public/public-odrl/)   
+[ODRL International Workshops](https://w3c.github.io/odrl/international-workshops/)
 
-See upcoming general meetings and sub-groups meetings, including meeting minutes, at the [ODRL Community Group Wiki](https://www.w3.org/community/odrl/wiki/Main_Page).
+## Current Working Documents
+* [ODRL Implementation Best Practices](https://w3c.github.io/odrl/bp/)
+* [ODRL Temporal Profile](https://w3c.github.io/odrl/profile-temporal/)
+* [ODRL Data Spaces Profile](https://w3c.github.io/odrl/profile-dataspaces/)
+* [ODRL Formal Semantics](https://w3c.github.io/odrl/formal-semantics/)
+* [ODRL Community Vocabulary](https://w3c.github.io/odrl/community-vocab/)
 
-Subscribe to [public-odrl@w3.org](https://lists.w3.org/Archives/Public/public-odrl/) to recieve reminder and meeting link.
 
-## Useful links
 
-* [ODRL Community Group Home page](https://www.w3.org/community/odrl/)
-* [Public group email archive](https://lists.w3.org/Archives/Public/public-odrl/)
+
+## ODRL Resources
+
+* [ODRL Profiles](https://www.w3.org/community/odrl/wiki/ODRL_Profiles)
+* [ODRL Implementations](https://www.w3.org/community/odrl/implementations/)
 
 ---
 
-This repository is administered by [Renato Iannella](mailto:r@iannel.la) and [Ivan Herman](mailto:ivan@w3.org)
