@@ -13,6 +13,7 @@ Mon 01 December 2025 at 12:00 UTC (1:00 p.m. CEST) (NF)
 
 ## Past Meeting Notes
 [Mon 06 October 2025](2025/meeting-2025-10-06.md)
+
 [Mon 01 September 2025](2025/meeting-2025-09-01.md)  
 [Mon 07 July 2025](2025/meeting-2025-07-07.md)  
 [Mon 09 June 2025](2025/meeting-2025-06-09.md)  
