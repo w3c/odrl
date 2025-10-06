@@ -20,7 +20,7 @@ var respecConfig = {
             {  
                 name: "Beatriz Esteves",
                 url: "https://w3id.org/people/besteves",
-                company: "IDLab, Ghent University - IMEC",
+                company: "IDLab, Ghent University - imec",
                 companyURL: "http://idlab.ugent.be/",
                 mailto: "beatriz.esteves@ugent.be"
             },

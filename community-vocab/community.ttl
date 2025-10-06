@@ -49,12 +49,12 @@ odrl-comm:subclass a odrl:Operator, owl:NamedIndividual, skos:Concept ;
 	rdfs:comment "Indicates that a given value is a subclass of the Right Operand of the Constraint."@en ;
 	skos:definition "Indicates that a given value is a subclass of the Right Operand of the Constraint."@en ;
     skos:example "The purpose constraint of a rule can be a subclass of research and development such as academic research, non-commercial research or commercial research."@en ;
-    skos:note "Right operand value MUST use vocabularies that explicitely define subclass relationships, e.g., using rdfs:subClassOf."@en ;
+    skos:note "Right operand value MUST use vocabularies that explicitly define subclass relationships, e.g., using rdfs:subClassOf."@en ;
     dcterms:source <https://github.com/w3c/odrl/issues/28>, <https://w3id.org/oac#subclass> .
 
 # ------------ Policy Concepts ------------------ #
 
-odrl-comm:Preference a rdfs:Class , owl:Class, skos:Concept ;
+odrl-comm:Preference a rdfs:Class, owl:Class, skos:Concept ;
 	rdfs:subClassOf odrl:Policy ;
 	owl:disjointWith odrl:Agreement, odrl:Offer, odrl:Privacy, odrl:Request, odrl:Ticket, odrl:Assertion ;
 	rdfs:isDefinedBy odrl-comm: ;
