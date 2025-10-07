@@ -28,13 +28,11 @@ See the community group email archive [public-odrl@w3.org](https://lists.w3.org/
 * [ODRL Data Spaces Profile](https://w3c.github.io/odrl/profile-dataspaces/)
 * [ODRL Formal Semantics](https://w3c.github.io/odrl/formal-semantics/)
 * [ODRL Community Vocabulary](https://w3c.github.io/odrl/community-vocab/)
-* [ODRL Landscape](https://github.com/w3c/odrl/landscape/README.md)
-
-
 
 
 ## ODRL Resources
 
+* [ODRL Landscape](https://w3c.github.io/odrl/landscape/)
 * [ODRL Profiles](https://www.w3.org/community/odrl/wiki/ODRL_Profiles)
 * [ODRL Implementations](https://www.w3.org/community/odrl/implementations/)
 
