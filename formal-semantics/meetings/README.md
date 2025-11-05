@@ -8,9 +8,11 @@ The ZOOM meeting connection URL and password to access is [here](https://lists.w
 
 ## Next Meetings 
 
-[Mon Monday 20 October 2025, at 12:00 UTC (2 p.m. CEST)](meeting-2025-10-20.md).
+To be discussed.
 
 ## Past Meeting Notes
+[Mon Monday 20 October 2025, at 12:00 UTC (2 p.m. CEST)](meeting-2025-10-20.md).
+
 [Mon 16 June 2025 2:00 p.m. CEST (12:00 UTC)](meeting-2025-06-27.md)
 
 [Mon 9 June 2025 2:00 p.m. CEST (12:00 UTC)](meeting-2025-06-09.md)

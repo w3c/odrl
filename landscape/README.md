@@ -68,6 +68,11 @@ The table has three columns
 - [FORCE UI](https://w3id.org/force/demo)
   - The FORCE Web editor is a user interface developed with as goal aiding understanding of ODRL Policy Evaluation and experimenting with new features for ODRL.
   - Created by [KNoWS](https://knows.idlab.ugent.be/) for the [Solidlab](https://solidlab.be/) (maintainer: [Wout Slabbinck](mailto:wout.slabbinck@ugent.be)).
+- [dokieli](https://dokie.li/)
+  - A client-side editor and browser extension (an [authoring tool](https://www.w3.org/TR/ATAG/#def-Authoring-Tool)) for decentralised article publishing, annotations, and social interactions. ([Source](https://git.dokie.li/))
+  - Users can check whether storage policies are compatible with their preferred policies to guide their choices.
+  - The user interface enforces resource policies by disabling actions such as printing, archiving, transforming, exporting, modifying, reproducing, or versioning.
+  - Created and maintained by [Sarven Capadisli](https://csarven.ca/#i) (@csarven), [Virginia Balseiro](https://virginiabalseiro.com/#me) (@VirginiaBalseiro), and community.
 - [LOAMA](https://github.com/SolidLabResearch/loama/tree/feat/odrl): Low-code ODRL Access Management Application
   - Web User Interface to manage ODRL policies in decentralized ecosystems. *Currently only with aforementioned [UMA Server](https://github.com/SolidLabResearch/user-managed-access)*
   - Created by [KNoWS](https://knows.idlab.ugent.be/) for the [Solidlab](https://solidlab.be/) project (maintainer: [Wout Slabbinck](mailto:wout.slabbinck@ugent.be)).
