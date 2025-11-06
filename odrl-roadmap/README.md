@@ -9,4 +9,5 @@ Timescale: Target W3C TPAC Meeting (Oct 2026 in Dublin) for a Proposed new Worki
 Process:
  - Define current ODRL issues (that challange deployment)
  - Source ODRL Features (from current and new communities) that will provide new capabilities
+  - Collect use cases and extract requirements
  - Develop a conceptual draft of ODRL3
