@@ -1,4 +1,4 @@
-# ODRL Roadmap 2026
+![ODRL Roadmap](odrl3.png) 
 
 Objective: Propose a plan for the development of ODRL3 as a new W3C Recommendation
 
