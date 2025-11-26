@@ -14,7 +14,7 @@ Process:
  - Source ODRL Features (from current and new communities) that will provide new capabilities
   - Collect use cases and extract requirements
  - Develop a conceptual draft of ODRL3
- - Document proposed Charter
+ - Document proposed Charter for new W3C Working Group for 2027/28
  - Socialise with wider community and W3C Staff
 
 Current Activities:
