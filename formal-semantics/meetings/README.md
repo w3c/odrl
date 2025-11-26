@@ -7,10 +7,11 @@ Previous meeting notes (from 2022 to 2024) are available [here](https://www.w3.o
 The ZOOM meeting connection URL and password to access is [here](https://lists.w3.org/Archives/Member/internal-odrl/2020May/0000.html) 
 
 ## Next Meetings 
-
-[Mon Monday 24 November 2025, at 12:00 UTC (1 p.m. CEST)](meeting-2025-11.24.md).
+[Mon Monday 15 December 2025, at 1:00 p.m. UTC (2 p.m. CEST)](meeting-2025-12-15.md).
 
 ## Past Meeting Notes
+[Mon Monday 24 November 2025, at 12:00 UTC (1 p.m. CEST)](meeting-2025-11-24.md).
+
 [Mon Monday 20 October 2025, at 12:00 UTC (2 p.m. CEST)](meeting-2025-10-20.md).
 
 [Mon 16 June 2025 2:00 p.m. CEST (12:00 UTC)](meeting-2025-06-27.md)
