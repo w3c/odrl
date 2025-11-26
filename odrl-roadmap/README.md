@@ -2,7 +2,7 @@
 
 Objective: Propose a plan for the development of ODRL3 as a new W3C Recommendation
 
-Motivation: Burgening industry adoption (see W3C blog post)
+Motivation: Burgening industry adoption (see W3C blog post https://www.w3.org/blog/2025/w3c-standard-odrl-policy-gaining-industry-adoption/)
 
 Timescale: Target W3C TPAC Meeting (Oct 2026 in Dublin) for a Proposed new Working Group Charter
 
