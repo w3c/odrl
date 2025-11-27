@@ -46,7 +46,8 @@
 ##### [Workshop Program](http://www.virtualgoods.org/2011/program.html)
 
 
-## 8th International ODRL Workshop -- ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025) 1 June 2025 (Portoroz, Slovenia) ![](https://opal-workshop.github.io/2025/img/OPAL.jpg)
+## ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025) 1 June 2025 (Portoroz, Slovenia)
+###### *(8th International ODRL Workshop)*
 
 ##### [Workshop Home](https://opal-workshop.github.io/2025/)
 ##### [Workshop Program](https://opal-workshop.github.io/2025/#program)
