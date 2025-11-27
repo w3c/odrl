@@ -1,6 +1,8 @@
 ![W3C ODRL Community Group](media/w3c-odrl-cg.png)
 
-The W3C ODRL Community Group supports the promotion and future development of the W3C ODRL recommendations:
+The W3C ODRL Community Group supports the adoption and promotion of the W3C ODRL Recommendations, and the continual evolution and future development of ODRL.
+
+## W3C ODRL Recommendations
 
 * [W3C ODRL Information Model V2.2](https://www.w3.org/TR/odrl-model/)
 * [W3C ODRL Vocabulary & Expression V2.2](https://www.w3.org/TR/odrl-vocab/)
