@@ -1,4 +1,4 @@
-# W3C ODRL Community Group
+![W3C ODRL Community Group](media/w3c-odrl-cg.png)
 
 The W3C ODRL Community Group supports the promotion and future development of the W3C ODRL recommendations:
 
