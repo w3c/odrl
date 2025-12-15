@@ -11,15 +11,15 @@ The ZOOM meeting connection URL  and password to access is [here](https://lists.
 #### 2026
 
 [Mon 12 January 2026 at 12:00 UTC (1:00 p.m. CET)](2025/meeting-2026-01-12.md)  
-Mon 2 February 2026  
+Mon 2 February 2026 (VR)  
 Mon 2 March 2026  (NF)  
 Mon 13 April 2026 (Monday 6 April 2026 is Easter Monday)  
 Mon 4 May 2026 (NF)  
 Mon 1 June 2026  
 Mon 6 July 2026 (NF)  
-Mon 7 September 2026  
+Mon 7 September 2026  (VR)
 Mon 5 October 2026 (NF)  
-Mon 2 November 2026  
+Mon 2 November 2026  (VR)
 Mon 7 Decenmber 2026 (NF)  
 
 ## Past Meeting Notes
