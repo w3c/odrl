@@ -4,8 +4,13 @@
     "odrl-fs": "https://w3id.org/odrl-fs#"
   },
   "@type": "odrl-fs:EvaluationRequest",
-  "@id":  "http://example.com/policy/evaluationrequest/C21",
-  "action": "odrl:play",
-  "assignee": {"@id": "http://example.com/party/billie"},
-  "target": "http://example.com/music/1999.mp3"
+  "@id":  "http://example.com/policy/evaluationrequest/C12",
+  "action":  "odrl:play",
+  "party":  "http://example.com/party/billie",
+  "target": "http://example.com/music/1999.mp3",
+  "requestParameter": {
+    "@type": "odrl-fs:RequestParameter",
+    "value": "2025-07-25T11:44:22",
+    "describesFeature": "odrl-fs:TemporalData"
+  }
 }
