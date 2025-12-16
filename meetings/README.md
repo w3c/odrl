@@ -15,12 +15,12 @@ Mon 2 February 2026 (VR)
 Mon 2 March 2026  (NF)  
 Mon 13 April 2026 (Monday 6 April 2026 is Easter Monday)  
 Mon 4 May 2026 (NF)  
-Mon 1 June 2026  
+Mon 1 June 2026  (RI)
 Mon 6 July 2026 (NF)  
-Mon 7 September 2026  (VR)
+Mon 7 September 2026  (VR)  
 Mon 5 October 2026 (NF)  
-Mon 2 November 2026  (VR)
-Mon 7 Decenmber 2026 (NF)  
+Mon 2 November 2026  (VR)  
+Mon 7 December 2026 (NF)  
 
 ## Past Meeting Notes
 
