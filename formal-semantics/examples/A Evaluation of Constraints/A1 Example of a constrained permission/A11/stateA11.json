@@ -1,0 +1,15 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/stow.json",
+    {"time" : "http://www.w3.org/2006/time#", "ex" : "https://ex.org/"}
+  ],
+  "@id" : "ex:state-A11",
+  "@type" : "SotW",
+  "context" : {
+    "@id" : "ex:context-A11", 
+    "@type" : "time:Instant",
+    "conditionId" : "http://example.com/constraint/A1",
+    "time:inXSDDateTime" : { "@value" : "2017-12-19T15:00:00", "@type" : "xsd:dateTime" }
+  }
+}
