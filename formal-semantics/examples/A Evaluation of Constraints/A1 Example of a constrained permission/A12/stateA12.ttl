@@ -1,8 +1,12 @@
-  @prefix ex:   <https://ex.org/> .
-  @prefix sotw: <https://ex.org/sotw#> .
-  @prefix dcterms: <http://purl.org/dc/terms/> .
-  @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:   <https://ex.org/> .
+@prefix sotw: <https://w3id.org/force/sotw#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 
-  ex:sotw a sotw:SotW;
-    sotw:currentTime ex:currentTime.
-  ex:currentTime dcterms:issued "2019-12-19T15:00:00"^^xsd:dateTime.
+ex:state-A12 a sotw:SotW ;
+    sotw:context ex:context-A12 .
+
+ex:context-A12 a time:Instant ;
+    sotw:conditionID <http://example.com/constraint/A1> ;
+    time:inXSDDateTime "2019-12-19T15:00:00"^^xsd:dateTime .
