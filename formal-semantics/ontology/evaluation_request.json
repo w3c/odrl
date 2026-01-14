@@ -29,7 +29,7 @@
                   "DIDIdentity" : "sotw:DIDIdentity",
                   "CurrentXSDDateTime" : "sotw:CurrentXSDDateTime",
                   "XSDInstant" : "sotw:XSDInstant",
-                  "DataFeature" : "sotw:DataFeature",
+                  "DataFeature" : "sotw:DataFeature"
             }
           }
         }
