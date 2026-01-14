@@ -18,14 +18,19 @@
       	"@id" : "https://w3id.org/force/sotw#requestParameter",
         "@context" : {
           "RequestParameter" : "sotw:RequestParameter",
-          "DataFeature" : "sotw:DataFeature",
            "value" : {
             "@id" : "https://w3id.org/force/sotw#value",
              "@type" : "xsd:string"
           },
           "describesFeature" : {
           	"@id" : "https://w3id.org/force/sotw#describesFeature",
-            "@type" : "@id"
+            "@type" : "@id",
+            "@context" : {
+                  "DIDIdentity" : "sotw:DIDIdentity",
+                  "CurrentXSDDateTime" : "sotw:CurrentXSDDateTime",
+                  "XSDInstant" : "sotw:XSDInstant",
+                  "DataFeature" : "sotw:DataFeature",
+            }
           }
         }
        }
