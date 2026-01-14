@@ -20,17 +20,11 @@
           "RequestParameter" : "sotw:RequestParameter",
            "value" : {
             "@id" : "https://w3id.org/force/sotw#value",
-             "@type" : "xsd:string"
+            "@type" : "xsd:string"
           },
           "describesFeature" : {
           	"@id" : "https://w3id.org/force/sotw#describesFeature",
-            "@type" : "@id",
-            "@context" : {
-                  "DIDIdentity" : "sotw:DIDIdentity",
-                  "CurrentXSDDateTime" : "sotw:CurrentXSDDateTime",
-                  "XSDInstant" : "sotw:XSDInstant",
-                  "DataFeature" : "sotw:DataFeature"
-            }
+            "@type" : "@id"
           }
         }
        }
