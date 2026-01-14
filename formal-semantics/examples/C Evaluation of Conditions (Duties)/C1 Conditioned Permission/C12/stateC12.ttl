@@ -5,7 +5,7 @@
 @prefix ex:   <https://ex.org/> .
 
 ex:C12 a sotw:SotW ;
-    sotw:context ex:C12Context-A, ex:C12Context-B .
+    sotw:context ex:C12Context-A .
 
 ex:C12Context-A a pay:Payment ;
     sotw:conditionID <http://example.com/condition/1> ;
