@@ -1,11 +1,18 @@
 {
-  "@context": {
-    "odrl": "http://www.w3.org/ns/odrl.jsonld",
-    "odrl-fs": "https://w3id.org/odrl-fs#"
-  },
-  "@type": "odrl-fs:EvaluationRequest",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/evaluation_request.json",
+    { "ex" : "https://ex.org/" }
+  ],
+  "@type": "EvaluationRequest",
   "@id":  "http://example.com/policy/evaluationrequest/C12",
-  "action": "odrl:play",
-  "assignee": {"@id": "http://example.com/party/billie"},
-  "target": "http://example.com/music/1999.mp3"
+  "evaluatedAction": "odrl:play",
+  "evaluatedParty": "http://example.com/party/billie1",
+  "evaluatedTarget": "http://example.com/music/1999.mp3",
+  "requestParameters" : {
+    "@type" : "RequestParameter",
+    "@id" : "ex:ev-param-C12", 
+    "value" : { "@value" : "2025-07-25T00:00:00", "@type" : "xsd:dateTime" },
+    "describesFeature" :  "sotw:CurrentXSDDateTime" 
+  }
 }
