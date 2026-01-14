@@ -1,7 +1,0 @@
-@prefix ex:   <https://ex.org/> .
-@prefix sotw: <https://w3id.org/force/sotw#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix time: <http://www.w3.org/2006/time#> .
-
-# Empty
