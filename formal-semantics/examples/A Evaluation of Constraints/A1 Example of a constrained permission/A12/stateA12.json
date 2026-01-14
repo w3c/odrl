@@ -1,15 +1,1 @@
-{
-  "@context": [
-    "http://www.w3.org/ns/odrl.jsonld",
-    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/stow.json",
-    {"time" : "http://www.w3.org/2006/time#", "ex" : "https://ex.org/"}
-  ],
-  "@id" : "ex:state-A12",
-  "@type" : "SotW",
-  "context" : {
-    "@id" : "ex:context-A12", 
-    "@type" : "time:Instant",
-    "conditionId" : "http://example.com/constraint/A1", # The conditionId refers to the same policy, and therefore constraint, of example A11
-    "time:inXSDDateTime" : { "@value" : "2019-12-19T15:00:00", "@type" : "xsd:dateTime" }
-  }
-}
+{ }
