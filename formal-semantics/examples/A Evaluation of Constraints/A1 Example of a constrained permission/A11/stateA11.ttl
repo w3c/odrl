@@ -4,9 +4,4 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 
-ex:state-A11 a sotw:SotW ;
-    sotw:context ex:context-A11 .
-
-ex:context-A11 a time:Instant ;
-    sotw:conditionID <http://example.com/constraint/A1> ;
-    time:inXSDDateTime "2017-12-19T15:00:00"^^xsd:dateTime .
+# Empty
