@@ -1,0 +1,20 @@
+{
+  "@context" : [
+    "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/stow.json",
+    {"pay" : "https://www.epimorphics.com/guide-to-the-payments-ontology/", "ex" : "https://ex.org/"}
+  ],
+  "@id" : "ex:C23",
+  "@type" : "SotW",
+  "context" :  {
+    "@id" : "ex:C23Context-A",
+    "@type" : "pay:Payment",
+    "conditionId" : "http://example.com/condition/1",
+    "pay:payer" : "http://example.com/party/billie" ,
+    "pay:payee" : "http://example.com/party/sony" , 
+    "pay:reference" : "UGQEHUR6" ,
+    "pay:netAmount" : { "@value" : "5.00", "@type" : "xsd:decimal" } ,
+    "pay:currency" : "https://dbpedia.org/resource/Euro" ,
+    "pay:paymentDate" : { "@value" : "2025-07-23T00:00:00", "@type" : "xsd:dateTime" }
+  }
+}
