@@ -383,7 +383,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	    If the performed action belongs to class of actions regulated by the active permission and all the refinements satisfied
 	    then the action is permitted by the permission.
 	    If the performed action does not belong to class of actions regulated the permission or the permission is inactive 
-	    then the action is not permitted by the permission.
+	    then the action is not permitted by the permission.<br><br>
 
 		<!-- ADDED JANUARY 2026 -->
 		The following semantics of permissions is independent of the scenario in which it will be used.
@@ -412,11 +412,11 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
             <li>All the existing Constraints of the Rule are satisfied by the evaluated action <code>a</code>;</li> 
 			<li>All the existing Conditions (duties) of the Rule are fulfilled or inactive in state <code>S</code>. </li>           
         </ol>
-<p>
-       If one of those conditions is not met, the Permission is <b>inactive</b>. <br>
+
+		<p>If one of those conditions is not met, the Permission is <b>inactive</b>. </p>
        
-The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
-is permitted by a Permission in the given state of the world <code>S</code> if and only if all the following conditions holds:
+<p>The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
+is permitted by a Permission in the given state of the world <code>S</code> if and only if all the following conditions holds:</p>
 	<ol>
 	    <li>The Permission is <b>active</b> on action <code>a</code> in state <code>S</code>; </li>	
 
@@ -450,11 +450,13 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
         </p>
         <p>
             <!-- General description of the case --> 
-            A permission may have its action limited (in time, in space, etc.) without any Condition (Duty) or Refinement.
+            A permission may have its action limited (in time, in space, etc.) without any Condition (Duty).
             This is the situation of the following case (similar to <a href="https://www.w3.org/TR/odrl-model/#constraint-rule">Example 13</a> 
             in the ODRL Information Model 2.2). The permission below allows the target asset <code>document:1234</code> to be distributed, 
             it includes the constraint that the permission may only be exercised until 2018-01-01. 
-            The permission is granted by the organization <code>party:16</code>.
+            The permission is granted by the organization <code>party:16</code>. The action class regulated by the permission is 
+			<code>distribute</code>, the target is <code>document:1234</code>, and the assignee is not specified.
+			When the assignee is not specified the permission is granted to any agent.
         </p>
 
             <pre>
@@ -480,10 +482,10 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-        The ODRL Evaluator has to calculate first the activation state of the permission. 
+       <!-- The ODRL Evaluator has to calculate first the activation state of the permission. 
 	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
         As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
-	is passed, the Permission is inactive. The action class regulated by the permission is <code>distribute</code>, the target is <code>document:1234</code>, and the assignee is not specified.
+	is passed, the Permission is inactive. -->
         </p>
 	
         <table border="1" style="font-size:small;">
@@ -501,10 +503,9 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
             <tr>
                     <td>A1-1</td>
                     <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
-                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/stateA11.ttl">
-			    <code>currentTime</code> is 2017-12-19T15:00:00</a></td>
+                    <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
-			party:1 distributes document:1234</code></a></td>
+			party:1 distributes document:1234 at 2017-12-19T15:00:00</code></a></td>
 		    <td>satisfied</td>
                     <td>satisfied</td>
                     <td>active</td>
@@ -515,10 +516,9 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
             <tr>
                     <td>A1-2</td>
                     <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/policyA1.json">policy:A1</a></td>
-                    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/stateA12.ttl">
-			    <code>currentTime</code> is 2019-12-19T15:00:00</a></td>
+                    <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
-			party:1 distributes document:1234</code></a></td>
+			party:1 distributes document:1234 at 2019-12-19T15:00:00</code></a></td>
 		     <td>satisfied</td>
                     <td>not-satisfied</td>
                     <td>inactive</td>	
@@ -529,10 +529,14 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
         </table>  
         <p>Explanation:</p>
 	  <ul>
-            <li>(A1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission 
-            and the Permission is active then the action is permitted by the permission.</li>
-            <li>(A1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission, 
-	    but the Permission is inactive, then the action is permitted by the permission.</li>
+            <li>(A1-1) The constraint of the Permission is satisfied by the evaluated action, then the Permission is active.
+			The evaluated action belongs to the class of actions regulated by the Permission, 
+			the action’s target is equal to the target of the Permission, 
+			then the action is permitted by the permission.</li>
+            <li>(A1-2) The constraint of the Permission is not satisfied by the evaluated action, then the Permission is inactive.
+			The evaluated action belongs to the class of actions regulated by the Permission, 
+			the action’s target is equal to the target of the Permission, 
+			but the action is not permitted by the permission.</li>
         </ul>   
 
 	 <h3>Evaluation of Refinements</h3>
