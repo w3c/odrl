@@ -207,28 +207,26 @@ The ODRL Evaluator uses as <b>input</b>:
 	interoperability between different systems, the results of the evaluation must be the same.
   
 <h3>State of the World</h3>
-        <p><!-- state of the world --> 
-            The ODRL Evaluator requires a formal representation of the <b>state of the world</b>.
-            The state of the world specifies knowledge representing real-world information that aids the evaluation of ODRL Policies.
-            <!--For example, a certain state of the world may include the current date and time, the location of agents, or the history of performed actions.-->
-        </p>
-<p>	In this document, we aim to provide a minimal set of information that needs to be represented in the 
-    State of the World:
-</p>
+     <p><!-- state of the world --> 
+       The ODRL Evaluator requires a formal representation of the <b>state of the world</b>.
+       The state of the world specifies knowledge representing real-world information that are required for the evaluation 
+	   of ODRL Policies. For example, a certain state of the world may include the performed actions. In this document, 
+	we aim to provide a minimal set of information that needs to be represented in the State of the World:
         <ul>
             <li><code>SotW</code>: knowledge representing real-world information aiding the evaluation of ODRL Policies;</li>
-			<li><code>context</code>: the contextual information related to the state of the world.</li>
+			<li><code>context</code>: the contextual information related to the state of the world;</li>
+			<li><code>Payment</code>: for representing payments.</li>
 		</ul>
-        
+   </p>     
 <h3>Evaluation Request</h3>
 <p>
 An ODRL Evaluator requires an <b>Evaluation Request</b> as input.
-An Evaluation Request may represent a formal description of an action to be evaluated and 
+An Evaluation Request MAY represent a formal description of an action to be evaluated and 
 it contains the following properties:
 </p>
 <ul>
  	<li><code>evaluatedAction</code>: The action to be evaluated (e.g., <code>odrl:use</code>, <code>odrl:read</code>, <code>odrl:modify</code>).</li>
-    <li><code>evaluatedParty</code> (compulsory): The party (e.g., person or organization) being evaluated in relation to the evaluated action.</li>
+    <li><code>evaluatedParty</code>: The party (e.g., person or organization) being evaluated in relation to the evaluated action.</li>
     <li><code>evaluatedTarget</code>: The asset (e.g., file, document, data, service) being evaluated in relation to the evaluated action.</li>
 </ul>
 <p>
@@ -368,7 +366,6 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	(i.e., it permits the performance of an action that belongs to the class of action regulated by the permission
 	and that satisfies all the refinements) or not.  
 
-        <!--The evaluation of permission activation is different in the access control scenario that in the monitoring scenario.-->
 	Permissions can be evaluated in two different scenarios: access control or monitoring.
 </p>
 	 <p>
@@ -387,6 +384,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	    then the action is permitted by the permission.
 	    If the performed action does not belong to class of actions regulated the permission or the permission is inactive 
 	    then the action is not permitted by the permission.
+
+		<!-- ADDED JANUARY 2026 -->
+		The following semantics of permissions is independent of the scenario in which it will be used.
 	    
 	   <!-- REMOVED JULY 2025 if there is no active permission to do such an action (with all refinements satisfied) and the default 
 	    setting for the ODRL Evaluator is set to "everything is prohibited unless explicitly permitted" a 
