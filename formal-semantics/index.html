@@ -404,23 +404,33 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
 		
-        The ODRL Evaluator computes that a Permission is <b>active</b> iif:
+        The ODRL Evaluator computes that a Permission is <b>active</b> 
+		on some evaluated action <code>a</code> represented in the Evaluation Request 
+		and in some state of the world <code>S</code> if and only if all the following conditions holds:
         </p>
         <ol>
-            <li>All the existing Constraints of the Rule are satisfied AND;</li> 
-            <li>All the existing Conditions (duties) of the Rule are fulfilled or inactive; </li>
+            <li>All the existing Constraints of the Rule are satisfied by the evaluated action <code>a</code>;</li> 
+			<li>All the existing Conditions (duties) of the Rule are fulfilled or inactive in state <code>S</code>. </li>           
         </ol>
-
 <p>
        If one of those conditions is not met, the Permission is <b>inactive</b>. <br>
        
-The ODRL Evaluator computes that the action represented in the Evaluation Request is permitted by a Permission in the given State of the World 
-iff:
+The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
+is permitted by a Permission in the given state of the world <code>S</code> if and only if all the following conditions holds:
 	<ol>
-	    <li>The Permission is <b>active</b> AND </li>	
-	    <li>The action in the Evaluation Request belongs to the permitted class of actions with the correct target and assigee (when
-	they are specified) AND </li>
-	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li>
+	    <li>The Permission is <b>active</b> on action <code>a</code> in state <code>S</code>; </li>	
+
+<!-- CHANGED Jan 2026 <li>The action in the Evaluation Request belongs to the permitted class of actions with the correct target and assigee (when they are specified) AND </li> -->
+		
+		<li>The action <code>a</code> belongs to the permitted class of actions;</li>
+		<li>The action’s target is equal to the target of the Permission or it is contained in the 
+				collection of objects specified as target of the Permission;</li>
+		<li>When the assignee of the permission is specified, the action’s party is equal to the assignee of the Permission or 
+				it is contained in the collection of parties specified as assignee of the Permission; </li>
+		<li>All the refinements (when they are specified) related to the regulated action, to the regulated target, 
+			and to the regulated assignee are satisfied by the action <code>a</code>, its target and its party. </li>
+	
+<!-- CHANGED Jan 2026 	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li> -->
 	</ol>
 </p>
    
