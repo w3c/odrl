@@ -533,10 +533,8 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
 			The evaluated action belongs to the class of actions regulated by the Permission, 
 			the action’s target is equal to the target of the Permission, 
 			then the action is permitted by the permission.</li>
-            <li>(A1-2) The constraint of the Permission is not satisfied by the evaluated action, then the Permission is inactive.
-			The evaluated action belongs to the class of actions regulated by the Permission, 
-			the action’s target is equal to the target of the Permission, 
-			but the action is not permitted by the permission.</li>
+            <li>(A1-2) The constraint of the Permission is not satisfied by the evaluated action, 
+			then the Permission is inactive and therefore cannot permit any action.</li>
         </ul>   
 
 	 <h3>Evaluation of Refinements</h3>
@@ -582,37 +580,40 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
         
         <table border="1" style="font-size:small;">
         <tr>
-                    <th>Case</th>
-                    <th style="color:darkblue">Policy</th>
-                    <th style="color:darkblue">Evaluation Request</th>
+            <th>Case</th>
+            <th style="color:darkblue">Policy</th>
+			<th style="color:darkblue">State of the World</th>
+            <th style="color:darkblue">Evaluation Request</th>
 		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
-                    <th style="color:darkred">Satisfaction state of <br><code>refinement:B1</code></th>
-                    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+            <th style="color:darkred">Satisfaction state of <br><code>refinement:B1</code></th>
+            <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
-            	    <th style="color:darkred">Evaluation Report</th>
+            <th style="color:darkred">Evaluation Report</th>
          </tr>
         <tr>
-                    <td>B1-1</td>
-                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
-                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
-			    <code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
+            <td>B1-1</td>
+			<td>empty</td>
+            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
+            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
+			<code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
 		    <td>satisfied</td>
-                    <td>satisfied</td>
-                    <td>active</td>
+            <td>satisfied</td>
+            <td>active</td>
 		    <td>permit the action</td>
-     		    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB11.json">
+     		<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB11.json">
 		     report</a></td>
         </tr>
         <tr>
-                    <td>B1-2</td>
-                    <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
-                   <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/evaluationrequestB12.json">
-			   <code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
+            <td>B1-2</td>
+			<td>empty</td>
+            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
+            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/evaluationrequestB12.json">
+			<code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
 		    <td>satisfied</td>
-                    <td>not-satisfied</td>
-                    <td>active</td>
+            <td>not-satisfied</td>
+            <td>active</td>
 		    <td>deny the action</td>
-     		   <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/compliancereportB12.json">report</a></td>
+     		<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/compliancereportB12.json">report</a></td>
         </tr>
         </table>
 
@@ -620,10 +621,12 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
 	Explanation: the Permission is always active because it has neither Constraints nor Conditions (Duties).
 	</p>
 	<ul>
-        <li>(B1-1) If the action to be evaluated belongs to the class of actions regulated by the Permission and 
-	the action satisfies the Refinement, then the action is permitted by the permission.</li>
-	<li>(B1-2) If the action to be evaluated belongs to the class of actions regulated by the Permission 
-	but it does not satisfy the Refinement, then the action is NOT permitted by the permission.</li>
+        <li>(B1-1) The evaluated action belongs to the class of actions regulated by the Permission, 
+		the action’s target is equal to the target of the Permission, and the action satisfies the Refinement, 
+		then the action is permitted by the permission.</li>
+	    <li>(B1-2) The action to be evaluated belongs to the class of actions regulated by the Permission, 
+		the action’s target is equal to the target of the Permission, but it does not satisfy the Refinement, 
+		then the action is NOT permitted by the permission.</li>
 	</ul>
 
         <h3>Evaluation of Conditions (Duties)</h3> 
