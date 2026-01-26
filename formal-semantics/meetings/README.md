@@ -8,7 +8,7 @@ The ZOOM meeting connection URL and password to access is [here](https://lists.w
 
 ## Next Meetings 
 
-to be decided during ODRL meeting on 12 Jabuary 2026.
+Monday 26 December  2025 at 1:30 pm  UTC (2:30  pm CET)
 
 ## Past Meeting Notes
 [Mon Monday 15 December 2025, at 1:00 p.m. UTC (2 p.m. CEST)](meeting-2025-12-15.md).
