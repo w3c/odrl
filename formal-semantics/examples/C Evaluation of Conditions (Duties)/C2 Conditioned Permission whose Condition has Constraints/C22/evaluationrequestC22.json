@@ -5,7 +5,7 @@
     { "ex" : "https://ex.org/" }
   ],
   "@type": "EvaluationRequest",
-  "@id":  "http://example.com/policy/evaluationrequest/C12",
+  "@id":  "http://example.com/policy/evaluationrequest/C22",
   "evaluatedAction": "odrl:play",
   "evaluatedParty": "http://example.com/party/billie1",
   "evaluatedTarget": "http://example.com/music/1999.mp3",
