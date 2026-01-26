@@ -592,8 +592,8 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
          </tr>
         <tr>
             <td>B1-1</td>
+			<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
 			<td>empty</td>
-            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
             <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
 			<code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
 		    <td>satisfied</td>
@@ -605,8 +605,8 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
         </tr>
         <tr>
             <td>B1-2</td>
+			<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
 			<td>empty</td>
-            <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/policyB1.json">policy:B1</a></td>
             <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/evaluationrequestB12.json">
 			<code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
 		    <td>satisfied</td>
@@ -638,14 +638,14 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
 	<!-- <p>A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
             if its action, with all refinements satisfied, has been performed. </p> -->
 	
-	<p>A Condition (duty) is <b>active</b> iif: </p>
+	<p>A Condition (duty) is <b>active</b> if and only if: </p>
         <ol> 
 	    <li>The Condition (duty) has no Constraints, OR </li>
 	    <li>The Constraints of the Condition (duty) are all satisfied.</li>	
 	</ol>
 	<p> otherwise the Condition is <b>inactive</b></p>
 
-	<p>A Condition (duty) is <b>fulfilled</b> iif: </p>
+	<p>A Condition (duty) is <b>fulfilled</b> if and only if: </p>
 	<ol>
 	    <li>The Condition (duty) is <b>active</b> AND;</li>
 	    <li>There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition
@@ -752,9 +752,9 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
             <tr>
                 <td>C1-1</td>
                 <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json">policy:C1</a></td>
-                <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/stateC11.ttl"><code>current time 2025-07-25T00:00:00</code></td>
+                <td> empty </td>
 		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/evaluationrequestC11.json">
-		<code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		party:billie plays music:1999.mp3 at 2025-07-25T00:00:00</a></td>
 		<td>satisfied</td>
 		<td>active</td>
                 <td>not-set</td>
@@ -766,9 +766,9 @@ is permitted by a Permission in the given state of the world <code>S</code> if a
                 <td>C1-2</td>
                 <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/policyC1.json">policy:C1</a></td>
                  <td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/stateC12.ttl">
-		<code>compensate</code> <code>5 euro</code> to <code>party:sony atTime 2025-07-23T00:00:00</code></a>
-		 and <code>current time 2025-07-25T00:00:00</code></td>
-		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/evaluationrequestC12.json"><code>party:billie</code> <code>plays</code> <code>music:1999.mp3</code></a></td>
+		<code>compensate</code> <code>5 euro</code> to <code>party:sony atTime 2025-07-23T00:00:00</code></a></td>
+		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/evaluationrequestC12.json">
+		party:billie plays music:1999.mp3 at 2025-07-25T00:00:00</a></td>
 		<td>satisfied</td>
 		<td>active</td>
                 <td>fulfilled</td>
