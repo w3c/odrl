@@ -1,7 +1,7 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
-    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/evaluation_request.json"
+    "https://raw.githubusercontent.com/w3c/odrl/refs/heads/master/formal-semantics/ontology/evaluation_request.json"
   ],
   "@type": "EvaluationRequest",
   "@id":  "http://example.com/policy/evaluationrequest/B12",

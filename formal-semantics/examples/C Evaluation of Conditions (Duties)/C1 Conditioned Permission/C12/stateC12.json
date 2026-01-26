@@ -1,7 +1,7 @@
 {
   "@context" : [
     "http://www.w3.org/ns/odrl.jsonld",
-    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/stow.json",
+    "https://raw.githubusercontent.com/w3c/odrl/refs/heads/master/formal-semantics/ontology/stow.json",
     {"pay" : "https://www.epimorphics.com/guide-to-the-payments-ontology/", "ex" : "https://ex.org/"}
   ],
   "@id" : "ex:C12",
