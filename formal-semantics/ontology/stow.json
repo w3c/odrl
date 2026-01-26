@@ -1,0 +1,16 @@
+{
+       "@context" : {
+       "sotw" : "https://w3id.org/force/sotw#",
+       "SotW" : "sotw:SotW",
+       "context" :{
+            "@id" : "sotw:context",
+            "@context" : {
+              "conditionId" : {
+                "@id" : "sotw:conditionId",
+                "@type" : "@id"
+              }
+            }
+             
+       }
+      }
+    }

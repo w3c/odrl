@@ -1,11 +1,16 @@
 {
-  "@context": {
-    "odrl": "http://www.w3.org/ns/odrl.jsonld",
-    "odrl-fs": "https://w3id.org/odrl-fs#"
-  },
-  "@type": "odrl-fs:EvaluationRequest",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/AndreaCimminoArriaga/odrl/refs/heads/master/formal-semantics/ontology/evaluation_request.json"
+  ],
+  "@type": "EvaluationRequest",
   "@id":  "http://example.com/policy/evaluationrequest/B11",
-  "action": "odrl:print",
-  "resolution": "1000",
-  "target": "http://example.com/document/1234"
+  "evaluatedAction": "odrl:print",
+  "evaluatedTarget": "http://example.com/document/1234",
+  "requestParameters" : {
+    "@type" : "RequestParameter",
+    "value" : { "@id" : "1000", "@type" : "xsd:integer" },
+    "describesFeature" : "http://dbpedia.org/resource/Dots_per_inch"
+    
+  }
 }

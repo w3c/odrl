@@ -1,15 +1,17 @@
-  @prefix ex:   <https://ex.org/> .
-  @prefix sotw: <https://ex.org/sotw#> .
-  @prefix dcterms: <http://purl.org/dc/terms/> .
-  @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix sotw: <https://w3id.org/force/sotw#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix pay: <https://www.epimorphics.com/guide-to-the-payments-ontology/> .
+@prefix ex:   <https://ex.org/> .
 
-  ex:sotw a sotw:SotW;
-    sotw:id "http://example.com/policy/state/C23";
-    sotw:currentTime ex:currentTime;
-    sotw:action ex:action.
-      ex:currentTime dcterms:issued "2025-08-03T00:00:00"^^xsd:dateTime.
-      ex:action a ex:Compensate.
-      ex:action ex:payAmount dcterms:issued "5.00"^^xsd:decimal".
-      ex:action ex:compensatedParty party:sony.
-      ex:action ex:atTime "2025-07-23T00:00:00"^^xsd:dateTime.
+ex:C23 a sotw:SotW ;
+    sotw:context ex:C23Context-A .
 
+ex:C23Context-A a pay:Payment ;
+    sotw:conditionID <http://example.com/condition/1> ;
+    pay:payer <http://example.com/party/billie> ;
+    pay:payee <http://example.com/party/sony> ;
+    pay:reference "UGQEHUR6" ;
+    pay:netAmount "5.00"^^xsd:decimal ;
+    pay:currency <https://dbpedia.org/resource/Euro> ;
+    pay:paymentDate "2025-07-23T00:00:00"^^xsd:dateTime .

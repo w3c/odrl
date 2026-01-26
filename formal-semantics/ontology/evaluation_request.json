@@ -1,0 +1,32 @@
+{ 
+      "@context": {
+      "sotw" : "https://w3id.org/force/sotw#",
+      "EvaluationRequest" : "https://w3id.org/force/sotw#EvaluationRequest",
+      "evaluatedAction" : {
+      	"@id" : "https://w3id.org/force/sotw#evaluatedAction",
+        "@type" : "@id"
+      },
+      "evaluatedParty" : {
+      	"@id" : "https://w3id.org/force/sotw#evaluatedParty",
+      	"@type" : "@id"
+      },
+      "evaluatedTarget" : {
+      	"@id" : "https://w3id.org/force/sotw#evaluatedTarget",
+      	"@type" : "@id"
+      },
+      "requestParameters" : {
+      	"@id" : "https://w3id.org/force/sotw#requestParameter",
+        "@context" : {
+          "RequestParameter" : "sotw:RequestParameter",
+           "value" : {
+            "@id" : "https://w3id.org/force/sotw#value",
+            "@type" : "xsd:string"
+          },
+          "describesFeature" : {
+          	"@id" : "https://w3id.org/force/sotw#describesFeature",
+            "@type" : "@id"
+          }
+        }
+       }
+      } 
+    }
