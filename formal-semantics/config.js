@@ -5,10 +5,10 @@ var respecConfig = {
         [
             {
                 name: "Nicoletta Fornara",
-                url: "https://www.linkedin.com/in/nicoletta-fornara-0384397",
-                company: "Universita' della Svizzera italiana",
+                url: "http://usi.to/dte",
+                company: "Institute of Digital Technologies for Communication (ITDxC), Universita' della Svizzera italiana",
                 companyURL: "https://www.usi.ch/en",
-                mailto: "person email"    
+                mailto: "nicoletta.fornara@usi.ch"    
             },
          	{  
                 name: "Víctor Rodríguez-Doncel",
@@ -44,6 +44,13 @@ var respecConfig = {
                 company: "Gaia-X",
                 companyURL: "https://gaia-x.eu/",
                 mailto: "yassir.sellami@gaia-x.eu"
+            },
+             {
+                name: "Andrea Cimmino Arriaga",
+                url: "https://portalcientifico.upm.es/en/ipublic/researcher/307657",
+                company: "Universidad Politécnica de Madrid",
+                companyURL: "https://www.upm.es/",
+                mailto: "andreajesus.cimmino@upm.es"
             },
         ],
     group: "odrl",
