@@ -6,7 +6,7 @@ var respecConfig = {
             {
                 name: "Nicoletta Fornara",
                 url: "http://usi.to/dte",
-                company: "Institute of Digital Technologies for Communication (ITDxC), Universita' della Svizzera italiana",
+                company: "Universita' della Svizzera italiana",
                 companyURL: "https://www.usi.ch/en",
                 mailto: "nicoletta.fornara@usi.ch"    
             },
