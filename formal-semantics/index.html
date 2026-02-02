@@ -406,17 +406,19 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 		
         The ODRL Evaluator computes that a Permission is <b>active</b> 
 		on some evaluated action <code>a</code> represented in the Evaluation Request 
-		and in some state of the world <code>S</code> if and only if all the following conditions holds:
+		and in some State of the World <code>S</code> if and only if all the following conditions holds:
         </p>
         <ol>
             <li>All the existing Constraints of the Rule are satisfied by the evaluated action <code>a</code>;</li> 
-			<li>All the existing Conditions (duties) of the Rule are fulfilled or inactive in state <code>S</code>. </li>           
+			<li>All the existing Conditions (duties) of the Rule are <b>fulfilled</b> or 
+				<b>inactive</b> in state <code>S</code> with respect to action <code>a</code> 
+			(see <a href="#evaluation-of-conditions-duties">Secton 4.3</a> for more details). </li>           
         </ol>
 
 		<p>If one of those conditions is not met, the Permission is <b>inactive</b>. </p>
        
 <p>The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
-is permitted by a Permission in the given state of the world <code>S</code> if and only if all the following conditions holds:</p>
+<b>is permitted by a Permission</b> in the given State of the World <code>S</code> if and only if all the following conditions holds:</p>
 	<ol>
 	    <li>The Permission is <b>active</b> on action <code>a</code> in state <code>S</code>; </li>	
 
