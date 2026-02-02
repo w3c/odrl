@@ -932,24 +932,24 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
             The prohibition is specifically active before the first day of 2025.
         </p>	
         <pre>
-        {
-        "@context": "http://www.w3.org/ns/odrl.jsonld",
-        "@type": "Agreement",
-        "uid": "http://example.com/policy/55",
-        "prohibition": [{
-            "@id" : "http://example.com/prohibition/1",
-            "target": "http://example.com/photoAlbum:55",
-            "action": "archive",
-            "assigner": "http://example.com/MyPix:55",
-            "assignee": "http://example.com/assignee:55",
-            "constraint": [{
-               "@id" : "http://example.com/constraint/1",
-               "leftOperand": "dateTime",
-               "operator": "lt",
-                "rightOperand":  { "@value": "2025-01-01", "@type": "xsd:date" }
-           }]
-        }]
-        }
+			{
+			"@context": "http://www.w3.org/ns/odrl.jsonld",
+			"@type": "Agreement",
+			"uid": "http://example.com/policy/A2",
+			"prohibition": [{
+				"@id" : "http://example.com/prohibition/A2",
+				"target": "http://example.com/photoAlbum:55",
+				"action": "archive",
+				"assigner": "http://example.com/MyPix:55",
+				"assignee": "http://example.com/assignee:55",
+				"constraint": [{
+				   "@id" : "http://example.com/constraint/A2",
+				   "leftOperand": "dateTime",
+				   "operator": "lt",
+					"rightOperand":  { "@value": "2025-01-01", "@type": "xsd:date" }
+			   }]
+			}]
+			}
         </pre>
         <p>
             <b>Expected behaviour of the Evaluator</b>
@@ -965,7 +965,7 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
         </p>
         <table border="1" style="font-size:small;">
             <tr>
-                <th>Example</th>
+                <th>Example</th> 
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
                 <th style="color:darkred">satisfaction of <br><code>constraint:1</code></th>                
@@ -973,8 +973,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <th style="color:darkred">deontic state of the <br><code>prohibition:1</code></th>
             </tr>
             <tr>
-                <td>E55-1</td>
-                <td>policy:55</td>
+                <td>A2-1</td>
+                <td><a href="examples/C%20Evaluation%20of%20Conditions%20(Duties)/C2%20Conditioned%20Permission%20whose%20Condition%20has%20Constraints/policyC2.json">policy:A2</a></td>
                 <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
 		by <code>assignee:55</code> is performed before 2025-01-01</td>                 
                 <td>satisfied</td>
@@ -982,8 +982,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <td>violated by the action</td>
             </tr>
             <tr>
-                <td>E55-2</td>
-                <td>policy:55</td>
+                <td>A2-2</td>
+                <td><a href="examples/C%20Evaluation%20of%20Conditions%20(Duties)/C2%20Conditioned%20Permission%20whose%20Condition%20has%20Constraints/policyC2.json">policy:A2</a></td>
                <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
 		by <code>assignee:55</code> is NOT performed before 2025-01-01</td>                        
                 <td>satisfied</td>
@@ -991,8 +991,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <td>not-set</td>
             </tr>
             <tr>
-                <td>E19-3</td>
-                <td>policy:55</td>                
+                <td>A2-2</td>
+                <td><a href="examples/C%20Evaluation%20of%20Conditions%20(Duties)/C2%20Conditioned%20Permission%20whose%20Condition%20has%20Constraints/policyC2.json">policy:A2</a></td>               
                <td><code>archive</code> of <code>photoAlbum:55</code> <br> 
 		by <code>assignee:55</code> is performed after 2025-01-01</td>        
                 <td>not-satisfied</td>
