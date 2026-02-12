@@ -1,5 +1,5 @@
 # W3C Workshop on the Future ODRL Directions
-![W3C ODRL Community Group](media/w3c-odrl-workshop2026.png)
+![W3C ODRL Community Group](w3c-odrl-workshop2026.png)
 
 **Exploring Adoption, Tooling, Research, and the Future of Policy Management on the Web**
 
