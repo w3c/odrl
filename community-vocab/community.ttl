@@ -12,9 +12,51 @@ PREFIX sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
 PREFIX vann: <http://purl.org/vocab/vann/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-PREFIX odrl-comm: <#odrl-comm-namespace>
+PREFIX odrl-comm: <http://www.w3.org/ns/odrl/2/>
 
-# ------------ TODO: Ontology Metadata ------------------ #
+# ------------------- Ontology Metadata ----------------------- #
+
+odrl-comm: a owl:Ontology ;
+	rdfs:label "ODRL Community Vocabulary"@en ;
+	owl:versionInfo "0.1" ;
+	dcterms:created "2024-08-10"^^xsd:date ;
+	dcterms:modified "2026-03-02"^^xsd:date ;
+	dct:creator "Beatriz Esteves", "Renato Iannella" ;
+    dct:contributor "W3C ODRL Community Group" ;
+	dcterms:publisher "W3C ODRL Community Group" ;
+	dct:description "This ontology contains a community-supplied set of general terms that are useful across difference use cases where the usage of ODRL policies is desirable."@en ;
+	vann:preferredNamespacePrefix "odrl-comm"@en ;
+    vann:preferredNamespaceUri "http://www.w3.org/ns/odrl/2/"^^xsd:string ;
+	dct:conformsTo <https://www.w3.org/TR/odrl-model/> ;
+	dct:license <https://www.w3.org/Consortium/Legal/2002/ipr-notice-20021231#Copyright/> .
+
+# -- SKOS Collections for Grouping related Commuity concepts -- #
+
+<http://www.w3.org/ns/odrl/2/#policySubClassesCommunity>
+    a skos:Collection ;
+    skos:prefLabel "Policy Community Subclasses"@en ;
+    skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
+    skos:member odrl-comm:Preference  .
+
+<http://www.w3.org/ns/odrl/2/#partyRolesCommunity>
+    a skos:Collection ;
+    skos:prefLabel "Party Community Functions"@en ;
+    skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
+    skos:member odrl-comm:issuedPolicy .
+
+<http://www.w3.org/ns/odrl/2/#actionsCommunity>
+    a skos:Collection ;
+    skos:prefLabel "Community Actions for Rules"@en ;
+    skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
+    skos:member odrl-comm:create .
+
+<http://www.w3.org/ns/odrl/2/#constraintRelationalOperatorsCommunity>
+    a skos:Collection ;
+    skos:prefLabel "Community Constraint Operators"@en ;
+    skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
+    skos:member odrl-comm:isNotA  ;
+	skos:member odrl-comm:seq  ;
+	skos:member odrl-comm:subclass .
 
 # ------------ Action Concepts ------------------ #
 
