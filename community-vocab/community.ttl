@@ -14,23 +14,23 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 PREFIX odrl-comm: <http://www.w3.org/ns/odrl/2/>
 
-# ------------------- Ontology Metadata ----------------------- #
+# ------------------- Ontology Metadata ------------------------ #
 
 odrl-comm: a owl:Ontology ;
 	rdfs:label "ODRL Community Vocabulary"@en ;
 	owl:versionInfo "0.1" ;
 	dcterms:created "2024-08-10"^^xsd:date ;
 	dcterms:modified "2026-03-02"^^xsd:date ;
-	dct:creator "Beatriz Esteves", "Renato Iannella" ;
-    dct:contributor "W3C ODRL Community Group" ;
+	dcterms:creator "Beatriz Esteves", "Renato Iannella" ;
+    dcterms:contributor "W3C ODRL Community Group" ;
 	dcterms:publisher "W3C ODRL Community Group" ;
-	dct:description "This ontology contains a community-supplied set of general terms that are useful across difference use cases where the usage of ODRL policies is desirable."@en ;
+	dcterms:description "This ontology contains a community-supplied set of general terms that are useful across difference use cases where the usage of ODRL policies is desirable."@en ;
 	vann:preferredNamespacePrefix "odrl-comm"@en ;
     vann:preferredNamespaceUri "http://www.w3.org/ns/odrl/2/"^^xsd:string ;
-	dct:conformsTo <https://www.w3.org/TR/odrl-model/> ;
-	dct:license <https://www.w3.org/Consortium/Legal/2002/ipr-notice-20021231#Copyright/> .
+	dcterms:conformsTo <https://www.w3.org/TR/odrl-model/> ;
+	dcterms:license <https://www.w3.org/Consortium/Legal/2002/ipr-notice-20021231#Copyright/> .
 
-# -- SKOS Collections for Grouping related Commuity concepts -- #
+# -- SKOS Collections for Grouping related Community concepts -- #
 
 <http://www.w3.org/ns/odrl/2/#policySubClassesCommunity>
     a skos:Collection ;
@@ -57,6 +57,12 @@ odrl-comm: a owl:Ontology ;
     skos:member odrl-comm:isNotA  ;
 	skos:member odrl-comm:seq  ;
 	skos:member odrl-comm:subclass .
+
+<http://www.w3.org/ns/odrl/2/#constraintLeftOperandsCommunity>
+    a skos:Collection ;
+    skos:prefLabel "Community Constraint Left Operands"@en ;
+    skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
+    skos:member odrl-comm:payPercentage .
 
 # ------------ Action Concepts ------------------ #
 
@@ -118,3 +124,13 @@ odrl-comm:issuedPolicy a rdf:Property, owl:ObjectProperty, skos:Concept ;
 	rdfs:domain odrl:Party ;
 	rdfs:range odrl:Policy ;
 	dcterms:source <https://github.com/w3c/odrl/issues/21> .
+
+# ------------ Left Operand Concepts ------------------ #
+
+odrl-comm:payPercentage a odrl:LeftOperand, owl:NamedIndividual, skos:Concept ;
+	rdfs:isDefinedBy odrl-comm: ;
+  	rdfs:label "Payment Percentage"@en ;
+	rdfs:comment "The payment is a percentage of the transaction amount."@en ;
+  	skos:definition "The payment is a percentage of the transaction amount."@en ;
+  	skos:note "Can be used for compensation duties where the financial payment is a percentage of the total transaction amount. Value must be between 0 and 100 (decimal inclusive)."@en ;
+	dcterms:source <https://github.com/w3c/odrl/issues/148> .
