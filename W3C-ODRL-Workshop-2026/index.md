@@ -1,11 +1,11 @@
 # W3C Workshop on the Future ODRL Directions
 ![W3C ODRL Community Group](w3c-odrl-workshop2026.png)
 
-**Exploring Adoption, Tooling, Research, and the Future of Policy Management on the Web**
+##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web
 
-📍 Location: *TBD*    
-📅 Dates: *TBD*  
-📢 Call for Participation: *Open (dates TBD)*   
+📍 Location:  **London, Canary Wharf**  
+📅 Dates: **22/23 June 2026**  
+📢 Call for Participation: **20 April 2026**  
 
 ---
 
@@ -19,10 +19,10 @@ Currently, ODRL is managed by the [W3C ODRL Community Group](http://www.w3.org/c
 
 This workshop aims to:
 - Explore future roadmap directions for ODRL  
-- Identify technical gaps and new research challenges  
-- Explore new communities adoping ODRL
+- Identify semantic technical gaps  
+- Explore new communities and sectors adoping ODRL
 - Share real-world implementation experiences  
-- Highlight tooling and policy evaluation approaches  
+- Highlight implementation and policy evaluation approaches  
 
 ---
 
@@ -30,10 +30,10 @@ This workshop aims to:
 
 | Milestone | Date |
 |-----------|------|
-| Call for Participation Published | TBD |
-| Deadline for Talk/Position Papers Proposals | TBD |
-| Notification to Speakers | TBD |
-| Workshop Dates | 22 & 23 June 2026 in London/UK |
+| Call for Participation Published | **20 April 2026**  |
+| Deadline for Talk/Position Papers Proposals | **1 May 2026** |
+| Notification to Speakers | **15 May 2026** |
+| Workshop Dates | **22/23 June 2026** |
 
 ---
 
@@ -42,9 +42,9 @@ This workshop aims to:
 Since becoming a W3C Recommendation in 2018, ODRL has gained increasing recognition and adoption across:
 
 - Data space governance frameworks  
-- Industry consortia and interoperability initiatives  
-- Digital media and content standards  
-- Usage control and compliance systems  
+- Industry consortia and international standards  
+- Digital media and creative content providers  
+- Financial sectors  
 
 At the same time, important challenges remain:
 
@@ -62,23 +62,24 @@ This workshop provides a forum to examine these topics collaboratively and defin
 
 We invite proposals for short talks (10–15 minutes) on topics including, but not limited to:
 
-### Adoption & Industry Experience
+### ODRL Adoption & Industry Experience
 
 - Case studies of ODRL deployments  
 - Lessons learned from production implementations  
 - Integration within data ecosystems and digital platforms  
 - Governance and compliance use cases  
 - ODRL Linked data integration
+- ODRL best practices
+- Profiles and domain-specific extensions
 
-### Semantics of ODRL and Technical Landscape 
-<!-- OLD NAME: Technical Landscape & Tooling -->
+### Innovation and Semantics of ODRL  
 
 - Formal semantics of ODRL
 - Policy evaluation engines 
 - Constraint modeling  
-- Profiles and domain-specific extensions  
 - ODRL editors, validators, and libraries  
-- Best practices for modeling permissions, prohibitions, and obligations  
+- Automated policy generation  
+- AI-assisted policy authoring and validation  
 
 ### Interoperability & Architecture
 
@@ -87,12 +88,6 @@ We invite proposals for short talks (10–15 minutes) on topics including, but n
 - Integration with Verifiable Credentials and DIDs  
 - Enforcement architectures and policy decision points  
 
-### Research & Innovation
-
-- Automated policy generation  
-- AI-assisted policy authoring and validation  
-- Compliance, reporting and monitoring  
-- Usability and developer experience improvements  
 
 ### Roadmap & Community Development
 
@@ -142,17 +137,17 @@ The workshop aims to produce:
 - Inputs to inform the ODRL roadmap  
 - Strengthened community coordination  
 
-The cullmination of the workshop will be a proposal for a new W3C ODRL Working Group to undertake the identified tasks. The Charter of the proposed WG will be presented at the [W3C TPAC Meeting](https://www.w3.org/events/tpac/2026/tpac-2026/) (26-30 October 2026, Dublin, Ireland)
+The cullmination of the workshop will be a **proposal for a new W3C ODRL Working Group** to undertake the identified tasks. The Charter of the proposed WG will be presented at the [W3C TPAC Meeting](https://www.w3.org/events/tpac/2026/tpac-2026/) (26-30 October 2026, Dublin, Ireland)
 
 ---
 
 ## Who Should Attend?
 
-- Implementers of ODRL  
+- New adoptors and implementors of ODRL
 - Data space architects  
 - Digital rights and governance professionals  
-- Standards contributors  
-- Researchers in policy languages and usage control  
+- Media Standards contributors  
+- Researchers in policy languages and asset control  
 - Tool developers and platform providers  
 
 ---
@@ -160,11 +155,12 @@ The cullmination of the workshop will be a proposal for a new W3C ODRL Working G
 ## Program Committee
 
 Co-Chairs: 
-- [Nicoletta Fornara](https://people.lu.usi.ch/fornaran/index.htm)
-- Renato Iannella
-- [Victor Doncel](https://oeg.fi.upm.es/index.php/es/teachers/vrodriguez.html)
+- [Renato Iannella](https://www.linkedin.com/in/riannella/), TRIPLES
+- [Nicoletta Fornara](https://www.linkedin.com/in/nicoletta-fornara-0384397/), USI Università della Svizzera Italiana
+- [Víctor Rodríguez-Donce](https://www.linkedin.com/in/victor-rodriguez-doncel/), Technical University of Madrid
 
-W3C Contacts: Rigo Wenning (rigo at_ w3.org)
+W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
+
 Program Committee: *TBD*
 
 The Program Committee will review submissions and shape the final agenda.
@@ -182,7 +178,7 @@ We are committed to providing a welcoming and inclusive environment for all part
 
 ## Contact
 
-For questions or suggestions, please contact:  
+For questions or suggestions, please contact the Workshop Chairs.
 
 *Email or GitHub repository link TBD*
 
