@@ -18,11 +18,11 @@ ODRL is a W3C Recommendation for expressing interoperable usage control policies
 Currently, ODRL is managed by the [W3C ODRL Community Group](http://www.w3.org/community/odrl/) that develops new profiles and best practices guides for the [W3C ODRL Information Model](https://www.w3.org/TR/odrl-model/) and the [W3C ODRL Vocabulary](https://www.w3.org/TR/odrl-vocab/) recommendations.
 
 This workshop aims to:
+- Explore future roadmap directions for ODRL  
+- Identify technical gaps and new research challenges  
 - Explore new communities adoping ODRL
 - Share real-world implementation experiences  
 - Highlight tooling and policy evaluation approaches  
-- Identify technical gaps and new research challenges  
-- Explore future roadmap directions for ODRL  
 
 ---
 
@@ -33,7 +33,7 @@ This workshop aims to:
 | Call for Participation Published | TBD |
 | Deadline for Talk/Position Papers Proposals | TBD |
 | Notification to Speakers | TBD |
-| Workshop Dates | TBD |
+| Workshop Dates | 22 & 23 June 2026 in London/UK |
 
 ---
 
@@ -68,6 +68,7 @@ We invite proposals for short talks (10–15 minutes) on topics including, but n
 - Lessons learned from production implementations  
 - Integration within data ecosystems and digital platforms  
 - Governance and compliance use cases  
+- ODRL Linked data integration
 
 ### Semantics of ODRL and Technical Landscape 
 <!-- OLD NAME: Technical Landscape & Tooling -->
@@ -90,7 +91,7 @@ We invite proposals for short talks (10–15 minutes) on topics including, but n
 
 - Automated policy generation  
 - AI-assisted policy authoring and validation  
-- Compliance reporting and monitoring  
+- Compliance, reporting and monitoring  
 - Usability and developer experience improvements  
 
 ### Roadmap & Community Development
@@ -158,8 +159,12 @@ The cullmination of the workshop will be a proposal for a new W3C ODRL Working G
 
 ## Program Committee
 
-Co-Chairs: *TBD*  
-W3C Contacts: *TBD*  
+Co-Chairs: 
+- [Nicoletta Fornara](https://people.lu.usi.ch/fornaran/index.htm)
+- Renato Iannella
+- [Victor Doncel](https://oeg.fi.upm.es/index.php/es/teachers/vrodriguez.html)
+
+W3C Contacts: Rigo Wenning (rigo at_ w3.org)
 Program Committee: *TBD*
 
 The Program Committee will review submissions and shape the final agenda.
