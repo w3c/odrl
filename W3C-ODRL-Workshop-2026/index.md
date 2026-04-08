@@ -123,7 +123,7 @@ To propose a talk or position paper, please submit:
 2. Affiliation  
 3. Short biography (2–3 sentences)  
 4. Proposed talk title and abstract (3–5 sentences), or  
-6. Position Paper (max 2 pages)  
+6. Position Paper (max 4 pages)  
 
 Submission details: *TBD (form or email to be announced)*
 
