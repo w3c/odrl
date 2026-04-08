@@ -69,12 +69,14 @@ We invite proposals for short talks (10–15 minutes) on topics including, but n
 - Integration within data ecosystems and digital platforms  
 - Governance and compliance use cases  
 
-### Technical Landscape & Tooling
+### Semantics of ODRL and Technical Landscape 
+<!-- OLD NAME: Technical Landscape & Tooling -->
 
-- ODRL editors, validators, and libraries  
-- Policy evaluation engines  
+- Formal semantics of ODRL
+- Policy evaluation engines 
+- Constraint modeling  
 - Profiles and domain-specific extensions  
-- Formal semantics and constraint modeling  
+- ODRL editors, validators, and libraries  
 - Best practices for modeling permissions, prohibitions, and obligations  
 
 ### Interoperability & Architecture
