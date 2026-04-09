@@ -160,11 +160,22 @@ The cullmination of the workshop will be a **proposal for a new W3C ODRL Working
 Co-Chairs: 
 - [Renato Iannella](https://www.linkedin.com/in/riannella/), TRIPLES
 - [Nicoletta Fornara](https://www.linkedin.com/in/nicoletta-fornara-0384397/), USI Università della Svizzera Italiana
-- [Víctor Rodríguez-Donce](https://www.linkedin.com/in/victor-rodriguez-doncel/), Technical University of Madrid
+- [Víctor Rodríguez-Donce](https://www.linkedin.com/in/victor-rodriguez-doncel/), Universidad Politécnica de Madrid
 
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
-Program Committee: *TBD*
+Program Committee (**proposal pending to be confirmed**): 
+- Beatriz Estevez
+- Rigo Wenning
+- Pierre-Antoine Champin
+- Ben Wittham-Smith
+- Andrea Cimmino
+- Matthias Autrata 
+- Simon Steyskal
+- Joshua Cornejo
+- Yassir Sellami
+- Wout Slabbinck
+- Philippe Rixhon
 
 The Program Committee will review submissions and shape the final agenda.
 
