@@ -1,9 +1,12 @@
 # W3C Workshop on the Future ODRL Directions
 ##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web  
 
-![W3C ODRL Community Group](w3c-odrl-workshop2026b.png)
+---
+
+![W3C ODRL Workshop 2026](w3c-odrl-workshop2026b.png)
 
 
+---
 
 📍 Location:  **25 Bank St, Canary Wharf, London, UK**  
 📅 Dates: **22/23 June 2026**  
@@ -164,7 +167,7 @@ Co-Chairs:
 
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
-Program Committee (**proposal pending to be confirmed**): 
+Program Committee (**Pending to be confirmed**): 
 - Beatriz Esteves
 - Rigo Wenning
 - Pierre-Antoine Champin
@@ -184,7 +187,7 @@ The Program Committee will review submissions and shape the final agenda.
 ## Code of Conduct
 
 This workshop follows the  
-**[W3C Code of Ethics and Professional Conduct (CEPC)](https://www.w3.org/Consortium/cepc/)**.  
+[W3C Code of Ethics and Professional Conduct (CEPC)](https://www.w3.org/Consortium/cepc/)
 
 We are committed to providing a welcoming and inclusive environment for all participants.
 
@@ -194,8 +197,9 @@ We are committed to providing a welcoming and inclusive environment for all part
 
 For questions or suggestions, please contact the Workshop Chairs.
 
-*Email or GitHub repository link TBD*
-
 ---
 
 © 2026 W3C Workshop on ODRL  
+
+![banner](strip.png)
+
