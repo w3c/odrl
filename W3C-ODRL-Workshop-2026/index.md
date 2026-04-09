@@ -165,7 +165,7 @@ Co-Chairs:
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
 Program Committee (**proposal pending to be confirmed**): 
-- Beatriz Estevez
+- Beatriz Esteves
 - Rigo Wenning
 - Pierre-Antoine Champin
 - Ben Wittham-Smith
