@@ -160,7 +160,7 @@ The cullmination of the workshop will be a **proposal for a new W3C ODRL Working
 Co-Chairs: 
 - [Renato Iannella](https://www.linkedin.com/in/riannella/), TRIPLES
 - [Nicoletta Fornara](https://www.linkedin.com/in/nicoletta-fornara-0384397/), USI Università della Svizzera Italiana
-- [Víctor Rodríguez-Donce](https://www.linkedin.com/in/victor-rodriguez-doncel/), Universidad Politécnica de Madrid
+- [Víctor Rodríguez-Doncel](https://www.linkedin.com/in/victor-rodriguez-doncel/), Universidad Politécnica de Madrid
 
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
