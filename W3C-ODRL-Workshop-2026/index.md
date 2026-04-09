@@ -1,11 +1,13 @@
 # W3C Workshop on the Future ODRL Directions
-![W3C ODRL Community Group](w3c-odrl-workshop2026.png)
+##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web  
 
-##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web
+![W3C ODRL Community Group](w3c-odrl-workshop2026b.png)
 
-📍 Location:  **London, Canary Wharf**  
+
+
+📍 Location:  **25 Bank St, Canary Wharf, London, UK**  
 📅 Dates: **22/23 June 2026**  
-📢 Call for Participation: **20 April 2026**  
+📢 Call for Participation: **17 April 2026**  
 
 ---
 
@@ -30,9 +32,9 @@ This workshop aims to:
 
 | Milestone | Date |
 |-----------|------|
-| Call for Participation Published | **20 April 2026**  |
+| Call for Participation Published | **17 April 2026**  |
 | Deadline for Talk/Position Papers Proposals | **1 May 2026** |
-| Notification to Speakers | **15 May 2026** |
+| Notification to Speakers | **8 May 2026** |
 | Workshop Dates | **22/23 June 2026** |
 
 ---
@@ -119,7 +121,7 @@ To propose a talk or position paper, please submit:
 2. Affiliation  
 3. Short biography (2–3 sentences)  
 4. Proposed talk title and abstract (3–5 sentences), or  
-6. Position Paper (max 4 pages)  
+6. Position Paper (2 to 4 pages)  
 
 Submission details: *TBD (form or email to be announced)*
 
