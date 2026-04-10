@@ -179,6 +179,8 @@ Program Committee (**Pending to be confirmed**):
 - Yassir Sellami
 - Wout Slabbinck
 - Philippe Rixhon
+- Brendan Quinn
+
 
 The Program Committee will review submissions and shape the final agenda.
 
