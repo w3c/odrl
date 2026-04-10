@@ -167,19 +167,19 @@ Co-Chairs:
 
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
-Program Committee (**Pending to be confirmed**): 
-- Beatriz Esteves
+Program Committee (*Pending to be confirmed*): 
+- *Beatriz Esteves*
 - Rigo Wenning
 - Pierre-Antoine Champin
 - Ben Wittham-Smith
-- Andrea Cimmino
-- Matthias Autrata 
-- Simon Steyskal
+- *Andrea Cimmino*
+- *Matthias Autrata* 
+- *Simon Steyskal*
 - Joshua Cornejo
-- Yassir Sellami
-- Wout Slabbinck
-- Philippe Rixhon
-- Brendan Quinn
+- *Yassir Sellami*
+- *Wout Slabbinck*
+- *Philippe Rixhon*
+- *Brendan Quinn*
 
 
 The Program Committee will review submissions and shape the final agenda.
