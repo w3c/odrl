@@ -1,9 +1,12 @@
 # W3C Workshop on the Future ODRL Directions
 ##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web  
 
-![W3C ODRL Community Group](w3c-odrl-workshop2026b.png)
+---
+
+![W3C ODRL Workshop 2026](w3c-odrl-workshop2026b.png)
 
 
+---
 
 📍 Location:  **25 Bank St, Canary Wharf, London, UK**  
 📅 Dates: **22/23 June 2026**  
@@ -116,13 +119,15 @@ All accepted talks and slides will be made publicly available after the event.
 
 ## Submitting a Proposal
 
-To propose a talk or position paper, please submit:
+To propose a Talk or Position Paper, please submit:
 
 1. Name  
 2. Affiliation  
-3. Short biography (2–3 sentences)  
-4. Proposed talk title and abstract (3–5 sentences), or  
+3. Short biography (2–3 sentences) or LinkedIn link  
+4. Talk title and abstract (3–5 sentences), **or**  
 6. Position Paper (2 to 4 pages)  
+
+Both the Talk and Position Paper should shape consensus and the future direction of ODRL with constructive proposals, concrete real-world examples and use cases, and surface new and innovative approaches for ODRL.
 
 Submission details: *TBD (form or email to be announced)*
 
@@ -153,29 +158,34 @@ The cullmination of the workshop will be a **proposal for a new W3C ODRL Working
 - Researchers in policy languages and asset control  
 - Tool developers and platform providers  
 
+Attendance is free for all participants and is open to the public, whether or not W3C Members.
+
 ---
 
 ## Program Committee
 
 Co-Chairs: 
-- [Renato Iannella](https://www.linkedin.com/in/riannella/), TRIPLES
-- [Nicoletta Fornara](https://www.linkedin.com/in/nicoletta-fornara-0384397/), USI Università della Svizzera Italiana
-- [Víctor Rodríguez-Doncel](https://www.linkedin.com/in/victor-rodriguez-doncel/), Universidad Politécnica de Madrid
+- [Renato Iannella](https://www.linkedin.com/in/riannella/), TRIPLES, Australia
+- [Nicoletta Fornara](https://www.linkedin.com/in/nicoletta-fornara-0384397/), USI Università della Svizzera Italiana, Switzerland
+- [Víctor Rodríguez-Doncel](https://www.linkedin.com/in/victor-rodriguez-doncel/), Universidad Politécnica de Madrid, Spain
 
 W3C Contacts: [Rigo Wenning](https://www.linkedin.com/in/rigo-wenning-0779212/) (rigo at_ w3.org)   
 
-Program Committee (**proposal pending to be confirmed**): 
-- Beatriz Estevez
-- Rigo Wenning
-- Pierre-Antoine Champin
-- Ben Wittham-Smith
-- Andrea Cimmino
-- Matthias Autrata 
-- Simon Steyskal
-- Joshua Cornejo
-- Yassir Sellami
-- Wout Slabbinck
-- Philippe Rixhon
+Program Committee (*Pending to be confirmed*): 
+- Beatriz Esteves, Ghent University, Belgium
+- Rigo Wenning, W3C, France
+- Pierre-Antoine Champin, W3C, France
+- *Ben Wittham-Smith*
+- *Andrea Cimmino*
+- *Matthias Autrata* 
+- *Simon Steyskal*
+- Joshua Cornejo, Marketdata, UK
+- Yassir Sellami, Gaia-X, Belgium
+- Wout Slabbinck, Ghent University, Belgium
+- Philippe Rixhon, Valunode, Estonia
+- Brendan Quinn, IPTC, Estonia
+- Leonard Rosenthol, Adobe, USA
+
 
 The Program Committee will review submissions and shape the final agenda.
 
@@ -184,7 +194,7 @@ The Program Committee will review submissions and shape the final agenda.
 ## Code of Conduct
 
 This workshop follows the  
-**[W3C Code of Ethics and Professional Conduct (CEPC)](https://www.w3.org/Consortium/cepc/)**.  
+[W3C Code of Ethics and Professional Conduct (CEPC)](https://www.w3.org/Consortium/cepc/)
 
 We are committed to providing a welcoming and inclusive environment for all participants.
 
@@ -194,8 +204,9 @@ We are committed to providing a welcoming and inclusive environment for all part
 
 For questions or suggestions, please contact the Workshop Chairs.
 
-*Email or GitHub repository link TBD*
-
 ---
 
 © 2026 W3C Workshop on ODRL  
+
+![banner](strip.png)
+
