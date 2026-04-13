@@ -12,6 +12,9 @@
 	<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
 	</head>
 	<body>
+
+      <p class="note" role="note"><strong>This is a VERY EARLY DRAFT and NOT COMPLETE</strong></p>
+
 		<section  id="abstract">
 			<p>
 				This ODRL Profile defines AI-specific actions which enables policy authors to clearly define acceptable and prohibited uses of assets in AI workflows. It supports governance, risk management, and compliance efforts, helping ensure that AI systems operate within agreed legal, ethical, and contractual boundaries.
@@ -33,7 +36,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 </section>
 			<section id="conformance">
-			<h3>Indentifiers</h3>
+			<h3>Identifiers</h3>
 			<p>
 				The Profile URI for this vocabulary is defined as:  
 				</p>
@@ -74,33 +77,40 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 
 		<section id='vocab'>
-			<h2>AI Vocabulary</h2>
+			<h2>AI "opt-out" Vocabularies</h2>
 
-			<P> Define the options </P>
+			<P> Review the options discussed at <a href="https://github.com/w3c/odrl/issues/147">Github Issue 147</a> </P>
 
-		<section id="term-archive">
+      </section>
+
+    <section id='conformance'>
+			<h2>ODRL AI Vocabulary Profile</h2>
+  
+		<section id="term-tdm">
                 <h4 id="x4-4-5-archive">
-                    Archive
+                    Text and Data Mining
                 </h4>
                 <table class="def propdef">
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>To store the Asset (in a non-transient form).</td>
+                            <td>The act of using one or more assets in the context of any
+automated analytical technique aimed at analyzing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and
+correlations</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>Archive</td>
+                            <td>ai-tdm</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/archive">http://www.w3.org/ns/odrl/2/archive</a>
+                                <a href="https://www.w3.org/ns/odrl/2/ai-tdm">http://www.w3.org/ns/odrl/2/ai-tdm</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td>Temporal constraints may be used for temporal conditions.</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
@@ -130,6 +140,9 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 		<h2>Example</h2>
 
+  <div class="example">
+ 
+   <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
@@ -159,6 +172,8 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
     }
   ]
 }
+</pre>
+</div>
 
 </section>
 </body>
