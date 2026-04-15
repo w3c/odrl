@@ -9,7 +9,7 @@
 ---
 
 📍 Location:  **25 Bank St, Canary Wharf, London, UK**  
-📅 Dates: **22/23 June 2026**  
+📅 Dates: **Mon/Tues 22-23 June 2026**  (Mon 9AM-5PM, Tues 9AM-1PM)   
 📢 Call for Participation: **17 April 2026**  
 
 ---
@@ -176,7 +176,7 @@ Program Committee (*Pending to be confirmed*):
 - Rigo Wenning, W3C, France
 - Pierre-Antoine Champin, W3C, France
 - *Ben Wittham-Smith*
-- *Andrea Cimmino*
+- Andrea Cimmino, Universidad Politécnica de Madrid, Spain
 - *Matthias Autrata* 
 - *Simon Steyskal*
 - Joshua Cornejo, Marketdata, UK
