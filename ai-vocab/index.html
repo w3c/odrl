@@ -205,23 +205,22 @@ correlations</td>
   ],
   "type": "odrl:Set",
   "uid": "http://example.org/policy/001",
+  "target": "http://example.org/asset/dataset1",
   "permission": [
     {
-      "target": "http://example.org/asset/dataset1",
-      "action": "ai:train",
+      "action": "odrl:ai-tdm",
       "constraint": [
         {
           "leftOperand": "odrl:purpose",
           "operator": "odrl:eq",
-          "rightOperand": "research"
+          "rightOperand": "https://w3id.org/dpv#ResearchAndDevelopment"
         }
       ]
     }
   ],
   "prohibition": [
     {
-      "target": "http://example.org/asset/dataset1",
-      "action": "ai:commercialiseOutput"
+      "action": "odrl:index"
     }
   ]
 }

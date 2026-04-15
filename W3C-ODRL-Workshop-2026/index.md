@@ -35,10 +35,11 @@ This workshop aims to:
 
 | Milestone | Date |
 |-----------|------|
-| Call for Participation Published | **17 April 2026**  (Tentative) |
-| Deadline for Talk/Position Papers Proposals | **1 May 2026** (Tentative) |
-| Notification to Speakers | **8 May 2026** (Tentative) |
+| Call for Participation Published | **17 April 2026**  |
+| Deadline for Talk/Position Papers Proposals | **27 May 2026**  |
+| Notification to Speakers | **5 June 2026**  |
 | Workshop Dates | **22 and 23 June 2026** |
+
 
 ---
 
