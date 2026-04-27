@@ -8,11 +8,11 @@ The ZOOM meeting connection URL and password to access is [here](https://lists.w
 
 ## Next Meetings 
 
-Monday 27 April 2026 at 12:00 UTC (2:00  pm CEST) online
-
 Tuesday 12 May 2026 from 10:00 to 12:30 in Dubrovnik, Croatia co-located with the [OPAL 2026 Workshop](https://opal-workshop.github.io/2026-2nd-edition/).
 
 ## Past Meeting Notes
+[Monday 27 April 2026 at 12:00 UTC (2:00  pm CEST)](2026/meeting-2026-04-27.md).
+
 [Monday 26 January 2026 at 1:30 pm  UTC (2:30  pm CET)](2026/meeting-2026-01-26.md).
 
 [Mon Monday 15 December 2025, at 1:00 p.m. UTC (2 p.m. CEST)](meeting-2025-12-15.md).
