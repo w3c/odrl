@@ -46,7 +46,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 				<tr>
 					<td>ODRL Profile</td>
 					<td>AI Vocabulary</td>
-					<td>http://www.w3.org/ns/odrl/2/ai-vocab</td>
+					<td>https://w3c.github.io/odrl/ai-vocab/</td>
 				</tr>
 				</tbody>
 				
@@ -79,35 +79,90 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 		<section id='vocab'>
 			<h2>AI "opt-out" Vocabularies</h2>
 
-			<P> Review the options discussed at <a href="https://github.com/w3c/odrl/issues/147">Github Issue 147</a> </P>
+			<P>Numerous standards groups and other projects have developed vocabularies for "opt-out" of AI processes over user content. An analysis has found them to be <a href="https://openfuture.eu/publication/divergent-mechanisms-elusive-vocabularies/">divergent, fragmented, and imbalanced</a> and also provides a <a href="https://openfuture.eu/wp-content/uploads/2025/03/250307_Vocabulary_for_opting_out_of_AI_training_and_other_forms_of_TDM.pdf">detailed summary of these vocabulary options</a>.</P>
+            <p>
+            Below is a summary of the key proposals.
+            </p>
+            <p><strong>IEEE - AI Preferences</strong> [[?draft-ietf-aipref-vocab]]</p>
+            <ul>
+                <li>Foundation Model Production (aitrain) - The act of using an asset to train or fine-tune a foundation model </li>
+                <li>Search (search) - using one or more assets in a search application that directs users
+   to the location from which the assets were retrieved </li>
+            </ul>
+
+            <p><strong>Creator Assertions Working Group (CAWG) - Training and Data Mining Assertion</strong> [[?cwag-train]]</p>
+            <ul>
+                <li>cawg.data_mining - Can any text or data content be extracted from the asset for purposes of determining “patterns, trends, and correlations.”</li>
+            <li>cawg.ai_inference - Can the asset be used as input to a trained AI/ML model for the purposes of inferring a result</li>
+            <li>cawg.ai_generative_training - Can the asset be used as training data to an AI/ML model that could generate assets.</li>
+            <li>cawg.ai_training - Can the asset be used as data to train non-generative AI/ML models, such as those used for classification, object detection, etc.</li>
+            </ul>
+
+             <p><strong>PLUS License Data Format - Data Mining </strong> [[?plus-data-mining]]</p>
+            <ul>
+                <li>DMI-ALLOWED - Data Mining allowed</li>
+                <li>DMI-PROHIBITED - Data Mining prohibited</li>
+                <li>DMI-PROHIBITED-AIMLTRAINING - Prohibited for AI/ML training</li>
+                <li>DMI-PROHIBITED-GENAIMLTRAINING - Prohibited for Generative AI/ML training</li>
+                <li>DMI-PROHIBITED-EXCEPTSEARCHENGINEINDEXING - Prohibited except for search engine indexing</li>
+            </ul>
+
+          <p><strong>Really Simple Licensing (RSL) - AI Usage</strong> [[?rsl-ai]]</p>
+            <ul>
+                <li>all	- Any automated processing, including AI training and search</li>
+                <li>ai-all	- Any use by AI systems, including training, inference, indexing, retrieval, generation, grounding, or model evaluation. This term explicitly includes the ai-train, ai-input, and ai-index usage types defined below, as well as other AI-related uses not yet enumerated</li>
+                <li>ai-train - Training or fine-tuning AI models</li>
+                <li>ai-input - Input into AI models, including retrieval-augmented generation, grounding, or other use of the content to produce generative AI responses or search summaries</li>
+                <li>ai-index - Inclusion in an AI system’s internal index or retrieval database</li>
+                <li>search - Building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents). Search does not include providing AI-generated search summaries</li>
+                </ul>
+
+      <p>As can be clearly seen by these approaches,  they are all different, overlapping, and lack any data interoperability. </p>
 
       </section>
 
     <section id='conformance'>
 			<h2>ODRL AI Vocabulary Profile</h2>
   
-      <p>New Vocab terms: </p>
-      <p>Reused Vocab terms from the ODRL Common Vocabualry: index</p>
-		<section id="term-tdm">
-              <h4 id="ai-tdm">
-                    Text and Data Mining
+      <p>Using the current set of AI vocabularies described in Section 3, the ODRL AI Vocabulary Profile would include the following terms: </p>
+      <ul>
+       <li>Data Mining - any form of algorithmic analysis of an asset</li>
+       <ul>
+        <li>AI Training - the asset is used to train an AI model</li>
+         <ul>
+            <li>Generative AI Training - the asset is used to train a Generative AI model</li>
+         </ul>
+        <li>AI Augmentation - the asset is used as input to a trained AI model</li>
+       </ul>
+       <li>Index - the asset is registered in a data store </li>
+       <li>Search - the asset is discoverable in a data store</li>
+      
+      </ul>
+      <p>These vocabulary terms are shown below, including the hierarchy.</p>
+
+   <p><img src="ai-vocab.png"/></p>
+
+<p> The next sections formally defines these vocabulary terms.</p>
+
+		<section id="term-dm">
+              <h4 id="data-mine">
+                    Data Mining
                 </h4>
                 <table class="def propdef">
                     <tbody>
                         <tr>
                             <th>Definition:</th>
                             <td>The act of using one or more assets in the context of any
-automated analytical technique aimed at analyzing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and
-correlations</td>
+automated analytical technique aimed at analyzing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>ai-tdm</td>
+                            <td>data-mine</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/ai-tdm">http://www.w3.org/ns/odrl/2/ai-tdm</a>
+                                <a href="https://www.w3.org/ns/odrl/2/data-mine">http://www.w3.org/ns/odrl/2/data-mine</a>
                             </td>
                         </tr>
                         <tr>
@@ -129,7 +184,11 @@ correlations</td>
 						 <tr>
                             <th>Mapping:</th>
                             <td>
-                                This vocabulary term has similar semantics to:
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>cawg.data_mining</li>
+                                    <li>PLUS DMI-ALLOWED</li>
+                                </ul>
 
                             </td>
                         </tr>
@@ -178,7 +237,7 @@ correlations</td>
                             <td>
                                 This vocabulary term has similar semantics to:
                                 <ul>
-                                  <li>Search - See Section 4.2 of [[?draft-ietf-aipref-vocab]]</li>
+                                  <li></li>
                                 </ul>
 
                             </td>
@@ -193,22 +252,20 @@ correlations</td>
 
 		<h2>Example</h2>
 
+         <p>The asset (dataset1) maybe used for AI Training only for the explicit purpose of "Research and Development" and must not be used for AI Augmentation.</p>
+
   <div class="example">
- 
+
    <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
 {
-  "@context": [
-    "http://www.w3.org/ns/odrl.jsonld",
-    {
-      "ai": "http://example.org/odrl/ai-profile#"
-    }
-  ],
-  "type": "odrl:Set",
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "odrl:Set",
+  "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/001",
   "target": "http://example.org/asset/dataset1",
   "permission": [
     {
-      "action": "odrl:ai-tdm",
+      "action": "odrl:ai-train",
       "constraint": [
         {
           "leftOperand": "odrl:purpose",
@@ -220,7 +277,7 @@ correlations</td>
   ],
   "prohibition": [
     {
-      "action": "odrl:index"
+      "action": "odrl:ai-augment"
     }
   ]
 }
