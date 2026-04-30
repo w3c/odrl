@@ -47,7 +47,7 @@
 
 
 ## 8th International ODRL Workshop 1 June 2025 (Portoroz, Slovenia)
-### ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025)
+#### ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025)
 
 ##### [Workshop Home](https://opal-workshop.github.io/2025/)
 ##### [Workshop Program](https://opal-workshop.github.io/2025/#program)
