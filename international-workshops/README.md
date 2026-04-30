@@ -46,12 +46,18 @@
 ##### [Workshop Program](http://www.virtualgoods.org/2011/program.html)
 
 
-## ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025) 1 June 2025 (Portoroz, Slovenia)
-###### *(8th International ODRL Workshop)*
+## 8th International ODRL Workshop 1 June 2025 (Portoroz, Slovenia)
+## ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2025)
 
 ##### [Workshop Home](https://opal-workshop.github.io/2025/)
 ##### [Workshop Program](https://opal-workshop.github.io/2025/#program)
 ##### [Workshop Proceedings](https://ceur-ws.org/Vol-3977/)
 
+## 9th International ODRL Workshop 12 May 2026 (Dubrovnik, Croatia)
+## 2nd ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2026)
+##### [Workshop Home](https://opal-workshop.github.io/2026-2nd-edition/)
 
+## 10th International ODRL Workshop June/July 2026 (London, UK)
+## W3C Workshop on the Future of ODRL
+##### [Workshop Home](https://www.w3.org/2026/ODRLWS/)
 
