@@ -9,7 +9,7 @@ The ZOOM meeting connection URL  and password to access is [here](https://lists.
 ## Next Meetings 
 
 #### 2026 
-Mon 4 May 2026 (NF)  
+[Mon 4 May 2026 (NF)](2026/meeting-2026-05-04.md)  
 Mon 1 June 2026  (RI)  
 Mon 6 July 2026 (NF)  
 Mon 7 September 2026  (VR)  
