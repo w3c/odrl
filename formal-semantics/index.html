@@ -395,30 +395,16 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	
 	<!--In the monitoring scenario, the value of the satisfaction state of a Refinement is computed according to the actual actions that are performed by the agents and that are
             represented in the state of the world. The satisfaction of the Refinement is NOT used for computing the activation of the Permission.-->
-		     
         </p>
-
-	    
+   
         <!--<h3>Expected behaviour of the ODRL Evaluator</h3>-->
         <p> 
 	<!-- definition of active permission (a permission is an instance of the class <code>odrl:Permission</code>)-->
        	<!-- definition of active/inactive -->
-		
-        The ODRL Evaluator computes that a Permission is <b>active</b> 
-		on some evaluated action <code>a</code> represented in the Evaluation Request 
-		and in some State of the World <code>S</code> if and only if all the following conditions holds:
-        </p>
-        <ol>
-            <li>All the existing Constraints of the Rule are satisfied by the evaluated action <code>a</code>;</li> 
-			<li>All the existing Conditions (duties) of the Rule are <b>fulfilled</b> or 
-				<b>inactive</b> in state <code>S</code> with respect to action <code>a</code> 
-			(see <a href="#evaluation-of-conditions-duties">Secton 4.3</a> for more details). </li>           
-        </ol>
 
-		<p>If one of those conditions is not met, the Permission is <b>inactive</b>. </p>
-       
 <p>The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
-<b>is permitted by a Permission</b> in the given State of the World <code>S</code> if and only if all the following conditions holds:</p>
+<b>is permitted by a Permission</b> in the given State of the World <code>S</code> if and only if all the 
+following conditions hold:</p>
 	<ol>
 	    <li>The Permission is <b>active</b> on action <code>a</code> in state <code>S</code>; </li>	
 
@@ -431,10 +417,55 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 				it is contained in the collection of parties specified as assignee of the Permission; </li>
 		<li>All the refinements (when they are specified) related to the regulated action, to the regulated target, 
 			and to the regulated assignee are satisfied by the action <code>a</code>, its target and its party. </li>
-	
-<!-- CHANGED Jan 2026 	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li> -->
+</ol>
+</p>			
+		
+        The ODRL Evaluator computes that a Permission is <b>active</b> 
+		on some evaluated action <code>a</code> represented in the Evaluation Request 
+		and in some State of the World <code>S</code> if and only if <b>all</b> the following conditions hold:
+        </p>
+        <ol>
+            <li>All the existing Constraints of the Permission are satisfied by the evaluated action <code>a</code>;</li> 
+			<li>All the existing Conditions (duties) of the Permission are <b>fulfilled</b> or 
+				<b>inactive</b> in state <code>S</code> with respect to action <code>a</code></li>           
+        </ol>
+
+		<p>If one of those conditions is not met, the Permission is <b>inactive</b>. </p>
+
+		 
+	 <!--When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints of the Permission
+	 to compute its activation state.-->
+           
+		<p>A Condition (duty) is <b>active</b> in state <code>S</code> with respect to the action <code>a</code> 
+		if and only if one of the following conditions holds:</p>
+        <ol> 
+	    <li>The Condition (duty) has no Constraints; </li>
+	    <li>Every Constraint of the Condition (duty) is satisfied by the action <code>a</code> 
+		(the evaluated action a represented in the Evaluation Request); <!--The Constraints of the Condition (duty) are all satisfied.</li>	-->
 	</ol>
-</p>
+	<p> otherwise the Condition is <b>inactive.</b></p>
+
+	<p>A Condition (duty) is <b>fulfilled</b> by an action a2 in the state of the world <code>S</code>
+	if and only if all the following conditions hold:</p>
+<!-- A Condition (duty) is <b>fulfilled</b> if and only if:--> 
+	<ol>
+	    <li>The Condition (duty) is <b>active</b>;</li>
+	    <li>There exist an action a2 in the state of the world <code>S</code> that belongs the class of 
+		actions regulated by the Condition;</li> 
+		<!--There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition	    
+		with the correct target and assigee (when they are specified) AND-->
+	    <li>If a target object of the Condition is specified, the assets involved in action <code>a2</code> are exactly those specified 
+			in the target of the Condition and its refinements;</li>
+		<li>If an assignee party of the Condition is specified, the parties that exercise action <code>a2</code> 
+			are exactly those specified in the assignee of the Condition and its refinements. </li>	
+		<!--Such an action satisfies all the refinements (related to action, target, and assignee) 
+	    of the class of action regulated by the Condition.-->
+	</ol>
+ <p>An active Condition that is not fulfilled is <b>not-set</b></p>
+
+		
+		<!-- CHANGED Jan 2026 	    <li> All the refinements (related to action, target, and assignee) are satisfied by the action in the Evaluation Request.</li> -->
+	
    
 <!--  <p>In the following examples of permissions, as we will analyse one permission at a time, we will not deal with the 
 		generation of violations for permissions. -->
@@ -632,30 +663,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	</ul>
 
         <h3>Evaluation of Conditions (Duties)</h3> 
-       <p>
-	 When a Permission contains Conditions (duties), they have to be evaluated together with the Constraints of the Permission
-	 to compute its activation state.     
-       </p>
-	    
-	<!-- <p>A Condition (duty) is <b>fulfilled</b> if all its constraints are satisfied and
-            if its action, with all refinements satisfied, has been performed. </p> -->
-	
-	<p>A Condition (duty) is <b>active</b> if and only if: </p>
-        <ol> 
-	    <li>The Condition (duty) has no Constraints, OR </li>
-	    <li>The Constraints of the Condition (duty) are all satisfied.</li>	
-	</ol>
-	<p> otherwise the Condition is <b>inactive</b></p>
-
-	<p>A Condition (duty) is <b>fulfilled</b> if and only if: </p>
-	<ol>
-	    <li>The Condition (duty) is <b>active</b> AND;</li>
-	    <li>There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition
-	    with the correct target and assigee (when they are specified) AND </li>
-	    <li>Such an action satisfies all the refinements (related to action, target, and assignee) 
-	    of the class of action regulated by the Condition</li>
-	</ol>
-	
+     	
 	<!-- <ol>
             <li>The initial state of a Condition (duty) is <b>inactive</b>.</li>
             <li>If at least one of the Constraints of the Condition (duty) is not satisfied, then the duty is <b>inactive</b>. 
