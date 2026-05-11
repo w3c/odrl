@@ -1,4 +1,8 @@
-# W3C Workshop on the Future ODRL Directions
+# See the [Official W3C ODRL Workshop](https://www.w3.org/2026/ODRLWS/) page for the latest details
+
+# The below is old draft and out of date
+
+## W3C Workshop on the Future ODRL Directions
 ##### Exploring new ODRL Adoption, Policy Semantics & Evaluation and the Future of Policy Management on the Web  
 
 ---
