@@ -57,6 +57,9 @@
 #### 2nd ODRL and beyond: Practical Applications and challenges for poLicy-base access and usage control (OPAL2026)
 ##### [Workshop Home](https://opal-workshop.github.io/2026-2nd-edition/)
 
+## Policy Evaluation and Enforcement on the Web with ODRL. Tutorial co-located with the ESWC 2026, May 10th 2026
+##### [Tutorial Home](https://potr-knows.github.io/odrl-tutorial/)  
+
 ## 10th International ODRL Workshop June/July 2026 (London, UK)
 #### W3C Workshop on the Future of ODRL
 ##### [Workshop Home](https://www.w3.org/2026/ODRLWS/)
