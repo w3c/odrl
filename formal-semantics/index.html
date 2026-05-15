@@ -259,7 +259,40 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 
 		<section id="evaluationReport">	
             <h3>Evaluation Report</h3>
-            Pending to be written.
+            
+			An ODRL Evaluator produces an <b>Evaluation Report</b> as output. It represents a formal description of the
+			results of computing for every rule inside a policy:
+			<ol>
+			<li>If anaction <code>a</code>, in the Evaluation Request, complies with a Permission (i.e it is permitted by the Permission) 
+				in a given state of the world <code>S</code>;</li>
+			<li>If an action <code>a</code>, in the Evaluation Request, complies with a Prohibition in a given state of the world <code>S</code> (i.e. it is
+				not prohibited by the Prohibition), otherwise action <code>a</code> is prohibited by the Prohibition;</li>	
+			<li>If an action <code>a</code>, in the Evaluation Request, complies (fulfills) an Obligation in a given state of the world <code>S</code>, 
+			action <code>a</code> is called the fulfilling action of the Obligation.</li>
+			</ol>
+
+			Pending to be written: the result of evaluating an ODRL policy policy which may contain one or more rules 
+			(permissions, prohibitions, obligations) and a property “conflict” (with possible values perm, prohibit, invalid (default)).
+
+			An Evaluation Report contains the following information:
+			<ol>
+				<li>A <code>PolicyReport</code> with the following properties:
+					<ul>
+					<li><code>id</code>: the identifier of the report;</li>
+					<li><code>created</code>: the istant of time when the report is created;</li>
+					<li><code>policy</code>: a reference to the Policy that is evaluated;</li>
+					<li><code>evaluationRequest</code>: a reference to the Evaluation Request;</li>
+					<li><code>sotw</code>: a reference to the state of the world;</li>
+					<li><code>behaviour </code>: open or closed (the defaul value is closed);</li>						
+					<li><code>result</code>: complies or not complies;</li>	
+					<li><code>ruleReport</code>: a RuleReport for every rule inside the policy;</li>		
+					</ul>
+				</li>
+			</ol>
+		
+
+			
+			
 		</section>
 
         </section>
