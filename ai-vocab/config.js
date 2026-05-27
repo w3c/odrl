@@ -18,6 +18,7 @@ var respecConfig = {
     noRecTrack: true,
     lint: true,
     previousURI:             "TBD",
+    latestVersion:  null,
     edDraftURI:              "https://w3c.github.io/odrl/ai-vocab/",
     github: { repoURL: "https://github.com/w3c/odrl/", branch: "master"},
     localBiblio: {

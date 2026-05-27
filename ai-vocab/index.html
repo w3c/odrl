@@ -13,8 +13,6 @@
 	</head>
 	<body>
 
-      <p class="note" role="note"><strong>This is a VERY EARLY DRAFT and NOT COMPLETE</strong></p>
-
 		<section  id="abstract">
 			<p>
 				This ODRL Profile defines AI-specific actions which enables policy authors to clearly define acceptable and prohibited uses of assets in AI workflows. It supports governance, risk management, and compliance efforts, helping ensure that AI systems operate within agreed legal, ethical, and contractual boundaries.
@@ -117,14 +115,14 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
                 <li>search - Building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents). Search does not include providing AI-generated search summaries</li>
                 </ul>
 
-      <p>As can be clearly seen by these approaches,  they are all different, overlapping, and lack any data interoperability. </p>
+      <p>As can be clearly seen by these existing approaches, they are all inconsistent in semantics, and hence lack data interoperability for AI governance.</p>
 
       </section>
 
     <section id='conformance'>
 			<h2>ODRL AI Vocabulary Profile</h2>
   
-      <p>Using the current set of AI vocabularies described in Section 3, the ODRL AI Vocabulary Profile would include the following terms: </p>
+      <p>Using the current set of AI vocabularies described in Section 3 as a snapshot of the AI community requirements, the ODRL AI Vocabulary Profile includes the following semantic terms: </p>
       <ul>
        <li>Data Mining - any form of algorithmic analysis of an asset</li>
        <ul>
@@ -138,31 +136,31 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
        <li>Search - the asset is discoverable in a data store</li>
       
       </ul>
-      <p>These vocabulary terms are shown below, including the hierarchy.</p>
+      <p>These vocabulary terms are shown below, including their hierarchy.</p>
 
    <p><img src="ai-vocab.png"/></p>
 
 <p> The next sections formally defines these vocabulary terms.</p>
 
-		<section id="term-dm">
-              <h4 id="data-mine">
+		<section id="term-data-mining">
+              <h4 id="data-mining">
                     Data Mining
                 </h4>
                 <table class="def propdef">
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>The act of using one or more assets in the context of any
-automated analytical technique aimed at analyzing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations</td>
+                            <td>The act of using asset(s) in the context of any
+automated analytical technique aimed at analysing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>data-mine</td>
+                            <td>data-mining</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/data-mine">http://www.w3.org/ns/odrl/2/data-mine</a>
+                                <a href="https://www.w3.org/ns/odrl/2/data-mining">http://www.w3.org/ns/odrl/2/data-mining</a>
                             </td>
                         </tr>
                         <tr>
@@ -186,8 +184,9 @@ automated analytical technique aimed at analyzing text and data in digital form 
                             <td>
                                 <p>This vocabulary term has similar semantics to:</p>
                                 <ul>
-                                    <li>cawg.data_mining</li>
-                                    <li>PLUS DMI-ALLOWED</li>
+                                    <li>CAWG: cawg.data_mining</li>
+                                    <li>PLUS: DMI-ALLOWED</li>
+                                    <li>RSL: all</li>
                                 </ul>
 
                             </td>
@@ -196,29 +195,184 @@ automated analytical technique aimed at analyzing text and data in digital form 
                 </table>
             </section>
 
-            		<section id="term-tdm">
-              <h4 id="index">
-                    Index
+        <section id="term-ai-training">
+              <h4 id="ai-training">
+                    AI Training
                 </h4>
                 <table class="def propdef">
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>To record the Asset in an Index</td>
+                            <td>The act of using asset(s) in the context of any training by AI algorithms and models</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>Index</td>
+                            <td>ai-training</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/index">http://www.w3.org/ns/odrl/2/index</a>
+                                <a href="https://www.w3.org/ns/odrl/2/ai-training">http://www.w3.org/ns/odrl/2/ai-training</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td>For example, to include a link to the Asset in a search engine database after the Asset has been processed by an algorithm.  </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                                <a href="#term-data-mining">data mining</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>CAWG: cawg.ai_training</li>
+                                    <li>IEEE: aitrain</li>
+                                    <li>RSL: ai-train</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+              <section id="term-gen-ai">
+              <h4 id="gen-ai">
+                    Generative AI Training
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of using asset(s) in the context of any training by Generative AI algorithms and models</td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>gen-ai</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/gen-ai">http://www.w3.org/ns/odrl/2/gen-ai</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                                <a href="#ai-training">ai training</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>CAWG: cawg.ai_generative_training</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+      <section id="term-ai-augment">
+              <h4 id="ai-aument">
+                    AI Augmentation
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of using asset(s) in the context of input into trained AI algorithms and models</td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>ai-augment</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/ai-augment">http://www.w3.org/ns/odrl/2/ai-augment</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                                <a href="#term-data-mining">data mining</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>CAWG: cawg.ai_inference</li>
+                                    <li>RSL: ai-input</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+              <section id="term-search">
+              <h4 id="search">
+                    Search
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of enabling the asset(s) to be discoverable in a data store</td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>Search</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/search">http://www.w3.org/ns/odrl/2/search</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td> </td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
@@ -237,7 +391,60 @@ automated analytical technique aimed at analyzing text and data in digital form 
                             <td>
                                 This vocabulary term has similar semantics to:
                                 <ul>
-                                  <li></li>
+                                   <li>IEEE: search</li>
+                                    <li>RSL: search</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+        <section id="term-index">
+              <h4 id="index">
+                    Index
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of enabling the asset(s) to be recorded in the index of a data store </td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>Index</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/index">http://www.w3.org/ns/odrl/2/index</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td>For example, to include a link to the Asset in a search engine database after the Asset has been processed by an algorithm. <br> This term is the same as defined in the ODRL Common Vocabulary. </td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">use</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                This vocabulary term has similar semantics to:
+                                <ul>
+                                
+                                    <li>RSL: ai-index</li>
                                 </ul>
 
                             </td>
