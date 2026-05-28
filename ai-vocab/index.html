@@ -457,9 +457,9 @@ automated analytical technique aimed at analysing text and data in digital form 
 </section>
 	<section id="example">
 
-		<h2>Example</h2>
+		<h2>Examples</h2>
 
-         <p>The asset (dataset1) maybe used for AI Training only for the explicit purpose of "Research and Development" and must not be used for AI Augmentation.</p>
+         <p>The asset (dataset1) maybe used for AI Training only for the explicit purpose of "Research and Development"</p>
 
   <div class="example">
 
@@ -470,24 +470,37 @@ automated analytical technique aimed at analysing text and data in digital form 
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/001",
   "target": "http://example.org/asset/dataset1",
-  "permission": [
-    {
+  "permission": [{
       "action": "odrl:ai-training",
-      "constraint": [
-        {
+      "constraint": [{
           "leftOperand": "odrl:purpose",
           "operator": "odrl:eq",
           "rightOperand": "https://w3id.org/dpv#ResearchAndDevelopment"
-        }
-      ]
-    }
-  ],
-  "prohibition": [
-    {
-      "action": "odrl:ai-augment"
-    }
-  ]
+       }]
+    }]
 }
+</pre> </div>
+
+ <p>The asset (dataset2) maybe used for Data Mining but must not be used for AI Augmentation. Note that the <i>conflict</i> property is set to <i>prohibit</i> to ensure that is overridden in the Data Mining action hierarchy. </p>
+
+  <div class="example">
+
+   <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "odrl:Set",
+  "profile": "https://w3c.github.io/odrl/ai-vocab/",
+  "uid": "http://example.org/policy/002",
+  "conflict": "prohibit",
+  "target": "http://example.org/asset/dataset2",
+  "permission": [{
+        "action": "odrl:data-mining"
+    }],
+  "prohibition": [{
+      "action": "odrl:ai-augment"
+    }]
+}
+
 </pre>
 </div>
 
