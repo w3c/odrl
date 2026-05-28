@@ -278,14 +278,26 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			<ol>
 				<li>A <code>PolicyReport</code> with the following properties:
 					<ul>
-					<li><code>id</code>: the identifier of the report;</li>
 					<li><code>created</code>: the istant of time when the report is created;</li>
 					<li><code>policy</code>: a reference to the Policy that is evaluated;</li>
-					<li><code>evaluationRequest</code>: a reference to the Evaluation Request;</li>
-					<li><code>sotw</code>: a reference to the state of the world;</li>
+					<li><code>evaluationRequest</code>: a reference to the Evaluation Request with action <code>a</code>;</li>
+					<li><code>sotw</code>: a reference to the state of the world <code>S</code>;</li>
 					<li><code>behaviour </code>: open or closed (the defaul value is closed);</li>						
-					<li><code>result</code>: complies or not complies;</li>	
-					<li><code>ruleReport</code>: a RuleReport for every rule inside the policy;</li>		
+					<li><code>result</code>: pending to be discussed;</li>	
+					<li><code>permissionReport</code>: a <code>PermissionReport</code> for every permission inside the policy;</li>		
+					</ul>
+				</li>
+				<li>Every <code>PermissionReport</code> has the following properties:
+					<ul>
+						<li><code>permission</code>: a reference to the <code>Permission</code> that is evaluated;</li>
+						<li><code>constraintReport</code>: the <code>ConstraintReport</code> for every constraint of the Permission;</li>
+						<li><code>conditionReport</code>: the <code>ConditionReport</code> for every condition (duty) of the Permission;</li>
+						<li><code>activationState</code>: the value of the activation state of the rule, 
+							it can be <b>incative</b> or <b>active</b>;</li>
+						<li><code>actionReport</code>: the <code>ActionReport</code> for the action type, the target, 
+							the assegnee (when it is specified) and the refinements (when they are specified) of the Rule;</li>
+						<li><code>controlState</code>: the result of the evaluation of the permission, it can be
+						<b>action a is permitted in state S</b> or <b>action a is not permitted in state S</b></li>
 					</ul>
 				</li>
 			</ol>
