@@ -296,6 +296,15 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 							it can be <b>incative</b> or <b>active</b>.</li>
 				</ul>
 				</li>
+
+				<li>The <code>ConstraintReport</code> has the following properties:
+				<ul>
+					<li><code>constraint</code>: a reference to the constraint that is evaluated;</li>
+					<li><code>action</code>: a reference to action <code>a</code> on which the constraint is evaluated;</li>
+					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action 
+						<code>a</code>, it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
+				</ul>
+			</li>
 				
 				<li><code>PermissionReport</code> is a subclass of <code>RuleReport</code>. 
 				The <code>PermissionReport</code> has the following properties:
@@ -309,19 +318,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					</ul>
 				</li>
 
-			<li>The <code>ConstraintReport</code> has the following properties:
-				<ul>
-					<li><code>constraint</code>: a reference to the constraint that is evaluated;</li>
-					<li><code>action</code>: a reference to action <code>a</code>on which the constraint is evaluated;</li>
-					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action 
-						<code>a</code>, it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
-				</ul>
-			</li>
-
 			<li>The <code>ConditionReport</code> is a subclass of <code>RuleReport</code>. 
 			The <code>ConditionReport</code> has the following properties:
 				<ul>
-					<li><code>condition</code>: a reference to the condition (duty) that is evaluated;</li>
 					<li><code>actionReport</code>: the <code>ActionReport</code> for the satisfaction of the action type,
 							the target, the assegnee (when it is specified) and the refinements (when they are specified) 
 							of the Condition;</li>
@@ -332,7 +331,15 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			</li>
 
 			<li>The <code>ActionReport</code> has the following properties:
-				
+				<ul>
+					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
+					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
+						to the <code>ruleAction</code>;</li>
+					<li><code>requiredType</code>: the result of the evaluation of the type, it can be true or false;</li>
+					<li><code>requiredTarget</code>: the result of the evaluation of the target, it can be true or false;</li>
+					<li><code>requiredParty</code>: the result of the evaluation of the party, it can be true or false;</li>
+					<li><code>refinementReport</code>: a <code>refinementReport</code> for every refinements of the action of the Rule;</li>
+				</ul>
 			</li>
 				
 			</ol>
@@ -531,7 +538,7 @@ following conditions hold:</p>
 <!-- A Condition (duty) is <b>fulfilled</b> if and only if:--> 
 	<ol>
 	    <li>The Condition (duty) is <b>active</b>;</li>
-	    <li>There exist an action a2 in the state of the world <code>S</code> that belongs the class of 
+	    <li><b>There exist</b> an action a2 in the state of the world <code>S</code> that belongs the class of 
 		actions regulated by the Condition (duty);</li> 
 		<!--There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition	    
 		with the correct target and assigee (when they are specified) AND-->
