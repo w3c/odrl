@@ -263,7 +263,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			An ODRL Evaluator produces an <b>Evaluation Report</b> as output. It represents a formal description of the
 			results of computing for every rule inside a policy:
 			<ol>
-			<li>If anaction <code>a</code>, in the Evaluation Request, complies with a Permission (i.e it is permitted by the Permission) 
+			<li>If an action <code>a</code>, in the Evaluation Request, complies with a Permission (i.e it is permitted by the Permission) 
 				in a given state of the world <code>S</code>;</li>
 			<li>If an action <code>a</code>, in the Evaluation Request, complies with a Prohibition in a given state of the world <code>S</code> (i.e. it is
 				not prohibited by the Prohibition), otherwise action <code>a</code> is prohibited by the Prohibition;</li>	
@@ -271,8 +271,8 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			action <code>a</code> is called the fulfilling action of the Obligation.</li>
 			</ol>
 
-			<i>Pending to be written</i>: the result of evaluating an ODRL policy policy which may contain one or more rules 
-			(permissions, prohibitions, obligations) and a property “conflict” (with possible values perm, prohibit, invalid (default)).  
+			<p></p><i>Pending to be written</i>: the result of evaluating an ODRL policy policy which may contain one or more rules 
+			(permissions, prohibitions, obligations) and a property “conflict” (with possible values perm, prohibit, invalid (default)). </p>
 
 			An Evaluation Report contains the following information:
 			<ol>
@@ -294,25 +294,26 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>constraintReport</code>: a <code>ConstraintReport</code> for every constraint of the Rule;</li>
 					<li><code>activationState</code>: the value of the activation state of the rule, 
 							it can be <b>incative</b> or <b>active</b>.</li>
+					<li><code>actionReport</code>: the <code>ActionReport</code> for representing the satisfaction of the action type,
+							the target, the assegnee (when it is specified) and the refinements (when they are specified) 
+							of the Rule;</li>
 				</ul>
 				</li>
 
 				<li>The <code>ConstraintReport</code> has the following properties:
 				<ul>
 					<li><code>constraint</code>: a reference to the constraint that is evaluated;</li>
-					<li><code>action</code>: a reference to action <code>a</code> on which the constraint is evaluated;</li>
-					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action 
-						<code>a</code>, it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
+					<li><code>action</code>: a reference to the action on which the constraint is evaluated;</li>
+					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action, 
+						it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
 				</ul>
 			</li>
 				
 				<li><code>PermissionReport</code> is a subclass of <code>RuleReport</code>. 
+				The <code>PermissionReport</code> type is used when the <code>Rule</code> belongs to the type <code>Permission</code>.
 				The <code>PermissionReport</code> has the following properties:
 					<ul>											
 						<li><code>conditionReport</code>: a <code>ConditionReport</code> for every condition (duty) of the Permission;</li>						
-						<li><code>actionReport</code>: the <code>ActionReport</code> for the satisfaction of the action type,
-							the target, the assegnee (when it is specified) and the refinements (when they are specified) 
-							of the Rule;</li>
 						<li><code>controlState</code>: the result of the evaluation of the permission, it can be
 						<b>action a is permitted in state S</b> or <b>action a is not permitted in state S</b>.</li>
 					</ul>
@@ -321,9 +322,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			<li>The <code>ConditionReport</code> is a subclass of <code>RuleReport</code>. 
 			The <code>ConditionReport</code> has the following properties:
 				<ul>
-					<li><code>actionReport</code>: the <code>ActionReport</code> for the satisfaction of the action type,
-							the target, the assegnee (when it is specified) and the refinements (when they are specified) 
-							of the Condition;</li>
+					<li><code>fulfillingAction</code>: the action <code>a2</code> in state <code>S</code> that fulfills the <code>Condition</code> (duty);</li>
 					<li><code>controlState</code>: the result of the evaluation of the condition, it can be
 					<b>fullfilled by the action <code>a2</code> in state <code>S</code></b> or 
 					<b>not-set</b>.</li>
@@ -335,18 +334,15 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
 					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
 						to the <code>ruleAction</code>;</li>
-					<li><code>requiredType</code>: the result of the evaluation of the type, it can be true or false;</li>
-					<li><code>requiredTarget</code>: the result of the evaluation of the target, it can be true or false;</li>
-					<li><code>requiredParty</code>: the result of the evaluation of the party, it can be true or false;</li>
-					<li><code>refinementReport</code>: a <code>refinementReport</code> for every refinements of the action of the Rule;</li>
+					<li><code>typeReport</code>: the result of the evaluation of the type, it can be true or false;</li>
+					<li><code>targetReport</code>: the result of the evaluation of the target, it can be true or false;</li>
+					<li><code>partyReport</code>: the result of the evaluation of the party, it can be true or false;</li>
+					<li><code>refinementReport</code>: a <code>constraintReport</code> for every refinement of the 
+					action specified in the <code>Rule</code>;</li>
 				</ul>
 			</li>
-				
-			</ol>
+		</ol>
 		
-
-			
-			
 		</section>
 
         </section>
@@ -538,8 +534,9 @@ following conditions hold:</p>
 <!-- A Condition (duty) is <b>fulfilled</b> if and only if:--> 
 	<ol>
 	    <li>The Condition (duty) is <b>active</b>;</li>
-	    <li><b>There exist</b> an action a2 in the state of the world <code>S</code> that belongs the class of 
+	    <li><b>There exist</b> an action <code>a2</code> in the state of the world <code>S</code> that belongs the class of 
 		actions regulated by the Condition (duty);</li> 
+		<li>Such an action, <code>a2</code>, is performed <b>before</b> the evaluated action <code>a</code></li>
 		<!--There exist a performed action in the state of the world that belongs the class of actions regulated by the Condition	    
 		with the correct target and assigee (when they are specified) AND-->
 		<li>If a target object of the Condition is specified, the assets involved in action <code>a2</code> are exactly those specified 
