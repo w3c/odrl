@@ -110,7 +110,7 @@ odrl-comm:Preference a rdfs:Class, owl:Class, skos:Concept ;
 	rdfs:comment "A Preference Policy is a policy that contains information about the assigner's preferences over an Asset which MAY not be satisfied."@en ;
 	skos:definition "A Preference Policy is a policy that contains information about the assigner's preferences over an Asset which MAY not be satisfied."@en ;
 	skos:note "A Preference Policy MUST contain at least one Permission or Prohibition rule, an Action, a target Asset and a Party with Assigner function (in the same Permission or Prohibition). The Preference Policy MAY contain a Party with Assignee, but MUST not grant any privileges to those Parties."@en ;
-	skos:example "If a preference policy set by a party A does not match a request policy from party B, the request can still be accepted if party A accepts party B's request conditions."@en ;
+	skos:example "If a preference policy set by a party A does not match a request from party B, the request can still be accepted if party A accepts party B's request conditions."@en ;
     dcterms:source <https://github.com/w3c/odrl/issues/21>, <https://w3id.org/oac#Preference> .
 
 # ------------ Party Concepts ------------------ #
@@ -120,6 +120,7 @@ odrl-comm:issuedPolicy a rdf:Property, owl:ObjectProperty, skos:Concept ;
 	rdfs:label "Issued policy"@en ;
 	rdfs:comment "Indicates that a Party issued a Policy."@en ;
 	skos:definition "Indicates that a Party issued a Policy."@en ;
+	skos:note "Associating a Party with a Policy using the issuedPolicy property does not grant any privileges to the corresponding Party."@en ;
 	skos:example "Method used to indicate that a party, e.g., Alice, has issued a policy, e.g., related to her preferences for data sharing."@en ;
 	rdfs:domain odrl:Party ;
 	rdfs:range odrl:Policy ;
