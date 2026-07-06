@@ -70,6 +70,7 @@ odrl-comm:create a odrl:Action, skos:Concept ;
 	rdfs:label "Create"@en ;
 	rdfs:comment "To create the Asset."@en ;
 	skos:definition "To create the Asset."@en ;
+	skos:note "The target Asset of a Policy with a create Action MUST be a URI where the Asset can be created."@en ;
     dcterms:source <https://github.com/w3c/odrl/issues/35> .
 
 # ------------ Operator Concepts ------------------ #
