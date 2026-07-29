@@ -101,11 +101,11 @@
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#Preference">https://example.org/odrl-comm#Preference</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/Preference">http://www.w3.org/ns/odrl/2/Preference</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>
@@ -146,7 +146,7 @@
 				</tr>
 				<tr>
 					<th>Example</th>
-					<td>If a preference policy set by a party A does not match a request policy from party B, the request can still be accepted if party A accepts party B's request conditions.</td>
+					<td>If a preference policy set by a party A does not match a request from party B, the request can still be accepted if party A accepts party B's request conditions.</td>
 				</tr>
 				<tr>
 					<th>Source</th>
@@ -165,11 +165,11 @@
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#create">https://example.org/odrl-comm#create</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/create">http://www.w3.org/ns/odrl/2/create</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>
@@ -187,6 +187,12 @@
 					<td>To create the Asset.</td>
 				</tr>
 				<tr>
+					<th>Note</th>
+					<td>
+						The target Asset of a Policy with a create Action MUST be a URI where the Asset can be created.
+					</td>
+				</tr>
+				<tr>
 					<th>Source</th>
 					<td><a href="https://github.com/w3c/odrl/issues/35">https://github.com/w3c/odrl/issues/35</a></td>
 				</tr>
@@ -200,11 +206,11 @@
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#isNotA">https://example.org/odrl-comm#isNotA</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/isNotA">http://www.w3.org/ns/odrl/2/isNotA</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>
@@ -236,20 +242,20 @@
 				</tbody>
 			</table>
 
-			<h4>Semantic equivalence</h4>
+			<h4>Type of</h4>
 			<table class="def">
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#seq">https://example.org/odrl-comm#seq</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/typeOf">http://www.w3.org/ns/odrl/2/typeOf</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>
-					<td>Semantic equivalence</td>
+					<td>type of</td>
 				</tr>
 				<tr>
 					<th>Type</th>
@@ -261,49 +267,7 @@
 				</tr>
 				<tr>
 					<th>Definition</th>
-					<td>Indicates that a given value is equal to, an instance or a subclass of the Right Operand of the Constraint.</td>
-				</tr>
-				<tr>
-					<th>Example</th>
-					<td>The purpose constraint of a rule can be research and development, an instance of research and development or one of its subclasses such as academic research, non-commercial research or commercial research.</td>
-				</tr>
-				<tr>
-					<th>Source</th>
-					<td>
-						<a href="https://github.com/w3c/odrl/issues/28">https://github.com/w3c/odrl/issues/28</a>,
-						<a href="https://w3id.org/oac#semantic">https://w3id.org/oac#semantic</a>,
-						<a href="https://w3id.org/aiup#seq">https://w3id.org/aiup#seq</a>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-
-			<h4>Subclass of</h4>
-			<table class="def">
-				<tbody>
-				<tr>
-					<th>Status</th>
-					<td>Proposed</td>
-				</tr>
-				<tr>
-					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#subclass">https://example.org/odrl-comm#subclass</a></td>
-				</tr>
-				<tr>
-					<th>Label</th>
-					<td>Subclass of</td>
-				</tr>
-				<tr>
-					<th>Type</th>
-					<td>
-						<a href="http://www.w3.org/ns/odrl/2/Operator">odrl:Operator</a>,
-						<a href="http://www.w3.org/2002/07/owl#NamedIndividual">owl:NamedIndividual</a>,
-						<a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
-					</td>
-				</tr>
-				<tr>
-					<th>Definition</th>
-					<td>Indicates that a given value is a subclass of the Right Operand of the Constraint.</td>
+					<td>Indicates that a given value is of a similar type of the Right Operand of the Constraint.</td>
 				</tr>
 				<tr>
 					<th>Example</th>
@@ -311,13 +275,18 @@
 				</tr>
 				<tr>
 					<th>Note</th>
-					<td>Right operand value MUST use vocabularies that explicitly define subclass relationships, e.g., using rdfs:subClassOf.</td>
+					<td>
+						This Operator must be used to cover hierarchical relationships between Left and Right Operands, such as rdf:type, rdfs:subClassOf, skos:broader, owl:sameAs, or skos:exactMatch.
+						The Right Operand value MUST use vocabularies that explicitly define subclass relationships, e.g., using rdfs:subClassOf, to be used with this Operator.
+					</td>
 				</tr>
 				<tr>
 					<th>Source</th>
 					<td>
 						<a href="https://github.com/w3c/odrl/issues/28">https://github.com/w3c/odrl/issues/28</a>,
-						<a href="https://w3id.org/oac#subclass">https://w3id.org/oac#subclass</a>
+						<a href="https://w3id.org/oac#subclass">https://w3id.org/oac#subclass</a>,
+						<a href="https://w3id.org/oac#semantic">https://w3id.org/oac#semantic</a>,
+						<a href="https://w3id.org/aiup#seq">https://w3id.org/aiup#seq</a>
 					</td>
 				</tr>
 				</tbody>
@@ -331,11 +300,11 @@
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#issuedPolicy">https://example.org/odrl-comm#issuedPolicy</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/issuedPolicy">http://www.w3.org/ns/odrl/2/issuedPolicy</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>
@@ -352,6 +321,10 @@
 				<tr>
 					<th>Definition</th>
 					<td>Indicates that a Party issued a Policy.</td>
+				</tr>
+				<tr>
+					<th>Note</th>
+					<td>Associating a Party with a Policy using the issuedPolicy property does not grant any privileges to the corresponding Party.</td>
 				</tr>
 				<tr>
 					<th>Example</th>
@@ -381,11 +354,11 @@
 				<tbody>
 				<tr>
 					<th>Status</th>
-					<td>Proposed</td>
+					<td>Accepted</td>
 				</tr>
 				<tr>
 					<th>IRI</th>
-					<td><a href="https://example.org/odrl-comm#payPercentage">https://example.org/odrl-comm#payPercentage</a></td>
+					<td><a href="http://www.w3.org/ns/odrl/2/payPercentage">http://www.w3.org/ns/odrl/2/payPercentage</a></td>
 				</tr>
 				<tr>
 					<th>Label</th>

@@ -106,6 +106,7 @@ The table has three columns
 
 ### ODRL utilities
 
+- [CODATA Policy Builder](https://odrl.dev.codata.org/policies): User interface to create and visualise ODRL policies in JSON-LD.
 - [MyData ODRL policy creator](https://odrl-pap.mydata-control.de/): User interface to create ODRL (or [IDSA](https://international-data-spaces-association.github.io/DataspaceConnector/Documentation/v5/UsageControl)) policies in JSON-LD. Additionally, it provides a human readable snippet elaborating the policy.
 - [ODRL Shape validation](https://github.com/woutslabbinck/ODRL-shape): A repository that helps verify whether policies comply with the ODRL Information Model.
   - It includes [SHACL](https://www.w3.org/TR/shacl/) (Shapes Constraint Language) shapes for ODRL, along with supporting code to execute [SHACL](https://www.w3.org/TR/shacl/) validation locally.
