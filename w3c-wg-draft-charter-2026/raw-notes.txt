@@ -1,0 +1,84 @@
+# ODRL3 Charter
+
+## Scope
+- Formalise **ODRL 3.0** as the successor to the 2.2 Information Model and Vocabulary, prioritising a **normative evaluation semantics** (the most consistently requested gap across literature, GitHub issues and mailing list)
+
+- Establish a **governance process for vocabulary growth**: a living, versioned registry (SKOS-based, as ODRL 2.2 already is) rather than terms frozen to the Recommendation's publication cycle
+
+- Define the **evaluation architecture**: state of the world representation, request/response format, gap resolution strategy (Closed World Assumption), broadly analogous to established access control reference architectures (e.g. XACML's PDP/PEP/PIP separation)
+
+- Define a **conformance model** covering both policies and processors (validators, evaluators, monitors, etc.), with a real-world test protocol, not just a static test suite
+
+- Treat **profiles as the primary extension mechanism** for domain needs (AI, data spaces, finance, data quality, legal, security) so the core stays stable while domains iterate independently
+
+- Ensure **cross-standard alignment** is explicitly in scope, not an afterthought: bindings to DPV, DCAT, DID and Verifiable Credentials, so assets, policies and identities can be connected across W3C specifications
+
+- Consider **provenance** as a first-class concern for policies and their evaluation, not only for the assets they govern
+
+- Out of scope (tentative): building or mandating specific enforcement infrastructure; legal interpretation of policy content; competing with or replacing non-ODRL policy languages (only alignment, not replacement)
+
+
+## Deliverables
+- **Use Cases and Requirements** (Note)
+- **Primer** (Note). A gentle introduction to newcomers.
+- **Policy Model** (Recommendation). Core model, represented with an ontology. This model (or some other document) must define "how to write a profile".
+- **Evaluation** (Recommendation). Formal semantics document.
+- **Architecture and Protocols** (Recommendation) Components are defined, as well as their interoperation.
+- **Conformance and test suite** (Note)
+- **Visualisation** (Note)
+- **Vocabulary Registries** (Registry)
+
+Out of the charter:
+- **Profiles** (e.g. AI, data, finance, data quality, legal data space connection, W3C DID and VC, ), maintained alongside the core
+
+Coordination:
+- Liaison with JPEG Trust
+- Possible connection with OASIS (LegalRuleML)
+- Possible connection with Data Spaces standardisation: CEN-CENELEC (WG2? Helen Carnevale=JTC25?)
+- Possible connection Sussane Guth WALLET and the Digital Product Passport (JTC24).
+
+## Tasks
+
+# Discussion
+
+## Commitment
+Given that we depart from a CG, would W3C accept more invited experts than usual?
+
+## Discussion
+We want to identify possible deliverables (we should *NOT* reach a closed list now, more reflection needed)
+Monica: "Legal data space connection"
+Michiel: Two deliverables: "ODRL Visualizer" and "ODRL Formal for the policy input and output"
+Matthias: protocols, support for policy life cycle
+Beatriz: "DPV profile", joint effort ODRL-DPV
+Yassir: Action points: Evaluate what should be in the profiles, and what should be in the general standards. Roadmap for use cases.
+Andrea: For the evaluation and conformance: we need real-life protocol for the evaluation.
+Victor: (much like XACML architecture)
+Renato: Vocabulary registries is a collection of records, terms. We need a governance process, process description, etc. SHACL...
+Renato: ODRL2.2 includes a SKOS concept scheme, with several concepts. But the list must be dynamic.
+Monica: Check the legal definitions of DPV and the connection/mapping with PrOnto in case'
+Achram: Profile for data quality is also (Joshua: connection to DQV)
+Renato: Provenance
+Philippe: Wizard parsers and tokens are relevant. Connection with other W3C specifications (VC, DID to connect assets and policies) is important: does W3C put effort on promoting these cross W3C standards bindings?
+Deadlines: the charter should consider the adoptability of ODRL. Is the time between the charter and the recommendatoin fixed?
+Pierre-Antoine: 10 months is the time between charter and draft(?). Formal processes take some time.
+
+
+## Next steps on the charter ellaboration
+The Community Group can produce a draft following the charter template
+There is an official period during which W3C publishes the charter draft for others to comment (weeks/months). Then the AC decides.
+TPAC is a great opportunity to get feedback from the W3C galaxy.
+If the charter is acceptable to the community, it still needs a CA vote. Members can vote (positively or negatively), silence is understood as "no objection".
+
+Chairs appoint editors of the different documents.
+Editors are not authors, but they are the leading force in the document process, granting quality and consistency.
+Editors (7 to 10 people) would be needed.
+
+October's TPAC: 1 hour slot on Wednesday
+
+
+## To do
+Workshop organisers will produce a report
+A draft Charter derived from these notes will be distributed
+Workshop participants not members of the Community Group are kindly invited to join the group
+
+Thanks JPMorgan Chase, participants, W3C and all of those who made this event possible!
