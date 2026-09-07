@@ -155,7 +155,7 @@ This raises an important question for ODRL 3.0 - Should ODRL remain primarily a 
 
 The discussion suggested that this deserves serious investigation.
 
-Participants specifically discussed integration with LegalRuleML, LOMO and legal identifiers such as Akoma Ntoso and LegalDocML. The discussion recognised potential synergies between ODRL and legal-rule modelling while also highlighting the need to investigate mappings, gateways and possible information loss.
+Participants specifically discussed integration with the Data Privacy Vocabulary (DPV), LegalRuleML, LOMO and legal identifiers such as Akoma Ntoso and LegalDocML. The discussion recognised potential synergies between ODRL and legal-rule modelling while also highlighting the need to investigate mappings, gateways and possible information loss.
 
 The emerging recommendation is therefore not necessarily to absorb legal-rule modelling into ODRL, but to investigate modular integration with established legal-policy standards.
 
@@ -258,6 +258,7 @@ The future work should investigate relationships with:
 
 * Verifiable Credentials
 * Data spaces
+* DPV
 * LegalRuleML
 * JPEG Trust
 * Data Contracts
