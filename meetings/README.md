@@ -13,7 +13,7 @@ The ZOOM meeting connection URL  and password to access is [here](https://lists.
 Mon 7 September 2026 (VR)   
 Mon 5 October 2026 (VR)  
 Mon 2 November 2026 (VR)  
-Mon 7 December 2026 (NF)  
+Mon 7 December 2026 (NF)  (Is it ok to postpone this meeting to Monday 14 December 2026?)
 
 ## Past Meeting Notes
 
