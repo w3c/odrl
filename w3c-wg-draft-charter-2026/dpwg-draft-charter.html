@@ -164,7 +164,8 @@
 
             <dt id="o3sm" class="spec current"><a href="#">ODRL 3.0 Semantic Model</a></dt>
             <dd>
-              <p>This specification defines the formal core semantic model for permission, prohibition, and obligation statements describing digital policies. This specification will only define the core language, expressed in OWL, and validated by a SHACL Profile.</p>
+              <p>This specification will define the formal conceptual and computational foundation for ODRL policies. It will strengthen the semantics of the current ODRL information model and provide the normative foundation upon which the vocabulary, profiles, conformance mechanisms and implementation architecture of ODRL 3.0 can be built.
+                This specification will only define the core language, expressed in OWL, and validated by a SHACL Profile.</p>
 
               <p class="draft-status"><b>Draft state:</b> <a href="https://www.w3.org/TR/odrl-model/">ODRL Information Model 2.2 (W3C Recommendation, 15 Feb 2018)</a> developed by the W3C POE Working Group</p>
                 <p><b>Adopted draft:</b> <a href="https://w3c.github.io/odrl/formal-semantics/">ODRL Formal Semantics</a> adopted from W3C ODRL Community Group</p>
@@ -174,7 +175,7 @@
 
           <dt id="o3vr" class="spec current"><a href="#">ODRL 3.0 Vocabulary Registry</a></dt>
             <dd>
-              <p>This specification defines the ODRL Vocabulary Registry that publishes well-known terms for use in ODRL digital policies.</p>
+              <p>This specification will provide the authoritative, modular and extensible vocabulary framework for expressing policies using the ODRL Semantic Model. It will define and organise the core policy concepts, including policy types, actions, constraints, parties, assets and other terms required to express interoperable digital policies, while providing mechanisms for extending ODRL for particular domains and communities.</p>
 
            <p class="draft-status"><b>Draft state:</b> <a href="https://www.w3.org/TR/odrl-vocab/">ODRL Vocabulary & Expression 2.2 (W3C Recommendation, 15 Feb 2018)</a> developed by the W3C POE Working Group</p>
                 <p><b>Adopted draft:</b>  <a href="https://w3c.github.io/odrl/community-vocab/">ODRL Community Vocabulary</a> adopted from W3C ODRL Community Group</p>
@@ -186,10 +187,10 @@
 
           <dt id="o3ce" class="spec new"><a href="#">ODRL 3.0 Profile Declaration</a></dt>
             <dd>
-              <p>This specification describes the declaration of ODRL Profiles. The Profile will be validated, with the Core Profile, utilising SHACL Profiles.</p>
+              <p>This specification defines a standard mechanism for declaring the particular subset, extensions, constraints and capabilities of ODRL supported within a specific  domain or implementation. Profiles will allow communities to use ODRL without requiring every implementation to support the complete conceptual and computational complexity of the language. The Profiles will be validated, with the Core Profile, utilising SHACL Profiles.</p>
 
               <p class="draft-status"><b>Draft state:</b> No draft</p>
-      
+              <p><b>Adopted draft:</b> <a href="hhttps://w3c.github.io/odrl/w3c-wg-draft-charter-2026/dpwg-draft-charter.html">ODRL V2.2 Profile Best Practices</a> adopted from W3C ODRL Community Group</p>
               <p class="milestone"><b>Expected completion:</b> Q1 2028</p>
       
             </dd>
@@ -197,7 +198,7 @@
 
             <dt id="o3ce" class="spec new"><a href="#">ODRL 3.0 Conformance Evaluation</a></dt>
             <dd>
-              <p>This specification will define the conformance model for ODRL covering both policies and processors (validators, evaluators, monitors, etc) with current state-of-the world knowledge.</p>
+              <p>This specification will establish how implementations demonstrate that they correctly process ODRL policies. Rather than limiting conformance to checking whether a policy is syntactically valid, the conformance evaluation framework will test the behaviour of policy-processing software, such as policy engines, validators, evaluators, compliance checkers, policy converters and other ODRL processors conform with the ODRL specifications.</p>
 
               <p class="draft-status"><b>Draft state:</b> No draft</p>
               <p><b>Adopted draft:</b> <a href="https://w3c.github.io/odrl/formal-semantics/">ODRL Formal Semantics</a> adopted from W3C ODRL Community Group</p>
@@ -205,9 +206,9 @@
       
             </dd>
           
-          <dt id="o3pa" class="spec new"><a href="#">ODRL 3.0 Protocol Architecture</a></dt>
+          <dt id="o3pa" class="spec new"><a href="#">ODRL 3.0 Architecture and Protocols</a></dt>
             <dd>
-              <p>This specification will define the interoperability mechanisms for the trusted exchange and processing of ODRL policies.</p>
+              <p>This specification will define how ODRL operates as a policy layer within a broader ecosystem of digital policy, identity, trust, provenance and enforcement technologies. It will describe the architectural relationships between ODRL policies and complementary technologies such as verifiable credentials, identity frameworks, provenance, data-policy standards and domain-specific policy systems. It will also address how policies are discovered, exchanged, translated, evaluated and ultimately acted upon by policy-processing systems, while defining appropriate interfaces and protocols where standardisation is required. </p>
 
               <p class="draft-status"><b>Draft state:</b> No draft</p>
               <p class="milestone"><b>Expected completion:</b> Q3 2028</p>
@@ -215,18 +216,52 @@
             </dd>
 
           </dl>
-
+<p>These five key deliverables provide the Digital Policy community with a coherent  ODRL 3.0 framework, consisting of:
+  <ul>
+  <li>The Semantic Model defining what ODRL means,</li>
+   <li>The Vocabulary Registry defining what can be expressed,</li>
+   <li>The Profile Declaration defining which ODRL parts and extensions are used in a particular context,</li>
+   <li>The Conformance Evaluation defining whether an implementation behaves correctly, and</li>
+   <li>The Architecture and Protocols defining how ODRL operates within the wider policy ecosystem.</li>
+  </ul>
+</p>
 
         </section>
 
         <section id="incubation">
           <!-- If no incubation or not a Working Group, delete the section. -->
           <h3>
-            Tentative Deliverables
+             Non-Normative Specifications
           </h3>
-          <p>Depending on the <a href="https://www.w3.org/guide/incubation.html">incubation</a> progress, interest from multiple implementers, and the consensus
+            <p>Depending on the <a href="https://www.w3.org/guide/incubation.html">incubation</a> progress, interest from multiple implementers, and the consensus
             of the Group participants, the Working Group may adopt the following documents
-             as Rec-track specifications:</p>
+             as Rec-track specifications</p>
+
+            <h4>
+            Deliverables
+          </h4>
+        
+          <dl>
+            <dt id="web-incubated-prime" class="spec"><a href="#">ODRL 3.0 Primer</a></dt>
+            <dd>
+              <p>This specification supports the community understanding of ODRL digital policies</p>
+              <p class="draft-status"><b>Draft state:</b>
+                No Draft</p>
+            </dd>
+
+              <dt id="web-incubated-bp" class="spec"><a href="#">ODRL 3.0 Best Practices</a></dt>
+            <dd>
+              <p>This specification supports web developers when building ODRL applications and services.</p>
+              <p class="draft-status"><b>Draft state:</b>
+                Proposal in <a href="https://w3c.github.io/odrl/bp/">ODRL V2.2 Implementation Best Practices</a> developed by the W3C ODRL Community Group</p>
+            </dd>
+
+          </dl>
+
+           <h4>
+            Tentative Deliverables
+          </h4>
+        
           <dl>
             <dt id="web-incubated-md" class="spec"><a href="#">Market Data Profile for ODRL</a></dt>
             <dd>
@@ -242,6 +277,13 @@
                 Proposal in <a href="https://w3c.github.io/odrl/profile-dataspaces/">ODRL Profile: Data Spaces</a> developed by the W3C ODRL Data Community Group</p>
             </dd>
 
+              <dt id="web-incubated-dpv" class="spec"><a href="#">ODRL DPV Profile</a></dt>
+            <dd>
+              <p>This specification defines the use of ODRL with the Data Privacy Vocabulary.</p>
+              <p class="draft-status"><b>Draft state:</b>
+                Proposal in <a href="https://dev.dpvcg.org/guides/dpv-odrl">Guide for using DPV with ODRL</a> developed by the W3C Data Privacy Vocabularies (DPV) and Controls Community Group</p>
+            </dd>
+
           </dl>
         </section>
 
@@ -255,8 +297,6 @@
           <ul>
             <li>ODRL Use case and requirement documents;</li>
             <li>ODRL Test suite and implementation report for the specifications;</li>
-            <li>ODRL Primer to support community understanding of digital policies.</li>
-            <li>ODRL Implementation Best Practice documents to support web developers when building applications.</li>
             <li>ODRL Visualisations to support development of consistent ODRL user experiences.</li>
             <li>ODRL Profiles for specific communities.</li>
           </ul>
