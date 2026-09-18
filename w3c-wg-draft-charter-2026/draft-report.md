@@ -93,13 +93,11 @@ This also aligns with the proposal for modularisation. Rather than expecting eve
 Perhaps the most commercially significant theme was the idea of ODRL becoming a cross-sector policy language.
 
 The workshop discussed how established communities such as media, music, news and data spaces already have highly developed standards for metadata, identifiers and business processes.
-
 The problem occurs when assets cross those boundaries.
 
 The workshop therefore explored whether ODRL could provide a common policy layer between otherwise specialised ecosystems. The challenge would not be to replace DDEX, IPTC RightsML or other standards, but to provide translation mechanisms and interoperability between them.
 
 This suggests a major strategic opportunity for ODRL 3.0 -  Not another vertical rights standard, but a common policy interoperability layer across vertical standards.
-
 Such an approach would allow specialised communities to retain their own domain vocabularies and workflows while using ODRL to express interoperable permissions, prohibitions, duties and constraints.
 
 ⸻
@@ -122,9 +120,9 @@ A potential architecture could combine:
 * Automated payment mechanisms
 
 The ultimate objective is to reduce the gap between using an asset and remunerating its creator.
-
+<!-- A BIT TOO DETAILED IN MY OPINION
 Tokenisation was also raised as a possible area for future consideration. The workshop did not conclude that ODRL itself should become a token or payment language. Rather, it considered how ODRL policies might provide the machine-readable rules needed by systems that automate licensing and remuneration.
-
+-->
 This should therefore be regarded as an important future use case rather than a settled ODRL 3.0 requirement.
 
 ⸻
@@ -147,7 +145,7 @@ This is particularly relevant to data spaces, where policy enforcement depends n
 
 ### Legal and regulatory policy
 
-A second major expansion of scope concerned legal rules and regulatory compliance.
+Another major expansion of scope concerned legal rules and regulatory compliance.
 
 The workshop discussed work translating requirements from legislation and regulation into ODRL policy models. These models can then be processed by inference or compliance engines.
 
@@ -181,36 +179,18 @@ These requirements were subsequently reviewed by humans and organised into clust
 * Interoperability
 * Specification and vocabulary quality
 
-The transcript notes that approximately 30 requirements were identified, although not all are mutually compatible and not all should necessarily become requirements for ODRL 3.0.
-
-The resulting principle is therefore:
-
-* Use cases  --> Requirements --> Specification design  --> Implementations  --> Conformance tests
-
-This is arguably the most important process recommendation from the workshop.
+<!-- I remove a part here which I found slightly too detailed for a report,
+  and also a bit naive: "basing the specification design on use-case and requirements is arguable the most important recommendation from the workshop" !! -->
 
 The use of generative AI was presented as a valuable requirements-discovery and brainstorming technique, but the workshop also made clear that human review and judgement remain necessary.
 
 ⸻
 
-### Proposed direction for the new W3C Working Group
+### Proposed direction: a new W3C Working Group
 
 The workshop concluded with considerable consensus that the next step should be the creation of a new W3C Working Group focused on ODRL 3.0.
 
-The intended process is the normal W3C Recommendation track:
-
-1. Develop a Working Group charter.
-2. Develop use cases and requirements.
-3. Produce Working Drafts.
-4. Develop implementations.
-5. Develop a comprehensive test suite.
-6. Progress towards Candidate Recommendation.
-7. Demonstrate the required implementation experience.
-8. Progress to Proposed Recommendation.
-9. Complete formal W3C Advisory Committee review.
-10. Publish the resulting specification(s) as W3C Recommendations.
-
-The workshop explicitly emphasised the importance of requirements, independent implementations and testing as part of this process.
+<!-- removed a part that was paraphrasing the W3C process, not useful here -->
 
 The workshop’s closing discussion confirmed that the Workshop chairs would prepare a workshop report and draft Working Group charter. The intention was to socialise the charter at TPAC 2026 in Dublin, with the objective of moving into the next phase of ODRL 3.0 by the end of 2026.
 
@@ -266,10 +246,13 @@ The future work should investigate relationships with:
 * Identity frameworks
 * Domain-specific rights standards
 
+<!-- I FIND THIS ITEM A BIT CLUMSY; AND I DON'T KNOW WHAT "MACHINE-ACTIONABLE APPLICATIONS" MEANS
 10 -  Explore future machine-actionable applications
 
 The community should investigate applications including automated compliance, automated licensing, remuneration, data governance, AI governance and potentially tokenised transactions, while carefully distinguishing exploratory use cases from the normative scope of ODRL 3.0.
+-->
 
+<!-- I FIND THIS SECTION REDUNDANT WITH THE REST OF THE TEXT
 ⸻
 
 ### Overall Assessment
@@ -319,6 +302,7 @@ The workshop concluded with the view that there was sufficient consensus to proc
 
 
 ⸻
+-->
 
 
 *NOTE: This report was primarily created with a GenAI tool from the raw transcripts of the 2 day workshop.*
