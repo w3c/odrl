@@ -108,22 +108,9 @@ The workshop pushed the vision of machine-actionable policies further into autom
 
 If an asset can be identified, its creator or rights holder authenticated, its usage policies discovered and its conditions interpreted by machines, then it becomes possible to automate aspects of licensing and remuneration.
 
-A potential architecture could combine:
-
-* Provenance and authenticity
-* Attribution
-* Verifiable credentials
-* Asset identification and fingerprinting
-* ODRL usage policies
-* Pricing information
-* Licensing agreements
-* Automated payment mechanisms
 
 The ultimate objective is to reduce the gap between using an asset and remunerating its creator.
-<!-- A BIT TOO DETAILED IN MY OPINION
-Tokenisation was also raised as a possible area for future consideration. The workshop did not conclude that ODRL itself should become a token or payment language. Rather, it considered how ODRL policies might provide the machine-readable rules needed by systems that automate licensing and remuneration.
--->
-This should therefore be regarded as an important future use case rather than a settled ODRL 3.0 requirement.
+This should therefore be regarded as an important future broader use case rather than a specific ODRL 3.0 requirement.
 
 ⸻
 
@@ -179,8 +166,6 @@ These requirements were subsequently reviewed by humans and organised into clust
 * Interoperability
 * Specification and vocabulary quality
 
-<!-- I remove a part here which I found slightly too detailed for a report,
-  and also a bit naive: "basing the specification design on use-case and requirements is arguable the most important recommendation from the workshop" !! -->
 
 The use of generative AI was presented as a valuable requirements-discovery and brainstorming technique, but the workshop also made clear that human review and judgement remain necessary.
 
@@ -190,7 +175,6 @@ The use of generative AI was presented as a valuable requirements-discovery and 
 
 The workshop concluded with considerable consensus that the next step should be the creation of a new W3C Working Group focused on ODRL 3.0.
 
-<!-- removed a part that was paraphrasing the W3C process, not useful here -->
 
 The workshop’s closing discussion confirmed that the Workshop chairs would prepare a workshop report and draft Working Group charter. The intention was to socialise the charter at TPAC 2026 in Dublin, with the objective of moving into the next phase of ODRL 3.0 by the end of 2026.
 
@@ -198,7 +182,7 @@ The workshop’s closing discussion confirmed that the Workshop chairs would pre
 
 ### Key Recommendations Emerging from the Workshop
 
-The workshop’s outcomes can be distilled into ten principal recommendations:
+The workshop’s outcomes can be distilled into the following principal recommendations:
 
 1 -  Establish the new W3C ODRL 3.0 Working Group
 
@@ -246,63 +230,6 @@ The future work should investigate relationships with:
 * Identity frameworks
 * Domain-specific rights standards
 
-<!-- I FIND THIS ITEM A BIT CLUMSY; AND I DON'T KNOW WHAT "MACHINE-ACTIONABLE APPLICATIONS" MEANS
-10 -  Explore future machine-actionable applications
-
-The community should investigate applications including automated compliance, automated licensing, remuneration, data governance, AI governance and potentially tokenised transactions, while carefully distinguishing exploratory use cases from the normative scope of ODRL 3.0.
--->
-
-<!-- I FIND THIS SECTION REDUNDANT WITH THE REST OF THE TEXT
-⸻
-
-### Overall Assessment
-
-The workshop marks an important change in the character of ODRL.
-
-The original ODRL problem was essentially:
-
-*“How can we express rights and permissions in a machine-readable form?”*
-
-The emerging ODRL 3.0 question is much broader:
-
-*“How can interoperable policy information be represented, interpreted, evaluated and acted upon by machines across heterogeneous digital policy ecosystems?”*
-
-That is a considerably more ambitious proposition.
-
-The strongest message from the two days was not that ODRL needs a long list of new vocabulary terms. Rather, it needs to become a more rigorous, modular, interoperable and implementable digtial policy framework.
-
-The future specification should be grounded in real use cases, supported by formal requirements, and validated through implementations and conformance testing.
-
-At the same time, the workshop demonstrated that there is already a substantial ecosystem into which ODRL 3.0 could fit:
-
-* JPEG Trust and digital media
-* DDEX and music
-* IPTC/RightsML and news
-* Gaia-X and data spaces
-* Data contracts
-* AI and regulatory compliance
-* Verifiable credentials
-* Legal information systems
-
-This makes the timing particularly significant.
-
-The workshop did not simply ask:
-
-*“What features should ODRL 3.0 have?”*
-
-It effectively asked:
-
-*“What role should ODRL play in the emerging machine-readable policy infrastructure of the Web?”*
-
-The consensus emerging from the workshop appears to be that ODRL should become a common digtial policy language and interoperability layer, capable of connecting specialised domain standards while providing a stronger semantic and computational foundation than ODRL 2.2 currently provides.
-
-The next critical step is therefore to turn this broad consensus into a precise W3C Working Group charter, use-case and requirements document, and ultimately a technically coherent ODRL 3.0 architecture.
-
-The workshop concluded with the view that there was sufficient consensus to proceed, and that the immediate task was now to document the outcomes and move into the formal W3C process.
-
-
-⸻
--->
 
 
 *NOTE: This report was primarily created with a GenAI tool from the raw transcripts of the 2 day workshop.*
