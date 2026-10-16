@@ -121,6 +121,7 @@ The table has three columns
 - [ODRL Validator](https://github.com/elenamolino/odrl-validator): Validates ODRL policies using [SHACL](https://www.w3.org/TR/shacl/) and detects policy conflicts with [Notation3](https://w3c-cg.github.io/N3/spec/) reasoning.
 - [Risk Detector Application (risk-e-tos)](https://github.com/isa-group/risk-e-tos): Explores ODRL policy risk assessment and mitigation suggestions using [Notation3](https://w3c-cg.github.io/N3/spec/) reasoning.
 - [ODRL Engine](https://github.com/DIPS-Tools/ODRL-Engine): The ODRL Engine includes the following utility tools: a generator of synthetic ODRL policies, a generator of synthetic States of the World objects, and an ODRL validator. 
+- [ODRL Editor](https://github.com/DIPS-Tools/ODRL_Editor_Demo_v2): The ODRL Editor is a web based tool that facilitates the creation of ODRL Policies, it includes the dynamic loading of vocabularies (ODRL Profiles), a configurable UI, and its functionality can be embedded as an iFrame. A live version is hosted [here](https://dips.soton.ac.uk/odrl-editor-demo/).
 
 ## How to contribute
 
