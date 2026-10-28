@@ -26,6 +26,8 @@ var respecConfig = {
         "draft-ietf-aipref-vocab": { title: "A Vocabulary For Expressing AI Usage Preferences, IETF Draft, 1 Dec 2025", href: "https://datatracker.ietf.org/doc/draft-ietf-aipref-vocab/" } ,
        "cwag-train": { title: "CWAG Training and Data Mining Assertion, Version 1.1, 16 May 2025", href: "https://cawg.io/training-and-data-mining/1.1/" } ,
        "plus-data-mining": { title: "PLUS License Data Format: XMP Reference. Version 2.0.1", href: "https://ns.useplus.org/LDF/ldf-XMPSpecification#DataMining" } ,
-       "rsl-ai": { title: "Really Simple Licensing (RSL) 1.0 Specification, Version 1.0, 10 Dec 2025", href: "https://rslstandard.org/rsl" }
+       "rsl-ai": { title: "Really Simple Licensing (RSL) 1.0 Specification, Version 1.0, 10 Dec 2025", href: "https://rslstandard.org/rsl" } ,
+       "EU-AI-Act": { title: "European Artificial Intelligence Regulations, 13 June 2024", href: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" },
+        "TDM-Res": { title: "TDM Reservation Protocol (TDMRep, Final W3C Community Group Report, 10 May 2024", href: "https://www.w3.org/community/reports/tdmrep/CG-FINAL-tdmrep-20240510/" }
     }
 }; 

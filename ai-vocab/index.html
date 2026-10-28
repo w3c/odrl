@@ -20,12 +20,7 @@
 		</section>
 
 		<section id='sotd'>
-
-		</section>
-
-        <section id='feedback'>
-           <div class="note" role="note">
-            <p>This is an early draft for a general AI vocabulary of actions relevant to AI governance. </p>
+ <div class="note" role="note">
             <p>Feedback is welcome on all aspects of this working draft. </p>
            </div>
 		</section>
@@ -36,7 +31,7 @@
 		
 			This ODRL Profile defines a controlled vocabulary of actions  governing the use of assets by Artificial Intelligence (AI) systems. As AI technologies increasingly interact with digital and physical assets—through training, inference, transformation, and decision-making—there is a need for precise, machine-readable policies that express permissions, prohibitions, and obligations specific to AI-driven activities.  </p>
   <p>
-This ODRL Profile addresses this gap by defining a set of actions  tailored to AI systems. These include permissions and prohibitions related to training models, generating outputs, modifying assets, and redistributing AI-derived content. By enabling explicit and machine-readable policy statements, this profile supports responsible AI practices and facilitates enforcement of organisational, legal, and societal expectations. </p>
+This ODRL Profile addresses this gap by defining a set of actions  tailored to AI systems. These include permissions and prohibitions related to training models, generating outputs, modifying assets, and redistributing AI-derived content. By enabling explicit and machine-readable policy statements, this profile supports responsible AI practices and facilitates enforcement of organisational, legal, and societal expectations, such as supporting technical measures to address the European Artificial Intelligence Regulations [[?EU-AI-Act]]</p>
 
 
 </section>
@@ -81,8 +76,11 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 
 
-		<section id='vocab'>
-			<h2>AI "opt-out" Vocabularies</h2>
+		<section id='current-vocabs'>
+			<h2>Current AI Vocabularies</h2>
+
+            <section id='ai-opt-out'>
+			<h2>AI "Opt-out" Vocabularies</h2>
 
 			<P>Numerous standards groups and other projects have developed vocabularies for "opt-out" of AI processes over user content. An analysis has found them to be <a href="https://openfuture.eu/publication/divergent-mechanisms-elusive-vocabularies/">divergent, fragmented, and imbalanced</a> and also provides a <a href="https://openfuture.eu/wp-content/uploads/2025/03/250307_Vocabulary_for_opting_out_of_AI_training_and_other_forms_of_TDM.pdf">detailed summary of these vocabulary options</a>.</P>
             <p>
@@ -90,9 +88,13 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
             </p>
             <p><strong>IETF - AI Preferences</strong> [[?draft-ietf-aipref-vocab]]</p>
             <ul>
-                <li>Foundation Model Production (aitrain) - The act of using an asset to train or fine-tune a foundation model </li>
-                <li>Search (search) - using one or more assets in a search application that directs users
-   to the location from which the assets were retrieved </li>
+                <li>AI Training (train-ai) - Using an asset to modify the learned parameters of a generative AI
+   model </li>
+                 <li>AI Use (ai-use) - Using an asset as input to a generative AI model, where the asset is
+   not directly provided by the user
+   model </li>
+                <li>Search (search) - Using an asset in an application where the primary purpose of the
+   application is to select assets and direct users to the location of those assets</li>
             </ul>
 
             <p><strong>Creator Assertions Working Group (CAWG) - Training and Data Mining Assertion</strong> [[?cwag-train]]</p>
@@ -122,73 +124,88 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
                 <li>search - Building a search index and providing search results (e.g., returning hyperlinks and short excerpts from your website's contents). Search does not include providing AI-generated search summaries</li>
                 </ul>
 
-      <p>As can be clearly seen by these existing approaches, they are all inconsistent in their model and semantics, and hence lack data interoperability for AI governance.</p>
+                <P>NOTE: Search and Index in the above systems typically are general concepts and not specific to "AI systems". </P>
+
+                </section>
+
+                   <section id='tdm-res'>
+			<h2>TDM Reservation</h2>
+    <p>
+        The TDM Reservation Protocol [[?TDM-Res]] defines a simple protocol capable of expressing the reservation of rights relative to text & data mining (TDM) applied to Web content, and to ease the discovery of TDM licensing policies associated with such content. The specification already uses the W3C ODRL 2.2 Policy Language, and only explicitly defines this vocabulary term:
+        <ul>
+            <li>Text & Data Mine (mine) - analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations</li>
+        </ul>
+
+    </p>
+            </section>
 
       </section>
 
+
+    </section>
+
     <section id='conformance'>
-			<h2>ODRL AI Vocabulary Profile</h2>
+	<h2>ODRL AI Vocabulary Profile</h2>
   
-      <p>Using the current set of AI vocabularies described in Section 3 as a snapshot of the AI community requirements, the ODRL AI Vocabulary Profile includes the following semantic terms: </p>
-      <ul>
-       <li>Data Mining - any form of algorithmic analysis of an asset</li>
+        <p>As can be clearly seen by these existing approaches in Section 3, they vary in consistency in their model and semantics, and hence will dilute data interoperability for AI governance across the Web and Enterprise.</p>
+
+      <p>Using the current set of AI vocabularies described in Section 3 as a snapshot of the AI community requirements, the ODRL AI Vocabulary Profile takes a more <i>bigger-picture</i> view by providing an extensible <b>Data Processing</b> framework that captures current state needs, as well as sets the platform for future growth. The figure below shows the framework and current scope of the AI vocabulary, including their hierarchy in the framework. </p>
+      <p><img src="ai-vocab4.png" width="1000"/></p>
+
+      <p>The current scope of the AI Vocabulary consists of six new terms and includes two existing ODRL Vocabualry terms. The new terms also represent a hierarchy, enabling ODRL policies to more simply include the inherited terms. The terms are summarised here: </p>
+     
        <ul>
-        <li>AI Training - the asset is used to train an AI model</li>
-         <ul>
+        <li>Artificial Intelligence - the asset is used in any aspects of Artificial Intelligence</li>
+        <ul>
+           <li>AI Training - the asset is used to train an AI model</li>
+          <ul>
             <li>Generative AI Training - the asset is used to train a Generative AI model</li>
          </ul>
-        <li>AI Augmentation - the asset is used as input to a trained AI model</li>
        </ul>
+         <ul>
+            <li>AI Usage - the asset is used to train an AI model</li>
+          <ul>
+            <li>AI Augmentation - the asset is used as input to a trained AI model (for inference)</li>
+         </ul>
+       </ul>
+       <li>Data Mining - any form of algorithmic analysis of an asset</li>
        <li>Index - the asset is registered in a data store </li>
        <li>Search - the asset is discoverable in a data store</li>
       
       </ul>
-      <p>These vocabulary terms are shown below, including their hierarchy.</p>
 
-   <p><img src="ai-vocab.png"/></p>
+      <p>NOTE: Data Mining is not considered as the <i>parent</i> term in this framework, as that is not the industry consensus.</p>
+      <p>The next sections formally defines these vocabulary terms.</p>
 
-<p> The next sections formally defines these vocabulary terms.</p>
-
-      <section id='newmodel'>
-           <div class="note" role="note">
-            <p>A new proposed model is shown below. This model is more broader and attempts to capture a wider scope of AI actions, as well as related actions in the Data Processing space. The motivation is to support future expansion of the AI/Data Analytics/Discovery action concepts as the sector evolves. </p>
-            <p>Feedback is welcome on this new model. </p>
-           </div>
-		</section>
-
-        <p><img src="ai-vocab2.png" width="800"/></p>
-
-        <p>NOTE: If accepted, the next section would be updated with the new vocabulary terms.</p>
-
-		<section id="term-data-mining">
-              <h4 id="data-mining">
-                    Data Mining
+		<section id="term-ai">
+              <h4 id="ai">
+                    Artificial Intelligence (AI)
                 </h4>
                 <table class="def propdef">
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>The act of using asset(s) in the context of any
-automated analytical technique aimed at analysing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations</td>
+                            <td>The act of using asset(s) with computational systems capable of performing artificial intelligence tasks</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>data-mining</td>
+                            <td>Artificial Intelligence (AI)</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/data-mining">http://www.w3.org/ns/odrl/2/data-mining</a>
+                                <a href="https://www.w3.org/ns/odrl/2/ai">http://www.w3.org/ns/odrl/2/ai</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td></td>
+                            <td>Artificial Intelligence encompasses a broad range of techniques and systems, including machine learning, deep learning, and generative AI systems.
+</td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">use</a>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">Use</a>
                             </td>
                         </tr>
                         <tr>
@@ -202,9 +219,7 @@ automated analytical technique aimed at analysing text and data in digital form 
                             <td>
                                 <p>This vocabulary term has similar semantics to:</p>
                                 <ul>
-                                    <li>CAWG: cawg.data_mining</li>
-                                    <li>PLUS: DMI-ALLOWED</li>
-                                    <li>RSL: all</li>
+                                    <li>RSL: ai-all</li>
                                 </ul>
 
                             </td>
@@ -221,11 +236,11 @@ automated analytical technique aimed at analysing text and data in digital form 
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>The act of using asset(s) in the context of any training by AI algorithms and models</td>
+                            <td>The act of using asset(s) to modify the parameters, internal representations, or learned behaviour of an artificial intelligence model or system to enable or improve its performance</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>ai-training</td>
+                            <td>AI Training</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
@@ -235,12 +250,12 @@ automated analytical technique aimed at analysing text and data in digital form 
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td></td>
+                            <td> AI Training includes initial model training, continued pre-training, fine-tuning, and other training processes that modify a model based on data</td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="#term-data-mining">data mining</a>
+                                <a href="#term-ai">Artificial Intelligence (AI)</a>
                             </td>
                         </tr>
                         <tr>
@@ -255,7 +270,7 @@ automated analytical technique aimed at analysing text and data in digital form 
                                 <p>This vocabulary term has similar semantics to:</p>
                                 <ul>
                                     <li>CAWG: cawg.ai_training</li>
-                                    <li>IETF: aitrain</li>
+                                    <li>IETF: train-ai</li>
                                     <li>RSL: ai-train</li>
                                 </ul>
 
@@ -266,7 +281,7 @@ automated analytical technique aimed at analysing text and data in digital form 
             </section>
 
 
-              <section id="term-gen-ai">
+              <section id="term-ai-train-gen">
               <h4 id="gen-ai">
                     Generative AI Training
                 </h4>
@@ -274,26 +289,26 @@ automated analytical technique aimed at analysing text and data in digital form 
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>The act of using asset(s) in the context of any training by Generative AI algorithms and models</td>
+                            <td>The act of using asset(s) to train or modify a generative artificial intelligence model so that it can generate new content, including text, images, audio, video, software code, or other forms of output</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
-                            <td>gen-ai</td>
+                            <td>Generative AI Training</td>
                         </tr>
                         <tr>
                             <th>Identifier:</th>
                             <td>
-                                <a href="https://www.w3.org/ns/odrl/2/gen-ai">http://www.w3.org/ns/odrl/2/gen-ai</a>
+                                <a href="https://www.w3.org/ns/odrl/2/ai-train-gen">http://www.w3.org/ns/odrl/2/ai-train-gen</a>
                             </td>
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td></td>
+                            <td>Generative AI Training includes initial training, continued pre-training, fine-tuning, and other training processes that modify a generative AI model</td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="#ai-training">ai training</a>
+                                <a href="term-ai-training">AI Training</a>
                             </td>
                         </tr>
                         <tr>
@@ -317,6 +332,58 @@ automated analytical technique aimed at analysing text and data in digital form 
             </section>
 
 
+              <section id="term-ai-usage">
+              <h4 id="ai-usage">
+                    AI Usage
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of using asset(s) to an artificial intelligence system to perform a task or obtain an output, without necessarily modifying the system’s learned model parameters</td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>AI Usage</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/ai-usage">http://www.w3.org/ns/odrl/2/ai-usage</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td>AI Usage includes activities such as prediction, classification, summarisation, question answering, content generation, and decision support by providing information to an AI system</td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                               <a href="#term-ai">Artificial Intelligence (AI)</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>IETF: ai-use</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            
+
       <section id="term-ai-augment">
               <h4 id="ai-aument">
                     AI Augmentation
@@ -325,7 +392,7 @@ automated analytical technique aimed at analysing text and data in digital form 
                     <tbody>
                         <tr>
                             <th>Definition:</th>
-                            <td>The act of using asset(s) in the context of input into trained AI algorithms and models</td>
+                            <td>The act of using asset(s) as input to pre-trained AI models to assist, enhance, or extend their capabilities in performing a task, while retaining involvement in evaluating, directing, or acting upon the resulting output</td>
                         </tr>
                         <tr>
                             <th>Label:</th>
@@ -339,12 +406,13 @@ automated analytical technique aimed at analysing text and data in digital form 
                         </tr>
                         <tr>
                             <th>Note:</th>
-                            <td></td>
+                            <td><P>AI Augmentation includes activities in which AI supports human or computational capabilities, such as assisting with research, improving decision-making, generating recommendations, supporting software development, or enhancing creative work.</P>
+                            <p>NOTE: This term is sometimes referred to as <i>inference</i>.</p></td>
                         </tr>
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="#term-data-mining">data mining</a>
+                               <a href="#term-ai-usage">AI Usage</a>
                             </td>
                         </tr>
                         <tr>
@@ -360,6 +428,58 @@ automated analytical technique aimed at analysing text and data in digital form 
                                 <ul>
                                     <li>CAWG: cawg.ai_inference</li>
                                     <li>RSL: ai-input</li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="term-data-mining">
+              <h4 id="data-mining">
+                    Data Mining
+                </h4>
+                <table class="def propdef">
+                    <tbody>
+                        <tr>
+                            <th>Definition:</th>
+                            <td>The act of using asset(s) in analysing or computationally processing data to identify, extract, or derive patterns, relationships, trends, correlations, structures, or other information that may not be explicitly represented in the original data</td>
+                        </tr>
+                        <tr>
+                            <th>Label:</th>
+                            <td>data-mining</td>
+                        </tr>
+                        <tr>
+                            <th>Identifier:</th>
+                            <td>
+                                <a href="https://www.w3.org/ns/odrl/2/data-mining">http://www.w3.org/ns/odrl/2/data-mining</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td>Data Mining may involve statistical analysis, pattern recognition, clustering, association analysis, or other computational techniques</td>
+                        </tr>
+                        <tr>
+                            <th>Included In:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">Use</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Class:</th>
+                            <td>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-Action">Action</a>
+                            </td>
+                        </tr>
+						 <tr>
+                            <th>Mapping:</th>
+                            <td>
+                                <p>This vocabulary term has similar semantics to:</p>
+                                <ul>
+                                    <li>CAWG: cawg.data_mining</li>
+                                    <li>PLUS: DMI-ALLOWED</li>
+                                    <li>TDM: mine</li>
                                 </ul>
 
                             </td>
@@ -395,7 +515,7 @@ automated analytical technique aimed at analysing text and data in digital form 
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">use</a>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">Use</a>
                             </td>
                         </tr>
                         <tr>
@@ -447,7 +567,7 @@ automated analytical technique aimed at analysing text and data in digital form 
                         <tr>
                             <th>Included In:</th>
                             <td>
-                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">use</a>
+                                <a href="https://www.w3.org/TR/odrl-vocab/#term-use">Use</a>
                             </td>
                         </tr>
                         <tr>
@@ -477,7 +597,7 @@ automated analytical technique aimed at analysing text and data in digital form 
 
 		<h2>Examples</h2>
 
-         <p>The asset (dataset1) maybe used for AI Training only for the explicit purpose of "Research and Development"</p>
+         <p>The asset (dataset1) maybe used for AI Training only (which will include Gen AI Training)for the explicit purpose of "Research and Development"</p>
 
   <div class="example">
 
@@ -499,7 +619,7 @@ automated analytical technique aimed at analysing text and data in digital form 
 }
 </pre> </div>
 
- <p>The asset (dataset2) maybe used for Data Mining but must not be used for AI Augmentation. Note that the <i>conflict</i> property is set to <i>prohibit</i> to ensure that is overridden in the Data Mining action hierarchy. </p>
+ <p>The asset (dataset2) maybe used for Data Mining, AI Usage, Search, and Index but must not be used for AI Usage. </p>
 
   <div class="example">
 
@@ -509,13 +629,46 @@ automated analytical technique aimed at analysing text and data in digital form 
   "@type": "odrl:Set",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/002",
+  "target": "http://example.org/asset/dataset2",
+  "permission": [{
+        "action": "odrl:data-mining",
+        "action": "odrl:search",
+        "action": "odrl:index",
+    }],
+  "prohibition": [{
+      "action": "odrl:ai-usage"
+    }]
+}
+
+</pre>
+</div>
+
+ <p>The asset (dataset3) maybe used for all Artificial Intelligence actions in Europe, but must not be used for AI Augmentation in Italy. </p>
+ <p>Note that the <i>conflict</i> property is set to <b>prohibit</b> to ensure that "AI Augmentation" is overridden in the "Artificial Intelligence" action hierarchy.</p>
+
+  <div class="example">
+
+   <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "odrl:Set",
+  "profile": "https://w3c.github.io/odrl/ai-vocab/",
+  "uid": "http://example.org/policy/003",
   "conflict": "prohibit",
   "target": "http://example.org/asset/dataset2",
   "permission": [{
-        "action": "odrl:data-mining"
+        "action": "odrl:ai",
+        "constraint": [{
+           "leftOperand": "spatial",
+           "operator": "eq",
+           "rightOperand":  "https://www.wikidata.org/wiki/Q46"  ## Europe
     }],
   "prohibition": [{
-      "action": "odrl:ai-augment"
+      "action": "odrl:ai-augment",
+      "constraint": [{
+           "leftOperand": "spatial",
+           "operator": "eq",
+           "rightOperand":  "https://www.wikidata.org/wiki/Q38"  ## Italy
     }]
 }
 
