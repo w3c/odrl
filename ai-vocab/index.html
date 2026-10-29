@@ -602,7 +602,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 		<h2>AI Examples</h2>
 
-         <p>The asset (dataset1) maybe used for AI Training only (which will include Gen AI Training)for the explicit purpose of "Research and Development"</p>
+         <p>The asset (dataset1) maybe used for AI Training only (which will include Gen AI Training) for the explicit purpose of "Research and Development"</p>
 
   <div class="example">
 
@@ -612,6 +612,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
   "@type": "odrl:Set",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/001",
+  "assigner": "urn:example:dataset-owner",
   "target": "http://example.org/asset/dataset1",
   "permission": [{
       "action": "odrl:ai-training",
@@ -634,6 +635,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
   "@type": "odrl:Set",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/002",
+  "assigner": "urn:example:dataset-owner",
   "target": "http://example.org/asset/dataset2",
   "permission": [{
         "action": [ "odrl:ai-usage", "odrl:search", "odrl:index" ]
@@ -657,6 +659,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
   "@type": "odrl:Set",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/003",
+  "assigner": "urn:example:dataset-owner",
   "conflict": "prohibit",
   "target": "http://example.org/asset/dataset2",
   "permission": [{
@@ -686,7 +689,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 		<h2>TDM Reservation Example</h2>
 
          <p>The TDM Reservation use case centres around the assigner "reserving" their "rights" for "data mining" actions over their asset(s), and to specify that such rights maybe available in consultation with the assigner/owner (in the future).</p>
-         <p>The asset (dataset8) maybe used for data-mining with a duty (obligation) to obtain such consent before the policy can be used (the constraint)."</p>
+         <p>The asset (dataset8) maybe used for data-mining with a duty (obligation) to obtain such consent (from  the consentingParty) before the policy can be used (the constraint)."</p>
 
   <div class="example">
 
@@ -696,6 +699,8 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
   "@type": "odrl:Set",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/008",
+  "assigner": "urn:example:dataset-owner",
+  "consentingParty": "urn:example:dataset-licensor",
   "target": "http://example.org/asset/dataset8",
   "permission": [{
       "action": "odrl:data-mining",
