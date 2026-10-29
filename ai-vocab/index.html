@@ -593,9 +593,14 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 
 
 </section>
+
+	<section id="usecases">
+
+		<h2>Use Cases</h2>
+
 	<section id="example">
 
-		<h2>Examples</h2>
+		<h2>AI Examples</h2>
 
          <p>The asset (dataset1) maybe used for AI Training only (which will include Gen AI Training)for the explicit purpose of "Research and Development"</p>
 
@@ -619,7 +624,7 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 }
 </pre> </div>
 
- <p>The asset (dataset2) maybe used for Data Mining, AI Usage, Search, and Index but must not be used for AI Usage. </p>
+ <p>The asset (dataset2) maybe used for AI Usage, Search, and Index but must not be used for AI Training. </p>
 
   <div class="example">
 
@@ -631,12 +636,10 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
   "uid": "http://example.org/policy/002",
   "target": "http://example.org/asset/dataset2",
   "permission": [{
-        "action": "odrl:data-mining",
-        "action": "odrl:search",
-        "action": "odrl:index",
+        "action": [ "odrl:ai-usage", "odrl:search", "odrl:index" ]
     }],
   "prohibition": [{
-      "action": "odrl:ai-usage"
+      "action": "odrl:ai-training"
     }]
 }
 
@@ -661,19 +664,56 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
         "constraint": [{
            "leftOperand": "spatial",
            "operator": "eq",
-           "rightOperand":  "https://www.wikidata.org/wiki/Q46"  ## Europe
+           "rightOperand":  "https://www.wikidata.org/wiki/Q46"
+         }]
     }],
   "prohibition": [{
       "action": "odrl:ai-augment",
       "constraint": [{
            "leftOperand": "spatial",
            "operator": "eq",
-           "rightOperand":  "https://www.wikidata.org/wiki/Q38"  ## Italy
-    }]
+           "rightOperand":  "https://www.wikidata.org/wiki/Q38"
+        }]
+  }]
 }
 
 </pre>
 </div>
+</section>
+
+<section id="tdm-ex">
+
+		<h2>TDM Reservation Example</h2>
+
+         <p>The TDM Reservation use case centres around the assigner "reserving" their "rights" for "data mining" actions over their asset(s), and to specify that such rights maybe available in consultation with the assigner/owner (in the future).</p>
+         <p>The asset (dataset8) maybe used for data-mining with a duty (obligation) to obtain such consent before the policy can be used (the constraint)."</p>
+
+  <div class="example">
+
+   <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "odrl:Set",
+  "profile": "https://w3c.github.io/odrl/ai-vocab/",
+  "uid": "http://example.org/policy/008",
+  "target": "http://example.org/asset/dataset8",
+  "permission": [{
+      "action": "odrl:data-mining",
+      "duty": [{
+        "action": "obtainConsent",
+        "constraint": [{
+                "leftOperand": "event",
+                "operator": "lt",
+                "rightOperand": { "@id": "odrl:policyUsage" }
+            }]
+        }]
+    }]
+}
+</pre> </div>
+
+</section>
+
+
 
 </section>
 </body>
