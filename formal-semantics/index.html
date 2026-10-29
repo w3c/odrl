@@ -602,10 +602,8 @@ following conditions hold:</p>
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-       <!-- The ODRL Evaluator has to calculate first the activation state of the permission. 
-	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-        As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
-	is passed, the Permission is inactive. -->
+        The ODRL Evaluator computes if the action <code>a</code> represented in the Evaluation Request is permitted 
+			by the Permission in the given State of the World <code>S</code>.
         </p>
 	
         <table border="1" style="font-size:small;">
@@ -614,7 +612,7 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">State of the World</th>
 		    <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee of action <code>a</code></th>
                     <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
                     <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -626,10 +624,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
 			party:1 distributes document:1234 on 2017-12-19T15:00:00</code></a></td>
-		    <td>satisfied</td>
-                    <td>satisfied</td>
-                    <td>active</td>
-		    <td>permit the action</td>
+		    <td>true, true, true</td>
+            <td>satisfied</td>
+            <td>active</td>
+		    <td>action <code>a</code> is permitted in state <code>S</code></td>
      		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
 		    report</a></td>
             </tr>
@@ -639,10 +637,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
 			party:1 distributes document:1234 on 2019-12-19T15:00:00</code></a></td>
-		     <td>satisfied</td>
-                    <td>not-satisfied</td>
-                    <td>inactive</td>	
-		    <td>deny the action</td>
+		     <td>true, true, true</td>
+            <td>not-satisfied</td>
+           <td>inactive</td>	
+		    <td>action <code>a</code> is not permitted in state <code>S</code></td>
              <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereportA12.json">
 		    report</a></td>
             </tr>
