@@ -39,8 +39,8 @@
         "@type": "report:ActionReport",
         "report:ruleAction": "http://example.com/action/1",
         "report:typeReport": false,
-        "report:targetReport": not-checked,
-        "report:partyReport": not-checked,
+        "report:targetReport": report:not-checked,
+        "report:partyReport": report:not-checked,
         "report:refinementReport": {
           "@id": "http://example.com/policy-report/C1/refinement/C11",
           "@type": "report:ConstraintReport",
