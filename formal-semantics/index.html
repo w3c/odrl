@@ -271,7 +271,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			action <code>a</code> is called the fulfilling action of the Obligation.</li>
 			</ol>
 
-			<p></p><i>Pending to be written</i>: the result of evaluating an ODRL policy policy which may contain one or more rules 
+			<p></p><i>Pending to be written</i>: the result of evaluating an ODRL policy which may contain one or more rules 
 			(permissions, prohibitions, obligations) and a property “conflict” (with possible values perm, prohibit, invalid (default)). </p>
 
 			An Evaluation Report contains the following information:
@@ -305,7 +305,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>constraint</code>: a reference to the constraint that is evaluated;</li>
 					<li><code>action</code>: a reference to the action on which the constraint is evaluated;</li>
 					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action, 
-						it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
+						it can be <b>satisfied</b> or <b>not-satisfied</b>.</li>
 				</ul>
 			</li>
 				
@@ -334,9 +334,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
 					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
 						to the <code>ruleAction</code>;</li>
-					<li><code>typeReport</code>: the result of the evaluation of the type, it can be true or false;</li>
-					<li><code>targetReport</code>: the result of the evaluation of the target, it can be true or false;</li>
-					<li><code>partyReport</code>: the result of the evaluation of the party, it can be true or false;</li>
+					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b> (initial value);</li>
+					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b> (initial value);</li>
+					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b> (initial value);</li>
 					<li><code>refinementReport</code>: a <code>constraintReport</code> for every refinement of the 
 					action specified in the <code>Rule</code>;</li>
 				</ul>
@@ -602,10 +602,8 @@ following conditions hold:</p>
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-       <!-- The ODRL Evaluator has to calculate first the activation state of the permission. 
-	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-        As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
-	is passed, the Permission is inactive. -->
+        The ODRL Evaluator computes if the action <code>a</code> represented in the Evaluation Request is permitted 
+			by the Permission in the given State of the World <code>S</code>.
         </p>
 	
         <table border="1" style="font-size:small;">
@@ -614,7 +612,7 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">State of the World</th>
 		    <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee of action <code>a</code></th>
                     <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
                     <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -626,10 +624,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
 			party:1 distributes document:1234 on 2017-12-19T15:00:00</code></a></td>
-		    <td>satisfied</td>
-                    <td>satisfied</td>
-                    <td>active</td>
-		    <td>permit the action</td>
+		    <td>true, true, true</td>
+            <td>satisfied</td>
+            <td>active</td>
+		    <td>action <code>a</code> is permitted in state <code>S</code></td>
      		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
 		    report</a></td>
             </tr>
@@ -639,10 +637,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
 			party:1 distributes document:1234 on 2019-12-19T15:00:00</code></a></td>
-		     <td>satisfied</td>
-                    <td>not-satisfied</td>
-                    <td>inactive</td>	
-		    <td>deny the action</td>
+		     <td>true, true, true</td>
+            <td>not-satisfied</td>
+           <td>inactive</td>	
+		    <td>action <code>a</code> is not permitted in state <code>S</code></td>
              <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereportA12.json">
 		    report</a></td>
             </tr>
