@@ -940,15 +940,16 @@ An active Condition is <b>fulfilled</b> when in the state of the world there is 
         <table border="1" style="font-size:small;">
             <tr>
 		    <th>Case</th>
-                    <th style="color:darkblue">Policy</th>
+            <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
-                    <th style="color:darkblue">Evaluation Request</th>
+            <th style="color:darkblue">Evaluation Request</th>
 		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
-                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1 by action <code>a</code></th>
-                <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code></th>
-                <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
-                <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
+            <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code> by action <code>a</code></th>
+			<th style="color:darkred">Satisfaction of class, target, assignee by action <code>a2</code></th>	
+            <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code> by action <code>a2</code></th>
+            <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
+            <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
+            <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
 		<th style="color:darkred"><br>Control state of <br><code>permission</code></th>
             	<th style="color:darkred">Evaluation Report</th>
             </tr>
@@ -960,11 +961,12 @@ An active Condition is <b>fulfilled</b> when in the state of the world there is 
 billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
 <td>true, true, true,</td>
 <td>not-satisfied</td>
-                <td>not-checked</td>
-                <td>inactive</td>
-                <td>not-set</td>
-                <td>active</td>
-		<td>permitted</td>
+<td>not-checked, not-checked, not-checked</td>				
+<td>not-checked</td>
+<td>inactive</td>
+<td>not-set</td>
+<td>active</td>
+<td>permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/compliancereport.C21.json">report</a></td>
 </tr>
 <tr>
@@ -976,7 +978,8 @@ billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
 <td>true, true, true</td>
                 <td>satisfied</td>
-                <td>not-satisfied</td>
+<td>false, not-checked, not-checked</td>
+                <td>not-checked</td>
                 <td>active</td>
                 <td>not-set</td>
                 <td>inactive</td>
@@ -992,6 +995,7 @@ pay 5 euro to sony on 2025-07-23T00:00:00</a></td>
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
 	<td>true, true, true</td>
                 <td>satisfied</td>
+	<td>true, true, true</td>
                 <td>satisfied</td>
                 <td>active</td>
                 <td>fulfilled</td>
