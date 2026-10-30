@@ -334,9 +334,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
 					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
 						to the <code>ruleAction</code>;</li>
-					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b> (initial value);</li>
-					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b> (initial value);</li>
-					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b> (initial value);</li>
+					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
+					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
+					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
 					<li><code>refinementReport</code>: a <code>constraintReport</code> for every refinement of the 
 					action specified in the <code>Rule</code>;</li>
 				</ul>
@@ -624,7 +624,7 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
 			party:1 distributes document:1234 on 2017-12-19T15:00:00</code></a></td>
-		    <td>true, true, true</td>
+		    <td>true, true, not-checked</td>
             <td>satisfied</td>
             <td>active</td>
 		    <td>action <code>a</code> is permitted in state <code>S</code></td>
@@ -637,7 +637,7 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
 			party:1 distributes document:1234 on 2019-12-19T15:00:00</code></a></td>
-		     <td>true, true, true</td>
+		     <td>true, true, not-checked</td>
             <td>not-satisfied</td>
            <td>inactive</td>	
 		    <td>action <code>a</code> is not permitted in state <code>S</code></td>
