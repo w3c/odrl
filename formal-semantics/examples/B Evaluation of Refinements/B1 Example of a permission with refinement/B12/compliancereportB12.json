@@ -27,7 +27,7 @@
       "report:evaluatedAction": "http://www.w3.org/ns/odrl/2/print",
       "report:typeReport": true,
       "report:targetReport": true,
-      "report:partyReport": not-checked,
+      "report:partyReport": "report:not-checked",
       "report:refinementReport": {
         "@id": "https://w3id.org/lada/report/623171f1184bcd4d#constraint-1",
         "@type": "report:ConstraintReport",
