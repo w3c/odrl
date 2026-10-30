@@ -612,7 +612,7 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">State of the World</th>
 		    <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee of action <code>a</code></th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
                     <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
                     <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -702,7 +702,7 @@ following conditions hold:</p>
             <th style="color:darkblue">Policy</th>
 			<th style="color:darkblue">State of the World</th>
             <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee of action <code>a</code></th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
             <th style="color:darkred">Satisfaction state of <br><code>refinement:B1</code></th>
             <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -837,7 +837,7 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
                     <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee of action <code>a</code></th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
                     <th style="color:darkred"><br/>Activation state of <br><code>condition:1</code></th>
 		    <th style="color:darkred"><br/>Deontic state of <br><code>condition:1</code></th>
 		    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
@@ -877,11 +877,14 @@ following conditions hold:</p>
 <big><b>C2 Example of a Conditioned Permission  whose Condition has Constraints</b></big>
 <p><b>Example description</b></p>
 
-<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has constraints, it is active on Sundays.</p>
+<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has a constraint, it is active on Sundays.</p>
 
 <pre>
 {
-"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "ex": "http://example.com/ns#" }
+],
 "@type": "Agreement",
 "uid": "http://example.com/policy/C2",
 "permission": [{
@@ -900,7 +903,7 @@ following conditions hold:</p>
                "leftOperand": "payAmount",
                "operator": "eq",
                "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-               "unit": "http://dbpedia.org/resource/Euro"
+               "unit": "https://dbpedia.org/resource/Euro"
            }]
         }],
         "constraint": [{
@@ -925,8 +928,8 @@ by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 <p><code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
 it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied, i.e. it is a Sunday 
 (for expressing this constraint an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
-An active Constraint is <b>fulfilled</b> when in the state of the world there is a representation 
-	of an performed action that matches with the class of actions described in the Constraint.</p>
+An active Condition is <b>fulfilled</b> when in the state of the world there is a representation 
+	of an performed action that matches with the class of actions described in the Condition.</p>
        
 <!-- <p>The permission can be evaluated as follows: <br>
 	If the Condition is inactive (its Constraint is not satisfied), the Permission is active. <br>
@@ -940,8 +943,8 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
                     <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
                     <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
-                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code></th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
+                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1 by action <code>a</code></th>
                 <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code></th>
                 <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
                 <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
@@ -955,13 +958,13 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
 <td> empty </td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/evaluationrequestC21.json">
 billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
-<td>satisfied</td>
+<td>true, true, true,</td>
 <td>not-satisfied</td>
-                <td>don't care</td>
+                <td>not-checked</td>
                 <td>inactive</td>
                 <td>not-set</td>
                 <td>active</td>
-		<td>permit the action</td>
+		<td>permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/compliancereport.C21.json">report</a></td>
 </tr>
 <tr>
@@ -971,13 +974,13 @@ billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
 <td> empty </td> 
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/evaluationrequestC22.json">
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
-<td>satisfied</td>
+<td>true, true, true</td>
                 <td>satisfied</td>
                 <td>not-satisfied</td>
                 <td>active</td>
                 <td>not-set</td>
                 <td>inactive</td>
-		<td>deny the action</td>
+		<td>not-permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/compliancereport.C22.json">report</a></td>
             </tr>
 <tr>
@@ -987,13 +990,13 @@ billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
 pay 5 euro to sony on 2025-07-23T00:00:00</a></td> 
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/evaluationrequestC23.json">
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
-	<td>satisfied</td>
+	<td>true, true, true</td>
                 <td>satisfied</td>
                 <td>satisfied</td>
                 <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		<td>permit the action</td>
+		<td>permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/compliancereport.C23.json">report</a></td>
             </tr>
         </table>            
