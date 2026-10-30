@@ -34,7 +34,7 @@
       "report:evaluatedAction": "http://www.w3.org/ns/odrl/2/distribute",
       "report:typeReport": true,
       "report:targetReport": true,
-      "report:partyReport": not-checked
+      "report:partyReport": "report:not-checked"
     },
     "report:controlState": "report:permitted"
   }
