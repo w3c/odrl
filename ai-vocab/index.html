@@ -689,14 +689,14 @@ This ODRL Profile addresses this gap by defining a set of actions  tailored to A
 		<h2>TDM Reservation Example</h2>
 
          <p>The TDM Reservation use case centres around the assigner "reserving" their "rights" for "data mining" actions over their asset(s), and to specify that such rights maybe available in consultation with the assigner/owner (in the future).</p>
-         <p>The asset (dataset8) maybe used for data-mining with a duty (obligation) to obtain such consent (from  the consentingParty) before the policy can be used (the constraint)."</p>
+         <p>The owner (assigner) makes an Offer for use of the asset (dataset8) specifically allowing data-mining with a duty (an obligation) to obtain prior consent (from  the consentingParty) before the policy can be used (the constraint)."</p>
 
   <div class="example">
 
    <pre id="eg3" class="hljs json" aria-busy="false" aria-live="polite">
 {
   "@context": "http://www.w3.org/ns/odrl.jsonld",
-  "@type": "odrl:Set",
+  "@type": "odrl:Offer",
   "profile": "https://w3c.github.io/odrl/ai-vocab/",
   "uid": "http://example.org/policy/008",
   "assigner": "urn:example:dataset-owner",
