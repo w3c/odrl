@@ -315,7 +315,8 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<ul>											
 						<li><code>conditionReport</code>: a <code>ConditionReport</code> for every condition (duty) of the Permission;</li>						
 						<li><code>controlState</code>: the result of the evaluation of the permission, it can be
-						<b>action a is permitted in state S</b> or <b>action a is not-permitted in state S</b>.</li>
+						<b>permitted</b> (action <code>a</code> is permitted in state <code>S</code>) or 
+						<b>not-permitted</b> (action <code>a</code> is not permitted in state <code>S</code>.</li>
 					</ul>
 				</li>
 
@@ -324,7 +325,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 				<ul>
 					<li><code>fulfillingAction</code>: the action <code>a2</code> in state <code>S</code> that fulfills the <code>Condition</code> (duty);</li>
 					<li><code>deonticState</code>: the result of the evaluation of the condition, it can be
-					<b>fullfilled by the action <code>a2</code> in state <code>S</code></b> or 
+					<b>fullfilled</b> (the condition is fulfilled by the action <code>a2</code> in state <code>S</code>) or 
 					<b>not-set</b>.</li>
 				</ul>
 			</li>
@@ -334,9 +335,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
 					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
 						to the <code>ruleAction</code>;</li>
-					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
-					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
-					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b> (initial value not-checked);</li>
+					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b>;</li>
+					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b>;</li>
+					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b>;</li>
 					<li><code>refinementReport</code>: a <code>constraintReport</code> for every refinement of the 
 					action specified in the <code>Rule</code>;</li>
 				</ul>
