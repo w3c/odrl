@@ -7,7 +7,7 @@
   "@type": "EvaluationRequest",
   "@id":  "http://example.com/policy/evaluationrequest/C23",
   "evaluatedAction": "odrl:play",
-  "evaluatedParty": "http://example.com/party/billie1",
+  "evaluatedParty": "http://example.com/party/billie",
   "evaluatedTarget": "http://example.com/music/1999.mp3",
   "requestParameters" : {
     "@type" : "RequestParameter",
