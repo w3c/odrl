@@ -18,7 +18,7 @@
              "leftOperand": "payAmount",
              "operator": "eq",
              "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-             "unit": "http://dbpedia.org/resource/Euro"
+             "unit": "https://dbpedia.org/resource/Euro"
           }]
         }]
     }]
