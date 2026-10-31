@@ -271,7 +271,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 			action <code>a</code> is called the fulfilling action of the Obligation.</li>
 			</ol>
 
-			<p></p><i>Pending to be written</i>: the result of evaluating an ODRL policy policy which may contain one or more rules 
+			<p></p><i>Pending to be written</i>: the result of evaluating an ODRL policy which may contain one or more rules 
 			(permissions, prohibitions, obligations) and a property “conflict” (with possible values perm, prohibit, invalid (default)). </p>
 
 			An Evaluation Report contains the following information:
@@ -305,7 +305,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>constraint</code>: a reference to the constraint that is evaluated;</li>
 					<li><code>action</code>: a reference to the action on which the constraint is evaluated;</li>
 					<li><code>satisfactionState</code>: the result of the evaluation of the constraint on the action, 
-						it can be <b>satisfied</b> or <b>unsatisfied</b>.</li>
+						it can be <b>satisfied</b> or <b>not-satisfied</b>.</li>
 				</ul>
 			</li>
 				
@@ -315,7 +315,8 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<ul>											
 						<li><code>conditionReport</code>: a <code>ConditionReport</code> for every condition (duty) of the Permission;</li>						
 						<li><code>controlState</code>: the result of the evaluation of the permission, it can be
-						<b>action a is permitted in state S</b> or <b>action a is not permitted in state S</b>.</li>
+						<b>permitted</b> (action <code>a</code> is permitted by the permission in state <code>S</code>) or 
+						<b>not-permitted</b> (action <code>a</code> is not permitted by the permission in state <code>S</code>).</li>
 					</ul>
 				</li>
 
@@ -324,7 +325,7 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 				<ul>
 					<li><code>fulfillingAction</code>: the action <code>a2</code> in state <code>S</code> that fulfills the <code>Condition</code> (duty);</li>
 					<li><code>deonticState</code>: the result of the evaluation of the condition, it can be
-					<b>fullfilled by the action <code>a2</code> in state <code>S</code></b> or 
+					<b>fullfilled</b> (the Condition is fulfilled by action <code>a2</code> in state <code>S</code>) or 
 					<b>not-set</b>.</li>
 				</ul>
 			</li>
@@ -334,9 +335,9 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					<li><code>ruleAction</code>: a reference to the action specification in the <code>Rule</code>;</li>
 					<li><code>evaluatedAction</code>: a reference to the action that has to be evaluated with respect 
 						to the <code>ruleAction</code>;</li>
-					<li><code>typeReport</code>: the result of the evaluation of the type, it can be true or false;</li>
-					<li><code>targetReport</code>: the result of the evaluation of the target, it can be true or false;</li>
-					<li><code>partyReport</code>: the result of the evaluation of the party, it can be true or false;</li>
+					<li><code>typeReport</code>: the result of the evaluation of the type, it can be <b>true</b> or <b>false</b>;</li>
+					<li><code>targetReport</code>: the result of the evaluation of the target, it can be <b>true</b> or <b>false</b>;</li>
+					<li><code>partyReport</code>: the result of the evaluation of the party, it can be <b>true</b> or <b>false</b>;</li>
 					<li><code>refinementReport</code>: a <code>constraintReport</code> for every refinement of the 
 					action specified in the <code>Rule</code>;</li>
 				</ul>
@@ -602,10 +603,8 @@ following conditions hold:</p>
             <b>Expected behaviour of the Evaluator</b>
         </p>    
         <p>
-       <!-- The ODRL Evaluator has to calculate first the activation state of the permission. 
-	The constraint must be evaluated on the state of the world, which must include a representation of the current time.
-        As long as the current time is before the first day of 2018, the Permission is active. When the first day of 2018 
-	is passed, the Permission is inactive. -->
+        The ODRL Evaluator computes if the action <code>a</code> represented in the Evaluation Request is permitted 
+			by the Permission in the given State of the World <code>S</code>.
         </p>
 	
         <table border="1" style="font-size:small;">
@@ -614,7 +613,7 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
                     <th style="color:darkblue">State of the World</th>
 		    <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
                     <th style="color:darkred">Satisfaction state of <br><code>constraint:A1</code></th>
                     <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -626,10 +625,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/evaluationrequestA11.json"<code>
 			party:1 distributes document:1234 on 2017-12-19T15:00:00</code></a></td>
-		    <td>satisfied</td>
-                    <td>satisfied</td>
-                    <td>active</td>
-		    <td>permit the action</td>
+		    <td>true, true, - </td>
+            <td>satisfied</td>
+            <td>active</td>
+		    <td>permitted</td>
      		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A11/compliancereport.A11.json">
 		    report</a></td>
             </tr>
@@ -639,10 +638,10 @@ following conditions hold:</p>
                     <td>empty</td>
 		    <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/evaluationrequestA12.json"<code>
 			party:1 distributes document:1234 on 2019-12-19T15:00:00</code></a></td>
-		     <td>satisfied</td>
-                    <td>not-satisfied</td>
-                    <td>inactive</td>	
-		    <td>deny the action</td>
+		     <td>true, true, - </td>
+            <td>not-satisfied</td>
+           <td>inactive</td>	
+		    <td>not-permitted</td>
              <td><a href="examples/A Evaluation of Constraints/A1 Example of a constrained permission/A12/compliancereportA12.json">
 		    report</a></td>
             </tr>
@@ -704,7 +703,7 @@ following conditions hold:</p>
             <th style="color:darkblue">Policy</th>
 			<th style="color:darkblue">State of the World</th>
             <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
             <th style="color:darkred">Satisfaction state of <br><code>refinement:B1</code></th>
             <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
@@ -716,10 +715,10 @@ following conditions hold:</p>
 			<td>empty</td>
             <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/evaluationrequestB11.json">
 			<code>print</code> of <code>document:1234</code> with <code>resolution</code> less than 1200 dpi</a></td>
-		    <td>satisfied</td>
+		    <td>true, true, - </td>
             <td>satisfied</td>
             <td>active</td>
-		    <td>permit the action</td>
+		    <td>permitted</td>
      		<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B11/compliancereportB11.json">
 		     report</a></td>
         </tr>
@@ -729,10 +728,10 @@ following conditions hold:</p>
 			<td>empty</td>
             <td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/evaluationrequestB12.json">
 			<code>print</code> of <code>document:1234</code> with <code>resolution</code> more than 1200 dpi</a></td>
-		    <td>satisfied</td>
+		    <td>true, true, - </td>
             <td>not-satisfied</td>
             <td>active</td>
-		    <td>deny the action</td>
+		    <td>not-permitted</td>
      		<td><a href="examples/B Evaluation of Refinements/B1 Example of a permission with refinement/B12/compliancereportB12.json">report</a></td>
         </tr>
         </table>
@@ -804,7 +803,7 @@ following conditions hold:</p>
              "leftOperand": "payAmount",
              "operator": "eq",
              "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-             "unit": "http://dbpedia.org/resource/Euro"
+             "unit": "https://dbpedia.org/resource/Euro"
           }]
         }]
     }]
@@ -831,7 +830,7 @@ following conditions hold:</p>
        
         <p>
         If the action to be evaluated belongs to the class of actions regulated by the Permission and the Permission is active, 
-	then the action is permitted, otherwise it is denied.
+	then the action is permitted, otherwise it is not permitted.
         </p>
 
 <table border="1" style="font-size:small;">
@@ -839,10 +838,12 @@ following conditions hold:</p>
                     <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
                     <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
-                    <th style="color:darkred"><br/>Activation state of <br><code>condition:1</code></th>
+	                    <th style="color:darkred"><br/>Activation state of <br><code>condition:1</code></th>
+	  <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a2</code></th>
+	 <th style="color:darkred">Satisfaction state of <code>refinement:1</code> by action <code>a2</code></th>
 		    <th style="color:darkred"><br/>Deontic state of <br><code>condition:1</code></th>
 		    <th style="color:darkred"><br/>Activation state of the <br><code>permission</code></th>
+	 <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
 		    <th style="color:darkred"><br/>Control state of the <br><code>permission</code> </code></th>
             	    <th style="color:darkred">Evaluation Report</th>
             </tr>
@@ -852,11 +853,13 @@ following conditions hold:</p>
                 <td> empty </td>
 		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/evaluationrequestC11.json">
 		party:billie plays music:1999.mp3 on 2025-07-25T00:00:00</a></td>
-		<td>satisfied</td>
 		<td>active</td>
-                <td>not-set</td>
-                <td>inactive</td>
-		<td>deny the action</td>   
+		<td>false, - , - </td>
+		<td>not-satisfied</td>		
+        <td>not-set</td>
+        <td>inactive</td>
+		<td>true, true, true</td>
+		<td>not-permitted</td>   
      		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C11/compliancereport.C11.json">report</a></td>
              </tr>
         <tr>
@@ -866,11 +869,13 @@ following conditions hold:</p>
 		pay 5 euro to sony on 2025-07-23T00:00:00</a></td>
 		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/evaluationrequestC12.json">
 		party:billie plays music:1999.mp3 on 2025-07-25T00:00:00</a></td>
-		<td>satisfied</td>
 		<td>active</td>
+		<td>true, true, true</td>
+		<td>satisfied</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		<td>permit the action</td>   
+		<td>true, true, true</td>
+		<td>permitted</td>   
      		<td><a href="examples/C Evaluation of Conditions (Duties)/C1 Conditioned Permission/C12/compliancereport.C12.json">report</a></td>
         </tr>
        </table>  
@@ -879,11 +884,14 @@ following conditions hold:</p>
 <big><b>C2 Example of a Conditioned Permission  whose Condition has Constraints</b></big>
 <p><b>Example description</b></p>
 
-<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has constraints, it is active on Sundays.</p>
+<p>The policy below contains a Permission constrained by a Condition (duty) and such Condition has a constraint, it is active on Sundays.</p>
 
 <pre>
 {
-"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "ex": "http://example.com/ns#" }
+],
 "@type": "Agreement",
 "uid": "http://example.com/policy/C2",
 "permission": [{
@@ -902,7 +910,7 @@ following conditions hold:</p>
                "leftOperand": "payAmount",
                "operator": "eq",
                "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-               "unit": "http://dbpedia.org/resource/Euro"
+               "unit": "https://dbpedia.org/resource/Euro"
            }]
         }],
         "constraint": [{
@@ -927,8 +935,8 @@ by the assignee of the permission, i.e. <code>party:billie</code>.</p>
 <p><code>condition:1</code> has to be evaluated first. Given that <code>condition:1</code> has constraints 
 it starts to be <b>inactive</b> and it becomes <b>active</b> when its Constraints are all satisfied, i.e. it is a Sunday 
 (for expressing this constraint an external vocabulary with the leftOperand <code>ex:dayOfWeek</code> is used). 
-An active Constraint is <b>fulfilled</b> when in the state of the world there is a representation 
-	of an performed action that matches with the class of actions described in the Constraint.</p>
+An active Condition is <b>fulfilled</b> when in the state of the world there is a representation 
+	of an performed action that matches with the class of actions described in the Condition.</p>
        
 <!-- <p>The permission can be evaluated as follows: <br>
 	If the Condition is inactive (its Constraint is not satisfied), the Permission is active. <br>
@@ -939,15 +947,18 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
         <table border="1" style="font-size:small;">
             <tr>
 		    <th>Case</th>
-                    <th style="color:darkblue">Policy</th>
+            <th style="color:darkblue">Policy</th>
 		    <th style="color:darkblue">State of the World</th>
-                    <th style="color:darkblue">Evaluation Request</th>
-		    <th style="color:darkred">Satisfaction of class, target, assignee</th>
-                    <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code></th>
-                <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code></th>
-                <th style="color:darkred">Activation state of<br><code>condition:1</code></th>
-                <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
-                <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
+            <th style="color:darkblue">Evaluation Request</th>
+            <th style="color:darkred">Satisfaction state of <br><code>constraint:1</code> by action <code>a</code></th>
+			<th style="color:darkred">Activation state of<br><code>condition:1</code></th>
+				
+			<th style="color:darkred">Satisfaction of class, target, assignee by action <code>a2</code></th>	
+            <th style="color:darkred">Satisfaction state of <br><code>refinement:1</code> by action <code>a2</code></th>
+            <th style="color:darkred">Deontic state of <br><code>condition:1</code></th>
+				
+            <th style="color:darkred"><br>Activation state of <br><code>permission</code></th>
+			  <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
 		<th style="color:darkred"><br>Control state of <br><code>permission</code></th>
             	<th style="color:darkred">Evaluation Report</th>
             </tr>
@@ -957,13 +968,14 @@ An active Constraint is <b>fulfilled</b> when in the state of the world there is
 <td> empty </td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/evaluationrequestC21.json">
 billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
-<td>satisfied</td>
 <td>not-satisfied</td>
-                <td>don't care</td>
-                <td>inactive</td>
-                <td>not-set</td>
-                <td>active</td>
-		<td>permit the action</td>
+<td>inactive</td>
+<td> - , - , - </td>				
+<td> - </td>
+<td>not-set</td>
+<td>active</td>
+<td>true, true, true,</td>
+<td>permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C21/compliancereport.C21.json">report</a></td>
 </tr>
 <tr>
@@ -973,13 +985,15 @@ billie plays music:1999.mp3 on 2025-07-29T00:00:00</a> (it is Tuesday) </td>
 <td> empty </td> 
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/evaluationrequestC22.json">
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
-<td>satisfied</td>
                 <td>satisfied</td>
-                <td>not-satisfied</td>
-                <td>active</td>
+	  <td>active</td>
+<td>false, - , - </td>
+                <td> - </td>
+              
                 <td>not-set</td>
                 <td>inactive</td>
-		<td>deny the action</td>
+	<td>true, true, true</td>
+		<td>not-permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C22/compliancereport.C22.json">report</a></td>
             </tr>
 <tr>
@@ -989,13 +1003,14 @@ billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
 pay 5 euro to sony on 2025-07-23T00:00:00</a></td> 
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/evaluationrequestC23.json">
 billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
-	<td>satisfied</td>
                 <td>satisfied</td>
+	  <td>active</td>
+	<td>true, true, true</td>
                 <td>satisfied</td>
-                <td>active</td>
                 <td>fulfilled</td>
                 <td>active</td>
-		<td>permit the action</td>
+	<td>true, true, true</td>
+		<td>permitted</td>
 <td><a href="examples/C Evaluation of Conditions (Duties)/C2 Conditioned Permission whose Condition has Constraints/C23/compliancereport.C23.json">report</a></td>
             </tr>
         </table>            

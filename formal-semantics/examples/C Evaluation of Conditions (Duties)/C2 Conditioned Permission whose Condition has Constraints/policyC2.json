@@ -1,5 +1,8 @@
 {
-"@context": "http://www.w3.org/ns/odrl.jsonld",
+"@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "ex": "http://example.com/ns#" }
+],
 "@type": "Agreement",
 "uid": "http://example.com/policy/C2",
 "permission": [{
@@ -18,7 +21,7 @@
                "leftOperand": "payAmount",
                "operator": "eq",
                "rightOperand": { "@value": "5.00", "@type": "xsd:decimal" },
-               "unit": "http://dbpedia.org/resource/Euro"
+               "unit": { "@id": "https://dbpedia.org/resource/Euro" }
            }]
         }],
         "constraint": [{
@@ -29,4 +32,4 @@
 	}]
      }]
 }]
-}        
+}
