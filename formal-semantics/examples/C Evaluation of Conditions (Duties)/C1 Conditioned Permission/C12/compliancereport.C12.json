@@ -19,7 +19,7 @@
     "@id": "http://example.com/policy-report/C1/permission/C12",
     "@type": "report:PermissionReport",
     "report:rule": "http://example.com/rule/C1",
-    "report:activationState": "report:Active",
+    "report:activationState": "report:active",
     "report:actionReport": {
       "@id": "http://example.com/policy-report/C1/request-action/C12",
       "@type": "report:ActionReport",
@@ -33,7 +33,7 @@
       "@id": "http://example.com/policy-report/C1/condition/C12",
       "@type": "report:ConditionReport",
       "report:rule": "http://example.com/condition/1",
-      "report:activationState": "report:Active",
+      "report:activationState": "report:active",
       "report:actionReport": {
         "@id": "http://example.com/policy-report/C1/action/C12",
         "@type": "report:ActionReport",
@@ -47,12 +47,12 @@
           "@type": "report:ConstraintReport",
           "report:constraint": "http://example.com/refinement/1",
           "report:action": "http://example.com/policy/state/C12/context/A",
-          "report:satisfactionState": "report:Satisfied"
+          "report:satisfactionState": "report:satisfied"
         }
       },
       "report:fulfillingAction": "http://example.com/policy/state/C12/context/A",
-      "report:deonticState": "report:Fulfilled"
+      "report:deonticState": "report:fulfilled"
     },
-    "report:controlState": "report:Permitted"
+    "report:controlState": "report:permitted"
   }
 }
