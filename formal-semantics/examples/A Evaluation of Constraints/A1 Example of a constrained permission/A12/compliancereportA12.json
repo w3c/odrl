@@ -24,9 +24,9 @@
       "@type": "report:ConstraintReport",
       "report:constraint": "http://example.com/constraint/A1",
       "report:action": "http://www.w3.org/ns/odrl/2/distribute",
-      "report:satisfactionState": "report:Not-Satisfied"
+      "report:satisfactionState": "report:not-satisfied"
     },
-    "report:activationState": "report:Inactive",
+    "report:activationState": "report:inactive",
     "report:actionReport": {
       "@id": "http://example.com/policy-report/A1/request-action/A12",
       "@type": "report:ActionReport",
