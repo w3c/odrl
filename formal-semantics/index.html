@@ -1096,20 +1096,61 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
 			}]
 			}
         </pre>
-        <p>
-            <b>Expected behaviour of the Evaluator</b>
+       
+	 <p>
+        The ODRL Evaluator computes if the action <code>a</code> represented in the Evaluation Request is prohibited 
+			by the Prohibition in the given State of the World <code>S</code>.
         </p>
-        <p>
-            The prohibition has an activation state and a deontic state that have to be calculated. 
-        </p>
-        <p>
-            In this example, the Constraint must be evaluated on the state of the world. 
+	
+        <table border="1" style="font-size:small;">
+         <tr>
+            <th>Case</th>
+            <th style="color:darkblue">Policy</th>
+            <th style="color:darkblue">State of the World</th>
+		    <th style="color:darkblue">Evaluation Request</th>
+		    <th style="color:darkred">Satisfaction of class, target, assignee by action <code>a</code></th>
+            <th style="color:darkred">Satisfaction state of <br><code>constraint:A2</code></th>
+            <th style="color:darkred"><br/>Activation state of the <br><code>prohibition</code></th>
+		    <th style="color:darkred"><br/>Control state of the <br><code>prohibition</code></th>
+            <th style="color:darkred">Evaluation Report</th>
+         </tr>
+         <tr>
+            <td>A2-1</td>
+            <td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/policyA2.json">policy:A2</a></td>
+		    <td>empty</td> 
+			<td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/A21/evaluationrequestA21.json"<code>
+			assignee:55 <code>archives</code><code>photoAlbum:55</code>on 2024-12-28T15:00:00</code></a></td>
+		    <td>true, true, true </td>
+            <td>satisfied</td>
+            <td>active</td>
+		    <td>prohibited</td>
+     		<td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/A21/compliancereport.A21.json">
+		    report</a></td>
+         </tr>
+         <tr>
+            <td>A2-2</td>
+            <td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/policyA2.json">policy:A2</a></td>
+            <td>empty</td>
+		    <td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/A22/evaluationrequestA22.json"<code>
+			assignee:55 <code>archives</code><code>photoAlbum:55</code>on 2025-01-05T15:00:00</code></a></td>
+		    <td>true, true, true </td>
+            <td>not-satisfied</td>
+            <td>inactive</td>	
+		    <td>not-prohibited</td>
+            <td><a href="examples/A Evaluation of Constraints/A2 Example of a constrained prohibition/A22/evaluationrequestA22.json/compliancereportA12.json">
+		    report</a></td>
+            </tr>
+        </table>  
+	
+	<!-- REMOVED ON 12 Nov 2026
+	<p><b>Expected behaviour of the Evaluator</b></p>
+    <p>The prohibition has an activation state and a deontic state that have to be calculated.</p>
+    <p>In this example, the Constraint must be evaluated on the state of the world. 
 	As long as the current time is before the first day of 2025 the Prohibition is active. 
 	After that date the Prohibition is inactive. 
-	When the prohibition is active, a violation occurs if the prohibited action is performed.
-        </p>
-        <table border="1" style="font-size:small;">
-            <tr>
+	When the prohibition is active, a violation occurs if the prohibited action is performed.</p>
+    <table border="1" style="font-size:small;">
+     <tr>
                 <th>Example</th> 
                 <th style="color:darkblue">Policy</th>
                 <th style="color:darkblue">World</th>
@@ -1144,7 +1185,8 @@ A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-pro
                 <td>inactive</td>
                 <td>not-set</td>
             </tr>
-        </table>             
+        </table>  -->           
+
 </section>
 
 
