@@ -1021,7 +1021,34 @@ billie plays music:1999.mp3 on 2025-08-03T00:00:00</a> (it is Sunday) </td>
 
 <section id="sectionProhibitions">		
 <h2>Semantics of Prohibitions</h2> 		
+<p>The ODRL Evaluator computes that the action <code>a</code> represented in the Evaluation Request 
+<b>is prohibited by a Prohibition</b> in the given State of the World <code>S</code> if and only if <b>all</b> the 
+following conditions hold:</p>
+	<ol>
+	    <li>The Prohibition is <b>active</b> on action <code>a</code> in state <code>S</code>; </li>	
+    	<li>Action <code>a</code> belongs to the prohibited class of actions;</li>
+		<li>The target of action <code>a</code> is equal to the target of the Permission or it is contained in the 
+				collection of objects specified as target of the Prohibition;</li>
+		<li>When the assignee of the Prohibition is specified, the party of action <code>a</code> is equal to the 
+			assignee of the Prohibition or it is contained in the collection of parties specified as 
+			assignee of the Prohibition; </li>
+		<li>All the refinements (when they are specified) related to the regulated action, to the regulated target, 
+			and to the regulated assignee are satisfied by the action <code>a</code>. </li>
+</ol>
+</p>			
+		
+ <p>    The ODRL Evaluator computes that a Prohibition is <b>active</b> 
+		on some evaluated action <code>a</code> represented in the Evaluation Request 
+		and in some State of the World <code>S</code> if and only if the following condition holds:
+        </p>
+        <ol>
+            <li>All the existing Constraints of the Prohibition are satisfied by the evaluated action <code>a</code>;</li>      
+        </ol>
 
+
+<b>ODL VERSION TO BE DELETED</b><br>
+
+<p>
 In ODRL 2.2., a Rule that belongs to the <b>odrl:Prohibition</b> class is <b>active</b> (its action, with all refinements satisfied
 cannot be exercised) if all Constraints of the Rule are satisfied, otherwise it is <b>inactive</b>.<br> 
 
@@ -1036,6 +1063,9 @@ The ODRL Evaluator will calculate the <b>deontic state</b> of an <b>active</b> p
     </ul>
 A prohibition may include an <a href="https://www.w3.org/TR/odrl-model/#duty-prohib"><code>odrl:remedy</code></a> for its violation. <br><br>
 
+<b> END TO BE DELETED </b></p>
+
+	 
         <h4>Evaluation of a prohibition with constraints</h4>
         <p>
             <b>Example description</b>
