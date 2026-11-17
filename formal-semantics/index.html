@@ -375,7 +375,10 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
         </p>
         <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings: Obligation, Condition, Consequence or Remedy. Instances of the class <code>odrl:Constraint</code> may have the meaning of: Constraint or Refinement.
         </p>
-        <p>
+      
+		<!-- removed on 17 Nov 2026 decision of the CG because it is substituted by the Evaluation Report Section
+		
+		<p>
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
 		Constraint, State of the World, and Evaluation Request. 
@@ -405,6 +408,8 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
             which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
 	    The value of the satisfaction state of a Refinement is calculated according to the Evaluation Request.
+        </ul></p>
+		-->
            			
            <!-- <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
             which initially takes the values <b>not-performed</b> and 
@@ -414,13 +419,13 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
                     is actually performed at a given instant of time and its performance is represented 
                     in the state of the world.</li> -->
 	
-            </ul>
 
-<p> <!-- out of scope -->
+
+<!-- out of scope -->
 <!-- Nicoletta: I agree that we REMOVE this part because the computation of the satisfaction of Constraints and 
 	Refinement has to be realized by the ODRL Evaluator.
-<!--		
-            The process for computing:
+
+	<!-- The process for computing:
 	<ul>
 		<li>the satisfaction state of Constraints with respect to the state of the world; </li>
 		<li>the satisfaction state of Refinement with respect the action and the state of the world;</li>
