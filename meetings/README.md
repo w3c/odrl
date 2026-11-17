@@ -15,7 +15,7 @@ Mon 7 December 2026 (RI)
 ## Past Meeting Notes
 
 #### 2026  
-[Mon 2 November 2026](2026/meeting-2026-11-02.md)
+[Mon 2 November 2026](2026/meeting-2026-11-02.md)  
 [Mon 5 October 2026](2026/meeting-2026-10-05.md)  
 [Mon 7 September 2026](2026/meeting-2026-09-07.md)     
 [Mon 6 July 2026](2026/meeting-2026-07-06.md)  
