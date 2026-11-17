@@ -364,17 +364,15 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
         </ul>
 
 	<p>Before providing the semantics of an ODRL Policy that may contain one or more Rules, 
-	we have to provide the semantics of the different types of ODRL Rules: Permission, Prohibition, and Obligation.</p>
+	we have to provide the semantics of the different types of ODRL Rules: <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.</p>
 
+<!-- <section id="sectionPermissionsProhibitionsObligations">	 <h3>General semantics of Rules</h3>	-->
+<!-- Relation with deontic logic -->
+<!-- The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances
+	of the classes <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>. -->
 
-    <section id="sectionPermissionsProhibitionsObligations">	
-        <h3>General semantics of Rules</h3>	
-        <p> <!-- Relation with deontic logic -->
-            The deontic modalities of permissions, prohibitions and obligations can be represented in ODRL as instances of the classes 
-            <code>odrl:Permission</code>, <code>odrl:Prohibition</code> and <code>odrl:Duty</code>.
-        </p>
-        <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings: Obligation, Condition, Consequence or Remedy. Instances of the class <code>odrl:Constraint</code> may have the meaning of: Constraint or Refinement.
-        </p>
+<!-- <p>Instances of the class <code>odrl:Duty</code> may have the following different meanings: Obligation, Condition, Consequence or Remedy. Instances of the 
+		class <code>odrl:Constraint</code> may have the meaning of: Constraint or Refinement. -->
       
 		<!-- removed on 17 Nov 2026 decision of the CG because it is substituted by the Evaluation Report Section
 		
@@ -382,11 +380,12 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
             The concepts (objects) to be understood by an ODRL Evaluator therefore include: Policy, Permission, 
 		Prohibition, Obligation, Condition (Duty), Consequence, Remedy, Refinement, 
 		Constraint, State of the World, and Evaluation Request. 
-            Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p>
-        <ul> <!-- attributes of the main objects -->
+            Here follows a list of properties (with their possible values) needed by the ODRL Evaluator:</p> -->
+		
+		<!--
+        <ul>
             <li>Permission, Prohibition, Obligation, and Condition (Duty) have a property called 
             <b>activation state</b>, which can take the values of <b>active</b> or <b>inactive</b>.</li>
-
             <li>Prohibition, Obligation, and Condition (Duty) have a property called <b>deontic state</b>, 
             which can take the values of <b>not-set</b>, or <b>violated</b>, or <b>fulfilled</b>.
             They can become violated or fulfilled only when they are active. <br>
@@ -394,21 +393,18 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 	    therefore when a prohibition is violated it is required
 	     to register the action that brings to the violation. <br>
 	    </li>
-
 	    <li>Permission has a property called <b>control state</b>, which can take the values of <b>permit</b> or 
 	    <b>deny</b> of a specific action.</li>
-
             <li>Constraint (connected to the Rule using the odrl:constraint property) has a property called
             <b>satisfaction state</b> which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
             A not-satisfied constraint may become satisfied and return to being not-satisfied.
             The value of the satisfaction state of a Constraint is calculated according to the <b>state of the world</b>.
             Constraints directly defined at policy level are not directly considered.</li>
-
             <li>Refinement (connected to an Action, to an AssetCollection, or to a PartyCollection using the 
             odrl:refinement property) has a property called <b>satisfaction state</b> 
             which can take the values of <b>satisfied</b> or <b>not-satisfied</b>. 
 	    The value of the satisfaction state of a Refinement is calculated according to the Evaluation Request.
-        </ul></p>
+        </ul>
 		-->
            			
            <!-- <li>Action (connected to the Rule with the odrl:action property) has a property called <b>performance state</b> 
