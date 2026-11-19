@@ -320,6 +320,17 @@ i.e., the <code>RequestParameter</code>. The following properties are available 
 					</ul>
 				</li>
 
+	<li><code>ProhibitionReport</code> is a subclass of <code>RuleReport</code>. 
+	The <code>ProhibitionReport</code> type is used when the <code>Rule</code> belongs to the type <code>Prohibition</code>.
+	The <code>ProhibitionReport</code> has the following properties:
+		<ul>											
+		<li><code>conditionReport</code>: a <code>ConditionReport</code> for every condition (duty) of the Permission;</li>						
+		<li><code>controlState</code>: the result of the evaluation of the Prohibition, it can be
+		<b><code>prohibited</code></b> (action <code>a</code> is prohibited by the Prohibition in state <code>S</code>) or 
+		<b><code>not-prohibited</code></b> (action <code>a</code> is not prohibited by the Prohibition in state <code>S</code>).</li>
+	    </ul>
+	</li>
+
 			<li>The <code>ConditionReport</code> is a subclass of <code>RuleReport</code>. 
 			The <code>ConditionReport</code> has the following properties:
 				<ul>
