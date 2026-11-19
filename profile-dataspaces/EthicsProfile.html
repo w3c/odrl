@@ -1,1 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Dialectical Ethical Profile for ODRL 1.0 (hegel-odrl)</title>
+  <!--
+    W3C Community Group Draft Report — Standalone HTML5 Specification
+    Modeled on W3C ODRL Profile conventions (e.g., https://www.w3.org/2021/md-odrl-profile/v1/).
+    Self-contained CSS mirrors W3C TR/2021/cg-draft styling so it renders identically offline and online.
+  -->
+  <style>
+    :root {
+      --w3c-blue: #005a9c;
+      --w3c-dark: #1f2933;
+      --w3c-muted: #52606d;
+      --w3c-border: #d0d7de;
+      --w3c-bg-soft: #f6f8fa;
+      --note-bg: #e9fbe9;
+      --note-border: #52e052;
+      --example-bg: #fcfaee;
+      --example-border: #e0cb52;
+      --issue-bg: #fbe9e9;
+      --issue-border: #e05252;
+      --creon-accent: #1a2534;
+      --antigone-accent: #008b82;
+    }
 
+    * { box-sizing: border-box; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.58;
+      color: var(--w3c-dark);
+      background: #ffffff;
+    }
+
+    /* W3C CG Draft Left Status Ribbon */
+    body::before {
+      content: "W3C Community Group Draft Report";
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 28px;
+      background: #2f5597;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: center;
+      line-height: 28px;
+      z-index: 100;
+    }
+
+    .page-wrapper {
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      margin-left: 28px;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Table of Contents */
+    nav#toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2rem 1.25rem;
+      background: #fafbfc;
+      border-right: 1px solid var(--w3c-border);
+      font-size: 0.86rem;
+    }
+
+    nav#toc h2 {
+      margin-top: 0;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--w3c-blue);
+      border-bottom: 1px solid var(--w3c-border);
+      padding-bottom: 0.5rem;
+    }
+
+    nav#toc ol {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.4rem 0;
+    }
+
+    nav#toc ol ol {
+      padding-left: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    nav#toc li {
+      margin: 0.3rem 0;
+    }
+
+    nav#toc a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    nav#toc a:hover {
+      color: var(--w3c-blue);
+      text-decoration: underline;
+    }
+
+    /* Main Content Column */
+    main {
+      max-width: 960px;
+      padding: 2.5rem 3.2rem 5rem 3.2rem;
+    }
+
+    /* W3C Header Block */
+    .head {
+      border-bottom: 2px solid var(--w3c-blue);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .w3c-badge {
+      display: inline-block;
+      background: var(--w3c-blue);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    h1.title {
+      margin: 0.2rem 0 0.4rem 0;
+      font-size: 2.05rem;
+      line-height: 1.2;
+      color: var(--w3c-blue);
+    }
+
+    p.subtitle {
+      margin: 0 0 0.9rem 0;
+      font-size: 1.15rem;
+      color: var(--w3c-muted);
+      font-weight: 500;
+    }
+
+    p.doc-status-line {
+      margin: 0 0 1.25rem 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--w3c-blue);
+    }
+
+    .head dl {
+      display: grid;
+      grid-template-columns: 185px 1fr;
+      row-gap: 0.35rem;
+      column-gap: 1rem;
+      font-size: 0.92rem;
+      margin: 1rem 0;
+    }
+
+    .head dt {
+      font-weight: 700;
+      color: var(--w3c-dark);
+    }
+
+    .head dd {
+      margin: 0;
+    }
+
+    .copyright {
+      font-size: 0.82rem;
+      color: var(--w3c-muted);
+      margin-top: 1.25rem;
+    }
+
+    /* Section Headings */
+    h2, h3, h4 {
+      color: var(--w3c-blue);
+      margin-top: 2.2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      border-bottom: 1px solid var(--w3c-border);
+      padding-bottom: 0.3rem;
+    }
+
+    h3 { font-size: 1.18rem; }
+    h4 { font-size: 1.02rem; color: var(--w3c-dark); }
+
+    .secno {
+      color: var(--w3c-muted);
+      margin-right: 0.45rem;
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--w3c-blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* RFC 2119 Keywords */
+    em.rfc2119 {
+      font-style: normal;
+      font-variant: small-caps;
+      font-weight: 700;
+      color: #8b0000;
+    }
+
+    /* Inline Code & Preformatted Blocks */
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      padding: 0.1rem 0.32rem;
+      border-radius: 3px;
+      color: #0f172a;
+    }
+
+    pre {
+      background: #f8fafc;
+      border: 1px solid var(--w3c-border);
+      border-left: 4px solid var(--w3c-blue);
+      padding: 1rem 1.15rem;
+      overflow-x: auto;
+      font-size: 0.83rem;
+      line-height: 1.48;
+      border-radius: 0 4px 4px 0;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    /* Callout Boxes (W3C Style) */
+    .note, .example, .issue {
+      margin: 1.25rem 0;
+      padding: 0.9rem 1.2rem;
+      border-left-width: 5px;
+      border-left-style: solid;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .note {
+      background: var(--note-bg);
+      border-left-color: var(--note-border);
+    }
+
+    .example {
+      background: var(--example-bg);
+      border-left-color: var(--example-border);
+    }
+
+    .issue {
+      background: var(--issue-bg);
+      border-left-color: var(--issue-border);
+    }
+
+    .box-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .note .box-title { color: #206020; }
+    .example .box-title { color: #7a6000; }
+    .issue .box-title { color: #8c1d18; }
+
+    /* Tables */
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0 1.6rem 0;
+      font-size: 0.88rem;
+    }
+
+    table.data th,
+    table.data td {
+      border: 1px solid var(--w3c-border);
+      padding: 0.55rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table.data thead th {
+      background: #eef4fa;
+      color: var(--w3c-dark);
+      font-weight: 700;
+    }
+
+    table.data tbody tr:nth-child(even) {
+      background: #fafcfd;
+    }
+
+    /* Badges for Creon / Antigone / Extension origin */
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.12rem 0.45rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .tag-creon { background: #dbeafe; color: #1e3a8a; }
+    .tag-antigone { background: #d1fae5; color: #065f46; }
+    .tag-synthesis { background: #ede9fe; color: #5b21b6; }
+    .tag-proposed { background: #fef3c7; color: #92400e; }
+
+    /* ODRL Term Definition Cards (W3C Vocab style) */
+    .term-def {
+      border: 1px solid var(--w3c-border);
+      border-top: 3px solid var(--w3c-blue);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      margin: 1rem 0;
+      background: #ffffff;
+    }
+
+    .term-def h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+      color: var(--w3c-blue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .term-def dl {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      row-gap: 0.3rem;
+      column-gap: 0.75rem;
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    .term-def dt { font-weight: 700; color: var(--w3c-muted); }
+    .term-def dd { margin: 0; }
+
+    /* Figure / Diagram Box */
+    figure {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border: 1px solid var(--w3c-border);
+      background: #ffffff;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    figure svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.86rem;
+      color: var(--w3c-muted);
+      font-style: italic;
+    }
+
+    /* References List */
+    dl.bibliography {
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      row-gap: 0.65rem;
+      column-gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    dl.bibliography dt {
+      font-weight: 700;
+      color: var(--w3c-dark);
+    }
+
+    dl.bibliography dd {
+      margin: 0;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 960px) {
+      .page-wrapper {
+        grid-template-columns: 1fr;
+      }
+      nav#toc {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--w3c-border);
+      }
+      main {
+        padding: 1.75rem 1.4rem 3rem 1.4rem;
+      }
+      .head dl, .term-def dl, dl.bibliography {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body::before, nav#toc { display: none; }
+      .page-wrapper { display: block; margin-left: 0; }
+      main { max-width: 100%; padding: 0; }
+      .term-def, figure, pre { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- ==================== TABLE OF CONTENTS ==================== -->
+    <nav id="toc" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#sotd">Status of This Document</a></li>
+        <li><a href="#introduction"><span class="secno">1.</span>Introduction</a>
+          <ol>
+            <li><a href="#dialectical-foundation"><span class="secno">1.1</span>Philosophical &amp; Architectural Foundation</a></li>
+            <li><a href="#progressive-expressivity"><span class="secno">1.2</span>Progressive Expressivity vs. Immediate Enforcement</a></li>
+          </ol>
+        </li>
+        <li><a href="#conformance"><span class="secno">2.</span>Conformance &amp; Namespaces</a>
+          <ol>
+            <li><a href="#namespaces"><span class="secno">2.1</span>Profile Identifiers &amp; Namespaces</a></li>
+          </ol>
+        </li>
+        <li><a href="#hegel-model"><span class="secno">3.</span>Information Model Extensions (<code>hegel:</code>)</a>
+          <ol>
+            <li><a href="#ethical-commitment"><span class="secno">3.1</span>The <code>hegel:EthicalCommitment</code> Class</a></li>
+            <li><a href="#hegel-properties"><span class="secno">3.2</span>Dialectical Properties &amp; Oracle Operands</a></li>
+            <li><a href="#pdp-state-machine"><span class="secno">3.3</span>Asynchronous PDP State Machine</a></li>
+            <li><a href="#synthesis-loop"><span class="secno">3.4</span>The <em>Aufhebung</em> Enforcement Loop</a></li>
+          </ol>
+        </li>
+        <li><a href="#eth-vocabulary"><span class="secno">4.</span>Substantive Ethics Vocabulary (<code>eth:</code>)</a>
+          <ol>
+            <li><a href="#eth-actions"><span class="secno">4.1</span>Actions (<code>odrl:Action</code>)</a></li>
+            <li><a href="#eth-data-operands"><span class="secno">4.2</span>Data Ethics Left Operands</a></li>
+            <li><a href="#eth-platform-operands"><span class="secno">4.3</span>Platform Ethics Left Operands</a></li>
+            <li><a href="#eth-algorithm-operands"><span class="secno">4.4</span>Algorithmic Ethics &amp; Remediation Left Operands</a></li>
+            <li><a href="#eth-right-operands"><span class="secno">4.5</span>Controlled Right Operands &amp; Values</a></li>
+          </ol>
+        </li>
+        <li><a href="#attestation-provenance"><span class="secno">5.</span>Cryptographic Attestation, Provenance &amp; Revocation</a>
+          <ol>
+            <li><a href="#vc-adherence"><span class="secno">5.1</span>Ex-Ante Adhesion (<code>EthicalAdherenceCredential</code>)</a></li>
+            <li><a href="#prov-telemetry"><span class="secno">5.2</span>In-Itinere Lineage (W3C PROV-O) &amp; Leases</a></li>
+            <li><a href="#vc-inspection"><span class="secno">5.3</span>Ex-Post Oracle Verdict &amp; Bitstring Revocation</a></li>
+          </ol>
+        </li>
+        <li><a href="#examples"><span class="secno">6.</span>Normative Profile Examples</a>
+          <ol>
+            <li><a href="#example-antipattern"><span class="secno">6.1</span>Anti-Pattern: Naive Synchronous Policy</a></li>
+            <li><a href="#example-dialectical"><span class="secno">6.2</span>Complete Dialectical Agreement (JSON-LD)</a></li>
+          </ol>
+        </li>
+        <li><a href="#security-privacy"><span class="secno">7.</span>Security, Privacy &amp; Governance Considerations</a></li>
+        <li><a href="#appendix-turtle"><span class="secno">A.</span>Machine-Readable Vocabulary (RDF/Turtle)</a></li>
+        <li><a href="#appendix-deontic"><span class="secno">B.</span>Formal Deontic Positioning (Informative)</a></li>
+        <li><a href="#references"><span class="secno">C.</span>References</a></li>
+      </ol>
+    </nav>
+
+    <!-- ==================== MAIN DOCUMENT ==================== -->
+    <main>
+      <header class="head">
+        <div class="w3c-badge">W3C Community Group</div>
+        <h1 class="title">Dialectical Ethical Profile for ODRL 1.0 (<code>hegel-odrl</code>)</h1>
+        <p class="subtitle">Beyond Enforcement: Expressing and Governing Substantive AI &amp; Data Ethics in Federated Data Spaces</p>
+        <p class="doc-status-line">Draft Community Group Report — 19 November 2026</p>
+
+        <dl>
+          <dt>This version:</dt>
+          <dd><a href="https://w3id.org/hegel-odrl/profile/v1/20261119">https://w3id.org/hegel-odrl/profile/v1/20261119</a></dd>
+
+          <dt>Latest published version:</dt>
+          <dd><a href="https://w3id.org/hegel-odrl/profile/v1/">https://w3id.org/hegel-odrl/profile/v1/</a></dd>
+
+          <dt>Profile Identifier (URI):</dt>
+          <dd><code>https://w3id.org/hegel-odrl/profile/v1/</code></dd>
+
+          <dt>Editor:</dt>
+          <dd>Joaquín Salvachúa Rodríguez (<a href="https://www.upm.es/">Universidad Politécnica de Madrid — UPM</a>, IPTC / Applied Ethics Group, Gaia-X Hub España)</dd>
+
+          <dt>Community Group:</dt>
+          <dd><a href="https://www.w3.org/community/odrl/">W3C ODRL Community Group</a> (in liaison with Gaia-X Hub España &amp; UNE 0087:2025)</dd>
+
+          <dt>License:</dt>
+          <dd><a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a></dd>
+        </dl>
+
+        <p class="copyright">
+          Copyright &copy; 2026 the Contributors to the Dialectical Ethical Profile for ODRL Specification, published by the W3C ODRL Community Group under the W3C Community Contributor License Agreement (CLA). A human-readable summary is available.
+        </p>
+      </header>
+
+      <!-- ==================== ABSTRACT ==================== -->
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          This specification defines the <strong>Dialectical Ethical Profile for ODRL 1.0 (<code>hegel-odrl</code>)</strong>, an extension profile of the W3C Open Digital Rights Language (ODRL) 2.2 Information Model and Vocabulary [<a href="#ref-odrl-model">ODRL-MODEL</a>] [<a href="#ref-odrl-vocab">ODRL-VOCAB</a>]. Conventional access and usage control engines in federated data spaces rely on synchronous, deterministic Boolean evaluation at network gateways. While effective for operational rules such as geofencing, authentication, and quotas, this paradigm collapses when confronted with substantive AI and data ethics commitments—such as algorithmic fairness, explainability, human oversight, or carbon footprint limits—that cannot be verified in milliseconds during packet transit.
+        </p>
+        <p>
+          Drawing on G. W. F. Hegel's dialectical synthesis (<em>Aufhebung</em>) of the collision between positive law (<em>Creon / Nomos</em>) and substantive ethics (<em>Antigone / Ágraphoi Nómoi</em>), this profile decouples synchronous technical enforcement from asynchronous ethical governance. It introduces the <code>hegel:</code> namespace (defining <code>hegel:EthicalCommitment</code>, a six-state asynchronous Policy Decision Point machine, predictive inspection oracles, and Human-in-the-Loop deliberation) alongside the <code>eth:</code> substantive ethics vocabulary spanning Data, Platform, and Algorithmic dimensions. Enforcement is achieved through W3C Verifiable Credentials 2.0, W3C PROV-O forensic lineage, W3C Bitstring Status Lists for <em>O(1)</em> gateway revocation, and mathematically bounded Machine Unlearning.
+        </p>
+      </section>
+
+      <!-- ==================== STATUS OF THIS DOCUMENT ==================== -->
+      <section id="sotd">
+        <h2>Status of This Document</h2>
+        <p>
+          This specification was published as a Draft Community Group Report for standardization discussion within the <a href="https://www.w3.org/community/odrl/">W3C ODRL Community Group</a> and aligned with European federated data space initiatives (Gaia-X, DSSC, UNE 0087:2025). It is not a W3C Standard nor is it on the W3C Standards Track. Contributions, ontology reviews, and reference implementation feedback are invited.
+        </p>
+      </section>
+
+      <!-- ==================== 1. INTRODUCTION ==================== -->
+      <section id="introduction">
+        <h2><span class="secno">1.</span>Introduction</h2>
+        <p>
+          Federated data spaces enable voluntary, sovereign data sharing among public administrations, private enterprises, and citizens under shared legal, organizational, and technical rules [<a href="#ref-une0087">UNE-0087</a>]. In these architectures, ODRL 2.2 serves as the canonical specification language for expressing what is permitted, prohibited, or obligated over digital assets [<a href="#ref-odrl-model">ODRL-MODEL</a>].
+        </p>
+        <p>
+          Historically, policy engines (XACML and standard ODRL profiles) have operated under an implicit dogma of <strong>synchronous Boolean reductionism</strong>: every policy rule must evaluate to <code>true</code> or <code>false</code> within microseconds at a Policy Enforcement Point (PEP) using operators such as <code>eq</code>, <code>gt</code>, or <code>lteq</code>. When applied to modern AI pipelines, this dogma produces an <em>ethical collapse</em>: because a network gateway cannot deterministically verify in 5 milliseconds whether a downstream neural network will exhibit demographic bias or comply with a platform carbon-intensity ceiling, traditional implementations either blindly block legitimate data sharing or omit ethical clauses from machine-readable contracts altogether.
+        </p>
+
+        <section id="dialectical-foundation">
+          <h3><span class="secno">1.1</span>Philosophical &amp; Architectural Foundation</h3>
+          <p>
+            To resolve this structural impasse, this profile adopts the dialectical architecture derived from G. W. F. Hegel's analysis of Sophocles' <em>Antigone</em> in the <em>Phenomenology of Spirit</em> [<a href="#ref-hegel">HEGEL-PS</a>]:
+          </p>
+          <ul>
+            <li><strong>The Creon Layer (<em>Nomos</em> / Positive Law):</strong> Synchronous, deterministic, immediately enforceable rules (<code>odrl:Permission</code>, <code>odrl:Prohibition</code>, <code>odrl:Duty</code> with computable <code>odrl:Constraint</code>s) evaluated at the gateway PEP in &le; 5 ms. Guarantees operational certainty, identity verification, geofencing, and quotas.</li>
+            <li><strong>The Antigone Layer (<em>Ágraphoi Nómoi</em> / Substantive Ethics):</strong> Qualitative, contextual, and emergent obligations encapsulated in <code>hegel:EthicalCommitment</code>. Evaluated asynchronously by inspection oracles (<code>hegel:inspectionSource</code>) and deliberative bodies (<code>hegel:deliberationTarget</code>) through cryptographic adhesion, continuous provenance telemetry, and ex-post forensic audits.</li>
+            <li><strong>The Dialectical Synthesis (<em>Aufhebung</em>):</strong> Preserves the ultra-low latency of the Creon gateway while elevating Antigone's ethical principles into binding, auditable, and ultimately coercible artifacts across the data lifecycle.</li>
+          </ul>
+        </section>
+
+        <section id="progressive-expressivity">
+          <h3><span class="secno">1.2</span>Progressive Expressivity vs. Immediate Enforcement</h3>
+          <div class="note">
+            <span class="box-title">Design Principle: Expressivity Before Enforcement</span>
+            Not all ethical commitments expressed using this profile are immediately enforceable via automated runtime verification today. Formalizing ethical requirements inside ODRL contracts is a prerequisite for accountability: consumers consciously review and cryptographically sign these commitments upon contract acceptance, establishing legal traceability and enabling progressive automation as hardware enclaves (TEEs), statistical oracles, and verifiable unlearning mature. <em>If an ethical requirement is never expressed in the policy, it can never become verifiable.</em>
+          </div>
+        </section>
+      </section>
+
+      <!-- ==================== 2. CONFORMANCE & NAMESPACES ==================== -->
+      <section id="conformance">
+        <h2><span class="secno">2.</span>Conformance &amp; Namespaces</h2>
+        <p>
+          As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
+        </p>
+        <p>
+          The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, <em class="rfc2119">OPTIONAL</em>, <em class="rfc2119">RECOMMENDED</em>, <em class="rfc2119">REQUIRED</em>, <em class="rfc2119">SHALL</em>, and <em class="rfc2119">SHOULD</em> in this document are to be interpreted as described in BCP 14 [<a href="#ref-rfc2119">RFC2119</a>] [<a href="#ref-rfc8174">RFC8174</a>] when, and only when, they appear in all capitals, as shown here.
+        </p>
+        <p>
+          A conforming Dialectical ODRL Policy <em class="rfc2119">MUST</em> conform to the ODRL Information Model 2.2 [<a href="#ref-odrl-model">ODRL-MODEL</a>] and ODRL Profile Best Practices [<a href="#ref-odrl-bp">ODRL-BP</a>], <em class="rfc2119">MUST</em> declare the profile URI <code>https://w3id.org/hegel-odrl/profile/v1/</code> via the <code>odrl:profile</code> property, and <em class="rfc2119">MUST NOT</em> place non-deterministic substantive ethical predicates inside synchronous <code>odrl:Permission</code> constraints unless an external certified attestation oracle is explicitly bound.
+        </p>
+
+        <section id="namespaces">
+          <h3><span class="secno">2.1</span>Profile Identifiers &amp; Namespaces</h3>
+          <p>The following namespace prefixes and URIs are used normatively throughout this specification:</p>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Prefix</th>
+                <th>Namespace URI</th>
+                <th>Description / Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>odrl</code></td>
+                <td><code>http://www.w3.org/ns/odrl/2/</code></td>
+                <td>W3C ODRL 2.2 Core Information Model &amp; Vocabulary [<a href="#ref-odrl-vocab">ODRL-VOCAB</a>]</td>
+              </tr>
+              <tr>
+                <td><code>hegel</code></td>
+                <td><code>https://w3id.org/hegel-odrl/ns/hegel/</code></td>
+                <td>Dialectical core machinery: asynchronous rules, PDP state machine, oracles, and remedies</td>
+              </tr>
+              <tr>
+                <td><code>eth</code></td>
+                <td><code>https://w3id.org/hegel-odrl/ns/ethics/</code></td>
+                <td>Substantive ethics taxonomy across Data, Platform, and Algorithmic dimensions</td>
+              </tr>
+              <tr>
+                <td><code>prov</code></td>
+                <td><code>http://www.w3.org/ns/prov#</code></td>
+                <td>W3C PROV Ontology for causal forensic lineage telemetry [<a href="#ref-prov-o">PROV-O</a>]</td>
+              </tr>
+              <tr>
+                <td><code>vc</code></td>
+                <td><code>https://www.w3.org/ns/credentials/v2</code></td>
+                <td>W3C Verifiable Credentials Data Model 2.0 &amp; Bitstring Status List [<a href="#ref-vc-2">VC-DATA-MODEL-2.0</a>]</td>
+              </tr>
+              <tr>
+                <td><code>dpv</code></td>
+                <td><code>https://w3id.org/dpv#</code></td>
+                <td>W3C Data Privacy Vocabulary for legal basis &amp; purpose alignment [<a href="#ref-dpv">DPV</a>]</td>
+              </tr>
+              <tr>
+                <td><code>qudt</code></td>
+                <td><code>http://qudt.org/vocab/unit/</code></td>
+                <td>QUDT Quantities, Units, Dimensions and Data Types (e.g., <code>GM-PER-KILO-W-HR</code>)</td>
+              </tr>
+              <tr>
+                <td><code>xsd</code></td>
+                <td><code>http://www.w3.org/2001/XMLSchema#</code></td>
+                <td>XML Schema Datatypes</td>
+              </tr>
+              <tr>
+                <td><code>skos</code></td>
+                <td><code>http://www.w3.org/2004/02/skos/core#</code></td>
+                <td>Simple Knowledge Organization System</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- ==================== 3. INFORMATION MODEL EXTENSIONS (HEGEL:) ==================== -->
+      <section id="hegel-model">
+        <h2><span class="secno">3.</span>Information Model Extensions (<code>hegel:</code>)</h2>
+        <p>
+          In accordance with Section 2.7 of the ODRL Information Model 2.2 (Profile Mechanism) [<a href="#ref-odrl-model">ODRL-MODEL</a>], this profile introduces a new subclass of <code>odrl:Rule</code> to isolate qualitative ethical commitments from synchronous operational rules without breaking backwards compatibility with standard ODRL parsers.
+        </p>
+
+        <section id="ethical-commitment">
+          <h3><span class="secno">3.1</span>The <code>hegel:EthicalCommitment</code> Class</h3>
+          <div class="term-def" id="term-EthicalCommitment">
+            <h4>
+              <code>hegel:EthicalCommitment</code>
+              <span class="tag tag-antigone">Antigone Layer</span>
+            </h4>
+            <dl>
+              <dt>Identifier (URI):</dt>
+              <dd><code>https://w3id.org/hegel-odrl/ns/hegel/EthicalCommitment</code></dd>
+              <dt>Type:</dt>
+              <dd><code>owl:Class</code>, <code>rdfs:Class</code></dd>
+              <dt>SubClass Of:</dt>
+              <dd><code>odrl:Rule</code></dd>
+              <dt>Definition:</dt>
+              <dd>A normative rule binding an <code>odrl:assignee</code> to substantive ethical obligations or abstentions over a target asset (or artifacts derived therefrom) that cannot be deterministically evaluated during synchronous network transit.</dd>
+              <dt>Normative Behavior:</dt>
+              <dd>A Policy containing one or more <code>hegel:EthicalCommitment</code> rules <em class="rfc2119">MUST NOT</em> grant <code>hegel:PERMIT_UNCONDITIONAL</code>. The PDP <em class="rfc2119">MUST</em> require ex-ante cryptographic attestation (<code>hegel:attestationCredential</code>) and transition execution into <code>hegel:AUDIT_PENDING</code> under telemetry supervision.</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section id="hegel-properties">
+          <h3><span class="secno">3.2</span>Dialectical Properties &amp; Oracle Operands</h3>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Term (<code>hegel:</code>)</th>
+                <th>OWL / ODRL Type</th>
+                <th>Domain &rarr; Range</th>
+                <th>Normative Semantics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>hegel:ethicalCommitment</code></td>
+                <td><code>owl:ObjectProperty</code><br>(subPropertyOf <code>odrl:rule</code>)</td>
+                <td><code>odrl:Policy</code> &rarr; <code>hegel:EthicalCommitment</code></td>
+                <td>Attaches one or more dialectical ethical commitment rules to an ODRL Offer, Agreement, or Set.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:inspectionSource</code></td>
+                <td><code>owl:ObjectProperty</code></td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>odrl:Party</code> / DID URI</td>
+                <td>Identifies the Decentralized Identifier (DID) or service URI of the asynchronous inspection oracle or AI forensic auditor responsible for deferred verification.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:deliberationTarget</code></td>
+                <td><code>owl:ObjectProperty</code></td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>hegel:DeliberativeBody</code></td>
+                <td>Designates the federated ethics committee or Human-in-the-Loop (HITL) arbitration authority invoked upon entering <code>hegel:SUSPENDED_DELIBERATION</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:attestationCredential</code></td>
+                <td><code>owl:ObjectProperty</code></td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>vc:VerifiableCredential</code></td>
+                <td>Links the commitment to the required ex-ante consumer adhesion credential type (<code>hegel:EthicalAdherenceCredential</code>) and its <code>BitstringStatusListEntry</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:forensicEvidence</code></td>
+                <td><code>owl:ObjectProperty</code></td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>prov:Collection</code> / <code>prov:Entity</code></td>
+                <td>Mandates continuous emission of causal execution lineage structured as W3C PROV-O graphs during <code>hegel:AUDIT_PENDING</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:remedyProtocol</code></td>
+                <td><code>owl:ObjectProperty</code><br>(subPropertyOf <code>odrl:consequence</code>)</td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>odrl:Duty</code></td>
+                <td>Defines coercive ex-post remediation duties (e.g., <code>eth:machineUnlearning</code>, <code>eth:revokeDerivedArtifacts</code>) triggered upon <code>hegel:REVOKED_ETHICAL_BREACH</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:cryptographicLease</code></td>
+                <td><code>owl:DatatypeProperty</code></td>
+                <td><code>hegel:EthicalCommitment</code> &rarr; <code>xsd:duration</code></td>
+                <td>Specifies the escrow/TEE lock duration holding derived artifacts prior to export until the inspection oracle emits a telemetry-processed heartbeat, mitigating exfiltration race conditions.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:pdpState</code></td>
+                <td><code>owl:ObjectProperty</code></td>
+                <td><code>odrl:Agreement</code> &rarr; <code>hegel:PDPState</code></td>
+                <td>Tracks the active lifecycle state of an instantiated policy within the asynchronous PDP state machine.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:predictiveRiskScore</code></td>
+                <td><code>odrl:LeftOperand</code></td>
+                <td>RightOperand: <code>xsd:decimal</code> ([0.0, 1.0])</td>
+                <td>Dynamic probability or composite risk threshold computed asynchronously by a predictive inspection oracle; exceeding the bound triggers <code>hegel:SUSPENDED_DELIBERATION</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:driftForecast</code></td>
+                <td><code>odrl:LeftOperand</code></td>
+                <td>RightOperand: <code>xsd:decimal</code></td>
+                <td>Maximum tolerated projected concept or demographic bias drift forecasted across training epochs or streaming windows.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="pdp-state-machine">
+          <h3><span class="secno">3.3</span>Asynchronous PDP State Machine (<code>hegel:PDPState</code>)</h3>
+          <p>
+            Conforming Policy Decision Points <em class="rfc2119">MUST</em> implement a six-state asynchronous finite-state automaton transcending binary <code>Permit</code>/<code>Deny</code> evaluation:
+          </p>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>State URI (<code>hegel:</code>)</th>
+                <th>Layer</th>
+                <th>Entry Guard Condition</th>
+                <th>Allowed Outbound Transitions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>hegel:DENY</code></td>
+                <td><span class="tag tag-creon">Creon</span></td>
+                <td>Violation of any synchronous deterministic constraint (<code>odrl:Prohibition</code>, expired quota, invalid token, revoked Bitstring bit <code>b<sub>i</sub> = 1</code>).</td>
+                <td><em>Terminal state</em> for current request.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:PERMIT_UNCONDITIONAL</code></td>
+                <td><span class="tag tag-creon">Creon</span></td>
+                <td>All synchronous Creon constraints satisfied AND zero <code>hegel:EthicalCommitment</code> rules present in the Agreement.</td>
+                <td>Standard data transfer completion.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:PROVISIONAL_PERMIT_ATTESTED</code></td>
+                <td><span class="tag tag-synthesis">Synthesis</span></td>
+                <td>Creon constraints satisfied, <code>hegel:EthicalCommitment</code> present, valid <code>EthicalAdherenceCredential</code> VP verified, and status bit <code>b<sub>i</sub> = 0</code>.</td>
+                <td><code>hegel:AUDIT_PENDING</code> (on execution start); <code>hegel:SUSPENDED_DELIBERATION</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:AUDIT_PENDING</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td>Active processing/training phase. Continuous W3C PROV-O telemetry streams to <code>hegel:inspectionSource</code>; derived weights held under <code>hegel:cryptographicLease</code> inside TEE.</td>
+                <td>Completed Audit (lease released); <code>hegel:SUSPENDED_DELIBERATION</code> (risk alert); <code>hegel:REVOKED_ETHICAL_BREACH</code> (confirmed breach).</td>
+              </tr>
+              <tr>
+                <td><code>hegel:SUSPENDED_DELIBERATION</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td>Normative conflict, ambiguity, or <code>hegel:predictiveRiskScore</code> breach. Access frozen; <code>hegel:DeliberationDossier</code> escalated to <code>hegel:deliberationTarget</code> (HITL).</td>
+                <td><code>hegel:PROVISIONAL_PERMIT_ATTESTED</code> (favorable arbitral VC); <code>hegel:DENY</code> (rejection); <code>hegel:REVOKED_ETHICAL_BREACH</code>.</td>
+              </tr>
+              <tr>
+                <td><code>hegel:REVOKED_ETHICAL_BREACH</code></td>
+                <td><span class="tag tag-synthesis">Synthesis</span></td>
+                <td>Empirical forensic proof in PROV-O (or arbitral ruling) confirming violation of ethical thresholds. Triggers Bitstring revocation (<code>b<sub>i</sub> = 1</code>) and <code>hegel:remedyProtocol</code>.</td>
+                <td><em>Terminal sanction</em> (mandatory <code>eth:machineUnlearning</code> &amp; artifact invalidation).</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="synthesis-loop">
+          <h3><span class="secno">3.4</span>The <em>Aufhebung</em> Enforcement Loop</h3>
+          <figure>
+            <svg viewBox="0 0 860 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dialectical ODRL Synthesis Architecture Loop">
+              <defs>
+                <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#005a9c" />
+                </marker>
+                <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#008b82" />
+                </marker>
+                <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#b91c1c" />
+                </marker>
+              </defs>
+
+              <!-- Background Bands -->
+              <rect x="10" y="12" width="840" height="125" rx="6" fill="#f0f6fc" stroke="#bfdbfe" stroke-width="1.2" />
+              <text x="24" y="32" font-size="11" font-weight="700" fill="#1e3a8a">CREON LAYER — SYNCHRONOUS DETERMINISTIC GATEWAY (&le; 5 ms)</text>
+
+              <rect x="10" y="152" width="840" height="166" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.2" />
+              <text x="24" y="172" font-size="11" font-weight="700" fill="#065f46">ANTIGONE LAYER — ASYNCHRONOUS ETHICAL GOVERNANCE &amp; FORENSIC AUDIT</text>
+
+              <!-- Creon Boxes -->
+              <rect x="30" y="50" width="165" height="68" rx="5" fill="#ffffff" stroke="#005a9c" stroke-width="1.8" />
+              <text x="112" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Data Consumer</text>
+              <text x="112" y="92" text-anchor="middle" font-size="10" fill="#475569">Presents DID + VC</text>
+              <text x="112" y="106" text-anchor="middle" font-size="9.5" fill="#005a9c">(Adherence Attestation)</text>
+
+              <rect x="255" y="50" width="215" height="68" rx="5" fill="#1a2534" stroke="#005a9c" stroke-width="1.8" />
+              <text x="362" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Gateway PEP (Creon)</text>
+              <text x="362" y="91" text-anchor="middle" font-size="10" fill="#cbd5e1">ODRL Constraints + O(1) Bitstring</text>
+              <text x="362" y="106" text-anchor="middle" font-size="9.5" fill="#38bdf8">DENY | PROVISIONAL_PERMIT</text>
+
+              <rect x="540" y="50" width="285" height="68" rx="5" fill="#ffffff" stroke="#005a9c" stroke-width="1.8" />
+              <text x="682" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Compute Enclave (TEE) — AUDIT_PENDING</text>
+              <text x="682" y="91" text-anchor="middle" font-size="10" fill="#475569">Model Training / Inference under Lease</text>
+              <text x="682" y="106" text-anchor="middle" font-size="9.5" fill="#008b82">Streams W3C PROV-O Lineage Telemetry</text>
+
+              <!-- Antigone Boxes -->
+              <rect x="540" y="195" width="285" height="96" rx="5" fill="#ffffff" stroke="#008b82" stroke-width="1.8" />
+              <text x="682" y="218" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">Asynchronous Inspection Oracle</text>
+              <text x="682" y="234" text-anchor="middle" font-size="10" fill="#334155">hegel:inspectionSource (AI / Statistical)</text>
+              <text x="682" y="251" text-anchor="middle" font-size="9.5" fill="#475569">Evaluates eth:fairnessMetric, carbonIntensity,</text>
+              <text x="682" y="265" text-anchor="middle" font-size="9.5" fill="#475569">humanOversight &amp; predictiveRiskScore</text>
+              <text x="682" y="281" text-anchor="middle" font-size="9.5" font-weight="700" fill="#008b82">Emits InspectionReportCredential (VC)</text>
+
+              <rect x="255" y="195" width="215" height="96" rx="5" fill="#ffffff" stroke="#b91c1c" stroke-width="1.6" />
+              <text x="362" y="218" text-anchor="middle" font-size="11.5" font-weight="700" fill="#991b1b">W3C BitstringStatusList</text>
+              <text x="362" y="235" text-anchor="middle" font-size="10" fill="#334155">Revocation Ledger (b&#7522; = 0 &rarr; 1)</text>
+              <text x="362" y="253" text-anchor="middle" font-size="9.5" fill="#7f1d1d">On REVOKED_ETHICAL_BREACH:</text>
+              <text x="362" y="268" text-anchor="middle" font-size="9.5" fill="#7f1d1d">Triggers eth:machineUnlearning (&epsilon;, &delta;)</text>
+              <text x="362" y="282" text-anchor="middle" font-size="9.5" fill="#7f1d1d">&amp; Downstream Artifact Invalidation</text>
+
+              <rect x="30" y="195" width="165" height="96" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="1.6" />
+              <text x="112" y="218" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">Federated Ethics Body</text>
+              <text x="112" y="235" text-anchor="middle" font-size="9.5" fill="#78350f">hegel:deliberationTarget</text>
+              <text x="112" y="253" text-anchor="middle" font-size="9.5" fill="#475569">SUSPENDED_DELIBERATION</text>
+              <text x="112" y="268" text-anchor="middle" font-size="9.5" fill="#475569">(Human-in-the-Loop)</text>
+              <text x="112" y="283" text-anchor="middle" font-size="9" font-weight="700" fill="#92400e">Issues Arbitral VC</text>
+
+              <!-- Arrows -->
+              <line x1="195" y1="84" x2="253" y2="84" stroke="#005a9c" stroke-width="2" marker-end="url(#arrow-blue)" />
+              <line x1="470" y1="84" x2="538" y2="84" stroke="#005a9c" stroke-width="2" marker-end="url(#arrow-blue)" />
+              <line x1="682" y1="118" x2="682" y2="193" stroke="#008b82" stroke-width="2" marker-end="url(#arrow-teal)" />
+              <line x1="540" y1="243" x2="472" y2="243" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrow-red)" />
+              <!-- O(1) Feedback from Bitstring to Creon PEP -->
+              <line x1="362" y1="195" x2="362" y2="120" stroke="#b91c1c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-red)" />
+              <text x="370" y="147" font-size="9.5" font-weight="700" fill="#991b1b">O(1) Read (&lt; 5 ms)</text>
+              <!-- Escalation arrow -->
+              <line x1="255" y1="243" x2="197" y2="243" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-blue)" />
+              <line x1="112" y1="195" x2="255" y2="108" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#arrow-blue)" />
+            </svg>
+            <figcaption>Figure 1: Dialectical Synthesis (Aufhebung) — Decoupled synchronous enforcement (Creon) and asynchronous forensic auditing with O(1) cryptographic revocation feedback (Antigone).</figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <!-- ==================== 4. SUBSTANTIVE ETHICS VOCABULARY (ETH:) ==================== -->
+      <section id="eth-vocabulary">
+        <h2><span class="secno">4.</span>Substantive Ethics Vocabulary (<code>eth:</code>)</h2>
+        <p>
+          The <code>eth:</code> namespace defines domain-specific actions, left operands, and controlled right operands covering the three primary ethical dimensions of federated data spaces (<strong>Data</strong>, <strong>Platform</strong>, and <strong>Algorithm</strong>) plus end-of-use and remediation controls. Terms marked <span class="tag tag-proposed">Extended Action</span> represent recommended lifecycle extensions added for full operational completeness beyond the core Gaia-X Hub España baseline.
+        </p>
+
+        <section id="eth-actions">
+          <h3><span class="secno">4.1</span>Actions (<code>odrl:Action</code>)</h3>
+          <p>All actions below are instances of <code>odrl:Action</code> and <code>skos:Concept</code>, refining core ODRL actions (such as <code>odrl:use</code>, <code>odrl:transform</code>, <code>odrl:inform</code>, or <code>odrl:delete</code>) via <code>odrl:includedIn</code>.</p>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Action URI</th>
+                <th><code>odrl:includedIn</code></th>
+                <th>Typical Rule Role</th>
+                <th>Definition &amp; Operational Semantics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>eth:trainModel</code></td>
+                <td><code>odrl:use</code></td>
+                <td>Permission / Prohibition</td>
+                <td>To execute machine learning training procedures that adjust model parameters using the target dataset.</td>
+              </tr>
+              <tr>
+                <td><code>eth:anonymize</code></td>
+                <td><code>odrl:anonymize</code></td>
+                <td>Duty (Pre-processing)</td>
+                <td>Obligation to apply mathematical obfuscation or privacy-preserving transformations (e.g., differential privacy, <em>k</em>-anonymity) prior to downstream processing.</td>
+              </tr>
+              <tr>
+                <td><code>eth:auditAlgorithm</code></td>
+                <td><code>odrl:reviewPolicy</code></td>
+                <td>Duty (In-itinere / Ex-post)</td>
+                <td>Obligation to submit a derived model, pipeline, or inference logs to independent heuristic, statistical, or human inspection via <code>hegel:inspectionSource</code>.</td>
+              </tr>
+              <tr>
+                <td><code>eth:machineUnlearning</code></td>
+                <td><code>odrl:delete</code></td>
+                <td>Remedy Duty (Consequence)</td>
+                <td>Coercive obligation to algorithmically purge the influence of targeted data distributions from a trained model's latent parameters, validated by an (&epsilon;, &delta;) Proof of Unlearning (PoU).</td>
+              </tr>
+              <tr>
+                <td><code>eth:fineTuneModel</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>eth:trainModel</code></td>
+                <td>Permission / Prohibition</td>
+                <td>To adapt weights of a pre-trained foundation model (e.g., LoRA, RLHF, supervised fine-tuning) using governed data space assets.</td>
+              </tr>
+              <tr>
+                <td><code>eth:runInference</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:use</code></td>
+                <td>Permission / Prohibition</td>
+                <td>To execute production predictions or generative outputs using a derived model, subject to ongoing fairness, explainability, and human-oversight commitments.</td>
+              </tr>
+              <tr>
+                <td><code>eth:attestAdherence</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:acceptTracking</code></td>
+                <td>Duty (Ex-ante)</td>
+                <td>Pre-execution duty requiring the assignee to cryptographically sign and present a <code>hegel:EthicalAdherenceCredential</code> bound to their DID prior to entering <code>PROVISIONAL_PERMIT_ATTESTED</code>.</td>
+              </tr>
+              <tr>
+                <td><code>eth:emitProvenance</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:inform</code></td>
+                <td>Duty (Continuous)</td>
+                <td>Continuous duty during <code>AUDIT_PENDING</code> to stream signed W3C PROV-O lineage records (<code>prov:Entity</code>, <code>prov:Activity</code>, <code>prov:Agent</code>) to the designated inspection oracle.</td>
+              </tr>
+              <tr>
+                <td><code>eth:verifyEnclave</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:ensureExclusivity</code></td>
+                <td>Duty (Ex-ante)</td>
+                <td>Duty to provide remote cryptographic hardware attestation proving computation executes exclusively inside a certified Trusted Execution Environment (TEE).</td>
+              </tr>
+              <tr>
+                <td><code>eth:quarantineArtifact</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:ensureExclusivity</code></td>
+                <td>Duty (Protective Lock)</td>
+                <td>Duty to retain derived artifacts (checkpoints, weights, embeddings) under a <code>hegel:cryptographicLease</code> blocking external export until the inspection oracle clears the audit cycle.</td>
+              </tr>
+              <tr>
+                <td><code>eth:escalateDeliberation</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:inform</code></td>
+                <td>Duty (Conflict Trigger)</td>
+                <td>Action suspending execution and transmitting a <code>hegel:DeliberationDossier</code> to the federated ethics committee (<code>hegel:deliberationTarget</code>) upon normative collision or elevated predictive risk.</td>
+              </tr>
+              <tr>
+                <td><code>eth:evaluateFairness</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>eth:auditAlgorithm</code></td>
+                <td>Duty (Metric Evaluation)</td>
+                <td>Duty to compute and report standardized algorithmic fairness metrics (e.g., disparate impact ratio, demographic parity difference) across protected demographic subgroups.</td>
+              </tr>
+              <tr>
+                <td><code>eth:publishModelCard</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:attribute</code></td>
+                <td>Duty (Transparency)</td>
+                <td>Duty to publish structured metadata (Model Card / Datasheet) detailing training provenance, intended purpose, known limitations, and ethical compliance attestations.</td>
+              </tr>
+              <tr>
+                <td><code>eth:revokeDerivedArtifacts</code><br><span class="tag tag-proposed">Extended Action</span></td>
+                <td><code>odrl:delete</code></td>
+                <td>Remedy Duty (Consequence)</td>
+                <td>Obligation to propagate causal invalidation across all downstream models, vector stores, and derivative datasets linked via <code>prov:wasDerivedFrom</code> upon <code>REVOKED_ETHICAL_BREACH</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="eth-data-operands">
+          <h3><span class="secno">4.2</span>Data Ethics Left Operands</h3>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>LeftOperand URI</th>
+                <th>Evaluation Layer</th>
+                <th>Expected RightOperand / Datatype</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>eth:anonymizationLevel</code></td>
+                <td><span class="tag tag-creon">Creon (VC)</span> / <span class="tag tag-antigone">Antigone</span></td>
+                <td>Concept URI (<code>eth:k-anonymity</code>, <code>eth:differentialPrivacy</code>, <code>eth:l-diversity</code>)</td>
+                <td>Specifies the minimum mathematical privacy guarantee required for dataset ingestion or release.</td>
+              </tr>
+              <tr>
+                <td><code>eth:biasMitigated</code></td>
+                <td><span class="tag tag-creon">Creon (VC)</span></td>
+                <td><code>xsd:boolean</code></td>
+                <td>Indicates whether the dataset has undergone a certified pre-processing bias mitigation procedure.</td>
+              </tr>
+              <tr>
+                <td><code>eth:consentOrigin</code></td>
+                <td><span class="tag tag-creon">Creon (VC)</span></td>
+                <td>Concept URI (<code>eth:explicitOptIn</code>, <code>eth:altruisticDonation</code>, <code>dpv:Consent</code>)</td>
+                <td>Defines the lawful provenance and ethical basis of data subject consent.</td>
+              </tr>
+              <tr>
+                <td><code>eth:dataLineageVerified</code><br><span class="tag tag-proposed">Extended</span></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td><code>xsd:boolean</code></td>
+                <td>Requires cryptographic verification of upstream W3C PROV-O chain of custody prior to model training.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="eth-platform-operands">
+          <h3><span class="secno">4.3</span>Platform Ethics Left Operands</h3>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>LeftOperand URI</th>
+                <th>Evaluation Layer</th>
+                <th>Expected RightOperand / Unit</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>eth:carbonIntensity</code></td>
+                <td><span class="tag tag-antigone">Antigone (Oracle)</span></td>
+                <td><code>xsd:decimal</code> with <code>odrl:unit</code> <code>qudt:GM-PER-KILO-W-HR</code></td>
+                <td>Maximum permitted carbon footprint intensity of the compute infrastructure executing data processing (e.g., &le; 50 gCO<sub>2</sub>/kWh).</td>
+              </tr>
+              <tr>
+                <td><code>eth:executionEnclave</code></td>
+                <td><span class="tag tag-creon">Creon (Attested)</span></td>
+                <td>Concept URI (<code>eth:TEE</code>, <code>eth:confidentialComputing</code>)</td>
+                <td>Mandates hardware-isolated confidential execution environments to prevent unauthorized inspection or premature weight exfiltration.</td>
+              </tr>
+              <tr>
+                <td><code>eth:platformSovereignty</code></td>
+                <td><span class="tag tag-creon">Creon</span></td>
+                <td>ISO 3166 URI / Jurisdiction code (e.g., <code>EU</code>, <code>ES</code>)</td>
+                <td>Restricts the legal and physical jurisdiction of the compute node and storage plane.</td>
+              </tr>
+              <tr>
+                <td><code>eth:openSourceEngine</code></td>
+                <td><span class="tag tag-creon">Creon (VC)</span></td>
+                <td><code>xsd:boolean</code></td>
+                <td>Mandates that underlying analytical databases, brokers, or processing engines use OSI-approved open-source licenses for auditability.</td>
+              </tr>
+              <tr>
+                <td><code>eth:renewableEnergyShare</code><br><span class="tag tag-proposed">Extended</span></td>
+                <td><span class="tag tag-antigone">Antigone (Oracle)</span></td>
+                <td><code>xsd:decimal</code> (0–100, unit <code>qudt:PERCENT</code>)</td>
+                <td>Minimum percentage of verified renewable energy powering the data center during workload execution.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="eth-algorithm-operands">
+          <h3><span class="secno">4.4</span>Algorithmic Ethics &amp; Remediation Left Operands</h3>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>LeftOperand URI</th>
+                <th>Evaluation Layer</th>
+                <th>Expected RightOperand / Datatype</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>eth:explainabilityLevel</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td>Concept URI (<code>eth:transparent</code>, <code>eth:postHocShapley</code>, <code>eth:counterfactual</code>)</td>
+                <td>Required degree of model interpretability and explanation fidelity provided to affected subjects or auditors.</td>
+              </tr>
+              <tr>
+                <td><code>eth:humanOversight</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td>Concept URI (<code>eth:humanInTheLoop</code>, <code>eth:humanOnTheLoop</code>, <code>eth:humanInCommand</code>)</td>
+                <td>Mandates human governance checkpoints (aligned with EU AI Act Article 14), verified via <code>prov:Agent</code> records in telemetry.</td>
+              </tr>
+              <tr>
+                <td><code>eth:fairnessMetric</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td>Concept URI (<code>eth:statisticalParity</code>, <code>eth:equalizedOdds</code>, <code>eth:calibration</code>)</td>
+                <td>Declares the required formal mathematical fairness criterion enforced during model evaluation.</td>
+              </tr>
+              <tr>
+                <td><code>eth:disparateImpactRatio</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td><code>xsd:decimal</code> (e.g., <code>gteq 0.80</code>)</td>
+                <td>Minimum acceptable ratio of favorable outcomes between unprivileged and privileged protected groups (four-fifths rule baseline).</td>
+              </tr>
+              <tr>
+                <td><code>eth:demographicParityDiff</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td><code>xsd:decimal</code> (e.g., <code>lteq 0.05</code>)</td>
+                <td>Maximum tolerated absolute difference in positive prediction rates across protected demographic classes.</td>
+              </tr>
+              <tr>
+                <td><code>eth:unlearningEpsilon</code></td>
+                <td><span class="tag tag-synthesis">Remedy</span></td>
+                <td><code>xsd:decimal</code> (&epsilon; &gt; 0)</td>
+                <td>Formal indistinguishability bound (&epsilon;) legally and mathematically required to validate a Proof of Machine Unlearning following <code>REVOKED_ETHICAL_BREACH</code>.</td>
+              </tr>
+              <tr>
+                <td><code>eth:unlearningDelta</code></td>
+                <td><span class="tag tag-synthesis">Remedy</span></td>
+                <td><code>xsd:decimal</code> (&delta; &ge; 0)</td>
+                <td>Permitted relaxation probability (&delta;) in approximate (&epsilon;, &delta;)-certified machine unlearning verification.</td>
+              </tr>
+              <tr>
+                <td><code>eth:dualUseProhibition</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td><code>xsd:boolean</code> or prohibited domain URI</td>
+                <td>Strict prohibition against repurposing data or derived weights for autonomous weaponry, mass biometric surveillance, or social scoring.</td>
+              </tr>
+              <tr>
+                <td><code>eth:socialImpactThreshold</code></td>
+                <td><span class="tag tag-antigone">Antigone</span></td>
+                <td><code>xsd:decimal</code></td>
+                <td>Maximum permitted negative externality index evaluated by an accredited ethical impact assessment oracle.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="eth-right-operands">
+          <h3><span class="secno">4.5</span>Controlled Right Operands &amp; Named Concepts</h3>
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Concept Scheme</th>
+                <th>Defined Named Individuals (<code>eth:</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Privacy / Anonymization</td>
+                <td><code>eth:k-anonymity</code>, <code>eth:l-diversity</code>, <code>eth:differentialPrivacy</code>, <code>eth:syntheticData</code></td>
+              </tr>
+              <tr>
+                <td>Consent Origin</td>
+                <td><code>eth:explicitOptIn</code>, <code>eth:altruisticDonation</code>, <code>eth:publicInterestMandate</code></td>
+              </tr>
+              <tr>
+                <td>Execution Enclave</td>
+                <td><code>eth:TEE</code>, <code>eth:confidentialComputing</code>, <code>eth:federatedSecureAggregation</code></td>
+              </tr>
+              <tr>
+                <td>Explainability</td>
+                <td><code>eth:transparent</code> (intrinsically interpretable), <code>eth:postHocShapley</code>, <code>eth:counterfactual</code></td>
+              </tr>
+              <tr>
+                <td>Human Oversight</td>
+                <td><code>eth:humanInTheLoop</code> (HITL), <code>eth:humanOnTheLoop</code> (HOTL), <code>eth:humanInCommand</code> (HIC)</td>
+              </tr>
+              <tr>
+                <td>Fairness Criteria</td>
+                <td><code>eth:statisticalParity</code>, <code>eth:equalizedOdds</code>, <code>eth:equalOpportunity</code>, <code>eth:calibration</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- ==================== 5. ATTESTATION, PROVENANCE & REVOCATION ==================== -->
+      <section id="attestation-provenance">
+        <h2><span class="secno">5.</span>Cryptographic Attestation, Provenance &amp; Revocation</h2>
+
+        <section id="vc-adherence">
+          <h3><span class="secno">5.1</span>Ex-Ante Adhesion (<code>hegel:EthicalAdherenceCredential</code>)</h3>
+          <p>
+            Before a PEP grants <code>hegel:PROVISIONAL_PERMIT_ATTESTED</code>, the consumer <em class="rfc2119">MUST</em> present a W3C Verifiable Presentation containing a signed <code>hegel:EthicalAdherenceCredential</code> [<a href="#ref-vc-2">VC-DATA-MODEL-2.0</a>]. This shifts the burden of proof onto an indisputable cryptographic commitment tied to the policy hash and the consumer's DID.
+          </p>
+          <div class="example">
+            <span class="box-title">Example 1: Ex-Ante Ethical Adherence Credential (W3C VC 2.0 JSON-LD)</span>
+<pre><code>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/hegel-odrl/ns/hegel/context.jsonld"
+  ],
+  "id": "urn:uuid:6c91a420-8b1e-4d1c-91f2-1182c09a4e10",
+  "type": ["VerifiableCredential", "hegel:EthicalAdherenceCredential"],
+  "issuer": "did:web:trust-anchor.gaia-x.es",
+  "validFrom": "2026-11-19T08:00:00Z",
+  "credentialSubject": {
+    "id": "did:web:consumer.mobility-ai.eu",
+    "hegel:boundPolicyUid": "urn:uuid:8b1b22f7-e7e2-45e3-9878-a2872bc97143",
+    "hegel:policyDigestSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hegel:acceptedCommitments": [
+      "eth:disparateImpactRatio >= 0.80",
+      "eth:carbonIntensity <= 50.0 gCO2/kWh",
+      "eth:humanOversight == eth:humanInTheLoop"
+    ],
+    "hegel:unlearningLiabilityAccepted": true
+  },
+  "credentialStatus": {
+    "id": "https://registry.dataspace.eu/status/ethical-list#4092",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "4092",
+    "statusListCredential": "https://registry.dataspace.eu/status/ethical-list"
+  }
+}</code></pre>
+          </div>
+        </section>
+
+        <section id="prov-telemetry">
+          <h3><span class="secno">5.2</span>In-Itinere Lineage (W3C PROV-O) &amp; Cryptographic Leases</h3>
+          <p>
+            During <code>hegel:AUDIT_PENDING</code>, the consumer's compute enclave <em class="rfc2119">MUST</em> execute <code>eth:emitProvenance</code>, streaming signed W3C PROV-O assertions mapping input datasets (<code>prov:Entity</code>), training/inference runs (<code>prov:Activity</code>), human sign-offs (<code>prov:Agent</code>), and derived weights (<code>prov:wasDerivedFrom</code>) [<a href="#ref-prov-o">PROV-O</a>].
+          </p>
+          <p>
+            To prevent race conditions where a non-compliant model is exfiltrated before asynchronous audit completion, policies handling high-risk AI assets <em class="rfc2119">SHOULD</em> pair <code>eth:executionEnclave</code> (<code>eth:TEE</code>) with <code>eth:quarantineArtifact</code> and a bounded <code>hegel:cryptographicLease</code>. Derived artifacts remain encrypted inside the enclave until the oracle emits a signed clearance heartbeat.
+          </p>
+        </section>
+
+        <section id="vc-inspection">
+          <h3><span class="secno">5.3</span>Ex-Post Oracle Verdict &amp; <em>O(1)</em> Bitstring Revocation</h3>
+          <p>
+            Upon concluding an inspection cycle (or detecting a threshold breach), the asynchronous oracle (<code>hegel:inspectionSource</code>) issues a <code>hegel:InspectionReportCredential</code>. If a substantive ethical breach is confirmed, the oracle flips the consumer's assigned bit in the W3C <code>BitstringStatusListEntry</code> from <code>0</code> to <code>1</code> [<a href="#ref-bitstring">VC-BITSTRING</a>]. On the next API request, the deterministic Creon PEP checks that single bit in <em>O(1)</em> time (&le; 5 ms) and immediately enforces <code>hegel:DENY</code> without performing heavy AI inspection in the network hot path.
+          </p>
+          <div class="example">
+            <span class="box-title">Example 2: Ex-Post Oracle Inspection Report Credential (JSON-LD)</span>
+<pre><code>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/hegel-odrl/ns/hegel/context.jsonld"
+  ],
+  "id": "urn:uuid:f44e8c91-093a-4c77-8a6b-3310291aa822",
+  "type": ["VerifiableCredential", "hegel:InspectionReportCredential"],
+  "issuer": "did:web:oracle.audit.dataspace.eu",
+  "validFrom": "2026-11-19T14:22:10Z",
+  "credentialSubject": {
+    "id": "did:web:consumer.mobility-ai.eu",
+    "hegel:auditedPolicyUid": "urn:uuid:8b1b22f7-e7e2-45e3-9878-a2872bc97143",
+    "hegel:provGraphDigest": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "hegel:measuredMetrics": {
+      "eth:disparateImpactRatio": 0.62,
+      "eth:carbonIntensity": 41.2,
+      "hegel:predictiveRiskScore": 0.89
+    },
+    "hegel:verdictState": "hegel:REVOKED_ETHICAL_BREACH",
+    "hegel:triggeredRemedy": "eth:machineUnlearning"
+  }
+}</code></pre>
+          </div>
+        </section>
+      </section>
+
+      <!-- ==================== 6. NORMATIVE PROFILE EXAMPLES ==================== -->
+      <section id="examples">
+        <h2><span class="secno">6.</span>Normative Profile Examples</h2>
+
+        <section id="example-antipattern">
+          <h3><span class="secno">6.1</span>Anti-Pattern: Naive Synchronous Ethical Policy (Non-Conforming)</h3>
+          <div class="issue">
+            <span class="box-title">Non-Conforming Pattern (Creon Collapse)</span>
+            Placing emergent ethical checks (<code>eth:carbonIntensity</code>, <code>eth:humanOversight</code>) directly inside a synchronous <code>odrl:Permission</code> constraint block forces a millisecond gateway PEP to evaluate non-deterministic downstream properties, causing silent failure or Indeterminate denial.
+          </div>
+<pre><code>{
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "eth": "https://w3id.org/hegel-odrl/ns/ethics/" }
+  ],
+  "@type": "Agreement",
+  "uid": "http://example.org/policy/naive-ethics-001",
+  "permission": [{
+    "target": "urn:asset:dataset:smart-city-mobility",
+    "action": "eth:trainModel",
+    "constraint": [
+      { "leftOperand": "eth:carbonIntensity", "operator": "lteq",
+        "rightOperand": { "@value": "50", "@type": "xsd:decimal" },
+        "unit": "http://qudt.org/vocab/unit/GM-PER-KILO-W-HR" },
+      { "leftOperand": "eth:humanOversight", "operator": "eq",
+        "rightOperand": "eth:humanInTheLoop" }
+    ]
+  }]
+}</code></pre>
+        </section>
+
+        <section id="example-dialectical">
+          <h3><span class="secno">6.2</span>Complete Dialectical Agreement (Conforming JSON-LD)</h3>
+          <p>
+            The conforming Agreement below cleanly separates synchronous Creon rules (EU jurisdiction, TEE enclave, ex-ante VC adhesion) from asynchronous Antigone commitments (fairness, carbon intensity, HITL oversight, PROV-O telemetry, cryptographic lease, and (&epsilon;, &delta;) Machine Unlearning remedies).
+          </p>
+          <div class="example">
+            <span class="box-title">Example 3: Conforming Dialectical ODRL Agreement (JSON-LD)</span>
+<pre><code>{
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    {
+      "hegel": "https://w3id.org/hegel-odrl/ns/hegel/",
+      "eth": "https://w3id.org/hegel-odrl/ns/ethics/",
+      "prov": "http://www.w3.org/ns/prov#",
+      "qudt": "http://qudt.org/vocab/unit/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ],
+  "@type": "Agreement",
+  "uid": "urn:uuid:8b1b22f7-e7e2-45e3-9878-a2872bc97143",
+  "profile": "https://w3id.org/hegel-odrl/profile/v1/",
+  "assigner": "did:web:provider.smartcity.eu",
+  "assignee": "did:web:consumer.mobility-ai.eu",
+
+  "permission": [
+    {
+      "target": "urn:asset:dataset:smart-city-mobility",
+      "action": "eth:trainModel",
+      "constraint": [
+        {
+          "leftOperand": "eth:platformSovereignty",
+          "operator": "eq",
+          "rightOperand": "https://www.iso.org/obp/ui/#iso:code:3166:EU"
+        },
+        {
+          "leftOperand": "eth:executionEnclave",
+          "operator": "eq",
+          "rightOperand": "eth:TEE"
+        },
+        {
+          "leftOperand": "eth:anonymizationLevel",
+          "operator": "eq",
+          "rightOperand": "eth:differentialPrivacy"
+        }
+      ],
+      "duty": [
+        { "action": "eth:attestAdherence" },
+        { "action": "eth:verifyEnclave" }
+      ]
+    }
+  ],
+
+  "prohibition": [
+    {
+      "target": "urn:asset:dataset:smart-city-mobility",
+      "action": "eth:runInference",
+      "constraint": [
+        {
+          "leftOperand": "eth:dualUseProhibition",
+          "operator": "eq",
+          "rightOperand": { "@value": "true", "@type": "xsd:boolean" }
+        }
+      ]
+    }
+  ],
+
+  "hegel:ethicalCommitment": [
+    {
+      "@type": "hegel:EthicalCommitment",
+      "target": "urn:asset:dataset:smart-city-mobility",
+      "hegel:inspectionSource": "did:web:oracle.audit.dataspace.eu",
+      "hegel:deliberationTarget": "did:web:ethics-committee.gaia-x.eu",
+      "hegel:forensicEvidence": "prov:Collection",
+      "hegel:cryptographicLease": { "@value": "PT24H", "@type": "xsd:duration" },
+      "constraint": [
+        {
+          "leftOperand": "eth:fairnessMetric",
+          "operator": "eq",
+          "rightOperand": "eth:statisticalParity"
+        },
+        {
+          "leftOperand": "eth:disparateImpactRatio",
+          "operator": "gteq",
+          "rightOperand": { "@value": "0.80", "@type": "xsd:decimal" }
+        },
+        {
+          "leftOperand": "eth:carbonIntensity",
+          "operator": "lteq",
+          "rightOperand": { "@value": "50.0", "@type": "xsd:decimal" },
+          "unit": "qudt:GM-PER-KILO-W-HR"
+        },
+        {
+          "leftOperand": "eth:humanOversight",
+          "operator": "eq",
+          "rightOperand": "eth:humanInTheLoop"
+        },
+        {
+          "leftOperand": "hegel:predictiveRiskScore",
+          "operator": "lteq",
+          "rightOperand": { "@value": "0.35", "@type": "xsd:decimal" }
+        }
+      ],
+      "duty": [
+        { "action": "eth:emitProvenance" },
+        { "action": "eth:quarantineArtifact", "target": "urn:asset:derived-model:traffic-pred" },
+        { "action": "eth:auditAlgorithm", "target": "urn:asset:derived-model:traffic-pred" },
+        { "action": "eth:publishModelCard", "target": "urn:asset:derived-model:traffic-pred" }
+      ],
+      "hegel:remedyProtocol": [
+        {
+          "action": "eth:machineUnlearning",
+          "target": "urn:asset:derived-model:traffic-pred",
+          "constraint": [
+            {
+              "leftOperand": "eth:unlearningEpsilon",
+              "operator": "lteq",
+              "rightOperand": { "@value": "0.1", "@type": "xsd:decimal" }
+            },
+            {
+              "leftOperand": "eth:unlearningDelta",
+              "operator": "lteq",
+              "rightOperand": { "@value": "1e-5", "@type": "xsd:decimal" }
+            }
+          ]
+        },
+        {
+          "action": "eth:revokeDerivedArtifacts",
+          "target": "urn:asset:derived-model:traffic-pred"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+          </div>
+        </section>
+      </section>
+
+      <!-- ==================== 7. SECURITY, PRIVACY & GOVERNANCE ==================== -->
+      <section id="security-privacy">
+        <h2><span class="secno">7.</span>Security, Privacy &amp; Governance Considerations</h2>
+        <ul>
+          <li><strong>Exfiltration Race Conditions:</strong> Asynchronous auditing introduces a time-of-check to time-of-use (TOCTOU) window between training completion and forensic verdict. Deployments processing high-impact assets <em class="rfc2119">SHOULD</em> enforce <code>eth:executionEnclave</code> (<code>eth:TEE</code>) combined with <code>eth:quarantineArtifact</code> and <code>hegel:cryptographicLease</code>.</li>
+          <li><strong>Telemetry I/O Overhead vs. Audit Granularity:</strong> Continuous PROV-O emission can degrade high-throughput streaming pipelines. Implementations <em class="rfc2119">SHOULD</em> batch PROV-O metadata at checkpoint boundaries using non-blocking channels (e.g., gRPC streams backed by columnar storage) while aligning batch intervals strictly inside the cryptographic lease window.</li>
+          <li><strong>Privacy-Preserving Auditing:</strong> Inspection oracles <em class="rfc2119">MUST</em> operate over aggregated statistical summaries, confusion matrices, hardware attestations, and PROV-O structural metadata rather than raw personal data, preserving data minimization under GDPR.</li>
+          <li><strong>Trust Anchor for Deliberation:</strong> Federated data spaces implementing <code>hegel:SUSPENDED_DELIBERATION</code> <em class="rfc2119">MUST</em> publish the institutional DID and multi-signature quorum rules of the <code>hegel:deliberationTarget</code> inside the federation's Trust Registry so arbitral VCs are cryptographically verifiable.</li>
+        </ul>
+      </section>
+
+      <!-- ==================== APPENDIX A: TURTLE ==================== -->
+      <section id="appendix-turtle">
+        <h2><span class="secno">A.</span>Machine-Readable Vocabulary Definition (RDF/Turtle)</h2>
+        <p>The following normative Turtle excerpt declares the core classes, properties, and actions for semantic validation and SKOS/OWL integration:</p>
+<pre><code>@prefix odrl:  &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix hegel: &lt;https://w3id.org/hegel-odrl/ns/hegel/&gt; .
+@prefix eth:   &lt;https://w3id.org/hegel-odrl/ns/ethics/&gt; .
+@prefix prov:  &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix owl:   &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix skos:  &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+
+&lt;https://w3id.org/hegel-odrl/profile/v1/&gt;
+  a owl:Ontology, skos:Collection ;
+  rdfs:label "Dialectical Ethical Profile for ODRL 1.0 (hegel-odrl)"@en ;
+  owl:versionInfo "1.0-draft" .
+
+# --- Core Dialectical Rule Class ---
+hegel:EthicalCommitment
+  a rdfs:Class, owl:Class, skos:Concept ;
+  rdfs:subClassOf odrl:Rule ;
+  rdfs:label "Ethical Commitment"@en ;
+  skos:definition "A normative rule binding an assignee to substantive ethical principles verified asynchronously via cryptographic attestation and forensic telemetry."@en .
+
+hegel:PDPState a rdfs:Class, owl:Class ;
+  rdfs:label "Asynchronous PDP State"@en .
+
+hegel:DENY                        a hegel:PDPState, skos:Concept .
+hegel:PERMIT_UNCONDITIONAL        a hegel:PDPState, skos:Concept .
+hegel:PROVISIONAL_PERMIT_ATTESTED a hegel:PDPState, skos:Concept .
+hegel:AUDIT_PENDING               a hegel:PDPState, skos:Concept .
+hegel:SUSPENDED_DELIBERATION      a hegel:PDPState, skos:Concept .
+hegel:REVOKED_ETHICAL_BREACH      a hegel:PDPState, skos:Concept .
+
+# --- Selected Actions ---
+eth:trainModel a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:use ;
+  rdfs:label "Train AI Model"@en .
+
+eth:fineTuneModel a odrl:Action, skos:Concept ;
+  odrl:includedIn eth:trainModel ;
+  rdfs:label "Fine-Tune Model"@en .
+
+eth:runInference a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:use ;
+  rdfs:label "Run Model Inference"@en .
+
+eth:auditAlgorithm a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:reviewPolicy ;
+  rdfs:label "Audit Algorithm"@en .
+
+eth:machineUnlearning a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:delete ;
+  rdfs:label "Machine Unlearning"@en .
+
+eth:emitProvenance a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:inform ;
+  rdfs:label "Emit PROV-O Provenance"@en .
+
+eth:quarantineArtifact a odrl:Action, skos:Concept ;
+  odrl:includedIn odrl:ensureExclusivity ;
+  rdfs:label "Quarantine Derived Artifact"@en .
+
+# --- Selected Left Operands ---
+eth:disparateImpactRatio a odrl:LeftOperand, skos:Concept ;
+  rdfs:label "Disparate Impact Ratio"@en .
+
+eth:carbonIntensity a odrl:LeftOperand, skos:Concept ;
+  rdfs:label "Platform Carbon Intensity"@en .
+
+eth:humanOversight a odrl:LeftOperand, skos:Concept ;
+  rdfs:label "Human Oversight Level"@en .
+
+eth:unlearningEpsilon a odrl:LeftOperand, skos:Concept ;
+  rdfs:label "Unlearning Indistinguishability Bound (Epsilon)"@en .
+
+eth:unlearningDelta a odrl:LeftOperand, skos:Concept ;
+  rdfs:label "Unlearning Failure Probability Bound (Delta)"@en .</code></pre>
+      </section>
+
+      <!-- ==================== APPENDIX B: DEONTIC POSITIONING ==================== -->
+      <section id="appendix-deontic">
+        <h2><span class="secno">B.</span>Formal Deontic Positioning (Informative)</h2>
+        <p>
+          Standard Deontic Logic (SDL / modal system <strong>KD</strong>) enforces consistency axiom <strong>D</strong> (<code>&not;(O(p) &and; O(&not;p))</code>), causing deductive explosion when faced with tragic collisions between positive law and substantive ethics, and failing on Contrary-to-Duty (CTD) obligations such as Chisholm's Paradox. Defeasible Deontic Logic (DDL) resolves static contradictions through pre-declared superiority relations (<code>r1 &gt; r2</code>) and reparative chains, but remains bound to discrete propositional rules decided at design time.
+        </p>
+        <p>
+          The <code>hegel-odrl</code> profile operationalizes a <strong>temporalized, process-oriented deontic architecture</strong>: unresolved normative collisions transition cleanly into <code>hegel:SUSPENDED_DELIBERATION</code> (avoiding arbitrary static override), while primary ethical violations detected asynchronously in <code>hegel:AUDIT_PENDING</code> deterministically enact CTD remedial duties (<code>hegel:remedyProtocol</code> &rarr; <code>eth:machineUnlearning</code>) backed by cryptographic revocation.
+        </p>
+      </section>
+
+      <!-- ==================== APPENDIX C: REFERENCES ==================== -->
+      <section id="references">
+        <h2><span class="secno">C.</span>References</h2>
+
+        <h3>Normative References</h3>
+        <dl class="bibliography">
+          <dt id="ref-odrl-model">[ODRL-MODEL]</dt>
+          <dd>R. Iannella, S. Villata (Eds.). <em>ODRL Information Model 2.2</em>. W3C Recommendation, 15 February 2018. <a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a></dd>
+
+          <dt id="ref-odrl-vocab">[ODRL-VOCAB]</dt>
+          <dd>R. Iannella, M. Steidl, S. Myles, V. Rodríguez-Doncel (Eds.). <em>ODRL Vocabulary &amp; Expression 2.2</em>. W3C Recommendation, 15 February 2018. <a href="https://www.w3.org/TR/odrl-vocab/">https://www.w3.org/TR/odrl-vocab/</a></dd>
+
+          <dt id="ref-odrl-bp">[ODRL-BP]</dt>
+          <dd>W3C ODRL Community Group. <em>ODRL Profile Best Practices</em>. Final Community Group Report, August 2024.</dd>
+
+          <dt id="ref-prov-o">[PROV-O]</dt>
+          <dd>T. Lebo, S. Sahoo, D. McGuinness (Eds.). <em>PROV-O: The PROV Ontology</em>. W3C Recommendation, 30 April 2013. <a href="https://www.w3.org/TR/prov-o/">https://www.w3.org/TR/prov-o/</a></dd>
+
+          <dt id="ref-vc-2">[VC-DATA-MODEL-2.0]</dt>
+          <dd>M. Sporny, T. Thibodeau, I. Herman, G. Cohen, M. B. Jones (Eds.). <em>Verifiable Credentials Data Model v2.0</em>. W3C Recommendation. <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a></dd>
+
+          <dt id="ref-bitstring">[VC-BITSTRING]</dt>
+          <dd>M. Sporny, D. Longley, O. Steele, M. Prorock, M. Sabadello (Eds.). <em>Bitstring Status List v1.0</em>. W3C Recommendation.</dd>
+
+          <dt id="ref-rfc2119">[RFC2119]</dt>
+          <dd>S. Bradner. <em>Key words for use in RFCs to Indicate Requirement Levels</em>. IETF BCP 14, RFC 2119, March 1997.</dd>
+
+          <dt id="ref-rfc8174">[RFC8174]</dt>
+          <dd>B. Leiba. <em>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</em>. IETF BCP 14, RFC 8174, May 2017.</dd>
+        </dl>
+
+        <h3>Informative References</h3>
+        <dl class="bibliography">
+          <dt id="ref-une0087">[UNE-0087]</dt>
+          <dd>UNE — Asociación Española de Normalización. <em>UNE 0087:2025 — Definición y caracterización de Espacios de Datos</em>. 2025.</dd>
+
+          <dt id="ref-dpv">[DPV]</dt>
+          <dd>H. J. Pandit et al. <em>Data Privacy Vocabulary (DPV)</em>. W3C Data Privacy Vocabularies and Controls Community Group.</dd>
+
+          <dt id="ref-hegel">[HEGEL-PS]</dt>
+          <dd>G. W. F. Hegel. <em>Phenomenology of Spirit</em> (Section VI.A: The Ethical World — Human and Divine Law). 1807.</dd>
+        </dl>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
