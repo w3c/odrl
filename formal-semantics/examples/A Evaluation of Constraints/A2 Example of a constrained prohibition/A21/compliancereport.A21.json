@@ -29,7 +29,7 @@
     "report:actionReport": {
       "@id": "http://example.com/policy-report/A1/request-action/A12",
       "@type": "report:ActionReport",
-      "report:ruleAction": "http://www.w3.org/ns/odrl/2/archive"",
+      "report:ruleAction": "http://www.w3.org/ns/odrl/2/archive",
       "report:evaluatedAction": "http://www.w3.org/ns/odrl/2/archive",
       "report:typeReport": true,
       "report:targetReport": true,
