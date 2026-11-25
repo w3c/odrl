@@ -12,7 +12,7 @@ PREFIX sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
 PREFIX vann: <http://purl.org/vocab/vann/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-PREFIX odrl-comm: <http://www.w3.org/ns/odrl/2/>
+PREFIX odrl-comm: <https://w3id.org/force/community#>
 
 # ------------------- Ontology Metadata ------------------------ #
 
@@ -20,44 +20,44 @@ odrl-comm: a owl:Ontology ;
 	rdfs:label "ODRL Community Vocabulary"@en ;
 	owl:versionInfo "0.1" ;
 	dcterms:created "2024-08-10"^^xsd:date ;
-	dcterms:modified "2026-03-02"^^xsd:date ;
+	dcterms:modified "2026-11-25"^^xsd:date ;
 	dcterms:creator "Beatriz Esteves", "Renato Iannella" ;
     dcterms:contributor "W3C ODRL Community Group" ;
 	dcterms:publisher "W3C ODRL Community Group" ;
 	dcterms:description "This ontology contains a community-supplied set of general terms that are useful across difference use cases where the usage of ODRL policies is desirable."@en ;
 	vann:preferredNamespacePrefix "odrl-comm"@en ;
-    vann:preferredNamespaceUri "http://www.w3.org/ns/odrl/2/"^^xsd:string ;
+    vann:preferredNamespaceUri "https://w3id.org/force/community#"^^xsd:string ;
 	dcterms:conformsTo <https://www.w3.org/TR/odrl-model/> ;
 	dcterms:license <https://www.w3.org/Consortium/Legal/2002/ipr-notice-20021231#Copyright/> .
 
 # -- SKOS Collections for Grouping related Community concepts -- #
 
-<http://www.w3.org/ns/odrl/2/#policySubClassesCommunity>
+<https://w3id.org/force/community#policySubClassesCommunity>
     a skos:Collection ;
     skos:prefLabel "Policy Community Subclasses"@en ;
     skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
     skos:member odrl-comm:Preference  .
 
-<http://www.w3.org/ns/odrl/2/#partyRolesCommunity>
+<https://w3id.org/force/community#partyRolesCommunity>
     a skos:Collection ;
     skos:prefLabel "Party Community Functions"@en ;
     skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
     skos:member odrl-comm:issuedPolicy .
 
-<http://www.w3.org/ns/odrl/2/#actionsCommunity>
+<https://w3id.org/force/community#actionsCommunity>
     a skos:Collection ;
     skos:prefLabel "Community Actions for Rules"@en ;
     skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
     skos:member odrl-comm:create .
 
-<http://www.w3.org/ns/odrl/2/#constraintRelationalOperatorsCommunity>
+<https://w3id.org/force/community#constraintRelationalOperatorsCommunity>
     a skos:Collection ;
     skos:prefLabel "Community Constraint Operators"@en ;
     skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
     skos:member odrl-comm:isNotA  ;
 	skos:member odrl-comm:typeOf .
 
-<http://www.w3.org/ns/odrl/2/#constraintLeftOperandsCommunity>
+<https://w3id.org/force/community#constraintLeftOperandsCommunity>
     a skos:Collection ;
     skos:prefLabel "Community Constraint Left Operands"@en ;
     skos:scopeNote "ODRL Community Vocabulary Terms"@en ;
