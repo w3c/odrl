@@ -1,0 +1,41 @@
+
+{
+  "@context": {
+    "odrl": "http://www.w3.org/ns/odrl.jsonld",
+    "ex": "http://example.org/",
+    "report": "http://example.com/report/temp/",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://example.com/policy-report/A2",
+  "@type": "report:PolicyReport",
+  "dct:created": {
+    "@value": "2024-12-19T15:00:00.999Z",
+    "@type": "xsd:dateTime"
+  },
+  "report:policy": "http://example.com/policy/A2",
+  "report:evaluationRequest": "http://example.com/policy/evaluationrequest/A22",
+  "report:ruleReport": {
+    "@id": "http://example.com/policy-report/A2/prohibition/A22",
+    "@type": "report:ProhibitionReport",
+    "report:rule": "http://example.com/prohibition/A2",
+    "report:constraintReport": {
+      "@id": "http://example.com/policy-report/A1/constraint/A22",
+      "@type": "report:ConstraintReport",
+      "report:constraint": "http://example.com/constraint/A2",
+      "report:action": "http://www.w3.org/ns/odrl/2/archive",
+      "report:satisfactionState": "report:not-satisfied"
+    },
+    "report:activationState": "report:inactive",
+    "report:actionReport": {
+      "@id": "http://example.com/policy-report/A1/request-action/A22",
+      "@type": "report:ActionReport",
+      "report:ruleAction": "http://www.w3.org/ns/odrl/2/archive",
+      "report:evaluatedAction": "http://www.w3.org/ns/odrl/2/archive",
+      "report:typeReport": true,
+      "report:targetReport": true,
+      "report:partyReport": "true"
+    },
+    "report:controlState": "report:not-prohibited"
+  }
+}
